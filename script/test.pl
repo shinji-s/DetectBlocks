@@ -2,9 +2,11 @@
 
 
 use DetectBlocks;
+#use Encode;
 
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
+#binmode STDOUT, ":euc-jp";
 
 
 my $str = "";
@@ -28,4 +30,4 @@ my $tree = $ttt->gettree;
 
 #print $tree->as_HTML("<>&","\t");
 
-print $ttt->printblock2
+print $ttt->printblock2;

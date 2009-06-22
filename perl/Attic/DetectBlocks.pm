@@ -213,6 +213,7 @@ sub printblock2{
 
     my $restr = "";
     for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
+#    for my $blocktopelem($this->{tree}->look_down("myblocktype","")){
 
 	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
 
