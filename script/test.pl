@@ -1,15 +1,10 @@
 #!/usr/bin/perl 
 
 
-#use testdb;
 use DetectBlocks;
-#use subdb;
-
 
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
-
-
 
 
 my $str = "";
