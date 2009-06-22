@@ -1,5 +1,6 @@
-#!/usr/bin/perl 
+#!/usr/bin/env perl 
 
+# $Id$
 
 use DetectBlocks;
 #use Encode;
