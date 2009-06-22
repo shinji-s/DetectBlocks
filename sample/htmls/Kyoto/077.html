@@ -1,0 +1,503 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<link rel="shortcut icon" href="http://image.excite.co.jp/jp/favicon/lep.ico">
+<TITLE>京都タワーのゆるキャラ「たわわちゃん」って？ | エキサイトニュース</TITLE>
+<META name="description" content="京都タワーのゆるキャラ「たわわちゃん」って？。Excite Bitニュース。">
+<META name="keywords" content="エキサイト,Excite Bitニュース">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../xml/rss_excite_news_bit_index_utf_8.dcg" />
+<STYLE type="text/css">
+<!--
+A:hover { color:#FF0000; }
+.lh120 { line-height: 120%; }
+.lh140 { line-height: 140%; }
+.lh160 { line-height: 160%; }
+#story h2 { font-size:12pt; color:#000;}
+#story h3,#story ul{ margin:0px 10px;font-size:10pt; }
+h1 { margin:0; }
+h2 { color:#454545;}
+.bg{ background-color:#DDDDDD; }
+.pr_title{ display: block; background-color:#DDDDDD; font-size:8pt; padding:.2em; margin-bottom:3px; }
+#news_menu{ font-size:90%; line-height: 1.5em; text-align:center; }
+#news_menu A { padding: .2em; }
+#news_menu A:hover { background: #DDDDDD; }
+.ch{cursor:pointer;cursor:hand}
+.vote_td{border:solid 1px #50657A;}
+.Num{
+font-weight : bold;
+font-size : x-small;
+font-family : Verdana;
+text-decoration : none;
+}
+-->
+</STYLE>
+<script>
+<!--
+function ss(w){window.status=w;return true;}
+function cs(){window.status='';}
+function ga(o,e){if (document.getElementById){a=o.id.substring(1);p="";g=e.target;if(g){t=g.id;f=g.parentNode;if(f)p=f.id;}else{t=e.srcElement.id;}if(t==a||p==a)return;location.href=document.getElementById(a).href}}
+//-->
+</script>
+<script>
+<!--
+function getXmlObj(){
+if (window.XMLHttpRequest){
+var xmlHttp = new XMLHttpRequest();
+return xmlHttp;
+}else{
+if (window.ActiveXObject){
+var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+return xmlHttp;
+}else{
+var xmlHttp = false;
+return xmlHttp;
+}
+}
+}
+function st_v(){
+var url = location.href;
+var ins = document.getElementById('str');
+var bott = document.getElementById('news_vote');
+var prg = document.getElementById('prog');
+xmlhttp = getXmlObj();
+escape(url);
+prg.src = "http://image.excite.co.jp/jp/med/progress_01_red.gif";
+xmlhttp.open("GET", "/News/api/JdClickCount?t="+ url, true);
+xmlhttp.onreadystatechange=function() {
+statechange(xmlhttp.readyState);
+if (xmlhttp.readyState==4 && xmlhttp.status == 200) {
+var d = xmlhttp.responseXML;
+var st = d.getElementsByTagName('error').item(0).firstChild.data;
+if (st == 0){
+ins.innerHTML = "投票しました";
+prg.src = "http://image.excite.co.jp/jp/1pt.gif";
+var vote_total_num = document.getElementById('vote_total_num').firstChild.nodeValue;
+vote_total_num++;
+document.getElementById('vote_total_num').firstChild.nodeValue = vote_total_num;
+}else if (st == 2){
+ins.innerHTML = "投票済みでした";
+}else{
+ins.innerHTML = "投票できませんでした";
+}
+bott.disabled = true;
+}
+}
+xmlhttp.send(null);
+}
+function statechange(st){
+var state = st;
+var status = document.getElementById('prog');
+if (state == '0'){
+}else if (state == '1'){
+status.src = "http://image.excite.co.jp/jp/med/progress_01_red.gif";
+}else if (state == '4'){
+status.src = "http://image.excite.co.jp/jp/1pt.gif";
+}
+}
+function blogpp_bot(){
+window.open('http://upload.exblog.jp/blog_tool.asp?url='+escape(document.location)+'&title='+escape('京都タワーのゆるキャラ「たわわちゃん」って？ | Excite エキサイト'),'blogpp','scrollbars=yes,resizable=no,width=601,height=550');
+return false;
+blogpp.focus();
+}
+function bHatena() {
+var host = 'b.hatena.ne.jp';
+var url = escape('http://b.hatena.ne.jp/xmlrpc');
+var methodName = 'bookmark.getTotalCount';
+var param_string = escape('http://www.excite.co.jp/News/bit/00091112081260.html');
+xmlhttp = getXmlObj();
+xmlhttp.open("GET", "http://www.excite.co.jp/xml/xmlrpc/?host=" + host + "&url=" + url + "&methodName=" + methodName + "&param_string=" + param_string, true);
+xmlhttp.onreadystatechange = function () {
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+var r = xmlhttp.responseXML;
+var st = r.getElementsByTagName('int').item(0).firstChild.data;
+st = '<span class=num2>' + st + " users</span>";
+if(document.getElementById('bHatenaNum')){
+document.getElementById('bHatenaNum').innerHTML = st;
+}
+}
+}
+xmlhttp.send(null);
+}
+window.onload = bHatena;
+//-->
+</script>
+</HEAD>
+<BODY bgcolor=#FFFFFF link=#0000ff>
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr bgcolor=#000000>
+<td valign=top width=12><img src=http://image.excite.co.jp/jp/header_image/corner12x12.gif width=12 height=12 border=0></td>
+<td width=120><a href="../../index.html" target=_top><img src=http://image.excite.co.jp/jp/header_image/xcit120x50.gif width=120 height=50 border=0></a></td>
+<td valign=top width=160><h1><A href="../index.html" target=_top><img src=http://image.excite.co.jp/jp/header_image/news.jpg width=200 height=50 border=0 alt="エキサイトニュース"></a></h1></td>
+<td align=right valign=middle width=99%>
+<a href="../../../pioneer.jp/pdp/red/excite_200611_03.html" target=_top><img src="http://image.excite.co.jp/ng/excite_head4.gif" border=0 width=243 height=50></a></td>
+</tr>
+<tr>
+<td bgcolor=#EEEEEE align=right valign=middle height=20 nowrap colspan=4>
+<font size=-1>
+<B><A href="../../index.html">ホーム</A></B> &nbsp;|&nbsp;<B><A href="../index.html">ニュース トップ</A></B>
+&nbsp;|&nbsp;<a href="../../sitemap/index.html"><B>サイトマップ</B></a>&nbsp;
+</font>
+</td>
+</tr>
+</table>
+<div style="align:center; margin:5px;">
+<center>
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAcn = "RSISEG";
+var impAco = document.cookie;
+var impApos = impAco.indexOf(impAcn+"=");
+var impAseg = (impApos!=-1)?impAco.substring(impApos+impAcn.length+1,(impAco.indexOf("; ",impApos)!=-1)?impAco.indexOf("; ",impApos):impAco.length):null;
+impAseg = (impAseg)?unescape(impAseg):null;
+impAserver = "http://adimp.excite.co.jp";
+impAtag = "/SITE=EXCITE.NEWS/AREA=BANNER/AAMSZ=468X60";
+impAtarget = (impAseg)?impAtag+"/"+impAseg:impAtag;
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jserver/acc_random=' + impArnd + '/pageid=' + impApid + impAtarget + '/OENCJP=SJIS">');
+document.write('</scr');
+document.write('ipt>');
+//-->
+</script>
+<noscript>
+<a href="http://adimp.excite.co.jp/adclick/acc_random=1/SITE=EXCITE.NEWS/AREA=BANNER/AAMSZ=468X60" border=0><img src="http://adimp.excite.co.jp/nserver/acc_random=1/SITE=EXCITE.NEWS/AREA=BANNER/AAMSZ=468X60" border=0></a>
+</noscript>
+</center>
+</div>
+<div id="news_menu">
+<b><a href="../index.html">ニューストップ</a></b>
+[
+<a href="../society/index.html">社会</a>
+,
+<a href="../entertainment/index.html">芸能</a>
+,
+<a href="../sports/index.html">スポーツ</a>
+,
+<a href="../economy/index.html">経済</a>
+,
+<a href="../politics/index.html">政治</a>
+,
+<a href="../world/index.html">国際</a>
+,
+<a href="../release/index.html">プレスリリース</a>
+]
+<br>
+<a href="../rank/index.html">ランキング</a>
+|
+<b><a href="index.html" class=bg>コネタ</a></b>
+|
+<a href="../odd/index.html">びっくり</a>
+|
+<a href="../../../linkpost.news.excite.co.jp/index.html">リンクポスト</a>
+|
+<a href="../photo_news/index.html">写真</a>
+|
+<a href="../blog/index.html">ブログ</a>
+|
+<a href="../magazine/index.html">雑誌</a>
+|
+<a href="../area/index.html">地域</a>
+|
+<a href="http://matome.news.excite.co.jp/">まとめ</a>
+</div>
+<table><tr><td height=1></td></tr></table>
+<A href="../index.html">ニュース トップ</A> ＞
+<A href="index.html">Excite Bit コネタ</A> ＞
+<b>記事</b>
+<table><tr><td height=1></td></tr></table>
+<script type="text/javascript" language="JavaScript">
+<!--
+impAserver = "http://adimp.excite.co.jp";
+impAtarget = "/AAMB1/SITE=EXCITE.NEWS.GENERAL/AREA=TEXT/AAMSZ=TEXT";
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/bservers/AAMALL/pageid=' + impApid + impAtarget+'/acc_random=' + impArnd + '/OENCJP=SJIS">');
+document.write('</scr');
+document.write('ipt>');
+//-->
+</script>
+<script type="text/javascript" language="JavaScript">
+<!--
+var maxlen = 1;
+var rnd= new Array(maxlen);
+var index = 0;
+var i, dup, ads;
+while ( 1 ){
+dup = 0;
+rn = Math.round(Math.random()*65535) % maxlen + 1;
+for ( i = 0; i < index; i++){
+if ( rn == rnd[i] ){
+dup = 1;
+break;
+}
+}
+if ( dup == 0 ){
+rnd[index] = rn;
+index++;
+}
+if ( index >= maxlen )
+break;
+}
+var impAd = 0;
+var styleFlg = "0";
+for ( i = 0; i < maxlen; i++ ){
+ads = '';
+eval('if ( typeof(AAMB'+rnd[i]+') != "undefined" ) ads = AAMB'+rnd[i]+';');
+if ( ads.indexOf("<!- ad ->",0) == -1 && 2 < ads.length ){
+impAd = "1";
+if(styleFlg != "1"){
+document.write("<table width=\"100%\" border=0 cellspacing=0 cellpadding=5><tr><td valign=middle align=center bgcolor=#989898 nowrap width=30><font size=-2 color=#FFFFFF>注目</font></td><td bgcolor=#ffffcc><font size=-1 class=lh140>");
+}
+document.write(ads);
+styleFlg = "1";
+}
+}
+if(styleFlg == "1"){
+document.write("</font></td></tr></table>");
+}
+for ( i = 1; i <= maxlen; i++ ){
+eval('if ( typeof(AAMB'+i+') != "undefined" ) AAMB'+i+' ="";')
+}
+//-->
+</script>
+<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" background="http://image.excite.co.jp/jp/News/bit/news_bit_misahibg02.gif">
+<tr>
+<td width="8"><img src="http://image.excite.co.jp/jp/News/bit/news_bit_misahibg01.gif" alt="" height="25" width="8" border="0"></td>
+<td nowrap><img src="http://image.excite.co.jp/jp/News/bit/news_bti_midashi.gif" alt="Excite Bit コネタ" height="11" width="85" align="baseline" border="0"><font size=+1><strong>京都タワーのゆるキャラ「たわわちゃん」って？</strong></font></td>
+<td align=right><a href="../xml/rss_excite_news_bit_index_utf_8.dcg"><img src="http://image.excite.co.jp/jp/med/rss_26x14.gif" width=26 height=14 alt="RSS" border=0></a>&nbsp;<a href="javascript:location.href='http://reader.excite.co.jp/subscribe/?url='+encodeURIComponent('http://www.excite.co.jp/News/xml/rss_excite_news_bit_index_utf_8.dcg')"><img src="http://image.excite.co.jp/jp/reader/add_rss.gif" width=76 height=17 alt="RSSリーダーに登録" border=0 align="absmiddle"></a></td>
+<td align="right" width="10"><img src="http://image.excite.co.jp/jp/News/bit/news_bit_misahibg03.gif" alt="" height="25" width="10" border="0"></td>
+</tr>
+</table>
+<table><tr height="3"><td height="3"></td></tr></table>
+<table border=0 align=right>
+<tr><td align=center>
+<div align=right>
+<script type="text/javascript" language="JavaScript">
+<!--
+impAserver = "http://adimp.excite.co.jp";
+impAtarget = "/SITE=EXCITE.NEWS.GENERAL/AREA=IMAGE/AAMSZ=240X400";
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jserver/acc_random=' + impArnd + '/pageid=' + impApid + impAtarget + '/OENCJP=SJIS">');
+document.write('</scr');
+document.write('ipt>');
+//-->
+</script>
+</div>
+<div id="side_contents" style="margin-top:5px"></div>
+<div id="p_kwd"></div>
+<img src="http://image.excite.co.jp/jp/1pt.gif" width=160 height=1>
+</td></tr>
+</table>
+<font size=-1>[ 2005年03月30日 10時00分 ]</font>
+<div align=right>
+<font size=-1>
+&nbsp;&nbsp;エキサイト&nbsp;&nbsp;<br><br>
+</font>
+</div>
+<table border="0" cellspacing="0" cellpadding="1" align="left">
+<tr>
+<td bgcolor="#8cba00" width="200">
+<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#f5f5f5">
+<tr>
+<td align=center><IMG src="http://image.excite.co.jp/feed/news/extnews/extnews_tawawa0331.jpg" hspace=5 vspace=3></td>
+</tr>
+</table>
+</td>
+<td width="10"></td>
+</tr>
+</table>
+<DIV class=lh140>すこし前に東京タワーを擬人化したキャラクター<a href="00091109306710.html" target=blank>「ノッポン」</a>が話題になりましたが、関西だって負けてはいません！<BR><BR>昨年40周年を迎えた京都タワーが、ひそかに「たわわちゃん」なる女の子キャラを開発していたのです。見てください！　このはんなりした、脱力を誘う愛らしさを。 <BR>プロフィールを見ると、おっとりした性格で、チャームポイントは色白＆スマート、特技はお琴、あこがれは舞妓さん、という生粋の京女なのです。<BR><BR>京都タワーの担当者に問い合わせてみたところ、実はもともとグッズ展開する予定はなかったキャラクターなのだとか。40周年を記念して京都タワーのエレベーターガールが昨年4月から胸にこのたわわちゃんのピンバッジをつけていたところ、それを見た観光客から「かわいい！お土産に買いたい！！」という問い合わせが殺到したらしい。<BR><BR>それならばと昨年11月からぬいぐるみやマスコット、ピンバッジなどのグッズを製作し、同タワーの名店街や展望室で販売を開始したところ今年に入ってブレイク。関係者も予想外の人気にビックリしている状態という。ちなみにお値段はぬいぐるみ1,500円、マスコットが750円、ピンバッジが400円（すべて税込）。ちなみにこの「たわわちゃん」というネーミングは一般公募の中から選ばれたもので、惜しくも採用されなかった中には「きょうたくん」や「みやこちゃん」などの案もあったそうだ。<BR><BR>お花見、ゴールデンウィークと京都は観光シーズンを目前に控え、たわわちゃんの大ブレイクはまちがいないことでしょう。今後は携帯ストラップなど、新たな商品も登場する予定だとか。こうなったら「ノッポン」「たわわちゃん」、そして大阪・通天閣のシンボル「ビリケンさん」と3つ並べてお部屋やクルマのマスコットに飾ってみてはいかが？　（野崎泉）</DIV>
+<p>
+<li><a href="http://www.keihannet.ne.jp/kyotower/">京都タワー</a><br>
+<br clear=left>
+<center>
+<table border=0>
+<tr>
+<td align=center colspan=3>
+<small>投票合計：<b><span id=vote_total_num class=Num>12</span></b>&nbsp;[ <a href="../rank/index.html@view=about.html">投票とは？</a>｜<a href="../rank/index.html@view=voter.html">投票レート</a> ]</td>
+<td></td>
+</tr>
+<tr>
+<form onSubmit="st_v();return false;">
+<td class=vote_td><input type=submit value="投票する" style="width:9em" id="news_vote" class=vote_bot></td>
+</form>
+<form onSubmit="blogpp_bot();return false;">
+<td class=vote_td><input type=submit value="トラックバック" style="width:9em" class=vote_bot></td>
+</form>
+<form method=get action=http://namecard.excite.co.jp/user_clip_ping_news.php>
+<input type="hidden" name=href value="http://www.excite.co.jp/News/bit/00091112081260.html">
+<td class=vote_td><input type=submit value="記事をクリップ" style="width:9em" class=clip_bot></td>
+</form>
+<td style="width:9em; margin-left:1em;"><small><a href="http://b.hatena.ne.jp/append?http://www.excite.co.jp/News/bit/00091112081260.html"><img src="http://b.hatena.ne.jp/images/append.gif" alt="このエントリーをブックマークに追加" title="このエントリーをブックマークに追加" width="16" height="12" align="absmiddle" border="0"/></a>
+<a href="http://b.hatena.ne.jp/entry?url=http://www.excite.co.jp/News/bit/00091112081260.html" id=bHatenaNum class=Num></a>
+</small></td>
+</tr>
+<tr>
+<td></td>
+<td align=center height=20><span id=str style="font-size:10px"></span><img id=prog src="http://image.excite.co.jp/jp/1pt.gif" height=15 width=15></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</center>
+<hr size=1>
+<font size=-1><b>【PR お仕事ニュース】</b>&nbsp;<a href="../../../next.rikunabi.com/nisotsu/news_guide/keyword/keyword03_01.html@__m=1&amp;vos=nrnnexct005000000001.html">ビジネスキーワード！あの3文字キーワード、知ってる？</a></font>
+<p>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.excite.co.jp/News/bit/00091112081260.html"
+dc:identifier="http://www.excite.co.jp/News/bit/00091112081260.html"
+dc:title="京都タワーのゆるキャラ「たわわちゃん」って？ | Excite エキサイト : Excite Bitニュース"
+trackback:ping="http://www.excite.co.jp/News/tb/News/bit/00091112081260.html"/>
+</rdf:RDF>
+-->
+<b>この記事へのトラックバック（19）</b><br>
+<font size=-2>※以下の内容は個人が運営するブログに書かれたエントリです。<a href="../../help/trackback@hp=1.html">こちら</a>をご一読の上、ご覧下さい</font><br>
+<small>
+[09月01日] <a href="http://love-kyoto.jugem.jp/?eid=184">こんな方いらっしゃいました？</a> <font size=1 color="#555555">[ 京都好き関東人二人ブログ。 ] <font size=1 face="TAHOMA" color="#555555">at 19:30:57</font></font><br>
+[07月25日] <a href="http://cocorisu.exblog.jp/4221375">宣言してみる？</a> <font size=1 color="#555555">[ cocorisu ] <font size=1 face="TAHOMA" color="#555555">at 21:26:27</font></font><br>
+[04月13日] <a href="http://cocoichioshi.livedoor.biz/archives/50225377.html">京都の夜、京都タワーのライトアップ</a> <font size=1 color="#555555">[ 夫婦生活と育児のコネタ画像大図鑑 ] <font size=1 face="TAHOMA" color="#555555">at 00:46:56</font></font><br>
+[01月04日] <a href="http://saisairoad.blog41.fc2.com/blog-entry-8.html">京都タワーのたわわちゃん</a> <font size=1 color="#555555">[ さいさい通り ] <font size=1 face="TAHOMA" color="#555555">at 00:15:09</font></font><br>
+[05月01日] <a href="http://noriqtaro.exblog.jp/1658970">雨だる〜</a> <font size=1 color="#555555">[ 紀屋本店。 ] <font size=1 face="TAHOMA" color="#555555">at 21:58:47</font></font><br>
+<b><a href="00091112081260.html@tbpage=1.html">もっと見る（全19件）</a></b> &gt;&gt;
+</small>
+<p>
+<small>
+<table border=0 cellpadding=0 cellspacing=5 bgcolor="#DDDDDD">
+<tr><form><td><b><font size="-1" color="#000000">トラックバックURL：</font></b><input type=text size=90 value="http://www.excite.co.jp/News/tb/News/bit/00091112081260.html"></td></form></table><br>
+<img src=http://image.excite.co.jp/jp/lep_11x13.gif width=11 height=13>&nbsp;<a href="../../blog/index.html">エキサイトブログ</a>ユーザーならブックマークレット機能を利用してこのページに<a href="javascript:blogpp=window.open('http://upload.exblog.jp/blog_tool.asp?url='+escape('http://www.excite.co.jp/News/bit/00091112081260.html')+'&title='+escape('京都タワーのゆるキャラ「たわわちゃん」って？ | Excite エキサイト'),'blogpp','scrollbars=yes,resizable=no,width=601,height=550');blogpp.focus();">トラックバック</a>できます。<br>
+&nbsp;&nbsp;トラックバックする場合は<a href="../../help/trackback@hp=1.html">こちら</a>をご覧ください。
+&nbsp;[&nbsp;<a href="trackback.html">トラックバック一覧</a> ]
+</small>
+<p>
+<! -c1 : 1167260524 ->
+<! -c2 : 1167260524 ->
+<br>
+<b>Excite Bitニュース閲覧数ランキング</b>　<font size=-1>（30分以内の閲覧）</font><br>
+&nbsp;1. <a href="00091167181949.html">親子でゆっくりバスタイム「じゃぶじゃぶ紙芝居」</a> [エキサイト]<br>
+&nbsp;2. <a href="00091166717426.html">カーボン、セラム、いろんなヒーター、どう違う？</a> [エキサイト]<br>
+&nbsp;3. <a href="00091166717177.html">厳島神社は「わざと壊れやすくしてる」って本当？</a> [エキサイト]<br>
+&nbsp;4. <a href="00091104822821.html">昔、日本には富士山より高い山がたくさんあった!?</a> [エキサイト]<br>
+&nbsp;5. <a href="00091167095292.html">帰省のお土産に『大阪名物』はいかが</a> [エキサイト]<br>
+&nbsp;6. <a href="00091166717797.html">音楽の著作権料、何はセーフで何がアウトなの？</a> [エキサイト]<br>
+&nbsp;7. <a href="00091161682695.html">ハンバーガーやケーキも折れちゃう！　今時のおりがみ</a> [エキサイト]<br>
+&nbsp;8. <a href="00091120809575.html">携帯電話、「使い切ってから充電」は本当？</a> [エキサイト]<br>
+&nbsp;9. <a href="00091165409919.html">タイム誌が選んだベストインベンション「エスペッソ」とは</a> [エキサイト]<br>
+10. <a href="00091165421643.html">“夜のお店”の不思議な「グレーゾーン」に迫る</a> [エキサイト]<br>
+<small><b><a href="../rank/index.html@view=pv.html">もっと見る</a></b> &gt;&gt;</small>
+<br>
+<br>
+<b>他のExcite Bitニュース</b><br>
+[12月27日] <a href="00091166717426.html">カーボン、セラム、いろんなヒーター、どう違う？</A> [エキサイト]<br>
+[12月27日] <a href="00091167181949.html">親子でゆっくりバスタイム「じゃぶじゃぶ紙芝居」</A> [エキサイト]<br>
+[12月26日] <a href="00091166717797.html">音楽の著作権料、何はセーフで何がアウトなの？</A> [エキサイト]<br>
+[12月26日] <a href="00091167095292.html">帰省のお土産に『大阪名物』はいかが</A> [エキサイト]<br>
+[12月25日] <a href="00091166717177.html">厳島神社は「わざと壊れやすくしてる」って本当？</A> [エキサイト]<br>
+<br>
+<br clear=all>
+<center>
+<HR size=1 width=100%>
+<div id="news_menu">
+<b><a href="../index.html">ニューストップ</a></b>
+[
+<a href="../society/index.html">社会</a>
+,
+<a href="../entertainment/index.html">芸能</a>
+,
+<a href="../sports/index.html">スポーツ</a>
+,
+<a href="../economy/index.html">経済</a>
+,
+<a href="../politics/index.html">政治</a>
+,
+<a href="../world/index.html">国際</a>
+,
+<a href="../release/index.html">プレスリリース</a>
+]
+<br>
+<a href="../rank/index.html">ランキング</a>
+|
+<b><a href="index.html" class=bg>コネタ</a></b>
+|
+<a href="../odd/index.html">びっくり</a>
+|
+<a href="../../../linkpost.news.excite.co.jp/index.html">リンクポスト</a>
+|
+<a href="../photo_news/index.html">写真</a>
+|
+<a href="../blog/index.html">ブログ</a>
+|
+<a href="../magazine/index.html">雑誌</a>
+|
+<a href="../area/index.html">地域</a>
+|
+<a href="http://matome.news.excite.co.jp/">まとめ</a>
+</div>
+<HR size=1 width=100%>
+<table width=100% border=0 cellspacing=0 cellpadding=1>
+<tr valign=top>
+<td valign=middle align=center bgcolor=#989898 nowrap><font size=-2 color=#FFFFFF>注<br><br>目</font></td>
+<td width=48%>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="http://www.excite.co.jp/relocate3/?co=jh/uni4060C18&fil=c;http://www.bb-chat.tv/" target=_top>自宅で彼女と楽しくネットラブ！</a></span><br>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="../../../blog.excite.co.jp/smile-contest.html" target=_top>【豪華賞品】エキサイトブログフォトコンテスト実施中</a></span><br>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="../../../www.suntory-kenko.com/excite/index.html@key=178.html" target=_top>■年末年始に備えて！サントリーが健康生活をご提案■</a></span><br>
+</td>
+<td width=4%></td>
+<td width=48%>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="../../../www.kabu.com/company/ad2.asp.html" target=_top>【カブドットコム証券】３７８円キャンペーン実施！</a></span><br>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="../../../www.musashijapan.com/products/recommend.html" target=_top>フィットネスで大人気のアミノ酸【MUSASHI】</a></span><br>
+<span style="line-height: 140%; font-size:x-small;">&nbsp;・ <a href="../../../fx.himawari-group.co.jp/index.html" target=_top>初めての投資も安心のサポート。ＦＸはひまわり証券！</a></span><br>
+</td>
+</tr>
+</table>
+<br>
+<center>
+<table border=0 width=100%>
+<tr>
+<td align=center><a href="http://www.excite.co.jp/relocate3/?fil=c&co=jh/ufb1060C18;http://www.bb-chat.tv/" target=_top><img src="http://image.excite.co.jp/jp/sa/house2/arisa_24350.gif" width=243 height=50 alt="" border=1></a></td>
+<td align=center><a href="../../../www.chintai.net/index.html" target=_top><img src="http://image.excite.co.jp/jp/sa/house2/chintaiNew243_50_2_061225.gif" width=243 height=50 alt="" border=1></a></td>
+<td align=center><a href="../../../shinchiku.homes.co.jp/contents/special/200610mr/index.html" target=_top><img src="http://image.excite.co.jp/jp/sa/house2/mr243-50.gif" width=243 height=50 alt="" border=1></a></td>
+</tr>
+</table>
+</center>
+<HR size=1 width=100%>
+<TABLE border=0 cellspacing=3 cellpadding=0>
+<TR>
+<TD align=center>
+<FONT size=-2 color=#666666>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD align=center>
+<FONT size=-2 color=#666666>
+Copyright &copy; 1997-2006 Excite Japan Co., Ltd. All Rights Reserved.
+</FONT>
+</TD>
+</TR>
+<tr>
+<td align=center>
+<font size=-1>
+<a href="../../help/info@hp=5.html" target=_top>免責事項</A> - <A href="../../help/index.html" target=_top>ヘルプ</A> - <a href="../../help/link@hp=3.html" target=_top>エキサイトをスタ-トペ-ジに</a> | <a href=http://bb.excite.co.jp/ target=_top>BB.excite</a> | <a href=http://woman.excite.co.jp/ target=_top>Woman.excite</a> | <a href="../../index.html" target=_top>エキサイト ホーム</a>
+</font>
+</td>
+</tr>
+</TABLE>
+</CENTER>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-400370-10";
+urchinTracker();
+</script>
+<script language="JavaScript" type="text/JavaScript" src="../../sa/rsi/RSI.EXCITE.js"></script>
+</BODY>
+</HTML>

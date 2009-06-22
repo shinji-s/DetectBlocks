@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>ブックマクロ開発に - NHKの受信料とコンテンツの公開</title>
+<link rel="start" href="index.html" title="ブックマクロ開発に">
+<link rel="help" href="../../hatenadiary.g.hatena.ne.jp/index.html" title="ヘルプ">
+<link rel="prev" href="20061109.html" title="前の日">
+<link rel="next" href="20061117.html" title="次の日">
+
+<link rel="stylesheet" href="../css/base.css" type="text/css" media="all">
+<link rel="stylesheet" href="../theme/hatena_colorful-blue/hatena_colorful-blue.css" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="foaf" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch/diary.xml" title="ブックマクロ開発に内日記検索" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch/archive.xml" title="ブックマクロ開発に内一覧検索" />
+
+
+<link rel="shortcut icon" href="../images/wh_favicon.ico">
+
+
+
+<style type="text/css">
+<!-- 
+span.highlight {
+	color: black;
+	background-color: yellow;
+}
+img.photo {
+	float: right;
+	margin: 10px;
+	border: 0;
+}
+a.keyword {
+	text-decoration: none;
+	border-bottom: 1px solid gray;
+}
+
+-->
+</style>
+
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/takuya_1st/20061111">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="takuya_1st">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="mobile@date=20061111.html" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/takuya_1st/20061111/1163272077"
+  trackback:ping="http://d.hatena.ne.jp/takuya_1st/20061111/1163272077"
+  dc:title="NHK受信料モデルは崩壊している。"
+  dc:identifier="http://d.hatena.ne.jp/takuya_1st/20061111/1163272077" />
+</rdf:RDF>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/takuya_1st/20061111/1163273526"
+  trackback:ping="http://d.hatena.ne.jp/takuya_1st/20061111/1163273526"
+  dc:title="ソースネクストのCDを見ながらGPLを考える"
+  dc:identifier="http://d.hatena.ne.jp/takuya_1st/20061111/1163273526" />
+</rdf:RDF>
+-->
+<script type="text/javascript" src="../js/prototype-1.4.0.js"></script>
+<script type="text/javascript" src="../js/textinput_description.js"></script>
+<script type="text/javascript" src="../js/embed_movie_player.js"></script>
+<script type="text/javascript">
+Event.observe(window, 'load', function() {
+    new TextInputDescription($('comment-username'), $('comment-form'), 'なまえ');
+}, false);
+</script>
+
+<script type="text/javascript" src="../js/MochiKit/1125/Base.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/Iter.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/DOM.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/Style.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/Signal.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/Async.js"></script>
+<script type="text/javascript" src="../js/MochiKit/1125/Logging.js"></script>
+<script type="text/javascript" src="../js/BookmarkCommentViewer.js" charset="utf-8"></script>
+
+
+</head>
+<body>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td bgcolor="#FFFFFF" nowrap>
+<a href="http://www.hatena.ne.jp/"><img border="0" src="../images/hatena_wh.gif" width="104" height="40" alt="Hatena::"></a><a href="../index.html"><img border="0" src="../images/diarywh.gif" width="60" height="40" alt="Diary"></a><img border="0" src="../images/tri_wh.gif" width="15" height="40" usemap="#trimap" alt="tri"><map name="trimap"><area shape="rect" coords="1,10,15,25" href="http://b.hatena.ne.jp/takuya_1st/" alt="はてなブックマーク" title="はてなブックマーク"><area shape="rect" coords="1,25,15,40" href="http://f.hatena.ne.jp/takuya_1st/" alt="はてなフォトライフ" title="はてなフォトライフ"></map></td>
+<td valign="bottom" align="left" bgcolor="#FFFFFF" width="60%" nowrap><form method="GET" action="http://d.hatena.ne.jp/search" style="margin: 0;"><font color="#FFFFFF" size="2">&nbsp;&nbsp;<input type="text" name="word" value="" size="18" style="font-size: 8pt">&nbsp;<input type="hidden" name="name" value="takuya_1st"><input type="image" name="diary" alt="日記" src="../images/search_diarywh.gif" align="top" style="width:34px;height:20px;border:0px">&nbsp;<input type="image" name="submit" alt="検索" src="../images/searchwh.gif" align="top" style="width:34px;height:20px;border:0px"><br><img border="0" src="../images/dot.gif" width="1" height="3" alt=""></font></form></td>
+<td align="right" bgcolor="#FFFFFF"><a href="http://www.hatena.ne.jp/"><img border="0" src="../images/hatenawh.gif" width="82" height="40" alt="はてな"></a></td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#999999" colspan="3"><img border="0" src="../images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+<td width="100%" bgColor="#ffffff" colspan="3">
+<div align="center">
+<center>
+<table cellSpacing="0" cellPadding="2" width="100%" border="0">
+<tbody>
+<tr>
+<td bgcolor="#FFFFFF" width="50%" nowrap><font color="#999999" size="2">&nbsp;ようこそゲストさん&nbsp;</font></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="index.html" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">最新の日記</font></a></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="https://www.hatena.ne.jp/register?s=d" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">ユーザー登録</font></a></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Ftakuya_1st%2F20061111" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">ログイン</font></a></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="../../hatenadiary.g.hatena.ne.jp/index.html" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">ヘルプ</font></a></td>
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+</td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#999999" colspan="3"><img border="0" src="../images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+</table>
+
+
+<h1><a href="index.html">ブックマクロ開発に</a></h1>
+<div class="hatena-body">
+<div class="main">
+
+
+
+
+
+<div class="calendar">
+	<a href="20061109.html">&lt;前の日</a>&nbsp;|&nbsp;<a href="20061117.html">次の日&gt;</a>
+</div>
+<div class="day">
+<h2><a href="20061111.html"><span class="date">2006/11/11</span></a> <span class="title">NHKの受信料とコンテンツの公開</span></h2>
+
+<div class="body">
+
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3><a href="20061111/1163272077.html" name="1163272077"><span class="sanchor">■</span></a><a class="keyword" href="../keyword/NHK.html">NHK</a><a class="keyword" href="../keyword/受信料.html">受信料</a>モデルは崩壊している。</h3>
+			<p><a class="keyword" href="../keyword/NHK.html">NHK</a>は<a class="keyword" href="../keyword/受信料.html">受信料</a>をどうしたいのだろう。<a class="keyword" href="../keyword/ワンセグ.html">ワンセグ</a>、<a class="keyword" href="../keyword/PC.html">PC</a>、<a class="keyword" href="../keyword/ロケフリ.html">ロケフリ</a>。これら全てに<a class="keyword" href="../keyword/受信料.html">受信料</a>負担を求めるつもりなんだろうか。<a class="keyword" href="../keyword/NHK.html">NHK</a>の<a class="keyword" href="../keyword/受信料.html">受信料</a>をまじめに払うと年間15,900円だ。これが世帯毎に課金される。家族が多い方が明らかに得じゃないか。１世帯当たり？扶養家族の間違いじゃないかと目を疑った。一人暮らしだと「<a class="keyword" href="../keyword/家族割.html">家族割</a>」になるのだが、同じ敷地に２世帯住宅の場合は１世帯でよい。ちなみに我が家は同じ敷地に３世帯あるが１世帯分のみ支払っている。</p>
+			<p>次に、電器屋・病院・学校が気になる。あれだけテレビが置いてあって、たくさん受信してても、世帯単位なら１法人だ。はぁ？　病院で借りるテレビには<a class="keyword" href="../keyword/受信料.html">受信料</a>が含まれているのでしょうか。職場や、銀行、病院などの待合室においてあるテレビはどういう<a class="keyword" href="../keyword/受信料.html">受信料</a>になってるんだ。<a class="keyword" href="../keyword/NHK教育.html">NHK教育</a>を見ている各学校は<a class="keyword" href="../keyword/受信料.html">受信料</a>を支払ってコンテンツを利用しているのだろうか。</p>
+			<p>日本中のあらゆるテレビに<a class="keyword" href="../keyword/受信料.html">受信料</a>負担を求めるのなら、TV購入時に価格上乗せが筋だ。五年分79,500円が内税化されているべきだろう。<a class="keyword" href="../keyword/ワンセグ.html">ワンセグ</a>搭載機全て、パソコンのTVチューナー全て課金しる。そんな高いテレビはいらないが。</p>
+			<p><a class="keyword" href="../keyword/NHK.html">NHK</a>には<a class="keyword" href="../keyword/FM.html">FM</a>、AMラジオや短波、<a class="keyword" href="../keyword/BS.html">BS</a>、海外放送もある。テレビだけ<a class="keyword" href="../keyword/受信料.html">受信料</a>徴収も変だ。海外で<a class="keyword" href="../keyword/NHK.html">NHK</a>見ている人は、<a class="keyword" href="../keyword/受信料.html">受信料</a>を払っているのだろうか？<a class="keyword" href="../keyword/FM.html">FM</a>/AM/短波は無料、これもまた謎である。テレビとＢＳだけが法外な<a class="keyword" href="../keyword/受信料.html">受信料</a>を請求される。</p>
+			<p><a class="keyword" href="../keyword/NHK.html">NHK</a>の<a class="keyword" href="../keyword/著作物.html">著作物</a>の利用権は<a class="keyword" href="../keyword/ＮＨＫ.html">ＮＨＫ</a>にあるのか？<a class="keyword" href="../keyword/受信料.html">受信料</a>を払っている側にもあるだろ。<a class="keyword" href="../keyword/YouTube.html">YouTube</a>にUPしても良いじゃないか。「金払ってるのだからコンテンツを自由に使わせろ。」こんな暴論ありだろ。それくらい<a class="keyword" href="../keyword/NHK.html">NHK</a>の<a class="keyword" href="../keyword/受信料.html">受信料</a>の定義が曖昧だ。</p>
+			<p>本当にこれからどうするんだろうか。</p>
+			<p>私たちは<a class="keyword" href="../keyword/NHK.html">NHK</a>の<a class="keyword" href="../keyword/受信料.html">受信料</a>を払って何を買っているのだろうか？</p>
+			<p><a href="http://www.nhk.or.jp/eigyo/" target="_blank">NHK受信料</a>の解説ページは答えてくれない</p>
+			<p>結論、<a class="keyword" href="../keyword/NHK.html">NHK</a>の集金制度は、<a class="keyword" href="../keyword/ヤクザ.html">ヤクザ</a>が商店主からお金を集める方式と同じだ。<a class="keyword" href="../keyword/国民.html">国民</a>の<a class="keyword" href="../keyword/国民.html">国民</a>による<a class="keyword" href="../keyword/国民.html">国民</a>のための放送局なら、コンテンツを開放し<a class="keyword" href="../keyword/パブリック.html">パブリック</a><a class="keyword" href="../keyword/ライセンス.html">ライセンス</a>に出すべきだと思う。</p>
+			<br>
+
+			<p class="sectionfooter"><a href="20061111/1163272077.html">Permalink</a> | <a href="20061111/1163272077.html#c">コメント(0)</a> | <a href="20061111/1163272077.html#tb">トラックバック(0)</a> | 04:07&nbsp; <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/takuya_1st/20061111/1163272077" class="bookmark-icon"><img src="../images/b_entry_wh.gif" border="0" title="このエントリーを含むブックマーク" alt="このエントリーを含むブックマーク" width="16" height="12" class="icon"></a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/takuya_1st/20061111/1163272077" class="bookmark-count"><img src="http://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/takuya_1st/20061111/1163272077" alt=""></a> <img class="hatena-bcomment-view-icon" src="http://r.hatena.ne.jp/images/popup.gif" onclick="javascript:BookmarkCommentViewer.iconImageClickHandler(this, 'http://d.hatena.ne.jp/takuya_1st/20061111/1163272077', event);" title="このエントリーのブックマークコメント" alt="このエントリーのブックマークコメント" width="13" height="13"></p>
+		</div>
+
+
+		<div class="section">
+			<h3><a href="20061111/1163273526.html" name="1163273526"><span class="sanchor">■</span></a><a class="keyword" href="../keyword/ソースネクスト.html">ソースネクスト</a>のCDを見ながら<a class="keyword" href="../keyword/GPL.html">GPL</a>を考える</h3>
+			<p><a class="keyword" href="../keyword/ソースネクスト.html">ソースネクスト</a>のCDって<a class="keyword" href="../keyword/オープンソース.html">オープンソース</a>の改造に見えて仕方がない。<a class="keyword" href="../keyword/オープンソース.html">オープンソース</a>使ってるからあれだけ安いんだろうと。<a class="keyword" href="../keyword/ソースコード.html">ソースコード</a>公開義務があるソフトが相当あるんじゃないか。<a class="keyword" href="../keyword/ウェブ進化論.html">ウェブ進化論</a>などで<a class="keyword" href="../keyword/オープンソース.html">オープンソース</a>万歳だけど、<a class="keyword" href="../keyword/ライセンス.html">ライセンス</a>に同意して<a class="keyword" href="../keyword/ライセンス.html">ライセンス</a>を遵守している会社など皆無だろう。その辺が微妙だな。ソフトウェア作ってる会社が<a class="keyword" href="../keyword/ライセンス.html">ライセンス</a>を遵守しない精神はいただけない。</p>
+			<p class="sectionfooter"><a href="20061111/1163273526.html">Permalink</a> | <a href="20061111/1163273526.html#c">コメント(0)</a> | <a href="20061111/1163273526.html#tb">トラックバック(0)</a> | 04:32&nbsp; <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/takuya_1st/20061111/1163273526" class="bookmark-icon"><img src="../images/b_entry_wh.gif" border="0" title="このエントリーを含むブックマーク" alt="このエントリーを含むブックマーク" width="16" height="12" class="icon"></a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/takuya_1st/20061111/1163273526" class="bookmark-count"><img src="http://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/takuya_1st/20061111/1163273526" alt=""></a> <img class="hatena-bcomment-view-icon" src="http://r.hatena.ne.jp/images/popup.gif" onclick="javascript:BookmarkCommentViewer.iconImageClickHandler(this, 'http://d.hatena.ne.jp/takuya_1st/20061111/1163273526', event);" title="このエントリーのブックマークコメント" alt="このエントリーのブックマークコメント" width="13" height="13"></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+
+</div>
+
+
+
+
+
+
+<div class="refererlist">
+<div class="caption"><a name="tb">idトラックバック</a></div>
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="calendar">
+	<a href="20061109.html">&lt;前の日</a>&nbsp;|&nbsp;<a href="20061117.html">次の日&gt;</a>
+</div>
+</div>
+<div class="sidebar">
+	<div class="hatena-module">
+<div class="hatena-moduletitle">プロフィール</div>
+<div class="hatena-modulebody">
+<div class="hatena-profile">
+<p class="hatena-profile-id"><a href="about.html">takuya_1st</a></p>
+<p class="hatena-profile-body">EmEditorファン。ブックマークはもっと使えるツールになるはずと頑張ってる</p>
+</div>
+</div>
+</div>
+
+		<div class="hatena-module">
+		<div class="hatena-moduletitle"><a href="http://f.hatena.ne.jp/takuya_1st/">takuya_1st&#39;s fotolife</a></div>
+		<div class="hatena-modulebody">
+			<ul class="hatena-photo">
+				<li><a href="http://f.hatena.ne.jp/takuya_1st/20060929065120"><img class="hatena-photo" src="http://f.hatena.ne.jp/images/fotolife/t/takuya_1st/20060929/20060929065120_m.jpg" alt="EmEditorのCSS補完" title="EmEditorのCSS補完"></a></li>
+				<li><a href="http://f.hatena.ne.jp/takuya_1st/20060826054218"><img class="hatena-photo" src="http://f.hatena.ne.jp/images/fotolife/t/takuya_1st/20060826/20060826054218_m.jpg" alt="Window Live Mail Desltop" title="Window Live Mail Desltop"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle">日記の検索</div>
+<div class="hatena-modulebody">
+<form method="GET" action="http://d.hatena.ne.jp/takuya_1st/searchdiary" class="hatena-searchform"><input type="text" name="word" class="hatena-searchform" value=""><input type="submit" name=".submit" value="検索" class="hatena-searchform"><br><input type="radio" name="type" value="detail" checked="checked">詳細 <input type="radio" name="type" value="list">一覧</form>
+
+</div>
+</div>
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tr>
+<td class="calendar-prev-month" colspan="2"><a href="200610.html" title="200610" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="200611.html" rel="nofollow">2006/11</a></td>
+<td class="calendar-next-month" colspan="2"><a href="200612.html" title="200612" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day">1</td>
+		<td class="calendar-day"><a href="20061102.html" title="2">2</a></td>
+		<td class="calendar-day"><a href="20061103.html" title="3">3</a></td>
+		<td class="calendar-day">4</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day"><a href="20061106.html" title="6">6</a></td>
+		<td class="calendar-day">7</td>
+		<td class="calendar-day">8</td>
+		<td class="calendar-day"><a href="20061109.html" title="9">9</a></td>
+		<td class="calendar-day">10</td>
+		<td class="calendar-day day-selected"><a href="20061111.html" title="11">11</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day">12</td>
+		<td class="calendar-day">13</td>
+		<td class="calendar-day">14</td>
+		<td class="calendar-day">15</td>
+		<td class="calendar-day">16</td>
+		<td class="calendar-day"><a href="20061117.html" title="17">17</a></td>
+		<td class="calendar-day">18</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">19</td>
+		<td class="calendar-day">20</td>
+		<td class="calendar-day day-today">21</td>
+		<td class="calendar-day">22</td>
+		<td class="calendar-day">23</td>
+		<td class="calendar-day">24</td>
+		<td class="calendar-day">25</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">26</td>
+		<td class="calendar-day">27</td>
+		<td class="calendar-day">28</td>
+		<td class="calendar-day">29</td>
+		<td class="calendar-day">30</td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+	</tr>
+</table>
+	</div>
+</div>
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle">最新の画像</div>
+<div class="hatena-modulebody">
+<ul class="hatena-photo">
+<li><a href="20060825.html"><img class="hatena-photo" src="../images/diary/t/takuya_1st/2006-08-25_m.gif" alt="http://f.hatena.ne.jp/images/fotolif" title="http://f.hatena.ne.jp/images/fotolif"></a></li>
+<li><a href="20060516.html"><img class="hatena-photo" src="../images/diary/t/takuya_1st/2006-05-16_m.gif" alt="エムエディター" title="エムエディター"></a></li>
+<li><a href="20050921.html"><img class="hatena-photo" src="../images/diary/t/takuya_1st/2005-09-21_m.gif" alt="takuya_1st2005-09-21" title="takuya_1st2005-09-21"></a></li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle"><a href="archive.html">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="20061117/1163718899.html">NTTは大変だな。</a></li>
+<li><a href="20061111/1163272077.html">NHK受信料モデルは崩壊している。</a></li>
+<li><a href="20061111/1163273526.html">ソースネクストのCDを見ながらGPLを考える</a></li>
+<li><a href="20061109/1163096547.html"> EmEditorとXmlHttpの活用</a></li>
+<li><a href="20061106/1162824039.html">レゴの店に行った。</a></li>
+<li><a href="20061103.html">javaは参照渡し</a></li>
+<li><a href="20061103/1162552946.html">Java.util.Properties　のデフォルトは参照渡し</a></li>
+<li><a href="20061103/1162584252.html">アキハバラ@DEEP見た</a></li>
+<li><a href="20061102/1162541004.html">PLABEXのBRC-W14VG を iTunesとBitTorrentに対応させる。</a></li>
+<li><a href="20061026/1161878062.html">宣伝と話題作りがうまいよな。</a></li>
+</ul>
+</div>
+</div>
+
+		<div class="hatena-module">
+		<div class="hatena-moduletitle">ページビュー</div>
+		<div class="hatena-modulebody">
+			<span class="hatena-counter">13862</span>
+		</div>
+	</div>
+
+	<div class="hatena-module">
+		<div class="hatena-moduletitle">リンク集</div>
+			<div class="hatena-modulebody">
+				<ul class="hatena-urllist">
+					<li><a href="http://www.hatena.ne.jp/">はてな</a></li>
+					<li><a href="../index.html">はてなダイアリー</a></li>
+					<li><a href="http://d.bookmacro.com/user/takuya">ブックマーク</a></li>
+				</ul>
+			</div>
+		</div>
+</div>
+</div>
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-255616-2";
+urchinTracker();
+</script>
+
+
+</body>
+</html>

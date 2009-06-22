@@ -1,0 +1,1057 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html><!-- #BeginTemplate "/Templates/TopPageLayout.dwt" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<meta http-equiv="Content-Language" content="ja">
+ <LINK REL="SHORTCUT ICON" HREF="favicon.ico">
+<link rel=stylesheet type="text/css" href="mnj.css">
+<!-- #BeginEditable "doctitle" -->
+
+<script language = JavaScript>
+<!--
+var cl=/\r\n/g;
+function checkvalid()
+{
+var cmt=document.usercommand.comment.value;
+var nam=document.usercommand.name.value;
+if(document.usercommand.name.value=='' ){
+window.alert ('名前を入力してください');
+document.usercommand.name.focus();
+return false;
+}
+else if(document.usercommand.name.value.length>10){
+window.alert ('名前を10文字以内に入力してください');
+document.usercommand.name.select();
+return false;
+}
+else if(document.usercommand.comment.value.replace(cl,'')==''){
+window.alert ('内容を入力してください');
+document.usercommand.comment.focus();
+return false;
+}
+else if(document.usercommand.comment.value.length>200){
+window.alert ('内容を200文字以内に入力してください');
+document.usercommand.comment.select();
+return false;
+}
+
+return window.confirm (nam.concat ('\n').concat(cmt).concat('\n').concat('以上でよろしいですか？'));
+
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+var scrh = screen.height;
+var scrw = screen.width;
+var winh1 = 660;
+var winw1 = 830;
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+tp = (scrh - winh1) / 2-1;
+lp = (scrw - winw1) / 2;
+str = "toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,left="+lp+",top="+tp+",width="+winw1+",height="+winh1;
+eval("page" + id + " = window.open(URL, '" + id + "', str);");
+}
+// End -->
+</script>
+<title>MyNewsJapan</title>
+<!-- #EndEditable --> 
+ 
+<script language="JavaScript" type="text/JavaScript">
+function userlogincheck(){
+
+ if(document.golden.loginid.value=='' ){
+  window.alert ('ログインIDを入力してください');
+  document.golden.loginid.focus();
+  return false;
+  }
+   if(document.golden.passwd.value=='' ){
+  window.alert ('パスワードを入力してください');
+  document.golden.passwd.focus();
+  return false;
+  }
+  
+}
+
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="javascript">
+<!--
+/* 別ウインドウを開く */
+function winOpen(url)
+{
+   window.open(url,"_blank",'width=550,height=300,toolbar=no,scrollbars=no,resizable=no,status=no,menubar=no,location=no,directories=no');
+}
+//-->
+<!-- Begin
+var scrh = screen.height;
+var scrw = screen.width;
+var winh = 500;
+var winw = 700;
+function winOpen2(URL) {
+day = new Date();
+id = day.getTime();
+tp = (scrh - winh) / 2;
+lp = (scrw - winw) / 2;
+str = "toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,left="+lp+",top="+tp+",width="+winw+",height="+winh;
+eval("page" + id + " = window.open(URL, '" + id + "', str);");
+}
+// End -->
+
+
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"  oncontextmenu="return false;" onLoad="MM_preloadImages('img/left/btn01_b.gif','img/top/btn11_b.gif','img/top/btn13_b.gif','img/top/btn14_b.gif','img/top/btn15_b.gif','img/top/btn16_b.gif','img/top/btn17_b.gif','img/top/btn18_b.gif','img/top/btn19_b.gif','img/left/btn02_b.gif','img/left/btn03_b.gif','img/left/btn04_b.gif','img/left/btn05_b.gif','img/left/btn06_b.gif','img/left/btn07_b.gif','img/left/btn08_b.gif','img/left/btn09_b.gif','img/kobetsu/saikou_h_b.gif','img/kobetsu/kou_h_b.gif')">
+<div align="center"> <!-- #BeginLibraryItem "/Library/TitleBar.lbi" -->
+<table width="752" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td rowspan="2" valign="top"><a href="index.jsp.html"><img src="img/logo.gif" alt="「MyNewsJapan」MyNewsJapanでは、Newsの現場にいる誰もが発信者です。身近にある本当のNewsを多くの人に知らせてみませんか？" width="280" height="84" border="0"></a></td>
+    <td rowspan="2" valign="top"><img src="img/head01.gif" alt="" width="248" height="84"></td>
+    <td><img src="img/spacer.gif" width="224" height="3" alt=""><br>
+	<a href="static/extrapictures/message.html" target="_blank">
+      <img src="img/ban.gif" alt="バナー" width="224" height="50" border="0">
+	  </a>
+	   </td>
+  </tr>
+  <tr> 
+  <!--
+    <form method="post" action="/selectresult.jsp" name="info-supply">
+      <input type="hidden" name="cmd" value="titlebar-serach">
+      <td align="center"> 
+        <input name="keyword" type="text" size="10" class="text1" value="">
+        <select name="db">
+          <option value="1"  >キーワット</option>
+          <option value="2"  >記者名</option>
+        </select>
+        <input name="kensaku" type="submit" value="検索" class="text1">
+      </td>
+    </form>
+	-->
+  </tr>
+  <tr> 
+    <td colspan="3"><img src="img/spacer.gif" width="1" height="4" alt=""></td>
+  </tr>
+</table>
+<!-- #EndLibraryItem --><table width="752" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="90" rowspan="2" bgcolor="#CFDDF8"> <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left01','','img/left/btn01_b.gif',1)"  href="aboutus.jsp.html"><img src="img/left/btn01_a.gif" alt="MyNewsJapanとは" name="left01" width="90" height="46" border="0"></a></td>
+      <td width="8" rowspan="2"><img src="img/spacer.gif" width="8" height="1" alt=""></td>
+      <td width="654" align="left"> <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top01','','img/top/btn11_b.gif',1)" href="index.jsp@cid=12.html"><img src="img/top/btn11_a.gif" alt="My News & Fact" name="top01" width="188" height="26" border="0"></a><img src="img/top/top01.gif" width="140" height="26" alt=""><img src="img/top/btn12_a.gif" alt="My Opinion" width="188" height="26"><img src="img/top/top02.gif" width="138" height="26" alt=""></td>
+    </tr>
+    <tr> 
+      <td width="654"><img src="img/top/top03.gif" width="67" height="20" alt=""><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top03','','img/top/btn13_b.gif',1)" href="index.jsp@cid=1.html"><img src="img/top/btn13_a.gif" alt="生活者/消費者/有権者" name="top03" width="165" height="20" border="0"></a><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top04','','img/top/btn14_b.gif',1)" href="index.jsp@cid=2.html"><img src="img/top/btn14_b.gif" alt="マスコミ" name="top04" width="96" height="20" border="0"></a><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top05','','img/top/btn15_b.gif',1)" href="opinion.jsp@cid=3.html"><img src="img/top/btn15_a.gif" alt="コラム/意見" name="top05" width="109" height="20" border="0"></a><img src="img/top/top04.gif" alt="culture" width="51" height="20"><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top06','','img/top/btn16_b.gif',1)" href="opinion.jsp@cid=4.html"><img src="img/top/btn16_a.gif" alt="音楽" name="top06" width="46" height="20" border="0"></a><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top07','','img/top/btn17_b.gif',1)" href="opinion.jsp@cid=5.html"><img src="img/top/btn17_a.gif" alt="映画" name="top07" width="47" height="20" border="0"></a><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top08','','img/top/btn18_b.gif',1)" href="opinion.jsp@cid=6.html"><img src="img/top/btn18_a.gif" alt="本" name="top08" width="35" height="20" border="0"></a><a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('top09','','img/top/btn19_b.gif',1)" href="opinion.jsp@cid=7.html"><img src="img/top/btn19_a.gif" alt="旅" name="top09" width="38" height="20" border="0"></a></td>
+    </tr>
+    <tr> 
+      <td width="90" height="5" bgcolor="#CFDDF8"><img src="img/spacer.gif" width="1" height="5" alt=""></td>
+      <td width="8"><img src="img/spacer.gif" width="1" height="5" alt=""></td>
+      <td width="654"><img src="img/spacer.gif" width="1" height="5" alt=""></td>
+    </tr>
+    <tr> 
+      <td width="90" valign="top" bgcolor="#CFDDF8"> <!-- #BeginLibraryItem "/Library/Navi Bar.lbi" --><table width="90" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+   <td width="21" valign="top">
+<img src="img/left/left01.gif" alt="書く・読む" width="21" height="350"></td>
+              
+    <td width="69" height="350" valign="top" bgcolor="#CFDDF8"> <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left02','','img/left/btn02_b.gif',1)" href="newspersonrule.jsp.html"><img src="img/left/btn02_a.gif" alt="記者　登録・変更" name="left02" width="69" height="45" border="0"></a><br>
+                <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left03','','img/left/btn03_b.gif',1)" href="http://www.mynewsjapan.com/reporter/article.jsp"><img src="img/left/btn03_a.gif" alt="記事の出稿" name="left03" width="69" height="45" border="0"></a><br>
+      <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left04','','img/left/btn04_b.gif',1)" href="http://www.mynewsjapan.com/form.jsp"><img src="img/left/btn04_a.gif" alt="情報提供" name="left04" width="69" height="45" border="0"></a><br>
+      <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left05','','img/left/btn05_b.gif',1)" href="comment.jsp.html"><img src="img/left/btn05_a.gif" alt="読者コメント" name="left05" width="69" height="45" border="0"></a><br>
+      <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left06','','img/left/btn06_b.gif',1)" href="ranking.jsp.html"><img src="img/left/btn06_a.gif" alt="ランキング" name="left06" width="69" height="45" border="0"></a><br>
+      <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left07','','img/left/btn07_b.gif',1)" href="http://www.mynewsjapan.com/melmaga.jsp"><img src="img/left/btn07_a.gif" alt="メルマガ　登録・変更" name="left07" width="69" height="45" border="0"></a><br>
+      <img src="img/spacer.gif" width="1" height="5" alt=""><br>
+      <a onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left08','','img/left/btn08_b.gif',1)" href="info.jsp.html"><img src="img/left/btn08_a.gif" alt="お知らせ" name="left08" width="69" height="45" border="0"></a> 
+    </td>
+  </tr> 
+ </table><!-- #EndLibraryItem --><img src="img/spacer.gif" width="1" height="5" alt=""><br>
+        <a href="index.jsp@cid=12.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('left091','','img/left/btn09_b.gif',1)"><img src="img/left/btn09_a.gif" alt="HOME" name="left091" width="90" height="45" border="0"></a> 
+       
+		
+        <form name="golden" method="post" action="http://www.mynewsjapan.com/user">
+		
+          <input type="hidden" name="cmd" value="goldenuser">
+          <p>会員ID ： 
+            <input type="text" name="loginid" size="10" value="">
+            <br>
+            パスワード： 
+            <input type="password" name="passwd" size="10" value="">
+            <br>
+            <input type="checkbox" name="remember" value="yes" >
+            上記を記憶 
+            <input type="submit" name="Submit" value="Login" onclick="return userlogincheck();">
+        </form>
+        
+        
+          <a href="memberCenter.jsp.html" ><img src="img/left/regist.jpeg" alt="会員登録・解除" name="left09" width="90" height="36" border="0"></a> 
+           
+        
+      </td>
+      <td width="8"><img src="img/spacer.gif" width="8" height="1" alt=""></td>
+      <td width="654" valign="top"> 
+        <!--Strat editable-->
+        <!-- #BeginEditable "main" -->
+        <table width="654" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="456" align="center" valign="top" bgcolor="#EAF1FC"><img src="img/til/mynews01.gif" alt="マイニュース" width="456" height="28"><br>
+              <!-- -->
+              <!--Include start-->
+		
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="1">
+                <tr>
+                  <td colspan="3">
+                    <div class="text3bold">「携帯電話は不妊の原因」の研究結果　マスコミは黙殺か</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="300" align="right">
+                    <div class="text2"><a href="profile.jsp@sn=28.html">渡邉正裕</a></div>
+                  </td>
+                  <td width="145" align="right">
+                    <div class="text2">06:59 06/28 2004</div>
+                  </td>
+                  <td width="5" align="right">　</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><img src="img/kobetsu/dot02.gif" width="450" height="4" alt=""></td>
+                </tr>
+                <tr>
+                  <td colspan="3" valign="top">
+                    <div class="text2">
+                      <!--lead-->
+                      
+                      　時事通信は27日、同日付の英紙「サンデー・タイムズ」が報じたものとして、携帯電話を常に持ち歩く男性が、そうでない男性より精子の数が最大で30％少なく、子宝に恵まれる可能性が減っているとの研究結果を配信した。携帯電話各社を大スポンサーとする大手新聞・テレビが、この事実を報じるかどうかが注目される。<br>
+
+
+                      <!--end of lead-->
+
+<!--start arrange -->
+
+
+                      <br>　携帯電話から出る電磁波が、男性の生殖能力を損ないかねないことが示されたのは初めてという。携帯電話をベルトのホルダーやズボンのポケットにいつも入れている男性は、リスクが最も大きいという。<P>　時事通信の記事はロンドン発。大手新聞社（朝日・読売・毎日）はいずれも、国内モノは自社原稿でまかなう体制だが、海外ネタについては時事・共同といった通信社と契約を結び、原稿の配信を確実に受けている。<P>　特に朝日新聞社は、時事だけでなく、直接、サンデータイムズ紙と「<A href="http://www.asahi.com/shimbun/honsya/j/wnetwork.html" target="_blank">特約海外新聞</A>」の契約を結んでいるほどである。<P>　売上の半分余りを企業広告に依存するマスコミが、この記事をどのように扱うかで、広告主のための新聞か、読者のための新聞かを判断することができる。いつものように意図的に無視するか、読者の利益のために報じるか、さらに掘り下げた企画記事につなげるか。マスコミ用語でいう「リトマス試験紙」となる。<P>　現在（28日午前7時）のところ、黙殺を決め込んでいる模様。<P>　<A href="kobetsu.jsp@sn=63.html" target="_blank">企業ミシュラン「NTTドコモ」</A><p>　<A href="http://www.jiji.com/" target="_blank">時事通信社</A>
+                      
+                      <!--end range -->
+                      <img src="img/kobetsu/seal.gif" width="26" height="22" align="texttop"></div>
+                  </td>
+                </tr>
+              </table>
+
+
+		<!--//Include end-->
+<!-- -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                  <td bgcolor="#CFD8F0">
+                    <div align="left" class="text2">+++&nbsp;記者コメント&nbsp;+++</div>
+                  </td>
+                </tr>
+              </table>
+              <table width="452" border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                  <td bgcolor="#EAF1FC">
+                    <div class="text1">ケータイはこれだけ普及しているので、ニュース価値は間違いなく高い。時事通信社がこの記事を報じられるのは、当然ながら、通信社であるがゆえに紙を持っておらず、広告収入に大きく依存していないからである。主な収入源は、幅広い企業（マスコミ各社含む）の加盟料。 </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="img/kobetsu/dot04.gif" width="450" height="3" alt=""></td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="#EAF1FC"> <a name="estimate"></a>
+<table border="0" cellspacing="4" cellpadding="3">
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#CFD8F0"><font color="#990099">アクセス数：</font></td>
+                        <td nowrap>29587</td>
+                        <td bgcolor="#EAF1FC"><img src="img/kobetsu/dot03.gif" width="1" height="23" alt=""></td>
+                        <td align="right" bgcolor="#CFD8F0"><font color="#990099">最高評価：</font></td>
+                        <td nowrap>858</td>
+                        <td bgcolor="#EAF1FC"><img src="img/kobetsu/dot03.gif" width="1" height="23" alt=""></td>
+                        <td align="right" bgcolor="#CFD8F0"><font color="#990099">高評価：</font></td>
+                        <td nowrap>1445</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <br>
+              <img src="img/til/dokusya_h.gif" alt="読者評価" width="456" height="21">
+              <table width="452" border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFFFFF">
+                    <div class="text2">この記事を気に入ったら、下記いずれかの評価をして下さい。</div><img src="img/viewcount.jpg@id=i16" width="1" height="1">
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="#FFFFFF">
+                    <table border="0" cellspacing="1" cellpadding="2">
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=133&amp;e=2.html#estimate" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_saikou','','img/kobetsu/saikou_h_b.gif',1)"><img src="img/kobetsu/saikou_h_a.gif" alt="最高評価" name="img_saikou" width="139" height="36" border="0"></a></td>
+                        <td align="center"><img src="img/kobetsu/dot03.gif" width="1" height="23" alt=""></td>
+                        <td align="right" bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=133&amp;e=1.html#estimate" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('img_kou','','img/kobetsu/kou_h_b.gif',1)"><img src="img/kobetsu/kou_h_a.gif" alt="高評価" name="img_kou" width="139" height="36" border="0"></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <br>
+              <img src="img/til/kanren_k.gif" alt="関連記事" width="456" height="21">
+              <table width="452" border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFFFFF">
+                    <table border="0" cellspacing="4" cellpadding="1">
+					<!--start関連記事-->
+                
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><img src="img/kobetsu/ya.gif" alt="→" width="22" height="12"></td>
+                        <td bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=63.html">NTTドコモ(2004)</a></td>
+                      </tr>
+                      
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><img src="img/kobetsu/ya.gif" alt="→" width="22" height="12"></td>
+                        <td bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=132.html">ソニー(2004)</a></td>
+                      </tr>
+                      
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><img src="img/kobetsu/ya.gif" alt="→" width="22" height="12"></td>
+                        <td bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=100.html">読売新聞東京本社</a></td>
+                      </tr>
+                      
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><img src="img/kobetsu/ya.gif" alt="→" width="22" height="12"></td>
+                        <td bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=93.html">日本経済新聞社</a></td>
+                      </tr>
+                      
+                      <tr bgcolor="#FFFFFF">
+                        <td align="right" bgcolor="#FFFFFF"><img src="img/kobetsu/ya.gif" alt="→" width="22" height="12"></td>
+                        <td bgcolor="#FFFFFF"><a href="kobetsu.jsp@sn=67.html">日本のメディアに流れない画像</a></td>
+                      </tr>
+                      
+					  <!--end-->
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+            <td width="8"><img src="img/spacer.gif" width="8" height="1" alt=""></td>
+            <td width="190" align="center" valign="top" bgcolor="#FFFEF3"><img src="img/til/dokusya_c.gif" alt="読者コメント" width="190" height="22">
+
+                <table width="188" border="0" cellspacing="0" cellpadding="2">
+				 <form method="post" action="http://www.mynewsjapan.com/user" name="usercommand" onsubmit="return checkvalid();">
+                  <tr bgcolor="#FFFFFF">
+                    <td><img src="img/kobetsu/d_c_01.gif" alt="お名前：" width="43" height="22"></td>
+                    <td align="left">
+                      <input name="name" type="text" size="18">
+                    </td>
+                  </tr>
+                  <tr align="center" bgcolor="#FFFFFF">
+                    <td colspan="2">
+                      <div align="left"><img src="img/kobetsu/d_c_02.gif" alt="コメント：" width="43" height="12"></div>
+                      <textarea name="comment" cols="24" rows="6" cotdls="24"></textarea>
+                    </td>
+                  </tr>
+                  <tr align="center" bgcolor="#FFFFFF">
+                    <td colspan="2">
+                      <input type="submit" value="書き込み" class="text1" name="Submit"  >
+                      <input type="hidden" name="cmd" value="kobekizi-user-comment">
+                      <input type="hidden" name="action" value="fok">
+                      <input type="hidden" name="reportid" value="133">
+                      <input type="hidden" name="type" value="1">
+                    </td>
+                  </tr>
+				   </form>
+                </table>
+
+			  <!--start-->
+                             
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">  03:20 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">&lt;a href=&quot; http://itaoto.cloud.prohosting.com/20/41.html &quot;&gt;chiusura conto correnti bancario&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/21/16.html &quot;&gt;cococo dipendente pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/22/16.html &quot;&gt;concorso pubblico campania&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/23/39.html &quot;&gt;concorso pubblico siena&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/24/34.html &quot;&gt;conti correnti giovani&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/25/7.html &quot;&gt;conto bancoposta on line&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/26/23.html &quot;&gt;conto deposito&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/27/30.html &quot;&gt;contratto turismo e pubblici esercizio&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/28/26.html &quot;&gt;costo registrazione pubblico registro automobilistico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/29/15.html &quot;&gt;cuoco contratto pubblico esercizio bolzano&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/30/index.html &quot;&gt;decorazione festa mamma&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/31/21.html &quot;&gt;diritto doveri dei dipendente pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/32/3.html &quot;&gt;disdire conto corrente bancario&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/33/32.html &quot;&gt;elenco dei servizio pubblico tossicodipendenza&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/34/15.html &quot;&gt;ente diritto pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/35/14.html &quot;&gt;estratto conto carta credito&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/36/27.html &quot;&gt;festa 8 marzo sexi&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/37/8.html &quot;&gt;festa compleanno adulto&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/38/1.html &quot;&gt;festa del pap immagini&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/39/29.html &quot;&gt;festa dell unit bologna 2006&lt;/a&gt;</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">  03:19 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">&lt;a href=&quot; http://itaoto.cloud.prohosting.com/20/41.html &quot;&gt;chiusura conto correnti bancario&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/21/16.html &quot;&gt;cococo dipendente pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/22/16.html &quot;&gt;concorso pubblico campania&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/23/39.html &quot;&gt;concorso pubblico siena&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/24/34.html &quot;&gt;conti correnti giovani&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/25/7.html &quot;&gt;conto bancoposta on line&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/26/23.html &quot;&gt;conto deposito&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/27/30.html &quot;&gt;contratto turismo e pubblici esercizio&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/28/26.html &quot;&gt;costo registrazione pubblico registro automobilistico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/29/15.html &quot;&gt;cuoco contratto pubblico esercizio bolzano&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/30/index.html &quot;&gt;decorazione festa mamma&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/31/21.html &quot;&gt;diritto doveri dei dipendente pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/32/3.html &quot;&gt;disdire conto corrente bancario&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/33/32.html &quot;&gt;elenco dei servizio pubblico tossicodipendenza&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/34/15.html &quot;&gt;ente diritto pubblico&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/35/14.html &quot;&gt;estratto conto carta credito&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/36/27.html &quot;&gt;festa 8 marzo sexi&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/37/8.html &quot;&gt;festa compleanno adulto&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/38/1.html &quot;&gt;festa del pap immagini&lt;/a&gt;<br>&lt;a href=&quot; http://itaoto.cloud.prohosting.com/39/29.html &quot;&gt;festa dell unit bologna 2006&lt;/a&gt;</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Tyler  03:17 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">I am really excited! Keep up the great work, easy to find helpful information. Good stuff. :-)..!  http://xanax-sdx3.blogspot.com xanax</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Fred  03:12 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">I am really excited. Very useful, nice site. Very nicely done. Enjoyed the visit!  http://soma.naxblog.com/prescription-soma.html prescription soma</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">ploho  02:41 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">I think it was best site i ever visit.<br>[url=http://moris.greatnow.com/vp/hentermine-side-effects.htm]hentermine side effects[/url]<br>&lt;a href=&quot;http://moris.greatnow.com/vp/hentermine-side-effects.htm&quot;&gt;hentermine side effects&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/phentermine-com.htm&quot;&gt;phentermine com&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/phentermine-hcl.htm&quot;&gt;phentermine hcl&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/order-phentermine.htm&quot;&gt;order phentermine&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/buy-phentermine-online.htm&quot;&gt;buy phentermine online&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/phentermine-37.5.htm&quot;&gt;phentermine 37.5&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/phentermine-cheap.htm&quot;&gt;phentermine cheap&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/cheapest-phentermine.htm&quot;&gt;cheapest phentermine&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-patch.htm&quot;&gt;penis enlargement patch&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/enlargement-patch.htm&quot;&gt;enlargement patch&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement.htm&quot;&gt;penis enlargement&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/herbal-penis-enlargement.htm&quot;&gt;herbal penis enlargement&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-surgery.htm&quot;&gt;penis enlargement surgery&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-exercise.htm&quot;&gt;penis enlargement exercise&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/natural-penis-enlargement.htm&quot;&gt;natural penis enlargement&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-product.htm&quot;&gt;penis enlargement product&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-pump-enlargement.htm&quot;&gt;penis pump enlargement&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-review.htm&quot;&gt;penis enlargement review&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-program.htm&quot;&gt;penis enlargement program&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-herb.htm&quot;&gt;penis enlargement herb&lt;/a&gt;<br>&lt;a href=&quot;http://moris.greatnow.com/vp/penis-enlargement-supplement.htm&quot;&gt;penis enlargement supplement&lt;/a&gt;<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Frank  02:18 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">Your site is great! Good resources here. Your web site is helpful. Thanks!  http://doxycycline2006.blogspot.com doxycycline</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Frank  02:18 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">Your site is great! Good resources here. Your web site is helpful. Thanks!  http://doxycycline2006.blogspot.com doxycycline</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Margarett  02:18 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">kupalo [url=http://kupalo.info/computer-repairs-heywood.php]computer repairs heywood[/url] &lt;a href=http://kupalo.info/computer-repairs-heywood.php&gt;computer repairs heywood&lt;/a&gt; [url=http://questblog.info/maryland-home-builders-registration.php]maryland home builders registration[/url] &lt;a href=http://questblog.info/maryland-home-builders-registration.php&gt;maryland home builders registration&lt;/a&gt; [url=http://blogeno.info/hotels-in-hilton-head.php]hotels in hilton head[/url] &lt;a href=http://blogeno.info/hotels-in-hilton-head.php&gt;hotels in hilton head&lt;/a&gt; [url=http://hulioegn.info/opportunities-online-business.php]opportunities online business[/url] &lt;a href=http://hulioegn.info/opportunities-online-business.php&gt;opportunities online business&lt;/a&gt; [url=http://perdoblog.info/planet-audio.php]planet audio[/url] &lt;a href=http://perdoblog.info/planet-audio.php&gt;planet audio&lt;/a&gt; [url=http://redmad.info/within-temptation-angels-lyric.php]within temptation angels lyric[/url] &lt;a href=http://redmad.info/within-temptation-angels-lyric.php&gt;within temptation angels lyric&lt;/a&gt; [url=http://m16blog.info/thomas-compressors.php]thomas compressors[/url] &lt;a href=http://m16blog.info/thomas-compressors.php&gt;thomas compressors&lt;/a&gt; [url=http://globoxmetr.info/australian-bureau-of-statistics.php]australian bureau of statistics[/url] &lt;a href=http://globoxmetr.info/australian-bureau-of-statistics.php&gt;australian bureau of statistics&lt;/a&gt; [url=http://fedelc.info/research-paper-on-the-step-in-system-analysis-and-design.php]research paper on the step in system analysis and design[/url] &lt;a href=http://fedelc.info/research-paper-on-the-step-in-system-analysis-and-design.php&gt;research paper on the step in system analysis and design&lt;/a&gt; [url=http://perdoblog.info/state-abortion-laws.php]state abortion laws[/url] &lt;a href=http://perdoblog.info/state-abortion-laws.php&gt;state abortion laws&lt;/a&gt; [url=http://gerb5.info/tokyo-bay-watch.php]tokyo bay watch[/url] &lt;a href=http://gerb5.info/tokyo-bay-watch.php&gt;tokyo bay watch&lt;/a&gt; [url=http://vidlon.info/what-sells-on-ebay.php]what sells on ebay[/url] &lt;a href=http://vidlon.info/what-sells-on-ebay.php&gt;what sells on ebay&lt;/a&gt; [url=http://metro45.info/powerpoint-slide-backgrounds.php]powerpoint slide backgrounds[/url] &lt;a href=http://metro45.info/powerpoint-slide-backgrounds.php&gt;powerpoint slide backgrounds&lt;/a&gt; [url=http://pipecnews.info/yorkie-poo-puppies-for-sale-in-texas.php]yorkie poo puppies for sale in texas[/url] &lt;a href=http://pipecnews.info/yorkie-poo-puppies-for-sale-in-texas.php&gt;yorkie poo puppies for sale in texas&lt;/a&gt; [url=http://mosgi.info/wood-umbrella-stand.php]wood umbrella stand[/url] &lt;a href=http://mosgi.info/wood-umbrella-stand.php&gt;wood umbrella stand&lt;/a&gt; [url=http://redmad.info/bellsouth-book-online-phone.php]bellsouth book online phone[/url] &lt;a href=http://redmad.info/bellsouth-book-online-phone.php&gt;bellsouth book online phone&lt;/a&gt; [url=http://fedelc.info/free-home-remedies-nail-care.php]free home remedies nail care[/url] &lt;a href=http://fedelc.info/free-home-remedies-nail-care.php&gt;free home remedies nail care&lt;/a&gt; [url=http://retrosite.info/diamonds-hot-mom.php]diamonds hot mom[/url] &lt;a href=http://retrosite.info/diamonds-hot-mom.php&gt;diamonds hot mom&lt;/a&gt; [url=http://thgnews.info/orange-beach.php]orange beach[/url] &lt;a href=http://thgnews.info/orange-beach.php&gt;orange beach&lt;/a&gt; [url=http://herer.info/gi-sand-bags.php]gi sand bags[/url] &lt;a href=http://herer.info/gi-sand-bags.php&gt;gi sand bags&lt;/a&gt; [url=http://globoxmetr.info/florida-keys-scuba.php]florida keys scuba[/url] &lt;a href=http://globoxmetr.info/florida-keys-scuba.php&gt;florida keys scuba&lt;/a&gt; [url=http://birkal.info/used-go-carts-for-sale.php]used go carts for sale[/url] &lt;a href=http://birkal.info/used-go-carts-for-sale.php&gt;used go carts for sale&lt;/a&gt; [url=http://minituri.info/communication-event-incorporated-management.php]communication event incorporated management[/url] &lt;a href=http://minituri.info/communication-event-incorporated-management.php&gt;communication event incorporated management&lt;/a&gt; [url=http://uolt.info/map-of-southeast-asia.php]map of southeast asia[/url] &lt;a href=http://uolt.info/map-of-southeast-asia.php&gt;map of southeast asia&lt;/a&gt; [url=http://barancheg.info/internet-image-search-engines.php]internet image search engines[/url] &lt;a href=http://barancheg.info/internet-image-search-engines.php&gt;internet image search engines&lt;/a&gt;</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">Herman  02:05 12/14 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">Cool website! Your web site is helpful, All the best!  http://payday7979loans.blogspot.com payday loans</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  10:19 10/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">サリドマイド事件のとき、レンツ警告は、どのくらい学会のお墨付き（追認、追試）があったかというと、なかったのではないかと思います。それでも、報道され、止められ、外国では被害を防いだ、という実績があるのではないでしょうか。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">ひ  00:52 10/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">タイムリーな考察がありました。残念ながら不妊原因は入っていませんが。http://homepage3.nifty.com/junko-nakanishi/zak356_360.html#zakkan360</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  19:04 10/04 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">fujiさんへ。アメリカのその話の載っていた本は、日本の本でしょうか、英語の本でしょうか。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">fuji  14:27 10/03 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">以前、アメリカの話で、女性が不妊と携帯電話の関係での裁判をした本を読んだ。結果、勝訴をし何らかの因果関係は認められたが、「携帯の普及率は世界規模なので、携帯の有害性は公表できない」のような結果だった。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  09:52 09/08 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">ウィーン医師連合の携帯電話使用への警告の出典をお探しの方。見つかりましたか？　そこには、 the sending of SMS messages under the school desk can influence fertility and should be completely avoided とはっきり書いています。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  15:37 09/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">追加です。私もTETRAWATCHに再度アクセスしたら、駄目でした。携帯電話会社の妨害！？が、別のpowerwatchというサイトでも見ることができました。　</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  15:25 09/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">すみません。後ろが・・・net/links/links.php?id=vienna<br>となっていました。それでもアクセスできないときは、海外検索で、キーワードはwien,reflex,2005,canncer,doctorなどを入れました。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名さんへ  14:12 09/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">http://www.tetrawatch.net/links.php?id=viennaのサイトは、見つかりませんでした。<br>The page you requested cannot be found.</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  13:31 09/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">ウィーン医師連合の子どもの携帯使用警告の件ですが、先ほどのホームページをみると、イギリスやデンマークも似た警告があるようです。渡邉さんの記事もありそうですね。That is why they have decided to follow the example of the British Ministry of Health and the Danish Health Council・・・と。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  13:15 09/06 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">2005年8月15日ウィーン医師連合が子どもの携帯使用に警告を出したとのことに関する情報ですが、http://www.tetrawatch.net/links.php?id=vienna が出典でしょう。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名さんへ  19:46 09/05 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">私も、そのニュースのソースを探しています。<br>ご存知でしたら、教えて下さい。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">匿名  15:14 09/05 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">2005年8月15日、ウィーン医師連合が警告した中に、ズボンのポケットに携帯電話を入れたり、机の下においた携帯でメッセージを送ることは受精能力に影響を及ぼす場合があり、絶対に止めるべき、という一文があるそうです。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">生ける屍  16:06 09/01 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">タブロイド紙のサンデー・タイムズの記事を真に受ける方が問題だと思うぞ。<br>この件に限ればスポンサーの圧力は無関係だね。渡邉さんが前歴からして既成メディア憎しなのは分かるけど、こりゃ余りにレベルが低いんでないかい？</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">ニュース性は？  15:47 09/01 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">携帯電話だけで説明するのは、無理があるんじゃない？</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">名無しさん  23:53 05/08 2006</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">この話を聞くと数年前、カップヌードルのカップから有害物質が溶出したとの報道の後のマスコミの対応を思い出す。当時この報道の後、日清食品が有名芸能人を続々CMに出演させカップラーメンを食べている姿を大写しして「安全」をしきりに強調していた。マスコミはその後この問題についてその後完全黙殺。消費者無視・営利徹底追求の大手広告代理店の脅しに乗ったマスコミには消費者を守ろうなんて感覚はさらさらない。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">うーん。  00:31 09/10 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">この記事の書き方じゃ、医者としては論評しようがない。とりあえず、ソースの論文（あれば）のリンクが必要。一般の方には直感的にわかりやすいのでインパクトがあるが、同業者の目で見ると突っ込みどころが沢山あり、（それを本人も自覚しているので）論文にせず、マイナーな学会発表程度でお茶を濁して知り合いのマスコミと扇情的な記事をでっち上げ、金儲けするなんてのは日本でも沢山あるのです。<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">storm50  21:57 07/12 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">どういう研究スタイルだったのかが問題でしょう。<br>このあたりは医学の知識や研究スタイルに関する知識、統計に関する知識が必要なところです。そういう知識のあるジャーナリストは皆無です。<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">eniac  23:51 03/21 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">企業広告と報道の関係については繰り返し注意を喚起する必要があると思う。数年前にビールの自動販売機が廃止されたときにほとんどの新聞はそのことを報道しなかった。それを見て以来、私はマスコミ報道を監視しなければならないと思った。その点この記事は大変有益だ。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">M.M.  19:41 03/19 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">マスコミとは「情報加工産業」と言えます。加工食品ばかりに依存する弊害は、<br>時に健康を害すること。マスコミの情報に依存するだけでなく、伝えられない情報への想像力を養わないといけない時代のようです。<br>情報加工技術こそ添加物ばかりかも・・・。<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">yahoo  17:55 02/19 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">無線ＬＡＮの電波なんかは危なくないんでしょーか？？？<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">take  14:07 02/09 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">この渡邉氏の記事は、<br>ひとつの実権結果を、スポンサーに気兼ねして日本のマスコミが書かない恐れを提起している。<br>この点をもっと議論すべきではないか。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">ぱっくす  13:21 02/09 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">この手の研究は、10年前に滞在先のヨーロッパですでに話題になっていた。新鮮味のないニュースだが、論点は「マスコミが伝えるか、伝えないか」。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">丹生　高達  00:03 02/09 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">&gt;建前ばかりでは　さん<br><br>&gt;伝えるか、伝えないかが問われている。<br>「221人の男性を対象に、携帯電話の使用状況と精液の採取を13ヶ月間行った」<br>という調査の内容と、この調査結果に対して、<br>「携帯電話以外の要因を考慮していないので、にわかに承服しかねる」<br>という批判があったことは、社会的に見て十分意義ある情報と思いますが。<br>私は、これを「伝えなかった」ことを強く問いたいと思いますけど。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">丹生　高達  23:47 02/08 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">&gt;フレンツェンさま<br>ちょちょっとググってみました。<br>http://www.timesonline.co.uk/article/0,,2087-1159951,00.html<br>http://tokyo.txt-nifty.com/fukublog/2004/06/post_36.html<br>http://msnbc.msn.com/id/5316074/<br></div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">建前ばかりでは  23:09 02/06 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">伝えるか、伝えないかが問われている。<br>薬害エイズが確定する前に多くの人が死にました。<br>裏を取るのは当たり前だが、裏が仮に充分に取れなくても、社会性が高ければ知らせるのは当然である。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">フレンツェン  19:29 02/06 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">（続き）こういった実験を報道する際、その結果のみが大々的に取り上げられてその詳細な過程が報道されていることなんて絶対ないです。普通の読者は実験の結果にのみ興味があり実験の詳細な方法なんてこれっぽっちも興味がないでしょうが、その実験が信頼に値するかどうかを判定するのには極めて重要な問題だと思います。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">フレンツェン  19:29 02/06 2005</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">別に実験でどんな結果が出ようと私はそれはそれを事実と受け止めます。<br>ただ肝要なのはその実験がきちんと統計学的な方法に基づいていて、できる限りバイアスを排除し有意といえる結果を出しているかということです。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">ユーチャン  10:44 12/02 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">新聞社各社に書かない自由、書く自由はあっても良いと思う。しかし政府筋から出る配信記事なら、書かないと干されるでしょう。そういう事がウオルフレン氏などから見ると批判の対象になるのでしょう。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">とーる  11:30 09/17 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">　この手の研究結果には疑問を呈する人も多いけど、「安全」ということが証明できていないから結局どっちもどっち。<br>　もっとも、「安全」なのかそうでないのかを証明することは、すでにわれわれが実験中なわけだからね。<br>　３０年くらいたてばどうなるかわかるでしょ。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">NY  00:44 09/08 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">ですが、携帯電話端末による医療器具の誤作動はあり得るとして、病院や電車内では電源を切るように注意がなされていますし、高電圧下の白血病発生は、かなりの確率で因果関係があると聞いた覚えがあります。<br>念の為、携帯電話で話をする際は、頭に付けずに、少し距離を取っておくに越したことはないかもしれませんね。使っていない時にでも、微弱な電波は流れていますが。<br><br>P.S YNさんとは別人です。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">NY  00:41 09/08 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">個人的には、この研究結果は、先にも意見があったように、生活行動傾向の違い等、他の要因の影響も考えられる為、断定はしにくいと思います。<br>携帯電話の電磁波と脳腫瘍との関係の方は、世界各国の医師らによって因果関係は明らかでない。として、否定は出来ないが、証明もなされませんでした（例え影響はあっても、些細なのでは？と推察されます）。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">YN  10:32 09/04 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">以前からこの種の話題はあります。たとえば脳腫瘍と携帯電話が発する電磁波との因果関係が話題になりましたし未だに議論のある高圧電線下の白血病発生など色んな議論があるとの報告、それがニュースメディア役割だと思います。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">kazumucha  09:23 09/04 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">携帯電話を持ち歩く男性の生活環境などの背景因子の検討をしてください。電話機を持ち歩く生活と、携帯電話が必要ない生活とでは、きわめて異なる生活習慣であるはずで、これらを除外しえない報告では信頼できません。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">take  14:12 08/30 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">こういう内容を伝える外国紙があったと伝えることが品格がないとは思いません。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+              <table width="98%" border="0" cellspacing="1" cellpadding="2">
+                <tr>
+                  <td bgcolor="#FFF8CF">
+                    <div class="text1">taka  09:19 06/28 2004</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="text1">　元になった研究結果を見ればわかるけど、こんなずぼらな研究の結果を裏もとらずに、通信社からもらった記事をそのまま載せる方が、新聞社として品格を問われると思います。</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+                
+			  <!--end-->
+
+            </td>
+          </tr>
+        </table>
+        <!-- -->
+        <!-- #EndEditable --> 
+        <!-- End Editable-->
+      </td>
+    </tr>
+  </table>
+</div>
+<div align="center"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td><img src="img/spacer.gif" width="1" height="2" alt=""></td>
+    </tr>
+    <tr> 
+      <td height="18" align="center" valign="middle" bgcolor="#8D93CC" class="text1"> 
+        <a href="javascript:winOpen2('privacypolicy.jsp')"><font color="#FFFFFF">プライバシーポリシー</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="javascript:winOpen2('security.jsp')"><font color="#FFFFFF">セキュリティーについて</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="javascript:winOpen2('copyright.jsp')"><font color="#FFFFFF">著作権について</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="javascript:winOpen2('linkpolicy.jsp')"><font color="#FFFFFF">リンクポリシー</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="javascript:winOpen2('env.jsp')"><font color="#FFFFFF">最適アクセス環境</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="javascript:winOpen2('faq.jsp')"><font color="#FFFFFF">ＦＡＱ</font></a>&nbsp;<font color="#FFFFFF">｜</font>&nbsp;<a href="mailto:info@mynewsjapan.com"><font color="#FFFFFF">ご意見・ご感想</font></a></td>
+    </tr>
+    <tr> 
+      <td align="center" bgcolor="#394F92"><img src="img/copyright.gif" alt="Copyright 2003  My News Japan  All Rights Reserved." width="344" height="28"></td>
+    </tr>
+  </table>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="ja">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<meta name="keywords" content="コスメ,エステ,美容,化粧品,岩盤浴,脱毛,矯正歯科,審美歯科,アロマ,美顔,口コミ"> 
+
+<meta name="description" content="コスメ・エステ・美容・化粧品・岩盤浴・矯正歯科・審美歯科など美容がテーマのオリコンランキングサイト">
+
+<title>ニュース-コスメ・エステ・美容のオリコンランキング</title>
+
+<!-- cache control start -->
+
+<meta http-equiv="Expires" content="Mon, 04 Dec 1999 21:29:02 GMT">
+
+<meta http-equiv="Pragma" content="no-cache">
+
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!-- cache control end -->
+
+<script type="text/javascript" language="JavaScript" src="../js/base.js"></script>
+<script language="JavaScript" type="text/javascript" src="../js/insert_navi_v4.js"></script>
+<script language="JavaScript" type="text/javascript" src="../js/gn_flip.js"></script>
+
+<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,print">
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+
+<link rel="stylesheet" href="../css/style_beauty.css" type="text/css" media="all">
+
+<link rel="stylesheet" href="../css/csrank.css" type="text/css" media="all">
+
+<link rel="shortcut icon" href="http://beauty.oricon.co.jp/oricon.ico">
+
+</head>
+
+<body onLoad="preloadImg ();">
+
+<div id="page-align">
+
+
+
+
+
+<!--　====================ここからヘッダ====================　-->
+
+
+
+<div id="HD">
+
+
+
+<table width="825" height="70" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<tr> 
+<td width="45%"><a href="../index.html"><img src="../img/logo_eltha.gif" width="167" height="59" alt="eltha - oricon beauty &amp; healthy"></a></td>
+<td align="right" id="HDtxt">
+<H1>女性が健康でキレイに生きるためのオリコンランキングサイト<br>
+<br></H1></td>
+</tr>
+</table>
+<br class="h10">
+
+
+
+<!-- ここからバナースペース -->
+
+<div id="HDban">
+<script language="JavaScript" type="text/javascript">
+   <!--
+   var yj_sid="784200321";
+   var yj_loc="APN";
+
+   var random=new Date();
+   var yj_prp="jp_adn_ori";
+   var yj_ads="http://adserver.yahoo.co.jp/";
+   var yj_src=yj_ads+'a?f='+yj_sid+'&p='+yj_prp+'&l='+yj_loc+'&c=r'+'&jcode=s&rnd='+random.getTime();
+
+document.write('<sc'+'ript language="JavaScript" type="text/javascript" src="'+yj_src+'">');
+document.write('</sc'+'ript>');
+
+   //-->
+</script>
+</div>
+
+<!-- ここまでバナースペース -->
+
+
+
+<!-- ここからグローバルナビゲーション -->
+
+<table width="825" border="0" cellspacing="0" cellpadding="0">
+<tr align="left" valign="top" bgcolor="#CCCCCC">
+<td colspan="7"><img src="../img/sp.gif" width="1" height="3"></td>
+</tr>
+<tr align="left" valign="top">
+<td width="106"><a href="http://www.oricon.co.jp/" onMouseOver="flip('home')" onMouseOut="flap('home')"><img src="http://www.oricon.co.jp/img/gn/oricon.gif" alt="ORICON STYLE ホーム" name="home" width="106" height="21" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/rank/" onMouseOver="flip('rank')" onMouseOut="flap('rank')"><img src="http://www.oricon.co.jp/img/gn/rank.gif" alt="ランキング" name="rank" width="120" height="21" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/music/" onMouseOver="flip('music')" onMouseOut="flap('music')"><img src="http://www.oricon.co.jp/img/gn/music.gif" alt="ミュージック" name="music" width="120" height="21" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricondd.com/" onMouseOver="flip('odd')" onMouseOut="flap('odd')"><img src="http://www.oricon.co.jp/img/gn/odd.gif" alt="音楽ダウンロード" name="odd" width="120" height="21" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/tv/" onMouseOver="flip('tv')" onMouseOut="flap('tv')"><img src="http://www.oricon.co.jp/img/gn/tv.gif" alt="無料動画番組" name="tv" width="120" height="21" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/anime/" onMouseOver="flip('anime')" onMouseOut="flap('anime')"><img src="http://www.oricon.co.jp/img/gn/anime.gif" alt="マンガ／アニメ" name="anime" width="120" height="21" border="0"></a><br /></td>
+<td width="119"><a href="http://blog.oricon.co.jp/" onMouseOver="flip('blog')" onMouseOut="flap('blog')"><img src="http://www.oricon.co.jp/img/gn/blog.gif" alt="ブログ" name="blog" width="119" height="21" border="0"></a></td>
+</tr>
+<tr align="left" valign="top" bgcolor="#CCCCCC">
+<td colspan="7"><img src="http://www.oricon.co.jp/img/gn/black-line.gif" width="825" height="3"><br />
+</td>
+</tr>
+</table>
+
+
+<table width="825" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC" id="topGn">
+<tr valign="top">
+<td width="103"><a href="http://www.oricon.co.jp/news/" onMouseOver="flip('newsTop')" onMouseOut="flap('newsTop')"><img src="http://www.oricon.co.jp/img/gn/newsTop.gif" alt="ニュースTOP" name="newsTop" width="106" height="47" border="0"></a><br /></td>
+<td width="719">
+
+<table width="719" border="0" cellspacing="0" cellpadding="0">
+<tr align="left" valign="top">
+<td width="120"><a href="http://www.oricon.co.jp/news/ranking/" onMouseOver="flip('news_rank')" onMouseOut="flap('news_rank')"><img src="http://www.oricon.co.jp/img/gn/news_rank.gif" alt="ランキングトピックス" name="news_rank" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/news/rankmusic/" onMouseOver="flip('news_rankmusic')" onMouseOut="flap('news_rankmusic')"><img src="http://www.oricon.co.jp/img/gn/news_rankmusic.gif" alt="ランキングトピックス（音楽）" name="news_rankmusic" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/news/entertainment/" onMouseOver="flip('news_ent')" onMouseOut="flap('news_ent')"><img src="http://www.oricon.co.jp/img/gn/news_ent.gif" alt="芸能・グラビアニュ−ス" name="news_ent" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/news/music/" onMouseOver="flip('news_music')" onMouseOut="flap('news_music')"><img src="http://www.oricon.co.jp/img/gn/news_music.gif" alt="音楽ニュース" name="news_music" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/news/movie/" onMouseOver="flip('news_tv')" onMouseOut="flap('news_tv')"><img src="http://www.oricon.co.jp/img/gn/news_tv.gif" alt="TV・CM・映画ニュース" name="news_tv" width="120" height="23" border="0"></a><br /></td>
+<td width="119"><a href="http://www.oricon.co.jp/news/sport/" onMouseOver="flip('news_spt')" onMouseOut="flap('news_spt')"><img src="http://www.oricon.co.jp/img/gn/news_spt.gif" alt="スポーツ・一般ニュース" name="news_spt" width="119" height="23" border="0"></a><br /></td>
+</tr>
+</table>
+<img src="../img/sp.gif" width="1" height="1"><br />
+<table width="719" border="0" cellspacing="0" cellpadding="0">
+<tr align="left" valign="top">
+<td width="120"><a href="../index.html"><img src="http://www.oricon.co.jp/img/gn/beauty-f.gif" alt="beauty" name="beauty" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://career.oricon.co.jp/" onMouseOver="flip('career')" onMouseOut="flap('career')"><img src="http://www.oricon.co.jp/img/gn/career.gif" alt="career" name="career" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://english.oricon.co.jp/" onMouseOver="flip('english')" onMouseOut="flap('english')"><img src="http://www.oricon.co.jp/img/gn/english.gif" alt="english" name="english" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://mariage.oricon.co.jp/" onMouseOver="flip('mariage')" onMouseOut="flap('mariage')"><img src="http://www.oricon.co.jp/img/gn/mariage.gif" alt="mariage" name="mariage" width="120" height="23" border="0"></a><br /></td>
+<td width="120"><a href="http://www.oricon.co.jp/news/gourmet/index.html" onMouseOver="flip('gourmet')" onMouseOut="flap('gourmet')"><img src="http://www.oricon.co.jp/img/gn/gourmet.gif" alt="グルメ" name="gourmet" width="120" height="23" border="0"></a><br /></td>
+<td width="119"><img src="http://www.oricon.co.jp/img/gn/blank199.gif" alt=" " width="119" height="23" border="0"><br /></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<!-- ここまでグローバルナビゲーション -->
+
+
+
+</div>
+
+<!--パンくず-->
+
+<div class="footer"><div class="CARbreadarea">
+
+<!-- 現在地表示 -->
+
+<div class="CARbread"><strong>現在地：</strong><a href="../index.html">オリコンビューティコスメ</a>＞ニュース</div>
+
+<!-- PRフッタ --><Script language="JavaScript" src="../js/pr_news_txt.js"></Script><br class="clear_noie">
+
+</div></div>
+
+<!--/パンくず-->
+
+
+
+<!--　====================↑↑↑ここまでヘッダ↑↑↑====================　-->
+
+
+
+
+
+<!-- ====================↓↓↓ここからボディ↓↓↓====================　-->
+
+
+
+<table width="825" border="0" cellspacing="0" cellpadding="0" class="contents">
+
+<tr> 
+
+<!-- ====================ここから左ブロック==================== -->
+
+<td class="Lblock" width="585" valign="top"> 
+
+<!-- メイン -->
+
+<div id="TLspecial">
+
+<h1>年と共に美しさに磨きをかける！アンチエイジングの女王は！？</h1>
+<!-- アイコン表示 -->
+
+<table border=0 cellpadding=0 cellspacing=0 width=530><tr><td width=530 align=right>
+
+<a href="../index.html"><img src="../img/icon/top.jpg" width=60 height=15 border=0></a>　
+<a href="../rank/index.html"><img src="../img/icon/ranking.jpg" width=60 height=15 border=0></a>　　
+
+</td></tr></table>
+
+<!-- アイコン表示 -->
+<br>
+
+<!-- 本文 -->
+
+<p>　何年経っても、いくつになっても、容姿の衰えない人はいる。年齢を重ねるごとに、さらに美しさに磨きがかかる人もいる。憧れてしまうような歳のとりかたをしているのは、どんな人なのだろうか。ORICON STYLEでは、『年齢を重ねても綺麗な女性有名人』をリサーチしてみた。<br><br>
+
+　総合1位になったのは、やはりあの人。この種のランキングでは常に上位に入る、女優の【黒木瞳】だ。性別／年代別でのリサーチ結果でもすべて1位の、パーフェクトを達成。まさに『年齢を重ねても綺麗な女性有名人』の代名詞といえる存在になった。1960年生まれの彼女は、今年で46歳。世間一般では容姿の衰えが目立ち始める年齢だが、彼女の場合はまるで逆に見える。年齢を重ねるごとに、かえって美しさが増していく印象だ。宝塚の娘役から、成熟した女性へ、という変化は、いまも続いていると言える。<br><br>
+
+　総合2位は、1945年に生まれた“永遠の清純派アイドル”。そう、【吉永小百合】だ。総合1位の【黒木瞳】と同じく、部門別ランキングのすべてで2位を独占した。すでに還暦を迎えたとは思えない美しさが、多くの人から圧倒的な支持を受けている。<br><br>
+
+　総合3位に入ったのは、1920年生まれの女優、【森光子】。舞台『放浪記』の主役を42年に渡ってつとめるなど、息の長い活躍ぶりが際立つ。2005年には女優として2人目の文化勲章を受けるなど、その功績は広く知られている。もちろん、長期に渡って活躍できているのは、その“かわいらしさ”が評価されているから。今回のリサーチでも、相変わらずの人気ぶりを誇示した。<br><br>
+
+　【黒木瞳】【吉永小百合】【森光子】の3人は、個別ランキングのほとんどで上位を独占した。総合4位の【桃井かおり】は女性や10代からの支持が高く、総合5位の【松田聖子】は男性からの支持が高くなっているのが特徴。ちょっと面白いのは、10代のランキングで6位に入った【梨花】や、20代のランキングで8位に入った【高島礼子】。梨花は33歳（1973年生まれ）、高島礼子は42歳（1964年生まれ）。評価する人の年齢＋10歳前後が、「年齢の割に綺麗」と思われるようになる年代なのかもしれない。
+
+
+<br>
+<br>
+
+<div align="center"><img src="http://contents.oricon.co.jp/cs_rank/beauty/img/20060823/09.jpg" width="530" alt=""></div></p> 
+<!-- アイコン表示 -->
+
+<!--
+
+<hr size=1>
+
+<div align=center>
+<table border=0 width=530 cellpadding=0 cellspacing=0><tr><td width=250 align=center>
+
+<a href="http://manage.xmax.jp/click/clicka.php?mpv=28ax531x4acx6" target="_blank"><img src="http://img.ecmax.jp/trade/trade.php?bn=28ax39184&a=234x60 " border="0" width="234" height="60" alt=""></a>
+
+</td><td width=250 align=center>
+
+<a href="http://manage.xmax.jp/click/clicka.php?mpv=282x531x493x6" target="_blank"><img src="http://img.ecmax.jp/trade/trade.php?bn=282x41531&a=234x60 " border="0" width="234" height="60" alt=""></a>
+
+</td></tr></table>
+</div>
+
+-->
+
+<hr size=1>
+<font size=2>
+■禁無断複写転載<br>
+※オリコンランキング（売上枚数のデータ等）の著作権その他の権利はオリコンに帰属していますので、無断で番組でのご使用、Webサイト（PC、ブログ、携帯電話）や雑誌等で掲載するといった行為は固く禁じております。詳しいお問い合わせは、弊社企画ST部までお願いいたします。 
+</font>
+
+<!--
+
+<br><div id="special">
+<a name=rk></a>
+<h2 class="midashi">20,000人が選んだ顧客満足度の高いエステサロンベスト20 お勧め企業</h2>
+<table border="0" cellspacing="3" cellpadding="0" width="565" class="Rnewsbg">
+<tr>
+<td width="85"><a href="http://beauty.oricon.co.jp/company/piubello.html"><img src="http://beauty.oricon.co.jp/rank/img/03.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/piubello.html">ＰｉｕＢＥＬＬＯ</a><b>親切で丁寧だったのでとても気分がよかった。</b>（32歳/女性）</td>
+
+<td width="85"><a href="http://beauty.oricon.co.jp/company/mp.html"><img src="http://beauty.oricon.co.jp/rank/img/08.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/mp.html">エステティック ミスパリ</a><b>とても潤いを感じ、非常によかったと思います。</b>（34歳/女性）</td>
+</tr>
+
+<tr> 
+<td width="85"><a href="http://beauty.oricon.co.jp/company/epi.html"><img src="http://beauty.oricon.co.jp/rank/img/04.gif" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/epi.html">自由が丘エピサロン</a><b>リラックスできました。 勧誘もないので、安心です。</b>（31歳/女性）</td>
+
+<td width="85"><a href="http://beauty.oricon.co.jp/company/pes.html"><img src="http://beauty.oricon.co.jp/rank/img/05.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/pes.html">ビー・エスコート</a><b>スタッフは若い女性が多く説明・知識も丁寧で親切。</b>（29歳/女性）</td>
+</tr>
+
+<tr> 
+<td width="85"><a href="http://beauty.oricon.co.jp/company/laseine.html"><img src="http://beauty.oricon.co.jp/rank/img/11.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/laseine.html">ラ・セーヌ</a><b>対応もよく、楽しく気分よく利用させて頂きました。</b>（30歳/女性）</td>
+
+<td width="85"><a href="http://beauty.oricon.co.jp/company/escos.html"><img src="http://beauty.oricon.co.jp/rank/img/07.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/escos.html">ＥＳＣＯＳ</a><b>リーズナブルで丁寧でとても良かった。大満足。</b>（32歳/女性） </td>
+</tr>
+
+
+<tr> 
+<td width="85"><a href="http://beauty.oricon.co.jp/company/jba.html"><img src="http://beauty.oricon.co.jp/rank/img/06.gif" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/jba.html">日本総合美容クリニーク</a><b>１回のフェイシャルで肌の明るさが変わりました。</b>（31歳/女性）</td>
+
+<td width="85"><a href="http://beauty.oricon.co.jp/company/es.html"><img src="http://beauty.oricon.co.jp/rank/img/09.jpg" alt="" width="84" height="61" border="0"></a></td>
+<td width="195" valign="top"><a href="http://beauty.oricon.co.jp/company/es.html">エステソワンロイヤル</a><b>接客態度、店内の雰囲気ともに良かったです。 </b>（24歳/女性） </td>
+</tr>
+
+</table>
+</div>
+<div class="BTnav"><a href="/rank/index.html">エステ満足度(総合)ランキングへ</a> <img src="/img/ic_arrow_r.gif" alt="" width="13" height="13" align="middle"></div>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="Javascript">
+<!--
+var Mac   = navigator.userAgent.indexOf("Mac") != -1   ? true : false;
+function mdown(e) {
+if (navigator.appName == "Microsoft Internet Explorer") {
+//Mac版IE５ではコマンドキーを使ったショートカットでソースを見ることができます。
+if (event.button == 2 || (Mac && (event.ctrlKey || event.keyCode == 91))) {
+alert("コンテクストメニューは利用できません。");
+return(false);
+}
+  } else if (navigator.appName == "Netscape") {
+if (e.which == 3 || e.modifiers == 2 || e.ctrlKey) {
+alert("コンテクストメニューは利用できません。");
+return false;
+    }
+  } 
+}
+
+function noright(){
+alert("コンテクストメニューは利用できません。");
+return false;
+}
+
+
+document.oncontextmenu = noright;
+
+if (document.all && (Mac || ! document.getElementById)) {
+document.onmousedown = mdown;
+document.onkeydown = mdown;
+} else if (document.layers) {
+window.captureEvents(Event.MOUSEDOWN | Event.modifiers | Event.KEYDOWN);
+window.onmousedown = mdown;
+window.onkeydown = mdown;
+} else if(navigator.userAgent.indexOf("Netscape6")!=-1){
+//onmousedownだとalertが表示されますが、
+//同時にデフォルトのコンテクストメニューも表示されてしまいます。
+//なのでonmouseupを使います
+  document.onmouseup = mdown; 
+document.onkeydown = mdown;
+}
+
+//-->
+</script>
+
+<!-- アイコン表示 -->
+<!-- /本文 -->
+
+</div>
+
+<br class="h10"> 
+
+
+
+<!-- 特集ナビ -->
+
+<!-- 特集 -->
+<div id="SPnav"> 
+<h2 class="midashi">その他のビューティコスメ特集</h2>
+<ul>
+<li>・<a href="../special/061101_01.html">簡単便利なバランスボールエクササイズ</a></li>
+<li>・<a href="../special/061101_02.html">しなやかボディを作るピラテス</a></li>
+<li>・<a href="../special/061101_03.html">やっぱりつらい！肩こり倶楽部</a></li>
+<li>・<a href="../special/20061108_01.html">クリスマスデートは、絶対成功させたい！</a></li>
+</ul>
+</div>
+<div class="BTnav"><a href="../list/s/-1/index.html">ビューティコスメ特集一覧へ</a> <img src="../img/ic_arrow_r.gif" alt="" width="13" height="13" align="middle"></div>
+<!-- /特集 -->
+
+<!-- /特集ナビ -->
+
+
+
+<!-- /メイン -->
+
+
+
+<br class="h10">
+
+
+
+<!-- 企画特集 -->
+
+
+<div id="LeftSpecial">
+<table border-"0" cellpadding="0" cellspacing="3">
+<tr valign="top">
+<td width=50%><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="http://www.oricon.co.jp/pj/pj1106_061116.html" target="_blank">アーティストたちがWiiを体験！！</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oricon.co.jp/pj/pj1106_061116.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/pj_wii.jpg" alt="" width="80" height="60" border="0"></a></td>
+<td valign="middle">新しいリモコンの感触は？</td>
+</tr>
+</table></td>
+<td><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="http://www.oricon.co.jp/pj/pj0997_061013.html" target="_blank">音楽のない生活なんて考えられない</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oricon.co.jp/pj/pj0997_061013.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/pj0997.gif" alt="" width="80" height="60" border="0"></a></td>
+<td valign="top">音楽は、神様がくれたプレゼント。。。平原綾香が音楽への思いを語る！⇒ 動画コメント配信中！！</td>
+</tr>
+</table></td>
+</tr>
+<tr valign="top">
+<td><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="http://www.oricon.co.jp/pj/pj1004_061020.html" target="_blank">この秋、最も注目したエンタメはコレだ！</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oricon.co.jp/pj/pj1004_061020.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/pj1004.gif" alt="" width="80" height="60" border="0"></a></td>
+<td valign="top">今、大注目のエンターテインメントが登場！デートにピッタリです。</td>
+</tr>
+</table></td>
+<td><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="http://www.oricon.co.jp/pj/pj1076_061106.html" target="_blank">【草花木果】毛穴で悩んでる人におススメ情報！</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oricon.co.jp/pj/pj1076_061106.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/kinari.gif" alt="【草花木果】毛穴で悩んでる人におススメ情報！" width="80" height="60" border="0"></a></td>
+<td valign="top">古い角質をやさしくクリア！ナチュラルピーリング効果で毛穴レスなツルツル素肌に！</td>
+</tr>
+</table></td>
+</tr>
+<tr valign="top">
+<td><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="http://www.oricon.co.jp/pj/pj1011_061031.html" target="_blank">個室でマッタリ？飲放題でガッツリ？</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oricon.co.jp/pj/pj1088_061111.html" target="_blank"><a href="http://www.oricon.co.jp/pj/pj1011_061031.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/pj1011.jpg" alt="個室でマッタリ？飲放題でガッツリ？" width="80" height="60" border="0"></a></td>
+<td valign="top">[予算][料理]こだわりで探せて、クチコミ情報もアリ！グルメサイトの決定版『ホットペッパー』</td>
+</tr>
+</table></td>
+<td><table>
+<tr>
+<td colspan="2"><img src="../img/ic_special.gif" alt="" width="11" height="10"><a href="../special/20061030_01.html" target="_blank">ロングブーツの季節！足やせエステ体験レポ</a></td>
+</tr>
+<tr>
+<td valign="top"><a href="../special/20061030_01.html" target="_blank"><img src="http://www.oricon.co.jp/pj/img/ashiyase.jpg" alt="ロングブーツの季節！足やせエステ体験レポ" width="80" height="60" border="0"></a></td>
+<td valign="top">1回目から美脚効果が実感できるという噂の大人気メニュー『足やせ集中トリートメント』を体験してきました！</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</div>
+
+
+<!-- /企画特集 -->
+
+
+
+<!-- ====================ここまで左ブロック==================== -->
+
+</td>
+
+<td valign="top" class="left" width="240"> 
+
+<!-- ====================ここから右ブロック====================　-->
+
+<div id="Rparagraph"> 
+
+
+
+<!---　右上240*240バナー　-->
+
+<a href="../special/20061030_01.html"><img src="../pj/img/05.gif" width="240" height="240" border="0"></a>
+
+<!---　/右上240*240バナー　-->
+
+
+
+<!-- ランキングトピックス -->
+
+<div class="Rbox"> 
+<table width="238" border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td><h3 class="Rranking"><img src="../img/ic_r_rank.gif">TOPICS</h3></td>
+</tr>
+<tr> 
+<td class="bg"><ul>
+<li>・<a href="39067/index.html">のだめ効果か、芸術の秋か！？</a></li>
+<li>・<a href="38364/index.html">セクシーだと思う女性アーティストは？</a></li>
+<li>・<a href="38400/index.html">恋人にしたい男性アーティスト1位は！</a></li>
+<li>・<a href="../special/20061108_01.html">クリスマスデートは絶対成功させたい！</a></li>
+<li>・<a href="../special/061101_03.html">やっぱりつらい！肩こり倶楽部</a></li>
+<li>・<a href="../special/061101_02.html">しなやかボディを作るピラテス</a></li>
+
+</ul></td>
+</tr>
+</table>
+</div>
+
+
+<!-- /ランキングトピックス -->
+
+
+
+<!-- メニュー -->
+
+<div class="Rbox"> 
+
+<script type="text/javascript" src="../js/AC_RunActiveContent.js"></script>
+<script type="text/javascript">
+AC_FL_RunContent(
+'pluginspage','http://www.macromedia.com/go/getflashplayer'
+,'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0'
+,'src','/img/swf/rank'
+,'movie','/img/swf/rank'
+,'width','240'
+,'height','70'
+,'quality','high'
+);
+</script>
+<noscript>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="240" height="70">
+<param name="movie" value="/img/swf/rank.swf">
+<param name="quality" value="high">
+<embed src="../img/swf/rank.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="240" height="70"></embed>
+</object></noscript>
+</div>
+
+<div class="Rbox"> 
+<h3 class="Rmenu"><a href="../index.html">▲トップへ</a><img src="../img/ic_r_menu.gif" width="13" height="13">ビューティコスメメニュー</h3>
+<table width="238"  border="0" cellpadding="0" cellspacing="0" class="RmenuTable">
+<tr> 
+<td><a href="../rank/index.html">エステ満足度(総合)ランキング</a></td>
+</tr>
+<tr> 
+<td><a href="../rank/f.html">エステ満足度(フェイシャル)ランキング</a></td>
+</tr>
+<tr> 
+<td><a href="../rank/s.html">エステ満足度(痩身)ランキング</a></td>
+</tr>
+<tr> 
+<td><a href="../rank/d.html">エステ満足度(脱毛)ランキング</a></td>
+</tr>
+<tr> 
+<td><a href="../list/s/-1/index.html">特集一覧</a></td>
+</tr>
+
+<!--
+
+<tr> 
+<td class="BGsoon"><img src="/img/ic_soon.gif" width="23" height="12" alt="soon"><span>みんなの口コミランキング</span><br class="clear_noie"></td>
+</tr>
+<tr> 
+<td class="BGsoon"><img src="/img/ic_soon.gif" width="23" height="12" alt="soon"><span>ビューティコスメブックマーク</span><br class="clear_noie"></td>
+</tr>
+<tr> 
+<td class="BGsoon"><img src="/img/ic_soon.gif" width="23" height="12" alt="soon"><span>ビューティコスメリンク集</span><br class="clear_noie"></td>
+</tr>
+<tr> 
+<td class="BGsoon"><img src="/img/ic_soon.gif" width="23" height="12" alt="soon"><span>ビューティコスメ辞典</span><br class="clear_noie"></td>
+</tr>
+<tr> 
+<td class="BGsoon"><img src="/img/ic_soon.gif" width="23" height="12" alt="soon"><span>ビューティコスメ注目キーワード</span><br class="clear_noie"></td>
+</tr>
+
+-->
+
+</table>
+</div>
+
+
+<!-- /メニュー -->
+
+
+
+<!-- 特集 -->
+
+<div class="Rbox"> 
+<h3 class="Rmenu"><img src="../img/ic_r_special.gif" width="13" height="13">お勧めのエステサロン</h3>
+<table border="0" cellspacing="3" cellpadding="0" width="100%" class="Rnewsbg">
+
+<tr> 
+<td><a href="../company/esthe_s.html"><img src="../img/4944/11.gif" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/esthe_s.html">エステ・ステーション</a><br>相談に乗ってくれたりと対応が親切で、強引な勧誘はされないところが良い。（32歳/女性）</td>
+</tr>
+<!-- 
+<tr> 
+<td><a href="http://beauty.oricon.co.jp/company/piubello.html"><img src="/img/4944/01.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="http://beauty.oricon.co.jp/company/piubello.html">ＰｉｕＢＥＬＬＯ</a><br>親切で丁寧だったのでとても気分がよかった。（32歳/女性）</td>
+</tr>
+ -->
+<tr> 
+<td><a href="../company/mp.html"><img src="../img/4944/06.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/mp.html">エステティック ミスパリ</a><br>とても潤いを感じ、非常によかったと思います。（34歳/女性）</td>
+</tr>
+
+<tr> 
+<td><a href="../company/epi.html"><img src="../img/4944/02.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/epi.html">自由が丘エピサロン</a><br>リラックスできました。 勧誘もないので、安心です。（31歳/女性）</td>
+</tr>
+
+<tr> 
+<td><a href="../company/pes.html"><img src="../img/4944/03.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/pes.html">ビー・エスコート</a><br>スタッフは若い女性が多く説明・知識も丁寧で親切。（29歳/女性）</td>
+</tr>
+
+<tr> 
+<td><a href="../company/granmore.html"><img src="../img/4944/10.gif" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/granmore.html">グランモア</a><br>エステティシャンの対応・技術が素晴らしく、気持ちよく利用できました。（30歳/女性）</td>
+</tr>
+
+<tr> 
+<td><a href="../company/laseine.html"><img src="../img/4944/08.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/laseine.html">ラ・セーヌ</a><br>対応もよく、楽しく気分よく利用させて頂きました。（30歳/女性）</td>
+</tr>
+
+<tr> 
+<td><a href="../company/escos.html"><img src="../img/4944/05.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/escos.html">ＥＳＣＯＳ</a><br>リーズナブルで丁寧でとても良かった。大満足。（32歳/女性） </td>
+</tr>
+
+<!-- 
+<tr> 
+<td><a href="http://beauty.oricon.co.jp/company/jba.html"><img src="/img/4944/04.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="http://beauty.oricon.co.jp/company/jba.html">日本総合美容クリニーク</a><br>１回のフェイシャルで肌の明るさが変わりました。（31歳/女性）</td>
+</tr>
+ -->
+
+<tr> 
+<td><a href="../company/es.html"><img src="../img/4944/07.jpg" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/es.html">エステソワンロイヤル</a><br>接客態度、店内の雰囲気ともに良かったです。 （24歳/女性） </td>
+</tr>
+
+<tr> 
+<td><a href="../company/sareine.html"><img src="../img/4944/13.gif" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="../company/sareine.html">サレーヌ</a><br>アットホームな雰囲気で、終わった後に癒された気分になる。（33歳/女性）</td>
+</tr>
+
+<!-- 
+<tr> 
+<td><a href="http://beauty.oricon.co.jp/company/purerose.html"><img src="/img/4944/09.gif" alt="" width="49" height="44" border="0"></a></td>
+<td><a href="http://beauty.oricon.co.jp/company/purerose.html">ピュアローズ</a><br>個室での施術で、店内も静かなのが良かった。（31歳/女性）</td>
+</tr>
+ -->
+
+</table>
+
+<br>
+<div class="BTnav"><a href="../rank/index.html">エステ満足度(総合)ランキングへ</a></div>
+</div>
+
+<!-- /特集 -->
+
+
+
+<!-- 写真付きバナー -->
+
+<SCRIPT language=JavaScript src="http://www.oricon.co.jp/pj/sm_news_kikakuSP.js"></SCRIPT>
+
+<!--/ 写真付きバナー -->
+
+
+
+<!-- 目的別ニューストピックス -->
+
+<SCRIPT language=JavaScript src="http://www.oricon.co.jp/news/inc/sm_news_mokuteki.js"></SCRIPT>
+
+<!-- /目的別ニューストピックス -->
+
+
+
+</div>
+
+<!-- ====================ここまで右ブロック====================　-->
+
+</td>
+
+</tr>
+
+</table>
+
+<!-- ====================↑↑↑ここまでボディ↑↑↑====================　-->
+
+
+
+<br class="h15">
+
+
+
+<!--　====================↓↓↓ここからフッタ↓↓↓====================　-->
+
+
+
+<div id="footer">
+<a href="../index.html">オリコンビューティコスメトップ</a>｜<a href="../information/method.html#about">CS（満足度）ランキングとは？</a>｜<a href="../information/company.html">会社概要</a>｜<a href="../information/policy.html">個人情報保護方針</a>｜<a href="mailto:csweb@oricon.jp">お問い合わせ</a>｜<a href="../information/staff.html">求人情報</a><br>
+<br class="h10">
+Copyright(C) 2006 Oricon Inc. All rights reserved. </div>
+
+
+
+
+<!--　====================↑↑↑ここまでフッタ↑↑↑====================　-->
+
+
+
+
+
+</div>
+
+
+
+<!-- START SiteCensus Measurement V5.0 -->
+
+<!-- COPYRIGHT 2003 NetRatings Inc. -->
+
+<script language="JavaScript" type="text/javascript"><!--
+
+  var _rsCI='oricon';
+
+  var _rsCG='0';
+
+  var _rsDT=0;
+
+  var _rsSI=escape(window.location);
+
+  var _rsLP=location.protocol.indexOf('https')>-1?'https:':'http:';
+
+  var _rsRP=escape(document.referrer);
+
+  var _rsND=_rsLP+'//secure-jp.imrworldwide.com/';
+
+
+
+  if (parseInt(navigator.appVersion)>=4) {
+
+    var _rsRD=(new Date()).getTime();
+
+    var _rsSE=0;
+
+    var _rsSV='';
+
+    var _rsSM=1.0;
+
+    _rsCL='<scr'+'ipt language="JavaScript" type="text/javascript" src="'+_rsND+'v5.js"><\/scr'+'ipt>';
+
+  } else {
+
+    _rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
+
+  }
+
+  document.write(_rsCL);
+
+//--></script>
+
+<noscript>
+
+<img src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=oricon&amp;cg=0" width="1" height="1" alt="">
+
+</noscript>
+
+<!-- END SiteCensus Measurement V5.0 -->
+<!-- START Visionalist  -->
+<SCRIPT type="text/javascript">var trace_p='';</SCRIPT>
+<SCRIPT type="text/javascript" src="http://www.oricon.co.jp/ct/ct2012.js"></SCRIPT>
+<NOSCRIPT><IMG src="http://www02.tracer.jp/VL/Trace?c=2012&p=&noscript=1&tp=1" width="0" height="0" border="0"></NOSCRIPT>
+<!-- END Visionalist  -->
+
+
+
+
+</body>
+
+</html>

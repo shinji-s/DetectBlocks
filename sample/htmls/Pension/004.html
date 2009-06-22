@@ -1,0 +1,533 @@
+ 
+
+<html lang="ja" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Stype-Type" content="text/css; charset=Shift_JIS">
+<meta http-equiv="Content-Script-Type" content="text/javascript; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/css/mcommon.css" media="all">
+<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/css/mprint.css" media="print">
+<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/css/mon_common.css">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/script/navi.js"></SCRIPT>
+<style>
+<!--
+div.txt p	{
+	text-indent: 0em;
+	line-height: 150%;
+	margin-bottom: 1em;
+}
+-->
+</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+function brDetection() {
+var brAgent = navigator.userAgent.toLowerCase();
+this.brVer = parseInt(navigator.appVersion);
+this.brVerDot = parseFloat(navigator.appVersion);
+this.mac = (brAgent.indexOf("mac") != -1);
+this.win = (brAgent.indexOf("win") != -1);
+this.ie = (brAgent.indexOf("msie") != -1);
+if (this.ie && (brAgent.indexOf("msie 6") >0)) { this.ie6 = 1; return; }
+if (this.ie && (brAgent.indexOf("msie 5.5") >0)) { this.ie55 = 1; return; }
+if (this.ie && (brAgent.indexOf("msie 5") >0)) { this.ie5 = 1; return; }
+if (this.ie && (brAgent.indexOf("msie 4") >0)) { this.ie4 = 1; return; }
+this.nn = ((brAgent.indexOf('mozilla') != -1) && ((brAgent.indexOf('spoofer') == -1) && (brAgent.indexOf('compatible') == -1)));
+if (this.nn && (this.brVer >= 5)) { this.nn6 = 1; return; }
+if (this.nn && (this.brVer == 4)) { this.nn4 = 1; return; }
+}
+var brID = new brDetection();
+var myCss;
+if (brID.mac != 0) {
+if (brID.ie4) { myCss="macie";writeLink(); }
+else if (brID.ie) { myCss="macie";writeLink();  }
+else if (brID.nn6) { myCss="macie"; writeLink();}
+else if (brID.nn) { myCss="macnn";writeLink(); }
+} else if (brID.win != 0) {
+if (brID.ie) { myCss="winie"; writeLink();}
+else if (brID.nn6) { myCss="winie"; writeLink();}
+else if (brID.nn4) { myCss="winnn"; writeLink();}
+} 
+function writeLink() {
+document.write ('<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/css/mon_'+ myCss + '.css">');
+}
+//-->
+</script>
+<SCRIPT type="text/javascript" LANGUAGE="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</SCRIPT>
+<title>経済羅針盤&nbsp;&nbsp;マネー&amp;マーケット</title>
+</head>
+
+<body>
+
+<a name="top">
+<p id="nikkei"><a href="http://www.nikkei.co.jp" target="_top"><img src="http://parts.nikkei.co.jp/parts/net2/logo_sub.gif" alt="NIKKEI NET" width="91" height="17" title="NIKKEI NET" id="logo_sub"></a></p>
+<div id="brand_bar"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="91" height="1" alt=""><img src="http://parts.nikkei.co.jp/parts/brandbar/brandbar_money3.gif" width="625" height="24" usemap="#Map" alt="" id="brand_img">
+<map name="Map">
+<area shape="rect" coords="4,0,59,24" href="http://www.nikkei.co.jp/" target="_top" alt="ニュース">
+<area shape="rect" coords="60,0,104,24" href="../../index.html" target="_top" alt="" title="">
+<area shape="rect" coords="105,0,131,24" href="http://ir.nikkei.co.jp/" alt="IR：上場企業の投資家向け情報を即時提供" title="IR：上場企業の投資家向け情報を即時提供" target="_top">
+<area shape="rect" coords="132,0,157,24" href="http://it.nikkei.co.jp/" alt="IT：ニュースや専門情報などITに関する最新動向" title="IT：ニュースや専門情報などITに関する最新動向" target="_top">
+<area shape="rect" coords="158,0,192,24" href="http://bizplus.nikkei.co.jp/" alt="経営：実務に役立つニュース＆連載企画。外注先検索も" title="経営：実務に役立つニュース＆連載企画。外注先検索も" target="_top">
+<area shape="rect" coords="193,0,227,24" href="http://sumai.nikkei.co.jp/" alt="住宅：新築・賃貸からリゾートまで住宅情報満載、資料請求可能" title="住宅：新築・賃貸からリゾートまで住宅情報満載、資料請求可能" target="_top">
+<area shape="rect" coords="228,0,303,24" href="http://www.nikkei.co.jp/weekend/" alt="生活・グルメ：グルメ情報や、健康ニュースなど生活にかかせない情報満載" title="グルメ情報や、健康ニュースなど生活にかかせない情報満載" target="_top">
+<area shape="rect" coords="304,0,338,24" href="http://www.nikkei.co.jp/help/manabi.html" alt="教育：学びからキャリアアップまで" title="教育：学びからキャリアアップまで" target="_top">
+<area shape="rect" coords="339,0,373,24" href="http://job.nikkei.co.jp/" target="_top" alt="就職：学生の就職活動を完全サポート、マイページ利用も可能" title="就職：学生の就職活動を完全サポート、マイページ利用も可能">
+<area shape="rect" coords="374,0,408,24" href="http://kyujin.nikkei.co.jp/" target="_top" alt="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載" title="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載">
+<area shape="rect" coords="409,0,453,24" href="http://car.nikkei.co.jp/" alt="クルマ：クルマ好き応援サイト" title="クルマ：クルマ好き応援サイト" target="_top">
+<area shape="rect" coords="454,0,507,24" href="http://www.nikkei.co.jp/style/" alt="C-style：ライフスタイルにこだわりを持つ３０代男性向けウェブマガジン" title="C-style：ライフスタイルにこだわりを持つ３０代男性向けウェブマガジン" target="_top">
+<area shape="rect" coords="508,0,563,24" href="http://smartwoman.nikkei.co.jp/" target="_top" alt="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載" title="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載">
+<area shape="rect" coords="564,0,620,24" href="http://waga.nikkei.co.jp/" alt="日経ワガマガ：アタマとカラダを刺激する、大人のためのコミュニティー" title="日経ワガマガ：アタマとカラダを刺激する、大人のためのコミュニティー" target="_top">
+</map>
+</div>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="header">
+<tr>
+<td width="179" class="img_layout"><h1><a href="../../index.html" accesskey="y"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/top_logo_small.gif" width="179" height="32" alt="マネー&マーケット - 株価情報・株式投資・株式市況"></a></h1></td>
+<td width="280" class="img_layout"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/top_logo_small_link.gif" alt="" width="280" height="32" border="0" usemap="#top_link"></td>
+<td width="100%" id="header_button" align="right">
+<map name="top_link">
+<area shape="rect" coords="142,16,264,28" href="http://www.nikkei.co.jp/hensei/koudoku/" target="_blank" alt="新聞購読お申し込み">
+<area shape="rect" coords="62,16,135,28" href="../../sitemap.cfm.html" alt="サイトマップ" accesskey="l">
+<area shape="rect" coords="11,16,52,28" href="http://company.nikkei.co.jp/help/helpindex.html" target="_blank" alt="ヘルプ" accesskey="k">
+</map>
+<table border="0" cellspacing="0" cellpadding="0" align="right">
+<tr>
+<td class="img_layout"><a href="http://www.nikkei.co.jp/bb/daiwa/"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/eizomarket.gif" alt="" width="131" height="18" border="0"></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+ 
+
+<p id="super_banner">
+<!--Ad1-->
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/js/flash.fix.js"></script>
+<!-- Sniffer Code for Flash version=60 -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+var swf_click = "http://globe.nikkei.co.jp/event.ng/Type=click&FlightID=43948&AdID=57559&TargetID=1745&Segments=1,374,454,455,809,1100,1187,1207,1272&Targets=1745,1323&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1722,2035&RawValues=CATEGORYID%2Cfinmidb2&Redirect=http:%2F%2Fwww.nikkei.co.jp/ps/denshika/";
+var dcswf_click = escape(swf_click);
+var ShockMode = 0;
+var plugin = (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) ? navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin : 0;
+
+if (plugin && parseInt(plugin.description.substring(plugin.description.indexOf(".")-1)) >= 6) 
+{
+ShockMode = 1;
+}
+else if (navigator.userAgent && navigator.userAgent.indexOf("MSIE")>=0 
+&& (navigator.userAgent.indexOf("Windows 95")>=0 || navigator.userAgent.indexOf("Windows 98")>=0 || navigator.userAgent.indexOf("Windows NT")>=0)) {
+document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+document.write('on error resume next \n');
+document.write('ShockMode = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.6")))\n');
+document.write('<\/SCRIPT\> \n');
+}
+if ( ShockMode ) {
+document.write('<OBJECT ALT="" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"');
+document.write(' codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"');
+document.write(' ID=flashad WIDTH=728 HEIGHT=90>');
+document.write(' <PARAM NAME=movie VALUE="http://adb.nikkei.co.jp/ad/logo/2006b/JishakoMoney061118denshika-FinSupB.swf?clickTAG='+dcswf_click+'"> '); 
+document.write(' <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor value=#FFFFFF> ');
+document.write(' <EMBED SRC="http://adb.nikkei.co.jp/ad/logo/2006b/JishakoMoney061118denshika-FinSupB.swf?clickTAG='+dcswf_click+'" QUALITY=high BGCOLOR=#FFFFFF '); 
+document.write(' NAME=flashad swLiveConnect=TRUE WIDTH=728 HEIGHT=90');
+document.write(' TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">');
+document.write('</EMBED>');
+document.write('</OBJECT>');
+} else if (!(navigator.appName && navigator.appName.indexOf("Netscape")>=0 && navigator.appVersion.indexOf("2.")>=0)){
+document.write('<A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&FlightID=43948&AdID=57559&TargetID=1745&Segments=1,374,454,455,809,1100,1187,1207,1272&Targets=1745,1323&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1722,2035&RawValues=CATEGORYID%2Cfinmidb2&Redirect=http:%2F%2Fwww.nikkei.co.jp/ps/denshika/" target="_top"><IMG SRC="http://adb.nikkei.co.jp/ad/logo/2006b/JishakoMoney061118denshika-FinSupB.gif" WIDTH=728 HEIGHT=90 BORDER=0></A>');
+}
+//-->
+</SCRIPT>
+<NOEMBED>
+</NOEMBED>
+<NOSCRIPT>
+<A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&FlightID=43948&AdID=57559&TargetID=1745&Segments=1,374,454,455,809,1100,1187,1207,1272&Targets=1745,1323&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1722,2035&RawValues=CATEGORYID%2Cfinmidb2&Redirect=http:%2F%2Fwww.nikkei.co.jp/ps/denshika/" target="_top"><IMG SRC="http://adb.nikkei.co.jp/ad/logo/2006b/JishakoMoney061118denshika-FinSupB.gif" WIDTH=728 HEIGHT=90 BORDER=0></A>
+</NOSCRIPT>
+
+
+
+</p>
+
+<SCRIPT LANGUAGE=JavaScript1.2>mainmenu("/","http://company.nikkei.co.jp/","column");</SCRIPT>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="160" valign="top" id="td_left">
+
+<p class="ad">
+<!--Ad2-->
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,376,454,455,725,809,1100,1272&Targets=727&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1723,2035&RawValues=CATEGORYID%2Cfinmidtl2&TargetID=727&FlightID=40720&AdID=52223&Redirect=http:%2F%2Fcar.nikkei.co.jp%2Fins%2F" target=_top><img src="http://adb.nikkei.co.jp/ad/logo/2006a/JishakoHokenAuto060612b-FinTile.gif" border=0 height=90 width=150 alt=""></a>
+
+
+</p>
+
+
+
+<ul id="column_globalnavi">
+
+	<li><a href="personal.cfm@genre=i2.html">国際情勢がわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q6.html">ライフプランがわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q7.html">年金がわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q9.html">ビジネス・司法がわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q4.html">資産運用がわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q8.html">成長企業がわかる</a></li>
+
+	<li><a href="personal.cfm@genre=q5.html">マネジメントがわかる</a></li>
+
+	<li><a href="personal.cfm@genre=p9.html">リーダーシップがわかる</a></li>
+
+</ul>
+
+
+
+<SCRIPT LANGUAGE=JavaScript1.2>leftnavicolumn("/","rashin","column");</SCRIPT>
+</td>
+
+<td valign="top" id="td_right">
+
+<SCRIPT LANGUAGE=JavaScript1.2>
+<!--
+function  _checkLForm(_CF_this){
+	if (_CF_this.CName.value.length == 0){
+		alert("会社名、もしくは証券コードを入力してください。");
+		return false;
+	}
+	_CF_this.target="_self";
+//	sel=_CF_this.currentPage;
+//	if(sel.options[sel.selectedIndex].value=="IR"){
+//		_CF_this.target="_self";
+//	}else{
+//		_CF_this.target="_self";
+//	}
+	_CF_this.submit();
+return true;
+}
+//-->
+</SCRIPT>
+
+<table border="0" cellspacing="0" cellpadding="0" id="search">
+<colgroup><col><col><col width="2"><col width="80"><col width="125"></colgroup>
+<tr>
+<td nowrap>
+
+<FORM NAME=LForm ACTION=http://company.nikkei.co.jp/inc/search_action.cfr METHOD=POST onSubmit="return _checkLForm(this)">
+<span style="color:#003399;font-weight:bold;">株価サーチ</span>
+<input name="CName" type="text" size="15" accesskey="j">
+<input type="hidden" name="currentPage" value="http://company.nikkei.co.jp/index.cfm">
+<input type="button" value="検索" class="bt1" onclick="return _checkLForm(LForm);">
+</td>
+<td><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/search_line1.gif" alt="" width="2" height="35"></td>
+<td width="100%">
+<input type="button" value="適時開示検索" class="bt2" onclick="javascript:location.href='http://company.nikkei.co.jp/disclose/';">&nbsp;&nbsp;
+<input type="button" value="株主優待検索" class="bt3" onclick="javascript:location.href='http://company.nikkei.co.jp/yutai/';">
+</td>
+<td><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/search_line1.gif" alt="" width="2" height="35"></td>
+<td><a href="http://company.nikkei.co.jp/port/login.cfm" accesskey="n"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/mochikabu_check2.gif" alt="気になったら登録 持ち株チェック" width="115" height="35"></a></td>
+</form>
+</tr>
+</table>
+
+
+<hr>
+
+
+ 
+
+<a name="midashi"></a>
+
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	<td colspan="2" bgcolor="972828"><img src="img/cont_tl1.gif" width="345" height="18" border="0" alt="Contents"></td>
+	<td><img src="img/vp_tl2.gif" width="235" height="18" border="0" alt="vp_tl2.gif"></td>
+	</tr>
+	<tr>
+	<td width="14"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="14" height="1"></td>
+	<td width="100%" valign="top">
+	<table width="100%" border="0" cellpadding="0" cellspacing="2">
+		<tr>
+		<td width="274">
+			<br><br>
+			<div class="sub-head1">年金がわかる</div>
+			<div class="sub-head2">矢野　朝水 氏</div></td>
+		<td width="57" align="right" valign="bottom"><A href="javascript:MM_openBrWindow('profile.cfm?genre=q7','subwin_face','scrollbars=yes,resizable=yes,width=570,height=630')"><img src="img/co_link.gif" width="57" height="15" border="0" alt="執筆者詳細"></a></td>
+		</tr>
+		<tr><td bgcolor="ECC4C4" colspan="2"><div class="head">連載＜第23回＞</div></td></tr>
+		<tr><td colspan="2" align="right"><div class="ad">最終更新日：06/10/16</div></td></tr>
+		<tr><td colspan="2"><div class="head"><b>年金改革、各国の取り組みから学ぶこと</b><br></div></td></tr>
+		<tr><td colspan="2" bgcolor="c0c0c0"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="1"></td></tr>
+		<tr><td colspan="2" align="right" nowrap><a href="personal.cfm@genre=q7&amp;id=q79ag000_16&amp;date=20061016.html#back"><span class="ad"><img src="img/back_b.gif" width="21" height="23" border=0 alt="" align="center"> バックナンバー一覧</span></a></td></tr>
+	</table>
+	</td>
+	
+	<td width="235">
+	<table border="0" cellpadding="0" cellspacing="0" width="235">
+		<tr>
+		<td colspan="2" valign="top"><img src="img/q7_PhotoL.jpg" width="235" height="179" border="0" alt="顔写真: 矢野　朝水 氏"></td>
+		<td><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" width="1" height="179" border="0" alt=""></td>
+		</tr>
+		<tr>
+		<td width="32"><img name="vp_main_p_r2_c1" src="img/vp_main_p_r2_c1.gif" width="32" height="46" border="0" alt=""></td>
+		<td width="203" align="right"><div class="ad">企業年金連合会専務理事<br>矢野　朝水 氏</div></td>
+		<td><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" width="1" height="46" border="0" alt=""></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td width="14"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="14" height="1"></td>
+	<td colspan=2 bgcolor="c0c0c0"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="1"></td>
+	</tr>
+	<tr><td colspan=2><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="10"></td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td rowspan="2"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="10" height="1"></td>
+	<td><div class="txt"><p>　世界各国とも年金問題には苦しんでいる。高齢化に伴い給付が増大する一方、経済の低迷や労働者の減少などによって収入が増えないからだ。したがって、年金改革とは、収入を増やし、給付を抑えて負担と給付の均衡を達成することにある。つじつま合わせといえばつじつま合わせだが、年金はつじつまが合わないと制度が成り立たず、崩壊してパニックを招く。</p><p>　しかし、年金には長い歴史があり、既得権や期待権がある。高齢者はもとより現役労働者の生活に大きな影響を与える。給付を下げたり、負担を上げることは誰もが嫌がる。改革には国民の反発が強く、年金問題は政治の争点になりやすい。年金改革は容易ではないし、時間もかかるのである。</p><p><b>年金負担の引き上げは限界に</b><br>　西欧諸国は、わが国より早く高齢化したこともあり、あの手この手で年金改革を進めてきた。年金改革はまず、負担の引き上げが優先され、保険料の段階的引き上げ、税の投入、保険料の賦課ベースの拡大などが行われた。しかし、負担の引き上げは、青天井とはいかない。保険料には「20％の壁」が言われており、収入の20％を超えるような負担は現実には無理なのだ。ちなみに、2004年改正でわが国の厚生年金保険料は18.3％が上限とされたのも同様の事情による。</p><p>　負担の引き上げはおおむね限界に達したため、近年では、年金改革はもっぱら給付を削減する手法が中心となっている。</p><p>　給付を削減する手法としては、（１）年金水準そのものの引き下げ（２）支給開始年齢の引き上げ（３）満額年金を受給できる加入期間の延長（４）年金額を計算する基礎となる報酬の見直し（報酬の高い一定期間の平均報酬から全加入期間の平均報酬への変更）（５）物価や賃金に応じて年金額を調整する方法の見直し（スライド率の変更）――などが行われてきた。</p><p><b>頭を悩ます各国</b><br>　給付削減のための大幅な制度改正は、国民の反発を招き容易ではない。また、支給開始年齢の65歳への引き上げなどは一応実現した。そこで、政治的なリスクを避けるためもあって、近年では、スウェーデンやドイツなど、経済や人口に応じて自動的に年金を調整する仕組み（自動調整制度）を取り入れる国が出てきた。2004年の年金改革でわが国に導入された「マクロ経済スライド」は、被保険者の減少や寿命の伸びに応じて自動的に給付を削減する仕組みで、世界的に高く評価されている。</p><p>　また、スウェーデンなどで導入された「観念上の拠出建て年金」は、観念上の個人口座をつくり、加入員が納めた保険料を一定の運用利回りで付利し、その合計額を受給開始時の平均余命で除した額が年金額となるものだ。加入者にとっては分かりやすい、損得なしの仕組みだが、この方法は年金制度の安定化の半面、寿命の伸びによる年金額の低下や給与の低い女性などは年金額が低くなる、などの問題点も指摘されている。</p><p>　もはや年金のいらない社会には後戻りできない以上、わが国も社会経済環境に対応して辛抱強く年金改革を続けていかざるを得ない。抜本改革をすれば、支える負担が少なく、給付も減らさずに済むような解決策にたどり着くという議論もあるが、かえって混乱をきたす恐れがある。年金改革に"魔法の杖"はないのであり、基本的には現行制度の大枠を維持しながらあの手この手で収支バランスを取っていくほかないと思う。</p><p>（企業年金連合会専務理事・矢野朝水 氏寄稿）</p><p><br></P></div></td>
+	</tr>
+	<tr>
+	<td>
+	<a name="back"></a>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="100"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/bk_tl_01.gif" alt="バックナンバー"width="100" height="21" border=0></td>
+		<td width="100%" background="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/bk_tl_02.gif"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="1"></td>
+		<td valign="top" width="111"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/bk_tl_03.gif" width="111" height="21" border=0 alt="バックナンバー"></td>
+		</tr>
+		<tr><td colspan=2><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="1" height="5"></td></tr>
+	</table>
+
+	<table border="0" cellspacing="0" cellpadding="2">
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q79c8000_08&amp;date=20061208.html">(24)年金の官民格差、事実に着目して冷静な議論を（06/12/11）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q79ag000_16&amp;date=20061016.html">(23)年金改革、各国の取り組みから学ぶこと（06/10/16）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q798i000_18&amp;date=20060818.html">(22)M&Aに当たって企業は株主に対する説明責任を果たせ（06/08/18）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q796g000_16&amp;date=20060616.html">(21)企業年金の給付減額要件の緩和を（06/06/19）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q794e000_14&amp;date=20060414.html">(20)買収防衛策はしょせん「時間稼ぎ」（06/04/17）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q792k000_20&amp;date=20060220.html">(19)適格退職年金の円滑な移行を（06/2/20）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q78cj000_19&amp;date=20051219.html">(18)大衆株主社会のルール整備を（05/12/19）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q78ao000_24&amp;date=20051024.html">(17)確定拠出年金（日本版401K）の改革を急げ（05/10/24）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q788p000_25&amp;date=20050825.html">(16)生き残りかける企業年金（05/08/29）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q7871000_01&amp;date=20050701.html">(15)改善の歩みが遅い株主総会（05/07/01）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q785g000_16&amp;date=20050516.html">(14)政治改革なくして年金改革なし（05/05/16）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q783i000_18&amp;date=20050318.html">(13)議決権行使のインフラ整備を急げ（05/03/18）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=q781s000_28&amp;date=20050128.html">(12)年金は何故複雑なのか（05/01/31）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r17bp000_25&amp;date=20041125.html">(11)公的年金に損得論議はなじまない（04/11/29）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r17ac000_12&amp;date=20041012.html">(10)決着がついている年金の財政方式（04/10/12）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r178q000_26&amp;date=20040826.html">(９)企業統治ファンドの創設（04/08/30）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r177k000_20&amp;date=20040720.html">(８)年金の一元化を考える（04/07/21）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r176l000_21&amp;date=20040621.html">(７)年金はもらえなくなるのか（04/06/21）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r175e000_14&amp;date=20040514.html">(６)「株主総会シーズン」は死語となるか（04/05/14）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r173m000_22&amp;date=20040322.html">(５)冷静で建設的な年金論議を（04/03/22）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r1732000_02&amp;date=20040302.html">(４)国民皆年金をどうする（04/03/02）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r171j000_19&amp;date=20040119.html">(３)「公的年金」抜本改革のまぼろし（04/01/19）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r16bi000_18&amp;date=20031118.html">(２)企業年金の崩壊を食い止める支援策とは（03/11/18）</a></div></td>
+		</tr>
+	
+		<tr>
+		<td width="21"><img src="img/back_b.gif" width="21" height="23" border=0 alt=""></td>
+		<td><div class="col2"><a href="personal.cfm@genre=q7&amp;id=r16a8000_08&amp;date=20031008.html">(１)運用機関は企業にはっきりとモノ言おう（03/10/14）</a></div></td>
+		</tr>
+	
+		<tr><td colspan="2"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="1" height="10"></td></tr>
+	</table>
+	</td>
+	</tr>
+</table>			
+<table border="0" cellspacing="2" cellpadding="0" width="100%">
+	<tr><td bgcolor="A24242"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="2"></td></tr>
+
+	<tr><td bgcolor="A24242"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt="" width="1" height="2"></td></tr>
+	<tr><td align="center"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="1" height="10"></td></tr>
+	<tr>
+	<td align="center">
+	<table border="0" cellpadding="3" cellspacing="0">
+		<tr>
+<td align="left"><div class="col3">
+                                経済羅針盤では読者の皆様から執筆者に対する質問などを随時<br>募集しております。
+                                <a href="https://sch.nikkei.co.jp/nikkeinet/markets.html" target="_blank">問い合わせフォーム</a>にてお
+送りください。
+                        </div></td>		</tr>
+	</table>
+	</td>
+	</tr>
+	
+	<tr><td align="center"><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="1" height="10"></td></tr>
+	<tr>
+	<td align="center">
+	<table border="0" cellpadding="0" cellspacing="2" width="90%">
+		<tr>
+		<td colspan="2" align="left"><div class="footnote">
+			本ホームページ上のいかなる情報や意見も証券や商品の購入または売却を勧誘するものではありません。<br>
+			情報内容は保証されるものではありませんので、万一この情報に基づいて被ったいかなる損害についても、日本経済新聞社とコラムの各執筆者、
+			及び関係者は一切の責任を負いません。<br>
+			また、本ホームページでは、特定の候補者に対する支援や勧誘など、一切の政治活動を行っておりません。</div></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	<tr><td ><img src="http://parts.nikkei.co.jp/parts/MoneyMarkets/v2/s.gif" alt=""width="1" height="10"></td></tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+<table align="center" border="0" cellspacing="0" cellpadding="0" id="ad_finance">
+<tr>
+<th colspan="6"><h4>金融センター</h4></th>
+</tr>
+<tr>
+<!--Ad3-->
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=44568&AdID=58649&Redirect=http:%2F%2Fwww.nomura.co.jp%2Fdenshika%2Findex.html%3Fbanner_id%3Ds2006072001" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2004b/NomuraSec041224-FinCntrT.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=44568&AdID=58649&Redirect=http:%2F%2Fwww.nomura.co.jp%2Fdenshika%2Findex.html%3Fbanner_id%3Ds2006072001" target="_top">
+<p>＜野村＞から株券に関する大切なお知らせです。</p>
+</a></div></td>
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=43809&AdID=57265&Redirect=http:%2F%2Fwww.naito-sec.co.jp%2Fhome%2Ftop.php%3F000753BN000643%3DPID" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2006b/NaitoSec061106-FinTileTxt.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=43809&AdID=57265&Redirect=http:%2F%2Fwww.naito-sec.co.jp%2Fhome%2Ftop.php%3F000753BN000643%3DPID" target="_top">
+<p>国内株も中国株も。格安な手数料と充実した中国株情報は、こちらから。</p>
+</a></div></td>
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=44562&AdID=58662&Redirect=http:%2F%2Fwww.shinko-sec.co.jp%2Fservice%2Fmuryo_cpn.html" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2004b/ShinkoSec041206-FinCntrT.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=44562&AdID=58662&Redirect=http:%2F%2Fwww.shinko-sec.co.jp%2Fservice%2Fmuryo_cpn.html" target="_top">
+<p>ダイレクトコースで国内株式委託手数料”無料”キャンペーン。お見逃し無く！</p>
+</a></div></td>
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=30600&AdID=42077&Redirect=http:%2F%2Fwww.daiwatv.jp%2Fplus%2Findex.html%3F999984BN000008%3DPID" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2005b/DaiwaSec050712-FinCntrT.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=30600&AdID=42077&Redirect=http:%2F%2Fwww.daiwatv.jp%2Fplus%2Findex.html%3F999984BN000008%3DPID" target="_top">
+<p>最新マーケット情報や豊富なアナリストレポートをいち早く映像でお届けします</p>
+</a></div></td>
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=40881&AdID=57629&Redirect=http:%2F%2Fwww.sc.mufg.jp%2Fproducts%2Ftrust%2Ffee_zero%2Findex.html%3Fbanner_id%3Dnkm061101" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2006b/MitsubishiUFJSec060701-FinCntrTxtT.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=40881&AdID=57629&Redirect=http:%2F%2Fwww.sc.mufg.jp%2Fproducts%2Ftrust%2Ffee_zero%2Findex.html%3Fbanner_id%3Dnkm061101" target="_top">
+<p>投資信託がネットでお得。今ならお申込手数料０円！好評キャンペーン中です。</p>
+</a></div></td>
+<td valign="top"><div class="footer_ad"><A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=36470&AdID=57454&Redirect=http:%2F%2Fwww.aizawabtc.com%2Findex_link_jump.html%3Furl%3DTopMenu%2Fvietnam_fund.html" target="_top">
+<IMG SRC="http://adb.nikkei.co.jp/ad/logo/2006b/AizawaSec061011-FinTileTxt.gif" border="0" height=30 width=120 alt="">
+</A>
+<a href="http://globe.nikkei.co.jp/event.ng/Type=click&Segments=1,454,455,809,1100,1195,1272&Targets=1289&Values=30,50,60,72,84,93,100,170,585,588,745,799,1099,1124,1278,1725,2035&RawValues=CATEGORYID%2Cfincntr&TargetID=1289&FlightID=36470&AdID=57454&Redirect=http:%2F%2Fwww.aizawabtc.com%2Findex_link_jump.html%3Furl%3DTopMenu%2Fvietnam_fund.html" target="_top">
+<p>日本初<br>追加型ベトナムファンドはこちらから！</p>
+</a></div></td>
+
+</tr>
+</table>
+<SCRIPT LANGUAGE=JavaScript1.2>footer();</SCRIPT>
+</body>
+</html>
+
+	

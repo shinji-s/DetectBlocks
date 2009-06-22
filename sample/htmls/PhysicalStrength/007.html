@@ -1,0 +1,721 @@
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="keywords" content="ベネッセ,Benesse,教育情報,進研ゼミ,進研模試,進路,しつけ,子ども,安心,安全,学費,教育ニュース,学校,受験,習い事,幼児,小学生,中学生,高校生,教育動向,通学路,中高一貫,家庭学習,保護者,親,子育て,アンケート,エデュケーション,家庭,地域,環境">
+<meta name="description" content="幼児、小学生、中学生、高校生の安全・進路・学校・しつけ・コミュニケーションなどの教育情報を集めたBenesse教育情報サイト。教育関連ニュースの分析/解説、子どもを伸ばす専門家による動画コンテンツ、調査データを元に最新の教育動向を紹介するなど保護者の声を集めたコンテンツが盛りだくさん。教育に関する疑問や不安の答えが見つかる場を提供します。">
+<title>Benesse(ベネッセ)教育情報サイト-受験・学校・習い事・進研ゼミ</title>
+<link rel="stylesheet" href="../../common/css/kj.css" type="text/css">
+<link rel="stylesheet" href="../../common/css/eduNews/eduNews.css" type="text/css">
+<script type="text/javascript" src="../../common/js/kj_common.js"></script>
+<script type="text/javascript" src="../../common/js/default.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function doAction() {
+	window.document.entryCommentForm.submit();
+	return false;
+}
+
+function IntroFriend() {
+  var e_title = "%5B%92%B2%8D%B8%5D%8E%71%82%C7%82%E0%82%CC%91%CC%97%CD%82%AA%92%E1%89%BA%81%40%90%B6%8A%88%89%FC%91%50%82%D6%82%CC%95%FB%8D%F4%82%AA%95%4B%97%76";
+  var e_url =  "%2Fblog%2F20050915%2Fp1.html";
+  w = window.open("/IntroServlet?title=" + e_title + "&url=" + e_url , "_blank", "location=no,menubar=no,toolbar=no");
+  return false;
+}
+//-->
+</script>
+</head>
+<body>
+
+<div id="MAIN">
+
+<!-- HEADER -->
+
+
+
+
+
+
+
+<!-- |||| HEADER -->
+<div id="HEADER">
+<table width="760" border="0" cellspacing="0" cellpadding="0" summary="header">
+<tr>
+<td width="323" rowspan="7">
+	<table width="323" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td rowspan="3"><a href="http://www.benesse.co.jp"><img src="../../common/images/headfoot/top_benesse.gif" alt="Benesse" width="124" height="43" border="0"></a></td>
+	<td colspan="2"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="18" border="0"></td>
+	</tr>
+	<tr>
+	<td><img src="../../common/images/headfoot/top_message.gif" alt="一人ひとりの「よく生きる」のために" width="185" height="11" border="0"></td>
+	<td><img src="../../common/images/headfoot/space.gif" alt="" width="14" height="1" border="0"></td>
+	</tr>
+	<tr>
+	<td colspan="2"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="15" border="0"></td>
+	</tr>
+	</table>
+</td>
+<td><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+<td width="5"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+</tr>
+<tr>
+<td align="right"><a href="http://www.benesse.co.jp/map/index.html"><img src="../../common/images/headfoot/btn_sitemap.gif" alt="ベネッセ サイトマップ" width="124" height="13" border="0"></a></td>
+<td width="10"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="3" border="0"></td>
+</tr>
+<tr>
+<td align="right" bgcolor="#CCD6E0"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+<td width="10"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="4" border="0"></td>
+</tr>
+<tr>
+<td align="right"><a href="http://www.benesse.co.jp"><img src="../../common/images/headfoot/btn_top.gif" alt="ベネッセ トップ" width="101" height="13" border="0"></a><a href="http://www.benesse.co.jp/kyouiku/index.html"><img src="../../common/images/headfoot/btn_ed_top.gif" alt="教育トップ" width="74" height="13" border="0"></a></td>
+<td width="5"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+</tr>
+<tr>
+<td><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="4" border="0"></td>
+<td width="5"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+</tr>
+<tr>
+<td colspan="3" background="../../common/images/headfoot/bg_head.gif"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="9"></td>
+</tr>
+</table>
+
+<!-- MAINTITLE -->
+<div id="MAINTITLE">
+<p>一人ひとりの教育を考える</p>
+<div id="LOGO"><a href="../../index.html"><img src="../../common/images/header_logo.gif" border="0" width="191" height="61" alt="Benesse 教育情報サイト"></a></div>
+<div id="BANNER">
+	<div class="login">
+	<div><img src="../../common/images/tbl_login01.gif" border="0" width="530" height="5" alt=""></div>
+		<table border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="3" class="padding01">ようこそ、ゲストさん。<a href="../../member/index.html">メンバー登録</a>しませんか？</td>
+			<td class="linebg" rowspan="2"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+			<td class="btn" rowspan="2"><p class="mt3">登録内容の変更等</p><a href="https://www.benesse.jp/kjmember/mypage.do"><img src="../../common/images/btn_mypage_s.gif" width="79" height="23" border="0" alt="マイページへ" class="mt5"></a></td>
+		</tr>
+		<tr>
+			<form action="https://auth.benesse.jp/kj_login" method="post" name="auth_login" >		
+			<input type="hidden" name="sauth_success_url" value="http://benesse.jp/index.html">					
+			<td class="padding02"><p><img src="../../common/images/ttl_num.gif" border="0" width="37" height="9" alt="会員番号"></p>
+				<p><input type="text" name="sauth_username" value="" size="14" maxlength="" class="input"></p></td>
+			<td class="padding03"><p><img src="../../common/images/ttl_pass.gif" border="0" width="46" height="9" alt="パスワード"></p>
+					<p><input type="password" name="sauth_password" value="" size="14" maxlength="8" class="input"><input type="image" src="../../common/images/btn_login_off.gif" name="" alt="ログイン" class="loginbtn" id="LOGINBTN" onmouseover="SwapImage('/common/images/btn_login_on.gif', this.id)" onmouseout="SwapImage('/common/images/btn_login_off.gif', this.id)" onclick="return setAuthLoginURL(document.URL)"></p>
+					<input type="hidden" name="sauth_referer_url" value="">
+					<input type="checkbox" name="sauth_remember" style="display:none;" />
+			</td>			
+			</form>	
+			<td class="padding04">
+				<form action="https://bfs.benesse.ne.jp/id-center/servlet/ReissueMailInput" method="post" name="side_password" target="_blank">
+					<div class="arrow"><a href="javascript:void(0);" onClick="document.side_password.submit();">会員番号・パスワードを忘れた方</a>
+					<input type="hidden" name="systemId" value="055">
+					<input type="hidden" name="routeCd" value="055    ">
+					<input type="hidden" name="goodsCd" value="1055BC-KYOUIKU-MEMBER ">
+					<input type="hidden" name="uri" value="http://www.benesse.jp/index.html">
+					</div>
+					<div class="mt3"><input name="sauth_remember" type="checkbox" value="" class="vam" onClick="setValue();">
+					<script language="JavaScript" type="text/javascript">getKJID()</script>
+					次回から会員番号の入力を省略	
+					<script language="JavaScript" type="text/javascript">setValue();</script>
+					</div>
+				</form>	
+			</td>
+		</tr>
+		</table>
+	<div><img src="../../common/images/tbl_login02.gif" border="0" width="530" height="5" alt=""></div>
+	</div>
+	</div>
+	<div class="floatClear"><br></div>
+</div>
+</div>
+<!-- /MAINTITLE -->
+
+<div id="CHANGEBTN">
+<!-- 表示切替ボタン ログイン前 -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="btn">
+	<a href="../../jsp/general/top/infant/switch.jsp.html">
+		<img src="../../common/images/roof/btn_child.gif" border="0" width="56" height="21" alt="幼児">
+	</a>
+</td>
+<td class="btn">
+	<a href="../../jsp/general/top/primary/switch.jsp.html">
+		<img src="../../common/images/roof/btn_elementary.gif" border="0" width="56" height="21" alt="小学生">
+	</a>
+</td>
+<td class="btn">
+	<a href="../../jsp/general/top/junior/switch.jsp.html">
+		<img src="../../common/images/roof/btn_junior.gif" border="0" width="56" height="21" alt="中学生">
+	</a>
+</td>
+<td class="btn">
+	<a href="../../jsp/general/top/high/switch.jsp.html">
+		<img src="../../common/images/roof/btn_high.gif" border="0" width="56" height="21" alt="高校生">
+	</a>
+</td>
+<td class="text before">メンバーに登録するとお子さまに合わせた情報に切り替えられます。</td>
+</tr>
+</table>
+<!-- /表示切替ボタン ログイン前 -->
+</div>
+
+<!-- /HEADER |||| -->
+
+<!-- ||| グローバルナビ -->
+<div id="ROOF">
+
+<!-- グローバルナビ -->
+<div id="NAVITOP">
+
+<!-- 教育ニュースがカレントの場合表示 -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><a href="../../index.html" name="top" onmouseover="grobalMENU(this.name,1);" onmouseout="grobalMENU(this.name,0);"><img src="../../common/images/roof/top_off.gif" border="0" width="181" height="24" alt="トップ" name="top"></a></td>
+<td><img src="../../common/images/roof/news_on.gif" border="0" width="181" height="24" alt="教育ニュース"></td>
+<td><a href="../../community/index.html" name="community" onmouseover="grobalMENU(this.name,1);" onmouseout="grobalMENU(this.name,0);"><img src="../../common/images/roof/community_off.gif" border="0" width="181" height="24" alt="子どもの教育相談室" name="community"></a></td>
+<td><a href="../../school/junior_high_school/index.html" name="search" onmouseover="grobalMENU(this.name,1);" onmouseout="grobalMENU(this.name,0);"><img src="../../common/images/roof/search_off.gif" border="0" width="181" height="24" alt="学校情報・体験談サーチ" name="search"></a></td>
+</tr>
+</table>
+
+</div><!-- END id:NAVITOP -->
+<!-- /グローバルナビ -->
+
+
+<!-- /HEADER -->
+
+<!-- INFO -->
+
+
+<div id="INFO">
+</div>
+<!-- /INFO -->
+</div>
+
+<!-- CONTENTS -->
+<div id="CONTENTS">
+<table width="738" border="0" cellspacing="0" cellpadding="0">
+<tr valign="top">
+<td width="592">
+
+<!-- LEFT -->
+
+<!-- パンくず -->
+<div id="BREAD"><a href="../../index.html">トップ</a>&nbsp;&gt;&nbsp;<a href="../b1/index.html">教育ニュース</a>&nbsp;&gt;&nbsp;[調査]子どもの体力が低下　生活改善への方策が必要</div>
+
+<!-- /パンくず -->
+
+<!-- H1 -->
+<table border="0" cellspacing="0" cellpadding="0" class="h1Tbl">
+<tr>
+<td class="taRight"><img src="../../common/images/eduNews/h1_icn_02.gif" border="0" width="136" height="33" alt="教育ニュース"></td>
+</tr>
+</table>
+<div><img src="../../common/images/eduNews/h1_under.gif" border="0" width="592" height="2" alt=""></div>
+
+<!-- /H1 -->
+
+<!-- TITLE -->
+<div class="mt10"><img src="../../common/images/eduNews/h2_bg01.gif" border="0" width="592" height="5" alt=""></div>
+<h2>[調査]子どもの体力が低下　生活改善への方策が必要</h2>
+<div><img src="../../common/images/eduNews/h2_bg02.gif" border="0" width="592" height="5" alt=""></div>
+
+<!-- /TITLE -->
+
+<!-- 内容 -->
+<div class="contents">
+<!-- 件名 -->
+<div class="subjectDetail">
+<p><strong>［心と体］［Benesse教育研究開発センター］</strong></p>
+
+<p class="date">2005/09/15 17:00:00</p>
+</div>
+
+<!-- /件名 -->
+
+<!-- 内容表示 -->
+<div class="contentsDisp"><div class="blogContents"><p>子どもの体力が低下傾向にあることが、文部科学省の「体力・運動能力調査」から明らかになっています。そこでは、外遊びやスポーツをしない、体を動かさず家に閉じこもりがちな子どもが多くなっている、などの問題点が指摘されています。今まさに、子どもの健やかな成長や、生涯を通じての健康な体づくりに対する危険信号がともっています。<br><br>
+
+</p><p><strong>子どもの体力はここ20年で低下傾向</strong><br><br>
+
+
+
+文部科学省は8月末に発表した2006年度概算要求の中で、豊かなスポーツ環境づくりの推進の一環として、子どもの体力の向上を掲げた施策の拡充を盛り込んでいます。<br><br>
+
+
+
+実は、文部科学省では毎年、国民の体力・運動能力の実態を明らかにして、体育・スポーツなどの指導用資料を得るために「体力・運動能力調査」を行なっています。<br><br>
+
+
+
+この調査で、子どもの体力や運動能力が1985年ごろから低下傾向にあることがわかっています。下の表１をご覧ください。これは、1983年と<a href="http://www.mext.go.jp/b_menu/houdou/16/10/04100506.htm" target="_blank">2003年</a>における、小学生の「50m走」と「ソフトボール投げ」の記録です。いずれも20年を経て低下していることがわかります。また、下表以外の運動や年齢についても、ほぼ同様の低下傾向がみられます。<br><br>
+
+
+
+【表1】基礎的な運動能力の年次比較（11歳、男女別、1983年／2003年）<br>
+
+</p>
+
+<img src="../../education/newsflash/img/050915_1.gif" width="433" height="127" alt=""><br>
+
+<p>
+
+文部科学省「平成15年度体力・運動能力調査」より<br>
+
+※　週1日以上運動する子どもの場合<br><br>
+
+
+
+子どもの体力の低下は、ストレスに対する抵抗力の低下を引き起こしたり、肥満などの生活習慣病の原因になるなど、将来にわたって心身の健康に不安を与える恐れがあります。子どもの時期に活発な身体活動を行なうことは、これからの成長■発達にかかわる体力を高めることはもちろん、運動■スポーツに親しむために大切な身体的能力の基礎を養い、病気から身体を守る体力を強化し、より健康な状態をつくっていくことにつながります。<br><br>
+
+
+
+<strong>運動のきっかけ作りは大人の役目でもある</strong><br><br>
+
+
+
+ところで、なぜ子どもの体力が低下しているのでしょうか？<br><br>
+
+
+
+主な理由としては、<br>
+
+(1)国民の意識の問題（スポーツなどの重要性の軽視）<br><br>
+
+(2)子どもを取り巻く環境の問題（利便性の向上など生活全体の変化、スポーツや外遊びなどの減少）<br><br>
+
+(3)子どもの生活習慣の乱れ（夜更かしや栄養バランスを欠いた食生活など）<br><br>
+
+
+
+・・・が挙げられます（<a href="http://www.recreation.or.jp/kodomo/index.html" target="_blank">文部科学省「子どもの体力向上」ホームページ</a>より）。<br><br>
+
+
+
+たしかに、欠食や過度なダイエットなど問題のある食生活を送る子どもが多いことは、前回の「子どもの食に関する指導の重要性」でご紹介したとおりです。また、外遊びをする時間・空間・仲間が減少していることも事実です（<a href="http://www.mext.go.jp/b_menu/shingi/chukyo/chukyo0/toushin/021001.htm" target="_blank">2002年・中教審答申「子どもの体力向上のための総合的な方策について」</a>より）。<br><br>
+
+
+
+一方、文部科学省でも、<a href="http://www.japan-sports.or.jp/kodomo/campaign/index.html" target="_blank">「子どもの体力向上キャンペーン」</a>を毎年実施するなど、体づくりへの課題意識をもっているようです。こうした現状から、保護者の方々はもちろん、周囲の大人たちは、子どもが外で遊んだり、スポーツに親しむ機会を意識的につくっていく必要があるでしょう。<br><br>
+
+
+
+<strong>自治体・学校での取り組みも進行中</strong><br><br>
+
+
+
+子どもの体力・運動能力の低下傾向を改善しようと、都道府県レベルでの取り組みも始まっています。例えば埼玉県の教育局では、児童生徒1人ひとりが体力向上に向けた目標値を定め、それに向かって努力できるようにしています。また、鬼ごっこや長なわ跳びなど、比較的簡単で楽しい運動を通じて体力向上を図る「すくすくプログラム」（小学校向け）、「ステップアッププログラム」（中学・高校向け）を策定して各学校での実施をうながすなど、学校を通じた取り組みにも力を入れています。<br><br>
+
+
+
+さて、運動やスポーツの実施頻度が高いと体力水準も高くなることは、先の「体力・運動能力調査」から明らかになっています【下図1参照】。しかも、この傾向は9歳ごろから79歳になるまで共通しています。個人の状況に応じて運動やスポーツをたくさん行なうことが、生涯にわたって体力を高い水準に保ち、心身の健康づくりに役立つといえそうです。<br><br>
+
+
+
+これからの季節はまさにスポーツの秋、各地では<a href="http://www.japan-sports.or.jp/event/1010.html" target="_blank">体育の日にちなんださまざまな行事やイベント</a>の開催が予定されています。これを機会にお子さまと積極的に参加してみてはいかがでしょうか？<br><br>
+
+
+
+【図1】運動・スポーツの実施頻度別新体力テスト合計点<br>
+
+</p>
+
+<img src="../../education/newsflash/img/050915_2s.gif" alt=""><br>
+
+<p>
+
+文部科学省「平成15年度体力・運動能力調査」より<br>
+
+得点基準は、２０〜６４歳、６５〜７９歳並びに男女により異なる。<br><br>
+
+
+
+※下記の関連ニュース、ホームページもあわせてご覧ください。
+
+<br><br>
+
+文部科学省　05年8月22日報道発表　「<a href="http://www.mext.go.jp/b_menu/houdou/17/08/05082202.htm" target="_blank">『体育の日』中央記念行事/子どもの体力向上キャンペーン『元気アップ子どもスポーツフェスティバル』の開催について</a>」<br>
+
+財団法人 日本体育協会「<a href="http://www.recreation.or.jp/kodomo/index.html" target="_blank">子どもの体力向上ホームページ</a>」<br>
+
+Benesse教育情報ブログ「<a href="../20060119/p1.html">子どもの肥満を減らす動き、本格化へ</a>」（2006/01/19）<br>
+
+<br>
+
+
+
+<strong>この記事をご覧になった方からいただいた感想</strong><br><br>
+
+</p>
+
+<ul>
+
+<li><span>
+
+小学校の体育の時間も週休二日になって週に2回しかなくなりました。また、ソフトボール投げですが、学校の中での野球や、公園等でのボールあそびの禁止でボールを投げる機会がどんどんなくなっています。だから、当然の結果だと思います。</span></li><br><br>
+
+
+
+<li><span>子どもたちの環境、20年前とは全く違います。<br>
+
+かつての遊び場は家の周り、近所の生活道路、近所の庭から庭へ、空き地、原っぱ、どこでも良かった。<br>
+
+
+
+どこの家にも子どもがいて、親たちは誰が来ても寛容で庭をすり抜けて行っても、元気な姿を微笑ましく見守っていてくれたものです。<br>
+
+それはもう歩ける時期から子どもは自由に外に出ることができました。なぜかといえば、外＝危険ではなかったから。今の子どもたち、どこで遊べばいいのでしょう。車の流れが消えることのない交差点を渡り、公園まで行かなくてはならない。一時も目を離すことができない。それは親の負担度が違います。外遊びは乳幼児の頃からしたいけれど、車や自転車が横をすり抜けて行く舗道で、手を離した瞬間どんなことになるかと毎日緊張しながら外出しなくてはならない親の立場もわかって欲しい。子どものことだけを考えるのなら、自然の多い田舎に引っ越したいです。<br>
+
+のびのびと暮らせる場所に住んでいる子どもたちの体力も低下しているのでしょうか？! </span></li>
+
+</ul>
+
+</div></div>
+<!-- /内容表示 -->
+
+<!-- pagelink -->
+<div class="pagelink"></div>
+<!-- /pagelink -->
+
+<!-- 関連リンク  -->
+
+
+<!-- /関連リンク -->
+
+<!-- 執筆者  -->
+
+<!-- /執筆者 -->
+
+<!-- コメント、TB、友人紹介  -->
+
+<div class="count"><a href="p1.html#comment">コメント</a>(1)｜<a href="p1.html#trackback">トラックバック</a>(0)｜<a href="p1.html#" onclick="IntroFriend();">友だちに紹介する</a></div>
+
+<!-- /コメント、TB、友人紹介 -->
+	
+</div>
+<!-- /内容 -->
+
+
+<!-- この記事へのコメント -->
+<a name="comment"></a>
+<div class="mt20 taCenter"><img src="../../common/images/eduNews/orange_tb01.gif" border="0" width="511" height="11" alt=""></div>
+<div class="commentDisp">
+	<!-- タイトル -->
+	<div><img src="../../common/images/eduNews/orange_tb03.gif" border="0" width="480" height="4" alt=""></div>
+	<div class="title">この記事へのコメント</div>
+	<!-- /タイトル -->
+
+	<p class="notes dotline">この記事にコメントを投稿するためにはログインが必要です。<br>コメントは編集部が<a href="../../member/comment_rule.html" target="comment_rule">ルール</a>に基づき確認してから掲載します。<br />※掲載されたコメントは、あくまでも個人の意見や考えを基にしており、内容については編集部では保証できません。</p>
+
+	<!-- コメント -->
+	
+<table border="0" cellspacing="0" cellpadding="0" class="name mt10">
+<tr>
+<td class="face"><img src="../../common/images/blog_icon_01.gif" border="0" width="15" height="15" alt=""></td>
+<td>とっち</td>
+<td class="date">投稿日時　2005/12/28 17:40:00</td>
+</tr>
+</table>
+<p class="mt10 dotline">私は自然の多い田舎に住んでいます。しかし、のびのびと子供が遊んでいるか？と聞かれれば「ＮＯ！」です。<br><br>人口が少ない分、人の目が少ない、子供が少ない。田舎でも連れ去り事件のあるご時勢、外で勝手に遊んでおいでとも言えません。<br><br>田舎の子供だって家の中でゲーム漬けの子が多いんです。街中と変わりません。<br></p>
+
+	<!-- /コメント -->
+
+</div>
+<div class=" taCenter"><img src="../../common/images/eduNews/orange_tb02.gif" border="0" width="511" height="11" alt=""></div>
+
+<!-- /この記事へのコメント -->
+
+<!-- トラックバック -->
+<a name="trackback"></a>
+<div class="mt20 taCenter"><img src="../../common/images/eduNews/orange_tb01.gif" border="0" width="511" height="11" alt=""></div>
+<div class="commentDisp">
+	<!-- トラックバック -->
+	<div><img src="../../common/images/eduNews/orange_tb03.gif" border="0" width="480" height="4" alt=""></div>
+	<div class="title">トラックバック</div>
+	<!-- /トラックバック -->
+
+	<p class="notes">この記事のトラックバックURL | http://benesse.jp/tb/20050915/p1<br>
+	トラックバックする際は、トラックバックの<a href="../../member/trackback_rule.html" target="trackback_rule">ルール</a>をご参照ください。</p>
+
+	<!-- トラックバック -->
+	
+ 
+	<!-- /トラックバック -->
+
+</div>
+<div class=" taCenter"><img src="../../common/images/eduNews/orange_tb02.gif" border="0" width="511" height="11" alt=""></div>
+
+<!-- /トラックバック -->
+
+
+<!-- /LEFT ||| -->
+</td>
+<td width="10"><img src="../../common/images/dot.gif" border="0" width="1" height="1" alt=""></td>
+<td width="136">
+
+<!-- RIGHT_NAVI -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="RMEMBER">
+<!-- MEMBER -->
+
+
+<!-- ログイン前 -->
+<div><img src="../../common/images/rnavi/member_ttl01.gif" border="0" width="126" height="11" alt="Benesse教育情報サイト"></div>
+<div class="mt5"><a href="../../member/index.html"><img src="../../common/images/rnavi/btn_membercollect.gif" border="0" width="111" height="24" alt="メンバー募集中"></a></div>
+<div class="text"><p>学校情報検索や会議室をすべて無料で利用できます！</p></div>
+<!-- /ログイン前 -->
+<!-- /MEMBER -->
+</div>
+<div id="RKJNEWS">
+<!-- EDUNEWS -->
+
+
+
+<div><a href="../b1/index.html"><img src="../../common/images/rnavi/kjnews.gif" border="0" width="136" height="24" alt="教育ニュース"></a></div>
+<!-- 教育ニューステーマ -->
+<div><img src="../../common/images/rnavi/kjnews_thema.gif" border="0" width="136" height="20" alt="教育ニューステーマ"></div>
+<div class="newsBox">
+	<ul>
+	<li><a href="../theme/t1/index.html">教育動向</a></li>
+	<li><a href="../theme/t2/index.html">受験</a></li>
+	<li><a href="../theme/t3/index.html">進路・進学</a></li>
+	<li><a href="../theme/t4/index.html">学校</a></li>
+	<li><a href="../theme/t5/index.html">教育費</a></li>
+	<li><a href="../theme/t6/index.html">家庭学習</a></li>
+	<li><a href="../theme/t7/index.html">英語学習</a></li>
+	<li><a href="../theme/t8/index.html">塾・習いごと</a></li>
+	<li><a href="../theme/t9/index.html">IT教育</a></li>
+	<li><a href="../theme/t10/index.html">安全</a></li>
+	<li><a href="../theme/t11/index.html">心と体</a></li>
+	<li><a href="../theme/t12/index.html">コミュニケーション</a></li>
+	<li><a href="../theme/t13/index.html">その他</a></li>
+	<li><a href="../theme/t14/index.html">専門家</a></li>
+	<li><a href="../theme/t15/index.html">Benesse教育研究開発センター</a></li>
+	<li><a href="../theme/t16/index.html">親野智可等</a></li>
+	<li><a href="../theme/t17/index.html">義家弘介</a></li>
+	</ul>
+</div>
+<!-- /教育ニューステーマ -->
+
+<!-- オンライン投票 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- オンライン投票 -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div><img src="../../common/images/rnavi/kjnews_onlinevote.gif" border="0" width="136" height="21" alt="オンライン投票"></div>
+<div class="onlineVote">
+	<div class="voteBox">
+		<p class="taLeft">Ｑ.「学校選択制」は導入されている？</p>
+		
+		<form name="online_vote" method="GET" action="http://benesse.jp/kjmember/voteComment.do">
+		<input type="hidden" name="action" value="inputNavi">
+		<input type="hidden" name="voteId" value="3184">
+		
+		<div class="radioSelect" align="left">
+		<table>
+				
+				<tr><td><input name="choiceRadio" type="radio" value="1"></td><td align="left">導入されている</td></tr>
+				
+				<tr><td><input name="choiceRadio" type="radio" value="2"></td><td align="left">導入されていない</td></tr>
+				
+		</table>
+		</div>
+		<a name="online_vote"></a>
+		<div class="mt5"><a href="p1.html#" onclick="online_vote.submit();"><img src="../../common/images/btn_vote.gif" name="" border="0" alt="投票する"></a></div>
+		
+		</form>
+		<div class="point"><img src="../../common/images/icon_member.gif" border="0" width="33" height="11" alt="メンバー">5ポイント</div>
+		<p class="limited">(投票期間：2006/11/08〜2006/11/22)</p>
+		<p>現在の投票数　2003票</p>
+		<p class="arrow taLeft ml5"><a href="../../vote/voteTop.do@voteId=3184.html">投票せずに結果を見る</a></p>
+		<p class="arrow taLeft ml5 indent"><a href="../../vote.do.html">参加可能な投票一覧を見る</a></p>
+	</div>
+</div>
+<!-- /オンライン投票 -->
+
+
+
+<!-- /EDUNEWS -->
+</div>
+<div id="RNAVI">
+<!-- COMMUNITY -->
+
+<div class="mt8"><a href="../../community/index.html"><img src="../../common/images/rnavi/ttl_community.gif" border="0" width="136" height="21" alt="子どもの教育相談室"></a></div>
+<div><img src="../../common/images/rnavi/ttl_newvoice.gif" border="0" width="136" height="20" alt="新着発言"></div>
+<div class="voice">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="icon"><img src="../../common/community/images/icon_katei.gif" border="0" width="17" height="16" alt=""></td><td><a href="../../community/t2/s860/index.html">ケアレミスは…</a></td>
+</tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  class="mt7">
+<tr>
+<td class="icon"><img src="../../common/community/images/icon_shitsuke.gif" border="0" width="17" height="16" alt=""></td><td><a href="../../community/t3/s855/index.html">仲の悪い姉妹</a></td>
+</tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  class="mt7">
+<tr>
+<td class="icon"><img src="../../common/community/images/icon_katei.gif" border="0" width="17" height="16" alt=""></td><td><a href="../../community/t2/s845/index.html">《学習》しな…</a></td>
+</tr>
+</table>
+</div>
+
+<!-- /COMMUNITY -->
+<!-- SEARCH -->
+
+
+<!-- サイト内検索 -->
+<script language="JavaScript" type="text/javascript">function siteSearch() { document.siteSearchForm.submit(); return false; }</script>
+<div class="allnews">
+<FORM NAME="siteSearchForm" METHOD="POST" ACTION="http://kensaku.benesse.co.jp/cgi-bin/ccdmsrch.cgi?/usr/local/ccd7/visdb/public/L01">
+	<INPUT TYPE="hidden" NAME="kanjiexp" VALUE="漢">
+	<div class="taCenter"><input type="text" name="keyexpr" value="サイト内検索" size="20" maxlength="" class="input1" onFocus="this.value=''"></div>
+	<div class="taCenter mt5"><a href="javascript:void(0);" onclick="return siteSearch();"><img src="../../common/images/rnavi/btn_search.gif" name="" alt="検索する" border="0" /></a></div>
+</FORM>
+</div>
+<!-- /サイト内検索 -->
+
+<!-- /SEARCH -->
+<!-- WHATS_NEW -->
+
+
+<div class="allnews">
+<div class="taCenter"><img src="../../common/images/rnavi/ttl_allnews.gif" border="0" width="122" height="15" alt="総合新着情報"></div>
+<ul>
+<li><a href="../20061121/p3.html">指導力が不足してい…</a><span>(11/21)</span></li>
+<li><a href="../20061121/p2.html">［教育費プラン］大…</a><span>(11/21)</span></li>
+<li><a href="../20061121/p1.html">ありがとう</a><span>(11/21)</span></li>
+<li><a href="http://benesse.jp/school/high_school/search/23091/002309100001/search_08.html">本人の希望（学校見…</a><span>(11/20)</span></li>
+<li><a href="http://benesse.jp/school/junior_high_school/search/271103/0027110300001/search_08.html">駅から近く通学の便…</a><span>(11/20)</span></li>
+</ul>
+</div>
+
+<!-- /WHATS_NEW -->	
+</div>
+
+
+<!-- /RIGHT_NAVI -->
+
+</td>
+</tr>
+</table>
+</div>
+<!-- /CONTENTS -->
+
+<!-- FOOTER -->
+
+
+<div id="FOOTER">
+<!-- メンバー専用 -->
+<div id="MEMONLY">
+<span class="key">メンバー専用</span><a href="https://www.benesse.jp/kjmember/mypage.do">マイページ</a><span>｜</span><a href="https://www.benesse.jp/kjmember/tourokuHenkou.do">登録内容変更</a><span>｜</span><a href="https://www.benesse.jp/kjmember/pointTop.do">ポイント参照 </a><span>｜</span><a href="https://www.benesse.jp/kjmember/mailStop.do">メール配信設定</a><span>｜</span><a href="https://www.benesse.jp/kjmember/password.do">パスワード変更</a><span>｜</span><a href="https://www.benesse.jp/kjmember/withdrawal.do">退会受け付け</a>
+</div>
+<!-- /メンバー専用 -->
+
+
+<!-- このサイトについて -->
+<div id="SITEINFO">
+<div class="link"><a href="../../member/index.html">メンバー登録</a> ｜ <a href="../../about/index.html">このサイトについて</a> ｜ <a href="../../about/kiyaku.html">会員規約</a> ｜ <a href="../../sitemap/index.html">サイトマップ</a>｜ <a href="../../cgi-bin/contact/zbgcy002.pl.html" onclick="subwin(this.href,'qa','550','550');return false;">Q&amp;A</a> ｜ <a href="../../contact/index.html">お問い合わせ</a></div>
+</div>
+<!-- /このサイトについて -->
+
+
+<div class="mt8">
+<table width="760" summary="footer" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" bgcolor="#1578BB"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="3" border="0"></td>
+</tr>
+<tr>
+<td colspan="2"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+</tr>
+<tr>
+<td align="left">
+	<table border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td width="15"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+	<td><a href="http://www.benesse.co.jp/privacy/" target="_blank"><img src="../../common/images/headfoot/btn_personal.gif" alt="個人情報保護への取り組みについて" width="167" height="15" border="0"></a></td>
+	<td><a href="../../index.html" target="_blank"><img src="../../common/images/headfoot/btn_education.gif" alt="Benesse 教育情報サイト" width="125" height="15" border="0"></a></td>
+	</tr>
+	</table>
+</td>
+<td align="right" nowrap><img src="../../common/images/headfoot/copyright.gif" alt="Benesse Corporation. All rights reserved." width="251" height="15" border="0"><img src="../../common/images/headfoot/space.gif" alt="" width="5" height="1" border="0"></td>
+</tr>
+<tr>
+<td colspan="2"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="5" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#CCD6E0"><img src="../../common/images/headfoot/space.gif" alt="" width="1" height="1" border="0"></td>
+</tr>
+</table>
+</div>
+
+</div>
+
+<!-- /FOOTER -->
+
+</div>
+<!-- /MAIN -->
+
+</body>
+</html>

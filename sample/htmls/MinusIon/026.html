@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>@nifty：デイリーポータルZ：そのへんのマイナスイオンを計る</title>
+<SCRIPT language="javascript" type="text/javascript" src="../../../../js/fontsize.js"></SCRIPT>
+<SCRIPT language="javascript" type="text/javascript" src="../../../../js/d5.js"></SCRIPT>
+<style type="text/css">
+<!--
+.orangeb {
+	color: #FF6600;
+	font-weight: bold;
+}
+.tx10px {  font-size: 10px;  line-height:148%}
+.tx12px {  font-size: 12px;  line-height:148%}
+.orange {
+	color: #FF6600;
+}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" topmargin="0" leftmargin="0" rightmargin="4" marginwidth="0" marginheight="0" onLoad="Daily();">
+<div align="center"> 
+<!--HEADER-->
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td background="../../../../img_top/bg_head_01.gif"><img src="../../../../img_top/bg_head_01.gif" width="8" height="21"></td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr background="../../../../img_top/bg_head_02.gif">
+    <td align="center" valign="top" background="../../../../img_top/bg_head_02.gif"><table width="700" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="184" align="left"><a href="../../../../index.html"><img src="../../../../img_top/logo_dpz.gif" width="184" height="64" border="0"></a></td>
+          <td width="300" valign="top"><table width="300" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="header"><font color="#FF6600" class="tx12px"><img src="../../../../img_top/dummy.gif" width="3" height="3"> </font></td>
+                <td class="header">                  ｜<b><a href="http://www.nifty.com/search/">検索</a></b>｜<b><a href="../../../../../www.nifty.com/weather/index.html">天気</a></b>｜<b><a href="../../../../../www.nifty.com/globalgate/index.html">翻訳</a></b>｜<b><a href="../../../../../www.nifty.com/map/index.html">地図</a></b>｜<a href="../../../../../www.nifty.com/rosen/index.html"><b>路線</b></a>｜<b><a href="../../../../../uranai.nifty.com/today/index2.htm">運勢</a></b>｜<b><a href="http://tool.nifty.com/dictionary/">辞書</a></b>｜</td>
+              </tr>
+          </table></td>
+          <td align="right" valign="bottom"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="right"><a href="http://www.nifty.com/"><img src="../../../../img_top/logo_nifty.gif" width="78" height="31" border="0"></a></td>
+              </tr>
+              <tr>
+                <td align="right"><img src="../../../../page_img/dummy.gif" width="5" height="5"></td>
+              </tr>
+              <tr>
+                <td align="right"><img src="../../../../img_date/2006.gif" width="41" height="15"><img width="20" height="15" name="Month"><img width="20" height="15" name="DateImg"><img src="http://portal.nifty.com/2006/img_date/dot.gif" width="8" height="8"><img width="36" height="15" name="DayImg"></td>
+              </tr>
+          </table></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<!--HEADER-->
+<br>
+<br>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../../../../page_img/head.gif" width="700" height="10"></td>
+  </tr>
+</table>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td bgcolor="#000000" width="2"><img src="../../../../img_top/dummy.gif" width="2" height="10"></td>
+<td bgcolor="#FFCC00"> 
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr> 
+            <td class="tx12px"><b>ロマンの木曜日</b></td>
+</tr>
+</table>
+</td>
+<td bgcolor="#000000" width="2"><img src="../../../../img_top/dummy.gif" width="2" height="10" alt=""></td>
+</tr>
+</table>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td bgcolor="#000000"><img src="../../../../img_top/dummy.gif" width="28" height="2" alt=""></td>
+</tr>
+</table>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td bgcolor="#000000" width="2"><img src="../../../../img_top/dummy.gif" width="2" height="10"></td>
+<td width="28">　</td>
+<td width="640" align="center"> 
+<table width="640" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+            
+            <td width="355"><img width="540" height="34" vspace="10" src="img/title.gif" alt="そのへんのマイナスイオンを計る"></td>
+</tr>
+</table>
+        <table width="640" border="0" cellspacing="0" cellpadding="0">
+          <tr valign="TOP"> 
+            <td class="tx12px"> <table border="0" align="right" cellpadding="5" cellspacing="0">
+<tr>
+                  <td><img src="img/lead.jpg" width="320" height="240"></td>
+</tr>
+<tr>
+                  <td align="left" class="tx12px orange">
+                    <div align="center"><font color="#FF6600">マイナスイオン計測中</font></div>
+                  </td>
+</tr>
+</table>
+              <p class="tx12px">マイナスイオンが健康のキーワードとして流行したのは2002年ごろらしい。</p>
+              <p class="tx12px">それ以降、ぼくらが酸素入りの水を飲みながらナットウキナーゼを摂り、血液をサラサラにしているあいだに、マイナスイオンのブームは去ってしまった。</p>
+              <p class="tx12px">でも、たとえ人々の関心が薄れても、マイナスイオンは今でも変わらずそこにある。たとえば夕方、雨にぬれるサルビアの葉っぱの裏にも、目をこらせば、ほら、マイナスイオン。</p>
+              <p class="tx12px">そんな在野のマイナスイオンを見つけていきたいと思います。</p>
+              <p>（<a href="../../../../writer/index.htm">三土たつお</a>）</p>
+          </td>
+</tr>
+</table>
+        <br>
+		<img src="../../../../page_img/ten_line_l.gif" width="640" height="5">
+        <div align="center"> 
+          <p>　</p>
+          <table width="640" border="0" cellspacing="0" cellpadding="0" class="tx12px">
+            <tr> 
+              <td width="320" valign="top"> 
+                <table border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td><img src="img/setsumei1.jpg" width="320" height="240"></td>
+                  </tr>
+                  <tr> 
+                    <td align="left" class="tx12px orange"> 
+                      <div align="center"><font color="#FF6600">マイナスイオンの定義はよくわからない</font></div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td valign="top"> 
+                <table width="320" border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td class="tx12px" valign="middle"> 
+                      <p class="orangeb">そもそもマイナスイオンってなにか</p>
+                      <p>まずは、探そうとしているマイナスイオンというものがいったい何なのかということを確認しておきたい。</p>
+                      <p>理科の授業で習うイオンには、それぞれプラスとマイナスの電気を帯びたものがあった。それらは陽イオンと陰イオンとよばれるもので、陰イオンはいわゆるマイナスイオンとは違うものだという。</p>
+                      <p>じゃあマイナスイオンってなんなのか。</p>
+                      <p>実はちゃんとした定義はないらしい。調べたかぎりでは、おおよそ、ごく小さな水滴に陰イオンがくっついたものと考えればいいのかなと思った。</p>
+                      <p>　</p>
+                      </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table width="640" border="0" cellspacing="0" cellpadding="0" class="tx12px">
+            <tr> 
+              <td width="320" valign="top"> 
+                <table border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td><img src="img/setsumei2.jpg" width="320" height="240"></td>
+                  </tr>
+                  <tr> 
+                    <td align="left" class="tx12px orange"> 
+                      <div align="center"><font color="#FF6600">マイナスイオンの計測器はある</font></div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td valign="top"> 
+                <table width="320" border="0" cellspacing="0" cellpadding="5">
+                  <tr> 
+                    <td class="tx12px" valign="middle"> 
+                      <p class="orangeb">マイナスイオンカウンターを借りた</p>
+                      <p>そして世の中にはマイナスイオンを計るための機械があるらしい。</p>
+                      <p>調べるとどれもふつうに10万円ぐらいする。もっと安いのがあればと探したところ、渋谷の<a href="http://www.nichiwa-rent.co.jp/" target="_blank">ニチワ</a>という会社でレンタルができることが分かった。</p>
+                      <p>今回お借りすることができた機械は、アンデス電気製の空気イオンカウンター「ITC-201A」というもの。それ以上の詳しいことはぼくには分からない。どうやって、具体的に何を計っているのかといったことは聞かないでください。</p>
+                      <p>とにかくこれを持って、野に在るマイナスイオンを探していきます。</p>
+                      </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <table border="0" cellspacing="0" cellpadding="5">
+            <tr> 
+              <td width="320"><img src="img/setsumei3.jpg" width="320" height="240"></td>
+            </tr>
+            <tr> 
+              <td class="tx12px"> 
+                <div align="center"><font color="#FF6600">こんなかんじで調べていく</font></div>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          <br>
+        </div>
+<div align="center"> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td height="5" colspan="2"><img src="../../../../page_img/ten_line_l.gif" width="640" height="5"></td>
+</tr>
+<tr> 
+<td>　</td>
+<td width="50%" align="right" class="tx12px"><a href="2.htm">つぎへ ＞</a></td>
+</tr>
+<tr>
+<td height="5" colspan="2"><img src="../../../../page_img/ten_line_l.gif" width="640" height="5"></td>
+</tr>
+</table>
+
+</div>
+</td>
+<td width="28">　</td>
+<td bgcolor="#000000" width="2"><img src="../../../../img_top/dummy.gif" width="2" height="10" alt=""></td>
+</tr>
+</table>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../../../../page_img/foot.gif" width="700" height="10"></td>
+  </tr>
+</table>
+<br>
+<table width="700" border="0" cellspacing="0" cellpadding="3">
+<tr> 
+<td><a href="../../../../index.html" class="tx12px">▲トップに戻る</a></td>
+<td align="right"><img src="../../../../page_img/icon_list.gif" width="12" height="16" hspace="3" align="top"><a href="../../index.htm" class="tx12px">バックナンバーいちらんへ</a></td>
+</tr>
+</table>
+<!--アドセンスここから-->
+<script type="text/javascript" src="../../../../js/dpz-adsense-param.js"></script>
+<script type="text/javascript" src="../../../../js/dpz-adsense-table700.js"></script>
+<script language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+<!--アドセンスここまで-->
+<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr> 
+<td bgcolor="#FFFF00"><img src="../../../../img_top/dummy.gif" width="10" height="5" alt=""></td>
+</tr>
+<tr> 
+<td bgcolor="#FFFFCC"><img src="../../../../img_top/dummy.gif" width="10" height="1"></td>
+</tr>
+<tr> 
+<td bgcolor="#FFCC00"><img src="../../../../img_top/dummy.gif" width="10" height="10" alt=""></td>
+</tr>
+<tr> 
+<td><img src="../../../../img_top/dummy.gif" width="10" height="5" alt=""></td>
+</tr>
+<tr> 
+<td><!-- #BeginLibraryItem "/Library/foot.lbi" --><table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+    <tr>
+
+      <td><img src="../../../../common_img/to_top.gif" width="98" height="23"></td>
+
+      <td align="right" class="tx10px">
+
+      <a href="http://www.nifty.com/policy/privacy.htm" target="_blank">個人情報保護ポリシー</a><br>
+
+            <a href="http://www.nifty.com/policy/link_copy.htm" target="_blank"><img src="../../../../common_img/copyright.gif" width="186" height="10" border="0" alt="Copyright(ｃ) 2002 All Rights Reserved."></a></td>
+
+    </tr>
+
+    </table><!-- #EndLibraryItem --></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

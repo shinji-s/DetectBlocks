@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>健康管理システム</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<script language="JavaScript">
+<!--
+function chkform(oj) {
+  if ((oj.metabolic1[0].checked == false) && 
+      (oj.metabolic1[1].checked == false)) {
+    alert("性別を選択してください。");
+    return false ;
+
+  } else {
+    return true ;
+  }
+
+}
+//-->
+</script>
+<link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<table width="100%" height="79" border="0" cellpadding="0" cellspacing="0"> 
+  <tr> 
+    <td colspan="5"> <img src="../images/main_01.gif" width="700" height="51" alt="健康管理システム"></td> 
+    <td background="../images/back_01.gif">&nbsp;</td> 
+  </tr> 
+  <tr> 
+    <td width="179"> <a href="I_Metabolic.php.html"><img src="../images/main_02.gif" alt="メタボリックシンドローム" width="179" height="28" border="0"></a></td> 
+    <td width="79"> <a href="../ketsuatsu/I_HighBloodPressure.php.html"><img src="../images/main_03.gif" alt="高血圧症" width="79" height="28" border="0"></a></td> 
+    <td width="74"> <a href="../koushi/I_HighCholesterol.php.html"><img src="../images/main_04.gif" alt="高脂血症" width="74" height="28" border="0"></a></td> 
+    <td width="128"> <a href="../nyou/I_HighNyosan.php.html"><img src="../images/main_05.gif" alt="高尿酸血症・痛風" width="128" height="28" border="0"></a></td> 
+    <td width="240"> <img src="../images/main_06.gif" width="240" height="28" alt=""></td> 
+    <td background="../images/back_02.gif">&nbsp;</td> 
+  </tr> 
+</table> 
+<table width="100%"  border="0" cellspacing="0" cellpadding="0"> 
+  <tr> 
+    <td width="700" height="100%" bgcolor="#FFFFFF"><br> 
+      <table width="500" border="0" align="center" cellpadding="0" cellspacing="0"> 
+        <tr> 
+          <td><img src="title.jpg" width="500" height="50"></td> 
+        </tr> 
+      </table> 
+      <table width="500" border="0" align="center" cellpadding="0" cellspacing="0"> 
+        <tr> 
+          <td><br> 
+            <p>メタボリックシンドロームとは?</p> 
+            <p> 血圧が少し高い。血糖値もやや高い。そういえば、お腹も出てきた。このようにそれぞれの結果は問題ないものであっても、これらが重複してくると脳梗塞や心筋梗塞を引き起こす可能性は何倍にもなります。
+              このような内臓脂肪型肥満によって、さまざまな病気が引き起こされやすくなった状態のことを「メタボリックシンドローム」と呼んでいます。</p> 
+            <hr> 
+            <img src="comment.jpg" alt="健康診断の結果などから、あなたがメタボリックシンドロームか否か、チェックしてみてください。 " width="501" height="91"> 
+            <form name="form1" method="post" action="http://health.med.kagawa-u.ac.jp/kenko/meta/I_MetabolicJudge.php" onSubmit="return chkform(this)"> 
+			<br>
+              <table border="0" cellpadding="0" cellspacing="0"> 
+                <tr> 
+                  <td width='250' class="check">性別</td> 
+                  <td width='150' class="check"><input type='radio' name='metabolic1' value='man' id="meta1_1"> 
+                    <label for="meta1_1">男性</label></td> 
+                  <td width='150' class="check"><input type='radio' name='metabolic1' value='woman' id="meta1_2"> 
+                    <label for="meta1_2">女性</label></td> 
+                  <td width='150' class="check">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                  <td class="check">ウエスト径</td> 
+                  <td class="check"><input type='radio' name='metabolic2' value='waist85less' checked id="meta1_3"> 
+                    <label for="meta1_3">85cm未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic2' value='waist8590' id="meta1_4"> 
+                    <label for="meta1_4">85〜90cm</label></td> 
+                  <td class="check"><input type='radio' name='metabolic2' value='waist90more' id="meta1_5"> 
+                    <label for="meta1_5">90cm以上</label></td> 
+                </tr> 
+                <tr> 
+                  <td class="check">トリグリセライド</td> 
+                  <td class="check"><input type='radio' name='metabolic3' value='tg150less' checked id="meta1_6"> 
+                    <label for="meta1_6">150mg/dl未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic3' value='tg150more' id="meta1_7"> 
+                    <label for="meta1_7">150mg/dl以上</label></td> 
+                  <td class="check">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                  <td class="check">HDLコレステロール</td> 
+                  <td class="check"><input type='radio' name='metabolic4' value='hdlc40more' checked id="meta1_8"> 
+                    <label for="meta1_8">40mg/dl未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic4' value='hdlc40less' id="meta1_9"> 
+                    <label for="meta1_9">40mg/dl以上</label></td> 
+                  <td class="check">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                  <td class="check">収縮期(最大)血圧</td> 
+                  <td class="check"><input type='radio' name='metabolic5' value='pressure130less' checked id="meta1_10"> 
+                    <label for="meta1_10">130mg/dl未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic5' value='pressure130more' id="meta1_11"> 
+                    <label for="meta1_11">130mg/dl以上</label></td> 
+                  <td class="check">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                  <td class="check">拡張期(最小)血圧</td> 
+                  <td class="check"><input type='radio' name='metabolic6' value='pressure85less' checked id="meta1_12"> 
+                    <label for="meta1_12">85mg/dl未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic6' value='pressure85more' id="meta1_13"> 
+                    <label for="meta1_13">85mg/dl以上</label></td> 
+                  <td class="check">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                  <td class="check">空腹時血糖</td> 
+                  <td class="check"><input type='radio' name='metabolic7' value='bSugar110less' checked id="meta1_14"> 
+                    <label for="meta1_14">110mg/dl未満</label></td> 
+                  <td class="check"><input type='radio' name='metabolic7' value='bSugar110more' id="meta1_15"> 
+                    <label for="meta1_15">110mg/dl以上</label></td> 
+                  <td class="check">&nbsp;</td> 
+                </tr> 
+              </table> 
+              <table width="500" border="0" cellspacing="0" cellpadding="0"> 
+                <tr> 
+                  <td align="right"><br> 
+                    <input type="submit" value="判定"> </td> 
+                </tr>
+                <tr>
+                  <td align="right">&nbsp;</td>
+                </tr> 
+              </table> 
+            </form></td> 
+        </tr> 
+      </table></td> 
+    <td bgcolor="#666666"><p>&nbsp;</p></td> 
+  </tr> 
+</table> 
+</body>
+</html>

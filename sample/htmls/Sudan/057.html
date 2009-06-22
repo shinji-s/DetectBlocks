@@ -1,0 +1,111 @@
+<HTML>  
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=euc-jp">
+  <TITLE>Creative Space TOPICS</TITLE>
+<script language="JavaScript" type="text/javascript">
+<!--
+// イメージ用配列
+var SwImg; SwImg = new Array;
+
+// 画像の先読み ImgPreload('imgタグのid', '通常の画像のパス', 'マウスオーバー時の画像のパス')
+ImgPreload('shift', '/index_files/logoEcoSft.gif', '/index_files/logoEcoSft1.gif', '/index_files/logoEcoSft2.gif');
+ImgPreload('float', '/index_files/logofloatsp.gif', '/index_files/logofloatsp1.gif', '/index_files/logofloatsp2.gif');
+ImgPreload('eco', '/index_files/logoEco.gif', '/index_files/logoEco1.gif', '/index_files/logoEco2.gif');
+ImgPreload('link', '/index_files/logocookie.gif', '/index_files/logocookie1.gif', '/index_files/logocookie2.gif');
+ImgPreload('bbs', '/index_files/bbs.gif', '/index_files/bbs1.gif', '/index_files/bbs1.gif');
+
+/* 画像プリロード */
+function ImgPreload() {
+        var N = ImgPreload.arguments[0];
+        SwImg[N] = new Image();
+        SwImg[N][0] = new Image();
+        SwImg[N][0].src = ImgPreload.arguments[1];
+        SwImg[N][1] = new Image();
+        SwImg[N][1].src = ImgPreload.arguments[2];
+}
+
+/* ロールオーバー */
+function ImgChenge() {
+        var ID = ImgChenge.arguments[0];
+        var N  = ImgChenge.arguments[1];
+        document.images[ID].src = SwImg[ID][N].src;
+}
+
+//  -->
+</script>
+</HEAD>
+<BODY BGCOLOR="#cccccc" background="../index_files/concrete-red.gif">
+
+<H3><A HREF="../index.html"><IMG SRC="../index_files/logoCRE.gif" WIDTH="167" HEIGHT="25"
+ALIGN="MIDDLE" BORDER="0" ALT="Creative Space"></A>　<FONT COLOR="#000099">トピックス</FONT></H3>
+
+<P><CENTER><TABLE WIDTH="95%" BORDER="0" CELLSPACING="0" CELLPADDING="2">
+  <TR>
+    <TD WIDTH="110" VALIGN="TOP" ALIGN="CENTER">
+      <P><A HREF="../eclogsft/index.html" onmouseout="ImgChenge('shift',0)" onmouseover="ImgChenge('shift',1)" onMousedown="ImgChenge('shift',2)" onMouseup="ImgChenge('shift',1)"><IMG 
+      SRC="../index_files/logoEcoSft.gif" WIDTH="64" HEIGHT="64" ALIGN="BOTTOM"
+      BORDER="0" ALT="エコろじーシフト" name="shift" id="shift"></A></P>
+
+      <P><A HREF="../space/index.html" onmouseout="ImgChenge('float',0)" onmouseover="ImgChenge('float',1)" onMousedown="ImgChenge('float',2)" onMouseup="ImgChenge('float',1)"><IMG 
+      SRC="../index_files/logofloatsp.gif" WIDTH="64" HEIGHT="64" ALIGN="BOTTOM"
+      BORDER="0" ALT="浮遊空間" name="float" id="float"></A></P>
+
+      <P><A HREF="../ecology/index.html" onmouseout="ImgChenge('eco',0)" onmouseover="ImgChenge('eco',1)" onMousedown="ImgChenge('eco',2)" onMouseup="ImgChenge('eco',1)"><IMG 
+      SRC="../index_files/logoEco.gif" WIDTH="64" HEIGHT="64" ALIGN="BOTTOM"
+      BORDER="0" ALT="エコろじー" name="eco" id="eco"></A></P>
+      
+      <P><A HREF="../../www3.creative.co.jp/bbs/index.html" onmouseout="ImgChenge('bbs',0)" onmouseover="ImgChenge('bbs',1)" onMousedown="ImgChenge('bbs',2)" onMouseup="ImgChenge('bbs',1)" ALT="bbs">
+      <IMG SRC="../index_files/bbs.gif" WIDTH="64" HEIGHT="64" BORDER="0" name="bbs" id="bbs" alt="BBS"></A>
+      
+      <P><A HREF="../link/index.html" onmouseout="ImgChenge('link',0)" onmouseover="ImgChenge('link',1)" onMousedown="ImgChenge('link',2)" onMouseup="ImgChenge('link',1)"><IMG 
+      SRC="../index_files/logocookie.gif" WIDTH="64" HEIGHT="64" ALIGN="BOTTOM"
+      BORDER="0" ALT="便利広場" name="link" id="link"></A>
+    </TD>
+    <TD VALIGN="TOP">
+<BLOCKQUOTE>
+<H2>スーダン西部は「世界最大の人道危機」に直面</H2>
+<P ALIGN=RIGHT>2004-05-14</P>
+チャド・バハイ（ＣＮＮ）　スーダン西部のダルフール地方で続く内戦を逃れて、隣国チャド北部に難民が流入している。伝えられることの少ないこの戦争は、今日の世界最大の人道危機と呼ばれている。<br>
+<br>
+難民たちは間に合わせの小屋以外に住む場所はなく、医療手段もない。子どもたちは下痢や栄養失調で死の淵に追い込まれ、米政府は絶望的な状況の中で停戦と人々への援助を求めている。バハイ村は貧しい小村だが、１年以上にわたり、１万５千人以上の難民と生活をともにしている。国連や他の国際援助機関は、数カ月前に到着したばかりで、人々の生存をかけて時間との競争が始まっている。<br>
+<br>
+国連高等難民弁務官事務所のエレーヌ・コー氏はＣＮＮに「雨期が５月末にやってくる。すべてが洪水で流されることになる。そうなる前に人々をどこか別の場所に移動させたい。しかし、誰もそれが可能だと本当には思っていない。水の不足や基本的な医療の欠如で、子どもたちは下痢のような病気でも死んでいる」と述べた。<br>
+<br>
+人口約９００万人のチャドだが、医師はわずか２７１人しかいない。北部地域では、医者や看護師はおらず、基礎的な医薬品を出す資格がある医療技術者が１人いるだけだ。国際救援委員会のバルデラマ医師は基礎的な医療の穴を埋める努力を続けている。<br>
+<br>
+生後わずか２２日という赤ん坊の成長が止まり、老人のような顔をしている。バルデラマ医師は深刻な栄養失調と診断したが、最近設立された国際医療施設に搬送するには車で少なくとも５時間かかるという。<br>
+<br>
+難民らは、アラブ系スーダン人による政府が西部のアフリカ系住民との内戦に入るまでは、ダルフール地方で静かに暮していたと口を揃える。難民のひとり、アダム・スレイマンさんはアラブ系がアフリカ系男性を殺害し、女性にはレイプなどの暴行を加えたと証言した。<br>
+<br>
+スーダン政府軍や民兵らによる民族浄化から逃れるため、毎週約３００人の難民がダルフール地方から川を渡ってチャドに入る。ダルフールではすでに約１００万人が住居を失い、約１２万５千人がチャドに逃げ込んだ。<br>
+<br>
+ダルフールは外部からの接触が難しく、国連と人権団体ヒューマン・ライツ・ウォッチがようやくダルフールに入り、生存者の証言などを得ることができた。カルフール北部では国連がようやく、食糧援助を始めようとしている。人々は通常はヤギに与える木の実を食べて飢えをしのいでいる。<br>
+<br>
+<a href="http://cnn.co.jp/world/CNN200405130014.html">http://cnn.co.jp/world/CNN200405130014.html</a><br>
+- CNN<br>
+2004.05.13<br>
+<P><HR ALIGN=LEFT></P>
+<DL>
+<DT><B><A HREF="main1915.html">サマワの治安「油断できない」陸上幕僚長会見</A></B>
+<DD>2004-05-14
+<DT><B><A HREF="main1914.html">アテネの空を覆うテロの脅威</A></B>
+<DD>2004-05-14
+<DT><B>スーダン西部は「世界最大の人道危機」に直面</B>
+<DD>2004-05-14
+<DT><B><A HREF="main1912.html">CPAが世論調査、80％以上が占領軍に不信感</A></B>
+<DD>2004-05-14
+<DT><B><A HREF="main1911.html">イラク人の死「それがどうした」女性米兵</A></B>
+<DD>2004-05-13
+</DL>
+<P><A HREF="list.cgi.html">その他一覧...</A></P>  <P><A HREF="../index.html">トップへ戻る</A>
+</BLOCKQUOTE>
+
+
+
+
+    </TD>
+  </TR>
+</TABLE></CENTER>
+
+</BODY>
+</HTML>

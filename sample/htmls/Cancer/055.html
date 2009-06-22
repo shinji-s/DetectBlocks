@@ -1,0 +1,696 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
+<script src="http://melma.com/contents/js/common.js" type="text/javascript"></script>
+<title>医療２１ | melma!</title>
+<meta name="keyword" content="メルマガ,メールマガジン,melma!,メルマ,医療２１">
+<meta name="description" content="２１世紀は生命科学が急速に進展し、それに伴ない医療も大きく変わろうとしています。「医療２１」は医療・健康・薬学に関する情報を提供するメルマガです。遺伝子治療、ガン、糖尿病、心臓病...　メルマ！ _ メルマガ">
+<link type="application/rss+xml" rel="alternate" href="../contents/rss/35950.rdf">
+<link type="text/css" rel="stylesheet" href="../css/base.css" media="all">
+<link type="text/css" rel="stylesheet" href="../css/backnumber/backnumber.css" media="all">
+<script type="text/javascript">
+<!--
+function readyElements() {
+	unregistThisMagazine();
+	createCalender();
+	readyCommentField();
+}
+
+function createCalender(createYear, createMonth) {
+
+	var backNumberList = document.getElementById('backnumberList');
+	var backNumberListChild = new Array(backNumberList.getElementsByTagName("A").length);
+	var articleListElements = new Array();
+	var calHTML = "";
+	var calHTMLFinalize = "";
+	var thisYear  = 0;
+	var thisMonth = 0;
+
+	var pluralDelimiter = '|';
+	var pluralHrefs = "";
+
+	if(createYear > 0) {
+		thisYear = createYear;
+	} else {
+		thisYear = Number(backNumberList.getElementsByTagName("A")[0].innerHTML.split("/")[0])
+	}
+
+	if(createMonth > 0) {
+		if(createMonth > (Number(backNumberList.getElementsByTagName("A")[0].innerHTML.split("/")[1]) - 1)) {
+			thisMonth = Number(backNumberList.getElementsByTagName("A")[0].innerHTML.split("/")[1]) - 1;
+		} else {
+			thisMonth = Number(createMonth) - 1;
+		}
+	} else {
+		if(createMonth == 0) {
+			thisMonth = 0;
+		} else {
+			thisMonth = Number(backNumberList.getElementsByTagName("A")[0].innerHTML.split("/")[1]) - 1;
+		}
+	}
+	
+
+	for (var i=0;i < backNumberList.getElementsByTagName("A").length;i++) {
+		backNumberListChild[i] = new Array(4);
+		backNumberListChild[i][0] = backNumberList.getElementsByTagName("A")[i].href;
+		backNumberListChild[i][1] = backNumberList.getElementsByTagName("A")[i].innerHTML.split("/")[0];
+		backNumberListChild[i][2] = backNumberList.getElementsByTagName("A")[i].innerHTML.split("/")[1];
+		backNumberListChild[i][3] = backNumberList.getElementsByTagName("A")[i].innerHTML.split("/")[2];
+	}
+
+
+	for(var i=0;i < backNumberListChild.length;i++) {
+		if(backNumberListChild[i][2] == thisMonth + 1) {
+			if(articleListElements[backNumberListChild[i][3]] != "" && articleListElements[backNumberListChild[i][3]] != undefined) {
+				articleListElements[backNumberListChild[i][3]] = articleListElements[backNumberListChild[i][3]] + pluralDelimiter + backNumberListChild[i][0];
+			} else {
+				articleListElements[backNumberListChild[i][3]] = backNumberListChild[i][0];
+			}
+		}
+	}
+
+	var lastDayPerMonth = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+	var weekDay_ja = new Array('日','月','火','水','木','金','土');
+	var dayCount = 1;
+	var setLastDay = true;
+
+	var oTargetDate = new Date(thisYear, thisMonth, 1);
+	var targetWeekDay = oTargetDate.getDay();
+
+	var thisMonthDayArray = new Array();
+
+	var calHTML = "";
+	calHTML = calHTML + '<table width="228" border="0" bgcolor="#ffffff" cellpadding="3" cellspacing="0" id="articleCalenderTable">';
+	calHTML = calHTML + '<tr style="padding: 10px 0;"><td colspan="7" align="center"><a href="#" onclick="createCalender(' + thisYear + ',' + thisMonth + ');return false;">&lt;&lt;</a> '+(thisMonth+1)+'月 <a href="#" onClick="createCalender(' + thisYear + ',' + (thisMonth+2) + ');return false;">&gt;&gt;</a></td></tr>';
+	calHTML = calHTML + '<tr bgcolor="#ffcc66" style="font-weight: bold;padding: 10px 0;"><td style="color: red;">'+weekDay_ja[0]+'</td>'+'<td>'+weekDay_ja[1]+'</td>'+'<td>'+weekDay_ja[2]+'</td>'+'<td>'+weekDay_ja[3]+'</td>'+'<td>'+weekDay_ja[4]+'</td>'+'<td>'+weekDay_ja[5]+'</td>'+'<td>'+weekDay_ja[6]+'</td></tr>';
+
+
+	for(var i=0;i < lastDayPerMonth[thisMonth] + targetWeekDay;i++) {
+		if(i < targetWeekDay) {
+			thisMonthDayArray[i] = 0;
+		} else {
+			thisMonthDayArray[i] = dayCount;
+			dayCount++;
+		}
+	}
+
+	var countOfVisibleDay = 1;
+
+	for(var k=0;k < lastDayPerMonth[thisMonth] + targetWeekDay;k++) {
+		if(k % 7 == 0) { calHTML = calHTML + '</tr><tr>';}
+		if(thisMonthDayArray[k] == 0) {
+			calHTML = calHTML + '<td>&nbsp;</td>';
+		} else {
+			if(articleListElements[countOfVisibleDay] != undefined && articleListElements[countOfVisibleDay] != "") {
+				if(articleListElements[countOfVisibleDay].indexOf(pluralDelimiter, 0) != -1) {
+					calHTML = calHTML + '<td><a href="#" onClick="notiftPluraArticles(\''+articleListElements[countOfVisibleDay]+'\',\''+pluralDelimiter+'\',\''+(thisMonth+1)+'\',\''+thisMonthDayArray[k]+'\');return false;">'+thisMonthDayArray[k]+'</a></td>';
+				} else {
+					calHTML = calHTML + '<td><a href="'+articleListElements[countOfVisibleDay]+'">'+thisMonthDayArray[k]+'</a></td>';
+				}
+			} else {
+				calHTML = calHTML + '<td>'+thisMonthDayArray[k]+'</td>';
+			}
+			countOfVisibleDay++;
+		}
+
+	}
+	calHTML = calHTML + '</tr>';
+	calHTML = calHTML + '</table>';
+	calHTMLFinalize = calHTML + '<div id="notiftPluraArticles" style="display:none;background:#fff;border:1px solid #f90;padding:10px;filter:alpha(opacity=85);opacity:0.85;-moz-opacity: 0.85;"></div>';
+
+	document.getElementById('articleCalender').innerHTML = calHTMLFinalize;
+	document.getElementById('backnumberList').style.display = "none";
+}
+
+function notiftPluraArticles(articlesUrl, delimiter, dispMonth, dispDay) {
+
+	var urls = new Array();
+		urls = articlesUrl.split(delimiter);
+	var popupHTML = "";
+	var publishMonth = dispMonth;
+	var publishDay   = dispDay;
+
+	popupHTML = popupHTML + publishMonth + '月' + dispDay + '日に発行された記事が複数あります。<br>';
+
+	for(var i=0;i < urls.length;i++) {
+		popupHTML = popupHTML + '<a href="' + urls[i] + '">記事ID:'+ urls[i].split("_")[2].replace("/","") +'</a><br>';
+	}
+	popupHTML = popupHTML + '<p style="padding: 10px 0;"><a href="#" onClick="notiftPluraSetDisplay(document.getElementById(\'notiftPluraArticles\'),document.getElementById(\'articleCalenderTable\'));return false;">閉じる</a></p>'
+
+
+	notiftPluraSetDisplay(document.getElementById('notiftPluraArticles'),
+						  document.getElementById('articleCalenderTable'));
+
+	document.getElementById('notiftPluraArticles').innerHTML = popupHTML;
+
+}
+
+function notiftPluraSetDisplay(oldListView, calenderTable) {
+
+	var oListView = oldListView;
+	var oCalender = calenderTable;
+
+	if(oListView.style.display == 'none') {
+		oCalender.style.filter = "alpha(opacity=50)";
+		oCalender.style.MozOpacity = 0.5;
+		oCalender.style.opacity = 0.5;
+		oListView.style.display = 'block'
+		oListView.style.position = "absolute";
+		oListView.style.top = 10 + 'px';
+		oListView.style.left = 10 + 'px';
+	} else {
+		oCalender.style.filter = "alpha(opacity=100)";
+		oCalender.style.MozOpacity = 1;
+		oCalender.style.opacity = 1;
+		oListView.style.display = 'none';
+	}
+
+}
+function readyCommentField() {
+
+	var jsCf = document.getElementById('jsCommentField');
+	var oCf  = document.getElementById('commentPostForm');
+
+	jsCf.innerHTML = oCf.innerHTML;
+	jsCf.style.display = 'none';
+	oCf.style.display = 'none';
+}
+
+function switchViewCommentField() {
+
+	var jsCf = document.getElementById('jsCommentField')
+	var oCf  = document.getElementById('commentPostForm');
+
+	if(jsCf.style.display == 'none') {
+		jsCf.style.display = 'block';
+	} else {
+		jsCf.style.display = 'none';
+	}
+
+}
+
+function throughException(){
+    return true;
+}
+
+function unregistThisMagazine() {
+
+	var ff = document.registForm;
+
+	if(location.hash == '#taikai') {
+		ff.mailmag[1].checked = true;
+	}
+}
+
+
+window.onload = readyElements;
+window.onerror = throughException;
+//-->
+</script>
+</head>
+<body>
+<div id="rootArea">
+<div id="headerArea">
+<div class="headerNavigation">
+<div class="headerMenu">
+<ul>
+<li>
+<a href="http://melma.com/contents/taikai/"><img border="0" height="20" width="113" alt="メールマガジンの解除" src="../img/kaijo.gif"></a>
+</li>
+<li>
+<a href="http://melma.com/contents/help/"><img border="0" height="20" width="77" alt="よくある質問" src="../img/question.gif"></a>
+</li>
+<li>
+<a href="http://melma.com/contents/guide/sitemap.html"><img border="0" height="20" width="77" alt="サイトマップ" src="../img/sitemap.gif"></a>
+</li>
+<li>
+<a href="http://melma.com/contents/guide/first.html"><img border="0" height="20" width="77" alt="初めての方へ" src="../img/begin.gif"></a>
+</li>
+</ul>
+</div>
+<div class="areaEnd"></div>
+<h1>
+<a href="http://melma.com/"><img src="../img/melma_logo.gif" height="45" width="190" alt="日本最大級メルマガポータルサイト _ melma! " id="logo"></a>
+</h1>
+<div class="globalNavigation">
+<ul>
+<li>
+<a href="http://melma.com/" id="top"><img border="0" height="20" width="140" alt="トップページ" src="../img/navi_top.gif"></a>
+</li>
+<li>
+<a href="https://my.melma.com/mytop/" id="my"><img border="0" height="20" width="140" alt="マイメルマ！" src="../img/navi_mymelma.gif"></a>
+</li>
+<li>
+<a href="../categorylist/index.html" id="read"><img border="0" height="20" width="140" alt="マガジンを読む" src="../img/navi_read.gif"></a>
+</li>
+<li>
+<a href="https://my.melma.com/toolstop/" id="pub"><img border="0" height="20" width="140" alt="マガジンを発行する" src="../img/navi_publish.gif"></a>
+</li>
+</ul>
+</div>
+<br class="areaEnd">
+<div class="subNavigation">
+<ul>
+<li>
+<a href="http://melma.com/contents/categorylist/">カテゴリーから選ぶ</a>
+</li>
+<li>
+<a href="../newmagazine/index.html">新創刊マガジン</a>
+</li>
+<li>
+<a href="../rank/index.html">読者数ランキング</a>
+</li>
+<li>
+<a href="http://melma.com/contents/guide/officialmagazine.html">オフィシャルマガジン</a>
+</li>
+<li>
+<a href="https://my.melma.com/magazinelist/">登録マガジン一覧</a>
+</li>
+<li>
+<a href="http://melma.com/contents/taikai/">メールマガジンの解除</a>
+</li>
+</ul>
+</div>
+<br class="areaEnd">
+</div>
+<br class="areaEnd">
+</div>
+<div id="bodyArea">
+<div id="contentsAreaBn">
+<div id="contentsAreaMainBn">
+<div class="headerLink">
+<a href="http://melma.com/">melma! トップ</a><span class="headerLinkSeparator"> &gt; </span><a href="../largecategory_487/index.html">健康</a><span class="headerLinkSeparator"> &gt; </span><a href="../middlecategory_168/index.html">医学</a><span class="headerLinkSeparator"> &gt; </span>医療２１</div>
+<div style="width: 820px;text-align: center;margin-bottom: 15px;">
+<a href="http://ad.melma.com/to?id=25101" target="_blank"><img src="../img/banner/0701/trustorix.jpg" width="728" height="90" alt="オリックス信託銀行" border="0"></a>
+</div>
+<div id="contentsAreaSubA">
+<div class="contentsHeaderBn">
+<h2>医療２１</h2>
+<br class="areaEnd">
+</div>
+<table class="attribute" cellspacing="0" cellpadding="0" border="0" width="542">
+<tr>
+<td width="30"><img height="27" width="24" alt="最終発行日" src="../img/backn/details_01.gif"></td><td valign="bottom" width="106">2006/12/29</td><td width="30"><img height="27" width="24" alt="読者数" src="../img/backn/details_03.gif"></td><td valign="bottom" width="105">1193人
+				</td><td width="30"><img height="27" width="24" alt="発行周期" src="../img/backn/details_02.gif"></td><td valign="bottom" width="106">不定期（月に2-4回）</td><td width="30"><img height="27" width="24" alt="Webサイト" src="../img/backn/details_04.gif"></td><td valign="bottom" width="105"><a target="_blank" href="http://biokagaku.com./iryo21/">HPあり</a></td>
+</tr>
+</table>
+<table class="attribute" cellspacing="0" cellpadding="0" border="0" width="542">
+<tr>
+<td valign="bottom" width="352">　</td><td valign="bottom" width="152">マガジンID：00035950</td><td valign="bottom" width="38"><a href="../contents/rss/35950.rdf"><img class="rss" height="11" width="38" alt="RSSでマガジンを受信" src="../img/backn/details_07rss.gif"></a></td>
+</tr>
+</table>
+<p id="setsumei">２１世紀は生命科学が急速に進展し、それに伴ない医療も大きく変わろうとしています。「医療２１」は医療・健康・薬学に関する情報を提供するメルマガです。遺伝子治療、ガン、糖尿病、心臓病、組織工学、健康食他。</p>
+<a name="taikai">　</a><img src="../img/registration.gif" alt="マガジンの登録／解除" width="136" height="14" style="padding:3px 0 2px 0;"><div class="registThisMagazine">
+<form name="registForm" method="post" action="index.html">
+<input value="dgregist" type="hidden" name="procregister"><span id="input01"><img alt="メールアドレス" style="padding: 0px 3px 0px 10px;" height="16" width="68" src="../img/backn/registration_01email.gif"><input class="mailAddress" maxlength="127" name="email" size="20" type="text" value=""></span>
+<div class="registSelect">
+<input value="add" type="radio" name="mailmag" style="float: left;" id="registMagazineB" checked>
+<div style="padding-top: 3px; float: left">
+<a href="http://melma.com/contents/law.html">利用規約</a><label for="registMagazineB">に同意して登録</label>
+</div>
+<input value="del" type="radio" name="mailmag" style="float: left" id="removeMagazineB">
+<div style="padding-top: 3px; float: left">
+<label for="removeMagazineB">マガジン解除</label>
+</div>
+<input class="submitButton" value="送信" name="btregsit" type="submit" style="margin: 0 0 0 5px">
+</div>
+<br class="areaEnd">
+<img src="../img/backn/point01.gif" width="3" height="5" style="padding: 5px 5px 2px 10px;"><a style="padding-bottom: 3px;" href="http://melma.com/contents/guide/officialmagazine.html">
+					同時登録オフィシャルマガジン
+				</a>
+<br class="areaEnd">
+</form>
+</div>
+<form method="POST" action="index.html">
+<input value="dguser" type="hidden" name="procuser">
+<h3 class="konomagajin">
+<div style="margin:0;padding:0;float:left">
+<img alt="このマガジンのscore!" src="../img/backn/tit_score.gif"></div>
+<span style="margin:0;padding:0;float:right"><a href="http://melma.com/contents/campaign/score_read/index.html">&gt;&gt; score! とは？</a></span>
+<br class="areaEnd">
+<img style="padding:0;margin:0;" height="5" width="560" alt="" src="../img/backn/news_bar.gif"><br>
+</h3>
+<div id="hyouka">
+<div id="hyouka_point">
+<strong>
+								-
+							</strong>
+</div>
+</div>
+<div id="hyouka_txt">
+<p>melma!では、全ての記事にコメントや評価をつけることができます。<br>読者の評価によってマガジンscore! が決定するからどんどん参加しよう！</p>
+<div style="padding-top: 3px">
+<div style="padding-top: 3px; float: left; font-size: 110%;">
+<strong>あなたの評価は？ </strong>
+</div>
+<input value="a" type="radio" name="magscore" style="float: left;" id="iScoreA" checked><label for="iScoreA"><span class="scoringLabel">良い</span></label><input value="b" type="radio" name="magscore" style="float: left;" id="iScoreB"><label for="iScoreB"><span class="scoringLabel">普通 </span></label><input value="c" type="radio" name="magscore" style="float: left;" id="iScoreC"><label for="iScoreC"><span class="scoringLabel">もう少し </span></label><input style=" float: right;" id="" height="24" width="95" alt="評価する" src="../img/backn/grading_btn.gif" value="送信" type="image" name="image">
+<br class="areaEnd">
+<a onClick="switchViewCommentField();return false;" href="index.html#wrcomment">&gt;&gt; コメントを読む/書き込む</a>
+</div>
+</div>
+<br class="areaEnd">
+<div id="chui">※５人以上の人が評価をすると、score!（評価指数）が表示されます。<br>※評価は１つの記事に対して、１人１回までとなります。尚、別の記事であっても連続しての評価は無効となります。</div>
+<div id="jsCommentField"></div>
+</form>
+<div class="display">
+<div id="news">
+<h3>
+<img style="padding-left: 5px;" height="17" width="56" alt="記事" src="../img/backn/news01.gif"></h3>
+<div class="previewNavigation">
+<span class="naviItemtoTop"><a href="../backnumber_35950_3483439/index.html"><img border="0" height="13" width="56" alt="最新記事" src="../img/backn/btn_new.gif"></a></span><span class="naviItemPrev"><a href="../backnumber_35950_71909/index.html"><img height="13" width="56" alt="前の記事" src="../img/backn/btn_back.gif"></a></span><span class="naviItemNext"><a href="../backnumber_35950_71911/index.html"><img height="13" width="56" alt="次の記事" src="../img/backn/btn_top.gif"></a></span>
+</div>
+<br class="areaEnd">
+</div>
+<div id="backnumberPreview">□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□<BR>□　<BR>□ 　      <BR>■■■■■■■■■医療２１ No.79【2003年2月5日】(2年目)　　　　　       <BR>□        <BR>□                  <a href="http://biokagaku.com/iryo21/" target="_blank">http://biokagaku.com/iryo21/</a>          　　　　   <BR>□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□<BR>***********PR***********************************************<BR>                             広告募集中<BR><BR>                      ここに広告をだしませんか？<BR><BR>詳しいお問い合わせはiryo21@biokagaku.comにて。<BR>***********PR***********************************************<BR><BR>●緑茶が胃がんを予防<BR><BR>新しい研究により緑茶を飲む人は飲まない人と比べて慢性胃炎や<BR>胃がんになる確率が約半分ぐらいであることが判明した。 <BR><BR>慢性胃炎は胃がんにゆっくりと進展する炎症疾患である。そして<BR>胃がんは世界的にみると肺がんの次に最も頻繁に起こるがんである。<BR><BR>１９９５年に米国カリフォルニア大学ロサンゼルス校の公衆衛生学部<BR>の研究者達は中国の江蘇省の揚中（Yangzhong）中央病院の胃がん<BR>患者１３３人、慢性胃炎患者１６６人そして健常者４３３人を調査した。 <BR><BR>研究者達は疫学的データと緑茶の消費量に関する情報を被験者達から<BR>アンケートを使って集めた。<BR><BR>結果に影響すると考えられる因子（年齢、性別、教育、体重指数、<BR>喫煙と飲酒）を統計的に処理した後で、緑茶を飲む人は飲まない人<BR>より慢性胃炎が５１％減少し胃がんの危険率が４８％減少したことが<BR>発見された。<BR><BR>さらに、緑茶を飲む回数が多いほどまたその習慣が長いほど、それ<BR>だけ慢性胃炎と胃がんになる危険率がより低いことが明らかになった。 <BR><BR>研究者達は緑茶がポリフェノールのような酸化防止剤を含んでいるから、<BR>それが慢性胃炎の発生を抑制し、そしてそれが胃がんに発展するのを<BR>防いでいると考えている。<BR><BR>Reference; Setiawan VW et al., PROTECTIVE EFFECT OF <BR>GREEN TEA ON THE RISK OF CHRONIC GASTRITIS AND <BR>STOMACH CANCER, Int. J. Cancer, Vol. 92, pp600-4.<BR><BR>**********************************************************************<BR>医療２１は不定期に（月２回から４回）医療に関するニュースを<BR>配信しています。<BR><BR>よろしければ、お知り合いの方々に「医療21」を是非おすすめ下さい。<BR>**********************************************************************<BR>【求人情報】<BR>ポスドク、修士取得研究員（若干名）を募集します。勤務先：東京大学<BR>医科学研究所・ゲノム情報応用診断研究部門。ホームページは改訂準備中<BR>ですので、研究内容などについてはメールでお問い合わせ下さい。<BR><BR>主要テーマ：(1) 造血幹細胞におけるゲノム安定化機構 (2) 転写・RNA<BR>代謝に関与する新規核内分子複合体の機能解析。応募資格：医学、分子・<BR>細胞生物学等を専攻し、博士号あるいは修士号を取得（予定可）。<BR><BR>待遇：東京大学の規定に従う。簡単な履歴書と研究業績リスト（あるいは、<BR>これまでの研究内容）を添えて、メール等でご連絡下さい。場合によって、<BR>より詳細な情報の提出をお願いします。任期は約2年（平成17年3月<BR>まで）。山下孝之 （TEL 03-5449-5765 FAX:03-5449-5764）ご連絡<BR>下さい。山下孝之 &lt;y-taka@ims.u-tokyo.ac.jp&gt;<BR><BR>*******************************************************************<BR>【注意・免責事項】<BR>● 広告の内容と求人情報に関しては弊社はいっさい無関係です。広告主<BR>に責任があり弊社は生じた損害等についていっさい責任は負いません。<BR>●このメルマガは個別の健康相談を行うものではありません。<BR>● 医療２１の記事は学術論文を参考に編集し正確性には十分留意して<BR>いますが、記載の内容に誤りがあったために生じた損害等についての責任は<BR>負いかねます。もし医療２１の記事を読んだために何らかの損害等が生じる<BR>とお考えの(或いは感じる）方は、直ぐこのメールマガジンの購読を<BR>お止めください。<BR>**********************************************************************<BR>●配信数：4364<BR>●発行法人：Net BioScience News, LLC<BR>■発行ＵＲＬ：<a href="http://biokagaku.com/iryo21" target="_blank">http://biokagaku.com/iryo21</a><BR>■ご感想は：iryo21@biokagaku.com<BR>■このメールマガジンの無断転載はできません。<BR><BR>◆メールマガジンの退会・解除はこちら↓◆<BR>　　　　　　<a href="http://biokagaku.com/iryo21/" target="_blank">http://biokagaku.com/iryo21/</a><BR><BR>●記事番号：0801a<BR><BR><BR></div>
+<div id="previewNavi">
+<div class="previewNavigation">
+<span class="naviItemtoTop"><a href="../backnumber_35950_3483439/index.html"><img border="0" height="13" width="56" alt="最新記事" src="../img/backn/btn_new.gif"></a></span><span class="naviItemPrev"><a href="../backnumber_35950_71909/index.html"><img height="13" width="56" alt="前の記事" src="../img/backn/btn_back.gif"></a></span><span class="naviItemNext"><a href="../backnumber_35950_71911/index.html"><img height="13" width="56" alt="次の記事" src="../img/backn/btn_top.gif"></a></span>
+</div>
+</div>
+</div>
+<form id="commentPostForm" method="POST" action="index.html">
+<div id="comment">
+<h3 class="konomagajin">
+<a name="wrcomment"><img border="0" height="23" width="560" alt="コメントを読む／書き込む" src="../img/backn/read_write_comment.gif"></a>
+</h3>
+<div id="comment2">
+<span class="read_write">ハンドルネーム</span><input class="read_write_txt" maxlength="30" size="40" type="text" value="" name="handle"><span class="read_write2">※全角30文字以内</span>
+<br class="areaEnd">
+<span class="read_write">コメント</span><textarea class="read_write_txt" rows="4" cols="40" name="comment"></textarea>
+<br class="areaEnd">
+<input id="grad_btn" height="24" width="95" alt="書き込む" src="../img/backn/write_btn.gif" value="送信" type="image" name="image">
+<br>
+<h4 id="saisin">
+<strong>■ 最新の30件を表示</strong>
+</h4>
+<div>コメントはありません。</div>
+<br class="areaEnd">
+</div>
+</div>
+</form>
+<h3 class="konomagajin">
+<img height="23" width="560" alt="発行者プロフィール" src="../img/backn/hakkousya.gif"></h3>
+<div class="publisherInfo">
+<div class="publisherPicture">
+<img src="../ImageProvider_1_463015_120" width="120" height="120" border="0" alt=""></div>
+<div class="publisherName"></div>
+</div>
+<div id="profile">
+<p></p>
+</div>
+<br class="areaEnd">
+<img src="../img/registration.gif" alt="マガジンの登録／解除" width="136" height="14" style="padding:3px 0 2px 0;"><div class="registThisMagazine">
+<form method="post" action="index.html">
+<input value="dgregist" type="hidden" name="procregister"><span id="input01"><img alt="メールアドレス" style="padding: 0px 3px 0px 10px;" height="16" width="68" src="../img/backn/registration_01email.gif"><input class="mailAddress" maxlength="127" name="email" size="20" type="text" value=""></span>
+<div class="registSelect">
+<input value="add" type="radio" name="mailmag" style="float: left;" id="registMagazine" checked>
+<div style="padding-top: 3px; float: left">
+<a href="http://melma.com/contents/law.html">利用規約</a><label for="registMagazine">に同意して登録</label>
+</div>
+<input value="del" type="radio" name="mailmag" style="float: left" id="removeMagazine">
+<div style="padding-top: 3px; float: left">
+<label for="removeMagazine">マガジン解除</label>
+</div>
+<input class="submitButton" value="送信" name="btregsit" type="submit" style="margin: 0 0 0 5px">
+</div>
+<br class="areaEnd">
+<img src="../img/backn/point01.gif" width="3" height="5" style="padding: 5px 5px 2px 10px;"><a style="padding-bottom: 3px;" href="http://melma.com/contents/guide/officialmagazine.html">
+						同時登録オフィシャルマガジン
+					</a>
+<br class="areaEnd">
+</form>
+</div>
+<div class="footerBanner">
+<div id="supportCompany">
+<span id="pr">melma!協賛企業</span><img height="1" width="520" alt="" src="../img/bar_520.gif"><br>
+<br>
+<span class="coms"><a href="http://www.priva.co.jp/" target="_blank">キャッシングプリーバ</a></span><span class="separator">|</span><span class="coms"><a href="http://honkibaito.en-japan.com/" target="_blank">アルバイトならen</a></span><span class="separator">|</span><span class="coms"><a href="http://haken.en-japan.com/" target="_blank">派遣ならen</a></span>
+<br>
+<span class="coms"><a href="http://employment.en-japan.com/" target="_blank">転職ならen</a></span><span class="separator">|</span><span class="coms"><a href="http://consultant.en-japan.com/" target="_blank">転職コンサルタント</a></span><span class="separator">|</span><span class="coms"><a href="http://satei.221616.com/" target="_blank">車査定・中古車査定</a></span>
+<br>
+<span class="coms"><a href="http://satei.221616.com/buy.html" target="_blank">車買取・中古車買取</a></span><span class="separator">|</span><span class="coms"><a href="http://221616.com" target="_blank">中古車ならガリバー</a></span><span class="separator">|</span><span class="coms"><a href="http://www.hoken1616.com/" target="_blank">自動車保険</a></span>
+<br>
+<span class="coms"><a href="http://shaken.221616.com/" target="_blank">車検</a></span><span class="separator">|</span><span class="coms"><a href="http://ten-navi.com/" target="_blank">転職サイト</a></span><span class="separator">|</span><span class="coms"><a href="http://www.skygate.co.jp/" target="_blank">海外航空券</a></span>
+<br>
+<span class="coms"><a href="http://www.skygate.co.jp/dometour/bus/" target="_blank">高速バス</a></span><span class="separator">|</span><span class="coms"><a href="http://www.yurakucho.co.jp/" target="_blank">美容外科の専門サイト</a></span><span class="separator">|</span><span class="coms"><a href="http://www.find-job.net/" target="_blank">求人情報 Find Job !</a></span>
+<br>
+<span class="coms"><a href="http://www.find-job.net/tenshoku/" target="_blank">転職ならFind Job !</a></span><span class="separator">|</span><span class="coms"><a href="http://type.jp/" target="_blank">転職するなら[＠type]</a></span><span class="separator">|</span><span class="coms"><a href="http://shoukai.type.jp/" target="_blank">転職はtypeの人材紹介</a></span>
+<br>
+<span class="coms"><a href="http://www.hatarako.net/" target="_blank">派遣なら、はたらこねっと</a></span><span class="separator">|</span><span class="coms"><a href="http://estore.co.jp/" target="_blank">ネットショップ</a></span><span class="separator">|</span><span class="coms"><a href="http://estore.co.jp/" target="_blank">ネットショップ 開業</a></span>
+<br>
+<span class="coms"><a href="http://www.jinzai-bank.net/" target="_blank">転職サイト【JBN】</a></span><span class="separator">|</span>
+</div>
+</div>
+</div>
+<div id="contentsAreaSubB">
+<dl class="melmaProject">
+<dt>
+<img src="../img/backn/right_01recommend.gif" width="230" height="20" alt="おすすめ情報"></dt>
+<dd>
+<dl class="specialPage">
+<dt>
+<a href="http://ad.melma.com/to?id=24923">&ldquo;外為&rdquo;って、難しいもの？</a>
+</dt>
+<dd>最近注目を集めている外国為替取引。<br>この機会に、少し学んでみませんか？</dd>
+<dt>
+<a href="http://ad.melma.com/to?id=24924">先物取引のメリット、ご存知ですか？</a>
+</dt>
+<dd>リスク管理が大切な商品先物取引。<br>まずは正しい知識を身につけましょう！
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="melmaProject">
+<dt>
+<img alt="男性読者のおすすめ" height="26" width="230" src="../img/backn/right_02recommend_male.gif"></dt>
+<dd>
+<dl class="specialPage">
+<dt>
+<a href="../backnumber_146704/index.html">パチ・スロ人気機種最新攻略情報</a>
+</dt>
+<dd>
+<strong>推薦コメント：</strong>
+<br>パチスロ好きな人には絶対おすすめ。</dd>
+</dl>
+</dd>
+</dl>
+<dl class="melmaProject">
+<dt>
+<img alt="女性読者のおすすめ" height="26" width="230" src="../img/backn/right_02recommend_female.gif"></dt>
+<dd>
+<dl class="specialPage">
+<dt>
+<a href="../backnumber_88084/index.html">シンプルでナチュラルな生活を楽しもう</a>
+</dt>
+<dd>
+<strong>推薦コメント：</strong>
+<br>毎日の生活の中で実践できるので役に立ちます。皆さんも環境にやさしい生活を！</dd>
+</dl>
+</dd>
+</dl>
+<dl class="backNumber">
+<dt>
+<img border="0" height="22" width="230" alt="記事一覧" src="../img/backn/right_03news.gif"></dt>
+<dd>
+<ul id="backnumberList" class="backnumberList">
+<li>
+<a href="../backnumber_35950_71953/index.html">2003/12/24</a>
+</li>
+<li>
+<a href="../backnumber_35950_71952/index.html">2003/12/17</a>
+</li>
+<li>
+<a href="../backnumber_35950_71951/index.html">2003/12/3</a>
+</li>
+<li>
+<a href="../backnumber_35950_71950/index.html">2003/11/26</a>
+</li>
+<li>
+<a href="../backnumber_35950_71949/index.html">2003/11/19</a>
+</li>
+<li>
+<a href="../backnumber_35950_71948/index.html">2003/11/12</a>
+</li>
+<li>
+<a href="../backnumber_35950_71947/index.html">2003/11/5</a>
+</li>
+<li>
+<a href="../backnumber_35950_71946/index.html">2003/10/29</a>
+</li>
+<li>
+<a href="../backnumber_35950_71945/index.html">2003/10/22</a>
+</li>
+<li>
+<a href="../backnumber_35950_71944/index.html">2003/10/15</a>
+</li>
+<li>
+<a href="../backnumber_35950_71943/index.html">2003/10/8</a>
+</li>
+<li>
+<a href="../backnumber_35950_71942/index.html">2003/10/1</a>
+</li>
+<li>
+<a href="../backnumber_35950_71941/index.html">2003/9/24</a>
+</li>
+<li>
+<a href="../backnumber_35950_71940/index.html">2003/9/17</a>
+</li>
+<li>
+<a href="../backnumber_35950_71939/index.html">2003/9/10</a>
+</li>
+<li>
+<a href="../backnumber_35950_71938/index.html">2003/9/3</a>
+</li>
+<li>
+<a href="../backnumber_35950_71937/index.html">2003/8/27</a>
+</li>
+<li>
+<a href="../backnumber_35950_71936/index.html">2003/8/20</a>
+</li>
+<li>
+<a href="../backnumber_35950_71935/index.html">2003/8/13</a>
+</li>
+<li>
+<a href="../backnumber_35950_71934/index.html">2003/8/6</a>
+</li>
+<li>
+<a href="../backnumber_35950_71933/index.html">2003/7/30</a>
+</li>
+<li>
+<a href="../backnumber_35950_71932/index.html">2003/7/16</a>
+</li>
+<li>
+<a href="../backnumber_35950_71931/index.html">2003/7/9</a>
+</li>
+<li>
+<a href="../backnumber_35950_71930/index.html">2003/7/2</a>
+</li>
+<li>
+<a href="../backnumber_35950_71929/index.html">2003/6/25</a>
+</li>
+<li>
+<a href="../backnumber_35950_71928/index.html">2003/6/18</a>
+</li>
+<li>
+<a href="../backnumber_35950_71927/index.html">2003/6/11</a>
+</li>
+<li>
+<a href="../backnumber_35950_71926/index.html">2003/6/4</a>
+</li>
+<li>
+<a href="../backnumber_35950_71925/index.html">2003/5/28</a>
+</li>
+<li>
+<a href="../backnumber_35950_71924/index.html">2003/5/21</a>
+</li>
+<li>
+<a href="../backnumber_35950_71923/index.html">2003/5/14</a>
+</li>
+<li>
+<a href="../backnumber_35950_71922/index.html">2003/5/7</a>
+</li>
+<li>
+<a href="../backnumber_35950_71921/index.html">2003/4/23</a>
+</li>
+<li>
+<a href="../backnumber_35950_71920/index.html">2003/4/16</a>
+</li>
+<li>
+<a href="../backnumber_35950_71919/index.html">2003/4/9</a>
+</li>
+<li>
+<a href="../backnumber_35950_71918/index.html">2003/4/2</a>
+</li>
+<li>
+<a href="../backnumber_35950_71917/index.html">2003/3/26</a>
+</li>
+<li>
+<a href="../backnumber_35950_71916/index.html">2003/3/19</a>
+</li>
+<li>
+<a href="../backnumber_35950_71915/index.html">2003/3/12</a>
+</li>
+<li>
+<a href="../backnumber_35950_71914/index.html">2003/3/5</a>
+</li>
+<li>
+<a href="../backnumber_35950_71913/index.html">2003/2/26</a>
+</li>
+<li>
+<a href="../backnumber_35950_71912/index.html">2003/2/19</a>
+</li>
+<li>
+<a href="../backnumber_35950_71911/index.html">2003/2/12</a>
+</li>
+<li>
+<a href="index.html">2003/2/5</a>
+</li>
+<li>
+<a href="../backnumber_35950_71909/index.html">2003/1/29</a>
+</li>
+<li>
+<a href="../backnumber_35950_71908/index.html">2003/1/22</a>
+</li>
+<li>
+<a href="../backnumber_35950_71907/index.html">2003/1/15</a>
+</li>
+<li>
+<a href="../backnumber_35950_71906/index.html">2003/1/8</a>
+</li>
+</ul>
+</dd>
+</dl>
+<div id="articleCalender"></div>
+<div class="oldBackNumber">
+<ul>
+<li>
+<span class="publishYear"><a href="../backnumber_35950_3483439/index.html">&lt;&lt;2006年</a></span><span class="numofMagazine">(34)</span>
+</li>
+<li>
+<span class="publishYear"><a href="../backnumber_35950_2413640/index.html">&lt;&lt;2005年</a></span><span class="numofMagazine">(48)</span>
+</li>
+<li>
+<span class="publishYear"><a href="../backnumber_35950_72001/index.html">&lt;&lt;2004年</a></span><span class="numofMagazine">(48)</span>
+</li>
+<li>
+<span class="publishYear"><a href="../backnumber_35950_71905/index.html">&lt;&lt;2002年</a></span><span class="numofMagazine">(54)</span>
+</li>
+<li>
+<span class="publishYear"><a href="../backnumber_35950_71850/index.html">&lt;&lt;2001年</a></span><span class="numofMagazine">(31)</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<br class="areaEnd">
+</div>
+</div>
+<div id="footerArea">
+<div class="footerMenu">
+<ul class="footerItem">
+<li>
+<a href="http://melma.com/contents/law.html">melma! ご利用規約</a>
+</li>
+<li>
+<a href="http://melma.com/contents/law_mail.html">メールマガジン発行規約</a>
+</li>
+<li>
+<a href="http://melma.com/contents/inquiry.html">お問い合わせ</a>
+</li>
+<li>
+<a href="http://www.cyberagent.co.jp/company/data/index.html">会社概要</a>
+</li>
+<li class="atLast">
+<a href="http://www.cyberagent.co.jp/privacy/index.html">プライバシーポリシー</a>
+</li>
+</ul>
+</div>
+<div class="copyrightArea">
+<a href="http://www.cyberagent.co.jp/"><img src="../img/footer_copyright.gif" alt="CyberAgent, Inc."></a>
+</div>
+<br class="areaEnd">
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="euc-jp"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head profile="http://www.w3.org/2003/g/data-view">
+
+
+
+
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=euc-jp" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="rating" content="general" />
+<meta name="distribution" content="global" />
+<meta name="dc.title" content="日経ビジネス オンライン" />
+<meta name="dc.creator.name" content="日経BP社" />
+
+                        
+<meta name="keywords" content="環境,温暖化,二酸化炭素,ポスト京都,京都議定書,CDM,日経ビジネス,日経BP社" />
+<meta name="description" content="今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の枠組みについてのシンポジウムが行われた。そこでの議論をもとに、「ポスト京都」の問題と方向性を探った。" />
+
+	<title>ポスト京都議定書 (環境と経営)：NBonline(日経ビジネス オンライン)</title>
+
+	<link rel="shortcut icon" href="../../../../favicon.ico.html" />
+	<link rel="home" title="日経ビジネス オンライン" href="http://business.nikkeibp.jp/" />
+	<link rel="stylesheet" href="../../../../css/leaf_oct3.css" type="text/css" />
+	<script src="../../../../js/scripts.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	//addEventToObject(window,'onload',labelTrick);
+	//addEventToObject(window,'onload',enableTooltips);
+	// HTMLがロードされた際、makeSearchLink()関数、makeStockLink()関数を実行
+	addListener(window, 'load', makeSearchLink, false);
+	addListener(window, 'load', makeStockLink, false);
+	</script>
+
+</head>
+
+<body id="nav-manage">
+
+<div id="skipnavigation">
+	<ul>
+		<li><a href="index.html#navigation">メニューへ</a></li>
+		<li><a href="index.html#content">本文へ</a></li>
+	</ul>
+</div>
+
+<!-- BEGIN: GLOBAL NAVIGATION -->
+<div id="gnav200603">
+<ul>
+<li id="g_www"><a href="http://www.nikkeibp.co.jp/" title="nikkeibp.jp" target="_top"><span>日経BP</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_business"><a href="../../../../index.html" title="日経ビジネスオンライン" target="_top"><span>ビジネス</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_pc"><a href="http://pc.nikkeibp.co.jp/" title="日経パソコンオンライン" target="_top"><span>PC</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_arena"><a href="http://arena.nikkeibp.co.jp/" title="デジタルARENA" target="_top"><span>デジタル</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_itpro"><a href="http://itpro.nikkeibp.co.jp/" title="ITpro" target="_top"><span>IT</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_techon"><a href="http://techon.nikkeibp.co.jp/" title="Tech-On!" target="_top"><span>テクノロジー</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_medical"><a href="http://medical.nikkeibp.co.jp/" title="日経メディカルオンライン" target="_top"><span>医療</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0" target="_top"></a></li>
+<li id="g_kenplatz"><a href="http://kenplatz.nikkeibp.co.jp/" title="KEN-Platz" target="_top"><span>建設・不動産</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_ex"><a href="http://career.nikkei.co.jp/" title="日経キャリアNET" target="_top"><span>転職</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_sitemap"><a href="http://www.nikkeibp.co.jp/sitemap/" title="日経BP専門情報サイト一覧" target="_top"><span>サイト一覧</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_sj"><a href="http://www.nikkeibp.co.jp/sj/" title="セキュリティ SAFETY JAPAN" target="_top"><span>SAFETY</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+<li id="g_ad"><a href="http://www.nikkeibp.co.jp/bizit/" title="経営とIT" target="_top"><span>経営とIT</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
+</ul>
+</div>
+<!-- END: GLOBAL NAVIGATION -->
+
+<hr />
+<table width="1000" border="0" cellpadding="0" cellspacing="0" summary="header" style="margin-bottom:5px;">
+<tr>
+<td>
+	<a href="../../../../index.html" accesskey="0" title="NBonline(日経ビジネスオンライン)" class="noborder"><img src="../../../../nboimgs/logo.gif" width="258" height="68" border="0" alt="NBonline(日経ビジネスオンライン)" /></a>
+</td>
+<td rowspan="2">
+	<div id="topad">
+<!-- nbonline_manage_rotation -->
+
+<iframe width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline">
+<comment>
+<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline&">
+</script>
+</comment>
+<noscript>
+<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline" target="_blank">
+<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline" border="0"></a>
+</noscript>
+</iframe>
+
+<!-- end of nbonline_manage_rotation -->
+	</div>
+</td>
+</tr>
+<tr>
+<td align="center">
+<div class="nbinfo" style="margin-bottom:10px;">
+<div id="notice"><a href="../../../../info/reguser/index.shtml.html" class="noborder">
+<!--
+<span style="color:#00ccff;">★</span>10月3日、会員登録制を開始します<span style="color:#00ccff;">★</span></a>
+-->
+<a href="../../../../info/reguser/index.shtml.html" class="noborder">会員登録制を開始しました</a>
+</div>
+</div>
+</td>
+</table>
+<hr />
+<div id="navigation">
+	<ul>
+		<li class="nav-news"><a href="../../../../news/index.html" target="_top">ニュース</a></li>
+		<li class="nav-nb100"><a href="../../../../nb100/index.html" target="_top">NB100</a></li>
+		<li class="nav-money"><a href="../../../../money/index.html" target="_top">マネー</a></li>
+		<li class="nav-manage"><a href="../../../../manage/index.html" target="_top">経営</a></li>
+		<li class="nav-tech"><a href="../../../../tech/index.html" target="_top">技術</a></li>
+		<li class="nav-world"><a href="../../../../world/index.html" target="_top">国際</a></li>
+		<li class="nav-skillup"><a href="../../../../skillup/index.html" target="_top">自己啓発</a></li>
+		<li class="nav-person"><a href="../../../../person/index.html" target="_top">人</a></li>
+		<li class="nav-life"><a href="../../../../life/index.html" target="_top">ライフ</a></li>
+		<!--<li class="nav-week"><a href="http://business.nikkeibp.co.jp/week/" target="_top">Week</a></li>-->
+		<!--<li class="nav-blog"><a href="http://business.nikkeibp.co.jp/blog/">Blog</a></li>-->
+		<li class="nav-podcast"><a href="../../../../podcast/index.shtml.html" target="_top">Podcast</a></li>
+		<li class="nav-premium"><a href="../../../../premium/index.shtml.html" target="_top">Premium</a></li>
+		<li class="nav-register"><a href="../../../../info/reguser/index.shtml.html" target="_top">会員登録</a></li>
+		<li class="nav-subscribe"><a href="../../../../nbs/index.html" target="_blank">日経ビジネス読者サービス</a></li>
+		<!--<li class="nav-reader"><a href="http://business.nikkeibp.co.jp/premium/" target="_top">定期購読者の方へ</a></li>-->
+		<li class="nav-help"><a href="../../../../info/regfaq/index.html" target="_top">ヘルプ</a></li>
+	</ul>
+</div>
+
+<div id="wrapper">
+
+	<div id="maincontent">
+
+<table border="0" cellpadding="0" cellspacing="0" summary="content" width="770" align="right" class="layout">
+
+<tr>
+<td colspan="2" width="770">
+<div id="kanban">
+				<h3 id="topid108997"><a href="../108997/index.html" title="環境と経営のトップへ">環境と経営</a></h3>
+
+
+
+
+											
+
+<table style="width:100%; border-bottom: 1px solid #666;">
+<tr>
+<td>
+<div class="articlecontrol">
+<a href="../../../../index.html">トップページ</a>＞<a href="../../../../manage/index.html">経営</a>＞<a href="../108997/index.html" title="環境と経営">環境と経営</a>
+</div>
+</td>
+<td width="250" align="left">
+<div class="articlecontrol">
+	<ul>
+
+				<li><a href="index.html#bottom" class="ccomment">コメント</a></li>
+				<li><a href="index.html#bottom" class="ctrackback">トラックバック</a></li>
+								<li><a href="index.html@ST=nboprint.html" class="cprint">印刷</a></li>
+
+	</ul>
+</div>
+</td>
+</tr>
+</table>
+
+</div>
+</td>
+</tr>
+
+<tr>
+<td valign="top" width="560" rowspan="2">
+	<div class="articlecontent">
+	
+		<h1 class="articleheader">ポスト京都議定書</h1>
+					 <h2 class="articleheader">米国・中国・インドは参加するのか<br>環境税と大規模クリーン開発が焦点に</h2> 		<ul class="articledata">
+			<li>2006年9月4日　月曜日</li>
+			
+									<li><a href="../../../../bns/author.jsp@ID=108998&amp;OFFSET=0.html">日経エコロジー編集委員　山岡　則夫</a></li>
+								</ul>
+
+			<table class="articlekeyword" cellpadding="0" cellspacing="0" width="530"><tr><td width="80" valign="middle"><img src="../../../../nboimgs/icon-artkw.jpg" width="55" height="14" border="0" alt="キーワード" /></td><td style="background-color:#eee">　
+    				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=環境.html">環境</a>　
+      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=温暖化.html">温暖化</a>　
+      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=二酸化炭素.html">二酸化炭素</a>　
+      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=ポスト京都.html">ポスト京都</a>　
+      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=京都議定書.html">京都議定書</a>　
+      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>　
+      			</td></tr></table>
+
+
+
+		
+
+
+			<p class="kakomi_green_std">
+今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の国際的枠組みについてのシンポジウムが開かれた。そこでの議論をもとに、「<a href="javascript:void(0)" onClick='(window.open("word_3.html","windowpodcast","width=480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>ポスト京都</a>」の問題と方向性を探った。
+</p>
+<br>
+<p align="right"><a href="../109031/index.html">＞スティグリッツ教授にきく地球温暖化防止策</a></p>
+<p>
+<img src="px300_6.jpg" align="right" alt="京都議定書後の国際的枠組みについてのシンポジウム"></p>
+<p>
+　地球温暖化を防止するため、先進各国の温室効果ガス排出量に上限を定めた<a href="javascript:void(0)" onClick='(window.open("word_1.html","windowpodcast","width=480,height=300,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>京都議定書</a>。その第1約束期間が2008年から始まる。日本は1990年比6％削減を約束しており、省エネ対策や<a href="javascript:void(0)" onClick='(window.open("word_4.html","windowpodcast","width=480,height=250,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>クリーン開発メカニズム（CDM）</a>事業など、二酸化炭素削減の努力が盛んに行われている。
+</p>
+<p>
+　だが、それは温暖化防止への第一歩。地球規模でさらなる努力を続けるため、2013年からの第2約束期間（ポスト京都議定書）の枠組みについての議論が活発になっている。
+</p>
+<p>
+　6％減の国際公約を守るだけでも大変な労力とコストがかかるのに、さらにその先なんて考えたくもないというのが、具体的削減が求められるわが国の現場の正直な声。
+</p>
+<p>
+　実際、1997年に京都議定書が採択されてから今日までの間に、様々な問題点が浮かび上がってきた。ポスト京都議定書の枠組みを決めるに当たっては、こうした問題点を踏まえて、有効かつ実行可能な枠組みにしようというコンセンサスの下、議論が進みつつある。
+</p>
+<p>
+<h4>途上国は数値規制を拒否</h4>
+</p>
+<p>
+　問題点の1つは京都議定書において途上国の温室効果ガスの排出に何の数値規制もかかっていないこと。2000年時点で中国の（燃料消費による）二酸化炭素排出量は世界の13％、インドは4％（ちなみに日本は5％）。急速な発展を続ける中国、インドの排出量は無視できない。
+</p>
+<p>
+　数値規制の圧力に対し、途上国側の反発は激しい。
+</p>
+<img src="px300_1.jpg" align="right" alt="インド・エネルギー資源研究所顧問 チャンドラシェカー・ダスグプタ氏">
+<p>
+　「既に過去の化石エネルギー消費で経済発展の恩恵を受けている先進国を規制するからといって、これから発展を図ろうという途上国に規制をかけるのはおかしい。温室効果ガス排出の許容量は基本的に一人当たりで公平に分配すべきであろう。インドの1人当たり二酸化炭素排出量は先進国平均の1割以下で、地球温暖化の加害者というより被害者」（インド・エネルギー資源研究所顧問のチャンドラシェカー・ダスグプタ氏）
+</p>
+<p>
+　京都議定書で先進国に課したような温室効果ガス削減の国別数値目標をそのまま先進国以外に課す案は、同意が得られそうにない。
+</p>
+<img src="px300_4.jpg" align="right" alt="中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授　姜克ジュン氏">
+<p>
+　「協定による数値規制には反対だが、中国政府は自律的に目標を設定している。ことし制定された第11次5カ年計画では、単位GDP（国内総生産）当たりのエネルギー消費を5年後には20%削減することを目標に掲げている」（中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授の姜克ジュン氏）
+</p>
+<p>
+　<a href="javascript:void(0)" onClick='(window.open("word_2.html","windowpodcast","width=480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>京都メカニズム</a>を活用し「地球環境に取り組むための国際基金である地球環境ファシリティー（GEF）の積極活用やCDMの拡大により、地球温暖化ガスの排出の少ない開発をさらに行いたい」（ダスグプタ氏）
+</p>
+<p>
+　途上国側は、数値規制には反対だが、十分、自主的な努力をしているという主張だ。
+</p>
+<p>
+<h4>経済メカニズムが働く環境税に注目</h4>
+</p>
+<p>
+　一方、先進国側は京都議定書の排出削減義務の数値をクリアできないかもしれないという苦しい状態にある。わが国は温室効果ガスを1990年比6％削減目標に対し、現実には90年比8%増。結局、これから14％を一気に減らす、という厳しい状態に立たされている。
+</p>
+<p>
+　省エネ努力、森林による二酸化炭素吸収、日本企業の途上国CDMプロジェクトで生み出されるクレジットなどでは追いつかず、このままでは、ホットエア（排出削減義務0％のロシアや東欧諸国のエネルギー消費の落ち込みにより自然に生み出された温室効果ガス排出枠）を、言い値で買うことになりそうだ。
+</p>
+<p>
+　先進国がこれ以上数値規制に基づいて排出削減を図るのは、コストも労力も膨大なものになってしまう。
+</p>
+
+		<div align="center"><p style="text-align:left;padding:5px 7px;font-size:13px;line-height:17px;background-color:#f7f7f7;border-width:1px 4px;border-style:solid;border-color:#ccc;width:460px;">次ページ以降は「NBonline会員」(無料)の方および「NBonlineプレミアム」（日経ビジネス読者限定サービス）の会員の方のみお読みいただけます。ご登録(無料)やログインの方法は<b><a href="index.html@P=2.html">次ページ</a></b>をご覧ください。</p></div>
+	
+
+
+
+
+
+	<br />
+
+		
+		
+
+
+
+<div align="center">
+<table cellpadding="0" cellspacing="0" border="0"><tr><td>
+	</td>
+
+<td>
+<div class="multipage">
+<table cellspacing="0" cellpadding="0" align="center"><tr>
+			<td><a href="index.html@P=1.html" class="currentpage">1</a></td>
+					<td><a href="index.html@P=2.html">2</a></td>
+			</tr></table>
+</div>
+</td>
+
+<td>
+	<a href="index.html@P=2.html"><img src="../../../../nboimgs/btn_next.gif" width="30" height="20" alt="Next" border="0" /></a>
+	</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+
+
+	</div>
+	<!-- /articlecontent -->
+</td>
+
+
+<td width="210" valign="top">
+<div id="sidemenu">
+
+
+	
+</div>
+</td>
+</tr>
+
+<tr>
+<td valign="bottom">
+<div style="margin:10px 0px;">
+<img src="../../../../nboimgs/recommend.jpg" alt="こちらも読んでみませんか？" width="200" height="23" border="0" /><br>
+</div>
+
+
+
+<table width="210">
+</table>
+
+
+<a href="../../../../manage/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
+</td>
+</tr>
+
+<tr>
+<td colspan="2" width="770" valign="top">
+<div id="articlebottom">
+
+
+<a name="bottom"></a>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="articlebottom">
+<tr>
+<td align="left">
+<p style="margin-top:0px;margin-bottom:10px;margin-left:10px;"><a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/btn_bknum.jpg" alt="バックナンバー" width="130" height="19" border="0"></a></p>
+</td>
+<td width="5px">
+<img src="../../../../nboimgs/spacer.gif" width="1" height="1" />
+</td>
+<td align="left">
+<span style="font-size:12px;"><a href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">記事・写真・図表の無断転載を禁じます。</a></span>
+</td>
+</tr>
+
+<tr>
+<td valign="top">
+
+<div class="kanrenkiji">
+
+
+
+	<a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/btn_saishin.jpg" alt="環境と経営" width="360" height="20" border="0" /></a>
+<p>[<a href="../108997/index.html">環境と経営</a>]</p>
+
+		<ul>
+						<li>
+							ポスト京都議定書
+							<span>
+												(9月4日) 
+											</span>
+			</li>
+											<li>
+							<a href="../109031/index.html">スティグリッツ教授にきく地球温暖化防止策</a>
+							<span>
+												(9月4日) 
+											</span>
+			</li>
+							</ul>
+									
+<p style="text-align:left; font-size:13px;"><a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/icon-3ya.gif" width="31" height="14" border="0" />　「環境と経営」の全記事</a></p>
+
+
+
+<p><img src="../../../../nboimgs/articlebottom/btn_gkeyword.jpg" alt="キーワードで最新記事を見る" width="200" height="20"><br />
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=環境.html">環境</a>&nbsp;
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=温暖化.html">温暖化</a>&nbsp;
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=二酸化炭素.html">二酸化炭素</a>&nbsp;
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=ポスト京都.html">ポスト京都</a>&nbsp;
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=京都議定書.html">京都議定書</a>&nbsp;
+		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>&nbsp;
+	</p>
+</div>
+
+<br />
+
+<div class="prempdf">
+
+</div>
+
+</td>
+<td width="5px">
+<img src="../../../../nboimgs/spacer.gif" width="1" height="1" />
+</td>
+<td valign="top" align="left" width="370">
+
+<iframe width="360" height="150" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://apr.nikkeibp.co.jp/gen-ssi/clad/nbo/p_nbo.html">
+</iframe>
+
+<br clear="all" />
+
+
+
+		<div id="feedbackarticle">
+			<form method="post" action="http://business.nikkeibp.co.jp/fb/putfeedback.jsp?REF=/article/manage/20060831/108998/" name="FEEDBACK_BOTTOM">
+			<div class="left">
+				<p class="ask">この記事を</p>
+				<input type="radio" name="_ANS1" value="1" checked="checked" />ほとんど読んだ<br />
+				<input type="radio" name="_ANS1" value="2" />一部だけ読んだ<br />
+				<input type="radio" name="_ANS1" value="3" />あまり読まなかった
+			</div>
+			<div class="left">
+				<p class="ask">内容は</p>
+				<input type="radio" name="_ANS2" value="1" checked="checked" />とても参考になった<br />
+				<input type="radio" name="_ANS2" value="2" />まあ参考になった<br />
+				<input type="radio" name="_ANS2" value="3" />参考にならなかった
+			</div>
+			<p class="alignright">
+				<input type="image" src="../../../../nboimgs/articlebottom/btn_send.gif" value="Send" alt="送信する" />
+				<a href="../../../../fb/fb_detail.jsp@REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_survey" class="noborder"><img src="../../../../nboimgs/articlebottom/btn_comment.gif" alt="コメントする" /></a>				<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_self" class="noborder"><img src="../../../../nboimgs/articlebottom/btn_result.gif" alt="皆様の評価を見る" /></a>
+			</p>
+			<input name="_PARTS_ID" value="FB01" type="hidden" />
+			</form>
+			<p class="feedbacknum">
+				<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" class="noborder" target="_self"><img src="../../../../nboimgs/feedback-comment.gif" alt="コメント数:" width="56" height="12" /></a>
+													<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html">1
+
+件（コメントを読む）</a>
+								<br />
+				<img src="../../../../nboimgs/feedback-trackback.gif" alt="トラックバック数:" width="85" height="12" border="0" />
+								<!-- begin: trackback frame -->
+<!--<div id="trackback">-->
+<iframe width="350" height="50" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://blog.nikkeibp.co.jp/business/news/archives/100308.html"></iframe>
+<!--</div>-->
+<!-- end: trackback frame -->
+
+			</p>
+		</div>
+
+</td>
+</tr>
+</table>
+
+<br clear="all" />
+
+<table width="750" border="0" cellpadding="0" cellspacing="0" summary="articlebottom" bgcolor="#efefef">
+<tr>
+<td valign="top">
+			<div id="adarea">
+<iframe width="380" height="65" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/logo_banner2.shtml">
+</iframe>
+			</div>
+</td>
+<td valign="top">
+		<div id="wideadspace">
+<!-- nbonline_manage_bigsize_rectangle -->
+
+<iframe width="300" height="300" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline">
+<comment>
+<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline&">
+</script>
+</comment>
+<noscript>
+<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline" target="_blank">
+<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline" border="0"></a>
+</noscript>
+</iframe>
+
+<!-- end of nbonline_manage_bigsize_rectangle -->
+
+
+<!-- START RedSheriff Measurement V5.01 -->
+<!-- COPYRIGHT 2002 RedSheriff Limited -->
+<script language="JavaScript" type="text/javascript"><!--
+var _rsCI='nikkeibp';
+var _rsCG='nbonline-manage';
+  var _rsDT=1;
+  var _rsSI=escape(window.location);
+  var _rsLP=location.protocol.indexOf('https')>-1?'https:':'http:';
+  var _rsND=_rsLP+'//secure-jp.imrworldwide.com/';
+ if (navigator.appVersion.indexOf('MSIE')!=-1) {
+	var _rsRP=escape(document.referrer);
+	 }
+ else{
+	var _rsRP="";
+ }
+
+  if (parseInt(navigator.appVersion)>=4) {
+    var _rsRD=(new Date()).getTime();
+    var _rsSE=0;
+    var _rsSV='';
+    var _rsSM=1.0;
+    _rsCL='<scr'+'ipt language="JavaScript" type="text/javascript" src="'+_rsND+'v5.js"><\/scr'+'ipt>';
+  } else {
+    _rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
+  }
+  document.write(_rsCL);
+//--></script>
+<noscript>
+<img src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=nbonline-manage" alt="">
+</noscript>
+<!-- END RedSheriff Measurement V5 -->
+
+
+		</div>
+</td>
+</tr>
+</table>
+
+</div>
+</td>
+</tr>
+</table>
+	</div>
+	<!-- /maincontent -->
+
+	<div id="subcontent">
+		<div id="search">
+			<form action="http://business.nikkeibp.co.jp/bns/bnsearch.jsp" method="post">
+				<img src="../../../../nboimgs/caption-search.gif" alt="サイト内検索" width="69" height="13" />
+				<!--<label for="keyword" class="inside">キーワード</label>-->
+				<input type="text" id="keyword" name="SEARCH_TEXT" />
+				<input type="image" src="../../../../nboimgs/btn-search.gif" value="search" alt="探す" class="searchbtn" />
+				<input type="hidden" name="BID" value="1005" />
+				<input type="hidden" name="OFFSET" value="0" />
+			</form>
+		</div>
+
+<img src="../../../../nboimgs/chosenbyr.jpg" alt="読者が選ぶ注目の記事" width="210" height="23" vspace="5"/>
+<table width="210" cellpadding="2" cellspacing="2" bgcolor="#ffffff">
+
+
+	
+	        
+										
+										
+<tr>
+<td bgcolor="#ffffff">
+
+		<a href="../../../topics/20061214/115645/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/100109.jpg" alt="" width="48" class="pickupphoto" /></a>
+	</td>
+
+<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
+<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
+<b>1位</b>
+【時流超流】</span></a><br />
+<a href="../../../topics/20061214/115645/index.html" target="_top" class="noborder" target="_top">“無策”の金融3社に風圧</a> 
+	
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ffffff" valign="top" colspan="3">
+<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
+</td>
+</tr>
+
+	
+	        
+										
+																
+<tr>
+<td bgcolor="#ffffff">
+
+		<a href="../../../world/20061214/115695/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/100532.jpg" alt="" width="48" class="pickupphoto" /></a>
+	</td>
+
+<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
+<a href="../../../world/20060308/100532/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
+<b>2位</b>
+【門倉　貴史の「BRICsの素顔」】</span></a><br />
+<a href="../../../world/20061214/115695/index.html" target="_top" class="noborder" target="_top">中国でもクラシックブーム<br />子供1000万人が音楽教室に</a> 
+		<br />
+<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fworld%2F20061214%2F115695%2F.html">読者コメントを読む( 3
+
+
+件)</a>
+	
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ffffff" valign="top" colspan="3">
+<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
+</td>
+</tr>
+
+	
+	        
+										
+										
+<tr>
+<td bgcolor="#ffffff">
+
+		<a href="../../../person/20061128/114497/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/101451.jpg" alt="" width="48" class="pickupphoto" /></a>
+	</td>
+
+<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
+<a href="../../../person/20060419/101451/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
+<b>3位</b>
+【Road to CEO】</span></a><br />
+<a href="../../../person/20061128/114497/index.html" target="_top" class="noborder" target="_top">組織には6種類の人間がいる</a> 
+		<br />
+<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fperson%2F20061128%2F114497%2F.html">読者コメントを読む( 2
+
+
+件)</a>
+	
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ffffff" valign="top" colspan="3">
+<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
+</td>
+</tr>
+
+	</table>
+
+
+<p style="height:10px;"><img src="../../../../nboimgs/spacer.gif" width="1" height="1" /></p>
+
+<!-- nbonline_manage_rectangle1 -->
+
+<iframe width="200" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline">
+<comment>
+<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline&">
+</script>
+</comment>
+<noscript>
+<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline" target="_blank">
+<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline" border="0"></a>
+</noscript>
+</iframe>
+
+<!-- end of nbonline_manage_rectangle1 -->
+<p style="height:10px;"><img src="../../../../nboimgs/spacer.gif" width="1" height="1" /></p>
+
+<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
+
+
+	
+		
+	
+		
+	
+		
+	
+	
+	        
+	        
+										
+																
+<div class="ranking5">
+<a href="../../../topics/20060331/100909/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>4位</b> NB100</span></a><br />
+<a href="../../../topics/20061214/115724/index.html" target="_top" class="noborder">日産自動車</a> 
+	</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+		
+	
+	
+	        
+	        
+										
+										
+<div class="ranking5">
+<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>5位</b> 時流超流</span></a><br />
+<a href="../../../topics/20061214/115643/index.html" target="_top" class="noborder">自動車メーカー残り寿命10年？</a> 
+		<br />
+<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Ftopics%2F20061214%2F115643%2F.html">読者コメントを読む( 17
+
+
+件)</a>
+	</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+		
+	
+
+<div style="margin-bottom:20px;">
+<a href="../../../../ranking/fbdaily/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
+</div>
+
+<br clear="all" />
+
+
+
+
+<iframe width="210" height="630" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/nbo_manage_bt.shtml">
+</iframe>
+
+
+<!-- nbonline_manage_rectangle2 -->
+
+<iframe width="200" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline">
+<comment>
+<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline&">
+</script>
+</comment>
+<noscript>
+<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline" target="_blank">
+<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline" border="0"></a>
+</noscript>
+</iframe>
+
+<!-- end of nbonline_manage_rectangle2 -->
+
+<div style="margin:15px 0px 5px 0px;">
+<img src="../../../../nboimgs/ranking_1d.jpg" alt="アクセスランキング" width="210" height="23" />
+</div>
+		
+		
+<div class="ranking5">
+<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>1位</b> 時流超流</span></a><br />
+<a href="../../../topics/20061214/115643/index.html" target="_top" class="noborder">自動車メーカー残り寿命10年？</a>
+</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+
+
+		
+				
+<div class="ranking5">
+<a href="../../../money/20061010/111397/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>2位</b> 岩瀬 大輔の投資ファンドは眠らない</span></a><br />
+<a href="../../../money/20061212/115480/index.html" target="_top" class="noborder">秘密のベールを脱いだ巨大ファンドの素顔</a>
+</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+
+
+		
+		
+<div class="ranking5">
+<a href="../../20060406/101070/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>3位</b> 常盤文克の「新・日本型経営を探る」</span></a><br />
+<a href="../../20061215/115764/index.html" target="_top" class="noborder">「よい会社」に「よいヒト」が育つ</a>
+</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+
+
+		
+				
+<div class="ranking5">
+<a href="../../../person/20060601/103388/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>4位</b> EXPRESS　X</span></a><br />
+<a href="../../../person/20061214/115729/index.html" target="_top" class="noborder">【わかるかも中国人】（14）「スーパー80年代生まれ」の肖像〜中国社会も悩む“一人っ子政策”の申し子たち</a>
+</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+
+
+		
+		
+<div class="ranking5">
+<a href="../../../world/20060406/101059/index.html" target="_top" class="noborder"><span style="color:#666">
+<b>5位</b> 世界鑑測　北村豊の「中国・キタムラリポート」</span></a><br />
+<a href="../../../world/20061214/115674/index.html" target="_top" class="noborder">え！中国では下水溝から食用油が作られる？</a>
+</div>
+<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
+
+
+<a href="../../../../ranking/pvdaily/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
+<br clear="all" />
+
+<div style="margin:30px 0px 5px 0px;">
+<img src="../../../../nboimgs/nbo_info.jpg" alt="NBonlineの情報発信" width="210" height="23" />
+</div>
+<ul>
+    <li><a href="../../../../nbs/nbsbook.html" target="_top">「書籍、ムック、臨時増刊のご案内」</a></li>
+    <li>高級感溢れる装丁、充実した機能<br><a href="../../../../nbs/diary/index.html" target="_blank">「日経ビジネス・ダイアリー」</a></li>
+</ul>
+<a class="noborder" target="_blank" href="../../../../nbs/gs/index.html"><img class="aligncenter" height="100" alt="就職活動応援企画　「経営者トップタイプ3診断」" width="200" src="../../../../nboimgs/cover/shukatsu200.gif" vspace="10" /></a>
+
+
+
+	</div>
+	<!-- /subcontent -->
+
+
+</div>
+<!-- /wrapper-->
+
+<hr />
+
+<div id="footer">
+	<div id="footersection">
+		<a href="http://www.nikkeibp.co.jp/"><img src="../../../../nboimgs/logo-nikkeibp.gif" alt="日経BP社" width="114" height="18" /></a>
+		<ul>
+			<li>NBonline
+			<ul>
+				<li><a href="../../../../info/reguser/index.shtml.html">会員登録・メール配信</a></li>
+				<li><a href="../../../../info/aboutnbonline/index.shtml.html">このサイトについて</a></li>
+				<li class="last"><a href="../../../../ask_pass/index.html" target="_blank">お問い合わせ</a></li>
+			</ul></li>
+			<li>日経BP社
+			<ul>
+				<li><a href="http://corporate.nikkeibp.co.jp/" target="_blank">会社案内</a></li>
+				<li><a href="http://www.nikkeibp.co.jp/info/privacy/" target="_blank">プライバシーポリシー</a></li>
+				<li><a href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">著作権について</a></li>
+				<li class="last"><a href="http://corporate.nikkeibp.co.jp/info/webad/jpn/index.html" target=_blank>広告ガイド</a></li>
+			</ul></li>
+		</ul>
+		<p>&copy; 2006 Nikkei Business Publications, Inc. All Rights Reserved.</p>
+
+<!--BIZMARK Version 4.5-->
+<script type="text/javascript" language="JavaScript"><!--
+var _ANid="nbpnbonline";
+//--></script>
+<script type="text/javascript" language="JavaScript" src="../../../../bizmark/an_nbpnbonline.js"></script>
+<noscript><img src="http://biz2.ogt.jp/plog?id=nbpnbonline" width="1" height="1" alt="" /></noscript>
+<!--END OF BIZMARK-->
+
+	</div>
+</div>
+</body>
+</html>

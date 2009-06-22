@@ -1,0 +1,362 @@
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=Shift_JIS">
+<title>衆議院議員　野田よしひこ　かわら版</title>
+<link rel="stylesheet" href="../../../css/nodayosi.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+<script type="text/javascript" src="../../../js/fontsize.js"></script>
+		<csscriptdict>
+			<script><!--
+CSInit = new Array;
+function CSScriptInit() {
+if(typeof(skipPage) != "undefined") { if(skipPage) return; }
+idxArray = new Array;
+for(var i=0;i<CSInit.length;i++)
+	idxArray[i] = i;
+CSAction2(CSInit, idxArray);}
+CSAg = window.navigator.userAgent; CSBVers = parseInt(CSAg.charAt(CSAg.indexOf("/")+1),10);
+CSIsW3CDOM = ((document.getElementById) && !(IsIE()&&CSBVers<6)) ? true : false;
+function IsIE() { return CSAg.indexOf("MSIE") > 0;}
+function CSIEStyl(s) { return document.all.tags("div")[s].style; }
+function CSNSStyl(s) { if (CSIsW3CDOM) return document.getElementById(s).style; else return CSFindElement(s,0);  }
+CSIImg=false;
+function CSInitImgID() {if (!CSIImg && document.images) { for (var i=0; i<document.images.length; i++) { if (!document.images[i].id) document.images[i].id=document.images[i].name; } CSIImg = true;}}
+function CSFindElement(n,ly) { if (CSBVers<4) return document[n];
+	if (CSIsW3CDOM) {CSInitImgID();return(document.getElementById(n));}
+	var curDoc = ly?ly.document:document; var elem = curDoc[n];
+	if (!elem) {for (var i=0;i<curDoc.layers.length;i++) {elem=CSFindElement(n,curDoc.layers[i]); if (elem) return elem; }}
+	return elem;
+}
+function CSGetImage(n) {if(document.images) {return ((!IsIE()&&CSBVers<5)?CSFindElement(n,0):document.images[n]);} else {return null;}}
+CSDInit=false;
+function CSIDOM() { if (CSDInit)return; CSDInit=true; if(document.getElementsByTagName) {var n = document.getElementsByTagName('DIV'); for (var i=0;i<n.length;i++) {CSICSS2Prop(n[i].id);}}}
+function CSICSS2Prop(id) { var n = document.getElementsByTagName('STYLE');for (var i=0;i<n.length;i++) { var cn = n[i].childNodes; for (var j=0;j<cn.length;j++) { CSSetCSS2Props(CSFetchStyle(cn[j].data, id),id); }}}
+function CSFetchStyle(sc, id) {
+	var s=sc; while(s.indexOf("#")!=-1) { s=s.substring(s.indexOf("#")+1,sc.length); if (s.substring(0,s.indexOf("{")).toUpperCase().indexOf(id.toUpperCase())!=-1) return(s.substring(s.indexOf("{")+1,s.indexOf("}")));}
+	return "";
+}
+function CSGetStyleAttrValue (si, id) {
+	var s=si.toUpperCase();
+	var myID=id.toUpperCase()+":";
+	var id1=s.indexOf(myID);
+	if (id1==-1) return "";
+	s=s.substring(id1+myID.length+1,si.length);
+	var id2=s.indexOf(";");
+	return ((id2==-1)?s:s.substring(0,id2));
+}
+function CSSetCSS2Props(si, id) {
+	var el=document.getElementById(id);
+	if (el==null) return;
+	var style=document.getElementById(id).style;
+	if (style) {
+		if (style.left=="") style.left=CSGetStyleAttrValue(si,"left");
+		if (style.top=="") style.top=CSGetStyleAttrValue(si,"top");
+		if (style.width=="") style.width=CSGetStyleAttrValue(si,"width");
+		if (style.height=="") style.height=CSGetStyleAttrValue(si,"height");
+		if (style.visibility=="") style.visibility=CSGetStyleAttrValue(si,"visibility");
+		if (style.zIndex=="") style.zIndex=CSGetStyleAttrValue(si,"z-index");
+	}
+}
+function CSClickReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return true; // dont follow link
+	else return false; // dont follow link
+}
+function CSButtonReturn () { return !CSClickReturn(); }
+CSIm=new Object();
+function CSIShow(n,i) {
+	if (document.images) {
+		if (CSIm[n]) {
+			var img=CSGetImage(n);
+			if (img&&typeof(CSIm[n][i].src)!="undefined") {img.src=CSIm[n][i].src;}
+			if(i!=0) self.status=CSIm[n][3]; else self.status=" ";
+			return true;
+		}
+	}
+	return false;
+}
+function CSILoad(action) {
+	im=action[1];
+	if (document.images) {
+		CSIm[im]=new Object();
+		for (var i=2;i<5;i++) {
+			if (action[i]!='') {CSIm[im][i-2]=new Image(); CSIm[im][i-2].src=action[i];}
+			else CSIm[im][i-2]=0;
+		}
+		CSIm[im][3] = action[5];
+	}
+}
+CSStopExecution=false;
+function CSAction(array) {return CSAction2(CSAct, array);}
+function CSAction2(fct, array) { 
+	var result;
+	for (var i=0;i<array.length;i++) {
+		if(CSStopExecution) return false; 
+		var aa = fct[array[i]];
+		if (aa == null) return false;
+		var ta = new Array;
+		for(var j=1;j<aa.length;j++) {
+			if((aa[j]!=null)&&(typeof(aa[j])=="object")&&(aa[j].length==2)){
+				if(aa[j][0]=="VAR"){ta[j]=CSStateArray[aa[j][1]];}
+				else{if(aa[j][0]=="ACT"){ta[j]=CSAction(new Array(new String(aa[j][1])));}
+				else ta[j]=aa[j];}
+			} else ta[j]=aa[j];
+		}			
+		result=aa[0](ta);
+	}
+	return result;
+}
+CSAct = new Object;
+
+// --></script>
+		</csscriptdict>
+		<csactiondict>
+			<script><!--
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button',/*URL*/'../../../image/sitemap_01.gif',/*URL*/'../../../image/sitemap_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button2',/*URL*/'../../../image/contact_01.gif',/*URL*/'../../../image/contact_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button3',/*URL*/'../../../image/b_home_01.gif',/*URL*/'../../../image/b_home_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button7',/*URL*/'../../../image/menu_01a.gif',/*URL*/'../../../image/menu_01b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button4',/*URL*/'../../../image/menu_02a.gif',/*URL*/'../../../image/menu_02b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button5',/*URL*/'../../../image/menu_03a.gif',/*URL*/'../../../image/menu_03b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button6',/*URL*/'../../../image/menu_04a.gif',/*URL*/'../../../image/menu_04b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button8',/*URL*/'../../../image/menu_06a.gif',/*URL*/'../../../image/menu_06b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button27',/*URL*/'../../../image/menu_07a.gif?df=counter.2 &dd=B',/*URL*/'../../../image/menu_07b.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button25',/*URL*/'../../image/sub_title_01.gif',/*URL*/'../../image/sub_title_01_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button24',/*URL*/'../../image/cate_01_01.gif',/*URL*/'../../image/cate_01_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button10',/*URL*/'../../image/cate_02_01.gif',/*URL*/'../../image/cate_02_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button11',/*URL*/'../../image/cate_03_01.gif',/*URL*/'../../image/cate_03_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button12',/*URL*/'../../image/cate_04_01.gif',/*URL*/'../../image/cate_04_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button13',/*URL*/'../../image/cate_05_01.gif',/*URL*/'../../image/cate_05_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button14',/*URL*/'../../image/cate_06_01.gif',/*URL*/'../../image/cate_06_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button28',/*URL*/'../../image/cate_07_01.gif',/*URL*/'../../image/cate_07_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button29',/*URL*/'../../image/cate_08_01.gif',/*URL*/'../../image/cate_08_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button9',/*URL*/'../../image/janr_01_01.gif',/*URL*/'../../image/janr_01_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button15',/*URL*/'../../image/janr_02_01.gif',/*URL*/'../../image/janr_02_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button16',/*URL*/'../../image/janr_03_01.gif',/*URL*/'../../image/janr_03_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button17',/*URL*/'../../image/janr_04_01.gif',/*URL*/'../../image/janr_04_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button18',/*URL*/'../../image/janr_05_01.gif',/*URL*/'../../image/janr_05_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button19',/*URL*/'../../image/janr_06_01.gif',/*URL*/'../../image/janr_06_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button20',/*URL*/'../../image/janr_07_01.gif',/*URL*/'../../image/janr_07_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button21',/*URL*/'../../image/janr_08_01.gif',/*URL*/'../../image/janr_08_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button22',/*URL*/'../../image/janr_09_01.gif',/*URL*/'../../image/janr_09_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button23',/*URL*/'../../image/janr_10_01.gif',/*URL*/'../../image/janr_10_02.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button26',/*URL*/'../../image/back_01.gif',/*URL*/'../../image/back_02.gif',/*URL*/'','');
+
+// --></script>
+		</csactiondict>
+	</head>
+
+	<body bgcolor="#ffffff" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" onload="CSScriptInit();">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+			<tr>
+				<td background="../../../image/pattern.gif"><img src="../../../image/pattern.gif" width="4" height="4" border="0"></td>
+				<td class="class_04" width="728" valign="top" bgcolor="#3a4f5e">
+					<table border="0" cellpadding="0" cellspacing="0" width="728">
+						<tr height="77">
+							<td height="77" width="728">
+								<table border="0" cellpadding="0" cellspacing="0" width="728">
+									<tr height="77">
+										<td width="277" height="77" background="http://www.nodayoshi.gr.jp/kawara/image/top_pattern.gif"><a href="../../../index.html"><img src="../../../image/top_banner.gif" width="277" height="77" border="0"></a></td>
+										<td valign="top" width="248" height="77" background="../../../image/top_pattern.gif"><a name="Anchor-44305"></a><img src="../../../image/spacer.gif" alt="" height="10" width="10" border="0"></td>
+										<td width="203" align="right" background="../../../image/top_banner_2.gif" height="77" valign="top">
+											<table border="0" cellpadding="0" cellspacing="0" width="161">
+												<tr height="6">
+													<td colspan="3" height="6"><img src="../../../image/spacer.gif" width="6" height="6" border="0"></td>
+												</tr>
+												<tr>
+													<td><csobj al="サイトマップ" w="76" h="23" t="Button" ht="../../../image/sitemap_02.gif"><a href="../../../sitemap/sitemap.html" onmouseover="return CSIShow(/*CMP*/'button',1)" onmouseout="return CSIShow(/*CMP*/'button',0)" onclick="return CSButtonReturn()"><img src="../../../image/sitemap_01.gif" width="76" height="23" name="button" border="0" alt="サイトマップ"></a></csobj></td>
+													<td width="5"><img src="../../../image/spacer.gif" width="5" height="10" border="0"></td>
+													<td width="80"><csobj al="お問い合わせ" w="76" h="23" t="Button" ht="../../../image/contact_02.gif"><a href="../../../contact/contact.html" onmouseover="return CSIShow(/*CMP*/'button2',1)" onmouseout="return CSIShow(/*CMP*/'button2',0)" onclick="return CSButtonReturn()"><img src="../../../image/contact_01.gif" width="76" height="23" name="button2" border="0" alt="お問い合わせ"></a></csobj></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr height="30">
+							<td width="728" background="../../../image/menu_pattern.gif" height="30">
+								<table border="0" cellpadding="0" cellspacing="0" width="706">
+									<tr height="30">
+										<td valign="top" width="17" height="30"><img src="../../../image/menu_pattern.gif" width="20" height="30" border="0"></td>
+										<td width="90" valign="middle" align="center" height="30"><csobj al="トップページへ" ht="../../../image/b_home_02.gif" w="89" h="26" t="Button"><a href="../../../index.html" onmouseover="return CSIShow(/*CMP*/'button3',1)" onmouseout="return CSIShow(/*CMP*/'button3',0)" onclick="return CSButtonReturn()"><img src="../../../image/b_home_01.gif" width="89" height="26" name="button3" border="0" alt="トップページへ"></a></csobj></td>
+										<td width="8" height="30"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+										<td width="90" valign="middle" align="center" height="30"><csobj al="基本政策" ht="../../../image/menu_01b.gif" w="89" h="26" t="Button"><a href="../../../seisak/seisaku.html" onmouseover="return CSIShow(/*CMP*/'button7',1)" onmouseout="return CSIShow(/*CMP*/'button7',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_01a.gif" width="89" height="26" name="button7" border="0" alt="基本政策"></a></csobj></td>
+										<td width="6" height="30"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+										<td valign="middle" width="90" height="30"><csobj al="活動報告" w="89" h="26" t="Button" ht="../../../image/menu_02b.gif"><a href="http://www.nodayoshi.gr.jp/kawara/report.html" onmouseover="return CSIShow(/*CMP*/'button4',1)" onmouseout="return CSIShow(/*CMP*/'button4',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_02a.gif" width="89" height="26" name="button4" border="0" alt="活動報告"></a></csobj></td>
+										<td width="6" height="30"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+										<td width="90" valign="middle" align="center" height="30"><csobj al="かわら版" w="89" h="26" t="Button" ht="../../../image/menu_03b.gif"><a href="../../kawara_top.html" onmouseover="return CSIShow(/*CMP*/'button5',1)" onmouseout="return CSIShow(/*CMP*/'button5',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_03a.gif" width="89" height="26" name="button5" border="0" alt="かわら版"></a></csobj></td>
+										<td width="6" height="30"><img src="../../../image/spacer.gif" width="10" height="9" border="0"></td>
+										<td valign="middle" width="90" height="30"><csobj al="プロフィール" w="89" h="26" t="Button" ht="../../../image/menu_04b.gif"><a href="../../../profile/profile_top.html" onmouseover="return CSIShow(/*CMP*/'button6',1)" onmouseout="return CSIShow(/*CMP*/'button6',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_04a.gif" width="89" height="26" name="button6" border="0" alt="プロフィール"></a></csobj></td>
+										<td width="6" height="30"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+										<td valign="middle" width="90" height="30"><csobj al="事務所" w="89" h="26" t="Button" ht="../../../image/menu_06b.gif"><a href="../../../jimu/jimu_top.html" onmouseover="return CSIShow(/*CMP*/'button8',1)" onmouseout="return CSIShow(/*CMP*/'button8',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_06a.gif" width="89" height="26" name="button8" border="0" alt="事務所"></a></csobj></td>
+										<td width="6" height="30"><img src="../../../image/spacer.gif" width="10" height="13" border="0"></td>
+										<td valign="middle" width="89" height="30"><csobj al="リンク" h="26" ht="../../../image/menu_07b.gif" t="Button" w="89"><a href="../../../link/link.html" onmouseover="return CSIShow(/*CMP*/'button27',1)" onmouseout="return CSIShow(/*CMP*/'button27',0)" onclick="return CSButtonReturn()"><img src="../../../image/menu_07a.gif@df=counter.2&#32;&amp;dd=B" width="89" height="26" name="button27" border="0" alt="リンク"></a></csobj></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr height="77">
+							<td width="728" height="77" valign="middle" align="center"><img src="../../image/banner.jpg" width="728" height="77" border="0"></td>
+						</tr>
+						<tr height="9">
+							<td width="728" background="../../../image/flash_under_pattern.gif" height="9"><img src="../../../image/flash_under_pattern.gif" width="9" height="9" border="0"></td>
+						</tr>
+						<tr height="444">
+							<td width="728" height="444" valign="top">
+								<table border="0" cellpadding="0" cellspacing="0" width="728">
+									<tr height="24">
+										<td class="class_06 class_10" width="173" bgcolor="#d3dfe9" valign="top" height="24"><img src="../../image/title_02.gif" width="170" height="24" border="0"></td>
+										<td class="class_10" width="555" bgcolor="#d3dfe9" height="24"><img src="../../image/title_03.gif" width="158" height="24" border="0"></td>
+									</tr>
+									<tr height="379">
+										<td class="class_06 class_08" width="173" height="379" bgcolor="white" valign="top" align="center">
+											<table border="0" cellpadding="0" cellspacing="0" width="64">
+												<tr height="10">
+													<td width="167" height="10"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+												</tr>
+												<tr height="15">
+													<td width="167" height="15"><csobj w="167" h="15" t="Button" ht="../../image/sub_title_01_02.gif"><a href="../../kawara_top.html" onmouseover="return CSIShow(/*CMP*/'button25',1)" onmouseout="return CSIShow(/*CMP*/'button25',0)" onclick="return CSButtonReturn()"><img src="../../image/sub_title_01.gif" width="167" height="15" name="button25" border="0"></a></csobj></td>
+												</tr>
+												<tr height="5">
+													<td width="167" height="5"><img src="../../../image/spacer.gif" width="10" height="20" border="0"></td>
+												</tr>
+												<tr height="15">
+													<td width="167" height="15"><img src="../../image/sub_title_02.gif" width="167" height="15" border="0"></td>
+												</tr>
+												<tr height="126">
+													<td width="167" height="126" valign="top" align="center">
+														<table border="0" cellpadding="0" cellspacing="0" width="65" height="166">
+															<tr>
+																<td><csobj w="61" h="14" t="Button" ht="../../image/cate_01_02.gif"><a href="../kawara_1997.html" onmouseover="return CSIShow(/*CMP*/'button24',1)" onmouseout="return CSIShow(/*CMP*/'button24',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_01_01.gif" width="61" height="14" name="button24" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="61" h="14" t="Button" ht="../../image/cate_02_02.gif"><a href="../kawara_1998.html" onmouseover="return CSIShow(/*CMP*/'button10',1)" onmouseout="return CSIShow(/*CMP*/'button10',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_02_01.gif" width="61" height="14" name="button10" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="61" h="14" t="Button" ht="../../image/cate_03_02.gif"><a href="../kawara_1999.html" onmouseover="return CSIShow(/*CMP*/'button11',1)" onmouseout="return CSIShow(/*CMP*/'button11',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_03_01.gif" width="61" height="14" name="button11" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="62" h="14" t="Button" ht="../../image/cate_04_02.gif"><a href="../kawara_2000.html" onmouseover="return CSIShow(/*CMP*/'button12',1)" onmouseout="return CSIShow(/*CMP*/'button12',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_04_01.gif" width="62" height="14" name="button12" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="62" h="14" t="Button" ht="../../image/cate_05_02.gif"><a href="../kawara_2001.html" onmouseover="return CSIShow(/*CMP*/'button13',1)" onmouseout="return CSIShow(/*CMP*/'button13',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_05_01.gif" width="62" height="14" name="button13" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="62" h="14" t="Button" ht="../../image/cate_06_02.gif"><a href="../kawara_2002.html" onmouseover="return CSIShow(/*CMP*/'button14',1)" onmouseout="return CSIShow(/*CMP*/'button14',0)" onclick="return CSButtonReturn()"><img src="../../image/cate_06_01.gif" width="62" height="14" name="button14" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj ht="../../image/cate_07_02.gif" w="62" h="13" t="Button"><A href="../kawara_2003.html" onmouseover="return CSIShow(/*CMP*/'button28',1)" onmouseout="return CSIShow(/*CMP*/'button28',0)" onclick="return CSButtonReturn()"><IMG src="../../image/cate_07_01.gif" width="62" height="13" name="button28" border="0"></A></csobj></td>
+															</tr>
+															<TR>
+																<TD><csobj ht="../../image/cate_08_02.gif" w="62" h="13" t="Button"><A href="../kawara_2004.html" onmouseover="return CSIShow(/*CMP*/'button29',1)" onmouseout="return CSIShow(/*CMP*/'button29',0)" onclick="return CSButtonReturn()"><IMG src="../../image/cate_08_01.gif" width="62" height="13" name="button29" border="0"></A></csobj></TD>
+															</TR>
+														</table>
+													</td>
+												</tr>
+												<tr height="10">
+													<td width="167" height="10"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+												</tr>
+												<tr height="16">
+													<td width="167" height="16"><img src="../../image/sub_title_03.gif" width="167" height="15" border="0"></td>
+												</tr>
+												<tr height="141">
+													<td width="167" height="141" valign="top" align="center">
+														<table border="0" cellpadding="0" cellspacing="0" width="65" height="207">
+															<tr>
+																<td><csobj w="63" h="14" t="Button" ht="../../image/janr_01_02.gif"><a href="../kawara_j_01.html" onmouseover="return CSIShow(/*CMP*/'button9',1)" onmouseout="return CSIShow(/*CMP*/'button9',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_01_01.gif" width="63" height="14" name="button9" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="63" h="14" t="Button" ht="../../image/janr_02_02.gif"><a href="../kawara_j_02.html" onmouseover="return CSIShow(/*CMP*/'button15',1)" onmouseout="return CSIShow(/*CMP*/'button15',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_02_01.gif" width="63" height="14" name="button15" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="64" h="14" t="Button" ht="../../image/janr_03_02.gif"><a href="../kawara_j_03.html" onmouseover="return CSIShow(/*CMP*/'button16',1)" onmouseout="return CSIShow(/*CMP*/'button16',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_03_01.gif" width="64" height="14" name="button16" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="74" h="14" t="Button" ht="../../image/janr_04_02.gif"><a href="../kawara_j_04.html" onmouseover="return CSIShow(/*CMP*/'button17',1)" onmouseout="return CSIShow(/*CMP*/'button17',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_04_01.gif" width="74" height="14" name="button17" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="74" h="14" t="Button" ht="../../image/janr_05_02.gif"><a href="../kawara_j_05.html" onmouseover="return CSIShow(/*CMP*/'button18',1)" onmouseout="return CSIShow(/*CMP*/'button18',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_05_01.gif" width="74" height="14" name="button18" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="74" h="14" t="Button" ht="../../image/janr_06_02.gif"><a href="../kawara_j_06.html" onmouseover="return CSIShow(/*CMP*/'button19',1)" onmouseout="return CSIShow(/*CMP*/'button19',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_06_01.gif" width="74" height="14" name="button19" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="74" h="14" t="Button" ht="../../image/janr_07_02.gif"><a href="../kawara_j_07.html" onmouseover="return CSIShow(/*CMP*/'button20',1)" onmouseout="return CSIShow(/*CMP*/'button20',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_07_01.gif" width="74" height="14" name="button20" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="64" h="14" t="Button" ht="../../image/janr_08_02.gif"><a href="../kawara_j_08.html" onmouseover="return CSIShow(/*CMP*/'button21',1)" onmouseout="return CSIShow(/*CMP*/'button21',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_08_01.gif" width="64" height="14" name="button21" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="74" h="14" t="Button" ht="../../image/janr_09_02.gif"><a href="../kawara_j_09.html" onmouseover="return CSIShow(/*CMP*/'button22',1)" onmouseout="return CSIShow(/*CMP*/'button22',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_09_01.gif" width="74" height="14" name="button22" border="0"></a></csobj></td>
+															</tr>
+															<tr>
+																<td><csobj w="64" h="14" t="Button" ht="../../image/janr_10_02.gif"><a href="../kawara_j_10.html" onmouseover="return CSIShow(/*CMP*/'button23',1)" onmouseout="return CSIShow(/*CMP*/'button23',0)" onclick="return CSButtonReturn()"><img src="../../image/janr_10_01.gif" width="64" height="14" name="button23" border="0"></a></csobj></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr height="10">
+													<td width="167" height="10"><img src="../../../image/spacer.gif" width="10" height="10" border="0"></td>
+												</tr>
+											</table>
+										</td>
+										<td class="class_08 j12" height="379" width="555" bgcolor="white" valign="top">
+											<p></p>
+											<p><font size="3"><b>2004年10月17日 　　「米国産牛肉の拙速な輸入再開に反対する」</b></font></p>
+											<p><font size="3"><b>Ｎo.571</b></font></p>
+											<p>　政府は、国内で出荷するすべての牛にＢＳＥ（牛海綿状脳症）の検査を義務づける「全頭検査」を見直す方針です。若い牛の感染は検査で判定できないとの理由から、生後20ヶ月以下の牛を検査から除外するというものです。一方で、消費者の不安に配慮して、地方自治体による全頭検査継続には助成金を出す方法だそうです。<br>
+											</p>
+											<p>　何ともチグハグな対応ですが、その理由は、昨年12月に米国でＢＳＥの感染牛が確認され、以来米国産牛の輸入を停止していましたが、輸入再開を急ぎたいためでしょう。先月の日米首脳会談では、ブッシュ大統領から小泉総理に強い要求があったと報道されています。先の日米外相会談でも、早期の輸入再開で合意したといわれています。それらを踏まえて、11月の大統領選までに決着をつけて、ブッシュ大統領にエールを送ろうというわけでしょう。<br>
+											</p>
+											<p>　その結果、事実上全頭検査を経た国産牛と、検査を経ていない生後20ヶ月以下の米国産牛が同時に市場に流通することになります。このようなダブルスタンダード(二重基準)は消費者を混乱させるだけです。<br>
+											</p>
+											<p>　民主党は米国に独自のＢＳＥ調査団を送りましたが、米国内の対応には問題が残っており、輸入再開は時期尚早という結論でした。そもそも、米国では肝心な牛の個体識別が行われていないとのことです。牛と牛肉のトレーサビリティー(生産・流通履歴を追跡する仕組み)を徹底させている日本とは大違いです。個体識別もできていない状況で、どのように牛の月齢を調べるのでしょうか。米国側は「牛の歯で月齢識別できる」と主張しているそうですが、牛の永久歯がはえそろうのは生後30ヶ月からですし、しかも6ヶ月の誤差が生じるそうです。それでは限界があります。<br>
+											</p>
+											<p>　米国が個体識別に本気で取り組まない理由は１億頭もの牛の識別は負担が大きいということでしょう。しかし、米国とほぼ同数の牛をかかえるオーストラリアは、個体識別に積極的です。マイクロチップを組み込んだ直径3センチ程度のタグを牛の耳に付ける方法を試みようとしています。チップには生年月日から搾乳量(乳牛の場合)まで記録され、測定器をかざすだけでデータを読み取れるそうです。<br>
+											</p>
+											<p>　ちなみに、オーストラリアはＢＳＥ汚染国ではありません。しかし、万全な安全確保対策をとり、市場の信頼を得ることに意欲的です。一方、米国は明らかにＢＳＥ汚染国であるにもかかわらず、その認識に欠け対策をおろそかにしています。このような米国の姿勢が変わらない限り、米国産牛肉の安易な輸入再開をするべきではありません。<br>
+											</p>
+											<p>　小泉総理は日本国民の命よりもブッシュ大統領やテキサスの牛飼いたちのほうが大事なのでしょうか。<br>
+											</p>
+											<p><br>
+											</p>
+											<p></p>
+											<div align="right">
+												<p>平成16年10月17日　　　野田よしひこ<br>
+												</p>
+											</div>
+											<p></p>
+											<div align="right">
+												
+											</div>
+											<p><br>
+											</p>
+											<p></p>
+											<div align="right">
+												<p><csobj w="79" h="16" t="Button" ht="../../image/back_02.gif"><a href="2004_1017.html#Anchor-44305" onmouseover="return CSIShow(/*CMP*/'button26',1)" onmouseout="return CSIShow(/*CMP*/'button26',0)" onclick="return CSButtonReturn()"><img src="../../image/back_01.gif" width="79" height="16" name="button26" border="0"></a></csobj></p>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr height="23">
+							<td class="class_05 j12" width="728" height="23" bgcolor="#d3dfe9" align="center">ご意見・ご質問を大歓迎いたします。E-mail <a href="mailto:post@nodayoshi.gr.jp">post@nodayoshi.gr.jp</a></td>
+						</tr>
+						<tr height="4">
+							<td width="728" height="4" background="../../../image/under_pattern.gif"><img src="../../../image/under_pattern.gif" width="3" height="3" border="0"></td>
+						</tr>
+						<tr>
+							<td class="j12" width="728" align="center"><font color="white">このページ及び全てのディレクトリに掲載の記事・写真の無断転載を禁じます。</font></td>
+						</tr>
+					</table>
+				</td>
+				<td background="../../../image/pattern.gif"><img src="../../../image/pattern.gif" width="4" height="4" border="0"></td>
+			</tr>
+		</table>
+	</body>
+
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="ja">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<TITLE>貧乏靴下BLOG: スーダン内戦が和平合意に至った件について</TITLE>
+
+<link rel="stylesheet" href="2004423235054_blogA.css" type="text/css">
+
+<script type="text/javascript">
+
+<!--
+
+function CheckBeforeSubmit(theForm)
+
+{
+
+	if (theForm.author.value == "")
+
+	{
+
+		alert("お名前の入力がありません。");
+
+		theForm.author.focus();
+
+		return false;
+
+	}
+
+	if (theForm.email.value != "")
+
+	{
+
+		var email = CheckEmail(theForm.email.value);
+
+		if (!email)
+
+		{
+
+			alert("メールアドレスの指定に誤りがあります。");
+
+			theForm.email.focus();
+
+			return false;
+
+		}
+
+	}
+
+	if (theForm.url.value != "")
+
+	{
+
+		if(!IsURLs(theForm.url.value))
+
+		{
+
+			alert("URLに使用できない文字が含まれています。");
+
+			theForm.url.focus();
+
+			return false;
+
+		}
+
+	}
+
+	if (theForm.text.value == "")
+
+	{
+
+		alert("コメントの入力がありません。");
+
+		theForm.text.focus();
+
+		return false;
+
+	}
+
+
+
+	handleSubmit(theForm);
+
+
+
+	return true;
+
+}
+
+/* メールアドレスの妥当性チェック */
+
+function CheckEmail(email)
+
+{
+
+	var l, iFirst, iLast, i;
+
+	// left trim
+
+	l = email.length;
+
+	iFirst = 0;
+
+	for (i = 0; i < l; i++)
+
+	{
+
+		var ch = email.charAt(i);
+
+		if (ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t')
+
+			iFirst = i + 1;
+
+		else
+
+			break;
+
+	}
+
+	email = email.substring(iFirst);
+
+	// right trim
+
+	l = email.length;
+
+	iLast = l;
+
+	for (i = l - 1; i >= 0; i--)
+
+	{
+
+		var ch = email.charAt(i);
+
+		if (ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t')
+
+			iLast = i;
+
+		else
+
+			break;
+
+	}
+
+	email = email.substring(0, iLast);
+
+	
+
+	if (!isValidEmail(email))
+
+		return false;
+
+
+
+	return email;
+
+}
+
+
+
+function isValidEmail(str)
+
+{
+
+	if (!str) return false;
+
+	if (str == "") return false;
+
+
+
+	var at_loc = str.indexOf("@");
+
+	var dot_loc = str.lastIndexOf(".");
+
+
+
+	if ((at_loc == "-1") || (dot_loc == "-1") || (dot_loc < at_loc) || (dot_loc == (str.length-1)))
+
+		return false;
+
+
+
+	var iChars = "*|,\":<>[]{}\';()&$#%!=?\\";
+
+	for (var i = 0; i < str.length; i++) {
+
+		wstr = str.charAt(i);
+
+		if (iChars.indexOf(wstr) != -1) {
+
+			return false;
+
+		}
+
+		c = escape( wstr );		if ( c.length > 3 )
+
+		{
+
+			alert("メールアドレスに全角文字が含まれています。");
+
+			return false;
+
+		}
+
+	}
+
+	return true;
+
+}/* URLの妥当性チェック */
+
+function IsURLs(msg)
+
+{
+
+    var n = msg.length ;
+
+    var i;
+
+
+
+    for(i = 0; i < msg.length; i++)
+
+    {
+
+        if(IsURL(msg.charAt(i)) == false)
+
+			return false;
+
+    }
+
+    return true;
+
+}
+
+
+
+/* URLに使用禁止文字がないかチェックする */
+
+function IsURL(c) 
+
+{
+
+    var ank = "\\\"<>";
+
+    var i;
+
+
+
+    for(i = 0; i < ank.length; i++)
+
+    {
+
+        if(c == ank.charAt(i))
+
+            return false;
+
+    }
+
+    return true;
+
+}
+
+
+
+function setCookie (name, value, expires) {
+
+
+
+    document.cookie = name + '=' + escape(value) + '; expires=' + expires.toGMTString();
+
+
+
+}
+
+
+
+
+
+
+
+function getCookie (name) {
+
+
+
+    var key = name + '=';
+
+
+
+    var c = document.cookie;
+
+
+
+    var i = c.indexOf(key);
+
+
+
+    if (i < 0) return '';
+
+
+
+    var j = c.indexOf(';', i + key.length);
+
+
+
+    if (j < 0) j = c.length;
+
+
+
+    return unescape(c.substring(i + key.length, j));
+
+
+
+}
+
+
+
+
+
+
+
+function deleteCookie (name) {
+
+
+
+    if (getCookie(name))
+
+
+
+        setCookie(name, '', new Date(70, 0, 1, 0, 0, 1));
+
+
+
+}
+
+
+
+
+
+
+
+function rememberMe (f) {
+
+
+
+    var now = new Date();
+
+
+
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+
+
+
+    setCookie('author', f.author.value, now);
+
+
+
+    setCookie('email', f.email.value, now);
+
+
+
+    setCookie('url', f.url.value, now);
+
+
+
+}
+
+
+
+
+
+
+
+function forgetMe () {
+
+
+
+    deleteCookie('author');
+
+
+
+    deleteCookie('email');
+
+
+
+    deleteCookie('url');
+
+
+
+}
+
+
+
+
+
+
+
+function setFormValues (f) {
+
+
+
+    f.author.value = getCookie("author");
+
+
+
+    f.email.value = getCookie("email");
+
+
+
+    f.url.value = getCookie("url");
+
+
+
+}
+
+
+
+
+
+
+
+function unsetFormValues (f) {
+
+
+
+    f.author.value = '';
+
+
+
+    f.email.value = '';
+
+
+
+    f.url.value = '';
+
+
+
+}
+
+
+
+
+
+
+
+function handleSubmit (f) {
+
+
+
+    if (f.bakecookie.checked)
+
+
+
+        rememberMe(f);
+
+
+
+    else
+
+
+
+        forgetMe();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function doLoaded () {
+
+
+
+    if (!document.comments_form) return;
+
+
+
+    setFormValues(document.comments_form);
+
+
+
+    if (document.comments_form.author.value)
+
+
+
+        document.comments_form.bakecookie.checked = 1;
+
+
+
+}
+
+//-->
+
+</script>
+
+</head>
+
+<BODY>
+
+
+
+<!-- ヘッダー START-->
+
+<div id="banner">
+
+<h1>貧乏靴下BLOG</h1>
+
+<span class="description"><P align=right>靴下の毛玉が許し難い件について。</P></span>
+
+</div>
+
+<!-- ヘッダー END-->
+
+
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" ID="center" SUMMARY="tbl01">
+
+<TBODY>
+
+<TR>
+
+<TD>
+
+<DIV CLASS="content">
+
+<P ALIGN="right">
+
+
+
+<A HREF="blog258_016728.htm">&laquo; 前のエントリー</A> |
+
+
+
+
+<A HREF="2004423235054_blogA001.htm">Main</A> |
+
+
+
+<A HREF="blog258_016814.htm">次のエントリー &raquo;</A> |
+
+
+
+
+<A HREF="blog258_016812.htm#trackback">TrackBack</A> |
+
+<A HREF="blog258_016812.htm#comments">Comments</A> |
+
+<A HREF="blog258_016812.htm#postcomment">Post a comment</A>
+
+</P>
+
+<BR>
+
+
+
+<!-- エントリー START-->
+
+
+
+
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" CLASS="date_table" SUMMARY="tbl02">
+<TR>
+<TD><SPAN CLASS="date">
+2005年1月10日
+</SPAN></TD>
+</TR>
+</TABLE>
+
+<a name="016812"></a>
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" SUMMARY="tbl03">
+<TR>
+<TD CLASS="title_table"><SPAN CLASS="title">スーダン内戦が和平合意に至った件について</SPAN></TD>
+</TR>
+<TR>
+<TD CLASS="blogbody">
+<P><FONT face="ＭＳ Ｐゴシック" size=3>正直まとまるとは思わなかったんだが。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>いい加減両方とも疲れたのかね。わからんが。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><B><FONT face="ＭＳ Ｐゴシック" size=3>スーダン内戦（大雑把概要）</FONT></B><BR><B><FONT face="ＭＳ Ｐゴシック" size=3></FONT></B>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3>基本的に、スーダン政府とスーダン南部地域を拠点とするの反政府勢力、スーダン人民解放軍（SPLA＝<B>S</B>udan<B> P</B>eople's <B>L</B>iberation <B>A</B>rmy ）との21年余に及ぶ内戦のこと。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>そもそもスーダン南北地域の対立というのは’50年代から遡り、以降断続的にドンパチは繰り返していたという背景はある。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>で、今回というか20年以上にも及んだ内戦のきっかけというのは、’83年にスーダン北部人を中心としたイスラム（アラブ系民族）政権が、同国の統治にシャリア（イスラム法）を導入したことにはじまる。これに、同国南部地域のキリスト教徒＆土着宗教徒（共に黒人系）たちが大激怒。上記のSPLAを結成し、政府軍とドロ沼の内戦へと突入した。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>スーダンという国自体がデカいというのもあるが、内戦としてはアフリカ大陸最大規模となり、死者の数は累計で200万人以上（推定）。ひとつの戦争でこれだけ人が死んどいて、過去ほとんど誰も騒がなかった経緯が実に香ばしい。わが国のプロ市民どもによる“平和運動”とやらの胡散臭さの一端をそこに見るが、まあ今回のエントリーの趣旨とはまた違う話なので割愛。というか、すげえどうでもいい。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>この内戦の間、イスラム政権故にってことは敢えて言わないが、「アルカイダ」の温床となって香ばしさを世界に振り撒き、テロリスト・キャンプに頭に来たアメリカからピンポイント攻撃食らった挙句、経済制裁まで食らって国際的にも孤立。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>ところがその間隙を縫って、石油お目当てで中国が侵食してエネル源をがっちりキープ。中国はその見返りに武器輸出して武官駐在させた上に人民解放軍までわんさか送り込んでますが何か？…な国際政治の駆け引きの舞台ともなったりしているのだが、まあこれ書き出したらキリがないし、平和ナントカと同じく関係ないのでまた別の機会に。…その機会があれば。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>というか、中国のスーダン侵食の件が日本でほとんど報道されてないのはなぜですか。中国だからですか。そうですか。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3>何はともあれ、この果てしない戦争も今回（9日、ケニア・ナイロビにて）の包括和平協定の調印でひとまずは終結。今後はSPLAも加わった暫定統治期間（6年間）を経て、国民投票を実施して国家形態の在り方（現行維持か、南部の分離・独立か）を決めるという流れ。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>またそこでなんか起きそうな気もしなくはないが、20余年ぶりの平安というものを噛みしめた今、不穏な空気が漂っても「まあひとまずここは落ち着こうや」で丸く収められることを祈りたい。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3>バシル大統領は言ったはずだ。</FONT><BR><B><FONT face="ＭＳ Ｐゴシック" size=3>「これからは戦争ではなく、教育や福祉のために金を使う」</FONT></B><BR><FONT face="ＭＳ Ｐゴシック" size=3>ガラン司令官も言ったはずだ。</FONT><BR><B><FONT face="ＭＳ Ｐゴシック" size=3>「我々はあまりに長く苦しんできた。包括和平の署名で、スーダンは生まれ変わった。ニ度と戦火にまみれることはないだろう」</FONT></B><BR><FONT face="ＭＳ Ｐゴシック" size=3>本心なんだろう。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3>…とはいってもだ、’03年からはじまり、最新の国連発表では3万人余の犠牲者、160万人余の難民を出しながら未だ収まらぬダルフール地方の民族紛争は、今回の和平協定とはまた別件。</FONT><BR><FONT face="ＭＳ Ｐゴシック" size=3></FONT>&nbsp;<BR><FONT face="ＭＳ Ｐゴシック" size=3>そういう意味で、スーダンそのものの平安の日はまだ遠い。</FONT></P>
+
+
+<P><FONT face="ＭＳ Ｐゴシック" size=3>ちなみにSPLAの</FONT><A href="http://www.splmtoday.com/" target=_blank><FONT face="ＭＳ Ｐゴシック" size=3>公式サイト</FONT></A><FONT face="ＭＳ Ｐゴシック" size=3>。</FONT></P>
+<P><FONT face="ＭＳ Ｐゴシック" size=3>名称はSPLM（<B>S</B>udan<B> P</B>eople's <B>L</B>iberation <B>M</B>ovement）となってるが、SPLAの政治部門、あるいは外交用窓口ってことでこの名前。中身は一緒。</FONT></P>
+
+</TD>
+</TR>
+<TR>
+<TD> 
+<DIV CLASS="posted" ALIGN="right">Posted by lefty at 02:00
+	
+	| <A HREF="blog258_016812.htm#comments">Comments (0)</A>
+	
+	
+	| <A HREF="blog258_016812.htm#trackback">TrackBack (0)</A>
+	
+</DIV>
+</TD>
+</TR>
+</TABLE>
+
+
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" CLASS="date_table" SUMMARY="tbl04">
+<TR>
+<TD><SPAN CLASS="date">
+<A ID="trackback"></A>TrackBack</SPAN>
+</TD>
+</TR>
+</TABLE>
+
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" SUMMARY="tbl05">
+<TR>
+<TD>
+<P>この記事へトラックバックするには、このURLをお使いください：<BR>http://x1.bbweb-arena.com/trackback.asp?entry_id=16812</P>
+</TD>
+<TR>
+<TD>
+	
+</TD>
+</TR>
+</TABLE>
+
+
+
+	<BR>
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" CLASS="date_table" SUMMARY="tbl06">
+<TR>
+<TD><SPAN CLASS="date">
+<A ID="comments"></A>Comments</SPAN>
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" SUMMARY="tbl07">
+<TR>
+<TD>
+	
+</TD>
+</TR>
+</TABLE>
+
+
+<BR>
+
+<BR>
+
+<!-- コメントの送信フォーム START-->
+<TABLE WIDTH="700" BORDER="0" CELLSPACING="0" CELLPADDING="2" CLASS="date_table" SUMMARY="tbl08">
+<TR>
+<TD><SPAN CLASS="date">
+<A ID="postcomment"></A>Post a comment</SPAN>
+</TD>
+</TR>
+</TABLE>
+
+<DIV CLASS="post-title">
+
+<FORM onsubmit="return CheckBeforeSubmit(this)" method="post" action="http://x1.bbweb-arena.com/comment.asp" name="comments_form">
+<input type="hidden" name="blog_id" value="258">
+<input type="hidden" name="entry_id" value="16812">
+
+<DIV ID="comment-data">
+<P><label for="author">お名前：</label><br>
+<input tabindex="1" id="author" name="author" value=""></P>
+
+<P><label for="email">メールアドレス：</label><BR>
+<input tabindex="2" id="email" name="email" value=""></P>
+
+<P><label for="url">URL：</label><BR>
+<input tabindex="3" id="url" name="url" value=""></P>
+</DIV>
+
+<P><label><input tabindex="5" type="checkbox" id="bakecookie" name="bakecookie" value="1"> 設定を保存する</label></P>
+<BR STYLE="clear: both">
+
+<P><label for="text">Comments:</label><BR>
+<textarea tabindex="4" id="text" name="text" rows="10" style="width: 80%;"></textarea></p>
+
+<div align="center">
+<input tabindex="6" style="font-weight: bold;" type="submit" name="post" value="&nbsp;送　信&nbsp;">
+&nbsp;&nbsp;
+<input tabindex="7" type="reset" name="reset" value="&nbsp;クリア&nbsp;">
+</div>
+<BR>
+</DIV>
+<BR>
+
+</FORM>
+<!-- コメントの送信フォーム END-->
+
+
+
+
+
+
+
+<!-- エントリー END-->
+
+
+
+</DIV>
+
+</TD>
+
+</TR>
+
+</TBODY> 
+
+</TABLE>
+
+
+
+<script type="text/javascript">doLoaded()</script>
+
+
+
+</BODY>
+
+</HTML>
+
+
+
