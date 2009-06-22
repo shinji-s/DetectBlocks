@@ -87,7 +87,7 @@ sub dblocks_saiki{
 	    my $blockarr = $this->{blockarr};
 	    my @blockarr = @$blockarr;
 	    my @block = $blockarr[$#blockarr];
-	    $this->writeblocktype(@block, $this->{domain});
+	    $this->writeblocktype(@block, $sourceelem);
 	}	
 
     }
@@ -212,8 +212,8 @@ sub printblock2{
     my ($this, $flag) = @_;
 
     my $restr = "";
-    for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
-#    for my $blocktopelem($this->{tree}->look_down("myblocktype","")){
+#    for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
+    for my $blocktopelem($this->{tree}->look_down("myblocktype",qr//)){
 
 	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
 
@@ -275,9 +275,10 @@ sub checkfoot{
 
 
 sub writeblocktype{
-    my ($this, $kariblock) = @_;
+    my ($this, $kariblock, $sourceelem) = @_;
 
     my @block = @$kariblock;
+    my $elem = ${$sourceelem};
 
     return 0 if(@block == []);
 
@@ -333,9 +334,8 @@ sub writeblocktype{
 	$typeflag = "footer";
     }
 
-    my $konelem = ${$block[0][0][0][1]};
-    $konelem->attr("myblock","true");
-    $konelem->attr("myblocktype",$typeflag);
+#    $konelem->attr("myblock","true");
+    $elem->attr("myblocktype",$typeflag);
 
 }
 
