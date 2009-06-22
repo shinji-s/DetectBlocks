@@ -1,1 +1,3 @@
 perl -I../perl test.pl HTML URL 
+
+To shibuta@nlp.kuee.kyoto-u.ac.jp
