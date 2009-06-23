@@ -301,18 +301,24 @@ sub checkmaintext{
 
     my $total = $#block + 1;
     my $karimainnum = 0;
+    my $karimainlen = 0;
+    my $totallen = 0;
     my $textlen = 0;
     for my $eachleaf(@block){
         my @eachleaf = @$eachleaf;
         my $text = $eachleaf[1];
 
+	$totallen += length($text);
         next if($text =~ /^[\s　]+$/ || $text eq "");
 
-        $karimainnum += 1 if($text =~ /。|、|ます|です/);
+        if($text =~ /。|、|ます|です|でした|ました/){
+	    $karimainnum += 1; 
+	    $karimainlen += length($text);
+	}
         $textlen += length($text);
     }
 
-    if($karimainnum / $total >= 0.5){
+    if($karimainnum/$total >= 0.5 || $karimainlen/$textlen >= 0.8){
         return 1;
     }else{
         return 0;
