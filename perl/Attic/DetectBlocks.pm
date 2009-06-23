@@ -62,7 +62,13 @@ sub dblocks_saiki{
     my $elem = ${$sourceelem};
     return 0 if($elem->tag eq "script");
     my $alltextlen = $this->{alltextlen};
-    my $textper = length($elem->as_text) / $alltextlen;
+#imgタグ内のaltの長さ
+    my $altlen = 0;
+    for my $imgelem($elem->find("img")){
+	$altlen += length($imgelem->attr("alt")) if(defined($imgelem->attr("alt")));
+    }
+
+    my $textper = (length($elem->as_text) + $altlen) / $alltextlen;
 
     if($textper > 0.5 || $textper == 0.0){
 
@@ -73,7 +79,6 @@ sub dblocks_saiki{
 	}    
 
     }else{
-
 	my $kk = $this->{blockarr};
 	my @kariblockarr = @$kk;
 	push(@kariblockarr,[]);
@@ -104,9 +109,10 @@ sub block_saiki{
 
 
     #妙な判定法
-    if(ref($elem) eq ""){	
-
+    if(ref($elem) eq ""){
+	
 	my $text = $elem;
+
 	if($text =~ /^[\s　\n]+$/){
 	    return $maxlen;
 	}
@@ -140,8 +146,15 @@ sub block_saiki{
 		push(@karitagarr, [$elem->tag,$sourceelem]);
 	    }
 
-	    for my $child($elem->content_list){
-		$maxlen = $this->block_saiki(\$child, $maxlen, \@karitagarr);
+	    if($elem->content_list != 0){
+		for my $child($elem->content_list){
+		    $maxlen = $this->block_saiki(\$child, $maxlen, \@karitagarr);
+		}
+	    }else{
+		if($elem->tag eq "img" && $elem->attr("alt") ne ""){
+		    my $kk=$elem->{"alt"};
+		    $maxlen = $this->block_saiki(\$kk, $maxlen, \@karitagarr);
+		}
 	    }
 	}
 
@@ -238,6 +251,13 @@ sub printblock_saiki{
 	    $this->printblock_saiki($childelem, $taglist, $restr);
 	}
 
+	if($elem->tag eq "img" && $elem->content_list == 0){
+	    my $altstr = $elem->{"alt"};
+	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
+		${$restr} .= $taglist. $altstr. "\n";
+	    }
+	}
+
     }elsif(ref($elem) eq ""){
 
 	unless($elem =~ /^[\s　]+$/ || $elem eq ""){
@@ -262,7 +282,7 @@ sub checkfoot{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	$karifootnum += 1 if($text =~ /住所|所在地|郵便番号|電話番号|Copyright|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|©/);
+	$karifootnum += 1 if($text =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail/);
 	$textlen += length($text);
     }
 
@@ -301,6 +321,32 @@ sub checkmaintext{
 }
 
 
+sub checkcopy{
+    my ($this, $block) = @_;
+    
+    my @block = @$block;
+
+    my $total = $#block + 1;
+    my $karicopynum = 0;
+    my $textlen = 0;
+    for my $eachleaf(@block){
+	my @eachleaf = @$eachleaf;
+	my $text = $eachleaf[1];
+
+	next if($text =~ /^[\s　]+$/ || $text eq "");
+
+	$karicopynum += 1 if($text =~ /Copyright|©|(c)|著作権/);
+	$textlen += length($text);
+    }
+
+    if($karicopynum / $total >= 0.5 && $textlen / $this->{alltextlen} < 0.3){
+	return 1;
+    }else{
+	return 0;
+    }
+}
+
+
 sub writeblocktype{
     my ($this, $kariblock, $sourceelem) = @_;
 
@@ -324,7 +370,7 @@ sub writeblocktype{
 	
 	if($aposition != -1){
 	    $karia += 1;
-	    $kariatnum += length(${$tagarr[$aposition][1]}->as_text);
+	    $kariatnum += length($text);
 	    my $atag = ${$tagarr[$aposition][1]};
 	    ####リンク処理,変数名ちょっとごちゃごちゃ
 	    if(defined($atag->attr("href")) && defined($this->{domain})){
@@ -340,7 +386,8 @@ sub writeblocktype{
     }
 
     my $typeflag = "";
-    if($karia/($#block+1) >= 0.5 || $karinottnum <= 0.3*$kariatnum){
+#    if($karia/($#block+1) >= 0.5 || $karinottnum/$kariatnum <= 0.3){
+    if($karia/($#block+1) >= 0.5 || $karinottnum < $kariatnum ){
 	if(defined($this->{domain})){
 	    if($kariahref/$karia >= 0.5){
 		$typeflag = "inlink";
@@ -353,14 +400,17 @@ sub writeblocktype{
     }else{
 	if($formnum/($#block+1) > 0.8){
 	    $typeflag = "form";
+	}elsif($this->checkfoot(\@block)){
+	    $typeflag = "footer";
 	}elsif($this->checkmaintext(\@block)){
 	    $typeflag = "maintext";
-	}else{
-	    $typeflag = "unknown_text";
 	}
     }
-    if($this->checkfoot(\@block)){
-	$typeflag = "footer";
+    if($this->checkcopy(\@block)){
+	$typeflag .= " copyright";
+    }
+    if($typeflag eq ""){
+	$typeflag = "unknown_text";
     }
 
 #    $konelem->attr("myblock","true");
