@@ -274,6 +274,33 @@ sub checkfoot{
 }
 
 
+sub checkmaintext{
+    my ($this, $block) = @_;
+
+    my @block = @$block;
+
+    my $total = $#block + 1;
+    my $karimainnum = 0;
+    my $textlen = 0;
+    for my $eachleaf(@block){
+        my @eachleaf = @$eachleaf;
+        my $text = $eachleaf[1];
+
+        next if($text =~ /^[\s　]+$/ || $text eq "");
+
+        $karimainnum += 1 if($text =~ /。|、|ます|です/);
+        $textlen += length($text);
+    }
+
+    if($karimainnum / $total >= 0.5){
+        return 1;
+    }else{
+        return 0;
+    }
+
+}
+
+
 sub writeblocktype{
     my ($this, $kariblock, $sourceelem) = @_;
 
@@ -326,8 +353,10 @@ sub writeblocktype{
     }else{
 	if($formnum/($#block+1) > 0.8){
 	    $typeflag = "form";
+	}elsif($this->checkmaintext(\@block)){
+	    $typeflag = "maintext";
 	}else{
-	    $typeflag = "text";
+	    $typeflag = "unknown_text";
 	}
     }
     if($this->checkfoot(\@block)){
