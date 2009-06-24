@@ -51,8 +51,9 @@ sub detectblocks{
     my $body = $this->{tree}->find("body");
     $this->{alltextlen} = length($this->{tree}->as_text);
 
+    $body->objectify_text;
     $this->dblocks_saiki(\$body);
-
+    $body->deobjectify_text;
 }
 
 
@@ -63,22 +64,28 @@ sub dblocks_saiki{
     return 0 if($elem->tag eq "script");
     my $alltextlen = $this->{alltextlen};
 #imgタグ内のaltの長さ
-    my $altlen = 0;
-    for my $imgelem($elem->find("img")){
-	$altlen += length($imgelem->attr("alt")) if(defined($imgelem->attr("alt")));
-    }
+    my $textlen = 0;
+    my $textper = 0;
 
-    my $textper = (length($elem->as_text) + $altlen) / $alltextlen;
+    for my $imgelem($elem->find("img")){
+	$textlen += length($imgelem->attr("alt")) if(defined($imgelem->attr("alt")));
+    }
+    for my $textelem($elem->find("~text")){
+	$textlen += length($textelem->attr("text"));
+    }
+    $textper = $textlen / $alltextlen;
+
 
     if($textper > 0.5 || $textper == 0.0){
 
 	for my $child($elem->content_list){
-	    next unless(ref($child) eq "HTML::Element");
+	    next if(ref($child) ne "HTML::Element");
 	    next if($child->tag eq "comment");
 	    $this->dblocks_saiki(\$child);
-	}    
+	}
 
     }else{
+
 	my $kk = $this->{blockarr};
 	my @kariblockarr = @$kk;
 	push(@kariblockarr,[]);
@@ -110,8 +117,14 @@ sub block_saiki{
 
     #妙な判定法
     if(ref($elem) eq ""){
+#    if($elem->tag eq "~text" ||($elem->tag eq "img" && $elem->{"alt"} ne "")){
 	
 	my $text = $elem;
+#	if($elem->tag eq "~text"){
+#	    $text = $elem->attr("text");
+#	}elsif($elem->tag eq "img"){
+#	    $text = $elem->attr("alt");
+#	}
 
 	if($text =~ /^[\s　\n]+$/){
 	    return $maxlen;
@@ -151,9 +164,21 @@ sub block_saiki{
 		    $maxlen = $this->block_saiki(\$child, $maxlen, \@karitagarr);
 		}
 	    }else{
-		if($elem->tag eq "img" && $elem->attr("alt") ne ""){
-		    my $kk=$elem->{"alt"};
-		    $maxlen = $this->block_saiki(\$kk, $maxlen, \@karitagarr);
+		if($elem->tag eq "~text"){
+		    if($karitagarr[0][0] ne "~text"){
+			my $intext = $elem->{"text"};
+			$maxlen = $this->block_saiki(\$intext, $maxlen, \@karitagarr);
+
+		    }else{
+			@karitagarr = ();
+			my $karielem = $elem->clone;
+			$elem->tag("myfont");
+			$elem->push_content($karielem);
+			$maxlen = $this->block_saiki(\$elem, $maxlen, \@karitagarr);
+		    }
+		}elsif($elem->tag eq "img" && $elem->attr("alt") ne ""){
+		    my $alttext=$elem->{"alt"};
+		    $maxlen = $this->block_saiki(\$alttext, $maxlen, \@karitagarr);
 		}
 	    }
 	}
