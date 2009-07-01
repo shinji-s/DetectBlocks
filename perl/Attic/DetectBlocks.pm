@@ -49,7 +49,13 @@ sub detectblocks{
     my @kariblockarr = ();
     $this->{blockarr} = \@kariblockarr;
     my $body = $this->{tree}->find("body");
-    $this->{alltextlen} = length($this->{tree}->as_text);
+
+    my $allaltlen = 0;
+    for my $elem($body->look_down("alt", qr//)){
+	$allaltlen += length($elem->attr("alt"));
+    }
+#コメントやスクリプトがテキストとして認識される問題
+    $this->{alltextlen} = length($body->as_text) + $allaltlen;
 
     $body->objectify_text;
     $this->dblocks_saiki(\$body);
@@ -61,7 +67,7 @@ sub dblocks_saiki{
     my ($this, $sourceelem) = @_;
 
     my $elem = ${$sourceelem};
-    return 0 if($elem->tag eq "script");
+    return 0 if($elem->tag eq "script" || $elem->tag eq "noscript");
     my $alltextlen = $this->{alltextlen};
 #imgタグ内のaltの長さ
     my $textlen = 0;
@@ -75,7 +81,6 @@ sub dblocks_saiki{
     }
     $textper = $textlen / $alltextlen;
 
-
     if($textper > 0.5 || $textper == 0.0){
 
 	for my $child($elem->content_list){
@@ -86,8 +91,8 @@ sub dblocks_saiki{
 
     }else{
 	
-	for my $i($this->recheckblock($sourceelem)){
-#for my $i(($sourceelem)){
+#	for my $i($this->recheckblock($sourceelem)){
+for my $i(($sourceelem)){
 	    my $kk = $this->{blockarr};
 	    my @kariblockarr = @$kk;
 	    push(@kariblockarr,[]);
