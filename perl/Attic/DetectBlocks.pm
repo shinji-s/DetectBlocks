@@ -22,7 +22,7 @@ sub maketree{
 
     my $tree = HTML::TreeBuilder->new;
     $tree->parse($htmltext);
-    $tree->eof;
+ $tree->eof;
 
     $this->{url} = $url if(defined($url));
     $this->{tree} = $tree;
@@ -49,13 +49,7 @@ sub detectblocks{
     my @kariblockarr = ();
     $this->{blockarr} = \@kariblockarr;
     my $body = $this->{tree}->find("body");
-
-    my $allaltlen = 0;
-    for my $elem($body->look_down("alt", qr//)){
-	$allaltlen += length($elem->attr("alt"));
-    }
-#コメントやスクリプトがテキストとして認識される問題
-    $this->{alltextlen} = length($body->as_text) + $allaltlen;
+    $this->{alltextlen} = length($this->{tree}->as_text);
 
     $body->objectify_text;
     $this->dblocks_saiki(\$body);
@@ -67,7 +61,7 @@ sub dblocks_saiki{
     my ($this, $sourceelem) = @_;
 
     my $elem = ${$sourceelem};
-    return 0 if($elem->tag eq "script" || $elem->tag eq "noscript");
+    return 0 if($elem->tag eq "script");
     my $alltextlen = $this->{alltextlen};
 #imgタグ内のaltの長さ
     my $textlen = 0;
@@ -81,6 +75,7 @@ sub dblocks_saiki{
     }
     $textper = $textlen / $alltextlen;
 
+
     if($textper > 0.5 || $textper == 0.0){
 
 	for my $child($elem->content_list){
@@ -91,8 +86,8 @@ sub dblocks_saiki{
 
     }else{
 	
-#	for my $i($this->recheckblock($sourceelem)){
-for my $i(($sourceelem)){
+	for my $i($this->recheckblock($sourceelem)){
+#for my $i(($sourceelem)){
 	    my $kk = $this->{blockarr};
 	    my @kariblockarr = @$kk;
 	    push(@kariblockarr,[]);
@@ -366,10 +361,11 @@ sub printblock2{
     my $restr = "";
 #    for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
     for my $blocktopelem($this->{tree}->look_down("myblocktype",qr//)){
-
+	my %rehash = ();
+	$this->makehash($blocktopelem, \%rehash);
 	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
 
-	$this->printblock_saiki($blocktopelem, "", \$restr);
+	$this->printblock_saiki($blocktopelem, "", "", \$restr, \%rehash);
 
 	$restr .= "*********************************\n\n";
     }
@@ -378,16 +374,34 @@ sub printblock2{
     return $restr;
 }
 
-sub printblock_saiki{
-    my($this, $elem, $taglist, $restr) = @_;
+sub makehash{
+    my ($this, $elem, $rehashref) = @_;
+    if(ref($elem) eq "HTML::Element"){
+	my $id = $elem->attr("repeatid") if(defined($elem->attr("repeatid")));
+	if(defined($rehashref->{$id})){
+	    $rehashref->{$id} += 1  if(defined($elem->attr("repeatid")));
+	}else{
+	    $rehashref->{$id} = 1 if(defined($elem->attr("repeatid")));
+	}
+	for my $childelem($elem->content_list){
+	    $this->makehash($childelem, $rehashref);
+	}
+    }
+}
 
+
+sub printblock_saiki{
+    my($this, $elem, $taglist, $repeat, $restr, $rehashref) = @_;
 
     if(ref($elem) eq "HTML::Element"){
-
+	if(defined($elem->attr("repeatid"))){
+	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
+	}
 	return 0 if($elem->tag eq "style" || $elem->tag eq "script");
+	
 	$taglist .= $elem->tag . ",";
 	for my $childelem($elem->content_list){
-	    $this->printblock_saiki($childelem, $taglist, $restr);
+	    $this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
 	}
 
 	if($elem->tag eq "img" && $elem->content_list == 0){
@@ -400,7 +414,7 @@ sub printblock_saiki{
     }elsif(ref($elem) eq ""){
 
 	unless($elem =~ /^[\s　]+$/ || $elem eq ""){
-	    ${$restr} .= $taglist. $elem. "\n";
+	    ${$restr} .= $taglist. $repeat.".". $elem. "\n";
 	}       
 
     }
@@ -574,6 +588,34 @@ sub checkform{
    
 }
 
+sub checkimg{
+    my ($this, $block) = @_;
+
+    my @block = @$block;
+
+    my $total = $#block + 1;
+    my $kariimgnum = 0;
+    my $textlen = 0;
+
+    for my $leaf(@block){
+
+        my @leaf = @$leaf;
+        my @tagarr = @{$leaf[0]};
+        
+	if($this->assoc(\@tagarr,"img") != -1){
+	    $kariimgnum += 1;
+	}
+
+    }
+
+    if($kariimgnum/$total >= 0.8){
+        return 1;
+    }else{
+        return 0;
+    }
+   
+}
+
 
 sub writeblocktype{
     my ($this, $kariblock, $sourceelem) = @_;
@@ -589,10 +631,19 @@ sub writeblocktype{
     if((my $lflag = $this->checklink(\@block))){
 	if($lflag == 1){
 	    $typeflag = "link internal";
+	    if($this->checkimg(\@block)){
+		$typeflag = "imglink internal";
+	    }
 	}elsif($lflag == 2){
 	    $typeflag = "link external";
+	    if($this->checkimg(\@block)){
+		$typeflag = "imglink external";
+	    }
 	}elsif($lflag == 3){
 	    $typeflag = "link";
+	    if($this->checkimg(\@block)){
+		$typeflag = "imglink";
+	    }
 	}
     }else{
 	if($this->checkform(\@block)){
@@ -602,6 +653,9 @@ sub writeblocktype{
 	    $typeflag .= " copyright" if($fcflag == 2);
 	}elsif($this->checkmaintext(\@block)){
 	    $typeflag = "maintext";
+	}
+	elsif($this->checkimg(\@block)){
+	    $typeflag = "img";
 	}
     }
     if($typeflag eq ""){
@@ -621,6 +675,11 @@ sub gettree{
 }
 
 
+sub settree{
+    my ($this, $tree) = @_;
+
+    $this->{tree} = $tree;
+}
 
 1;
 
