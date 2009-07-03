@@ -38,14 +38,17 @@ sub checkline{
     }
 
     $this->{repidhash} = \%idhash;
+    print Dumper(%idhash);
 }
 
 sub checkline_saiki{
     my ($this, $elem, $line, $hashref) = @_;
 
-    if(ref($elem) eq "HTML::Element"){
+
+    if($elem->tag ne "~text" && $elem->tag ne "img"){
 	my $thistag = $elem->tag;
 	return 0 if($thistag eq "script" || $thistag eq "noscript" || $thistag eq "style");
+
 
 	$line .= $thistag . ",";
 	
@@ -53,8 +56,8 @@ sub checkline_saiki{
 	    my $reflag = $this->checkline_saiki($child, $line, $hashref);
 	}
 
-    }elsif(ref($elem) eq ""){
-
+    }elsif($elem->tag eq "~text" || $elem->tag eq "img"){
+	$line .= $elem->tag;
 	if(defined($hashref->{$line})){
 	    $hashref->{$line} += 1;
 	}else{
@@ -68,7 +71,8 @@ sub checkline_saiki{
 
 sub detectrepeat{
     my ($this, $tree) = @_;
-    
+
+    $tree->objectify_text;
     $this->checkline($tree);
 
     for my $elem($tree->look_down("myblocktype", qr//)){
@@ -84,7 +88,7 @@ sub detectrepeat_saiki{
 
     my $elem = ${$elemref};
 
-    if(ref($elem) eq "HTML::Element"){
+    if($elem->tag ne "~text" && $elem->tag ne "img"){
 	my $thistag = $elem->tag;
 	return 0 if($thistag eq "script" || $thistag eq "noscript" || $thistag eq "style");
 
@@ -94,23 +98,15 @@ sub detectrepeat_saiki{
 	for my $child($elem->content_list){
 	    $line = $kariline;
 	    
-	    my $reflag = $this->detectrepeat_saiki(\$child, $line);
-
-	    if(ref($child) eq "HTML::Element" && $child->tag eq "img" && $child->content_list == 0){
-		$reflag = 1;
-		$line .= $child->tag. ",";
-	    }
-
-	    if($reflag == 1){
-		my %idhash = %{$this->{repidhash}};
-
-		if(defined($idhash{$line})){
-		    $elem->attr("repeatid", $idhash{$line});
-		}
-	    }
+	    $this->detectrepeat_saiki(\$child, $line);
 	}
-    }elsif(ref($elem) eq ""){
-	return 1;
+    }elsif($elem->tag eq "~text" || $elem->tag eq "img"){
+	$line .= $elem->tag;
+	my %idhash = %{$this->{repidhash}};
+
+	if(defined($idhash{$line})){
+	    $elem->attr("repeatid", $idhash{$line});
+	}
     }
     
     return 0;

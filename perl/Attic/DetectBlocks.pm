@@ -49,7 +49,13 @@ sub detectblocks{
     my @kariblockarr = ();
     $this->{blockarr} = \@kariblockarr;
     my $body = $this->{tree}->find("body");
-    $this->{alltextlen} = length($this->{tree}->as_text);
+
+    my $allaltlen = 0;
+    for my $elem($body->look_down("alt", qr//)){
+	$allaltlen += length($elem->attr("alt"));
+    }
+#コメントやスクリプトがテキストとして認識される問題
+    $this->{alltextlen} = length($body->as_text) + $allaltlen;
 
     $body->objectify_text;
     $this->dblocks_saiki(\$body);
@@ -61,7 +67,7 @@ sub dblocks_saiki{
     my ($this, $sourceelem) = @_;
 
     my $elem = ${$sourceelem};
-    return 0 if($elem->tag eq "script");
+    return 0 if($elem->tag eq "script" || $elem->tag eq "noscript");
     my $alltextlen = $this->{alltextlen};
 #imgタグ内のaltの長さ
     my $textlen = 0;
@@ -75,7 +81,6 @@ sub dblocks_saiki{
     }
     $textper = $textlen / $alltextlen;
 
-
     if($textper > 0.5 || $textper == 0.0){
 
 	for my $child($elem->content_list){
@@ -86,8 +91,8 @@ sub dblocks_saiki{
 
     }else{
 	
-	for my $i($this->recheckblock($sourceelem)){
-#for my $i(($sourceelem)){
+#	for my $i($this->recheckblock($sourceelem)){
+for my $i(($sourceelem)){
 	    my $kk = $this->{blockarr};
 	    my @kariblockarr = @$kk;
 	    push(@kariblockarr,[]);
@@ -361,8 +366,10 @@ sub printblock2{
     my $restr = "";
 #    for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
     for my $blocktopelem($this->{tree}->look_down("myblocktype",qr//)){
+
 	my %rehash = ();
 	$this->makehash($blocktopelem, \%rehash);
+
 	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
 
 	$this->printblock_saiki($blocktopelem, "", "", \$restr, \%rehash);
@@ -393,30 +400,51 @@ sub makehash{
 sub printblock_saiki{
     my($this, $elem, $taglist, $repeat, $restr, $rehashref) = @_;
 
-    if(ref($elem) eq "HTML::Element"){
-	if(defined($elem->attr("repeatid"))){
-	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
-	}
-	return 0 if($elem->tag eq "style" || $elem->tag eq "script");
+    if(ref($elem) eq "HTML::Element" && $elem->tag ne "~text" && $elem->tag ne "img"){
+
+	return 0 if($elem->tag eq "style" || $elem->tag eq "script" || $elem->tag eq "noscript");
 	
 	$taglist .= $elem->tag . ",";
 	for my $childelem($elem->content_list){
 	    $this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
 	}
 
-	if($elem->tag eq "img" && $elem->content_list == 0){
-	    my $altstr = $elem->{"alt"};
-	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
-		${$restr} .= $taglist. $altstr. "\n";
-	    }
-	}
 
     }elsif(ref($elem) eq ""){
 
-	unless($elem =~ /^[\s　]+$/ || $elem eq ""){
-	    ${$restr} .= $taglist. $repeat.".". $elem. "\n";
-	}       
+	if(defined($elem->attr("repeatid"))){
+	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
+	}
 
+	unless($elem =~ /^[\n\s　]+$/ || $elem eq ""){
+	    ${$restr} .= $taglist. $repeat.".". $elem. "\n";
+	}
+
+    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "~text"){
+
+	if(defined($elem->attr("repeatid"))){
+	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
+	}
+
+	my $text = $elem->attr("text");
+	unless($text =~ /^[\n\s　]+$/ || $text eq ""){
+	    ${$restr} .= $taglist. $repeat. ".". $text. "\n";
+	}
+
+    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "img"){
+
+	if(defined($elem->attr("repeatid"))){
+	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
+	}
+
+	$taglist .= $elem->tag;
+	if($elem->content_list == 0){
+	    my $altstr = $elem->{"alt"};
+	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
+		${$restr} .= $taglist. $repeat. ".". $altstr. "\n";
+	    }
+	}
+	
     }
 }
 
