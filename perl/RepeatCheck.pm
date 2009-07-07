@@ -24,13 +24,15 @@ sub checkline{
     my ($this, $tree) = @_;
 
     my %linehash = ();
-
+    
     for my $child($tree->look_down("myblocktype", qr//)){
 	$this->checkline_saiki($child, "", \%linehash);
     }
 
     my %idhash = {};
     my $i = 1;
+
+#回数が多い順にナンバリング
     for my $line(sort{$linehash{$b} <=> $linehash{$a}}keys(%linehash)){
 	next if($linehash{$line} < 3);
 	$idhash{$line} = $i;
@@ -38,24 +40,44 @@ sub checkline{
     }
 
     $this->{repidhash} = \%idhash;
-    print Dumper(%idhash);
 }
+
+sub detect_rep{
+    my ($this,  $tree) = @_;
+    my $id;
+    my $preid;
+    my @rrr;
+    for my $child($tree->look_down("repeatid", qr//)){
+	$id = $child->attr("repeatid");
+	if($id eq $preid){                     #id eq preid
+	    push(@rrr, \$child);
+	}else{                                 #id not eq preid
+	    if(scalar(@rrr) >= 3){
+		for my $kkk(@rrr){
+		    ${$kkk}->attr("rep", "*");
+		}
+	    }
+	    @rrr = (\$child);
+	}
+	$preid = $id;
+    }
+}
+
 
 sub checkline_saiki{
     my ($this, $elem, $line, $hashref) = @_;
 
-
     if($elem->tag ne "~text" && $elem->tag ne "img"){
-	my $thistag = $elem->tag;
+ 	my $thistag = $elem->tag;
 	return 0 if($thistag eq "script" || $thistag eq "noscript" || $thistag eq "style");
 
-
+ 
 	$line .= $thistag . ",";
-	
+	 
 	for my $child($elem->content_list){
 	    my $reflag = $this->checkline_saiki($child, $line, $hashref);
 	}
-
+ 
     }elsif($elem->tag eq "~text" || $elem->tag eq "img"){
 	$line .= $elem->tag;
 	if(defined($hashref->{$line})){
@@ -63,9 +85,7 @@ sub checkline_saiki{
 	}else{
 	    $hashref->{$line} = 1;
 	}
-
     }    
-
 }
 
 
@@ -78,6 +98,8 @@ sub detectrepeat{
     for my $elem($tree->look_down("myblocktype", qr//)){
 	$this->detectrepeat_saiki(\$elem, "");
     }
+
+    $this->detect_rep($tree);
 
     return $tree;
 }

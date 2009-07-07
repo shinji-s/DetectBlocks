@@ -367,7 +367,8 @@ sub printblock2{
 #    for my $blocktopelem($this->{tree}->look_down("myblock", "true")){
     for my $blocktopelem($this->{tree}->look_down("myblocktype",qr//)){
 
-	my %rehash = ();
+	my %rehash = ();        #(repeatid ,回数)
+
 	$this->makehash($blocktopelem, \%rehash);
 
 	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
@@ -381,6 +382,64 @@ sub printblock2{
     return $restr;
 }
 
+
+sub printblock_saiki{
+    my($this, $elem, $taglist, $repeat, $restr, $rehashref) = @_;
+  
+    if(defined($elem->attr("repeatid"))){
+	$repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
+    }    
+    my $rep = $elem->attr("rep") if(defined($elem->attr("rep")));
+	
+    if(ref($elem) eq "HTML::Element" && $elem->tag ne "~text" && $elem->tag ne "img"){
+
+	return 0 if($elem->tag eq "style" || $elem->tag eq "script" || $elem->tag eq "noscript");
+	$taglist .= $elem->tag . ",";
+	for my $childelem($elem->content_list){
+	    $this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
+	}
+
+    }elsif(ref($elem) eq ""){
+
+	unless($elem =~ /^[\s　]+$/ || $elem eq ""){
+	    if ($repeat eq ""){
+		${$restr} .=  "$rep". "    ". $taglist. $elem. "\n";
+	    }else{   
+		${$restr} .=  "$rep". "[". $repeat. "] ". $taglist. $elem. "\n";
+	    }       
+	}
+
+	unless($elem =~ /^[\n\s　]+$/ || $elem eq ""){
+	    ${$restr} .= "$rep". $taglist. $repeat.".". $elem. "\n";
+	}
+
+    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "~text"){
+
+	my $text = $elem->attr("text");
+	unless($text =~ /^[\n\s　]+$/ || $text eq ""){
+	    if($repeat eq ""){
+		${$restr} .= "$rep". "    ". $taglist. $text. "\n";
+	    }else{
+		${$restr} .= "$rep". "[". $repeat. "] ". $taglist. $text. "\n";
+	    }
+	}
+    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "img"){
+
+	$taglist .= $elem->tag;
+	if($elem->content_list == 0){
+	    my $altstr = $elem->{"alt"};
+	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
+		if($repeat eq ""){
+		    ${$restr} .= "$rep". "    ". $taglist. $altstr. "\n";
+		}else{
+		    ${$restr} .= "$rep". "[". $repeat. "] ". $taglist. ".". $altstr. "\n";
+		}
+	    }
+	}
+    }
+}
+
+
 sub makehash{
     my ($this, $elem, $rehashref) = @_;
     if(ref($elem) eq "HTML::Element"){
@@ -393,58 +452,6 @@ sub makehash{
 	for my $childelem($elem->content_list){
 	    $this->makehash($childelem, $rehashref);
 	}
-    }
-}
-
-
-sub printblock_saiki{
-    my($this, $elem, $taglist, $repeat, $restr, $rehashref) = @_;
-
-    if(ref($elem) eq "HTML::Element" && $elem->tag ne "~text" && $elem->tag ne "img"){
-
-	return 0 if($elem->tag eq "style" || $elem->tag eq "script" || $elem->tag eq "noscript");
-	
-	$taglist .= $elem->tag . ",";
-	for my $childelem($elem->content_list){
-	    $this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
-	}
-
-
-    }elsif(ref($elem) eq ""){
-
-	if(defined($elem->attr("repeatid"))){
-	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
-	}
-
-	unless($elem =~ /^[\n\s　]+$/ || $elem eq ""){
-	    ${$restr} .= $taglist. $repeat.".". $elem. "\n";
-	}
-
-    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "~text"){
-
-	if(defined($elem->attr("repeatid"))){
-	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
-	}
-
-	my $text = $elem->attr("text");
-	unless($text =~ /^[\n\s　]+$/ || $text eq ""){
-	    ${$restr} .= $taglist. $repeat. ".". $text. "\n";
-	}
-
-    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "img"){
-
-	if(defined($elem->attr("repeatid"))){
-	    $repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
-	}
-
-	$taglist .= $elem->tag;
-	if($elem->content_list == 0){
-	    my $altstr = $elem->{"alt"};
-	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
-		${$restr} .= $taglist. $repeat. ".". $altstr. "\n";
-	    }
-	}
-	
     }
 }
 
