@@ -386,10 +386,10 @@ sub printblock2{
 sub printblock_saiki{
     my($this, $elem, $taglist, $repeat, $restr, $rehashref) = @_;
   
-    if(defined($elem->attr("repeatid"))){
+    if(ref($elem) eq "HTML::Element" && defined($elem->attr("repeatid"))){
 	$repeat = $elem->attr("repeatid") if($rehashref->{$elem->attr("repeatid")} >= 3);
     }    
-    my $rep = $elem->attr("rep") if(defined($elem->attr("rep")));
+    my $rep = $elem->attr("rep") if(ref($elem) eq "HTML::Element" && defined($elem->attr("rep")));
 	
     if(ref($elem) eq "HTML::Element" && $elem->tag ne "~text" && $elem->tag ne "img"){
 
