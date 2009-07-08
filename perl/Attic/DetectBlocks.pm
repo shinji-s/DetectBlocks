@@ -409,9 +409,6 @@ sub printblock_saiki{
 	    }       
 	}
 
-	unless($elem =~ /^[\n\s　]+$/ || $elem eq ""){
-	    ${$restr} .= "$rep". $taglist. $repeat.".". $elem. "\n";
-	}
 
     }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "~text"){
 
@@ -423,6 +420,7 @@ sub printblock_saiki{
 		${$restr} .= "$rep". "[". $repeat. "] ". $taglist. $text. "\n";
 	    }
 	}
+
     }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "img"){
 
 	$taglist .= $elem->tag;
