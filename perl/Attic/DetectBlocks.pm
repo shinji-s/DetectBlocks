@@ -1,5 +1,6 @@
 package DetectBlocks;
 
+# $Id$
 
 use strict;
 use utf8;
@@ -7,7 +8,7 @@ use HTML::TreeBuilder;
 use Data::Dumper;
 use Encode;
 
-
+our $TEXTPER_TH = 0.5;
 
 
 sub new{
@@ -22,7 +23,7 @@ sub maketree{
 
     my $tree = HTML::TreeBuilder->new;
     $tree->parse($htmltext);
- $tree->eof;
+    $tree->eof;
 
     $this->{url} = $url if(defined($url));
     $this->{tree} = $tree;
@@ -32,14 +33,16 @@ sub maketree{
 sub detectblocks{
     my ($this) = @_;
 
-#url処理
+    #url処理
     my $url;
     my $domain;
     $url = $this->{url} if(defined($this->{url}));
     if(defined($url)){
+	# 例 : http://www.yahoo.co.jp/news => www.yahoo.co.jp
 	if($url =~ /^http:\/\/\/?([.^\/]+)\// || $url =~ /^http:\/\/\/?([.^\/]+)$/){
 	    $url = $1;
 	}
+	# ??
 	if($url =~ /\/\/\/?([^\/]+)\// || $url =~ /\/\/\/?([^\/]+)$/){
 	    $domain = $1;
 	}
@@ -48,17 +51,18 @@ sub detectblocks{
 
     my @kariblockarr = ();
     $this->{blockarr} = \@kariblockarr;
-    my $body = $this->{tree}->find("body");
+    my $body = $this->{tree}->find('body');
 
     my $allaltlen = 0;
-    for my $elem($body->look_down("alt", qr//)){
-	$allaltlen += length($elem->attr("alt"));
+    for my $elem($body->look_down('alt', qr//)){
+	$allaltlen += length($elem->attr('alt'));
     }
-#コメントやスクリプトがテキストとして認識される問題
+    #コメントやスクリプトがテキストとして認識される問題
     $this->{alltextlen} = length($body->as_text) + $allaltlen;
 
+    # 要コメント
     $body->objectify_text;
-    $this->dblocks_saiki(\$body);
+    $this->dblocks_saiki($body);
     $body->deobjectify_text;
 }
 
@@ -66,10 +70,11 @@ sub detectblocks{
 sub dblocks_saiki{
     my ($this, $sourceelem) = @_;
 
-    my $elem = ${$sourceelem};
+    #my $elem = ${$sourceelem};
+    my $elem = $sourceelem;
     return 0 if($elem->tag eq "script" || $elem->tag eq "noscript");
     my $alltextlen = $this->{alltextlen};
-#imgタグ内のaltの長さ
+    #imgタグ内のaltの長さ
     my $textlen = 0;
     my $textper = 0;
 
@@ -81,20 +86,21 @@ sub dblocks_saiki{
     }
     $textper = $textlen / $alltextlen;
 
-    if($textper > 0.5 || $textper == 0.0){
+    # 閾値以上なら子供も調べる
+    if ($textper > $TEXTPER_TH || $textper == 0.0) {
 
-	for my $child($elem->content_list){
-	    next if(ref($child) ne "HTML::Element");
-	    next if($child->tag eq "comment");
-	    $this->dblocks_saiki(\$child);
+	for my $child ($elem->content_list) {
+	    next if (ref($child) ne "HTML::Element");
+	    next if ($child->tag eq "comment");
+	    $this->dblocks_saiki($child);
 	}
 
-    }else{
+    } else {
 	
 #	for my $i($this->recheckblock($sourceelem)){
-for my $i(($sourceelem)){
-	    my $kk = $this->{blockarr};
-	    my @kariblockarr = @$kk;
+	# 要コメント
+	for my $i ($sourceelem){
+	    my @kariblockarr = @{$this->{blockarr}};
 	    push(@kariblockarr,[]);
 	    $this->{blockarr} = \@kariblockarr;
 	    my $maxlen = $this->block_saiki($i);
@@ -102,10 +108,10 @@ for my $i(($sourceelem)){
 		pop(@kariblockarr);
 		$this->{blockarr} = \@kariblockarr;
 	    }else{
-		my $blockarr = $this->{blockarr};
-		my @blockarr = @$blockarr;
-		my @block = $blockarr[$#blockarr];
-		$this->writeblocktype(@block, $i);
+# 		my $blockarr = $this->{blockarr};
+# 		my @blockarr = @$blockarr;
+# 		my @block = $blockarr[$#blockarr];
+		$this->writeblocktype($this->{blockarr}[-1], $i);
 	    }	
 	    
 	}
@@ -140,6 +146,7 @@ sub recheckblock{
 }
 
 
+# 要修正
 sub recheckblock_saiki{
     my ($this, $sourceelem, $rearr, $aa, $af, $at, $af, $amt) = @_;
 
@@ -189,7 +196,7 @@ sub recheckblock_saiki{
 		push(@{$rearr}, $karichild);
 	    }
 	    @kariarr = ();
-	    $this->recheckblock_saiki(\$child, $rearr, $aa, $af, $at, $af, $amt);
+	    $this->recheckblock_saiki($child, $rearr, $aa, $af, $at, $af, $amt);
 	    $childrenflag += 1;
 	}elsif($childrenflag == 0){
 	    push(@kariarr, \$child);
@@ -223,7 +230,7 @@ sub recheckblock_saiki{
 sub block_saiki{
     my ($this, $sourceelem, $maxlen, $ta) = @_;
 
-    my $elem = ${$sourceelem};
+    my $elem = $sourceelem;
     my @karitagarr = @$ta if(defined($ta));
     $maxlen = 0 unless(defined($maxlen));
     @karitagarr = () unless(defined(@$ta));
@@ -275,24 +282,24 @@ sub block_saiki{
 
 	    if($elem->content_list != 0){
 		for my $child($elem->content_list){
-		    $maxlen = $this->block_saiki(\$child, $maxlen, \@karitagarr);
+		    $maxlen = $this->block_saiki($child, $maxlen, \@karitagarr);
 		}
 	    }else{
 		if($elem->tag eq "~text"){
 		    if($karitagarr[0][0] ne "~text"){
 			my $intext = $elem->{"text"};
-			$maxlen = $this->block_saiki(\$intext, $maxlen, \@karitagarr);
+			$maxlen = $this->block_saiki($intext, $maxlen, \@karitagarr);
 
 		    }else{
 			@karitagarr = ();
 			my $karielem = $elem->clone;
 			$elem->tag("myfont");
 			$elem->push_content($karielem);
-			$maxlen = $this->block_saiki(\$elem, $maxlen, \@karitagarr);
+			$maxlen = $this->block_saiki($elem, $maxlen, \@karitagarr);
 		    }
 		}elsif($elem->tag eq "img" && $elem->attr("alt") ne ""){
 		    my $alttext=$elem->{"alt"};
-		    $maxlen = $this->block_saiki(\$alttext, $maxlen, \@karitagarr);
+		    $maxlen = $this->block_saiki($alttext, $maxlen, \@karitagarr);
 		}
 	    }
 	}
@@ -391,15 +398,42 @@ sub printblock_saiki{
     }    
     my $rep = $elem->attr("rep") if(ref($elem) eq "HTML::Element" && defined($elem->attr("rep")));
 	
-    if(ref($elem) eq "HTML::Element" && $elem->tag ne "~text" && $elem->tag ne "img"){
+    if (ref($elem) eq "HTML::Element") {
+	my $tag = $elem->tag;
+	if ($tag ne "~text" && $tag ne "img"){
 
-	return 0 if($elem->tag eq "style" || $elem->tag eq "script" || $elem->tag eq "noscript");
-	$taglist .= $elem->tag . ",";
-	for my $childelem($elem->content_list){
-	    $this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
+	    return 0 if($tag eq "style" || $tag eq "script" || $tag eq "noscript");
+	    $taglist .= $tag . ",";
+	    for my $childelem($elem->content_list){
+		$this->printblock_saiki($childelem, $taglist, $repeat, $restr, $rehashref);
+	    }
+
+	} elsif($tag eq "~text"){
+
+	    my $text = $elem->attr("text");
+	    unless($text =~ /^[\n\s　]+$/ || $text eq ""){
+		if($repeat eq ""){
+		    ${$restr} .= "$rep". "    ". $taglist. $text. "\n";
+		}else{
+		    ${$restr} .= "$rep". "[". $repeat. "] ". $taglist. $text. "\n";
+		}
+	    }
+
+	} elsif($tag eq "img"){
+
+	    $taglist .= $tag;
+	    if($elem->content_list == 0){
+		my $altstr = $elem->{"alt"};
+		unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
+		    if($repeat eq ""){
+			${$restr} .= "$rep". "    ". $taglist. $altstr. "\n";
+		    }else{
+			${$restr} .= "$rep". "[". $repeat. "] ". $taglist. ".". $altstr. "\n";
+		    }
+		}
+	    }
 	}
-
-    }elsif(ref($elem) eq ""){
+    } elsif(ref($elem) eq ""){
 
 	unless($elem =~ /^[\s　]+$/ || $elem eq ""){
 	    if ($repeat eq ""){
@@ -409,31 +443,6 @@ sub printblock_saiki{
 	    }       
 	}
 
-
-    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "~text"){
-
-	my $text = $elem->attr("text");
-	unless($text =~ /^[\n\s　]+$/ || $text eq ""){
-	    if($repeat eq ""){
-		${$restr} .= "$rep". "    ". $taglist. $text. "\n";
-	    }else{
-		${$restr} .= "$rep". "[". $repeat. "] ". $taglist. $text. "\n";
-	    }
-	}
-
-    }elsif(ref($elem) eq "HTML::Element" && $elem->tag eq "img"){
-
-	$taglist .= $elem->tag;
-	if($elem->content_list == 0){
-	    my $altstr = $elem->{"alt"};
-	    unless($altstr =~ /^[\s　]+$/ || $altstr eq ""){
-		if($repeat eq ""){
-		    ${$restr} .= "$rep". "    ". $taglist. $altstr. "\n";
-		}else{
-		    ${$restr} .= "$rep". "[". $repeat. "] ". $taglist. ".". $altstr. "\n";
-		}
-	    }
-	}
     }
 }
 
@@ -548,24 +557,26 @@ sub checkcopy{
 sub checklink{
     my ($this, $block) = @_;
 
-    my @block = @$block;
+    # my @block = @$block;
 
     my $karia = 0;
     my $kariatnum = 0;
     my $karinottnum = 0;
     my $kariahref = 0;
     
-    for my $leaf(@block){
+    for my $leaf (@{$block}) {
 
-	my @leaf = @$leaf;
-	my @tagarr = @{$leaf[0]};
-	my $text = $leaf[1];
+	# my @leaf = @$leaf;
+	my @tagarr = @{$leaf->[0]};
+	my $text = $leaf->[1];
 	my $aposition = $this->assoc(\@tagarr,"a");
+	# my $aposition = $this->assoc($leaf->[0],"a");
 	
 	if($aposition != -1){
 	    $karia += 1;
 	    $kariatnum += length($text);
-	    my $atag = ${$tagarr[$aposition][1]};
+	    # my $atag = ${$tagarr[$aposition][1]};
+	    my $atag = $tagarr[$aposition][1];	    
 	    ####リンク処理,変数名ちょっとごちゃごちゃ
 	    if(defined($atag->attr("href")) && defined($this->{domain})){
 		my $href = $atag->attr("href");
@@ -577,7 +588,7 @@ sub checklink{
 
     }
 
-    if($karia/($#block+1) >= 0.5 || $karinottnum < $kariatnum ){
+    if($karia/(scalar @$block) >= 0.5 || $karinottnum < $kariatnum ){
         if(defined($this->{domain})){
             if($kariahref/$karia >= 0.5){
                 return 1;
@@ -654,14 +665,14 @@ sub writeblocktype{
     my ($this, $kariblock, $sourceelem) = @_;
 
     my @block = @$kariblock;
-    my $elem = ${$sourceelem};
+    my $elem = $sourceelem;
 
     return 0 if(@block == []);
 
 
     my $typeflag = "";
 #    if($karia/($#block+1) >= 0.5 || $karinottnum/$kariatnum <= 0.3){
-    if((my $lflag = $this->checklink(\@block))){
+    if (my $lflag = $this->checklink(\@block)) {
 	if($lflag == 1){
 	    $typeflag = "link internal";
 	    if($this->checkimg(\@block)){
@@ -678,7 +689,7 @@ sub writeblocktype{
 		$typeflag = "imglink";
 	    }
 	}
-    }else{
+    } else {
 	if($this->checkform(\@block)){
 	    $typeflag = "form";
 	}elsif((my $fcflag = $this->checkfoot(\@block))){

@@ -1,5 +1,6 @@
 package RepeatCheck;
 
+# $Id$
 
 #myblocktypeのついたhtml木を受け取ってブロックごとに探索し、ブロックの先頭から葉までのタグ列を全部見つける。
 #そのうち同じタグ列が3つ以上ある場合、葉(テキストかimgタグ)の親タグにrepeatid属性を付け加える。
@@ -32,7 +33,7 @@ sub checkline{
     my %idhash = {};
     my $i = 1;
 
-#回数が多い順にナンバリング
+    #回数が多い順にナンバリング
     for my $line(sort{$linehash{$b} <=> $linehash{$a}}keys(%linehash)){
 	next if($linehash{$line} < 3);
 	$idhash{$line} = $i;
