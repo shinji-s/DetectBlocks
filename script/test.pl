@@ -10,6 +10,7 @@
 
 use utf8;
 use strict;
+use RepeatCheck;
 use DetectBlocks;
 use Encode;
 use Encode::Guess;
@@ -68,5 +69,7 @@ if ($opt{add_class2html}) {
 
 # 通常の形式で出力
 else {
+    my $test = RepeatCheck->new;
+    $ttt->settree($test->detectrepeat($tree)); 
     print $ttt->printblock2;
 }
