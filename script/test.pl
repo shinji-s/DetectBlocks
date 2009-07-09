@@ -20,7 +20,7 @@ binmode STDOUT, ":utf8";
 #binmode STDOUT, ":euc-jp";
 
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html');
 
 my $str = "";
 my $url;
@@ -53,14 +53,20 @@ else {
     $url = $ARGV[1];
 }
 
-my $ttt = new DetectBlocks();
+my $ttt = new DetectBlocks(\%opt);
 $ttt->maketree($str, $url);
 
 $ttt->detectblocks;
 
-
 my $tree = $ttt->gettree;
 
-#print $tree->as_HTML("<>&","\t");
+# HTML形式で出力
+if ($opt{add_class2html}) {
+    $ttt->addCSSlink($tree, 'style.css');    
+    print $tree->as_HTML("<>&","\t");
+}
 
-print $ttt->printblock2;
+# 通常の形式で出力
+else {
+    print $ttt->printblock2;
+}

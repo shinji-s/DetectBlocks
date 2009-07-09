@@ -7,12 +7,15 @@ use utf8;
 use HTML::TreeBuilder;
 use Data::Dumper;
 use Encode;
+use Dumpvalue;
 
 our $TEXTPER_TH = 0.5;
 
-
 sub new{
+    my (undef, $opt) = @_;
+
     my $this = {};
+    $this->{opt} = $opt;
 
     bless $this;
 }
@@ -706,9 +709,15 @@ sub writeblocktype{
 	$typeflag = "unknown_text";
     }
 
-#    $konelem->attr("myblock","true");
     $elem->attr("myblocktype",$typeflag);
 
+    # HTMLにクラスを付与する
+    if ($typeflag && $this->{opt}{add_class2html}) {
+	my $orig_class = $elem->attr('class');
+	# 元のHTMLのクラスを残す
+	my $replaced_class = $orig_class ? "$orig_class $typeflag" : $typeflag;
+	$elem->attr('class' , $replaced_class);
+    }
 }
 
 
@@ -725,12 +734,26 @@ sub settree{
     $this->{tree} = $tree;
 }
 
+# BLOCKをHTML上で色分けして表示するために整形
+sub addCSSlink {
+    my ($this, $tmp_elem, $css_url) = @_;
+
+    # CSSの部分を追加
+    # <link rel="stylesheet" type="text/css" href="style.css">
+    my $head = $tmp_elem->find('head');
+    $head->push_content(['link', {'href' => $css_url, 'rel' => 'stylesheet', 'type' => 'text/css'}]);
+
+    # エンコードをutf-8に統一
+    # <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    my $flag;
+    foreach my $metatag ($head->find('meta')) {
+	if ($metatag->look_down('content', qr/text\/html\;\s*charset\=(.+?)/i)) {
+	    $metatag->delete;
+	    last;
+	}
+    }
+    $head->push_content(['meta', {'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}]) if !$flag;
+}
+
+
 1;
-
-
-
-
-
-
-
-
