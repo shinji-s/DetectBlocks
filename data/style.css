@@ -1,0 +1,16 @@
+/***** block color *****/	
+/* link */
+*.link { background-color : #FF0000; }
+*.inlink { background-color : #FF3333; }
+*.outlink { background-color : #FF6666; }
+*.imglink { background-color : #FF9999; }
+
+/* text */
+*.maintext { background-color : #0000FF; }
+*.unknown_text { background-color : #3333FF; }
+
+/* other */
+*.img { background-color : #00FF00; }
+*.form { background-color : #33FF33; }
+*.footer { background-color : #66FF66; }
+*.copyright { background-color : #99FF99; }
