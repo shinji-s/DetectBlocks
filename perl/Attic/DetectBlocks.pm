@@ -742,6 +742,10 @@ sub addCSSlink {
     # <link rel="stylesheet" type="text/css" href="style.css">
     my $head = $tmp_elem->find('head');
     $head->push_content(['link', {'href' => $css_url, 'rel' => 'stylesheet', 'type' => 'text/css'}]);
+    # CSSの優先順位を変更
+    my $tmp = $head->content->[-1];
+    $head->content->[-1] = $head->content->[0];
+    $head->content->[0] = $tmp;
 
     # エンコードをutf-8に統一
     # <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
