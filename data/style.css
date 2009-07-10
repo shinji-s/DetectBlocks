@@ -1,16 +1,18 @@
-/***** block color *****/	
-/* link */
-*.link { background-color : #FF0000; }
-*.inlink { background-color : #FF3333; }
-*.outlink { background-color : #FF6666; }
-*.imglink { background-color : #FF9999; }
+/***** COLOR_TABLE *****/	
+/* Type : link */
+*.link { background-color : #FF9999; }
+*.inlink { background-color : #FF6666; }
+*.outlink { background-color : #FF3333; }
+*.imglink { background-color : #FF0000; }
 
-/* text */
-*.maintext { background-color : #0000FF; }
-*.unknown_text { background-color : #3333FF; }
+/* Type : text */
+*.maintext { background-color : #9999FF; }
+*.unknown_text { background-color : #6666FF; }
 
-/* other */
+/* Type : other */
 *.img { background-color : #00FF00; }
 *.form { background-color : #33FF33; }
 *.footer { background-color : #66FF66; }
 *.copyright { background-color : #99FF99; }
+
+/***** END_OF_COLOR ****/
