@@ -1,18 +1,17 @@
 /***** COLOR_TABLE *****/	
 /* Type : link */
-*.link { background-color : #FF9999; }
-*.inlink { background-color : #FF6666; }
-*.outlink { background-color : #FF3333; }
-*.imglink { background-color : #FF0000; }
+*.myblock_link { background-color : #CCCCCC; }
+*.myblock_inlink { background-color : #CCCCCC; }
+*.myblock_outlink { background-color : #CCCCCC; }
+*.myblock_imglink { background-color : #CCCCCC; }
 
 /* Type : text */
-*.maintext { background-color : #9999FF; }
-*.unknown_text { background-color : #6666FF; }
+*.myblock_maintext { background-color : #CCCCCC; }
+*.myblock_unknown_text { background-color : #FF3333; }
 
 /* Type : other */
-*.img { background-color : #00FF00; }
-*.form { background-color : #33FF33; }
-*.footer { background-color : #66FF66; }
-*.copyright { background-color : #99FF99; }
-
+*.myblock_img { background-color : #CCCCCC; }
+*.myblock_form { background-color : #CCCCCC; }
+*.myblock_footer { background-color : #CCCCCC; }
+*.myblock_copyright { background-color : PINK; }
 /***** END_OF_COLOR ****/
