@@ -136,7 +136,7 @@ sub recheckblock{
     my $allfootnum = 0;
     my $allmaintnum = 0;
     for my $text(@tarr){
-	$allfootnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|(c)|著作権/);
+	$allfootnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/);
 	$allmaintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました/);
     }
 
@@ -172,7 +172,7 @@ sub recheckblock_saiki{
 	my $footnum = 0;
 	my $maintnum = 0;
 	for my $text(@tarr){
-	    $footnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|(c)|著作権/);
+	    $footnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/);
 	    $maintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました|だった/);
 	}
 
@@ -481,7 +481,7 @@ sub checkfoot{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	if($text =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|(c)|著作権/){
+	if($text =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/){
 	    $karifootnum += 1;
 	    $karitextlen += length($text);
 	}
@@ -545,7 +545,7 @@ sub checkcopy{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	$karicopynum += 1 if($text =~ /Copyright|©|(c)|著作権/);
+	$karicopynum += 1 if($text =~ /Copyright|©|\(c\)|著作権/);
 	$textlen += length($text);
     }
 
