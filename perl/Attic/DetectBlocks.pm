@@ -11,6 +11,12 @@ use Dumpvalue;
 
 our $TEXTPER_TH = 0.5;
 
+# COPYRIGHT用の文字列
+our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権';
+
+# FOOTER用の文字列
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権';
+
 sub new{
     my (undef, $opt) = @_;
 
@@ -19,7 +25,6 @@ sub new{
 
     bless $this;
 }
-
 
 sub maketree{
     my ($this, $htmltext, $url) = @_;
@@ -31,7 +36,6 @@ sub maketree{
     $this->{url} = $url if(defined($url));
     $this->{tree} = $tree;
 }
-
 
 sub detectblocks{
     my ($this) = @_;
@@ -136,7 +140,7 @@ sub recheckblock{
     my $allfootnum = 0;
     my $allmaintnum = 0;
     for my $text(@tarr){
-	$allfootnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/);
+	$allfootnum += 1 if($text->attr("text") =~ /$FOOTER_STRING/);
 	$allmaintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました/);
     }
 
@@ -172,7 +176,7 @@ sub recheckblock_saiki{
 	my $footnum = 0;
 	my $maintnum = 0;
 	for my $text(@tarr){
-	    $footnum += 1 if($text->attr("text") =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/);
+	    $footnum += 1 if($text->attr("text") =~ /$FOOTER_STRING/);
 	    $maintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました|だった/);
 	}
 
@@ -481,20 +485,20 @@ sub checkfoot{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	if($text =~ /住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|©|\(c\)|著作権/){
+	if($text =~ /$FOOTER_STRING/){
 	    $karifootnum += 1;
 	    $karitextlen += length($text);
 	}
 	$textlen += length($text);
     }
 
-    if(($karifootnum / $total >= 0.5 || $karitextlen/$textlen > 0.8) && $textlen / $this->{alltextlen} < 0.3){
+    if(($karifootnum / $total >= 0.2 || $karitextlen/$textlen > 0.8) && $textlen / $this->{alltextlen} < 0.3){
 	if($this->checkcopy($block)){
 	    return 2;
 	}else{
 	    return 1;
 	}
-    }else{
+   }else{
 	return 0;
     }
 }
@@ -545,15 +549,17 @@ sub checkcopy{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	$karicopynum += 1 if($text =~ /Copyright|©|\(c\)|著作権/);
+	$karicopynum += 1 if ($text =~ /$COPYRIGHT_STRING/);
 	$textlen += length($text);
     }
 
-    if($karicopynum / $total >= 0.5 && $textlen / $this->{alltextlen} < 0.3){
-	return 1;
-    }else{
-	return 0;
-    }
+    # ★指定文字列があった場合は無条件でcopyright
+    return 1 if $karicopynum;
+#     if($karicopynum / $total >= 0.5 && $textlen / $this->{alltextlen} < 0.3){
+# 	return 1;
+#     }else{
+# 	return 0;
+#     }
 }
 
 
@@ -665,57 +671,63 @@ sub checkimg{
 
 
 sub writeblocktype{
-    my ($this, $kariblock, $sourceelem) = @_;
+    my ($this, $block, $sourceelem) = @_;
 
-    my @block = @$kariblock;
     my $elem = $sourceelem;
 
-    return 0 if(@block == []);
+    return 0 if (@$block == []);
 
+    my $imglink_flag = 1 if $this->checkimg($block);
+    my @blocknames;
 
-    my $typeflag = "";
-#    if($karia/($#block+1) >= 0.5 || $karinottnum/$kariatnum <= 0.3){
-    if (my $lflag = $this->checklink(\@block)) {
-	if($lflag == 1){
-	    $typeflag = "link internal";
-	    if($this->checkimg(\@block)){
-		$typeflag = "imglink internal";
-	    }
-	}elsif($lflag == 2){
-	    $typeflag = "link external";
-	    if($this->checkimg(\@block)){
-		$typeflag = "imglink external";
-	    }
-	}elsif($lflag == 3){
-	    $typeflag = "link";
-	    if($this->checkimg(\@block)){
-		$typeflag = "imglink";
-	    }
+    # Link
+    # $lflag : 1~内部リンク, 2~外部リンク, 3~リンク
+    if (my $lflag = $this->checklink($block)) {
+	push @blocknames, $imglink_flag ? 'imglink' : 'link';
+	if ($lflag == 1){
+	    push @blocknames, 'internal';
 	}
-    } else {
-	if($this->checkform(\@block)){
-	    $typeflag = "form";
-	}elsif((my $fcflag = $this->checkfoot(\@block))){
-	    $typeflag = "footer";
-	    $typeflag .= " copyright" if($fcflag == 2);
-	}elsif($this->checkmaintext(\@block)){
-	    $typeflag = "maintext";
-	}
-	elsif($this->checkimg(\@block)){
-	    $typeflag = "img";
+	elsif ($lflag == 2) {
+	    push @blocknames, 'external';
 	}
     }
-    if($typeflag eq ""){
-	$typeflag = "unknown_text";
+    else {
+	# img
+	if ($imglink_flag) {
+	    push @blocknames, 'img';
+	}
+	# maintext
+	if ($this->checkmaintext($block)) {
+	    push @blocknames, 'maintext';
+	}
     }
 
-    $elem->attr("myblocktype",$typeflag);
+    # form
+    if ($this->checkform($block)) {
+	push @blocknames, 'form';
+    }
+    # footer
+    elsif (my $fcflag = $this->checkfoot($block)) {
+	push @blocknames, 'footer';
+	push @blocknames, 'copyright' if $fcflag == 2;
+    }
+    
+    # unknown_text
+    if (scalar @blocknames == 0) {
+	push (@blocknames, 'unknown_text');
+    }
 
-    # HTMLにクラスを付与する
-    if ($typeflag && $this->{opt}{add_class2html}) {
+    $elem->attr('myblocktype', join(' ', @blocknames));
+
+    # HTML表示用にクラスを付与する
+    if (scalar @blocknames > 0 && $this->{opt}{add_class2html}) {
 	my $orig_class = $elem->attr('class');
+	my $joint_class;
+	for (my $i = 0; $i < @blocknames; $i++) {
+	    $blocknames[$i] = 'myblock_'.$blocknames[$i];
+	}
 	# 元のHTMLのクラスを残す
-	my $replaced_class = $orig_class ? "$orig_class $typeflag" : $typeflag;
+	my $replaced_class = $orig_class ? $orig_class.' '.join(' ', @blocknames) : join(' ', @blocknames);
 	$elem->attr('class' , $replaced_class);
     }
 }
