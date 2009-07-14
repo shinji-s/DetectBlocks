@@ -94,7 +94,7 @@ sub dblocks_saiki{
     $textper = $textlen / $alltextlen;
 
     # 閾値以上なら子供も調べる
-    if ($textper > $TEXTPER_TH || $textper == 0.0) {
+    if (($textper > $TEXTPER_TH || $textper == 0.0) && $elem->content_list != 0) {
 
 	for my $child ($elem->content_list) {
 	    next if (ref($child) ne "HTML::Element");
@@ -103,7 +103,14 @@ sub dblocks_saiki{
 	}
 
     } else {
-	
+	#生テキストが閾値以上の場合の処理。divタグにする。
+	if($elem->tag eq "~text" && $textlen > 30){
+	    my $karitext = $elem->attr("text");
+	    $elem->tag("div");
+	    $elem->attr("text", "");
+	    $elem->push_content($karitext);
+	}
+
 #	for my $i($this->recheckblock($sourceelem)){
 	# 要コメント
 	for my $i ($sourceelem){
@@ -122,6 +129,7 @@ sub dblocks_saiki{
 	    }	
 	    
 	}
+
     }
 }
 
