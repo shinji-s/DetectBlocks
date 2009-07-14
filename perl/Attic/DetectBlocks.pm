@@ -12,10 +12,10 @@ use Dumpvalue;
 our $TEXTPER_TH = 0.5;
 
 # COPYRIGHT用の文字列
-our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権';
+our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
 sub new{
     my (undef, $opt) = @_;
@@ -549,7 +549,7 @@ sub checkcopy{
 
 	next if($text =~ /^[\s　]+$/ || $text eq "");
 
-	$karicopynum += 1 if ($text =~ /$COPYRIGHT_STRING/);
+	$karicopynum += 1 if ($text =~ /$COPYRIGHT_STRING/i);
 	$textlen += length($text);
     }
 
