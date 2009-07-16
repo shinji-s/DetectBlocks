@@ -690,13 +690,13 @@ sub writeblocktype{
 
     return 0 if (@$block == []);
 
-    my $imglink_flag = 1 if $this->checkimg($block);
     my @blocknames;
 
     # Link
     # $lflag : 1~内部リンク, 2~外部リンク, 3~リンク
     if (my $lflag = $this->checklink($block)) {
-	push @blocknames, $imglink_flag ? 'imglink' : 'link';
+#	push @blocknames, $img_flag ? 'imglink' : 'link';
+	push @blocknames, 'link';
 	if ($lflag == 1){
 	    push @blocknames, 'internal';
 	}
@@ -705,16 +705,16 @@ sub writeblocktype{
 	}
     }
     else {
-	# img
-	if ($imglink_flag) {
-	    push @blocknames, 'img';
-	}
 	# maintext
 	if ($this->checkmaintext($block)) {
 	    push @blocknames, 'maintext';
 	}
     }
 
+    # img
+    if ($this->checkimg($block)) {
+	push @blocknames, 'img';
+    }
     # form
     if ($this->checkform($block)) {
 	push @blocknames, 'form';
@@ -725,9 +725,9 @@ sub writeblocktype{
 	push @blocknames, 'copyright' if $fcflag == 2;
     }
     
-    # unknown_text
+    # unknown_block
     if (scalar @blocknames == 0) {
-	push (@blocknames, 'unknown_text');
+	push (@blocknames, 'unknown_block');
     }
 
     $elem->attr('myblocktype', join(' ', @blocknames));
