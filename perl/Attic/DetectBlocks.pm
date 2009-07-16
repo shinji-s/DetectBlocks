@@ -17,6 +17,9 @@ our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 # FOOTER用の文字列
 our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
+#maintext用の文字列
+our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
+
 sub new{
     my (undef, $opt) = @_;
 
@@ -112,7 +115,7 @@ sub dblocks_saiki{
 	}
 
 #	for my $i($this->recheckblock($sourceelem)){
-	# 要コメント
+	# ブロックの再分割をしようとしてる(未使用)
 	for my $i ($sourceelem){
 	    my @kariblockarr = @{$this->{blockarr}};
 	    push(@kariblockarr,[]);
@@ -134,6 +137,7 @@ sub dblocks_saiki{
 }
 
 
+#ブロックをさらに分割する関数(未使用)
 sub recheckblock{
     my ($this, $sourceelem) = @_;
 
@@ -149,7 +153,7 @@ sub recheckblock{
     my $allmaintnum = 0;
     for my $text(@tarr){
 	$allfootnum += 1 if($text->attr("text") =~ /$FOOTER_STRING/);
-	$allmaintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました/);
+	$allmaintnum += 1 if($text->attr("text") =~ /$MAINTEXT_STRING/);
     }
 
     my @rearr =();
@@ -161,7 +165,7 @@ sub recheckblock{
 }
 
 
-# 要修正
+# 要修正(未使用)
 sub recheckblock_saiki{
     my ($this, $sourceelem, $rearr, $aa, $af, $at, $af, $amt) = @_;
 
@@ -185,7 +189,7 @@ sub recheckblock_saiki{
 	my $maintnum = 0;
 	for my $text(@tarr){
 	    $footnum += 1 if($text->attr("text") =~ /$FOOTER_STRING/);
-	    $maintnum += 1 if($text->attr("text") =~ /。|、|ます|です|でした|ました|だった/);
+	    $maintnum += 1 if($text->attr("text") =~ /$MAINTEXT_STRING/);
 	}
 
 #	if($anum/$aa>0.9 || $formnum/$af>0.9 || $textnum/$at>0.9 || $footnum/$af>0.9 || $maintnum/$amt>0.9){
@@ -527,7 +531,8 @@ sub checkmaintext{
 
         next if($text =~ /^[\s　]+$/ || $text eq "");
 
-        if($text =~ /。|、|ます|です|でした|ました/){
+#        if($text =~ /。|、|ます|です|でした|ました/){
+	if($text =~ /$MAINTEXT_STRING/){
 	    $karimainnum += 1; 
 	    $karimainlen += length($text);
 	}
