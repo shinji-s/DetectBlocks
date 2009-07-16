@@ -617,7 +617,8 @@ sub checklink{
 
     }
 
-    if($karia/(scalar @$block) >= 0.5 || $karinottnum < $kariatnum ){
+    # linkが2つ以上ないとだめ
+    if($karia > 1 && ($karia/(scalar @$block) >= 0.5 || $karinottnum < $kariatnum) ){
         if(defined($this->{domain})){
             if($kariahref/$karia >= 0.5){
                 return 1;
