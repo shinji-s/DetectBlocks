@@ -76,10 +76,14 @@ sub checkline_saiki{
 	$line .= $thistag . ",";
 	 
 	for my $child($elem->content_list){
-	    my $reflag = $this->checkline_saiki($child, $line, $hashref);
+	    $this->checkline_saiki($child, $line, $hashref);
 	}
  
     }elsif($elem->tag eq "~text" || $elem->tag eq "img"){
+	# objectify_textした後に' 'が残るようなので、その場合はreturn
+	my $text = $elem->attr("text");
+	return if $text && $text =~ /^[\n\s　]+$/;
+
 	$line .= $elem->tag;
 	if(defined($hashref->{$line})){
 	    $hashref->{$line} += 1;
