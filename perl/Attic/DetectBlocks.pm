@@ -595,14 +595,21 @@ sub checklink{
 	# my $aposition = $this->assoc($leaf->[0],"a");
 	
 	if($aposition != -1){
-	    $karia += 1;
-	    $kariatnum += length($text);
-	    # my $atag = ${$tagarr[$aposition][1]};
-	    my $atag = $tagarr[$aposition][1];	    
-	    ####リンク処理,変数名ちょっとごちゃごちゃ
-	    if(defined($atag->attr("href")) && defined($this->{domain})){
-		my $href = $atag->attr("href");
-		$kariahref += 1 if($href =~ $this->{domain} || !($href =~ /:\/\//));
+	    my $atag = $tagarr[$aposition][1];
+
+	    # <a name=...>はリンクと思わないように
+ 	    if (defined($atag->attr("name"))) {
+ 		$karinottnum += length($text);
+ 	    }
+	    else {
+		$karia += 1;
+		$kariatnum += length($text);
+
+		####リンク処理,変数名ちょっとごちゃごちゃ
+		if(defined($atag->attr("href")) && defined($this->{domain})){
+		    my $href = $atag->attr("href");
+		    $kariahref += 1 if($href =~ $this->{domain} || !($href =~ /:\/\//));
+		}
 	    }
 	}else{
 	    $karinottnum += length($text);
