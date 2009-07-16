@@ -11,6 +11,8 @@ use Dumpvalue;
 
 our $TEXTPER_TH = 0.5;
 
+our $FOOTER_OFFSET_RATIO_TH = 0.9; # これより大きければfooter
+
 # COPYRIGHT用の文字列
 our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
@@ -63,22 +65,18 @@ sub detectblocks{
     $this->{blockarr} = \@kariblockarr;
     my $body = $this->{tree}->find('body');
 
-    my $allaltlen = 0;
-    for my $elem($body->look_down('alt', qr//)){
-	$allaltlen += length($elem->attr('alt'));
-    }
-    #コメントやスクリプトがテキストとして認識される問題
-    $this->{alltextlen} = length($body->as_text) + $allaltlen;
-
     # 要コメント
     $body->objectify_text;
-    $this->dblocks_saiki($body);
+
+    $this->{alltextlen} = $this->get_elem_length($body);
+
+    $this->dblocks_saiki($body, 0); # 0はoffset
     $body->deobjectify_text;
 }
 
 
 sub dblocks_saiki{
-    my ($this, $sourceelem) = @_;
+    my ($this, $sourceelem, $offset) = @_;
 
     #my $elem = ${$sourceelem};
     my $elem = $sourceelem;
@@ -88,21 +86,21 @@ sub dblocks_saiki{
     my $textlen = 0;
     my $textper = 0;
 
-    for my $imgelem($elem->find("img")){
-	$textlen += length($imgelem->attr("alt")) if(defined($imgelem->attr("alt")));
-    }
-    for my $textelem($elem->find("~text")){
-	$textlen += length($textelem->attr("text"));
-    }
+    $textlen = $this->get_elem_length($elem);
+
     $textper = $textlen / $alltextlen;
 
     # 閾値以上なら子供も調べる
     if (($textper > $TEXTPER_TH || $textper == 0.0) && $elem->content_list != 0) {
 
+	my $accumulative_length = 0;
 	for my $child ($elem->content_list) {
 	    next if (ref($child) ne "HTML::Element");
 	    next if ($child->tag eq "comment");
-	    $this->dblocks_saiki($child);
+
+	    $this->dblocks_saiki($child, $offset + $accumulative_length);
+	    my $child_len = $this->get_elem_length($child);
+	    $accumulative_length += $child_len;
 	}
 
     } else {
@@ -128,7 +126,7 @@ sub dblocks_saiki{
 # 		my $blockarr = $this->{blockarr};
 # 		my @blockarr = @$blockarr;
 # 		my @block = $blockarr[$#blockarr];
-		$this->writeblocktype($this->{blockarr}[-1], $i);
+		$this->writeblocktype($this->{blockarr}[-1], $i, $offset);
 	    }	
 	    
 	}
@@ -397,7 +395,7 @@ sub printblock2{
 
 	$this->makehash($blocktopelem, \%rehash);
 
-	$restr .= $blocktopelem->attr("myblocktype")."***************************\n";
+	$restr .= $blocktopelem->attr("myblocktype"). sprintf(" (%.2f) ", $blocktopelem->attr("offset") / $this->{alltextlen}) ."***************************\n";
 
 	$this->printblock_saiki($blocktopelem, "", "", \$restr, \%rehash);
 
@@ -483,8 +481,10 @@ sub makehash{
 
 
 sub checkfoot{
-    my ($this, $block) = @_;
+    my ($this, $block, $offset_ratio) = @_;
     
+    return 0 if $offset_ratio < $FOOTER_OFFSET_RATIO_TH;
+
     my @block = @$block;
 
     my $total = $#block + 1;
@@ -691,13 +691,15 @@ sub checkimg{
 
 
 sub writeblocktype{
-    my ($this, $block, $sourceelem) = @_;
+    my ($this, $block, $sourceelem, $offset) = @_;
 
     my $elem = $sourceelem;
 
     return 0 if (@$block == []);
 
     my @blocknames;
+
+    my $offset_ratio = $offset / $this->{alltextlen};
 
     # Link
     # $lflag : 1~内部リンク, 2~外部リンク, 3~リンク
@@ -727,7 +729,7 @@ sub writeblocktype{
 	push @blocknames, 'form';
     }
     # footer
-    elsif (my $fcflag = $this->checkfoot($block)) {
+    elsif (my $fcflag = $this->checkfoot($block, $offset_ratio)) {
 	push @blocknames, 'footer';
 	push @blocknames, 'copyright' if $fcflag == 2;
     }
@@ -738,6 +740,7 @@ sub writeblocktype{
     }
 
     $elem->attr('myblocktype', join(' ', @blocknames));
+    $elem->attr('offset', $offset);
 
     # HTML表示用にクラスを付与する
     if (scalar @blocknames > 0 && $this->{opt}{add_class2html}) {
@@ -752,6 +755,20 @@ sub writeblocktype{
     }
 }
 
+# $elemの長さ(imgのaltを含む)を返す関数
+sub get_elem_length {
+    my ($this, $elem) = @_;
+
+    my $textlen = 0;
+
+    for my $imgelem($elem->find("img")){
+	$textlen += length($imgelem->attr("alt")) if(defined($imgelem->attr("alt")));
+    }
+    for my $textelem($elem->find("~text")){
+	$textlen += length($textelem->attr("text"));
+    }
+    return $textlen;
+}
 
 sub gettree{
     my ($this) = @_;
