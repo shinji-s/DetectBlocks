@@ -7,21 +7,27 @@
 # perl -I../perl test.pl -get_source http://www.shugiin.go.jp/index.nsf/html/index.htm
 # (キャッシュ)
 # perl -I../perl test.pl ../sample/htmls/Metabolic/001.html
+#  - tree表示
+# perl -I../perl test.pl -printtree ../sample/htmls/Metabolic/001.html
+#  - html用
+# perl -I../perl test.pl -add_class2html ../sample/htmls/Metabolic/001.html
 
 use utf8;
 use strict;
 use RepeatCheck;
-use DetectBlocks;
+#use DetectBlocks;
+use DetectBlocks2;
 use Encode;
 use Encode::Guess;
 use Getopt::Long;
+use Dumpvalue;
 
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 #binmode STDOUT, ":euc-jp";
 
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree');
 
 my $str = "";
 my $url;
@@ -54,23 +60,33 @@ else {
     $url = $ARGV[1];
 }
 
-my $ttt = new DetectBlocks(\%opt);
+#my $ttt = new DetectBlocks(\%opt);
+my $ttt = new DetectBlocks2(\%opt);
 $ttt->maketree($str, $url);
+
+if ($opt{debug}) {
+    Dumpvalue->new->dumpValue($ttt->{tree});
+    print '-' x 50, "\n";
+}
 
 $ttt->detectblocks;
 
-# 繰り返しパターンの検出
 my $tree = $ttt->gettree;
-my $test = RepeatCheck->new;
-$ttt->settree($test->detectrepeat($tree)); 
+# my $test = RepeatCheck->new;
+# $ttt->settree($test->detectrepeat($tree)); 
+
+if ($opt{debug}) {
+    Dumpvalue->new->dumpValue($tree);
+}
+# 木の表示
+if ($opt{printtree}) {
+    print '=' x 50, "\n";
+    $ttt->printtree;
+    print '=' x 50, "\n";
+}
 
 # HTML形式で出力
 if ($opt{add_class2html}) {
     $ttt->addCSSlink($tree, 'style.css');    
     print $tree->as_HTML("<>&","\t");
-}
-
-# 通常の形式で出力
-else {
-    print $ttt->printblock2;
 }
