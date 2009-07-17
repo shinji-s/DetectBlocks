@@ -91,16 +91,19 @@ sub detectblocks{
 sub detect_block {
     my ($this, $elem) = @_;
 
+    my $leaf_string1 = $elem->attr('leaf_string');
+    my $leaf_string2 = $elem->attr('leaf_string');
+
     if (!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) {
 	my $iteration = $elem->attr('iteration');
 
 	# リンク領域
-	if ($iteration =~ /_a(\+|\-|$)/) {
+	if ($iteration =~ /_a_/) {
 	    $elem->attr('myblocktype', 'link');
 	}
 
 	# img
-	elsif ((($elem->attr('leaf_string') =~ /_img(\+|\-|$)/g) / ($elem->attr('leaf_string') =~ /_/g))
+	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
 		> $IMG_RATIO_TH) {
 	    $elem->attr('myblocktype', 'img');
 	}
@@ -111,7 +114,7 @@ sub detect_block {
 	}
 
 	# フッター
-	elsif ($elem->attr('ratio_start') >= $FOOTER_OFFSET_RATIO_TH && $elem->as_HTML("<>&","\t") =~ /$FOOTER_STRING/) {
+	elsif ($elem->attr('ratio_start') >= $FOOTER_OFFSET_RATIO_TH && $this->get_text($elem) =~ /$FOOTER_STRING/) {
 	    $elem->attr('myblocktype', 'footer');
 	}
 
@@ -240,7 +243,7 @@ sub print_node {
 sub get_subtree_string {
     my ($this, $elem) = @_;
 
-    my $string = '_' . $elem->tag;
+    my $string = '_' . $elem->tag . '_';
 
     if ($elem->content_list) {
 	$string .= '+';
@@ -260,7 +263,7 @@ sub get_leaf_string {
 
     my $string;
     unless ($elem->content_list) {
-	$string = '_' . $elem->tag;
+	$string = '_' . $elem->tag . '_';
     }
 
     if ($elem->content_list) {
@@ -311,6 +314,19 @@ sub detect_iteration {
     }
 }
 
+sub get_text {
+    my ($this, $elem) = @_;
+
+    my $text;
+    if ($elem->tag eq '~text') {
+	return $elem->attr('text');
+    }
+    for my $child_elem ($elem->content_list){
+	$text .= $this->get_text($child_elem);
+    }
+
+    return $text;
+}
 
 # BLOCKをHTML上で色分けして表示するために整形
 sub addCSSlink {
