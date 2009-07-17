@@ -12,7 +12,8 @@ use Dumpvalue;
 our $TEXTPER_TH = 0.5;
 
 our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
-our $FOOTER_OFFSET_RATIO_TH = 0.9; # これより大きければfooter
+our $FOOTER_RATIO_START_TH = 0.85; # これより大きければfooter
+our $FOOTER_RATIO_END_TH = 0.95; # これより大きければfooter
 
 our $ITERATION_BLOCK_SIZE = 4; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 3; # 繰り返し回数がこれ以上
@@ -95,10 +96,8 @@ sub detect_block {
     my $leaf_string2 = $elem->attr('leaf_string');
 
     if (!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) {
-	my $iteration = $elem->attr('iteration');
-
 	# リンク領域
-	if ($iteration =~ /_a_/) {
+	if ($this->check_link_block($elem)) {
 	    $elem->attr('myblocktype', 'link');
 	}
 
@@ -114,7 +113,9 @@ sub detect_block {
 	}
 
 	# フッター
-	elsif ($elem->attr('ratio_start') >= $FOOTER_OFFSET_RATIO_TH && $this->get_text($elem) =~ /$FOOTER_STRING/) {
+	elsif ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH
+	       && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH
+	       && $this->get_text($elem) =~ /$FOOTER_STRING/) {
 	    $elem->attr('myblocktype', 'footer');
 	}
 
@@ -139,6 +140,25 @@ sub detect_block {
 	    $this->detect_block($child_elem);
 	}
     }
+}
+
+sub check_link_block {
+    my ($this, $elem) = @_;
+
+    # <a>タグを含む繰り返しあり
+    if ($elem->attr('iteration') =~ /_a_/) {
+	return 1;
+    }
+
+    # 8割を超える子どもに<a>タグを含む繰り返しあり
+    for my $child_elem ($elem->content_list){
+	if ($child_elem->attr('length') / $elem->attr('length') > 0.8
+	    && $child_elem->attr('iteration') =~ /_a_/) {
+	    return 1;
+	}
+    }
+
+    return 0;
 }
 
 sub attach_elem_length {
@@ -213,7 +233,7 @@ sub print_node {
 
     my $space = ' ' x ($depth * 2);
     my $length = $elem->attr('length');
-    printf "%s %s [%d] (%.2f-%.2f)", $space, $elem->tag, $length, $elem->attr('ratio_start'), $elem->attr('ratio_end');
+    printf "%s %s [%d] (%.2f-%.2f)", $space, $elem->tag, $length, $elem->attr('ratio_start') * 100, $elem->attr('ratio_end') * 100;
 
     if ($elem->attr('myblocktype')) {
 	print ' ★',  $elem->attr('myblocktype'), '★';
