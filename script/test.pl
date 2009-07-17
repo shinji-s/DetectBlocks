@@ -59,7 +59,10 @@ $ttt->maketree($str, $url);
 
 $ttt->detectblocks;
 
+# 繰り返しパターンの検出
 my $tree = $ttt->gettree;
+my $test = RepeatCheck->new;
+$ttt->settree($test->detectrepeat($tree)); 
 
 # HTML形式で出力
 if ($opt{add_class2html}) {
@@ -69,7 +72,5 @@ if ($opt{add_class2html}) {
 
 # 通常の形式で出力
 else {
-    my $test = RepeatCheck->new;
-    $ttt->settree($test->detectrepeat($tree)); 
     print $ttt->printblock2;
 }
