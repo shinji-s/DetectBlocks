@@ -152,7 +152,7 @@ sub check_link_block {
 
     # 8割を超える子どもに<a>タグを含む繰り返しあり
     for my $child_elem ($elem->content_list){
-	if ($child_elem->attr('length') / $elem->attr('length') > 0.8
+	if ($elem->attr('length') && $child_elem->attr('length') / $elem->attr('length') > 0.8
 	    && $child_elem->attr('iteration') =~ /_a_/) {
 	    return 1;
 	}
