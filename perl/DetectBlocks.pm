@@ -131,7 +131,9 @@ sub detect_block {
 
 	    my $block_name = 'myblock_' . $elem->attr('myblocktype');
 	    # 元のHTMLのクラスを残す
-	    my $replaced_class = $orig_class ? $orig_class.' '. $block_name : $block_name;
+	    # ★ 表示上ややこしいのでいったんやめる
+	    #  my $replaced_class = $orig_class ? $orig_class.' '. $block_name : $block_name;
+	    my $replaced_class = $block_name;
 	    $elem->attr('class' , $replaced_class);
 	}
     }
@@ -230,6 +232,8 @@ sub printtree {
 
 sub print_node {
     my ($this, $elem, $depth) = @_;
+
+    return if ref($elem) ne 'HTML::Element';
 
     my $space = ' ' x ($depth * 2);
     my $length = $elem->attr('length');
@@ -390,5 +394,6 @@ sub text2div {
 	}
     }
 }
+
 
 1;
