@@ -101,6 +101,13 @@ sub detect_block {
 	    $elem->attr('myblocktype', 'link');
 	}
 
+	# フッター
+	elsif ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH
+	       && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH
+	       && $this->get_text($elem) =~ /$FOOTER_STRING/i) {
+	    $elem->attr('myblocktype', 'footer');
+	}
+
 	# img
 	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
 		> $IMG_RATIO_TH) {
@@ -110,13 +117,6 @@ sub detect_block {
 	# 中身なし
 	elsif ($elem->attr('length') == 0) {
 	    ;
-	}
-
-	# フッター
-	elsif ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH
-	       && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH
-	       && $this->get_text($elem) =~ /$FOOTER_STRING/) {
-	    $elem->attr('myblocktype', 'footer');
 	}
 
 	# 本文
@@ -198,8 +198,10 @@ sub attach_offset_ratio {
     my ($this, $elem, $offset) = @_;
 
     # 属性付与
-    $elem->attr('ratio_start', $offset / $this->{alltextlen});
-    $elem->attr('ratio_end', ($offset + $elem->attr('length')) / $this->{alltextlen});
+    if ($this->{alltextlen} > 0) {
+	$elem->attr('ratio_start', $offset / $this->{alltextlen});
+	$elem->attr('ratio_end', ($offset + $elem->attr('length')) / $this->{alltextlen});
+    }
     
     # 累積
     my $accumulative_length = $offset;
@@ -342,11 +344,19 @@ sub get_text {
     my ($this, $elem) = @_;
 
     my $text;
+    # text
     if ($elem->tag eq '~text') {
 	return $elem->attr('text');
     }
-    for my $child_elem ($elem->content_list){
-	$text .= $this->get_text($child_elem);
+    # 画像の場合altを返す
+    elsif ($elem->tag eq 'img') {
+	return $elem->attr('alt');
+    }
+
+    if ($elem->tag ne 'script') {
+	for my $child_elem ($elem->content_list){
+	    $text .= $this->get_text($child_elem);
+	}
     }
 
     return $text;
