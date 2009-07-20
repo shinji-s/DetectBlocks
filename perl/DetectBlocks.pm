@@ -200,7 +200,7 @@ sub attach_offset_ratio {
     # 属性付与
     $elem->attr('ratio_start', $offset / $this->{alltextlen});
     $elem->attr('ratio_end', ($offset + $elem->attr('length')) / $this->{alltextlen});
-
+    
     # 累積
     my $accumulative_length = $offset;
     for my $child_elem ($elem->content_list){
@@ -387,7 +387,7 @@ sub text2div {
     }
     else {
 	if($elem->tag eq '~text') {
-	    $elem->tag("div");
+	    $elem->tag("span");
 	    $elem->push_content($elem->attr("text"));
 
 	    $elem->attr("text", "");
