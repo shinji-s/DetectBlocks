@@ -8,6 +8,7 @@ use HTML::TreeBuilder;
 use Data::Dumper;
 use Encode;
 use Dumpvalue;
+use Juman;
 
 our $TEXTPER_TH = 0.5;
 
@@ -26,6 +27,8 @@ our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[�
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
+our $MAINTEXT_PARTICLE_TH = 0.05;
+our $MAINTEXT_POINT_TH = 0.05;
 
 # 以下のtagは解析対象にしない
 our $TAG_IGNORED = 'script|style';
@@ -35,6 +38,7 @@ sub new{
 
     my $this = {};
     $this->{opt} = $opt;
+    $this->{juman} = new Juman();
 
     bless $this;
 }
@@ -97,9 +101,9 @@ sub detect_block {
 
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
-
     my $divide_flag = $this->check_divide_block($elem);
-
+    my @texts = $this->get_text($elem);
+    
     if ((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && $divide_flag) {
 	# リンク領域
 	if ($this->check_link_block($elem)) {
@@ -107,9 +111,7 @@ sub detect_block {
 	}
 
 	# フッター
-	elsif ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH
-	       && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH
-	       && $this->get_text($elem) =~ /$FOOTER_STRING/i) {
+	elsif ($this->check_footer($elem, \@texts)) {
 	    $elem->attr('myblocktype', 'footer');
 	}
 
@@ -125,12 +127,17 @@ sub detect_block {
 	}
 
 	# 本文
-	else {
+	elsif ($this->check_maintext($elem, \@texts)) {
 	    $elem->attr('myblocktype', 'maintext');
 	}
 
+	# それ以外の場合
+	else {
+	    
+	}
+
 	# HTML表示用にクラスを付与する
-	if ($this->{opt}{add_class2html}) {
+	if ($this->{opt}{add_class2html} && $elem->attr('myblocktype')) {
 	    my $orig_class = $elem->attr('class');
 	    my $joint_class;
 
@@ -148,6 +155,47 @@ sub detect_block {
 	}
     }
 }
+
+sub check_footer {
+    my ($this, $elem, $texts) = @_;
+
+    my $footer_flag = 0;
+    if ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH) {
+	foreach my $text (@$texts) {
+	    if ($text =~ /$FOOTER_STRING/i) {
+		$footer_flag = 1;
+		last;
+	    }
+	}
+    }
+
+    return $footer_flag;
+}
+
+
+sub check_maintext {
+    my ($this, $elem, $texts) = @_;
+
+    my ($total_mrph_num, $particle_num, $point_num) = (0, 0, 0);
+    foreach my $text (@$texts) {
+	my $result = $this->{juman}->analysis($text);
+	foreach my $mrph ($result->mrph) {
+	    $total_mrph_num++;
+	    $particle_num++ if $mrph->hinsi eq '助詞';
+	    $point_num++ if $mrph->bunrui eq '句点';
+	}
+    }
+
+    # 助詞,句点の割合を計算し判断
+    if ($particle_num / $total_mrph_num > $MAINTEXT_PARTICLE_TH || $point_num / $total_mrph_num > $MAINTEXT_POINT_TH) {
+	return 1;
+    }
+    else {
+	return 0;
+    }
+}
+
+
 
 sub check_divide_block {
     my ($this, $elem) = @_;
@@ -366,21 +414,21 @@ sub get_text {
 
     return if $this->is_stop_elem($elem);
 
-    my $text;
+    my @texts;
     # text
     if ($elem->tag eq '~text') {
-	return $elem->attr('text');
+	push @texts, $elem->attr('text');
     }
     # 画像の場合altを返す
     elsif ($elem->tag eq 'img') {
-	return $elem->attr('alt');
+	push @texts, $elem->attr('alt');
     }
 
     for my $child_elem ($elem->content_list){
-	$text .= $this->get_text($child_elem);
+	push @texts, $this->get_text($child_elem);
     }
 
-    return $text;
+    return @texts;
 }
 
 # BLOCKをHTML上で色分けして表示するために整形
