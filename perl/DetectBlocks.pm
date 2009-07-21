@@ -24,8 +24,11 @@ our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 # FOOTER用の文字列
 our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
-#maintext用の文字列
+# maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
+
+# 以下のtagは解析対象にしない
+our $TAG_IGNORED = 'script|style';
 
 sub new{
     my (undef, $opt) = @_;
@@ -95,7 +98,9 @@ sub detect_block {
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
 
-    if (!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) {
+    my $divide_flag = $this->check_divide_block($elem);
+
+    if ((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && $divide_flag) {
 	# リンク領域
 	if ($this->check_link_block($elem)) {
 	    $elem->attr('myblocktype', 'link');
@@ -144,6 +149,18 @@ sub detect_block {
     }
 }
 
+sub check_divide_block {
+    my ($this, $elem) = @_;
+
+    if ($elem->content_list) {
+	# address
+	return 0 if $elem->find('address');
+    }
+
+    return 1;
+}
+
+
 sub check_link_block {
     my ($this, $elem) = @_;
 
@@ -165,6 +182,8 @@ sub check_link_block {
 
 sub attach_elem_length {
     my ($this, $elem) = @_;
+
+    return 0 if $this->is_stop_elem($elem);
 
     my $length_all = 0;
 
@@ -206,8 +225,10 @@ sub attach_offset_ratio {
     # 累積
     my $accumulative_length = $offset;
     for my $child_elem ($elem->content_list){
-	$this->attach_offset_ratio($child_elem, $accumulative_length);
-	$accumulative_length += $child_elem->attr('length');
+	if (!$this->is_stop_elem($elem)) {
+	    $this->attach_offset_ratio($child_elem, $accumulative_length);
+	    $accumulative_length += $child_elem->attr('length');
+	}
     }
 }
 
@@ -343,6 +364,8 @@ sub detect_iteration {
 sub get_text {
     my ($this, $elem) = @_;
 
+    return if $this->is_stop_elem($elem);
+
     my $text;
     # text
     if ($elem->tag eq '~text') {
@@ -353,10 +376,8 @@ sub get_text {
 	return $elem->attr('alt');
     }
 
-    if ($elem->tag ne 'script') {
-	for my $child_elem ($elem->content_list){
-	    $text .= $this->get_text($child_elem);
-	}
+    for my $child_elem ($elem->content_list){
+	$text .= $this->get_text($child_elem);
     }
 
     return $text;
@@ -405,5 +426,13 @@ sub text2div {
     }
 }
 
+sub is_stop_elem {
+    my ($this, $elem) = @_;
+
+    if ($elem->tag =~ /$TAG_IGNORED/i) {
+	return 1;
+    }
+    return 0;
+}
 
 1;
