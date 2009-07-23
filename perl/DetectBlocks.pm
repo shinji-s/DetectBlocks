@@ -13,8 +13,8 @@ use Juman;
 our $TEXTPER_TH = 0.5;
 
 our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
-our $FOOTER_RATIO_START_TH = 0.85; # これより大きければfooter
-our $FOOTER_RATIO_END_TH = 0.95; # これより大きければfooter
+our $FOOTER_START_TH = 300; # これより大きければfooter
+our $FOOTER_END_TH = 100; # これより大きければfooter
 
 our $ITERATION_BLOCK_SIZE = 4; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 3; # 繰り返し回数がこれ以上
@@ -22,16 +22,22 @@ our $ITERATION_TH = 3; # 繰り返し回数がこれ以上
 # COPYRIGHT用の文字列
 our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
+# プロフィール領域用の文字列
+our $PROFILE_STRING = '管理人|氏名|名前|ニックネーム|id|ユーザ[名]?|[user][\-]?id|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
+
 # FOOTER用の文字列
 our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
-our $MAINTEXT_PARTICLE_TH = 0.05;
-our $MAINTEXT_POINT_TH = 0.05;
+our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
+our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のtagは解析対象にしない
-our $TAG_IGNORED = 'script|style';
+our $TAG_IGNORED = 'script|style|br';
+
+# 以下のtagを子供以下にふくむ場合は領域を分割
+our @MORE_DIVIDE_TAG = qw/address/;
 
 sub new{
     my (undef, $opt) = @_;
@@ -91,10 +97,27 @@ sub detectblocks{
 
     $this->detect_block($body);
 
-    $this->text2div($body) if $this->{opt}{add_class2html};
+    if ($this->{opt}{add_class2html}) {
+	$this->remove_deco_attr($body);	    
+	$this->text2div($body);
+    }
 
 #    $body->deobjectify_text;
 }
+
+# 不要な属性を削除
+sub remove_deco_attr {
+    my ($this, $elem) = @_;
+    
+    foreach my $attr (qw/bgcolor style id subtree_string leaf_string/) {
+	$elem->attr($attr, '') if $elem->attr($attr);
+    }
+
+    foreach my $child_elem ($elem->content_list) {
+	$this->remove_deco_attr($child_elem);
+    }
+}
+
 
 sub detect_block {
     my ($this, $elem) = @_;
@@ -102,17 +125,17 @@ sub detect_block {
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
     my $divide_flag = $this->check_divide_block($elem);
-    my @texts = $this->get_text($elem);
     
-    if ((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && $divide_flag) {
-	# リンク領域
-	if ($this->check_link_block($elem)) {
-	    $elem->attr('myblocktype', 'link');
+    if ((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && !$divide_flag) {
+	my @texts = $this->get_text($elem);
+	# フッター
+	if ($this->check_footer($elem, \@texts)) {
+	    $elem->attr('myblocktype', 'footer');
 	}
 
-	# フッター
-	elsif ($this->check_footer($elem, \@texts)) {
-	    $elem->attr('myblocktype', 'footer');
+	# リンク領域
+	elsif ($this->check_link_block($elem, 1)) {
+	    $elem->attr('myblocktype', 'link');
 	}
 
 	# img
@@ -126,6 +149,11 @@ sub detect_block {
 	    ;
 	}
 
+	# プロフィール
+	# elsif ($this->check_profile($elem, \@texts)) {
+	#     $elem->attr('myblocktype', 'profile');
+        # }
+
 	# 本文
 	elsif ($this->check_maintext($elem, \@texts)) {
 	    $elem->attr('myblocktype', 'maintext');
@@ -133,7 +161,7 @@ sub detect_block {
 
 	# それ以外の場合
 	else {
-	    
+	    $elem->attr('myblocktype', 'unknown_block');	    
 	}
 
 	# HTML表示用にクラスを付与する
@@ -147,6 +175,7 @@ sub detect_block {
 	    #  my $replaced_class = $orig_class ? $orig_class.' '. $block_name : $block_name;
 	    my $replaced_class = $block_name;
 	    $elem->attr('class' , $replaced_class);
+	    
 	}
     }
     else {
@@ -156,11 +185,24 @@ sub detect_block {
     }
 }
 
+sub check_profile {
+    my ($this, $elem, $texts) = @_;
+    
+    my $counter = 0;
+    foreach my $text (@$texts) {
+	$counter++ if $text =~ /$PROFILE_STRING/i;
+	return 1 if $counter >= 2;
+    }
+    
+    return 0;;
+}
+
 sub check_footer {
     my ($this, $elem, $texts) = @_;
 
     my $footer_flag = 0;
-    if ($elem->attr('ratio_start') >= $FOOTER_RATIO_START_TH && $elem->attr('ratio_end') >= $FOOTER_RATIO_END_TH) {
+    if ($this->{alltextlen} * (1 - $elem->attr('ratio_start')) < $FOOTER_START_TH &&
+	$this->{alltextlen} * (1 - $elem->attr('ratio_end')) < $FOOTER_END_TH) {
 	foreach my $text (@$texts) {
 	    if ($text =~ /$FOOTER_STRING/i) {
 		$footer_flag = 1;
@@ -182,7 +224,7 @@ sub check_maintext {
 	foreach my $mrph ($result->mrph) {
 	    $total_mrph_num++;
 	    $particle_num++ if $mrph->hinsi eq '助詞';
-	    $point_num++ if $mrph->bunrui eq '句点';
+	    $point_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
 	}
     }
 
@@ -195,34 +237,34 @@ sub check_maintext {
     }
 }
 
-
-
+# さらに分割 : 1を返す
 sub check_divide_block {
     my ($this, $elem) = @_;
 
     if ($elem->content_list) {
-	# address
-	return 0 if $elem->find('address');
+	foreach my $child_elem ($elem->content_list) {
+	    foreach my $tag (@MORE_DIVIDE_TAG) {
+		return 1 if $child_elem->find($tag);
+	    }
+	}
     }
 
-    return 1;
+    return 0;
 }
 
 
 sub check_link_block {
-    my ($this, $elem) = @_;
+    my ($this, $elem, $length) = @_;
 
-    # <a>タグを含む繰り返しあり
-    if ($elem->attr('iteration') =~ /_a_/) {
+    # 8割を超える範囲に<a>タグを含む繰り返しあり
+
+    if ($elem->attr('length') / $length > 0.8 &&
+	$elem->attr('iteration') =~ /_a_/) {
 	return 1;
     }
 
-    # 8割を超える子どもに<a>タグを含む繰り返しあり
     for my $child_elem ($elem->content_list){
-	if ($elem->attr('length') && $child_elem->attr('length') / $elem->attr('length') > 0.8
-	    && $child_elem->attr('iteration') =~ /_a_/) {
-	    return 1;
-	}
+	return $this->check_link_block($child_elem, $length);
     }
 
     return 0;
@@ -263,6 +305,8 @@ sub attach_elem_length {
 
 sub attach_offset_ratio {
     my ($this, $elem, $offset) = @_;
+
+    return if $this->is_stop_elem($elem);
 
     # 属性付与
     if ($this->{alltextlen} > 0) {
