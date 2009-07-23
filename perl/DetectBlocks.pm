@@ -12,12 +12,15 @@ use Juman;
 
 our $TEXTPER_TH = 0.5;
 
-our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 our $FOOTER_START_TH = 300; # これより大きければfooter
 our $FOOTER_END_TH = 100; # これより大きければfooter
+our $LINK_RATIO_TH = 0.7; #link領域の割合
+our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
-our $ITERATION_BLOCK_SIZE = 4; # 繰り返しのかたまりの最大
-our $ITERATION_TH = 3; # 繰り返し回数がこれ以上
+our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
+our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
+
+our $MAINTEXT_MIN = 200;
 
 # COPYRIGHT用の文字列
 our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
@@ -26,7 +29,7 @@ our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 our $PROFILE_STRING = '管理人|氏名|名前|ニックネーム|id|ユーザ[名]?|[user][\-]?id|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
@@ -34,10 +37,56 @@ our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合が�
 our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のtagは解析対象にしない
-our $TAG_IGNORED = 'script|style|br';
+our $TAG_IGNORED = 'script|style|br|option';
 
 # 以下のtagを子供以下にふくむ場合は領域を分割
 our @MORE_DIVIDE_TAG = qw/address/;
+
+#ブロックタグのハッシュ
+our %BLOCK_TAGS = (
+                   address => 1,
+                   blockquote => 1,
+                   caption => 1,
+                   center => 1,
+                   dd => 1,
+                   dir => 1,
+                   div => 1,
+                   dl => 1,
+                   dt => 1,
+                   fieldset => 1,
+                   form => 1,
+                   h1 => 1,
+                   h2 => 1,
+                   h3 => 1,
+                   h4 => 1,
+                   h5 => 1,
+                   h6 => 1,
+                   hr => 1,
+                   isindex => 1,
+                   li => 1,
+                   listing => 1,
+                   menu => 1,
+                   multicol => 1,
+                   noframes => 1,
+                   noscript => 1,
+                   ol => 1,
+                   option => 1,
+                   p => 1,
+                   plaintext => 1,
+                   pre => 1,
+                   select => 1,
+                   table => 1,
+                   tbody => 1,
+                   td => 1,
+                   tfoot => 1,
+                   th => 1,
+                   thead => 1,
+                   tr => 1,
+                   ul => 1,
+                   xmp => 1,
+		   br => 1
+		       );
+
 
 sub new{
     my (undef, $opt) = @_;
@@ -134,7 +183,7 @@ sub detect_block {
 	}
 
 	# リンク領域
-	elsif ($this->check_link_block($elem, 1)) {
+	elsif ($elem->attr("length") != 0 && $this->check_link_block($elem) / $elem->attr("length") > $LINK_RATIO_TH) {
 	    $elem->attr('myblocktype', 'link');
 	}
 
@@ -218,12 +267,14 @@ sub check_footer {
 sub check_maintext {
     my ($this, $elem, $texts) = @_;
 
+    return 1 if($elem->attr('length') > $MAINTEXT_MIN);
+
     my ($total_mrph_num, $particle_num, $point_num) = (0, 0, 0);
     foreach my $text (@$texts) {
 	my $result = $this->{juman}->analysis($text);
 	foreach my $mrph ($result->mrph) {
 	    $total_mrph_num++;
-	    $particle_num++ if $mrph->hinsi eq '助詞';
+	    $particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
 	    $point_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
 	}
     }
@@ -254,21 +305,40 @@ sub check_divide_block {
 
 
 sub check_link_block {
-    my ($this, $elem, $length) = @_;
+    my ($this, $elem) = @_;
 
     # 8割を超える範囲に<a>タグを含む繰り返しあり
 
-    if ($elem->attr('length') / $length > 0.8 &&
-	$elem->attr('iteration') =~ /_a_/) {
-	return 1;
+    if ($elem->attr('iteration') =~ /_a_/) {
+	return $elem->attr('length');
     }
 
+    my $sum = 0;
     for my $child_elem ($elem->content_list){
-	return $this->check_link_block($child_elem, $length);
+	$sum += $this->check_link_block($child_elem);
     }
 
-    return 0;
+    return $sum;
 }
+
+
+# sub check_link_block {
+#     my ($this, $elem, $length) = @_;
+
+#     # 8割を超える範囲に<a>タグを含む繰り返しあり
+
+#     if ($elem->attr('length') / $length > 0.8 &&
+# 	$elem->attr('iteration') =~ /_a_/) {
+# 	return 1;
+#     }
+
+#     for my $child_elem ($elem->content_list){
+# 	return $this->check_link_block($child_elem, $length);
+#     }
+
+#     return 0;
+# }
+
 
 sub attach_elem_length {
     my ($this, $elem) = @_;
@@ -310,8 +380,8 @@ sub attach_offset_ratio {
 
     # 属性付与
     if ($this->{alltextlen} > 0) {
-	$elem->attr('ratio_start', $offset / $this->{alltextlen});
-	$elem->attr('ratio_end', ($offset + $elem->attr('length')) / $this->{alltextlen});
+	$elem->attr('ratio_start', sprintf("%.4f", $offset / $this->{alltextlen}));
+	$elem->attr('ratio_end', sprintf("%.4f", ($offset + $elem->attr('length')) / $this->{alltextlen}));
     }
     
     # 累積
@@ -425,23 +495,34 @@ sub detect_iteration {
     return if ($elem->content_list == 0);
 
     my @substrings;
+    my @tags;
     for my $child_elem ($elem->content_list){
 	push @substrings, $child_elem->attr('subtree_string');
+	push @tags, $child_elem->tag;
     }
     
   LOOP:
-    for (my $i = 1; $i <= $ITERATION_BLOCK_SIZE; $i++) {
+#    for (my $i = 1; $i <= $ITERATION_BLOCK_SIZE; $i++) {
+    for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
 
 	# スタートポイント
-	for (my $j = $i; $j < @substrings; $j++) {
+	for (my $j = 0; $j < @substrings; $j++) {
 
 	    my $k;
-	    for ($k = $j; $k < @substrings; $k++) {
+	    my $flag = 0;
+	    for ($k = $j; $k < $j+$i; $k++){
+		if (defined($BLOCK_TAGS{$tags[$k]})){
+		    $flag = 1;
+		}
+	    }
+	    next if($flag == 0);
+
+	    for ($k = $j+$i; $k < @substrings; $k++) {
 		last if ($substrings[$k] ne $substrings[$k - $i]);
 	    }
 
 	    # 繰り返し発見
-	    if ($k - $j + $i >= $ITERATION_TH * $i) {
+	    if ($k - $j >= $ITERATION_TH * $i) {
 		$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
 		last LOOP;
 	    }
@@ -457,6 +538,7 @@ sub get_text {
     my ($this, $elem) = @_;
 
     return if $this->is_stop_elem($elem);
+
 
     my @texts;
     # text
