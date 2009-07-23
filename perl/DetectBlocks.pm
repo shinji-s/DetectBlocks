@@ -151,7 +151,7 @@ sub detectblocks{
 	$this->text2div($body);
     }
 
-#    $body->deobjectify_text;
+    # $body->deobjectify_text;
 }
 
 # 不要な属性を削除
@@ -159,7 +159,7 @@ sub remove_deco_attr {
     my ($this, $elem) = @_;
     
     foreach my $attr (qw/bgcolor style id subtree_string leaf_string/) {
-	$elem->attr($attr, '') if $elem->attr($attr);
+	$elem->attr($attr, undef) if $elem->attr($attr);
     }
 
     foreach my $child_elem ($elem->content_list) {
@@ -320,24 +320,6 @@ sub check_link_block {
 
     return $sum;
 }
-
-
-# sub check_link_block {
-#     my ($this, $elem, $length) = @_;
-
-#     # 8割を超える範囲に<a>タグを含む繰り返しあり
-
-#     if ($elem->attr('length') / $length > 0.8 &&
-# 	$elem->attr('iteration') =~ /_a_/) {
-# 	return 1;
-#     }
-
-#     for my $child_elem ($elem->content_list){
-# 	return $this->check_link_block($child_elem, $length);
-#     }
-
-#     return 0;
-# }
 
 
 sub attach_elem_length {
@@ -502,7 +484,6 @@ sub detect_iteration {
     }
     
   LOOP:
-#    for (my $i = 1; $i <= $ITERATION_BLOCK_SIZE; $i++) {
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
 
 	# スタートポイント
@@ -511,7 +492,7 @@ sub detect_iteration {
 	    my $k;
 	    my $flag = 0;
 	    for ($k = $j; $k < $j+$i; $k++){
-		if (defined($BLOCK_TAGS{$tags[$k]})){
+		if (defined $BLOCK_TAGS{$tags[$k]}){
 		    $flag = 1;
 		}
 	    }
@@ -595,7 +576,7 @@ sub text2div {
 	    $elem->tag("span");
 	    $elem->push_content($elem->attr("text"));
 
-	    $elem->attr("text", "");
+	    $elem->attr("text", undef);
 	}
     }
 }
