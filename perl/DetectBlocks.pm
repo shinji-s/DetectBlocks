@@ -483,22 +483,37 @@ sub detect_iteration {
 	push @tags, $child_elem->tag;
     }
     
+    my $child_num = scalar $elem->content_list;
   LOOP:
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
 
 	# スタートポイント
-	for (my $j = 0; $j < @substrings; $j++) {
+	for (my $j = 0; $j < $child_num; $j++) {
 
 	    my $k;
 	    my $flag = 0;
+
+	    # ブロックタグをチェック
 	    for ($k = $j; $k < $j+$i; $k++){
 		if (defined $BLOCK_TAGS{$tags[$k]}){
 		    $flag = 1;
 		}
 	    }
+	    # aの後ろに同じテキストが来る場合
+	    if ($flag == 0) {
+		for ($k = $j; $k < $j+$i; $k++){
+		    if ($tags[$k] eq 'a' && 
+			$k+1 < $j+$i && $tags[$k+1] eq '~text' && 
+			$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' &&
+			$substrings[$k+1] eq $substrings[$k+$i+1] &&
+			($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
+			$flag = 1;
+		    }
+		}
+	    }
 	    next if($flag == 0);
 
-	    for ($k = $j+$i; $k < @substrings; $k++) {
+	    for ($k = $j+$i; $k < $child_num; $k++) {
 		last if ($substrings[$k] ne $substrings[$k - $i]);
 	    }
 
