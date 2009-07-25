@@ -75,18 +75,19 @@ my $tree = $ttt->gettree;
 # my $test = RepeatCheck->new;
 # $ttt->settree($test->detectrepeat($tree)); 
 
+
 if ($opt{debug}) {
     Dumpvalue->new->dumpValue($tree);
-}
-# 木の表示
-if ($opt{printtree}) {
-    print '=' x 50, "\n";
-    $ttt->printtree;
-    print '=' x 50, "\n";
 }
 
 # HTML形式で出力
 if ($opt{add_class2html}) {
     $ttt->addCSSlink($tree, 'style.css');    
     print $tree->as_HTML("<>&","\t");
+}
+else {
+# 木の表示
+    print '=' x 50, "\n";
+    $ttt->printtree;
+    print '=' x 50, "\n";
 }
