@@ -86,7 +86,9 @@ our %BLOCK_TAGS = (
                    xmp => 1,
 		   br => 1
 		       );
-
+# あるブロック以下の全てのブロックのテキスト量が50%以下の場合に
+# まわりのインライン要素と同様に1つのmyblocknameにまとめる
+our $EXCEPTIONAL_BLOCK_TAGS = 'br';
 
 sub new{
     my (undef, $opt) = @_;
@@ -169,28 +171,38 @@ sub remove_deco_attr {
 
 
 sub detect_block {
-    my ($this, $elem) = @_;
+    my ($this, $elem, $option) = @_;
 
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
-    my $divide_flag = $this->check_divide_block($elem);
+
+    # さらに分割するかどうかを判定
+    my $divide_flag = $this->check_divide_block($elem) if !$option->{parent};
     
-    if ((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && !$divide_flag) {
+    if (defined $option->{parent} ||
+	((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && !$divide_flag)) {
 	my @texts = $this->get_text($elem);
+	my $myblocktype;
 	# フッター
+	# 条件 : 以下のすべてを満たす
+	# - ブロックの開始がページ末尾から300文字以内
+	# - ブロックの終了がページ末尾から100文字以内
+	# - 「copyright」など特別な文字列を含む
 	if ($this->check_footer($elem, \@texts)) {
-	    $elem->attr('myblocktype', 'footer');
+	    $myblocktype = 'footer';
 	}
 
 	# リンク領域
+	# - ブロック以下のaタグを含む繰り返しの割合の和が8割以上
 	elsif ($elem->attr("length") != 0 && $this->check_link_block($elem) / $elem->attr("length") > $LINK_RATIO_TH) {
-	    $elem->attr('myblocktype', 'link');
+	    $myblocktype = 'link';
 	}
 
 	# img
+	# - 葉の画像の割合が8割以上
 	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
 		> $IMG_RATIO_TH) {
-	    $elem->attr('myblocktype', 'img');
+	    $myblocktype = 'img';
 	}
 
 	# 中身なし
@@ -204,34 +216,120 @@ sub detect_block {
         # }
 
 	# 本文
+	# - 以下のいずれかを満たす
+	# -- 長さが200文字以内
+	# -- 「の」を除く助詞のブロック以下の全形態素に占める割合が5%以上
+	# -- 句点、読点のブロック以下の全形態素に占める割合が5%以上
 	elsif ($this->check_maintext($elem, \@texts)) {
-	    $elem->attr('myblocktype', 'maintext');
+	    $myblocktype = 'maintext';
 	}
 
 	# それ以外の場合
 	else {
-	    $elem->attr('myblocktype', 'unknown_block');	    
+	    $myblocktype = 'unknown_block';
 	}
 
-	# HTML表示用にクラスを付与する
-	if ($this->{opt}{add_class2html} && $elem->attr('myblocktype')) {
-	    my $orig_class = $elem->attr('class');
-	    my $joint_class;
+	if ($myblocktype) {
+	    if (defined $option->{parent}) {
+		my ($start, $end) = ($option->{start}, $option->{end});
+		for my $i ($start..$end) {
+		    my $tmp_elem = ($option->{parent}->content_list)[$i];
+		    $tmp_elem->attr('myblocktype', $myblocktype);
+		    $tmp_elem->attr('no', sprintf("%s/%s", $i - $start + 1, $end - $start + 1));
 
-	    my $block_name = 'myblock_' . $elem->attr('myblocktype');
-	    # 元のHTMLのクラスを残す
-	    # ★ 表示上ややこしいのでいったんやめる
-	    #  my $replaced_class = $orig_class ? $orig_class.' '. $block_name : $block_name;
-	    my $replaced_class = $block_name;
-	    $elem->attr('class' , $replaced_class);
-	    
+		    # HTML表示用にクラスを付与する
+		    if ($this->{opt}{add_class2html}) {
+			$tmp_elem->attr('class' , 'myblock_' . $myblocktype);
+		    }
+		}
+	    }
+	    else {
+		$elem->attr('myblocktype', $myblocktype);
+		# HTML表示用にクラスを付与する
+		if ($this->{opt}{add_class2html}) {
+		    $elem->attr('class' , 'myblock_' . $myblocktype);
+		}
+	    }
 	}
+
+
     }
     else {
+	my $flag;
+	# 50%以上のブロックがあるかチェック
 	for my $child_elem ($elem->content_list){
-	    $this->detect_block($child_elem);
+	    if ($child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) {
+		$flag = 1;
+		last;
+	    }
+	}
+
+	# 50%以上のものがある場合は通常通り再帰
+	if ($flag) {
+	    for my $child_elem ($elem->content_list){
+		$this->detect_block($child_elem);
+	    }
+	}
+	# 全て50%以下の場合インラインタグがあればそれらをまとめる
+	else {
+	    my $block_start;
+	    for (my $i = 0;$i < $elem->content_list; $i++) {
+		my $child_elem = ($elem->content_list)[$i];
+		# ブロックタグ
+		if (defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i) {
+		    # インラインタグの末尾を検出
+		    if (defined $block_start) {
+			# インラインタグを1つにまとめる仮ノードを作成
+			my $new_elem  = $this->make_new_elem($elem, $block_start, $i-1);
+
+			# 仮ノードを親と思い領域名を確定
+			$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => $i-1});
+			$new_elem->delete;
+			undef $block_start;
+		    }
+		    $this->detect_block($child_elem);
+		}
+		# インラインタグの先頭を検出
+		else {
+		    if (!defined $block_start) {
+			$block_start = $i;
+		    }
+		}
+	    }
+	    # 末尾
+	    if (defined $block_start) {
+		my $new_elem = $this->make_new_elem($elem, $block_start, scalar $elem->content_list - 1);
+		$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => scalar $elem->content_list - 1});
+	    }
+
 	}
     }
+}
+
+sub make_new_elem {
+    my ($this, $elem, $block_start, $block_end) = @_;
+    
+    # 仮ノードに必要な情報を獲得
+    my $length = 0;
+    my ($subtree_string, $leaf_string);
+    my $start_ratio = ($elem->content_list)[$block_start]->attr('start_ratio');
+    my $end_ratio = ($elem->content_list)[$block_end]->attr('end_ratio');
+    foreach my $tmp_elem (($elem->content_list)[$block_start..$block_end]) {
+	$length += $tmp_elem->attr('length');
+	$subtree_string .= $tmp_elem->attr('subtree_string');
+	$leaf_string .= $tmp_elem->attr('leaf_string');
+    }
+    my $new_elem = new HTML::Element('div', 'length' => $length,
+				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
+				     'start_ratio' => $start_ratio, 'end_ratio' => $end_ratio);
+    
+    # cloneを作成(こうしないと$elem->content_listの一部が消失?)
+    my $clone_elem = $elem->clone;
+    foreach my $tmp_elem (($clone_elem->content_list)[$block_start..$block_end]) {
+	$new_elem->push_content($tmp_elem);
+    }
+	
+    return $new_elem;
 }
 
 sub check_profile {
@@ -292,6 +390,7 @@ sub check_maintext {
 sub check_divide_block {
     my ($this, $elem) = @_;
 
+    # 自分以下に特定のタグを含む
     if ($elem->content_list) {
 	foreach my $child_elem ($elem->content_list) {
 	    foreach my $tag (@MORE_DIVIDE_TAG) {
@@ -407,7 +506,9 @@ sub print_node {
     printf "%s %s [%d] (%.2f-%.2f)", $space, $elem->tag, $length, $elem->attr('ratio_start') * 100, $elem->attr('ratio_end') * 100;
 
     if ($elem->attr('myblocktype')) {
-	print ' ★',  $elem->attr('myblocktype'), '★';
+	print ' ★',  $elem->attr('myblocktype');
+	print ' (',$elem->attr('no'),')' if $elem->attr('no');
+	print '★';
     }
 
     if ($elem->attr('iteration')) {
@@ -484,6 +585,7 @@ sub detect_iteration {
     }
     
     my $child_num = scalar $elem->content_list;
+    # ブロックの大きさ
   LOOP:
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
 
