@@ -37,10 +37,10 @@ our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合が�
 our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のtagは解析対象にしない
-our $TAG_IGNORED = 'script|style|br|option';
+our $TAG_IGNORED = '^(script|style|br|option)$';
 
 # 以下のtagを子供以下にふくむ場合は領域を分割
-our @MORE_DIVIDE_TAG = qw/address/;
+our @MORE_DIVIDE_TAG = qw/address form/;
 
 #ブロックタグのハッシュ
 our %BLOCK_TAGS = (
@@ -88,7 +88,7 @@ our %BLOCK_TAGS = (
 		       );
 # あるブロック以下の全てのブロックのテキスト量が50%以下の場合に
 # まわりのインライン要素と同様に1つのmyblocknameにまとめる
-our $EXCEPTIONAL_BLOCK_TAGS = 'br';
+our $EXCEPTIONAL_BLOCK_TAGS = '^br$';
 
 sub new{
     my (undef, $opt) = @_;
@@ -179,8 +179,8 @@ sub detect_block {
     # さらに分割するかどうかを判定
     my $divide_flag = $this->check_divide_block($elem) if !$option->{parent};
     
-    if (defined $option->{parent} ||
-	((!$elem->content_list || $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH) && !$divide_flag)) {
+    if (defined $option->{parent} ||  
+	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
 	my @texts = $this->get_text($elem);
 	my $myblocktype;
 	# フッター
@@ -203,6 +203,13 @@ sub detect_block {
 	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
 		> $IMG_RATIO_TH) {
 	    $myblocktype = 'img';
+	}
+
+	# form
+	# - ブロック以下にformタグがある
+	# - フロック以下に<input type="submit">がある
+	elsif ($this->check_form($elem)) {
+	    $myblocktype = 'form';
 	}
 
 	# 中身なし
@@ -258,7 +265,7 @@ sub detect_block {
 	my $flag;
 	# 50%以上のブロックがあるかチェック
 	for my $child_elem ($elem->content_list){
-	    if ($child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) {
+	    if ($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) {
 		$flag = 1;
 		last;
 	    }
@@ -275,11 +282,11 @@ sub detect_block {
 	    my $block_start;
 	    for (my $i = 0;$i < $elem->content_list; $i++) {
 		my $child_elem = ($elem->content_list)[$i];
-		# ブロックタグ
+		# ブロック要素
 		if (defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i) {
-		    # インラインタグの末尾を検出
+		    # インライン要素の末尾を検出
 		    if (defined $block_start) {
-			# インラインタグを1つにまとめる仮ノードを作成
+			# インライン要素を1つにまとめる仮ノードを作成
 			my $new_elem  = $this->make_new_elem($elem, $block_start, $i-1);
 
 			# 仮ノードを親と思い領域名を確定
@@ -289,7 +296,7 @@ sub detect_block {
 		    }
 		    $this->detect_block($child_elem);
 		}
-		# インラインタグの先頭を検出
+		# インライン要素の先頭を検出
 		else {
 		    if (!defined $block_start) {
 			$block_start = $i;
@@ -332,6 +339,18 @@ sub make_new_elem {
     return $new_elem;
 }
 
+sub check_form {
+    my ($this, $elem) = @_;
+    
+    if ($elem->look_down('_tag', 'form')) {
+	foreach my $input_elem ($elem->find('input')) {
+	    return 1 if $input_elem->look_down('type', 'submit')
+	}
+    }
+
+    return 0;
+}
+
 sub check_profile {
     my ($this, $elem, $texts) = @_;
     
@@ -367,18 +386,18 @@ sub check_maintext {
 
     return 1 if($elem->attr('length') > $MAINTEXT_MIN);
 
-    my ($total_mrph_num, $particle_num, $point_num) = (0, 0, 0);
+    my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
     foreach my $text (@$texts) {
 	my $result = $this->{juman}->analysis($text);
 	foreach my $mrph ($result->mrph) {
 	    $total_mrph_num++;
 	    $particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
-	    $point_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
+	    $punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
 	}
     }
 
     # 助詞,句点の割合を計算し判断
-    if ($particle_num / $total_mrph_num > $MAINTEXT_PARTICLE_TH || $point_num / $total_mrph_num > $MAINTEXT_POINT_TH) {
+    if ($particle_num / $total_mrph_num > $MAINTEXT_PARTICLE_TH || $punc_mark_num / $total_mrph_num > $MAINTEXT_POINT_TH) {
 	return 1;
     }
     else {
@@ -391,14 +410,12 @@ sub check_divide_block {
     my ($this, $elem) = @_;
 
     # 自分以下に特定のタグを含む
-    if ($elem->content_list) {
-	foreach my $child_elem ($elem->content_list) {
-	    foreach my $tag (@MORE_DIVIDE_TAG) {
-		return 1 if $child_elem->find($tag);
-	    }
+    foreach my $child_elem ($elem->content_list) {
+	foreach my $tag (@MORE_DIVIDE_TAG) {
+	    return 1 if defined $child_elem->find($tag);
 	}
     }
-
+    
     return 0;
 }
 
