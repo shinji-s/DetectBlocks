@@ -241,24 +241,13 @@ sub detect_block {
 		my ($start, $end) = ($option->{start}, $option->{end});
 		for my $i ($start..$end) {
 		    my $tmp_elem = ($option->{parent}->content_list)[$i];
-		    $tmp_elem->attr('myblocktype', $myblocktype);
-		    $tmp_elem->attr('no', sprintf("%s/%s", $i - $start + 1, $end - $start + 1));
-
-		    # HTML表示用にクラスを付与する
-		    if ($this->{opt}{add_class2html}) {
-			$tmp_elem->attr('class' , 'myblock_' . $myblocktype);
-		    }
+		    $this->attach_attr_blocktype($tmp_elem, $myblocktype, {pos => $i - $start + 1, total => $end - $start + 1});
 		}
 	    }
 	    else {
-		$elem->attr('myblocktype', $myblocktype);
-		# HTML表示用にクラスを付与する
-		if ($this->{opt}{add_class2html}) {
-		    $elem->attr('class' , 'myblock_' . $myblocktype);
-		}
+		$this->attach_attr_blocktype($elem, $myblocktype)
 	    }
 	}
-
 
     }
     else {
@@ -288,7 +277,6 @@ sub detect_block {
 		    if (defined $block_start) {
 			# インライン要素を1つにまとめる仮ノードを作成
 			my $new_elem  = $this->make_new_elem($elem, $block_start, $i-1);
-
 			# 仮ノードを親と思い領域名を確定
 			$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => $i-1});
 			$new_elem->delete;
@@ -297,34 +285,45 @@ sub detect_block {
 		    $this->detect_block($child_elem);
 		}
 		# インライン要素の先頭を検出
-		else {
-		    if (!defined $block_start) {
-			$block_start = $i;
-		    }
+		elsif (!defined $block_start) {
+		    $block_start = $i;
 		}
 	    }
 	    # 末尾
 	    if (defined $block_start) {
 		my $new_elem = $this->make_new_elem($elem, $block_start, scalar $elem->content_list - 1);
 		$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => scalar $elem->content_list - 1});
+		$new_elem->delete;
 	    }
 
 	}
     }
 }
 
+sub attach_attr_blocktype {
+    my ($this, $elem, $myblocktype, $num) = @_;
+
+    $elem->attr('no', sprintf("%s/%s", $num->{pos}, $num->{total})) if defined $num;	
+
+    $elem->attr('myblocktype', $myblocktype);
+
+    # HTML表示用にクラスを付与する
+    $elem->attr('class' , 'myblock_' . $myblocktype) if $this->{opt}{add_class2html};
+}
+
 sub make_new_elem {
-    my ($this, $elem, $block_start, $block_end) = @_;
+    my ($this, $elem, $start, $end) = @_;
     
     # 仮ノードに必要な情報を獲得
     my $length = 0;
     my ($subtree_string, $leaf_string);
-    my $start_ratio = ($elem->content_list)[$block_start]->attr('start_ratio');
-    my $end_ratio = ($elem->content_list)[$block_end]->attr('end_ratio');
-    foreach my $tmp_elem (($elem->content_list)[$block_start..$block_end]) {
-	$length += $tmp_elem->attr('length');
-	$subtree_string .= $tmp_elem->attr('subtree_string');
-	$leaf_string .= $tmp_elem->attr('leaf_string');
+    my $start_ratio = ($elem->content_list)[$start]->attr('start_ratio');
+    my $end_ratio = ($elem->content_list)[$end]->attr('end_ratio');
+
+    foreach my $tmp (($elem->content_list)[$start..$end]) {
+	$length += $tmp->attr('length');
+	$subtree_string .= $tmp->attr('subtree_string');
+	$leaf_string .= $tmp->attr('leaf_string');
     }
     my $new_elem = new HTML::Element('div', 'length' => $length,
 				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
@@ -332,8 +331,8 @@ sub make_new_elem {
     
     # cloneを作成(こうしないと$elem->content_listの一部が消失?)
     my $clone_elem = $elem->clone;
-    foreach my $tmp_elem (($clone_elem->content_list)[$block_start..$block_end]) {
-	$new_elem->push_content($tmp_elem);
+    foreach my $tmp (($clone_elem->content_list)[$start..$end]) {
+	$new_elem->push_content($tmp);
     }
 	
     return $new_elem;
@@ -344,7 +343,7 @@ sub check_form {
     
     if ($elem->look_down('_tag', 'form')) {
 	foreach my $input_elem ($elem->find('input')) {
-	    return 1 if $input_elem->look_down('type', 'submit')
+	    return 1 if $input_elem->look_down('type', 'submit') || $input_elem->look_down('name', 'submit')
 	}
     }
 
@@ -360,7 +359,7 @@ sub check_profile {
 	return 1 if $counter >= 2;
     }
     
-    return 0;;
+    return 0;
 }
 
 sub check_footer {
