@@ -12,6 +12,9 @@ use Juman;
 
 our $TEXTPER_TH = 0.5;
 
+our $HEADER_START_TH = 50; # これより小さければheader
+our $HEADER_END_TH = 200; # これより小さければheader
+
 our $FOOTER_START_TH = 300; # これより大きければfooter
 our $FOOTER_END_TH = 100; # これより大きければfooter
 our $LINK_RATIO_TH = 0.66; #link領域の割合
@@ -118,20 +121,10 @@ sub detectblocks{
     my ($this) = @_;
 
     #url処理
-    my $url;
-    my $domain;
-    $url = $this->{url} if(defined($this->{url}));
-    if(defined($url)){
+    if($this->{url} && $this->{url} =~ /^http\:\/\/([^\/]+)/){
 	# 例 : http://www.yahoo.co.jp/news => www.yahoo.co.jp
-	if($url =~ /^http:\/\/\/?([.^\/]+)\// || $url =~ /^http:\/\/\/?([.^\/]+)$/){
-	    $url = $1;
-	}
-	# ??
-	if($url =~ /\/\/\/?([^\/]+)\// || $url =~ /\/\/\/?([^\/]+)$/){
-	    $domain = $1;
-	}
+	$this->{domain} = $1;
     }
-    $this->{domain} = $domain;
 
     my @kariblockarr = ();
     $this->{blockarr} = \@kariblockarr;
@@ -193,6 +186,11 @@ sub detect_block {
 	# - 「copyright」など特別な文字列を含む
 	if ($this->check_footer($elem, \@texts)) {
 	    $myblocktype = 'footer';
+	}
+
+	# ヘッダー
+	elsif ($this->check_header($elem, \@texts)) {
+	    $myblocktype = 'header';
 	}
 
 	# リンク領域
@@ -367,6 +365,23 @@ sub check_profile {
 	return 1 if $counter >= 2;
     }
     
+    return 0;
+}
+
+sub check_header {
+    my ($this, $elem) = @_;
+
+    if ($this->{alltextlen} * $elem->attr('ratio_start') < $HEADER_START_TH &&
+	$this->{alltextlen} * $elem->attr('ratio_end') < $HEADER_END_TH) {
+	my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
+	# ルートページのindex.*へのリンク
+	foreach my $a_elem ($elem->look_down('_tag' => 'a', 'href' => qr/(:?$domain\/|(:?\.\.\/)+)(:?index\.(:?html|htm|php|cgi))?/)) {
+	    foreach my $child_elem ($a_elem->content_list) {
+		return 1 if $child_elem->tag eq 'img';
+	    }
+	}
+    }
+
     return 0;
 }
 
