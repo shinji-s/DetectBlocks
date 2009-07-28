@@ -14,7 +14,7 @@ our $TEXTPER_TH = 0.5;
 
 our $FOOTER_START_TH = 300; # これより大きければfooter
 our $FOOTER_END_TH = 100; # これより大きければfooter
-our $LINK_RATIO_TH = 0.7; #link領域の割合
+our $LINK_RATIO_TH = 0.66; #link領域の割合
 our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
@@ -90,6 +90,9 @@ our %BLOCK_TAGS = (
 # まわりのインライン要素と同様に1つのmyblocknameにまとめる
 our $EXCEPTIONAL_BLOCK_TAGS = '^br$';
 
+# HTMLにする際に捨てる属性
+our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
+
 sub new{
     my (undef, $opt) = @_;
 
@@ -160,7 +163,7 @@ sub detectblocks{
 sub remove_deco_attr {
     my ($this, $elem) = @_;
     
-    foreach my $attr (qw/bgcolor style id subtree_string leaf_string/) {
+    foreach my $attr (@DECO_ATTRS) {
 	$elem->attr($attr, undef) if $elem->attr($attr);
     }
 
@@ -176,9 +179,9 @@ sub detect_block {
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
 
-    # さらに分割するかどうかを判定
+    # さらに分割するかどうかを判定 (する:1, しない:0)
     my $divide_flag = $this->check_divide_block($elem) if !$option->{parent};
-    
+
     if (defined $option->{parent} ||  
 	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
 	my @texts = $this->get_text($elem);
@@ -218,11 +221,11 @@ sub detect_block {
 	}
 
 	# プロフィール
-	# elsif ($this->check_profile($elem, \@texts)) {
-	#     $elem->attr('myblocktype', 'profile');
-        # }
+# 	elsif ($this->check_profile($elem, \@texts)) {
+# 	    $elem->attr('myblocktype', 'profile');
+#         }
 
-	# 本文
+        # 本文
 	# - 以下のいずれかを満たす
 	# -- 長さが200文字以内
 	# -- 「の」を除く助詞のブロック以下の全形態素に占める割合が5%以上
@@ -248,69 +251,63 @@ sub detect_block {
 		$this->attach_attr_blocktype($elem, $myblocktype)
 	    }
 	}
-
     }
     else {
-	my $flag;
-	# 50%以上のブロックがあるかチェック
-	for my $child_elem ($elem->content_list){
-	    if ($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) {
-		$flag = 1;
-		last;
-	    }
-	}
-
-	# 50%以上のものがある場合は通常通り再帰
-	if ($flag) {
-	    for my $child_elem ($elem->content_list){
+	my $block_start;
+	for (my $i = 0;$i < $elem->content_list; $i++) {
+	    my $child_elem = ($elem->content_list)[$i];
+	    # block要素 or textが50%以上のblock
+	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
+		(defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i)) {
+		# インライン要素の末尾を検出
+		if (defined $block_start) {
+		    $this->detect_block_region($elem, $block_start, $i-1);
+		    undef $block_start;
+		}
 		$this->detect_block($child_elem);
 	    }
+	    # インライン要素の先頭を検出
+	    elsif (!defined $block_start) {
+		$block_start = $i;
+	    }
 	}
-	# 全て50%以下の場合インラインタグがあればそれらをまとめる
-	else {
-	    my $block_start;
-	    for (my $i = 0;$i < $elem->content_list; $i++) {
-		my $child_elem = ($elem->content_list)[$i];
-		# ブロック要素
-		if (defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i) {
-		    # インライン要素の末尾を検出
-		    if (defined $block_start) {
-			# インライン要素を1つにまとめる仮ノードを作成
-			my $new_elem  = $this->make_new_elem($elem, $block_start, $i-1);
-			# 仮ノードを親と思い領域名を確定
-			$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => $i-1});
-			$new_elem->delete;
-			undef $block_start;
-		    }
-		    $this->detect_block($child_elem);
-		}
-		# インライン要素の先頭を検出
-		elsif (!defined $block_start) {
-		    $block_start = $i;
-		}
-	    }
-	    # 末尾
-	    if (defined $block_start) {
-		my $new_elem = $this->make_new_elem($elem, $block_start, scalar $elem->content_list - 1);
-		$this->detect_block($new_elem, {parent => $elem, start => $block_start, end => scalar $elem->content_list - 1});
-		$new_elem->delete;
-	    }
-
+	# 末尾
+	if (defined $block_start) {
+	    $this->detect_block_region($elem, $block_start, scalar $elem->content_list - 1);
 	}
     }
 }
 
-sub attach_attr_blocktype {
-    my ($this, $elem, $myblocktype, $num) = @_;
 
-    $elem->attr('no', sprintf("%s/%s", $num->{pos}, $num->{total})) if defined $num;	
-
-    $elem->attr('myblocktype', $myblocktype);
-
-    # HTML表示用にクラスを付与する
-    $elem->attr('class' , 'myblock_' . $myblocktype) if $this->{opt}{add_class2html};
+# 自分以下を分割しようがあるか
+sub check_multiple_block {
+    my ($this, $elem) = @_;
+	
+    if (ref($elem) eq 'HTML::Element' && $elem->content_list) {
+	if ($elem->content_list == 1) {
+	    return $this->check_multiple_block(($elem->content_list)[0]);
+	}
+	else {
+	    return 1;
+	}
+    }
+    
+    return 0;
 }
 
+
+# start ~ endまでを1つのブロックとして領域名を確定
+sub detect_block_region {
+    my ($this, $elem, $start, $end) = @_;
+
+    # インライン要素を1つにまとめる仮ノードを作成
+    my $new_elem  = $this->make_new_elem($elem, $start, $end);
+
+    # 仮ノードを親と思い領域名を確定
+    $this->detect_block($new_elem, {parent => $elem, start => $start, end => $end});
+
+    $new_elem->delete;
+}
 sub make_new_elem {
     my ($this, $elem, $start, $end) = @_;
     
@@ -329,13 +326,24 @@ sub make_new_elem {
 				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
 				     'start_ratio' => $start_ratio, 'end_ratio' => $end_ratio);
     
-    # cloneを作成(こうしないと$elem->content_listの一部が消失?)
+    # cloneを作成(こうしないと$elem->content_listのpush_contentした部分が消失)
     my $clone_elem = $elem->clone;
     foreach my $tmp (($clone_elem->content_list)[$start..$end]) {
 	$new_elem->push_content($tmp);
     }
 	
     return $new_elem;
+}
+
+sub attach_attr_blocktype {
+    my ($this, $elem, $myblocktype, $num) = @_;
+
+    $elem->attr('no', sprintf("%s/%s", $num->{pos}, $num->{total})) if defined $num;	
+
+    $elem->attr('myblocktype', $myblocktype);
+
+    # HTML表示用にクラスを付与する
+    $elem->attr('class' , 'myblock_' . $myblocktype) if $this->{opt}{add_class2html};
 }
 
 sub check_form {
@@ -404,10 +412,12 @@ sub check_maintext {
     }
 }
 
-# さらに分割 : 1を返す
 sub check_divide_block {
     my ($this, $elem) = @_;
 
+    # 下階層を調べる意味があるかをチェック(ある:1, ない:0)
+    return 0 if !$this->check_multiple_block($elem);
+    
     # 自分以下に特定のタグを含む
     foreach my $child_elem ($elem->content_list) {
 	foreach my $tag (@MORE_DIVIDE_TAG) {
