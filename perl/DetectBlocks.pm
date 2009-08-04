@@ -12,7 +12,7 @@ use Juman;
 
 our $TEXTPER_TH = 0.5;
 
-our $HEADER_START_TH = 50; # これより小さければheader
+our $HEADER_START_TH = 100; # これより小さければheader
 our $HEADER_END_TH = 200; # これより小さければheader
 
 our $FOOTER_START_TH = 300; # これより大きければfooter
@@ -126,8 +126,6 @@ sub detectblocks{
 	$this->{domain} = $1;
     }
 
-    my @kariblockarr = ();
-    $this->{blockarr} = \@kariblockarr;
     my $body = $this->{tree}->find('body');
 
     # 要コメント
@@ -179,6 +177,7 @@ sub detect_block {
 	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
 	my @texts = $this->get_text($elem);
 	my $myblocktype;
+
 	# フッター
 	# 条件 : 以下のすべてを満たす
 	# - ブロックの開始がページ末尾から300文字以内
@@ -189,7 +188,11 @@ sub detect_block {
 	}
 
 	# ヘッダー
-	elsif ($this->check_header($elem, \@texts)) {
+	# 条件 : 以下のすべてを満たす
+	# - ブロックの開始がページ先頭から50文字以内
+	# - ブロックの終了がページ先頭から200文字以内
+	# - index.*への画像リンクを持つ
+	elsif ($this->check_header($elem)) {
 	    $myblocktype = 'header';
 	}
 
@@ -238,6 +241,7 @@ sub detect_block {
 	}
 
 	if ($myblocktype) {
+
 	    if (defined $option->{parent}) {
 		my ($start, $end) = ($option->{start}, $option->{end});
 		for my $i ($start..$end) {
@@ -312,8 +316,8 @@ sub make_new_elem {
     # 仮ノードに必要な情報を獲得
     my $length = 0;
     my ($subtree_string, $leaf_string);
-    my $start_ratio = ($elem->content_list)[$start]->attr('start_ratio');
-    my $end_ratio = ($elem->content_list)[$end]->attr('end_ratio');
+    my $ratio_start = $this->get_ratio($elem, $start, $end);
+    my $ratio_end = $this->get_ratio($elem, $end, $start);
 
     foreach my $tmp (($elem->content_list)[$start..$end]) {
 	$length += $tmp->attr('length');
@@ -322,7 +326,7 @@ sub make_new_elem {
     }
     my $new_elem = new HTML::Element('div', 'length' => $length,
 				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
-				     'start_ratio' => $start_ratio, 'end_ratio' => $end_ratio);
+				     'ratio_start' => $ratio_start, 'ratio_end' => $ratio_end);
     
     # cloneを作成(こうしないと$elem->content_listのpush_contentした部分が消失)
     my $clone_elem = $elem->clone;
@@ -332,6 +336,20 @@ sub make_new_elem {
 	
     return $new_elem;
 }
+sub get_ratio {
+    my ($this, $elem, $start, $end) = @_;
+    
+    my $search_str = $start < $end ? 'start' : 'end';
+    my $ratio;
+    my $i =  $start;
+    # brなどはratioの情報がない
+    do {
+	$ratio = ($elem->content_list)[$i]->attr('ratio_'.$search_str);
+	return $ratio if $ratio;
+	$start < $end ? $i++ : $i--;
+    } while ($i != $end);
+}
+
 
 sub attach_attr_blocktype {
     my ($this, $elem, $myblocktype, $num) = @_;
@@ -349,7 +367,7 @@ sub check_form {
     
     if ($elem->look_down('_tag', 'form')) {
 	foreach my $input_elem ($elem->find('input')) {
-	    return 1 if $input_elem->look_down('type', 'submit') || $input_elem->look_down('name', 'submit')
+	    return 1 if $input_elem->look_down('type', qr/(?:submit|button|image)/) || $input_elem->look_down('name', 'submit')
 	}
     }
 
@@ -374,11 +392,12 @@ sub check_header {
     if ($this->{alltextlen} * $elem->attr('ratio_start') < $HEADER_START_TH &&
 	$this->{alltextlen} * $elem->attr('ratio_end') < $HEADER_END_TH) {
 	my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
-	# ルートページのindex.*へのリンク
-	foreach my $a_elem ($elem->look_down('_tag' => 'a', 'href' => qr/(:?$domain\/|(:?\.\.\/)+)(:?index\.(:?html|htm|php|cgi))?/)) {
-	    foreach my $child_elem ($a_elem->content_list) {
-		return 1 if $child_elem->tag eq 'img';
-	    }
+	foreach my $a_elem ($elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^)(?:index\.(?:html|htm|php|cgi))?$/)) {
+# 	    # ルートページのindex.*へのリンク
+# 	    foreach my $child_elem ($a_elem->content_list) {
+# 		return 1 if $child_elem->tag eq 'img';
+# 	    }
+	    return 1;
 	}
     }
 
