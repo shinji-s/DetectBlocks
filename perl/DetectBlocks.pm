@@ -32,7 +32,7 @@ our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 our $PROFILE_STRING = '管理人|氏名|名前|ニックネーム|id|ユーザ[名]?|[user][\-]?id|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|\d{3}\-?\d{4}|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
@@ -452,13 +452,25 @@ sub check_divide_block {
     # 下階層を調べる意味があるかをチェック(ある:1, ない:0)
     return 0 if !$this->check_multiple_block($elem);
     
-    # 自分以下に特定のタグを含む
+    # チェック
     foreach my $child_elem ($elem->content_list) {
-	foreach my $tag (@MORE_DIVIDE_TAG) {
-	    return 1 if defined $child_elem->find($tag);
+	## address
+	if (defined $child_elem->find('address')) {
+	    return 1 ;
+	}
+
+	## form (以下のような場合は分割しない)
+	#------------------------------------#
+	# <table>                            #
+	# <tr><td><form> </form></td></tr>   #
+	# <tr><td><input> </input></td></tr> #
+	# </table>                           #
+	#------------------------------------#
+	unless ($elem->tag eq 'table' && !$child_elem->find('table')) {
+	    return 1 if defined $child_elem->find('form');
 	}
     }
-    
+
     return 0;
 }
 
@@ -467,7 +479,6 @@ sub check_link_block {
     my ($this, $elem) = @_;
 
     # 8割を超える範囲に<a>タグを含む繰り返しあり
-
     if ($elem->attr('iteration') =~ /_a_/) {
 	return $elem->attr('length');
     }
