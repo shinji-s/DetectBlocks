@@ -170,12 +170,13 @@ sub detect_block {
     my $leaf_string1 = $elem->attr('leaf_string');
     my $leaf_string2 = $elem->attr('leaf_string');
 
+    my @texts = $this->get_text($elem);
+
     # さらに分割するかどうかを判定 (する:1, しない:0)
-    my $divide_flag = $this->check_divide_block($elem) if !$option->{parent};
+    my $divide_flag = $this->check_divide_block($elem, \@texts) if !$option->{parent};
 
     if (defined $option->{parent} ||  
 	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
-	my @texts = $this->get_text($elem);
 	my $myblocktype;
 
 	# フッター
@@ -447,7 +448,7 @@ sub check_maintext {
 }
 
 sub check_divide_block {
-    my ($this, $elem) = @_;
+    my ($this, $elem, $texts) = @_;
 
     # 下階層を調べる意味があるかをチェック(ある:1, ない:0)
     return 0 if !$this->check_multiple_block($elem);
@@ -469,11 +470,36 @@ sub check_divide_block {
 	unless ($elem->tag eq 'table' && !$child_elem->find('table')) {
 	    return 1 if defined $child_elem->find('form');
 	}
+
+	## copyright
+	# 分割するとfooter領域が出現する
+	# (address不要かも)
+	if ($this->check_divide_block_by_copyright($elem, $texts)) {
+	    return 1;
+	}
     }
 
     return 0;
 }
 
+sub check_divide_block_by_copyright {
+    my ($this, $elem, $texts) = @_;
+
+    return 0 if ref($elem) ne 'HTML::Element';
+
+    # content_listサイズが1ならさらに潜る
+    if ($elem->content_list == 1) {
+	return $this->check_divide_block_by_copyright(($elem->content_list)[0], $texts);
+    }
+    else {
+	foreach my $child_elem ($elem->content_list) {
+	    my @child_texts = $this->get_text($child_elem);
+	    return 1 if !$this->check_footer($elem, $texts) && $this->check_footer($child_elem, \@child_texts);
+	}
+    }
+
+    return 0;
+}
 
 sub check_link_block {
     my ($this, $elem) = @_;
