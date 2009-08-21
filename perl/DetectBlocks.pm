@@ -32,7 +32,7 @@ our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
 our $PROFILE_STRING = '管理人|氏名|名前|ニックネーム|id|ユーザ[名]?|[user][\-]?id|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|質問|意見|Tel|TEL|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
@@ -113,7 +113,7 @@ sub maketree{
     $tree->parse($htmltext);
     $tree->eof;
 
-    $this->{url} = $url if(defined($url));
+    $this->{url} = $url if defined $url;
     $this->{tree} = $tree;
 }
 
@@ -192,7 +192,7 @@ sub detect_block {
 	# 条件 : 以下のすべてを満たす
 	# - ブロックの開始がページ先頭から50文字以内
 	# - ブロックの終了がページ先頭から200文字以内
-	# - index.*への画像リンクを持つ
+	# - index.*へのリンクを持つ
 	elsif ($this->check_header($elem)) {
 	    $myblocktype = 'header';
 	}
@@ -390,16 +390,14 @@ sub check_profile {
 sub check_header {
     my ($this, $elem) = @_;
 
-    if ($this->{alltextlen} * $elem->attr('ratio_start') < $HEADER_START_TH &&
-	$this->{alltextlen} * $elem->attr('ratio_end') < $HEADER_END_TH) {
-	my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
-	foreach my $a_elem ($elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^)(?:index\.(?:html|htm|php|cgi))?$/)) {
-# 	    # ルートページのindex.*へのリンク
-# 	    foreach my $child_elem ($a_elem->content_list) {
-# 		return 1 if $child_elem->tag eq 'img';
-# 	    }
-	    return 1;
-	}
+    my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
+    my $a_flag = $elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^\/|^)(?:index\.(?:html|htm|php|cgi))?$/) ? 1 :0;
+
+    if ($this->{alltextlen} * $elem->attr('ratio_start') < $HEADER_START_TH && $this->{alltextlen} * $elem->attr('ratio_end') < $HEADER_END_TH) {
+	# index.*へのリンクが存在する
+	return 1 if $a_flag;
+	#                        しない★
+	
     }
 
     return 0;
