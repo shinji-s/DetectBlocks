@@ -128,16 +128,21 @@ sub detectblocks{
 
     my $body = $this->{tree}->find('body');
 
-    # 要コメント
+    # テキストをタグ化
     $body->objectify_text;
 
+    # 自分以下のテキストの長さを記述
     $this->attach_elem_length($body);
     $this->{alltextlen} = $body->attr('length');
 
+    # テキストの累積率を記述
     $this->attach_offset_ratio($body);
+    # 自分以下のタグ木を記述
     $this->get_subtree_string($body);
+    # 自分以下の葉タグを記述
     $this->get_leaf_string($body);
 
+    # タグの繰り返し構造を見つける
     $this->detect_iteration($body);
 
     $this->detect_block($body);
