@@ -195,7 +195,7 @@ sub detect_block {
 
 	# ヘッダー
 	# 条件 : 以下のすべてを満たす
-	# - ブロックの開始がページ先頭から50文字以内
+	# - ブロックの開始がページ先頭から100文字以内
 	# - ブロックの終了がページ先頭から200文字以内
 	# - index.*へのリンクを持つ
 	elsif ($this->check_header($elem)) {
@@ -442,7 +442,8 @@ sub check_maintext {
     }
 
     # 助詞,句点の割合を計算し判断
-    if ($particle_num / $total_mrph_num > $MAINTEXT_PARTICLE_TH || $punc_mark_num / $total_mrph_num > $MAINTEXT_POINT_TH) {
+    if ($total_mrph_num &&
+	($particle_num / $total_mrph_num > $MAINTEXT_PARTICLE_TH || $punc_mark_num / $total_mrph_num > $MAINTEXT_POINT_TH)) {
 	return 1;
     }
     else {
