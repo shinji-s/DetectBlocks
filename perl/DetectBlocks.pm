@@ -149,6 +149,7 @@ sub detectblocks{
 
     if ($this->{opt}{add_class2html}) {
 	$this->remove_deco_attr($body);	    
+
 	$this->text2div($body);
     }
 

@@ -75,10 +75,12 @@ if ($opt{debug}) {
     Dumpvalue->new->dumpValue($tree);
 }
 
+
 # HTML形式で出力
 if ($opt{add_class2html}) {
     $DetectBlocks->addCSSlink($tree, 'style.css');    
-    print $tree->as_HTML("<>&","\t");
+
+    print $tree->as_HTML("<>&","\t", {});
 }
 else {
 # 木の表示
