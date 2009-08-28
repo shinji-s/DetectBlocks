@@ -1,0 +1,1244 @@
+2009-08-28 Friday 17:58  funayama
+
+	* perl/DetectBlocks2.pm (1.26), script/test.pl (1.12):
+	  •ø•∞§Œ ƒ§∏À∫§Ï§ÚΩ§¿µ§π§Î§Ë§¶§À —ππ.
+	  as_HTMLª˛§œ(•«•’•©•Î•»§«)p,li,dt,dd§Œ ƒ§∏•ø•∞§Úæ Œ¨§π§Î§Ë§¶§À§ §√§∆§§§ø§Œ§ÚΩ§¿µ.
+
+2009-08-28 Friday 16:50  funayama
+
+	* perl/DetectBlocks2.pm (1.25), script/test.pl (1.11): [no log
+	  message]
+
+2009-08-24 Monday 20:29  funayama
+
+	* perl/DetectBlocks2.pm (1.24): small bug fixed.
+
+2009-08-21 Friday 14:23  shibuta
+
+	* perl/DetectBlocks2.pm (1.23):
+	  „Å°„Çá„Å£„Å®„Ç≥„É°„É≥„Éà„ÇíÊõ∏„ÅÑ„Åü
+
+2009-08-21 Friday 13:37  funayama
+
+	* perl/DetectBlocks2.pm (1.22): small change.
+
+2009-08-11 Tuesday 17:35  funayama
+
+	* perl/DetectBlocks2.pm (1.21):
+	  •÷•Ì•√•Ø ¨≥‰§Ú§π§Î§´§…§¶§´§ŒæÚ∑Ô§ÚΩ§¿µ.
+
+2009-08-10 Monday 20:55  funayama
+
+	* perl/DetectBlocks2.pm (1.20): FooterÕ—§Œ ∏ª˙ŒÛ§ÚΩ§¿µ.
+	  ŒŒ∞Ë§Ú§µ§È§À ¨≥‰§π§Î§´§…§¶§´§Œ»ΩƒÍ§Ú§‚§¶æØ§∑øøÃÃÃ‹§À.
+
+2009-08-04 Tuesday 17:15  funayama
+
+	* perl/DetectBlocks2.pm (1.19): HeaderŒŒ∞Ë§ÚΩ§¿µ.  bug fixed.
+
+2009-07-29 Wednesday 00:04  funayama
+
+	* perl/DetectBlocks2.pm (1.18): headerŒŒ∞Ë§Úƒ…≤√(≤æ).
+
+2009-07-28 Tuesday 17:55  funayama
+
+	* perl/DetectBlocks2.pm (1.17):
+	  ª“∂°§À50%∞ æÂ§Œ•∆•≠•π•»ŒÃ§Ú§‚§ƒ•÷•Ì•√•Ø§¨§¢§√§∆§‚°¢§Ω§Ï∞ ≥∞§Œ…Ù ¨§À50%∞ ≤º§Œ•∆•≠•π•»ŒÃ§Œ•§•Û•È•§•ÛÕ◊¡«§¨ £øÙ§¢§Ï§–
+	  §Ω§≥§Ú∞Ï§ƒ§Œ§´§ø§ﬁ§Í§»§∑§∆»Ω√«§π§Î§Ë§¶§À —ππ.
+
+	  §¢§Î»œ∞œ§À¬–§∑§∆»Ω√«§Úπ‘§¶¥ÿøÙdetect_block_region§Úƒ…≤√(√Ê§«detect_block§Ú∏∆§Û§«§§§Î).
+
+2009-07-27 Monday 14:53  funayama
+
+	* perl/DetectBlocks2.pm (1.16): ¿∞Õ˝.
+
+2009-07-26 Sunday 20:26  funayama
+
+	* perl/DetectBlocks2.pm (1.15): formŒŒ∞Ë§Úƒ…≤√ and small bug fix.
+
+2009-07-25 Saturday 16:51  funayama
+
+	* script/test.pl (1.10):
+	  •™•◊•∑•Á•Û§ §∑§«treeπΩ¬§§ÚΩ–Œœ§π§Î§Ë§¶§À —ππ.
+
+2009-07-25 Saturday 16:50  funayama
+
+	* perl/DetectBlocks2.pm (1.14):
+	  §¢§Î•÷•Ì•√•Ø∞ ≤º§Œ¡¥•÷•Ì•√•Ø§Œ•∆•≠•π•»ŒÃ§¨•⁄°º•∏¡¥¬Œ§Œ50%∞ ≤º§ŒæÏπÁ,
+	  œ¢¬≥§π§Î•§•Û•È•§•ÛÕ◊¡«§À∆±§∏ŒŒ∞ËÃæ§Ú…’Õø§π§Î§Ë§¶§À —ππ.
+
+2009-07-24 Friday 12:09  shibuta
+
+	* perl/DetectBlocks2.pm (1.13):
+	  „Éï„É©„ÉÉ„Éà„Å™Áπ∞„ÇäËøî„ÅóÁô∫Ë¶ãËøΩÂä†
+
+2009-07-24 Friday 01:32  funayama
+
+	* perl/DetectBlocks2.pm (1.12):
+	  HTMLΩ–Œœª˛§À…‘Õ◊§ attribute§Ú¥∞¡¥§À∫ÔΩ¸§π§Î§Ë§¶§À —ππ.
+
+2009-07-23 Thursday 15:46  shibuta
+
+	* perl/DetectBlocks2.pm (1.11): Á¥∞ÈÉ®Â§âÊõ¥
+
+2009-07-23 Thursday 12:56  funayama
+
+	* perl/DetectBlocks2.pm (1.10): ŒŒ∞Ë§Ú§µ§È§À ¨≥‰§π§Î§´§…§¶§´§Ú»ΩƒÍ.
+	  linkŒŒ∞Ë§Œ»Ω√«§Ú —ππ.
+
+2009-07-22 Wednesday 04:16  funayama
+
+	* perl/DetectBlocks2.pm (1.9):
+	  get_text¥ÿøÙ§Ú•’•È•√•»§ •∆•≠•π•»§«§œ§ §Ø«€ŒÛ§« ÷§π§Ë§¶§À —ππ.
+	  §Ω§Ï§À»º§§check_footer¥ÿøÙ§Úƒ…≤√.  check_maintext§Œ¥ÿøÙ§Úƒ…≤√.
+	  ∑¡¬÷¡«≤Ú¿œ§Úπ‘§§∂Á≈¿,ΩıªÏ§Œ≥‰πÁ§ÚπÕŒ∏§∑§∆À‹ ∏ŒŒ∞Ë§Ú»Ω√«§π§Î§Ë§¶§À —ππ.
+	  À‹ ∏§»§∑§∆»Ω√«§µ§Ï§ §´§√§ø•÷•Ì•√•Ø§Ú§…§¶§π§Î§´§œ ›Œ±.
+
+2009-07-21 Tuesday 21:38  funayama
+
+	* perl/DetectBlocks2.pm (1.8):
+	  ŒŒ∞Ë§Ú§µ§È§À ¨≥‰§π§Î§´§…§¶§´§Ú•¡•ß•√•Ø§π§Î¥ÿøÙ§Úƒ…≤√.  script,
+	  style•ø•∞§ §…§œtext§»§∑§ §§§Ë§¶§Àis_stop_elem¥ÿøÙ§Úƒ…≤√.
+
+2009-07-21 Tuesday 00:38  funayama
+
+	* perl/DetectBlocks2.pm (1.7): &get_text()§ÚΩ§¿µ.
+	  img•ø•∞§ŒæÏπÁalt§ÚºË§È§ §§.
+	  script•ø•∞§ŒæÏπÁ∞ ≤º§Œª“∂°§Úƒ¥§Ÿ§ §§.
+
+2009-07-20 Monday 15:03  funayama
+
+	* perl/DetectBlocks2.pm (1.6):
+	  ∫«∏Â§À~text•ø•∞§Údiv•ø•∞§À —ππ§ª§∫§Àspan•ø•∞§À —ππ§π§Î§Ë§¶§ÀΩ§¿µ.
+	  TreeBuilder§¨Œ„§®§–≤ºµ≠§Œ§Ë§¶§ ΩÒ§≠¥π§®§Úæ°ºÍ§Àπ‘§¶§ø§·.
+	  <p><div>•∆•≠•π•»</div></p> -> <p></p><div>•∆•≠•π•»</div>
+
+2009-07-20 Monday 01:29  funayama
+
+	* perl/DetectBlocks2.pm (1.5): sub
+	  print_node{}§ÀHTML::Element§Œcheck§Úƒ…≤√.
+	  ∏µ§ŒCSS§Ú»ø±«§∑§ §§§Ë§¶§À —ππ.
+
+2009-07-17 Friday 22:00  funayama
+
+	* perl/DetectBlocks2.pm (1.4): bug fixed.
+
+2009-07-17 Friday 21:24  shibata
+
+	* perl/DetectBlocks2.pm (1.3): •Í•Û•ØŒŒ∞Ë»ΩƒÍ§ŒΩ§¿µ
+
+2009-07-17 Friday 20:25  shibata
+
+	* perl/DetectBlocks2.pm (1.2): img§»footer»ΩƒÍ§Œbug fixed.
+
+2009-07-17 Friday 19:55  shibata
+
+	* script/test.pl (1.9): §»§Í§¢§®§∫DetectBlocks2.pm§Úª»§¶§Ë§¶§À
+
+2009-07-17 Friday 19:55  shibata
+
+	* perl/DetectBlocks2.pm (1.1): added.
+
+2009-07-17 Friday 09:48  shibata
+
+	* script/test.pl (1.8): small change.
+
+2009-07-17 Friday 00:29  shibata
+
+	* perl/RepeatCheck.pm (1.5):
+	  text§¨∂ı«Ú§Œ§ﬂ§´§È§ §ÎæÏπÁ§Àskip§π§Î§Ë§¶§À
+
+2009-07-16 Thursday 23:33  shibata
+
+	* perl/DetectBlocks.pm (1.26):
+	  •Í•Û•ØŒŒ∞Ë»ΩƒÍ§Œ∫›§À•Í•Û•Ø§¨2§ƒ∞ æÂ§ §§§»§§§±§ §§§Ë§¶§À —ππ
+
+2009-07-16 Thursday 23:07  shibata
+
+	* perl/DetectBlocks.pm (1.25): offset§Úª˝§ƒ§Ë§¶§À
+	  ≤º§Œ ˝(offset§Œ≥‰πÁ§¨0.9∞ æÂ)§¿§±§Úfooter§»§ﬂ§ §π§Ë§¶§À
+
+2009-07-16 Thursday 21:31  shibata
+
+	* perl/DetectBlocks.pm (1.24): <a name=...>§œ•Í•Û•Ø§»ª◊§Ô§ §§§Ë§¶§À
+
+2009-07-16 Thursday 16:59  shibuta
+
+	* perl/DetectBlocks.pm (1.23): unknown_text -> unknown_block
+
+2009-07-16 Thursday 16:32  shibuta
+
+	* perl/DetectBlocks.pm (1.22): add comment
+
+2009-07-14 Tuesday 17:54  shibuta
+
+	* perl/DetectBlocks.pm (1.21):
+	  Â≠êË¶ÅÁ¥†„ÇíÊåÅ„Åü„Å™„ÅÑ„ÉÜ„Ç≠„Çπ„Éà„ÅßÈñæÂÄ§‰ª•‰∏ä„ÅÆ„ÇÇ„ÅÆ„ÇíÊç®„Å¶„Å™„ÅÑ„Çà„ÅÜ„Å´‰øÆÊ≠£„ÄÇ
+	  ‰æã:Whailng/021.html
+
+2009-07-14 Tuesday 11:26  funayama
+
+	* perl/DetectBlocks.pm (1.20): Footer,
+	  Copyright§Œ√ÍΩ–æÚ∑Ô§Œ ∏ª˙ŒÛ(Allrights Reserved)§Úƒ…≤√.
+
+2009-07-13 Monday 21:18  funayama
+
+	* data/style.css (1.3): small change.
+
+2009-07-13 Monday 21:17  funayama
+
+	* perl/DetectBlocks.pm (1.19): - copyright•÷•Ì•√•Ø§À§π§ÎæÚ∑Ô§Ú¥Àœ¬.
+	  - footer§ §…§Œ»Ω√«§Àª»§¶ ∏ª˙ŒÛ§Ú¿∞Õ˝.  - ¥ÿøÙwriteblock§Œ¿∞Õ˝.
+	  -- link§»footer§Œ∂¶¬∏§Úµˆ§π§Ë§¶§ÀæÚ∑Ô§Ú —ππ.
+
+2009-07-13 Monday 13:36  funayama
+
+	* perl/DetectBlocks.pm (1.18): Copyright•ﬁ°º•Ø§Œ¿µµ¨…Ω∏Ω§ÚΩ§¿µ.
+	  (c) -> \(c\)
+
+2009-07-10 Friday 14:47  funayama
+
+	* data/style.css (1.2): CSS§Œ«€øß§Ú —ππ.
+
+2009-07-10 Friday 02:19  funayama
+
+	* perl/DetectBlocks.pm (1.17):
+	  ∆»º´§ŒCSS§ŒÕ•¿ËΩÁ∞Ã§Ú•»•√•◊§À§‚§√§∆§Ø§Î§Ë§¶§À —ππ.
+
+2009-07-09 Thursday 22:38  shibuta
+
+	* script/test.pl (1.7):
+	  Áπ∞„ÇäËøî„Åó„ÇíË°®Á§∫„Åô„Çã„Çà„ÅÜ„Å´test.pl„ÇíÂ§âÊõ¥
+
+2009-07-09 Thursday 21:40  funayama
+
+	* data/style.css (1.1): CSS§Úƒ…≤√.  «€øß§œÕ◊Ω§¿µ.
+
+2009-07-09 Thursday 21:37  funayama
+
+	* script/test.pl (1.6), README (1.3), perl/DetectBlocks.pm (1.16):
+	  HTML∑¡º∞§«Ω–Œœ§∑§∆ŒŒ∞Ë§Àøß§Ú§ƒ§±§Î•™•◊•∑•Á•Û(-add_class2html)§Úƒ…≤√.
+
+2009-07-09 Thursday 14:53  funayama
+
+	* perl/: DetectBlocks.pm (1.15), RepeatCheck.pm (1.4):
+	  •◊•Ì•∞•È•‡¿∞Õ˝.
+
+2009-07-08 Wednesday 18:29  shibuta
+
+	* perl/DetectBlocks.pm (1.14): printÊôÇ„ÅÆ2ÈáçË°®Á§∫‰øÆÊ≠£
+
+2009-07-08 Wednesday 16:54  funayama
+
+	* perl/DetectBlocks.pm (1.13): bug fixed.
+	  HTML::Element§Œcheck§Ú§π§Î§Ë§¶§À —ππ.
+
+2009-07-07 Tuesday 14:23  nikaido
+
+	* perl/: DetectBlocks.pm (1.12), RepeatCheck.pm (1.3): add repeat.
+
+2009-07-03 Friday 19:26  shibuta
+
+	* perl/: DetectBlocks.pm (1.11), RepeatCheck.pm (1.2):
+	  objectify_text wo riyou shite repeat hakken
+
+2009-07-03 Friday 17:51  nikaido
+
+	* perl/RepeatCheck.pm (1.1): add RepeatCheck.pm
+
+2009-07-03 Friday 17:49  nikaido
+
+	* perl/DetectBlocks.pm (1.10): add repeat
+
+2009-07-01 Wednesday 09:47  shibuta
+
+	* perl/DetectBlocks.pm (1.9): small change
+
+2009-06-26 Friday 00:58  shibuta
+
+	* perl/DetectBlocks.pm (1.8): add recheckblock
+
+2009-06-24 Wednesday 16:58  shibata
+
+	* script/test.pl (1.5): HTML•Ω°º•π§ÚºË∆¿§π§Î•™•◊•∑•Á•Û§Úƒ…≤√
+
+2009-06-24 Wednesday 12:40  shibuta
+
+	* perl/DetectBlocks.pm (1.7): processing of text is changed.
+
+2009-06-24 Wednesday 01:06  shibuta
+
+	* perl/DetectBlocks.pm (1.6): checkmaintext small change
+
+2009-06-24 Wednesday 00:22  shibuta
+
+	* perl/DetectBlocks.pm (1.5): alt, copyright
+
+2009-06-23 Tuesday 19:34  shibuta
+
+	* perl/DetectBlocks.pm (1.4): add maintext in myblocktypes.
+
+2009-06-22 Monday 22:28  shibuta
+
+	* perl/DetectBlocks.pm (1.3): small change DetectBlocks.pm
+
+2009-06-22 Monday 18:37  shibuta
+
+	* script/test.pl (1.4): added id.
+
+2009-06-22 Monday 18:33  shibuta
+
+	* sample/htmls/: Agaricus/001.html (1.1), Agaricus/002.html (1.1),
+	  Agaricus/003.html (1.1), Agaricus/004.html (1.1),
+	  Agaricus/005.html (1.1), Agaricus/006.html (1.1),
+	  Agaricus/007.html (1.1), Agaricus/008.html (1.1),
+	  Agaricus/009.html (1.1), Agaricus/010.html (1.1),
+	  Agaricus/011.html (1.1), Agaricus/012.html (1.1),
+	  Agaricus/013.html (1.1), Agaricus/014.html (1.1),
+	  Agaricus/015.html (1.1), Agaricus/016.html (1.1),
+	  Agaricus/017.html (1.1), Agaricus/018.html (1.1),
+	  Agaricus/019.html (1.1), Agaricus/020.html (1.1),
+	  Agaricus/022.html (1.1), Agaricus/023.html (1.1),
+	  Agaricus/024.html (1.1), Agaricus/025.html (1.1),
+	  Agaricus/026.html (1.1), Agaricus/027.html (1.1),
+	  Agaricus/028.html (1.1), Agaricus/029.html (1.1),
+	  Agaricus/030.html (1.1), Agaricus/031.html (1.1),
+	  Agaricus/032.html (1.1), Agaricus/033.html (1.1),
+	  Agaricus/034.html (1.1), Agaricus/035.html (1.1),
+	  Agaricus/037.html (1.1), Agaricus/038.html (1.1),
+	  Agaricus/039.html (1.1), Agaricus/040.html (1.1),
+	  Agaricus/041.html (1.1), Agaricus/042.html (1.1),
+	  Agaricus/043.html (1.1), Agaricus/044.html (1.1),
+	  Agaricus/045.html (1.1), Agaricus/046.html (1.1),
+	  Agaricus/047.html (1.1), Agaricus/048.html (1.1),
+	  Agaricus/049.html (1.1), Agaricus/050.html (1.1),
+	  Agaricus/051.html (1.1), Agaricus/052.html (1.1),
+	  Agaricus/053.html (1.1), Agaricus/054.html (1.1),
+	  Agaricus/055.html (1.1), Agaricus/056.html (1.1),
+	  Agaricus/057.html (1.1), Agaricus/058.html (1.1),
+	  Agaricus/059.html (1.1), Agaricus/060.html (1.1),
+	  Agaricus/061.html (1.1), Agaricus/062.html (1.1),
+	  Agaricus/063.html (1.1), Agaricus/064.html (1.1),
+	  Agaricus/065.html (1.1), Agaricus/066.html (1.1),
+	  Agaricus/067.html (1.1), Agaricus/068.html (1.1),
+	  Agaricus/069.html (1.1), Agaricus/071.html (1.1),
+	  Agaricus/072.html (1.1), Agaricus/073.html (1.1),
+	  Agaricus/074.html (1.1), Agaricus/075.html (1.1),
+	  Agaricus/077.html (1.1), Agaricus/078.html (1.1),
+	  Agaricus/080.html (1.1), Agaricus/081.html (1.1),
+	  Agaricus/082.html (1.1), Agaricus/083.html (1.1),
+	  Agaricus/084.html (1.1), Agaricus/085.html (1.1),
+	  Agaricus/086.html (1.1), Agaricus/087.html (1.1),
+	  Agaricus/088.html (1.1), Agaricus/089.html (1.1),
+	  Agaricus/090.html (1.1), Agaricus/091.html (1.1),
+	  Agaricus/092.html (1.1), Agaricus/093.html (1.1),
+	  Agaricus/094.html (1.1), Agaricus/095.html (1.1),
+	  Agaricus/096.html (1.1), Agaricus/097.html (1.1),
+	  Agaricus/098.html (1.1), Agaricus/099.html (1.1),
+	  Agaricus/100.html (1.1), Agaricus/101.html (1.1),
+	  Agaricus/102.html (1.1), Agaricus/103.html (1.1),
+	  Agaricus/104.html (1.1), Agaricus/105.html (1.1),
+	  AntiAging/001.html (1.1), AntiAging/002.html (1.1),
+	  AntiAging/003.html (1.1), AntiAging/004.html (1.1),
+	  AntiAging/005.html (1.1), AntiAging/006.html (1.1),
+	  AntiAging/007.html (1.1), AntiAging/008.html (1.1),
+	  AntiAging/009.html (1.1), AntiAging/010.html (1.1),
+	  AntiAging/011.html (1.1), AntiAging/012.html (1.1),
+	  AntiAging/013.html (1.1), AntiAging/014.html (1.1),
+	  AntiAging/015.html (1.1), AntiAging/016.html (1.1),
+	  AntiAging/017.html (1.1), AntiAging/018.html (1.1),
+	  AntiAging/019.html (1.1), AntiAging/020.html (1.1),
+	  AntiAging/021.html (1.1), AntiAging/022.html (1.1),
+	  AntiAging/023.html (1.1), AntiAging/024.html (1.1),
+	  AntiAging/025.html (1.1), AntiAging/026.html (1.1),
+	  AntiAging/027.html (1.1), AntiAging/028.html (1.1),
+	  AntiAging/029.html (1.1), AntiAging/030.html (1.1),
+	  AntiAging/031.html (1.1), AntiAging/032.html (1.1),
+	  AntiAging/033.html (1.1), AntiAging/034.html (1.1),
+	  AntiAging/035.html (1.1), AntiAging/036.html (1.1),
+	  AntiAging/037.html (1.1), AntiAging/038.html (1.1),
+	  AntiAging/039.html (1.1), AntiAging/040.html (1.1),
+	  AntiAging/041.html (1.1), AntiAging/042.html (1.1),
+	  AntiAging/043.html (1.1), AntiAging/044.html (1.1),
+	  AntiAging/045.html (1.1), AntiAging/046.html (1.1),
+	  AntiAging/047.html (1.1), AntiAging/049.html (1.1),
+	  AntiAging/050.html (1.1), AntiAging/051.html (1.1),
+	  AntiAging/052.html (1.1), AntiAging/053.html (1.1),
+	  AntiAging/054.html (1.1), AntiAging/055.html (1.1),
+	  AntiAging/056.html (1.1), AntiAging/057.html (1.1),
+	  AntiAging/058.html (1.1), AntiAging/059.html (1.1),
+	  AntiAging/060.html (1.1), AntiAging/061.html (1.1),
+	  AntiAging/062.html (1.1), AntiAging/063.html (1.1),
+	  AntiAging/064.html (1.1), AntiAging/065.html (1.1),
+	  AntiAging/066.html (1.1), AntiAging/067.html (1.1),
+	  AntiAging/068.html (1.1), AntiAging/069.html (1.1),
+	  AntiAging/070.html (1.1), AntiAging/071.html (1.1),
+	  AntiAging/072.html (1.1), AntiAging/073.html (1.1),
+	  AntiAging/074.html (1.1), AntiAging/075.html (1.1),
+	  AntiAging/078.html (1.1), AntiAging/079.html (1.1),
+	  AntiAging/080.html (1.1), AntiAging/081.html (1.1),
+	  AntiAging/082.html (1.1), AntiAging/083.html (1.1),
+	  AntiAging/084.html (1.1), AntiAging/086.html (1.1),
+	  AntiAging/087.html (1.1), AntiAging/088.html (1.1),
+	  AntiAging/089.html (1.1), AntiAging/090.html (1.1),
+	  AntiAging/091.html (1.1), AntiAging/092.html (1.1),
+	  AntiAging/093.html (1.1), AntiAging/094.html (1.1),
+	  AntiAging/095.html (1.1), AntiAging/096.html (1.1),
+	  AntiAging/097.html (1.1), AntiAging/098.html (1.1),
+	  AntiAging/100.html (1.1), AntiAging/101.html (1.1),
+	  AntiAging/102.html (1.1), AntiAging/103.html (1.1),
+	  AntiAging/104.html (1.1), AntiAging/105.html (1.1),
+	  AntiAging/106.html (1.1), AntiAging/107.html (1.1),
+	  AntiAging/108.html (1.1), BSE/001.html (1.1), BSE/002.html (1.1),
+	  BSE/003.html (1.1), BSE/004.html (1.1), BSE/005.html (1.1),
+	  BSE/006.html (1.1), BSE/007.html (1.1), BSE/008.html (1.1),
+	  BSE/010.html (1.1), BSE/011.html (1.1), BSE/012.html (1.1),
+	  BSE/013.html (1.1), BSE/014.html (1.1), BSE/015.html (1.1),
+	  BSE/016.html (1.1), BSE/017.html (1.1), BSE/018.html (1.1),
+	  BSE/019.html (1.1), BSE/020.html (1.1), BSE/021.html (1.1),
+	  BSE/022.html (1.1), BSE/023.html (1.1), BSE/024.html (1.1),
+	  BSE/025.html (1.1), BSE/026.html (1.1), BSE/027.html (1.1),
+	  BSE/028.html (1.1), BSE/029.html (1.1), BSE/030.html (1.1),
+	  BSE/031.html (1.1), BSE/032.html (1.1), BSE/033.html (1.1),
+	  BSE/034.html (1.1), BSE/035.html (1.1), BSE/036.html (1.1),
+	  BSE/037.html (1.1), BSE/038.html (1.1), BSE/039.html (1.1),
+	  BSE/040.html (1.1), BSE/041.html (1.1), BSE/042.html (1.1),
+	  BSE/043.html (1.1), BSE/044.html (1.1), BSE/045.html (1.1),
+	  BSE/046.html (1.1), BSE/047.html (1.1), BSE/048.html (1.1),
+	  BSE/049.html (1.1), BSE/050.html (1.1), BSE/051.html (1.1),
+	  BSE/052.html (1.1), BSE/053.html (1.1), BSE/054.html (1.1),
+	  BSE/055.html (1.1), BSE/056.html (1.1), BSE/057.html (1.1),
+	  BSE/058.html (1.1), BSE/059.html (1.1), BSE/060.html (1.1),
+	  BSE/061.html (1.1), BSE/062.html (1.1), BSE/063.html (1.1),
+	  BSE/064.html (1.1), BSE/065.html (1.1), BSE/066.html (1.1),
+	  BSE/067.html (1.1), BSE/068.html (1.1), BSE/069.html (1.1),
+	  BSE/070.html (1.1), BSE/071.html (1.1), BSE/072.html (1.1),
+	  BSE/073.html (1.1), BSE/074.html (1.1), BSE/075.html (1.1),
+	  BSE/076.html (1.1), BSE/077.html (1.1), BSE/078.html (1.1),
+	  BSE/079.html (1.1), BSE/080.html (1.1), BSE/081.html (1.1),
+	  BSE/082.html (1.1), BSE/083.html (1.1), BSE/084.html (1.1),
+	  BSE/085.html (1.1), BSE/086.html (1.1), BSE/087.html (1.1),
+	  BSE/088.html (1.1), BSE/089.html (1.1), BSE/090.html (1.1),
+	  BSE/091.html (1.1), BSE/092.html (1.1), BSE/093.html (1.1),
+	  BSE/094.html (1.1), BSE/095.html (1.1), BSE/096.html (1.1),
+	  BSE/097.html (1.1), BSE/098.html (1.1), BSE/099.html (1.1),
+	  BSE/100.html (1.1), BSE/101.html (1.1), BSE/102.html (1.1),
+	  BSE/103.html (1.1), BSE/104.html (1.1), BSE/105.html (1.1),
+	  BirthRate/002.html (1.1), BirthRate/004.html (1.1),
+	  BirthRate/005.html (1.1), BirthRate/006.html (1.1),
+	  BirthRate/007.html (1.1), BirthRate/009.html (1.1),
+	  BirthRate/010.html (1.1), BirthRate/011.html (1.1),
+	  BirthRate/012.html (1.1), BirthRate/013.html (1.1),
+	  BirthRate/015.html (1.1), BirthRate/017.html (1.1),
+	  BirthRate/018.html (1.1), BirthRate/019.html (1.1),
+	  BirthRate/020.html (1.1), BirthRate/021.html (1.1),
+	  BirthRate/025.html (1.1), BirthRate/026.html (1.1),
+	  BirthRate/027.html (1.1), BirthRate/028.html (1.1),
+	  BirthRate/029.html (1.1), BirthRate/030.html (1.1),
+	  BirthRate/031.html (1.1), BirthRate/032.html (1.1),
+	  BirthRate/034.html (1.1), BirthRate/035.html (1.1),
+	  BirthRate/036.html (1.1), BirthRate/037.html (1.1),
+	  BirthRate/038.html (1.1), BirthRate/039.html (1.1),
+	  BirthRate/040.html (1.1), BirthRate/041.html (1.1),
+	  BirthRate/042.html (1.1), BirthRate/043.html (1.1),
+	  BirthRate/044.html (1.1), BirthRate/045.html (1.1),
+	  BirthRate/046.html (1.1), BirthRate/047.html (1.1),
+	  BirthRate/048.html (1.1), BirthRate/049.html (1.1),
+	  BirthRate/052.html (1.1), BirthRate/053.html (1.1),
+	  BirthRate/054.html (1.1), BirthRate/056.html (1.1),
+	  BirthRate/058.html (1.1), BirthRate/062.html (1.1),
+	  BirthRate/063.html (1.1), BirthRate/064.html (1.1),
+	  BirthRate/065.html (1.1), BirthRate/066.html (1.1),
+	  BirthRate/067.html (1.1), BirthRate/068.html (1.1),
+	  BirthRate/069.html (1.1), BirthRate/070.html (1.1),
+	  BirthRate/071.html (1.1), BirthRate/072.html (1.1),
+	  BirthRate/073.html (1.1), BirthRate/074.html (1.1),
+	  BirthRate/075.html (1.1), BirthRate/076.html (1.1),
+	  BirthRate/078.html (1.1), BirthRate/079.html (1.1),
+	  BirthRate/080.html (1.1), BirthRate/081.html (1.1),
+	  BirthRate/082.html (1.1), BirthRate/084.html (1.1),
+	  BirthRate/086.html (1.1), BirthRate/087.html (1.1),
+	  BirthRate/088.html (1.1), BirthRate/089.html (1.1),
+	  BirthRate/090.html (1.1), BirthRate/091.html (1.1),
+	  BirthRate/092.html (1.1), BirthRate/094.html (1.1),
+	  BirthRate/095.html (1.1), BirthRate/096.html (1.1),
+	  BirthRate/097.html (1.1), BirthRate/098.html (1.1),
+	  BirthRate/099.html (1.1), BirthRate/100.html (1.1),
+	  BirthRate/101.html (1.1), BirthRate/102.html (1.1),
+	  BirthRate/103.html (1.1), BirthRate/104.html (1.1),
+	  BirthRate/105.html (1.1), BirthRate/106.html (1.1),
+	  BirthRate/107.html (1.1), BirthRate/108.html (1.1),
+	  BirthRate/109.html (1.1), BirthRate/110.html (1.1),
+	  BirthRate/111.html (1.1), BirthRate/112.html (1.1),
+	  BirthRate/113.html (1.1), BirthRate/114.html (1.1),
+	  BirthRate/115.html (1.1), BirthRate/116.html (1.1),
+	  BirthRate/117.html (1.1), BirthRate/118.html (1.1),
+	  BirthRate/119.html (1.1), BirthRate/120.html (1.1),
+	  BirthRate/121.html (1.1), BirthRate/122.html (1.1),
+	  BirthRate/124.html (1.1), BirthRate/126.html (1.1),
+	  BirthRate/127.html (1.1), BirthRate/128.html (1.1),
+	  BirthRate/129.html (1.1), BirthRate/130.html (1.1),
+	  BirthRate/131.html (1.1), BirthRate/132.html (1.1),
+	  BirthRate/133.html (1.1), BirthRate/134.html (1.1),
+	  BirthRate/135.html (1.1), CO2/001.html (1.1), CO2/002.html (1.1),
+	  CO2/003.html (1.1), CO2/004.html (1.1), CO2/005.html (1.1),
+	  CO2/006.html (1.1), CO2/007.html (1.1), CO2/008.html (1.1),
+	  CO2/009.html (1.1), CO2/010.html (1.1), CO2/011.html (1.1),
+	  CO2/012.html (1.1), CO2/013.html (1.1), CO2/014.html (1.1),
+	  CO2/015.html (1.1), CO2/016.html (1.1), CO2/017.html (1.1),
+	  CO2/018.html (1.1), CO2/019.html (1.1), CO2/021.html (1.1),
+	  CO2/022.html (1.1), CO2/023.html (1.1), CO2/024.html (1.1),
+	  CO2/025.html (1.1), CO2/026.html (1.1), CO2/027.html (1.1),
+	  CO2/028.html (1.1), CO2/029.html (1.1), CO2/030.html (1.1),
+	  CO2/031.html (1.1), CO2/032.html (1.1), CO2/033.html (1.1),
+	  CO2/034.html (1.1), CO2/035.html (1.1), CO2/036.html (1.1),
+	  CO2/037.html (1.1), CO2/040.html (1.1), CO2/041.html (1.1),
+	  CO2/042.html (1.1), CO2/043.html (1.1), CO2/044.html (1.1),
+	  CO2/045.html (1.1), CO2/046.html (1.1), CO2/047.html (1.1),
+	  CO2/048.html (1.1), CO2/049.html (1.1), CO2/050.html (1.1),
+	  CO2/051.html (1.1), CO2/052.html (1.1), CO2/053.html (1.1),
+	  CO2/054.html (1.1), CO2/055.html (1.1), CO2/056.html (1.1),
+	  CO2/057.html (1.1), CO2/058.html (1.1), CO2/059.html (1.1),
+	  CO2/060.html (1.1), CO2/061.html (1.1), CO2/062.html (1.1),
+	  CO2/063.html (1.1), CO2/064.html (1.1), CO2/065.html (1.1),
+	  CO2/066.html (1.1), CO2/067.html (1.1), CO2/068.html (1.1),
+	  CO2/069.html (1.1), CO2/070.html (1.1), CO2/071.html (1.1),
+	  CO2/072.html (1.1), CO2/073.html (1.1), CO2/074.html (1.1),
+	  CO2/075.html (1.1), CO2/076.html (1.1), CO2/077.html (1.1),
+	  CO2/078.html (1.1), CO2/079.html (1.1), CO2/080.html (1.1),
+	  CO2/081.html (1.1), CO2/082.html (1.1), CO2/083.html (1.1),
+	  CO2/084.html (1.1), CO2/085.html (1.1), CO2/086.html (1.1),
+	  CO2/087.html (1.1), CO2/088.html (1.1), CO2/090.html (1.1),
+	  CO2/091.html (1.1), CO2/092.html (1.1), CO2/093.html (1.1),
+	  CO2/094.html (1.1), CO2/095.html (1.1), CO2/096.html (1.1),
+	  CO2/097.html (1.1), CO2/098.html (1.1), CO2/099.html (1.1),
+	  CO2/100.html (1.1), CO2/103.html (1.1), CO2/107.html (1.1),
+	  CO2/111.html (1.1), CO2/115.html (1.1), CO2/116.html (1.1),
+	  CO2/117.html (1.1), CO2/119.html (1.1), CO2/120.html (1.1),
+	  Cancer/001.html (1.1), Cancer/002.html (1.1), Cancer/003.html
+	  (1.1), Cancer/004.html (1.1), Cancer/005.html (1.1),
+	  Cancer/006.html (1.1), Cancer/007.html (1.1), Cancer/008.html
+	  (1.1), Cancer/009.html (1.1), Cancer/010.html (1.1),
+	  Cancer/011.html (1.1), Cancer/012.html (1.1), Cancer/013.html
+	  (1.1), Cancer/014.html (1.1), Cancer/015.html (1.1),
+	  Cancer/016.html (1.1), Cancer/017.html (1.1), Cancer/018.html
+	  (1.1), Cancer/019.html (1.1), Cancer/020.html (1.1),
+	  Cancer/021.html (1.1), Cancer/022.html (1.1), Cancer/024.html
+	  (1.1), Cancer/025.html (1.1), Cancer/026.html (1.1),
+	  Cancer/027.html (1.1), Cancer/028.html (1.1), Cancer/029.html
+	  (1.1), Cancer/030.html (1.1), Cancer/031.html (1.1),
+	  Cancer/032.html (1.1), Cancer/033.html (1.1), Cancer/034.html
+	  (1.1), Cancer/035.html (1.1), Cancer/036.html (1.1),
+	  Cancer/037.html (1.1), Cancer/038.html (1.1), Cancer/039.html
+	  (1.1), Cancer/040.html (1.1), Cancer/041.html (1.1),
+	  Cancer/042.html (1.1), Cancer/043.html (1.1), Cancer/044.html
+	  (1.1), Cancer/045.html (1.1), Cancer/046.html (1.1),
+	  Cancer/047.html (1.1), Cancer/048.html (1.1), Cancer/049.html
+	  (1.1), Cancer/050.html (1.1), Cancer/051.html (1.1),
+	  Cancer/052.html (1.1), Cancer/053.html (1.1), Cancer/054.html
+	  (1.1), Cancer/055.html (1.1), Cancer/056.html (1.1),
+	  Cancer/057.html (1.1), Cancer/059.html (1.1), Cancer/060.html
+	  (1.1), Cancer/061.html (1.1), Cancer/062.html (1.1),
+	  Cancer/063.html (1.1), Cancer/064.html (1.1), Cancer/065.html
+	  (1.1), Cancer/066.html (1.1), Cancer/067.html (1.1),
+	  Cancer/068.html (1.1), Cancer/069.html (1.1), Cancer/070.html
+	  (1.1), Cancer/071.html (1.1), Cancer/072.html (1.1),
+	  Cancer/073.html (1.1), Cancer/074.html (1.1), Cancer/075.html
+	  (1.1), Cancer/076.html (1.1), Cancer/077.html (1.1),
+	  Cancer/078.html (1.1), Cancer/079.html (1.1), Cancer/080.html
+	  (1.1), Cancer/081.html (1.1), Cancer/082.html (1.1),
+	  Cancer/084.html (1.1), Cancer/085.html (1.1), Cancer/086.html
+	  (1.1), Cancer/087.html (1.1), Cancer/088.html (1.1),
+	  Cancer/089.html (1.1), Cancer/090.html (1.1), Cancer/091.html
+	  (1.1), Cancer/092.html (1.1), Cancer/093.html (1.1),
+	  Cancer/094.html (1.1), Cancer/095.html (1.1), Cancer/096.html
+	  (1.1), Cancer/097.html (1.1), Cancer/098.html (1.1),
+	  Cancer/099.html (1.1), Cancer/100.html (1.1), Cancer/101.html
+	  (1.1), Cancer/102.html (1.1), Cancer/103.html (1.1),
+	  Cancer/104.html (1.1), Cancer/105.html (1.1), Cancer/106.html
+	  (1.1), Cancer/107.html (1.1), Cancer/108.html (1.1),
+	  Cancer/109.html (1.1), Cancer/110.html (1.1), Cancer/111.html
+	  (1.1), Cancer/112.html (1.1), Cancer/113.html (1.1),
+	  DietFood/001.html (1.1), DietFood/004.html (1.1),
+	  DietFood/005.html (1.1), DietFood/006.html (1.1),
+	  DietFood/007.html (1.1), DietFood/008.html (1.1),
+	  DietFood/009.html (1.1), DietFood/010.html (1.1),
+	  DietFood/012.html (1.1), DietFood/014.html (1.1),
+	  DietFood/017.html (1.1), DietFood/020.html (1.1),
+	  DietFood/021.html (1.1), DietFood/022.html (1.1),
+	  DietFood/023.html (1.1), DietFood/024.html (1.1),
+	  DietFood/025.html (1.1), DietFood/026.html (1.1),
+	  DietFood/028.html (1.1), DietFood/029.html (1.1),
+	  DietFood/030.html (1.1), DietFood/031.html (1.1),
+	  DietFood/032.html (1.1), DietFood/033.html (1.1),
+	  DietFood/034.html (1.1), DietFood/035.html (1.1),
+	  DietFood/036.html (1.1), DietFood/038.html (1.1),
+	  DietFood/039.html (1.1), DietFood/040.html (1.1),
+	  DietFood/041.html (1.1), DietFood/042.html (1.1),
+	  DietFood/043.html (1.1), DietFood/044.html (1.1),
+	  DietFood/045.html (1.1), DietFood/046.html (1.1),
+	  DietFood/047.html (1.1), DietFood/048.html (1.1),
+	  DietFood/049.html (1.1), DietFood/050.html (1.1),
+	  DietFood/051.html (1.1), DietFood/052.html (1.1),
+	  DietFood/053.html (1.1), DietFood/055.html (1.1),
+	  DietFood/056.html (1.1), DietFood/057.html (1.1),
+	  DietFood/058.html (1.1), DietFood/059.html (1.1),
+	  DietFood/060.html (1.1), DietFood/062.html (1.1),
+	  DietFood/063.html (1.1), DietFood/064.html (1.1),
+	  DietFood/065.html (1.1), DietFood/066.html (1.1),
+	  DietFood/067.html (1.1), DietFood/068.html (1.1),
+	  DietFood/069.html (1.1), DietFood/070.html (1.1),
+	  DietFood/071.html (1.1), DietFood/072.html (1.1),
+	  DietFood/073.html (1.1), DietFood/074.html (1.1),
+	  DietFood/076.html (1.1), DietFood/079.html (1.1),
+	  DietFood/080.html (1.1), DietFood/081.html (1.1),
+	  DietFood/082.html (1.1), DietFood/083.html (1.1),
+	  DietFood/085.html (1.1), DietFood/087.html (1.1),
+	  DietFood/088.html (1.1), DietFood/089.html (1.1),
+	  DietFood/090.html (1.1), DietFood/091.html (1.1),
+	  DietFood/092.html (1.1), DietFood/093.html (1.1),
+	  DietFood/094.html (1.1), DietFood/095.html (1.1),
+	  DietFood/096.html (1.1), DietFood/097.html (1.1),
+	  DietFood/098.html (1.1), DietFood/099.html (1.1),
+	  DietFood/100.html (1.1), DietFood/101.html (1.1),
+	  DietFood/102.html (1.1), DietFood/103.html (1.1),
+	  DietFood/104.html (1.1), DietFood/105.html (1.1),
+	  DietFood/106.html (1.1), DietFood/107.html (1.1),
+	  DietFood/108.html (1.1), DietFood/109.html (1.1),
+	  DietFood/110.html (1.1), DietFood/111.html (1.1),
+	  DietFood/112.html (1.1), DietFood/113.html (1.1),
+	  DietFood/114.html (1.1), DietFood/115.html (1.1),
+	  DietFood/117.html (1.1), DietFood/118.html (1.1),
+	  DietTablet/001.html (1.1), DietTablet/003.html (1.1),
+	  DietTablet/004.html (1.1), DietTablet/005.html (1.1),
+	  DietTablet/007.html (1.1), DietTablet/008.html (1.1),
+	  DietTablet/009.html (1.1), DietTablet/010.html (1.1),
+	  DietTablet/011.html (1.1), DietTablet/012.html (1.1),
+	  DietTablet/013.html (1.1), DietTablet/014.html (1.1),
+	  DietTablet/015.html (1.1), DietTablet/016.html (1.1),
+	  DietTablet/017.html (1.1), DietTablet/018.html (1.1),
+	  DietTablet/019.html (1.1), DietTablet/020.html (1.1),
+	  DietTablet/021.html (1.1), DietTablet/022.html (1.1),
+	  DietTablet/023.html (1.1), DietTablet/024.html (1.1),
+	  DietTablet/025.html (1.1), DietTablet/026.html (1.1),
+	  DietTablet/027.html (1.1), DietTablet/028.html (1.1),
+	  DietTablet/029.html (1.1), DietTablet/030.html (1.1),
+	  DietTablet/031.html (1.1), DietTablet/032.html (1.1),
+	  DietTablet/033.html (1.1), DietTablet/034.html (1.1),
+	  DietTablet/035.html (1.1), DietTablet/036.html (1.1),
+	  DietTablet/037.html (1.1), DietTablet/038.html (1.1),
+	  DietTablet/039.html (1.1), DietTablet/040.html (1.1),
+	  DietTablet/041.html (1.1), DietTablet/042.html (1.1),
+	  DietTablet/043.html (1.1), DietTablet/044.html (1.1),
+	  DietTablet/045.html (1.1), DietTablet/047.html (1.1),
+	  DietTablet/048.html (1.1), DietTablet/049.html (1.1),
+	  DietTablet/050.html (1.1), DietTablet/051.html (1.1),
+	  DietTablet/052.html (1.1), DietTablet/053.html (1.1),
+	  DietTablet/054.html (1.1), DietTablet/055.html (1.1),
+	  DietTablet/056.html (1.1), DietTablet/057.html (1.1),
+	  DietTablet/058.html (1.1), DietTablet/059.html (1.1),
+	  DietTablet/060.html (1.1), DietTablet/061.html (1.1),
+	  DietTablet/062.html (1.1), DietTablet/063.html (1.1),
+	  DietTablet/064.html (1.1), DietTablet/065.html (1.1),
+	  DietTablet/066.html (1.1), DietTablet/067.html (1.1),
+	  DietTablet/068.html (1.1), DietTablet/069.html (1.1),
+	  DietTablet/070.html (1.1), DietTablet/071.html (1.1),
+	  DietTablet/072.html (1.1), DietTablet/073.html (1.1),
+	  DietTablet/076.html (1.1), DietTablet/077.html (1.1),
+	  DietTablet/078.html (1.1), DietTablet/079.html (1.1),
+	  DietTablet/080.html (1.1), DietTablet/081.html (1.1),
+	  DietTablet/082.html (1.1), DietTablet/083.html (1.1),
+	  DietTablet/084.html (1.1), DietTablet/085.html (1.1),
+	  DietTablet/086.html (1.1), DietTablet/087.html (1.1),
+	  DietTablet/088.html (1.1), DietTablet/089.html (1.1),
+	  DietTablet/090.html (1.1), DietTablet/091.html (1.1),
+	  DietTablet/092.html (1.1), DietTablet/093.html (1.1),
+	  DietTablet/094.html (1.1), DietTablet/095.html (1.1),
+	  DietTablet/096.html (1.1), DietTablet/097.html (1.1),
+	  DietTablet/098.html (1.1), DietTablet/099.html (1.1),
+	  DietTablet/100.html (1.1), DietTablet/101.html (1.1),
+	  DietTablet/102.html (1.1), DietTablet/103.html (1.1),
+	  DietTablet/104.html (1.1), DietTablet/106.html (1.1),
+	  Electromagnetic/001.html (1.1), Electromagnetic/002.html (1.1),
+	  Electromagnetic/004.html (1.1), Electromagnetic/005.html (1.1),
+	  Electromagnetic/006.html (1.1), Electromagnetic/007.html (1.1),
+	  Electromagnetic/009.html (1.1), Electromagnetic/010.html (1.1),
+	  Electromagnetic/011.html (1.1), Electromagnetic/012.html (1.1),
+	  Electromagnetic/013.html (1.1), Electromagnetic/014.html (1.1),
+	  Electromagnetic/015.html (1.1), Electromagnetic/016.html (1.1),
+	  Electromagnetic/017.html (1.1), Electromagnetic/018.html (1.1),
+	  Electromagnetic/019.html (1.1), Electromagnetic/020.html (1.1),
+	  Electromagnetic/023.html (1.1), Electromagnetic/024.html (1.1),
+	  Electromagnetic/026.html (1.1), Electromagnetic/027.html (1.1),
+	  Electromagnetic/028.html (1.1), Electromagnetic/029.html (1.1),
+	  Electromagnetic/031.html (1.1), Electromagnetic/032.html (1.1),
+	  Electromagnetic/035.html (1.1), Electromagnetic/037.html (1.1),
+	  Electromagnetic/038.html (1.1), Electromagnetic/040.html (1.1),
+	  Electromagnetic/042.html (1.1), Electromagnetic/044.html (1.1),
+	  Electromagnetic/045.html (1.1), Electromagnetic/047.html (1.1),
+	  Electromagnetic/048.html (1.1), Electromagnetic/049.html (1.1),
+	  Electromagnetic/050.html (1.1), Electromagnetic/052.html (1.1),
+	  Electromagnetic/053.html (1.1), Electromagnetic/054.html (1.1),
+	  Electromagnetic/055.html (1.1), Electromagnetic/057.html (1.1),
+	  Electromagnetic/059.html (1.1), Electromagnetic/060.html (1.1),
+	  Electromagnetic/061.html (1.1), Electromagnetic/062.html (1.1),
+	  Electromagnetic/063.html (1.1), Electromagnetic/064.html (1.1),
+	  Electromagnetic/065.html (1.1), Electromagnetic/068.html (1.1),
+	  Electromagnetic/069.html (1.1), Electromagnetic/071.html (1.1),
+	  Electromagnetic/075.html (1.1), Electromagnetic/076.html (1.1),
+	  Electromagnetic/077.html (1.1), Electromagnetic/078.html (1.1),
+	  Electromagnetic/080.html (1.1), Electromagnetic/081.html (1.1),
+	  Electromagnetic/084.html (1.1), Electromagnetic/085.html (1.1),
+	  Electromagnetic/086.html (1.1), Electromagnetic/087.html (1.1),
+	  Electromagnetic/088.html (1.1), Electromagnetic/089.html (1.1),
+	  Electromagnetic/090.html (1.1), Electromagnetic/091.html (1.1),
+	  Electromagnetic/092.html (1.1), Electromagnetic/093.html (1.1),
+	  Electromagnetic/094.html (1.1), Electromagnetic/095.html (1.1),
+	  Electromagnetic/096.html (1.1), Electromagnetic/097.html (1.1),
+	  Electromagnetic/098.html (1.1), Electromagnetic/099.html (1.1),
+	  Electromagnetic/100.html (1.1), Electromagnetic/101.html (1.1),
+	  Electromagnetic/102.html (1.1), Electromagnetic/103.html (1.1),
+	  Electromagnetic/104.html (1.1), Electromagnetic/105.html (1.1),
+	  Electromagnetic/106.html (1.1), Electromagnetic/107.html (1.1),
+	  Electromagnetic/108.html (1.1), Electromagnetic/109.html (1.1),
+	  Electromagnetic/110.html (1.1), Electromagnetic/111.html (1.1),
+	  Electromagnetic/112.html (1.1), Electromagnetic/113.html (1.1),
+	  Electromagnetic/114.html (1.1), Electromagnetic/115.html (1.1),
+	  Electromagnetic/116.html (1.1), Electromagnetic/117.html (1.1),
+	  Electromagnetic/118.html (1.1), Electromagnetic/119.html (1.1),
+	  Electromagnetic/120.html (1.1), Electromagnetic/121.html (1.1),
+	  Electromagnetic/122.html (1.1), Electromagnetic/123.html (1.1),
+	  Electromagnetic/124.html (1.1), Electromagnetic/127.html (1.1),
+	  Electromagnetic/128.html (1.1), Electromagnetic/131.html (1.1),
+	  Electromagnetic/132.html (1.1), Electromagnetic/133.html (1.1),
+	  Electromagnetic/134.html (1.1), Kyoto/001.html (1.1),
+	  Kyoto/002.html (1.1), Kyoto/003.html (1.1), Kyoto/004.html (1.1),
+	  Kyoto/005.html (1.1), Kyoto/006.html (1.1), Kyoto/007.html (1.1),
+	  Kyoto/008.html (1.1), Kyoto/009.html (1.1), Kyoto/010.html (1.1),
+	  Kyoto/011.html (1.1), Kyoto/012.html (1.1), Kyoto/013.html (1.1),
+	  Kyoto/014.html (1.1), Kyoto/015.html (1.1), Kyoto/016.html (1.1),
+	  Kyoto/017.html (1.1), Kyoto/018.html (1.1), Kyoto/019.html (1.1),
+	  Kyoto/020.html (1.1), Kyoto/021.html (1.1), Kyoto/022.html (1.1),
+	  Kyoto/023.html (1.1), Kyoto/024.html (1.1), Kyoto/025.html (1.1),
+	  Kyoto/026.html (1.1), Kyoto/027.html (1.1), Kyoto/028.html (1.1),
+	  Kyoto/029.html (1.1), Kyoto/030.html (1.1), Kyoto/031.html (1.1),
+	  Kyoto/032.html (1.1), Kyoto/034.html (1.1), Kyoto/035.html (1.1),
+	  Kyoto/037.html (1.1), Kyoto/039.html (1.1), Kyoto/040.html (1.1),
+	  Kyoto/041.html (1.1), Kyoto/042.html (1.1), Kyoto/043.html (1.1),
+	  Kyoto/044.html (1.1), Kyoto/045.html (1.1), Kyoto/046.html (1.1),
+	  Kyoto/047.html (1.1), Kyoto/048.html (1.1), Kyoto/049.html (1.1),
+	  Kyoto/050.html (1.1), Kyoto/051.html (1.1), Kyoto/054.html (1.1),
+	  Kyoto/055.html (1.1), Kyoto/056.html (1.1), Kyoto/057.html (1.1),
+	  Kyoto/058.html (1.1), Kyoto/059.html (1.1), Kyoto/060.html (1.1),
+	  Kyoto/061.html (1.1), Kyoto/063.html (1.1), Kyoto/064.html (1.1),
+	  Kyoto/065.html (1.1), Kyoto/066.html (1.1), Kyoto/067.html (1.1),
+	  Kyoto/068.html (1.1), Kyoto/069.html (1.1), Kyoto/071.html (1.1),
+	  Kyoto/072.html (1.1), Kyoto/073.html (1.1), Kyoto/074.html (1.1),
+	  Kyoto/075.html (1.1), Kyoto/076.html (1.1), Kyoto/077.html (1.1),
+	  Kyoto/079.html (1.1), Kyoto/080.html (1.1), Kyoto/081.html (1.1),
+	  Kyoto/083.html (1.1), Kyoto/084.html (1.1), Kyoto/085.html (1.1),
+	  Kyoto/086.html (1.1), Kyoto/087.html (1.1), Kyoto/088.html (1.1),
+	  Kyoto/089.html (1.1), Kyoto/090.html (1.1), Kyoto/092.html (1.1),
+	  Kyoto/093.html (1.1), Kyoto/095.html (1.1), Kyoto/096.html (1.1),
+	  Kyoto/097.html (1.1), Kyoto/098.html (1.1), Kyoto/099.html (1.1),
+	  Kyoto/100.html (1.1), Kyoto/101.html (1.1), Kyoto/104.html (1.1),
+	  Kyoto/105.html (1.1), Kyoto/106.html (1.1), Kyoto/107.html (1.1),
+	  Kyoto/108.html (1.1), Kyoto/109.html (1.1), Kyoto/110.html (1.1),
+	  Kyoto/111.html (1.1), Kyoto/112.html (1.1), Kyoto/113.html (1.1),
+	  Kyoto/114.html (1.1), Kyoto/115.html (1.1), Kyoto/116.html (1.1),
+	  Kyoto/117.html (1.1), Kyoto/118.html (1.1), Kyoto/119.html (1.1),
+	  Kyoto/120.html (1.1), Metabolic/001.html (1.1),
+	  Metabolic/002.html (1.1), Metabolic/003.html (1.1),
+	  Metabolic/004.html (1.1), Metabolic/005.html (1.1),
+	  Metabolic/006.html (1.1), Metabolic/007.html (1.1),
+	  Metabolic/008.html (1.1), Metabolic/009.html (1.1),
+	  Metabolic/010.html (1.1), Metabolic/011.html (1.1),
+	  Metabolic/012.html (1.1), Metabolic/013.html (1.1),
+	  Metabolic/014.html (1.1), Metabolic/015.html (1.1),
+	  Metabolic/016.html (1.1), Metabolic/017.html (1.1),
+	  Metabolic/018.html (1.1), Metabolic/019.html (1.1),
+	  Metabolic/020.html (1.1), Metabolic/021.html (1.1),
+	  Metabolic/022.html (1.1), Metabolic/023.html (1.1),
+	  Metabolic/024.html (1.1), Metabolic/025.html (1.1),
+	  Metabolic/026.html (1.1), Metabolic/027.html (1.1),
+	  Metabolic/028.html (1.1), Metabolic/029.html (1.1),
+	  Metabolic/030.html (1.1), Metabolic/031.html (1.1),
+	  Metabolic/032.html (1.1), Metabolic/033.html (1.1),
+	  Metabolic/034.html (1.1), Metabolic/035.html (1.1),
+	  Metabolic/036.html (1.1), Metabolic/037.html (1.1),
+	  Metabolic/038.html (1.1), Metabolic/039.html (1.1),
+	  Metabolic/040.html (1.1), Metabolic/041.html (1.1),
+	  Metabolic/042.html (1.1), Metabolic/043.html (1.1),
+	  Metabolic/044.html (1.1), Metabolic/045.html (1.1),
+	  Metabolic/046.html (1.1), Metabolic/047.html (1.1),
+	  Metabolic/048.html (1.1), Metabolic/049.html (1.1),
+	  Metabolic/050.html (1.1), Metabolic/051.html (1.1),
+	  Metabolic/052.html (1.1), Metabolic/053.html (1.1),
+	  Metabolic/054.html (1.1), Metabolic/055.html (1.1),
+	  Metabolic/056.html (1.1), Metabolic/057.html (1.1),
+	  Metabolic/058.html (1.1), Metabolic/059.html (1.1),
+	  Metabolic/060.html (1.1), Metabolic/061.html (1.1),
+	  Metabolic/062.html (1.1), Metabolic/064.html (1.1),
+	  Metabolic/065.html (1.1), Metabolic/066.html (1.1),
+	  Metabolic/067.html (1.1), Metabolic/068.html (1.1),
+	  Metabolic/069.html (1.1), Metabolic/070.html (1.1),
+	  Metabolic/071.html (1.1), Metabolic/072.html (1.1),
+	  Metabolic/073.html (1.1), Metabolic/074.html (1.1),
+	  Metabolic/075.html (1.1), Metabolic/076.html (1.1),
+	  Metabolic/077.html (1.1), Metabolic/078.html (1.1),
+	  Metabolic/079.html (1.1), Metabolic/080.html (1.1),
+	  Metabolic/082.html (1.1), Metabolic/083.html (1.1),
+	  Metabolic/084.html (1.1), Metabolic/085.html (1.1),
+	  Metabolic/086.html (1.1), Metabolic/087.html (1.1),
+	  Metabolic/088.html (1.1), Metabolic/089.html (1.1),
+	  Metabolic/090.html (1.1), Metabolic/091.html (1.1),
+	  Metabolic/092.html (1.1), Metabolic/093.html (1.1),
+	  Metabolic/094.html (1.1), Metabolic/095.html (1.1),
+	  Metabolic/096.html (1.1), Metabolic/097.html (1.1),
+	  Metabolic/098.html (1.1), Metabolic/099.html (1.1),
+	  Metabolic/100.html (1.1), Metabolic/101.html (1.1),
+	  MinusIon/001.html (1.1), MinusIon/002.html (1.1),
+	  MinusIon/003.html (1.1), MinusIon/004.html (1.1),
+	  MinusIon/005.html (1.1), MinusIon/006.html (1.1),
+	  MinusIon/007.html (1.1), MinusIon/008.html (1.1),
+	  MinusIon/009.html (1.1), MinusIon/010.html (1.1),
+	  MinusIon/011.html (1.1), MinusIon/012.html (1.1),
+	  MinusIon/013.html (1.1), MinusIon/014.html (1.1),
+	  MinusIon/015.html (1.1), MinusIon/016.html (1.1),
+	  MinusIon/017.html (1.1), MinusIon/018.html (1.1),
+	  MinusIon/019.html (1.1), MinusIon/020.html (1.1),
+	  MinusIon/022.html (1.1), MinusIon/023.html (1.1),
+	  MinusIon/024.html (1.1), MinusIon/025.html (1.1),
+	  MinusIon/026.html (1.1), MinusIon/027.html (1.1),
+	  MinusIon/028.html (1.1), MinusIon/029.html (1.1),
+	  MinusIon/030.html (1.1), MinusIon/031.html (1.1),
+	  MinusIon/032.html (1.1), MinusIon/033.html (1.1),
+	  MinusIon/034.html (1.1), MinusIon/035.html (1.1),
+	  MinusIon/036.html (1.1), MinusIon/037.html (1.1),
+	  MinusIon/039.html (1.1), MinusIon/041.html (1.1),
+	  MinusIon/042.html (1.1), MinusIon/043.html (1.1),
+	  MinusIon/045.html (1.1), MinusIon/046.html (1.1),
+	  MinusIon/047.html (1.1), MinusIon/049.html (1.1),
+	  MinusIon/050.html (1.1), MinusIon/051.html (1.1),
+	  MinusIon/052.html (1.1), MinusIon/053.html (1.1),
+	  MinusIon/054.html (1.1), MinusIon/055.html (1.1),
+	  MinusIon/056.html (1.1), MinusIon/057.html (1.1),
+	  MinusIon/058.html (1.1), MinusIon/060.html (1.1),
+	  MinusIon/061.html (1.1), MinusIon/062.html (1.1),
+	  MinusIon/063.html (1.1), MinusIon/064.html (1.1),
+	  MinusIon/065.html (1.1), MinusIon/066.html (1.1),
+	  MinusIon/067.html (1.1), MinusIon/068.html (1.1),
+	  MinusIon/069.html (1.1), MinusIon/070.html (1.1),
+	  MinusIon/072.html (1.1), MinusIon/073.html (1.1),
+	  MinusIon/074.html (1.1), MinusIon/076.html (1.1),
+	  MinusIon/077.html (1.1), MinusIon/078.html (1.1),
+	  MinusIon/079.html (1.1), MinusIon/080.html (1.1),
+	  MinusIon/081.html (1.1), MinusIon/083.html (1.1),
+	  MinusIon/084.html (1.1), MinusIon/085.html (1.1),
+	  MinusIon/086.html (1.1), MinusIon/087.html (1.1),
+	  MinusIon/088.html (1.1), MinusIon/089.html (1.1),
+	  MinusIon/090.html (1.1), MinusIon/091.html (1.1),
+	  MinusIon/092.html (1.1), MinusIon/093.html (1.1),
+	  MinusIon/094.html (1.1), MinusIon/095.html (1.1),
+	  MinusIon/096.html (1.1), MinusIon/097.html (1.1),
+	  MinusIon/098.html (1.1), MinusIon/099.html (1.1),
+	  MinusIon/100.html (1.1), MinusIon/112.html (1.1),
+	  MinusIon/113.html (1.1), MinusIon/114.html (1.1),
+	  MinusIon/115.html (1.1), MinusIon/116.html (1.1),
+	  MinusIon/117.html (1.1), MinusIon/118.html (1.1),
+	  MinusIon/119.html (1.1), MinusIon/120.html (1.1), NHK/001.html
+	  (1.1), NHK/002.html (1.1), NHK/003.html (1.1), NHK/004.html
+	  (1.1), NHK/005.html (1.1), NHK/006.html (1.1), NHK/008.html
+	  (1.1), NHK/009.html (1.1), NHK/010.html (1.1), NHK/013.html
+	  (1.1), NHK/014.html (1.1), NHK/015.html (1.1), NHK/016.html
+	  (1.1), NHK/017.html (1.1), NHK/018.html (1.1), NHK/019.html
+	  (1.1), NHK/020.html (1.1), NHK/021.html (1.1), NHK/022.html
+	  (1.1), NHK/023.html (1.1), NHK/024.html (1.1), NHK/025.html
+	  (1.1), NHK/026.html (1.1), NHK/027.html (1.1), NHK/028.html
+	  (1.1), NHK/029.html (1.1), NHK/030.html (1.1), NHK/031.html
+	  (1.1), NHK/032.html (1.1), NHK/033.html (1.1), NHK/034.html
+	  (1.1), NHK/035.html (1.1), NHK/036.html (1.1), NHK/037.html
+	  (1.1), NHK/038.html (1.1), NHK/039.html (1.1), NHK/040.html
+	  (1.1), NHK/041.html (1.1), NHK/042.html (1.1), NHK/043.html
+	  (1.1), NHK/044.html (1.1), NHK/045.html (1.1), NHK/046.html
+	  (1.1), NHK/047.html (1.1), NHK/048.html (1.1), NHK/049.html
+	  (1.1), NHK/050.html (1.1), NHK/051.html (1.1), NHK/053.html
+	  (1.1), NHK/054.html (1.1), NHK/055.html (1.1), NHK/056.html
+	  (1.1), NHK/058.html (1.1), NHK/059.html (1.1), NHK/060.html
+	  (1.1), NHK/061.html (1.1), NHK/062.html (1.1), NHK/063.html
+	  (1.1), NHK/064.html (1.1), NHK/065.html (1.1), NHK/066.html
+	  (1.1), NHK/067.html (1.1), NHK/068.html (1.1), NHK/069.html
+	  (1.1), NHK/070.html (1.1), NHK/071.html (1.1), NHK/072.html
+	  (1.1), NHK/073.html (1.1), NHK/074.html (1.1), NHK/076.html
+	  (1.1), NHK/077.html (1.1), NHK/078.html (1.1), NHK/079.html
+	  (1.1), NHK/080.html (1.1), NHK/081.html (1.1), NHK/082.html
+	  (1.1), NHK/083.html (1.1), NHK/084.html (1.1), NHK/085.html
+	  (1.1), NHK/086.html (1.1), NHK/087.html (1.1), NHK/088.html
+	  (1.1), NHK/089.html (1.1), NHK/091.html (1.1), NHK/092.html
+	  (1.1), NHK/093.html (1.1), NHK/094.html (1.1), NHK/095.html
+	  (1.1), NHK/096.html (1.1), NHK/097.html (1.1), NHK/098.html
+	  (1.1), NHK/099.html (1.1), NHK/100.html (1.1), NHK/102.html
+	  (1.1), NHK/103.html (1.1), NHK/105.html (1.1), NHK/106.html
+	  (1.1), NHK/107.html (1.1), NHK/108.html (1.1), NHK/109.html
+	  (1.1), NHK/110.html (1.1), NHK/111.html (1.1), NHK/112.html
+	  (1.1), NHK/113.html (1.1), Obstetrics/001.html (1.1),
+	  Obstetrics/002.html (1.1), Obstetrics/003.html (1.1),
+	  Obstetrics/004.html (1.1), Obstetrics/005.html (1.1),
+	  Obstetrics/006.html (1.1), Obstetrics/007.html (1.1),
+	  Obstetrics/008.html (1.1), Obstetrics/009.html (1.1),
+	  Obstetrics/010.html (1.1), Obstetrics/013.html (1.1),
+	  Obstetrics/014.html (1.1), Obstetrics/015.html (1.1),
+	  Obstetrics/016.html (1.1), Obstetrics/017.html (1.1),
+	  Obstetrics/018.html (1.1), Obstetrics/019.html (1.1),
+	  Obstetrics/021.html (1.1), Obstetrics/022.html (1.1),
+	  Obstetrics/023.html (1.1), Obstetrics/024.html (1.1),
+	  Obstetrics/026.html (1.1), Obstetrics/027.html (1.1),
+	  Obstetrics/028.html (1.1), Obstetrics/029.html (1.1),
+	  Obstetrics/030.html (1.1), Obstetrics/031.html (1.1),
+	  Obstetrics/032.html (1.1), Obstetrics/033.html (1.1),
+	  Obstetrics/034.html (1.1), Obstetrics/036.html (1.1),
+	  Obstetrics/037.html (1.1), Obstetrics/038.html (1.1),
+	  Obstetrics/039.html (1.1), Obstetrics/040.html (1.1),
+	  Obstetrics/041.html (1.1), Obstetrics/042.html (1.1),
+	  Obstetrics/043.html (1.1), Obstetrics/044.html (1.1),
+	  Obstetrics/045.html (1.1), Obstetrics/046.html (1.1),
+	  Obstetrics/047.html (1.1), Obstetrics/048.html (1.1),
+	  Obstetrics/049.html (1.1), Obstetrics/050.html (1.1),
+	  Obstetrics/051.html (1.1), Obstetrics/052.html (1.1),
+	  Obstetrics/053.html (1.1), Obstetrics/054.html (1.1),
+	  Obstetrics/055.html (1.1), Obstetrics/056.html (1.1),
+	  Obstetrics/057.html (1.1), Obstetrics/058.html (1.1),
+	  Obstetrics/059.html (1.1), Obstetrics/060.html (1.1),
+	  Obstetrics/062.html (1.1), Obstetrics/063.html (1.1),
+	  Obstetrics/064.html (1.1), Obstetrics/066.html (1.1),
+	  Obstetrics/067.html (1.1), Obstetrics/068.html (1.1),
+	  Obstetrics/070.html (1.1), Obstetrics/072.html (1.1),
+	  Obstetrics/073.html (1.1), Obstetrics/074.html (1.1),
+	  Obstetrics/075.html (1.1), Obstetrics/076.html (1.1),
+	  Obstetrics/078.html (1.1), Obstetrics/079.html (1.1),
+	  Obstetrics/081.html (1.1), Obstetrics/082.html (1.1),
+	  Obstetrics/083.html (1.1), Obstetrics/084.html (1.1),
+	  Obstetrics/085.html (1.1), Obstetrics/087.html (1.1),
+	  Obstetrics/088.html (1.1), Obstetrics/089.html (1.1),
+	  Obstetrics/090.html (1.1), Obstetrics/091.html (1.1),
+	  Obstetrics/093.html (1.1), Obstetrics/094.html (1.1),
+	  Obstetrics/095.html (1.1), Obstetrics/096.html (1.1),
+	  Obstetrics/097.html (1.1), Obstetrics/098.html (1.1),
+	  Obstetrics/099.html (1.1), Obstetrics/100.html (1.1),
+	  Obstetrics/101.html (1.1), Obstetrics/102.html (1.1),
+	  Obstetrics/103.html (1.1), Obstetrics/104.html (1.1),
+	  Obstetrics/105.html (1.1), Obstetrics/107.html (1.1),
+	  Obstetrics/108.html (1.1), Obstetrics/109.html (1.1),
+	  Obstetrics/110.html (1.1), Obstetrics/111.html (1.1),
+	  Obstetrics/112.html (1.1), Obstetrics/113.html (1.1),
+	  Obstetrics/114.html (1.1), Obstetrics/115.html (1.1),
+	  Obstetrics/117.html (1.1), Obstetrics/118.html (1.1),
+	  Obstetrics/119.html (1.1), Obstetrics/120.html (1.1),
+	  Palestine/001.html (1.1), Palestine/002.html (1.1),
+	  Palestine/003.html (1.1), Palestine/004.html (1.1),
+	  Palestine/005.html (1.1), Palestine/006.html (1.1),
+	  Palestine/007.html (1.1), Palestine/008.html (1.1),
+	  Palestine/009.html (1.1), Palestine/010.html (1.1),
+	  Palestine/011.html (1.1), Palestine/012.html (1.1),
+	  Palestine/013.html (1.1), Palestine/014.html (1.1),
+	  Palestine/015.html (1.1), Palestine/016.html (1.1),
+	  Palestine/017.html (1.1), Palestine/018.html (1.1),
+	  Palestine/019.html (1.1), Palestine/020.html (1.1),
+	  Palestine/021.html (1.1), Palestine/022.html (1.1),
+	  Palestine/023.html (1.1), Palestine/024.html (1.1),
+	  Palestine/025.html (1.1), Palestine/026.html (1.1),
+	  Palestine/028.html (1.1), Palestine/029.html (1.1),
+	  Palestine/030.html (1.1), Palestine/031.html (1.1),
+	  Palestine/032.html (1.1), Palestine/033.html (1.1),
+	  Palestine/034.html (1.1), Palestine/035.html (1.1),
+	  Palestine/036.html (1.1), Palestine/037.html (1.1),
+	  Palestine/038.html (1.1), Palestine/039.html (1.1),
+	  Palestine/040.html (1.1), Palestine/041.html (1.1),
+	  Palestine/042.html (1.1), Palestine/043.html (1.1),
+	  Palestine/044.html (1.1), Palestine/045.html (1.1),
+	  Palestine/046.html (1.1), Palestine/047.html (1.1),
+	  Palestine/048.html (1.1), Palestine/049.html (1.1),
+	  Palestine/050.html (1.1), Palestine/051.html (1.1),
+	  Palestine/053.html (1.1), Palestine/054.html (1.1),
+	  Palestine/056.html (1.1), Palestine/057.html (1.1),
+	  Palestine/058.html (1.1), Palestine/059.html (1.1),
+	  Palestine/060.html (1.1), Palestine/061.html (1.1),
+	  Palestine/063.html (1.1), Palestine/064.html (1.1),
+	  Palestine/066.html (1.1), Palestine/067.html (1.1),
+	  Palestine/069.html (1.1), Palestine/070.html (1.1),
+	  Palestine/071.html (1.1), Palestine/072.html (1.1),
+	  Palestine/073.html (1.1), Palestine/074.html (1.1),
+	  Palestine/075.html (1.1), Palestine/076.html (1.1),
+	  Palestine/077.html (1.1), Palestine/078.html (1.1),
+	  Palestine/079.html (1.1), Palestine/080.html (1.1),
+	  Palestine/081.html (1.1), Palestine/082.html (1.1),
+	  Palestine/083.html (1.1), Palestine/084.html (1.1),
+	  Palestine/085.html (1.1), Palestine/086.html (1.1),
+	  Palestine/087.html (1.1), Palestine/088.html (1.1),
+	  Palestine/089.html (1.1), Palestine/090.html (1.1),
+	  Palestine/091.html (1.1), Palestine/092.html (1.1),
+	  Palestine/093.html (1.1), Palestine/094.html (1.1),
+	  Palestine/096.html (1.1), Palestine/097.html (1.1),
+	  Palestine/098.html (1.1), Palestine/099.html (1.1),
+	  Palestine/100.html (1.1), Palestine/101.html (1.1),
+	  Palestine/102.html (1.1), Palestine/103.html (1.1),
+	  Palestine/104.html (1.1), Palestine/105.html (1.1),
+	  Palestine/106.html (1.1), Palestine/107.html (1.1),
+	  Palestine/108.html (1.1), Palestine/109.html (1.1),
+	  Palestine/110.html (1.1), Palestine/111.html (1.1),
+	  Palestine/112.html (1.1), Palestine/113.html (1.1),
+	  Palestine/114.html (1.1), Palestine/115.html (1.1),
+	  Palestine/116.html (1.1), Palestine/117.html (1.1),
+	  Palestine/118.html (1.1), Palestine/119.html (1.1),
+	  Palestine/120.html (1.1), Pension/001.html (1.1),
+	  Pension/002.html (1.1), Pension/003.html (1.1), Pension/004.html
+	  (1.1), Pension/006.html (1.1), Pension/007.html (1.1),
+	  Pension/008.html (1.1), Pension/009.html (1.1), Pension/010.html
+	  (1.1), Pension/011.html (1.1), Pension/012.html (1.1),
+	  Pension/013.html (1.1), Pension/014.html (1.1), Pension/015.html
+	  (1.1), Pension/016.html (1.1), Pension/017.html (1.1),
+	  Pension/018.html (1.1), Pension/019.html (1.1), Pension/020.html
+	  (1.1), Pension/021.html (1.1), Pension/022.html (1.1),
+	  Pension/024.html (1.1), Pension/026.html (1.1), Pension/027.html
+	  (1.1), Pension/028.html (1.1), Pension/029.html (1.1),
+	  Pension/030.html (1.1), Pension/031.html (1.1), Pension/032.html
+	  (1.1), Pension/033.html (1.1), Pension/034.html (1.1),
+	  Pension/035.html (1.1), Pension/036.html (1.1), Pension/037.html
+	  (1.1), Pension/038.html (1.1), Pension/039.html (1.1),
+	  Pension/040.html (1.1), Pension/041.html (1.1), Pension/042.html
+	  (1.1), Pension/043.html (1.1), Pension/044.html (1.1),
+	  Pension/045.html (1.1), Pension/046.html (1.1), Pension/047.html
+	  (1.1), Pension/048.html (1.1), Pension/049.html (1.1),
+	  Pension/050.html (1.1), Pension/051.html (1.1), Pension/052.html
+	  (1.1), Pension/053.html (1.1), Pension/054.html (1.1),
+	  Pension/055.html (1.1), Pension/056.html (1.1), Pension/057.html
+	  (1.1), Pension/058.html (1.1), Pension/059.html (1.1),
+	  Pension/060.html (1.1), Pension/061.html (1.1), Pension/062.html
+	  (1.1), Pension/063.html (1.1), Pension/064.html (1.1),
+	  Pension/065.html (1.1), Pension/066.html (1.1), Pension/067.html
+	  (1.1), Pension/068.html (1.1), Pension/069.html (1.1),
+	  Pension/072.html (1.1), Pension/073.html (1.1), Pension/076.html
+	  (1.1), Pension/078.html (1.1), Pension/080.html (1.1),
+	  Pension/082.html (1.1), Pension/083.html (1.1), Pension/084.html
+	  (1.1), Pension/085.html (1.1), Pension/086.html (1.1),
+	  Pension/087.html (1.1), Pension/088.html (1.1), Pension/089.html
+	  (1.1), Pension/090.html (1.1), Pension/091.html (1.1),
+	  Pension/093.html (1.1), Pension/094.html (1.1), Pension/096.html
+	  (1.1), Pension/097.html (1.1), Pension/098.html (1.1),
+	  Pension/099.html (1.1), Pension/100.html (1.1), Pension/101.html
+	  (1.1), Pension/102.html (1.1), Pension/103.html (1.1),
+	  Pension/105.html (1.1), Pension/106.html (1.1), Pension/107.html
+	  (1.1), Pension/108.html (1.1), Pension/109.html (1.1),
+	  Pension/110.html (1.1), Pension/111.html (1.1), Pension/112.html
+	  (1.1), Pension/114.html (1.1), Pension/115.html (1.1),
+	  Pension/116.html (1.1), Pension/117.html (1.1), Pension/118.html
+	  (1.1), Pension/119.html (1.1), Pension/121.html (1.1),
+	  Pension/122.html (1.1), Pension/123.html (1.1), Pension/124.html
+	  (1.1), Pension/125.html (1.1), Pension/127.html (1.1),
+	  Pension/128.html (1.1), Pension/129.html (1.1),
+	  PhysicalStrength/001.html (1.1), PhysicalStrength/003.html (1.1),
+	  PhysicalStrength/004.html (1.1), PhysicalStrength/005.html (1.1),
+	  PhysicalStrength/006.html (1.1), PhysicalStrength/007.html (1.1),
+	  PhysicalStrength/008.html (1.1), PhysicalStrength/009.html (1.1),
+	  PhysicalStrength/010.html (1.1), PhysicalStrength/011.html (1.1),
+	  PhysicalStrength/012.html (1.1), PhysicalStrength/013.html (1.1),
+	  PhysicalStrength/014.html (1.1), PhysicalStrength/017.html (1.1),
+	  PhysicalStrength/018.html (1.1), PhysicalStrength/019.html (1.1),
+	  PhysicalStrength/020.html (1.1), PhysicalStrength/021.html (1.1),
+	  PhysicalStrength/022.html (1.1), PhysicalStrength/023.html (1.1),
+	  PhysicalStrength/024.html (1.1), PhysicalStrength/025.html (1.1),
+	  PhysicalStrength/026.html (1.1), PhysicalStrength/027.html (1.1),
+	  PhysicalStrength/028.html (1.1), PhysicalStrength/029.html (1.1),
+	  PhysicalStrength/030.html (1.1), PhysicalStrength/031.html (1.1),
+	  PhysicalStrength/032.html (1.1), PhysicalStrength/033.html (1.1),
+	  PhysicalStrength/034.html (1.1), PhysicalStrength/035.html (1.1),
+	  PhysicalStrength/036.html (1.1), PhysicalStrength/037.html (1.1),
+	  PhysicalStrength/038.html (1.1), PhysicalStrength/039.html (1.1),
+	  PhysicalStrength/040.html (1.1), PhysicalStrength/041.html (1.1),
+	  PhysicalStrength/042.html (1.1), PhysicalStrength/043.html (1.1),
+	  PhysicalStrength/044.html (1.1), PhysicalStrength/045.html (1.1),
+	  PhysicalStrength/046.html (1.1), PhysicalStrength/047.html (1.1),
+	  PhysicalStrength/049.html (1.1), PhysicalStrength/050.html (1.1),
+	  PhysicalStrength/051.html (1.1), PhysicalStrength/052.html (1.1),
+	  PhysicalStrength/053.html (1.1), PhysicalStrength/054.html (1.1),
+	  PhysicalStrength/055.html (1.1), PhysicalStrength/056.html (1.1),
+	  PhysicalStrength/057.html (1.1), PhysicalStrength/058.html (1.1),
+	  PhysicalStrength/059.html (1.1), PhysicalStrength/060.html (1.1),
+	  PhysicalStrength/061.html (1.1), PhysicalStrength/062.html (1.1),
+	  PhysicalStrength/063.html (1.1), PhysicalStrength/064.html (1.1),
+	  PhysicalStrength/065.html (1.1), PhysicalStrength/066.html (1.1),
+	  PhysicalStrength/067.html (1.1), PhysicalStrength/068.html (1.1),
+	  PhysicalStrength/069.html (1.1), PhysicalStrength/070.html (1.1),
+	  PhysicalStrength/071.html (1.1), PhysicalStrength/072.html (1.1),
+	  PhysicalStrength/073.html (1.1), PhysicalStrength/074.html (1.1),
+	  PhysicalStrength/075.html (1.1), PhysicalStrength/076.html (1.1),
+	  PhysicalStrength/077.html (1.1), PhysicalStrength/078.html (1.1),
+	  PhysicalStrength/079.html (1.1), PhysicalStrength/080.html (1.1),
+	  PhysicalStrength/081.html (1.1), PhysicalStrength/082.html (1.1),
+	  PhysicalStrength/083.html (1.1), PhysicalStrength/084.html (1.1),
+	  PhysicalStrength/085.html (1.1), PhysicalStrength/086.html (1.1),
+	  PhysicalStrength/087.html (1.1), PhysicalStrength/088.html (1.1),
+	  PhysicalStrength/089.html (1.1), PhysicalStrength/090.html (1.1),
+	  PhysicalStrength/091.html (1.1), PhysicalStrength/092.html (1.1),
+	  PhysicalStrength/093.html (1.1), PhysicalStrength/094.html (1.1),
+	  PhysicalStrength/095.html (1.1), PhysicalStrength/096.html (1.1),
+	  PhysicalStrength/097.html (1.1), PhysicalStrength/098.html (1.1),
+	  PhysicalStrength/099.html (1.1), PhysicalStrength/100.html (1.1),
+	  PhysicalStrength/101.html (1.1), PhysicalStrength/102.html (1.1),
+	  PhysicalStrength/103.html (1.1), PhysicalStrength/104.html (1.1),
+	  PhysicalStrength/105.html (1.1), PhysicalStrength/106.html (1.1),
+	  Sudan/001.html (1.1), Sudan/004.html (1.1), Sudan/005.html (1.1),
+	  Sudan/007.html (1.1), Sudan/008.html (1.1), Sudan/010.html (1.1),
+	  Sudan/012.html (1.1), Sudan/013.html (1.1), Sudan/014.html (1.1),
+	  Sudan/015.html (1.1), Sudan/017.html (1.1), Sudan/018.html (1.1),
+	  Sudan/019.html (1.1), Sudan/020.html (1.1), Sudan/021.html (1.1),
+	  Sudan/022.html (1.1), Sudan/023.html (1.1), Sudan/025.html (1.1),
+	  Sudan/026.html (1.1), Sudan/028.html (1.1), Sudan/029.html (1.1),
+	  Sudan/030.html (1.1), Sudan/032.html (1.1), Sudan/034.html (1.1),
+	  Sudan/035.html (1.1), Sudan/037.html (1.1), Sudan/038.html (1.1),
+	  Sudan/039.html (1.1), Sudan/040.html (1.1), Sudan/041.html (1.1),
+	  Sudan/042.html (1.1), Sudan/043.html (1.1), Sudan/045.html (1.1),
+	  Sudan/046.html (1.1), Sudan/047.html (1.1), Sudan/050.html (1.1),
+	  Sudan/051.html (1.1), Sudan/052.html (1.1), Sudan/053.html (1.1),
+	  Sudan/054.html (1.1), Sudan/055.html (1.1), Sudan/057.html (1.1),
+	  Sudan/058.html (1.1), Sudan/059.html (1.1), Sudan/060.html (1.1),
+	  Sudan/061.html (1.1), Sudan/062.html (1.1), Sudan/063.html (1.1),
+	  Sudan/064.html (1.1), Sudan/065.html (1.1), Sudan/066.html (1.1),
+	  Sudan/068.html (1.1), Sudan/069.html (1.1), Sudan/070.html (1.1),
+	  Sudan/071.html (1.1), Sudan/072.html (1.1), Sudan/073.html (1.1),
+	  Sudan/074.html (1.1), Sudan/075.html (1.1), Sudan/076.html (1.1),
+	  Sudan/077.html (1.1), Sudan/078.html (1.1), Sudan/079.html (1.1),
+	  Sudan/080.html (1.1), Sudan/081.html (1.1), Sudan/082.html (1.1),
+	  Sudan/083.html (1.1), Sudan/084.html (1.1), Sudan/085.html (1.1),
+	  Sudan/086.html (1.1), Sudan/087.html (1.1), Sudan/088.html (1.1),
+	  Sudan/089.html (1.1), Sudan/090.html (1.1), Sudan/091.html (1.1),
+	  Sudan/092.html (1.1), Sudan/093.html (1.1), Sudan/094.html (1.1),
+	  Sudan/096.html (1.1), Sudan/097.html (1.1), Sudan/098.html (1.1),
+	  Sudan/099.html (1.1), Sudan/100.html (1.1), Sudan/101.html (1.1),
+	  Sudan/102.html (1.1), Sudan/103.html (1.1), Sudan/104.html (1.1),
+	  Sudan/105.html (1.1), Sudan/106.html (1.1), Sudan/107.html (1.1),
+	  Sudan/108.html (1.1), Sudan/109.html (1.1), Sudan/110.html (1.1),
+	  Sudan/111.html (1.1), Sudan/112.html (1.1), Sudan/113.html (1.1),
+	  Sudan/114.html (1.1), Sudan/115.html (1.1), Sudan/116.html (1.1),
+	  Sudan/117.html (1.1), Sudan/118.html (1.1), Whaling/001.html
+	  (1.1), Whaling/002.html (1.1), Whaling/003.html (1.1),
+	  Whaling/004.html (1.1), Whaling/005.html (1.1), Whaling/006.html
+	  (1.1), Whaling/007.html (1.1), Whaling/008.html (1.1),
+	  Whaling/009.html (1.1), Whaling/010.html (1.1), Whaling/011.html
+	  (1.1), Whaling/012.html (1.1), Whaling/013.html (1.1),
+	  Whaling/014.html (1.1), Whaling/015.html (1.1), Whaling/019.html
+	  (1.1), Whaling/020.html (1.1), Whaling/021.html (1.1),
+	  Whaling/022.html (1.1), Whaling/023.html (1.1), Whaling/024.html
+	  (1.1), Whaling/026.html (1.1), Whaling/027.html (1.1),
+	  Whaling/028.html (1.1), Whaling/029.html (1.1), Whaling/030.html
+	  (1.1), Whaling/031.html (1.1), Whaling/032.html (1.1),
+	  Whaling/033.html (1.1), Whaling/034.html (1.1), Whaling/036.html
+	  (1.1), Whaling/037.html (1.1), Whaling/038.html (1.1),
+	  Whaling/039.html (1.1), Whaling/040.html (1.1), Whaling/041.html
+	  (1.1), Whaling/042.html (1.1), Whaling/043.html (1.1),
+	  Whaling/044.html (1.1), Whaling/045.html (1.1), Whaling/046.html
+	  (1.1), Whaling/047.html (1.1), Whaling/048.html (1.1),
+	  Whaling/049.html (1.1), Whaling/050.html (1.1), Whaling/051.html
+	  (1.1), Whaling/052.html (1.1), Whaling/053.html (1.1),
+	  Whaling/054.html (1.1), Whaling/055.html (1.1), Whaling/056.html
+	  (1.1), Whaling/057.html (1.1), Whaling/058.html (1.1),
+	  Whaling/059.html (1.1), Whaling/060.html (1.1), Whaling/062.html
+	  (1.1), Whaling/063.html (1.1), Whaling/064.html (1.1),
+	  Whaling/065.html (1.1), Whaling/066.html (1.1), Whaling/067.html
+	  (1.1), Whaling/068.html (1.1), Whaling/069.html (1.1),
+	  Whaling/070.html (1.1), Whaling/071.html (1.1), Whaling/072.html
+	  (1.1), Whaling/073.html (1.1), Whaling/074.html (1.1),
+	  Whaling/075.html (1.1), Whaling/076.html (1.1), Whaling/077.html
+	  (1.1), Whaling/078.html (1.1), Whaling/079.html (1.1),
+	  Whaling/080.html (1.1), Whaling/081.html (1.1), Whaling/082.html
+	  (1.1), Whaling/083.html (1.1), Whaling/084.html (1.1),
+	  Whaling/085.html (1.1), Whaling/086.html (1.1), Whaling/087.html
+	  (1.1), Whaling/090.html (1.1), Whaling/091.html (1.1),
+	  Whaling/092.html (1.1), Whaling/093.html (1.1), Whaling/094.html
+	  (1.1), Whaling/095.html (1.1), Whaling/096.html (1.1),
+	  Whaling/097.html (1.1), Whaling/098.html (1.1), Whaling/099.html
+	  (1.1), Whaling/101.html (1.1), Whaling/102.html (1.1),
+	  Whaling/103.html (1.1), Whaling/104.html (1.1), Whaling/105.html
+	  (1.1), Whaling/106.html (1.1), Yokohama/001.html (1.1),
+	  Yokohama/002.html (1.1), Yokohama/003.html (1.1),
+	  Yokohama/004.html (1.1), Yokohama/005.html (1.1),
+	  Yokohama/006.html (1.1), Yokohama/007.html (1.1),
+	  Yokohama/008.html (1.1), Yokohama/009.html (1.1),
+	  Yokohama/010.html (1.1), Yokohama/011.html (1.1),
+	  Yokohama/012.html (1.1), Yokohama/013.html (1.1),
+	  Yokohama/014.html (1.1), Yokohama/015.html (1.1),
+	  Yokohama/016.html (1.1), Yokohama/017.html (1.1),
+	  Yokohama/018.html (1.1), Yokohama/019.html (1.1),
+	  Yokohama/020.html (1.1), Yokohama/021.html (1.1),
+	  Yokohama/022.html (1.1), Yokohama/023.html (1.1),
+	  Yokohama/024.html (1.1), Yokohama/025.html (1.1),
+	  Yokohama/026.html (1.1), Yokohama/027.html (1.1),
+	  Yokohama/028.html (1.1), Yokohama/029.html (1.1),
+	  Yokohama/030.html (1.1), Yokohama/031.html (1.1),
+	  Yokohama/032.html (1.1), Yokohama/033.html (1.1),
+	  Yokohama/034.html (1.1), Yokohama/036.html (1.1),
+	  Yokohama/037.html (1.1), Yokohama/038.html (1.1),
+	  Yokohama/039.html (1.1), Yokohama/040.html (1.1),
+	  Yokohama/041.html (1.1), Yokohama/042.html (1.1),
+	  Yokohama/043.html (1.1), Yokohama/044.html (1.1),
+	  Yokohama/045.html (1.1), Yokohama/046.html (1.1),
+	  Yokohama/047.html (1.1), Yokohama/048.html (1.1),
+	  Yokohama/049.html (1.1), Yokohama/050.html (1.1),
+	  Yokohama/051.html (1.1), Yokohama/052.html (1.1),
+	  Yokohama/053.html (1.1), Yokohama/054.html (1.1),
+	  Yokohama/056.html (1.1), Yokohama/057.html (1.1),
+	  Yokohama/058.html (1.1), Yokohama/059.html (1.1),
+	  Yokohama/060.html (1.1), Yokohama/061.html (1.1),
+	  Yokohama/062.html (1.1), Yokohama/063.html (1.1),
+	  Yokohama/064.html (1.1), Yokohama/065.html (1.1),
+	  Yokohama/066.html (1.1), Yokohama/067.html (1.1),
+	  Yokohama/068.html (1.1), Yokohama/069.html (1.1),
+	  Yokohama/070.html (1.1), Yokohama/071.html (1.1),
+	  Yokohama/072.html (1.1), Yokohama/073.html (1.1),
+	  Yokohama/074.html (1.1), Yokohama/075.html (1.1),
+	  Yokohama/077.html (1.1), Yokohama/078.html (1.1),
+	  Yokohama/079.html (1.1), Yokohama/080.html (1.1),
+	  Yokohama/081.html (1.1), Yokohama/082.html (1.1),
+	  Yokohama/083.html (1.1), Yokohama/084.html (1.1),
+	  Yokohama/085.html (1.1), Yokohama/086.html (1.1),
+	  Yokohama/087.html (1.1), Yokohama/088.html (1.1),
+	  Yokohama/089.html (1.1), Yokohama/091.html (1.1),
+	  Yokohama/092.html (1.1), Yokohama/093.html (1.1),
+	  Yokohama/094.html (1.1), Yokohama/095.html (1.1),
+	  Yokohama/096.html (1.1), Yokohama/097.html (1.1),
+	  Yokohama/098.html (1.1), Yokohama/099.html (1.1),
+	  Yokohama/100.html (1.1), Yokohama/104.html (1.1),
+	  Yokohama/105.html (1.1), Yokohama/106.html (1.1),
+	  Yokohama/109.html (1.1), Yokohama/111.html (1.1),
+	  Yokohama/112.html (1.1): added htmls.
+
+2009-06-22 Monday 18:22  shibuta
+
+	* sample/icc-url.txt (1.1): add icc-url.txt.
+
+2009-06-22 Monday 18:06  shibuta
+
+	* perl/DetectBlocks.pm (1.2), script/test.pl (1.3): add sample.
+
+2009-06-22 Monday 15:38  shibuta
+
+	* README (1.2): add mailaddress
+
+2009-06-22 Monday 15:27  shibuta
+
+	* README (1.1): add REDME.
+
+2009-06-22 Monday 15:06  funayama
+
+	* script/test.pl (1.2): small change.
+
+2009-06-22 Monday 14:55  shibuta
+
+	* perl/DetectBlocks.pm (1.1), script/test.pl (1.1): Initial
+	  revision
+
+2009-06-22 Monday 14:55  shibuta
+
+	* perl/DetectBlocks.pm (1.1.1.1), script/test.pl (1.1.1.1): [no log
+	  message]
+
