@@ -24,7 +24,6 @@ use Dumpvalue;
 
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
-#binmode STDOUT, ":euc-jp";
 
 my (%opt);
 GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree');
@@ -61,20 +60,16 @@ else {
 }
 
 #my $ttt = new DetectBlocks(\%opt);
-my $ttt = new DetectBlocks2(\%opt);
-$ttt->maketree($str, $url);
+my $DetectBlocks = new DetectBlocks2(\%opt);
+$DetectBlocks->maketree($str, $url);
 
 if ($opt{debug}) {
-    Dumpvalue->new->dumpValue($ttt->{tree});
+    Dumpvalue->new->dumpValue($DetectBlocks->{tree});
     print '-' x 50, "\n";
 }
 
-$ttt->detectblocks;
-
-my $tree = $ttt->gettree;
-# my $test = RepeatCheck->new;
-# $ttt->settree($test->detectrepeat($tree)); 
-
+$DetectBlocks->detectblocks;
+my $tree = $DetectBlocks->gettree;
 
 if ($opt{debug}) {
     Dumpvalue->new->dumpValue($tree);
@@ -82,12 +77,12 @@ if ($opt{debug}) {
 
 # HTML形式で出力
 if ($opt{add_class2html}) {
-    $ttt->addCSSlink($tree, 'style.css');    
+    $DetectBlocks->addCSSlink($tree, 'style.css');    
     print $tree->as_HTML("<>&","\t");
 }
 else {
 # 木の表示
     print '=' x 50, "\n";
-    $ttt->printtree;
+    $DetectBlocks->printtree;
     print '=' x 50, "\n";
 }

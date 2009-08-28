@@ -241,6 +241,12 @@ sub detect_block {
 	    $myblocktype = 'maintext';
 	}
 
+	# リンク領域
+	# ^(月|火|水|木|金|土|日)$ を7回含む
+	elsif ($this->check_calender($elem, \@texts)) {
+	    $myblocktype = 'link';
+	}
+
 	# それ以外の場合
 	else {
 	    $myblocktype = 'unknown_block';
@@ -521,16 +527,29 @@ sub check_link_block {
     return $sum;
 }
 
+sub check_calender {
+    my ($this, $elem, $texts) = @_;
+
+    my $counter;
+    my %buf;
+    foreach my $text (@$texts) {
+	if ($text =~ /^(月|火|水|木|金|土|日|mon|tue|wed|thu|fri|satb|sun)$/i) {
+	    $buf{$text} = 1;
+	    return 1 if scalar keys %buf == 7;
+	}
+    }
+}
+
 
 sub attach_elem_length {
     my ($this, $elem) = @_;
 
-    return 0 if $this->is_stop_elem($elem);
+    return if $this->is_stop_elem($elem);
 
     my $length_all = 0;
 
     # もう子供がいない
-     if ($elem->content_list == 0){
+    if ($elem->content_list == 0){
 	my $tag = $elem->tag;
 	if ($tag eq 'img') {
 	    $length_all = length($elem->attr("alt")) if (defined $elem->attr("alt"));
@@ -545,7 +564,9 @@ sub attach_elem_length {
     # さらに子供をたどる
     else {
 	for my $child_elem ($elem->content_list){
-	    $length_all += $this->attach_elem_length($child_elem);
+	    if (!$this->is_stop_elem($child_elem)) {
+		$length_all += $this->attach_elem_length($child_elem);
+	    }
 	}
     }
 
@@ -569,7 +590,7 @@ sub attach_offset_ratio {
     # 累積
     my $accumulative_length = $offset;
     for my $child_elem ($elem->content_list){
-	if (!$this->is_stop_elem($elem)) {
+	if (!$this->is_stop_elem($child_elem)) {
 	    $this->attach_offset_ratio($child_elem, $accumulative_length);
 	    $accumulative_length += $child_elem->attr('length');
 	}
