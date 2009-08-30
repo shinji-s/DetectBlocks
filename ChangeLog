@@ -1,3 +1,13 @@
+2009-08-30 Sunday 21:48  funayama
+
+	* perl/DetectBlocks2.pm (1.27), script/test.pl (1.13):
+	  これまでのブロックとは別にprofile領域を実装.	option
+	  -get_more_blockを追加.  解析前に&copy;を(c)に置換するように変更.
+
+2009-08-28 Friday 17:59  funayama
+
+	* ChangeLog (1.1): updated.
+
 2009-08-28 Friday 17:58  funayama
 
 	* perl/DetectBlocks2.pm (1.26), script/test.pl (1.12):
