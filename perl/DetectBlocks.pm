@@ -25,12 +25,6 @@ our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
 
 our $MAINTEXT_MIN = 200;
 
-# COPYRIGHT用の文字列
-our $COPYRIGHT_STRING = 'Copyright|\(c\)|著作権|all\s?rights\s?reserved';
-
-# プロフィール領域用の文字列
-our $PROFILE_STRING = '管理人|氏名|名前|ニックネーム|id|ユーザ[名]?|[user][\-]?id|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
-
 # FOOTER用の文字列
 our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|HOME|ホーム';
 
@@ -38,6 +32,21 @@ our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[�
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
 our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
 our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
+
+# 以下のブロックはmore_blockを探さない
+our $NO_MORE_TAG = '^(header|img|form)$';
+
+# more_blockとして検出するもの(優先度順に記述)
+our @MORE_BLOCK_NAMES = qw/profile address/;
+
+# more_blockとして含まれるべき文字列の数, ブロックの割合
+our $MORE_BLOCK_NUM_TH = 2;
+our $MORE_BLOCK_RATIO_TH = 0.4;
+
+# プロフィール領域用の文字列
+our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
+# 住所領域用の文字列
+# our $ADDRESS_STRING = qw//;
 
 # 以下のtagは解析対象にしない
 our $TAG_IGNORED = '^(script|style|br|option)$';
@@ -108,6 +117,9 @@ sub new{
 
 sub maketree{
     my ($this, $htmltext, $url) = @_;
+
+    # copyright置換
+    $htmltext =~ s/\&copy\;/\(c\)/g;
 
     my $tree = HTML::TreeBuilder->new;
     $tree->parse($htmltext);
@@ -185,6 +197,7 @@ sub detect_block {
 	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
 	my $myblocktype;
 
+	
 	# フッター
 	# 条件 : 以下のすべてを満たす
 	# - ブロックの開始がページ末尾から300文字以内
@@ -228,11 +241,6 @@ sub detect_block {
 	    ;
 	}
 
-	# プロフィール
-# 	elsif ($this->check_profile($elem, \@texts)) {
-# 	    $elem->attr('myblocktype', 'profile');
-#         }
-
         # 本文
 	# - 以下のいずれかを満たす
 	# -- 長さが200文字以内
@@ -254,16 +262,22 @@ sub detect_block {
 	}
 
 	if ($myblocktype) {
-
 	    if (defined $option->{parent}) {
 		my ($start, $end) = ($option->{start}, $option->{end});
 		for my $i ($start..$end) {
 		    my $tmp_elem = ($option->{parent}->content_list)[$i];
-		    $this->attach_attr_blocktype($tmp_elem, $myblocktype, {pos => $i - $start + 1, total => $end - $start + 1});
+		    $this->attach_attr_blocktype($tmp_elem, $myblocktype, 'myblocktype', {pos => $i - $start + 1, total => $end - $start + 1});
 		}
 	    }
 	    else {
-		$this->attach_attr_blocktype($elem, $myblocktype)
+		$this->attach_attr_blocktype($elem, $myblocktype, 'myblocktype')
+	    }
+
+	    if ($this->{opt}{get_more_block} && $myblocktype !~ /$NO_MORE_TAG/) {
+		$this->detect_string($elem);
+
+		# 確定した領域の下から意味的な領域を探す
+		$this->detect_more_blocks($elem, \@texts) ;
 	    }
 	}
     }
@@ -293,8 +307,132 @@ sub detect_block {
     }
 }
 
+sub detect_more_blocks {
+    my ($this, $elem) = @_;
+
+    # このブロック以下をチェックする意味があるか
+    return if !$this->check_this_block_or_not($elem);
+
+    my $myblocktype_more;
+    my $elem_length = $elem->attr('length');
+
+    # myblocktypeで決定した領域をさらに分割「できる」かどうか
+    # 分割できる
+    if ($this->check_multiple_block($elem)) {
+	# 子供が1ブロックしかない場合無条件で再帰
+	if (scalar $elem->content_list == 1) {
+	    $this->detect_more_blocks(($elem->content_list)[0]);
+	}
+
+	else {
+	    my $devide_flag = 1;;
+	    foreach my $more_block_name (@MORE_BLOCK_NAMES)  {
+		my $block_ref = $elem->{'_'.$more_block_name};
+
+		# 条件 : 必要な文字列を2個以上含む && 比が0.5以上
+		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH && $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH) {
+		    # 属性付与
+		    $devide_flag = 0;
+		    $this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
+		    last;
+		}
+	    }
+
+	    # 再帰
+	    if ($devide_flag) {
+		foreach my $child_elem ($elem->content_list) {
+		    $this->detect_more_blocks($child_elem);
+		}
+	    }
+	}
+    }
+
+    # 分割できない
+    else {
+	foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+	    my $block_ref = $elem->{$more_block_name};
+
+	    # 属性付与
+	    if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH) {
+		$this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
+		return;
+	    }
+	}
+    }
+}
+
+sub check_this_block_or_not {
+    my ($this, $elem) = @_;
+
+    foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+	return 1 if $elem->{'_'.$more_block_name}{num} >= $MORE_BLOCK_NUM_TH;
+    }
+
+    return 0;
+}
+
+sub detect_string {
+    my ($this, $elem) = @_;
+    
+    my $ref;
+    if ($elem->tag eq '~text') {
+	# 各々のブロックに必要なstringが含まれているか
+	$ref = $this->check_more_block_string($elem);
+    }
+    else {
+	foreach my $child_elem ($elem->content_list){
+	    # 子供以下に必要なstringが含まれているか
+	    my $child_ref = $this->detect_string($child_elem);
+
+	    foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+		if ($child_ref->{$more_block_name}{num}) {
+		    $ref->{$more_block_name}{num} += $child_ref->{$more_block_name}{num};
+		    $ref->{$more_block_name}{length} += $child_elem->attr('length');
+		}
+	    }
+	}
+    }
+
+    # ratio
+    if ($elem->attr('length')) {
+	foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+	    $ref->{$more_block_name}{ratio} = $ref->{$more_block_name}{length} / $elem->attr('length');
+	}
+    }
+    
+    # 属性付与(hash)
+    # 自分以下で例えばプロフィール領域に必要な文字の数, 必要な文字を含むブロックの長さとその比, を付与
+    foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+ 	$elem->attr('_'.$more_block_name, $ref->{$more_block_name});
+    }
+    
+    return $ref;
+}
+
+sub check_more_block_string {
+    my ($this, $elem) = @_;
+
+    my $text = $elem->attr('text');
+
+    my ($profile, $address);
+    # profile
+    if ($text =~ /$PROFILE_STRING/i) {
+	$profile->{length} += $elem->attr('length');
+	$profile->{num}++;
+    }
+
+    # address
+#     if ($text =~ /$ADDRESS_STRING/i) {
+# 	$address->{length} += $elem->attr('length');
+# 	$address->{num}++;
+#     }
+
+    return ({profile => $profile, address => $address});
+}
+
 
 # 自分以下を分割しようがあるか
+# (子供数が1ブロックでも孫のブロック数が2以上あるかもしれない -> 分割される可能性がある)
 sub check_multiple_block {
     my ($this, $elem) = @_;
 	
@@ -365,14 +503,18 @@ sub get_ratio {
 
 
 sub attach_attr_blocktype {
-    my ($this, $elem, $myblocktype, $num) = @_;
+    my ($this, $elem, $myblocktype, $attrname, $num) = @_;
 
     $elem->attr('no', sprintf("%s/%s", $num->{pos}, $num->{total})) if defined $num;	
 
-    $elem->attr('myblocktype', $myblocktype);
+    # 属性名 : myblocktype or myblocktype_more
+    $elem->attr($attrname, $myblocktype);
 
     # HTML表示用にクラスを付与する
-    $elem->attr('class' , 'myblock_' . $myblocktype) if $this->{opt}{add_class2html};
+    if ($this->{opt}{add_class2html}) {
+	my $classname = $elem->attr('class') ? $elem->attr('class').' myblock_'.$myblocktype : 'myblock_'.$myblocktype;
+	$elem->attr('class' , $classname);
+    }
 }
 
 sub check_form {
@@ -384,18 +526,6 @@ sub check_form {
 	}
     }
 
-    return 0;
-}
-
-sub check_profile {
-    my ($this, $elem, $texts) = @_;
-    
-    my $counter = 0;
-    foreach my $text (@$texts) {
-	$counter++ if $text =~ /$PROFILE_STRING/i;
-	return 1 if $counter >= 2;
-    }
-    
     return 0;
 }
 
@@ -549,6 +679,11 @@ sub attach_elem_length {
 
     my $length_all = 0;
 
+    # classを消去(ついで)
+    if (ref($elem) eq 'HTML::Element' && $elem->attr('class')) {
+	$elem->attr('class', undef);
+    }
+    
     # もう子供がいない
     if ($elem->content_list == 0){
 	my $tag = $elem->tag;
@@ -632,6 +767,10 @@ sub print_node {
 	print ' ★',  $elem->attr('myblocktype');
 	print ' (',$elem->attr('no'),')' if $elem->attr('no');
 	print '★';
+    }
+
+    if ($elem->attr('myblocktype_more')) {
+	print ' ★',  $elem->attr('myblocktype_more'),'★';
     }
 
     if ($elem->attr('iteration')) {
@@ -815,7 +954,6 @@ sub text2div {
 	if($elem->tag eq '~text') {
 	    $elem->tag("span");
 	    $elem->push_content($elem->attr("text"));
-
 	    $elem->attr("text", undef);
 	}
     }

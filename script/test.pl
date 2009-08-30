@@ -26,7 +26,7 @@ binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block');
 
 my $str = "";
 my $url;
