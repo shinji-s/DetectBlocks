@@ -39,14 +39,17 @@ our $NO_MORE_TAG = '^(header|img|form)$';
 # more_blockとして検出するもの(優先度順に記述)
 our @MORE_BLOCK_NAMES = qw/profile address/;
 
-# more_blockとして含まれるべき文字列の数, ブロックの割合
+# more_blockに必要な文字列の数
 our $MORE_BLOCK_NUM_TH = 2;
+# more_blockに必要な文字列を含むブロックの割合
 our $MORE_BLOCK_RATIO_TH = 0.4;
+# more_blockの領域サイズの最大値
+our $MORE_BLOCK_LENGTH_MAX_TH = 500;
 
 # プロフィール領域用の文字列
 our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
-# 住所領域用の文字列
-# our $ADDRESS_STRING = qw//;
+# 住所領域用の文字列 ★誤りが多いので停止中 : (\p{Han}){2,3}[都道府県]|(\p{Han}){1,5}[市町村区] 
+our $ADDRESS_STRING = '(郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(e?-?mail|ｅ?−?ｍａｉｌ)|(tel|ｔｅｌ)|フリーダイ(ヤ|ア)ル|(fax|ｆａｘ)';
 
 # 以下のtagは解析対象にしない
 our $TAG_IGNORED = '^(script|style|br|option)$';
@@ -329,8 +332,11 @@ sub detect_more_blocks {
 	    foreach my $more_block_name (@MORE_BLOCK_NAMES)  {
 		my $block_ref = $elem->{'_'.$more_block_name};
 
-		# 条件 : 必要な文字列を2個以上含む && 比が0.5以上
-		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH && $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH) {
+		# 条件 : 必要な文字列をx個以上含む && 比が0.x以上 && ブロックの長さがxxx以下
+		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH &&
+		    $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH &&
+		    $elem->attr('length') < $MORE_BLOCK_LENGTH_MAX_TH
+		    ) {
 		    # 属性付与
 		    $devide_flag = 0;
 		    $this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
@@ -376,7 +382,7 @@ sub detect_string {
     
     my $ref;
     if ($elem->tag eq '~text') {
-	# 各々のブロックに必要なstringが含まれているか
+	# 各々のブロックに必要なstringが含まれてるか
 	$ref = $this->check_more_block_string($elem);
     }
     else {
@@ -403,6 +409,9 @@ sub detect_string {
     # 属性付与(hash)
     # 自分以下で例えばプロフィール領域に必要な文字の数, 必要な文字を含むブロックの長さとその比, を付与
     foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+# 	print join(':', $this->get_text($elem)),"\n";
+# 	print $more_block_name,"\n";
+# 	Dumpvalue->new->dumpValue($ref->{$more_block_name});
  	$elem->attr('_'.$more_block_name, $ref->{$more_block_name});
     }
     
@@ -422,10 +431,10 @@ sub check_more_block_string {
     }
 
     # address
-#     if ($text =~ /$ADDRESS_STRING/i) {
-# 	$address->{length} += $elem->attr('length');
-# 	$address->{num}++;
-#     }
+    if ($text =~ /$ADDRESS_STRING/i) {
+	$address->{length} += $elem->attr('length');
+	$address->{num}++;
+    }
 
     return ({profile => $profile, address => $address});
 }
