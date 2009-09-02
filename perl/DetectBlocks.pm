@@ -48,7 +48,7 @@ our $MORE_BLOCK_LENGTH_MAX_TH = 500;
 
 # プロフィール領域用の文字列
 our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
-# 住所領域用の文字列 ★誤りが多いので停止中 : (\p{Han}){2,3}[都道府県]|(\p{Han}){1,5}[市町村区] 
+# 住所領域用の文字列 ★誤りが多いので停止中 : (\p{Han}){2,3}[都道府県]|(\p{Han}){1,5}[市町村区]  -> 例 : 室町時代
 our $ADDRESS_STRING = '(郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(e?-?mail|ｅ?−?ｍａｉｌ)|(tel|ｔｅｌ)|フリーダイ(ヤ|ア)ル|(fax|ｆａｘ)';
 
 # 以下のtagは解析対象にしない
@@ -125,21 +125,24 @@ sub maketree{
     $htmltext =~ s/\&copy\;/\(c\)/g;
 
     my $tree = HTML::TreeBuilder->new;
+    $tree->p_strict(1); # タグの閉じ忘れを補完する
     $tree->parse($htmltext);
     $tree->eof;
+    
+    #url処理
+    if (defined $url) {
+	$this->{url} = $url;
+	if($this->{url} =~ /^http\:\/\/([^\/]+)/) {
+	    # 例 : http://www.yahoo.co.jp/news => www.yahoo.co.jp
+	    $this->{domain} = $1;
+	}
+    }
 
-    $this->{url} = $url if defined $url;
     $this->{tree} = $tree;
 }
 
 sub detectblocks{
     my ($this) = @_;
-
-    #url処理
-    if($this->{url} && $this->{url} =~ /^http\:\/\/([^\/]+)/){
-	# 例 : http://www.yahoo.co.jp/news => www.yahoo.co.jp
-	$this->{domain} = $1;
-    }
 
     my $body = $this->{tree}->find('body');
 
@@ -253,7 +256,7 @@ sub detect_block {
 	    $myblocktype = 'maintext';
 	}
 
-	# リンク領域
+	# リンク領域(カレンダー)
 	# ^(月|火|水|木|金|土|日)$ を7回含む
 	elsif ($this->check_calender($elem, \@texts)) {
 	    $myblocktype = 'link';
@@ -276,10 +279,11 @@ sub detect_block {
 		$this->attach_attr_blocktype($elem, $myblocktype, 'myblocktype')
 	    }
 
+	    # 確定した領域の下からもっと細かい領域を探す
 	    if ($this->{opt}{get_more_block} && $myblocktype !~ /$NO_MORE_TAG/) {
+		# そのための情報を得る
 		$this->detect_string($elem);
 
-		# 確定した領域の下から意味的な領域を探す
 		$this->detect_more_blocks($elem, \@texts) ;
 	    }
 	}
@@ -323,8 +327,8 @@ sub detect_more_blocks {
     # 分割できる
     if ($this->check_multiple_block($elem)) {
 	# 子供が1ブロックしかない場合無条件で再帰
-	if (scalar $elem->content_list == 1) {
-	    $this->detect_more_blocks(($elem->content_list)[0]);
+	if (scalar grep($BLOCK_TAGS{$_->tag} && $_->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i, $elem->content_list) == 1) {
+	    $this->detect_more_blocks(($elem->content_list)[0])
 	}
 
 	else {
@@ -333,14 +337,12 @@ sub detect_more_blocks {
 		my $block_ref = $elem->{'_'.$more_block_name};
 
 		# 条件 : 必要な文字列をx個以上含む && 比が0.x以上 && ブロックの長さがxxx以下
-		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH &&
-		    $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH &&
-		    $elem->attr('length') < $MORE_BLOCK_LENGTH_MAX_TH
-		    ) {
+		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH && $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH &&
+		    $elem->attr('length') < $MORE_BLOCK_LENGTH_MAX_TH) {
 		    # 属性付与
 		    $devide_flag = 0;
 		    $this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
-		    last;
+		    # last;
 		}
 	    }
 
@@ -516,7 +518,7 @@ sub attach_attr_blocktype {
 
     $elem->attr('no', sprintf("%s/%s", $num->{pos}, $num->{total})) if defined $num;	
 
-    # 属性名 : myblocktype or myblocktype_more
+    # 属性名($attrname) : myblocktype or myblocktype_more
     $elem->attr($attrname, $myblocktype);
 
     # HTML表示用にクラスを付与する
