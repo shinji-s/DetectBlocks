@@ -49,7 +49,7 @@ our $MORE_BLOCK_LENGTH_MAX_TH = 500;
 # プロフィール領域用の文字列
 our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
 # 住所領域用の文字列 ★誤りが多いので停止中 : (\p{Han}){2,3}[都道府県]|(\p{Han}){1,5}[市町村区]  -> 例 : 室町時代
-our $ADDRESS_STRING = '(郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(e?-?mail|ｅ?−?ｍａｉｌ)|(tel|ｔｅｌ)|フリーダイ(ヤ|ア)ル|(fax|ｆａｘ)';
+our $ADDRESS_STRING = '(郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(e?-?mail|ｅ?−?(ｍａｉｌ|メール))|(tel|ｔｅｌ)|フリーダイ(ヤ|ア)ル|(fax|ｆａｘ)';
 
 # 以下のtagは解析対象にしない
 our $TAG_IGNORED = '^(script|style|br|option)$';
