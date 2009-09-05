@@ -10,6 +10,10 @@ use Encode;
 use Dumpvalue;
 use Juman;
 
+use Encode;
+use Encode::Guess;
+
+
 our $TEXTPER_TH = 0.5;
 
 our $HEADER_START_TH = 100; # これより小さければheader
@@ -317,6 +321,8 @@ sub detect_block {
 sub detect_more_blocks {
     my ($this, $elem) = @_;
 
+    # print $elem->{myblocktype},"\n";
+    
     # このブロック以下をチェックする意味があるか
     return if !$this->check_this_block_or_not($elem);
 
@@ -328,7 +334,7 @@ sub detect_more_blocks {
     if ($this->check_multiple_block($elem)) {
 	# 子供が1ブロックしかない場合無条件で再帰
 	if (scalar grep($BLOCK_TAGS{$_->tag} && $_->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i, $elem->content_list) == 1) {
-	    $this->detect_more_blocks(($elem->content_list)[0])
+	    $this->detect_more_blocks(($elem->content_list)[0]);
 	}
 
 	else {
@@ -373,6 +379,7 @@ sub check_this_block_or_not {
     my ($this, $elem) = @_;
 
     foreach my $more_block_name (@MORE_BLOCK_NAMES) {
+	# print ' ',$more_block_name,' ',$elem->{'_'.$more_block_name}{num},"\n";
 	return 1 if $elem->{'_'.$more_block_name}{num} >= $MORE_BLOCK_NUM_TH;
     }
 
@@ -427,15 +434,15 @@ sub check_more_block_string {
 
     my ($profile, $address);
     # profile
-    if ($text =~ /$PROFILE_STRING/i) {
+    if (my $matches = ($text =~ s/($PROFILE_STRING)/\1/ig)) {
 	$profile->{length} += $elem->attr('length');
-	$profile->{num}++;
+	$profile->{num} += $matches;
     }
 
     # address
-    if ($text =~ /$ADDRESS_STRING/i) {
+    if (my $matches = ($text =~ s/($ADDRESS_STRING)/\1/ig)) {
 	$address->{length} += $elem->attr('length');
-	$address->{num}++;
+	$address->{num} += $matches;
     }
 
     return ({profile => $profile, address => $address});
@@ -978,5 +985,27 @@ sub is_stop_elem {
     }
     return 0;
 }
+
+
+sub Get_Source_String {
+    my ($this, $url) = @_;
+
+    require LWP::UserAgent;
+
+    my $ua = new LWP::UserAgent;
+    $ua->agent('Mozilla/5.0');
+    $ua->proxy('http', $this->{opt}{proxy}) if defined $this->{opt}{proxy};
+    $ua->parse_head(0);
+
+    my $response = $ua->get($url);
+
+    die $response->status_line unless $response->is_success;
+
+    my $input_string = decode(guess_encoding($response->content, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $response->content);
+
+    return ($input_string, $url);
+}
+
+
 
 1;

@@ -28,25 +28,13 @@ binmode STDOUT, ":utf8";
 my (%opt);
 GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block');
 
+my $DetectBlocks = new DetectBlocks2(\%opt);
+
 my $str = "";
 my $url;
 # HTMLソースを取得
 if ($opt{get_source}) {
-    require LWP::UserAgent;
-
-    my $ua = new LWP::UserAgent;
-    $ua->agent('Mozilla/5.0');
-    $ua->proxy('http', $opt{proxy}) if (defined $opt{proxy});
-    $ua->parse_head(0);
-
-    my $response = $ua->get($opt{get_source});
-
-    die $response->status_line unless $response->is_success;
-
-    $str = decode(guess_encoding($response->content, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $response->content);
-
-    print $str if $opt{debug};
-    $url = $opt{get_source};
+    ($str, $url) = $DetectBlocks->Get_Source_String($opt{get_source});
 }
 # キャッシュ
 else {
@@ -59,8 +47,6 @@ else {
     $url = $ARGV[1];
 }
 
-#my $ttt = new DetectBlocks(\%opt);
-my $DetectBlocks = new DetectBlocks2(\%opt);
 $DetectBlocks->maketree($str, $url);
 
 if ($opt{debug}) {
