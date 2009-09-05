@@ -988,18 +988,21 @@ sub is_stop_elem {
 
 
 sub Get_Source_String {
-    my ($this, $url) = @_;
+    my ($this, $url, $option) = @_;
 
     require LWP::UserAgent;
 
     my $ua = new LWP::UserAgent;
     $ua->agent('Mozilla/5.0');
     $ua->proxy('http', $this->{opt}{proxy}) if defined $this->{opt}{proxy};
+    $ua->timeout($option->{timeout}) if $option->{timeout};
+    $ua->max_redirect($option->{max_redirect}) if $option->{max_redirect};
     $ua->parse_head(0);
 
     my $response = $ua->get($url);
 
-    die $response->status_line unless $response->is_success;
+    print $url,"\n" if $this->{opt}{debug};
+    return $response->status_line unless $response->is_success;
 
     my $input_string = decode(guess_encoding($response->content, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $response->content);
 
