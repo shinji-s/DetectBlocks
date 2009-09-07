@@ -18,6 +18,7 @@ our $TEXTPER_TH = 0.5;
 
 our $HEADER_START_TH = 100; # これより小さければheader
 our $HEADER_END_TH = 200; # これより小さければheader
+our $ALT4HEADER_TH = 15; # 画像のみのheaderの際に必要なalt_text
 
 our $FOOTER_START_TH = 300; # これより大きければfooter
 our $FOOTER_END_TH = 100; # これより大きければfooter
@@ -551,13 +552,24 @@ sub check_header {
     my ($this, $elem) = @_;
 
     my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
-    my $a_flag = $elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^\/|^)(?:index\.(?:html|htm|php|cgi))?$/) ? 1 :0;
+    my $link2index = $elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^\/|^)(?:index\.(?:html|htm|php|cgi))?$/) ? 1 :0;
 
     if ($this->{alltextlen} * $elem->attr('ratio_start') < $HEADER_START_TH && $this->{alltextlen} * $elem->attr('ratio_end') < $HEADER_END_TH) {
 	# index.*へのリンクが存在する
-	return 1 if $a_flag;
-	#                        しない★
-	
+	if ($link2index) {
+	    return 1;
+	}
+	# ある程度のまともなalt_textの画像が存在する
+	else {
+	    my @img_elems = $elem->find('img');
+	    if (@img_elems > 0) {
+		foreach my $img_elem (grep($_->attr('length') >= $ALT4HEADER_TH, @img_elems)) {
+		    # 末尾の形態素条件
+ 		    my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
+		    return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
+		}
+	    }
+	}
     }
 
     return 0;
