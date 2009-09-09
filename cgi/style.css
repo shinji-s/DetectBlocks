@@ -1,0 +1,25 @@
+/***** COLOR_TABLE *****/	
+/* Type : link */
+*.myblock_link { background-color : #CCCCCC !important; }
+/*** *.myblock_internal { background-color : wheat !important; } ***/
+/*** *.myblock_external { background-color : khaki !important; } ***/
+/*** *.myblock_imglink { background-color : #CCCCCC !important; } ***/
+
+/* Type : text */
+*.myblock_maintext { background-color : greenyellow !important; }
+*.myblock_unknown_block { background-color : Khaki !important; }
+/*** *.myblock_profile { background-color : orange !important; } ***/
+
+/* Type : other */
+*.myblock_img { background-color : aqua !important; }
+*.myblock_header { background-color : orchid !important; }
+*.myblock_footer { background-color : FUCHSIA !important; }
+*.myblock_form { background-color : peru !important; }
+/*** *.myblock_copyright { background-color : PINK !important; } ***/
+
+
+*.myblock_profile { border : 5px pink solid; }
+*.myblock_address { border : 5px lime solid; }
+/***** END_OF_COLOR ****/
+
+
