@@ -3,7 +3,7 @@
 # $Id$
 
 # 使い方
-# COLOR.cgiとstyle.cssをpublic_html以下の同じディレクトリに置く
+# COLOR.cgiとstyle.cssを$HOME/public_html以下の同じディレクトリに置く
 
 use strict;
 use utf8;
@@ -24,29 +24,30 @@ $| = 1;
 
 my $pid = $$;
 
-my $cgi = new CGI;
-print $cgi->header(-charset => 'utf-8');
+my ($ROOT, $cgi);
+BEGIN {
+    $cgi = new CGI;
+    $ROOT = $cgi->param('ROOT') ? $cgi->param('ROOT') : '/home/funayama/cvs/DetectBlocks';
+}
+use lib qq($ROOT/perl);
+use DetectBlocks2;
 
-my $ROOT = $cgi->param('ROOT') ? $cgi->param('ROOT') : '/home/funayama/cvs/DetectBlocks';
+print $cgi->header(-charset => 'utf-8');
 
 my $url = $cgi->param('inputurl');
 my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
-my $date = `date`;
 
 # urlチェック
 if ($url && $url !~ /^http\:\/\//) {
     print qq(<font color="red">★有効なURLを入力してください</font><br>\n);
     $url = '';
 }
-# ログ
-else {
-    my $aa = $url ? $url : "$topic.$docno";
 
-    open  F, ">> ./url.log" or die;
-    print F "$date\t$aa\n";
-    close F;
-}
+# ログ
+&output_log($url);
+
+$url = &shellEsc($url);
 
 print << "END_OF_HTML";
 <html lang="ja">
@@ -54,12 +55,7 @@ print << "END_OF_HTML";
 <title>ページ領域抽出CGI</title>
 </head>
 <body>
-END_OF_HTML
 
-
-$url = &shellEsc($url);
-
-print << "END_OF_HTML";
 <form method="GET" action="$ENV{SCRIPT_NAME}">
 ROOT_DIR : <input type="text" name="ROOT" value="$ROOT" size="50">
 END_OF_HTML
@@ -102,7 +98,7 @@ END_OF_HTML
 
 
 if (!$topic) {
-    print qq(<option selected="selected">トピックを選択</option>\n);
+    print qq(<option selected="selected">Select Topic</option>\n);
 } 
 for (my $i = 0;$i < @topic;$i++) {
     my $tmp = $topic[$i];
@@ -130,7 +126,7 @@ if ($topic) {
 
     print qq(<select name="docno" width="100">\n);
     if (!$docno) {
-	print qq(<option selected="selected">文書番号を選択</option>\n);	
+	print qq(<option selected="selected">Select Document</option>\n);	
     }
     for (my $i = 0; $i < @docno; $i++) {
 	my $tmp_docno = $docno[$i];
@@ -151,24 +147,37 @@ print << "END_OF_HTML";
 </form>
 END_OF_HTML
 
-
+## 解析
 # 対象ページ解析
-my ($output, $orig_encode_url, $orig_url);
-# URLを直接指定
+my ($raw_html, $orig_encode_url, $orig_url);
+my %opt = (get_more_block => 1,
+	   add_class2html => 1);
+my $DetectBlocks = new DetectBlocks2(\%opt);
+
+# HTMLソースを取得
 if ($url) {
-    $output = `$PERL -I$ROOT/perl $ROOT/script/test.pl -get_more_block -add_class2html -get_source $url`;
+    ($raw_html, $orig_url) = $DetectBlocks->Get_Source_String($url);
 }
-# トピックリストから選択
+# キャッシュ
 elsif ($topic && $docno) {
-    # Agaricus 001 http://www.keysoft.jp/abmk/index.html
+    open(FILE, "<:utf8", "$ROOT/sample/htmls/$topic/$docno");
+    while(<FILE>){
+	$raw_html .= $_;
+    }
+    close(FILE);
+
     $orig_url = &read_orig_url($topic, $docno);
-    $url = "$ROOT/sample/htmls/$topic/$docno";
     $orig_encode_url = "/home/funayama/cvs/ISA/htmls/$topic/$docno";
-    $output = `$PERL -I$ROOT/perl $ROOT/script/test.pl -get_more_block -add_class2html $url $orig_url`;
 }
+
+$DetectBlocks->maketree($raw_html, $orig_url);
+$DetectBlocks->detectblocks;
+my $tree = $DetectBlocks->gettree;
+$DetectBlocks->addCSSlink($tree, 'style.css');
+
 
 open  F, "> ./COLOR_$pid.html" or die;
-print F $output;
+print F $tree->as_HTML("<>&","\t", {});
 close F;
 
 # 解析結果などを出力
@@ -179,7 +188,7 @@ if ($url || ($topic && $docno)) {
 	(my $tmp_no = $docno) =~ s/\.html//;
 	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
-	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">キャッシュ</a><br>\n);
+	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
     } else {
 	print qq(<a href="$url" target="_blank">元ページ</a><br>\n);
     }
@@ -270,25 +279,18 @@ sub read_and_print_colortable {
 
 }
 
+sub output_log {
+    my $log = $_ ? $_ : "$topic.$docno";
+    my $date = `date`;
+
+    open  F, ">> ./url.log" or die;
+    print F "$date\t$log\n";
+    close F;
+}
 
 sub shellEsc {
     $_ = shift;
     s/([\&\;\`\'\\\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
     return $_;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
