@@ -9,45 +9,60 @@ use strict;
 use utf8;
 use CGI;
 use Dumpvalue;
+use CGI::Carp qw(fatalsToBrowser);
 
-my $MACHINE = `uname -n`;
-my $PERL = $MACHINE =~ /^orchid/ ? '/share/usr-x86_64/bin/perl' : '/share/usr/bin/perl';
+my $uname = `uname -n`;
+my $bit32 = $uname =~ /^reed/ ? 1 : 0;
 
 # スタイルシートのパス
 my $CSS = './style.css';
+
 # 発信者の正解データのパス
 my $ISANS = "/home/funayama/cvs/ISA/samples/siteop-20080702.dat";
 # 元URLリストのパス
 my $ORIG_URL_LIST = "/home/funayama/cvs/ISA/samples/icc-url.txt";
 
-$| = 1;
+# 領域抽出のoption
+my %blockopt = (get_more_block => 1, add_class2html => 1);
+# 発信者解析のoption
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => 1, add_class2html => 1, get_more_block => 1);
 
-my $pid = $$;
-
-my ($ROOT, $cgi);
+my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $cgi);
 BEGIN {
     $cgi = new CGI;
-    $ROOT = $cgi->param('ROOT') ? $cgi->param('ROOT') : '/home/funayama/cvs/DetectBlocks';
+    # ROOTの場所を指定
+    $DetectBlocks_ROOT = $cgi->param('DetectBlocks_ROOT') ? $cgi->param('DetectBlocks_ROOT') : '/home/funayama/cvs/DetectBlocks';
+    $DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : '/home/funayama/DetectSender';
+    $NE_ROOT = '/home/funayama/M1_2008/NE';
+    $Utils_ROOT = '/home/funayama/cvs/Utils';
 }
-use lib qq($ROOT/perl);
+use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $NE_ROOT/perl $Utils_ROOT/perl));
 use DetectBlocks2;
+use DetectSender;
+use Utils;
+use ReadConf;
+
+$| = 1;
 
 print $cgi->header(-charset => 'utf-8');
 
+# 発信者解析を行うかどうか
+my $DetectSender_flag = $cgi->param('DetectSender_flag');
+
+my $pid = $$;
 my $url = $cgi->param('inputurl');
 my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
 
 # urlチェック
 if ($url && $url !~ /^http\:\/\//) {
-    print qq(<font color="red">★有効なURLを入力してください</font><br>\n);
+    print qq(<font color="red">Please Type Collect URL!!</font><br>\n);
     $url = '';
 }
+$url = &shellEsc($url);
 
 # ログ
 &output_log($url);
-
-$url = &shellEsc($url);
 
 print << "END_OF_HTML";
 <html lang="ja">
@@ -57,18 +72,27 @@ print << "END_OF_HTML";
 <body>
 
 <form method="GET" action="$ENV{SCRIPT_NAME}">
-ROOT_DIR : <input type="text" name="ROOT" value="$ROOT" size="50">
+ROOT(block) : <input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
+ROOT(sender) :
+<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
 END_OF_HTML
+
+if ($DetectSender_flag) {
+    print qq(<input type="checkbox" name="DetectSender_flag" value="1" checked>);
+} else {
+    print qq(<input type="checkbox" name="DetectSender_flag" value="1">);
+}
 
 print qq(<input type="hidden" name="input_url" value="$url">\n) if ($url);
 print qq(<input type="hidden" name="topic" value="$topic">\n) if ($topic);
 print qq(<input type="hidden" name="docno" value="$docno">\n) if ($docno);
 
 print << "END_OF_HTML";
-<input type="submit" value="送信">
+<input type="submit" value="Send">
 </form>
 <form method="GET" action="$ENV{SCRIPT_NAME}">
-<input type="hidden" name="ROOT" value="$ROOT" size="50">
+<input type="hidden" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
+<input type="hidden" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
 END_OF_HTML
 
 my $ans_ref;
@@ -80,25 +104,27 @@ if ($url) {
 }
 
 print << "END_OF_HTML";
-<input type="submit" value="送信">
+<input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
+<input type="submit" value="Send">
 </form>
 END_OF_HTML
 
 # ディレクトリを調べる
-opendir(DIR, "$ROOT/sample/htmls/");
+opendir(DIR, "$DetectBlocks_ROOT/sample/htmls/");
 my @topic = readdir(DIR);
 closedir(DIR);
 
 # トピック
 print << "END_OF_HTML";
 <form method="GET" action="$ENV{SCRIPT_NAME}">\n
-<input type="hidden" name="ROOT" value="$ROOT" size="50">
+<input type="hidden" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
+<input type="hidden" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
 TOPIC:<select name="topic">
 END_OF_HTML
 
 
 if (!$topic) {
-    print qq(<option selected="selected">Select Topic</option>\n);
+    print qq(<option selected="selected" value="">Select Topic</option>\n);
 } 
 for (my $i = 0;$i < @topic;$i++) {
     my $tmp = $topic[$i];
@@ -118,16 +144,17 @@ END_OF_HTML
 # 文書番号
 if ($topic) {
     # ファイルを調べる
-    opendir(F, "$ROOT/sample/htmls/$topic");
+    opendir(F, "$DetectBlocks_ROOT/sample/htmls/$topic");
     my @docno = sort readdir(F);
     closedir(F);
 
-    print qq(文書No:<form method="GET" action="$ENV{SCRIPT_NAME}">\n);
+    print qq(ID:<form method="GET" action="$ENV{SCRIPT_NAME}">\n);
 
     print qq(<select name="docno" width="100">\n);
     if (!$docno) {
-	print qq(<option selected="selected">Select Document</option>\n);	
+	print qq(<option name="docno" value="" selected="selected">Select Document</option>\n);	
     }
+
     for (my $i = 0; $i < @docno; $i++) {
 	my $tmp_docno = $docno[$i];
 	next if $tmp_docno =~ /CVS|^\.+$/;
@@ -143,16 +170,15 @@ if ($topic) {
 }
 
 print << "END_OF_HTML";
-<input type="submit" value="送信">
+<input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
+<input type="submit" value="Send">
 </form>
 END_OF_HTML
 
 ## 解析
 # 対象ページ解析
 my ($raw_html, $orig_encode_url, $orig_url);
-my %opt = (get_more_block => 1,
-	   add_class2html => 1);
-my $DetectBlocks = new DetectBlocks2(\%opt);
+my $DetectBlocks = new DetectBlocks2(\%blockopt);
 
 # HTMLソースを取得
 if ($url) {
@@ -160,12 +186,11 @@ if ($url) {
 }
 # キャッシュ
 elsif ($topic && $docno) {
-    open(FILE, "<:utf8", "$ROOT/sample/htmls/$topic/$docno");
+    open(FILE, "<:utf8", "$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
     while(<FILE>){
 	$raw_html .= $_;
     }
     close(FILE);
-
     $orig_url = &read_orig_url($topic, $docno);
     $orig_encode_url = "/home/funayama/cvs/ISA/htmls/$topic/$docno";
 }
@@ -175,6 +200,29 @@ $DetectBlocks->detectblocks;
 my $tree = $DetectBlocks->gettree;
 $DetectBlocks->addCSSlink($tree, 'style.css');
 
+# 発信者解析を行う
+my $DetectSender;
+if ($DetectSender_flag && (($topic && $docno) || $url)) {
+    my $config = &read_config({32 => $bit32});
+    my @urls;
+
+    $DetectSender = new DetectSender(\%senderopt, $config);
+    
+    $DetectSender->DetectSender($tree, $url);
+
+    # "Xのページ => X"など
+    $DetectSender->ReplaceString;
+
+    # 文単位でFiltering -> 名詞句抽出 -> 名詞句単位でFiltering
+    $DetectSender->SelectCandidates;
+    
+    # 発信者を表示
+    print qq(発信者候補 : <select name="topic">\n);
+    foreach my $sender ($DetectSender->Display_Information_Sender({array => 1})) {
+	print qq(<option selected="selected">$sender</option>\n);
+    }
+    print qq(</select>\n&nbsp;&nbsp;)
+}
 
 open  F, "> ./COLOR_$pid.html" or die;
 print F $tree->as_HTML("<>&","\t", {});

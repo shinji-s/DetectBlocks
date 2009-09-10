@@ -3,11 +3,11 @@
 *.myblock_link { background-color : #CCCCCC !important; }
 
 /* Type : text */
-*.myblock_maintext { background-color : greenyellow !important; }
+*.myblock_maintext { background-color : YellowGreen !important; }
 *.myblock_unknown_block { background-color : Khaki !important; }
 
 /* Type : other */
-*.myblock_img { background-color : aqua !important; }
+*.myblock_img { background-color : Aquamarine !important; }
 *.myblock_header { background-color : orchid !important; }
 *.myblock_footer { background-color : FUCHSIA !important; }
 *.myblock_form { background-color : peru !important; }
