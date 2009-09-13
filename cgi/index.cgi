@@ -17,24 +17,26 @@ my $bit32 = $uname =~ /^reed/ ? 1 : 0;
 # スタイルシートのパス
 my $CSS = './style.css';
 
-# 発信者の正解データのパス
-my $ISANS = "/home/funayama/cvs/ISA/samples/siteop-20080702.dat";
-# 元URLリストのパス
-my $ORIG_URL_LIST = "/home/funayama/cvs/ISA/samples/icc-url.txt";
+# 表示に必要なデータ
+my $ISANS = "/home/funayama/cvs/ISA/samples/siteop-20080702.dat"; # 発信者の正解データ
+my $ORIG_URL_LIST = "/home/funayama/cvs/ISA/samples/icc-url.txt"; # 元URLリストのパス
+my $ORIG_ENCODES = '/home/funayama/cvs/ISA/htmls'; # オリジナルのencodeのhtml
 
-# 領域抽出のoption
-my %blockopt = (get_more_block => 1, add_class2html => 1);
-# 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => 1, add_class2html => 1, get_more_block => 1);
-
+my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default);
 my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $cgi);
 BEGIN {
+    # 各cvsのdefaultとするRootディレクトリ
+    $DetectBlocks_default = '/home/funayama/cvs/DetectBlocks';
+    $DetectSender_default = '/home/funayama/DetectSender';
+    $NE_default = '/home/funayama/M1_2008/NE';
+    $Utils_default = '/home/funayama/cvs/Utils';
+
     $cgi = new CGI;
     # ROOTの場所を指定
-    $DetectBlocks_ROOT = $cgi->param('DetectBlocks_ROOT') ? $cgi->param('DetectBlocks_ROOT') : '/home/funayama/cvs/DetectBlocks';
-    $DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : '/home/funayama/DetectSender';
-    $NE_ROOT = '/home/funayama/M1_2008/NE';
-    $Utils_ROOT = '/home/funayama/cvs/Utils';
+    $DetectBlocks_ROOT = $cgi->param('DetectBlocks_ROOT') ? $cgi->param('DetectBlocks_ROOT') : $DetectBlocks_default;
+    $DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : $DetectSender_default;
+    $NE_ROOT = $NE_default;
+    $Utils_ROOT = $Utils_default;
 }
 use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $NE_ROOT/perl $Utils_ROOT/perl));
 use DetectBlocks2;
@@ -48,6 +50,14 @@ print $cgi->header(-charset => 'utf-8');
 
 # 発信者解析を行うかどうか
 my $DetectSender_flag = $cgi->param('DetectSender_flag');
+
+# 領域抽出のoption
+my %blockopt = (get_more_block => 1, add_class2html => 1);
+# 発信者解析のoption
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1);
+
+# 表示の際に相対パスを絶対パスに直すか
+$blockopt{rel2abs} = $cgi->param('rel2abs');
 
 my $pid = $$;
 my $url = $cgi->param('inputurl');
@@ -72,15 +82,20 @@ print << "END_OF_HTML";
 <body>
 
 <form method="GET" action="$ENV{SCRIPT_NAME}">
-ROOT(block) : <input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
-ROOT(sender) :
-<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
+block:<input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="40">, 
+sender:<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="40">, 
 END_OF_HTML
 
 if ($DetectSender_flag) {
-    print qq(<input type="checkbox" name="DetectSender_flag" value="1" checked>);
+    print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1" checked>, );
 } else {
-    print qq(<input type="checkbox" name="DetectSender_flag" value="1">);
+    print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1">, );
+}
+
+if ($blockopt{rel2abs}) {
+    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1" checked>);
+} else {
+    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1">);
 }
 
 print qq(<input type="hidden" name="input_url" value="$url">\n) if ($url);
@@ -105,6 +120,7 @@ if ($url) {
 
 print << "END_OF_HTML";
 <input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
+<input type="hidden" name="rel2abs" value="$blockopt{rel2abs}">
 <input type="submit" value="Send">
 </form>
 END_OF_HTML
@@ -171,6 +187,7 @@ if ($topic) {
 
 print << "END_OF_HTML";
 <input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
+<input type="hidden" name="rel2abs" value="$blockopt{rel2abs}">
 <input type="submit" value="Send">
 </form>
 END_OF_HTML
@@ -192,7 +209,7 @@ elsif ($topic && $docno) {
     }
     close(FILE);
     $orig_url = &read_orig_url($topic, $docno);
-    $orig_encode_url = "/home/funayama/cvs/ISA/htmls/$topic/$docno";
+    $orig_encode_url = "$ORIG_ENCODES/$topic/$docno";
 }
 
 $DetectBlocks->maketree($raw_html, $orig_url);
@@ -219,7 +236,7 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
     # 発信者を表示
     print qq(発信者候補 : <select name="topic">\n);
     foreach my $sender ($DetectSender->Display_Information_Sender({array => 1})) {
-	print qq(<option selected="selected">$sender</option>\n);
+	print qq(<option>$sender</option>\n);
     }
     print qq(</select>\n&nbsp;&nbsp;)
 }

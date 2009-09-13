@@ -141,6 +141,7 @@ sub maketree{
 	    # 例 : http://www.yahoo.co.jp/news => www.yahoo.co.jp
 	    $this->{domain} = $1;
 	}
+	$this->{url_layers_ref} = &url2layers($this->{url}); # urlを'/'で区切る
     }
 
     $this->{tree} = $tree;
@@ -252,7 +253,7 @@ sub detect_block {
 	    ;
 	}
 
-        # 本文
+        # 本文 ★ CheckUnknownBlockの段階でJUMANがかかっているので非効率(要修正)
 	# - 以下のいずれかを満たす
 	# -- 長さが200文字以内
 	# -- 「の」を除く助詞のブロック以下の全形態素に占める割合が5%以上
@@ -951,9 +952,27 @@ sub get_text {
 sub addCSSlink {
     my ($this, $tmp_elem, $css_url) = @_;
 
+    my $head = $tmp_elem->find('head');
+    my $body = $tmp_elem->find('body');
+
+    # 相対パス -> 絶対パスの変換
+    # <link href="text.css" rel="stylesheet" type="text/css" />
+    if ($this->{opt}{rel2abs} && defined $this->{url}) {
+	# CSS
+	foreach my $linktag ($head->find('link')) {
+	    if ($linktag->attr('rel') eq 'stylesheet' && $linktag->attr('type') eq 'text/css' && defined $linktag->attr('href')) {
+		$linktag->attr('href', $this->Rel2Abs($linktag->attr('href')));
+	    }
+	}
+
+	# 画像
+	foreach my $imgtag ($body->find('img')) {
+	    $imgtag->attr('src', $this->Rel2Abs($imgtag->attr('src'))) if (defined $imgtag->attr('src'));
+	}
+    }
+
     # CSSの部分を追加
     # <link rel="stylesheet" type="text/css" href="style.css">
-    my $head = $tmp_elem->find('head');
     $head->push_content(['link', {'href' => $css_url, 'rel' => 'stylesheet', 'type' => 'text/css'}]);
     # CSSの優先順位を変更
     my $tmp = $head->content->[-1];
@@ -970,6 +989,48 @@ sub addCSSlink {
 	}
     }
     $head->push_content(['meta', {'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}]) if !$flag;
+
+
+}
+
+# 相対パスを絶対パスに変換する関数
+# /bb.html, ../bb.html, ./bb.html, bb.html
+sub Rel2Abs {
+    my ($this, $link) = @_;
+
+    # もともと絶対リンク
+    return $link if $link =~ /^http\:\/\//;
+
+    $link =~ s/^\.\///; # ./bb.html -> bb.html
+
+    my $abs_path = 'http:/';
+    my $depth = scalar @{$this->{url_layers_ref}};
+
+    my ($dot, $dir) = ($link =~ /^((?:(?:\.\.)?\/)*)(.*)$/);
+    my $up_num = scalar split('/', $dot);
+
+    # /bb.htmlの場合 -> Root
+    my $end = $link =~ /^\// ? 0 : $depth-$up_num-1;
+
+    for my $i (0..$end) {
+	$abs_path .= '/'.$this->{url_layers_ref}[$i];
+    }
+    $abs_path .= '/'.$dir;
+
+    return $abs_path;
+}
+
+sub url2layers {
+    my ($url) = @_;
+    my $layers;
+
+    $url =~ s/^http\:\/\///;       # http://aa/bb.html -> aa/bb.html
+    $url =~ s/^(.+?)(?:\?|\&)/\1/; # bb.html?foo1=bar1&foo2=bar2 -> bb.html
+    $url =~ s/^(.+?)([^\/]*)$/\1/; # aa/bb.html -> aa/
+
+    push @$layers, split('/', $url);
+    
+    return $layers;
 }
 
 sub text2div {
@@ -1020,7 +1081,6 @@ sub Get_Source_String {
 
     return ($input_string, $url);
 }
-
 
 
 1;

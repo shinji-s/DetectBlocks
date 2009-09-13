@@ -26,7 +26,7 @@ binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs');
 
 my $DetectBlocks = new DetectBlocks2(\%opt);
 
