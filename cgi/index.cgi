@@ -252,6 +252,7 @@ if ($url || ($topic && $docno)) {
 	print qq(<a href="$orig_encode_url" target="_blank">色なし</a>, <a href="$orig_url" target="blank">$orig_url</a>, );
 	(my $tmp_no = $docno) =~ s/\.html//;
 	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
+	$tmp_url .= '.html' if $tmp_url !~ /\.html/;
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
 	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
     } else {
