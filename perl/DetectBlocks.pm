@@ -108,7 +108,7 @@ our %BLOCK_TAGS = (
 		       );
 # あるブロック以下の全てのブロックのテキスト量が50%以下の場合に
 # まわりのインライン要素と同様に1つのmyblocknameにまとめる
-our $EXCEPTIONAL_BLOCK_TAGS = '^br$';
+our $EXCEPTIONAL_BLOCK_TAGS = '^(br|li)$';
 
 # HTMLにする際に捨てる属性
 our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
@@ -154,6 +154,8 @@ sub detectblocks{
 
     # テキストをタグ化
     $body->objectify_text;
+
+    # $body->delete_ignorable_whitespace();
 
     # 自分以下のテキストの長さを記述
     $this->attach_elem_length($body);
@@ -981,16 +983,15 @@ sub addCSSlink {
 
     # エンコードをutf-8に統一
     # <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+    # <META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
     my $flag;
     foreach my $metatag ($head->find('meta')) {
 	if ($metatag->look_down('content', qr/text\/html\;\s*charset\=(.+?)/i)) {
-	    $metatag->delete;
+	    $metatag->delete();
 	    last;
 	}
     }
     $head->push_content(['meta', {'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}]) if !$flag;
-
-
 }
 
 # 相対パスを絶対パスに変換する関数
