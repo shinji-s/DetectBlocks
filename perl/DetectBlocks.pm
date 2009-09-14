@@ -723,7 +723,8 @@ sub attach_elem_length {
 	if ($tag eq 'img') {
 	    $length_all = length($elem->attr("alt")) if (defined $elem->attr("alt"));
 	}
-	elsif ($tag eq '~text') {
+	# ホワイトスペースは無視
+	elsif ($tag eq '~text' && $elem->attr('text') !~ /^\s+$/) {
 	    $length_all = length($elem->attr("text"));
 	}
 	else {
