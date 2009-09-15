@@ -889,13 +889,11 @@ sub detect_iteration {
 	for (my $j = 0; $j < $child_num; $j++) {
 
 	    my $k;
-	    my $flag = 0;
+	    my ($flag, $div_char) = (0, '');
 
 	    # ブロックタグをチェック
 	    for ($k = $j; $k < $j+$i; $k++){
-		if (defined $BLOCK_TAGS{$tags[$k]}){
-		    $flag = 1;
-		}
+		$flag = 1 if defined $BLOCK_TAGS{$tags[$k]};
 	    }
 	    # aの後ろに同じテキストが来る場合
 	    if ($flag == 0) {
@@ -906,6 +904,7 @@ sub detect_iteration {
 			$substrings[$k+1] eq $substrings[$k+$i+1] &&
 			($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
 			$flag = 1;
+			$div_char = ($elem->content_list)[$k+1]->attr('text');
 		    }
 		}
 	    }
@@ -918,6 +917,7 @@ sub detect_iteration {
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
 		$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
+		$elem->attr('div_char', $div_char) if $div_char;
 		last LOOP;
 	    }
 	}
