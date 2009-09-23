@@ -1,431 +1,235 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-JP">
-<title>livedoor ニュース - ＮＨＫの受信料、払うのが辛い。</title>
-<meta name="description" content="わたしは、ＮＨＫの受信料を払っている。こんな事は、わたしが子供の頃は当然の話で、近所でテレビを持っているのにＮＨＫの受信料を払っていない人は、「ずるくて心の歪んだ変人」に思われていた。しかし、今は驚くほど多くの人が、テレビを視聴しているのにＮＨＫの受信料を払っていない。">
-<meta name="keywords" lang="ja" content="NHK,受信料,日本経済,日本経済新聞,9・11">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<script language="JavaScript" type="text/javascript" src="../../../js/common.js"></script>
-<link href="../../../css/style.css" type="text/css" rel="stylesheet">
-</head>
-<body><a href="../../../index.html" name="top"></a>
-
-
-<table border="0" cellpadding="2" cellspacing="0" width="100%" style="margin:0px auto;background:#f5f5f5;border-bottom:1px solid #ccc;">
-<form method="GET" action="http://search.rd.livedoor.com/c/news/" style="margin:0px;">
-<tr>
-	<td width="33%" style="padding-left:10px;" nowrap><small><!-- print -->
-<a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1159845137&creid=1163580284&location=null&keyword=hs0000001&rcook=null&info=16782495211639968050980109" target="_top">進化したツールバーを掴め！</a>
-<!--/print --></small></td>
-	<td width="33%" style="text-align:center;" nowrap><small></small></td>
-	<td width="33%" style="color:#333333;padding-right:4px;text-align:right;" nowrap><small>livedoor検索</small><input type="hidden" name="t" value="search"><input type="search" name="q" style="width:140px;margin:0px 4px"><input type="image" src="../../../img/search_02.gif" value="検索" width="60" height="21" border="0" align="absbottom"></td>
-</tr>
-</form>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:0 auto;">
-<tr>
-	<td align="left"><a href="http://www.livedoor.com/"><img src="../../../img/logo/livedoor_logo.gif" width="95" height="31" border="0" alt="livedoor"></a><a href="../../../index.html" name="top"><img src="../../../img/logo/livedoor_news.gif" width="93" height="31" border="0" alt="ニュース" style="margin-left:2px;"></a></td>
-	<td align="right" valign="middle" style="padding-right:10px;color:#656565"><small>最新ニュース！クリックするほどよく分かる&nbsp;｜&nbsp;<a href="http://www.livedoor.com/">livedoor</a>&nbsp;｜&nbsp;<a href="http://helpguide.livedoor.com/help/news/index">ヘルプ</a></small></td>
-</tr>
-</table>
-
-
-
-<div align="center" style="margin-top:5px;">
-<a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1159681665&creid=1162197334&location=null&keyword=hs0002106&rcook=null&info=16782495211639968051100094" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1159681665/1162197334/728-90.gif" width="728" height="90" alt="" style="border:0;"></a>
-
-
-</div>
-
-
-
-<table border="0" cellpadding="3" cellspacing="0" width="100%" bgcolor="#545975" style="margin-top:15px;">
-
-<form action="http://news.livedoor.com/webapp/journal/search_picture" method="GET">
-<tr>
-	<td style="padding-left:5px;" nowrap><font color="#ffffff"><strong>ホットニュース：
-11月20日（月）13時20分更新
-</strong></font></td>
-	<td width="100%" align="right"><input type="TEXT" name="word" value="" style="width:130px;">
-	</td>
-	<td><select name="picture">
-		<option value="0" selected>記事</option>
-		<option value="1">写真</option>
-	</select></td>
-	<td ><input type="submit" value="検索"></td>
-</tr>
-</form>
-</table>
-
-<table border="0" cellpadding="3" cellspacing="0" width="100%" align="center" style="background:#ffffff url(/img/navi_bg.gif) repeat-x 0 0;">
-<tr>
-	<td width="43%" align="center">&nbsp;</td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../../../index.html">トップ</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../topics/index.html">トピックス</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;" class="tab"><small><a href="../hot_news.html" class="black">ホットニュース</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../cid__8/middle_category.html">国内</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../cid__41/middle_category.html">海外</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../cid__11/middle_category.html">経済</a></small></td>
-	<td width="2%" nowrap align="center" style="padding:5px 6px;"><small><a href="../cid__46/middle_category.html">芸能</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../cid__5/middle_category.html">スポーツ</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="http://computers.news.livedoor.com/">コンピューター</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../area.html">地域</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../picture.html">写真</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../../stream/index.html">動画</a></small></td>
-	<td width="1%" nowrap align="center" style="padding:5px 6px;"><small><a href="../../../magazine/index.html">雑誌</a></small></td>
-	<td width="43%" align="center">&nbsp;</td>
-</tr>
-</table>
-
-
-
-<!-- ホットニュース -->
-<div align="center" style="padding:5px 5px 10px;"><small><a href="../cid__34/vender.html">ライブドア</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="../cid__38/category.html">PJニュース</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="../cid__43/category.html" class="black">PJオピニオン</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="../cid__46/vender.html">ファンキー通信</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="../blog_news.html">Blog</a></small></div>
-
-<!-- 国内 -->
-
-
-
-
-
-
-
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%" id="container">
-<tr>
-	<td valign="top" id="maincont">
-	<div class="ttl"><small>PJオピニオン</small></div>
-	
-<div style="height:20px;"></div>
-
-
-	<h1 style="font-size:24px;margin:0 7px 20px;">ＮＨＫの受信料、払うのが辛い。</h1>
-	
-	<div style="line-height:135%;margin:0 7px;">【ＰＪニュース　10月08日】− わたしは、ＮＨＫの受信料を払っている。こんな事は、わたしが子供の頃は当然の話で、近所でテレビを持っているのにＮＨＫの受信料を払っていない人は、「ずるくて心の歪んだ変人」に思われていた。しかし、今は驚くほど多くの人が、テレビを視聴しているのにＮＨＫの受信料を払っていない。これは、世の中に「ずるくて心の歪んだ変人」が増えたということでは説明がつかない。<br><br>　10月６日の日本経済新聞朝刊に「ＮＨＫ、不払いに法的措置」という見出しで、ＮＨＫが受信料不払いの契約者に強硬策を取るという記事が掲載された。記事によると、全国でＮＨＫと受信契約を結ぶ世帯・事業所は今年３月時点で約3618万件で、このうち約361万件が不払いという。<br><br>　なんと、契約者の一割も不払いなのかと驚いたが、もっとひどい事に、契約そのものをしていない世帯・事業所が全国で989万件にのぼるという。つまり、全国の4607万世帯・事業所の中でＮＨＫに受信料を払っているのは、3257万件で、約30％の世帯・事業所が受信料を払わずにテレビを視聴していることになる。これは異常だ。あまりに不公平だ。<br><br>　放送法第32条では、「協会の放送を受信することのできる受信設備を設置した者は、協会とその放送の受信についての契約をしなければならない」となっており、ＮＨＫのみ受信できないテレビでもない限り、テレビを持っている世帯・事業所はＮＨＫと受信契約をしなければならず、契約をすれば受信料を払わないといけないことになってくる。しかし、受信料支払い義務があいまいで罰則も無いから、数多くの民放が受信料無しで視聴できる現状では、受信料を払いたくない人が多く出てきて当然だと感じる。これは、時代の変化に合わせた法改正ができていないという事だろう。<br><br>　わたしは、ＮＨＫは必要だと考えている。公共放送としてふさわしいかどうか疑問を感じる事もあるが、商業ベースの民放では無理な番組も多い。また、災害時の報道は頼りになると感じるし、年間を通して考えてみると受信料分は視聴していると思う。<br><br>　しかし、やはりＮＨＫは怠慢だと強く感じる。全国で30％もの世帯・事業所が受信料を払っていない現状を作った責任は大きい。不払いの契約者の中で、ＮＨＫの不祥事を理由にしている契約者が現在112万件も居るという。法的措置もいいが、例えばチャンネル数を減らすとか、民間企業がやるような事業の見直しやリストラなど、その前にやるべき事が山ほどあるのではないか。現状で強硬策は理解が得られないのではないか。むしろ、反発が多く出ると思う。なんだか、受信料の口座振替を停止したくなってきた。【了】<br><br>■関連情報<br><a href="http://www.pjnews.net/index.php">ＰＪニュース.net</a><br clear="all" style="clear:all;">
 
 	
-	
-	<br>※この記事は、ＰＪ個人の文責によるもので、法人としてのライブドアの見解・意向を示すものではありません。また、ＰＪニュースはライブドアのニュース部門、ライブドア・ニュースとは無関係です。<br><br>
-	パブリック・ジャーナリスト　葦乃原 光晴【東京都】<br>
-	<a href="../../inquiry/input@id=2543921&amp;t=ＮＨＫの受信料、払うのが辛い。.html">この記事に関するお問い合わせ</a><br>
-	<div style="text-align:right;"><img src="../../../img/yaji_l.gif" widtrh="12" height="12" border="0" align="absmiddle" alt="" style="margin-right:3px;"><a href="../../project/index.html">パブリック・ジャーナリスト募集</a></div>
-
-	
-	</div>
-
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:20px;">
-	<tr>
-		<td>2006年10月08日08時03分</td>
-		<td align="right">
-<a href="../cid__40/vender.html">PJ</a>
-／ <a href="../vender_list.html">提供元一覧</a></td>
-	</tr>
-	</table>
-
-	<div style="line-height:135%;padding:5px 10px;border:2px solid #949494;margin:10px 0;">[PR]&nbsp;<a href=http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1163752812&creid=1163752846&location=null&keyword=hs0003549&rcook=null&info=16782495611639968050860110 target=_blank>【特集】高限度額・低金利≫安心！＼オススメ６社／［簡単比較］</a><br>[PR]&nbsp;<a href=http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1163753287&creid=1163753287&location=null&keyword=hs0003550&rcook=null&info=16782495111639968051390104 target=_blank>■■特別取材■■　大阪の２５歳億万長者は、平凡なサラリーマン？</a></div>
-
-	
-	<div style="text-align:right;"><small><a href="../../trackback/tb_list@id=2543921.html">トラックバック(7)</a>｜<a href="http://clip.livedoor.com/redirect?link=http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail&title=%EF%BC%AE%EF%BC%A8%EF%BC%AB%E3%81%AE%E5%8F%97%E4%BF%A1%E6%96%99%E3%80%81%E6%89%95%E3%81%86%E3%81%AE%E3%81%8C%E8%BE%9B%E3%81%84%E3%80%82">クリップ</a><a href="http://clip.livedoor.com/page/http://news.livedoor.com/webapp/journal/cid__2543921/detail"><img src="http://image.clip.livedoor.com/counter/http://news.livedoor.com/webapp/journal/cid__2543921/detail" border="0" style="vertical-align:middle;margin-left:5px;"></a></small></div>
-	<table border="0" cellpadding="0" cellspacing="0" align="center" style="background:#f3f3f3;padding:10px;margin-top:10px;">
-	<tr>
-		<th><small><a href="http://cms.blog.livedoor.com/cms/article/add?b=%3Ca%20href%3D%22http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail%22%3Elivedoor%20%A5%CB%A5%E5%A1%BC%A5%B9%3C%2Fa%3E%3Cbr%20%2F%3E&amp;bm=1&amp;f=%24body%24&amp;l=http%3A%2F%2Fnews.livedoor.com%2Ftrackback%2F2543921&amp;tb=1"><img src="../../../img/icon_blog.gif" width="17" height="17" border="0" alt="ブログに書く" style="vertical-align:middle;margin-right:5px;">ブログに書く</a><a href="http://clip.livedoor.com/redirect?link=http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail&title=%EF%BC%AE%EF%BC%A8%EF%BC%AB%E3%81%AE%E5%8F%97%E4%BF%A1%E6%96%99%E3%80%81%E6%89%95%E3%81%86%E3%81%AE%E3%81%8C%E8%BE%9B%E3%81%84%E3%80%82"><img src="../../../img/icon_clip.gif" width="17" height="17" border="0" alt="クリップする" style="vertical-align:middle;margin:0 5px 0 35px;">クリップする</a><br>
-
-		<div style="margin:7px 0;text-align:center;"><img src="../../../img/line_2.gif" width="420" height="2" border="0" alt=""></div>
-		トラックバックURL<input type="text" value="http://news.livedoor.com/trackback/2543921" style="width:295px;margin-left:5px;"></small></th>
-	</tr>
-	</table>
-
-
-
-	<div class="ttl4" style="margin-top:20px;"><small>前後の記事</small></div>
-	<table border="0" cellpadding="0" cellspacing="3">
-	
-	
-	<tr>
-		<td valign="top" style="line-height:135%;">・</td>
-		<td style="line-height:135%;">
-		<a href="../cid__2547570/detail.html">ETC車載器の取付けに1万円以上は妥当かどうか？</a>
-		<img src="../../../img/camera.gif" width="17" height="13" border="0" hspace="3" align="absmiddle" alt="">&nbsp;<small>(PJ&nbsp;9日07時57分)</small>
-		
-		</td>
-	</tr>
-	
-	
-	
-	<tr>
-		<td valign="top" style="line-height:135%;">・</td>
-		<td style="line-height:135%;">
-		<a href="../cid__2543977/detail.html">ゴキブリと人間と（下）</a>
-		&nbsp;<small>(PJ&nbsp;8日08時16分)</small>
-		
-		</td>
-	</tr>
-	
-	
-	
-	<tr>
-		<td valign="top" style="line-height:135%;">・</td>
-		<td style="line-height:135%;">
-		<a href="../cid__2543962/detail.html">善良な喫煙者のかたへ＝居酒屋、昼間レストランの喫煙</a>
-		&nbsp;<small>(PJ&nbsp;8日08時13分)</small>
-		
-		</td>
-	</tr>
-	
-	
-	
-	<tr>
-		<td valign="top" style="line-height:135%;">・</td>
-		<td style="line-height:135%;">
-		<strong>ＮＨＫの受信料、払うのが辛い。&nbsp;<small>(PJ&nbsp;8日08時03分)</small></strong>
-		
-		</td>
-	</tr>
-	
-	
-	
-	<tr>
-		<td valign="top" style="line-height:135%;">・</td>
-		<td style="line-height:135%;">
-		<a href="../cid__2543795/detail.html">堀江、村上、植草、小嶋の「無罪潔白」？</a>
-		<img src="../../../img/camera.gif" width="17" height="13" border="0" hspace="3" align="absmiddle" alt="">&nbsp;<small>(PJ&nbsp;8日06時59分)</small>
-		
-		</td>
-	</tr>
-	
-	
-	</table>
-	<div style="text-align:right;margin-bottom:10px;"><a href="../cid__43/category.html">PJオピニオン一覧</a></div>
-
-	
-
-	
-
-	<div class="ttl2" style="margin-top:10px;"><small>総合<a name="ranking">アクセスランキング</a></small></div>
-	<div class="cat"><small>
-	<a href="detail@select_id=0.html#ranking">総合</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=8.html#ranking">国内</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=41.html#ranking">海外</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=11.html#ranking">経済</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=46.html#ranking">芸能</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=5.html#ranking">スポーツ</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<a href="detail@select_id=25.html#ranking">コンピューター</a>
-	</small></div>
-
-<table border="0" cellpadding="3" cellspacing="0" width="100%" class="ttl_table">
-
-
-
-
-<tr>
-	<td align="center" nowrap><small>1
-	<img src="../../../img/icon2_up.gif" width="9" height="9" border="0" align="absmiddle" alt="" style="margin-left:1px;"></small></td>
-	<td  width="100%" style="line-height:105%;"><small><a href="../cid__2743658/detail.html">「親方日の丸」「役人天国」もう我慢できない！</a></small></td>
-</tr>
-
-
-
-<tr>
-	<td align="center" bgcolor="#f3f3f3" nowrap><small>2
-	<img src="../../../img/icon2_up.gif" width="9" height="9" border="0" align="absmiddle" alt="" style="margin-left:1px;"></small></td>
-	<td  bgcolor="#f3f3f3" width="100%" style="line-height:105%;"><small><a href="../cid__2738879/detail.html">オーマイニュース、鳥越俊太郎氏に一言ご意見！</a></small></td>
-</tr>
-
-
-
-<tr>
-	<td align="center" nowrap><small>3
-	<img src="../../../img/icon2_up.gif" width="9" height="9" border="0" align="absmiddle" alt="" style="margin-left:1px;"></small></td>
-	<td  width="100%" style="line-height:105%;"><small><a href="../cid__2735275/detail.html">地方分権の前にやるべき地方行政の浄化（下）</a></small></td>
-</tr>
-
-
-
-<tr>
-	<td align="center" bgcolor="#f3f3f3" nowrap><small>4
-	<img src="../../../img/icon2_up.gif" width="9" height="9" border="0" align="absmiddle" alt="" style="margin-left:1px;"></small></td>
-	<td  bgcolor="#f3f3f3" width="100%" style="line-height:105%;"><small><a href="../cid__2507328/detail.html">次の職業は「新庄剛志」</a></small></td>
-</tr>
-
-
-<tr>
-	<td colspan="2" align="right"><small><a href="../ranking@date_id=0.html">総合アクセスランキング一覧</a></small></td>
-</tr>
-</table>
-
-
-
-	
-	<div style="padding:3px;text-align:right;"><img src="../../../img/search.gif" width="16" height="16" border="0" align="absmiddle" alt="「NHK」をウェブ検索する" style="margin-right:3px;">「<strong><a href="http://search.livedoor.com/search/?q=NHK">NHK</a></strong>」<small>をウェブ検索する</small></div>
-	
-
-	
-
-<table border="0" cellpadding="5" cellspacing="0" width=100%" style="border:1px solid #d6d3ce;margin:10px 0;">
-<tr>
-	<th colspan="2" style="background:#d2d2d2;padding:3px 10px;text-align:left;"><small>注目の情報</small></th>
-</tr>
-<tr>
-	<th rowspan="3" style="border-right:1px solid #d6d3ce;"><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162808164&creid=1163150220&location=null&keyword=hs9000647&rcook=null&info=16782494211639968050940104" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1162808164/1163150220/hanryu_200x200.gif" width="200" height="200" alt="" style="border:0;"></a>
-</th>
-	<td style="line-height:125%;"><table border="0" cellpadding="0" cellspacing="0" style="width:340px;" align="center"><tr><td><small><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159354229&location=null&keyword=hs9000648&rcook=null&info=16782494111639968051170099" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1158230981/1159354229/60_60_01.gif" width="60" height="60" border="0" alt="" align="left" style="margin-right:5px;"></a>
-<strong><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159354229&location=null&keyword=hs9000648&rcook=null&info=16782494111639968051170099" target="_blank">ツールバーが強力に！！</a></strong><br>
-ツールバーがパワーアップしました！<br>
-天気、ニュースがリアルタイムで見れます！
-<br clear="all"></small></td></tr></table></td>
-</tr>
-<tr>
-	<td style="line-height:125%;border:solid #d6d3ce;border-width:1px 0"><table border="0" cellpadding="0" cellspacing="0" style="width:340px;" align="center"><tr><td><small><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159354080&location=null&keyword=hs9000649&rcook=null&info=16782494011639968051530098" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1158230981/1158231591/c_yawaraka.gif" width="60" height="60" border="0" alt="" align="left" style="margin-right:5px;"></a>
-<strong><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159354080&location=null&keyword=hs9000649&rcook=null&info=16782494011639968051530098" target="_blank">やわらか戦車 退却司令室！</a></strong><br>
-話題沸騰のやわらか戦車！<br>
-最新情報はこちらでゲット！<br clear="all"></small></td></tr></table></td>
-</tr>
-<tr>
-	<td style="line-height:125%;"><table border="0" cellpadding="0" cellspacing="0" style="width:340px;" align="center"><tr><td><small><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159353580&location=null&keyword=hs9000650&rcook=null&info=16782494311639968051030096" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1158230981/1159353580/hiramatsu.gif" width="60" height="60" border="0" alt="" align="left" style="margin-right:5px;"></a>
-<strong><a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&creid=1159353580&location=null&keyword=hs9000650&rcook=null&info=16782494311639968051030096" target="_blank">ひらまっちゃんラジオ</a></strong><br>
-ライブドア社長、平松<br>
-庚三によるラジオ番組
-<br clear="all"></small></td></tr></table></td>
-</tr>
-</table>
-
-
-	<div align="right" style="margin-top:10px;"><font size="-2"><a href="detail.html#top">このページの上へ▲</a></font></div>
-	</td>
-	<td valign="top" width="220" id="mainright">
-	
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #8d9190;margin-bottom:10px;">
-<tr>
-	<th style="background:#d2d2d2;padding:3px;"><small>PR</small></th>
-</tr>
-<tr>
-	<th style="background:#efefef;padding:5px 0;"><script language="JavaScript" type="text/javascript">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<title>livedoor ニュース - ＮＨＫの受信料、払うのが辛い。</title>
+		<meta content="わたしは、ＮＨＫの受信料を払っている。こんな事は、わたしが子供の頃は当然の話で、近所でテレビを持っているのにＮＨＫの受信料を払っていない人は、「ずるくて心の歪んだ変人」に思われていた。しかし、今は驚くほど多くの人が、テレビを視聴しているのにＮＨＫの受信料を払っていない。" name="description">
+		<meta content="NHK,受信料,日本経済,日本経済新聞,9・11" name="keywords" lang="ja">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<script language="JavaScript" src="../../../js/common.js" type="text/javascript"></script>
+		<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+	</head><body myoffsetwidth="958" myoffsetheight="2317" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="8" href="../../../index.html" name="top"></a><table myoffsetwidth="958" myoffsetheight="31" myoffsetleft="8" myoffsettop="8" style="border-bottom: 1px solid rgb(204, 204, 204); margin: 0px auto; background: rgb(245, 245, 245) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" border="0" cellpadding="2" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="30" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="958" myoffsetheight="4" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="319" myoffsetheight="4" myoffsetleft="0" myoffsettop="0">
+					<form myoffsetwidth="315" myoffsetheight="0" myoffsetleft="2" myoffsettop="2" action="http://search.rd.livedoor.com/c/news/" method="GET" style="margin: 0px;">
+					</form>
+				</td>
+			</tr>
+			<tr myoffsetwidth="958" myoffsetheight="26" myoffsetleft="0" myoffsettop="4">
+				<td myoffsetwidth="319" myoffsetheight="26" myoffsetleft="0" myoffsettop="4" style="padding-left: 10px;" width="33%" nowrap="nowrap"><small myoffsetwidth="157" myoffsetheight="14" myoffsetleft="10" myoffsettop="6"> <a myoffsetwidth="157" myoffsetheight="14" myoffsetleft="10" myoffsettop="6" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1159845137&amp;creid=1163580284&amp;location=null&amp;keyword=hs0000001&amp;rcook=null&amp;info=16782495211639968050980109" target="_top">進化したツールバーを掴め！</a> </small></td>
+				<td myoffsetwidth="319" myoffsetheight="26" myoffsetleft="319" myoffsettop="4" style="text-align: center;" width="33%" nowrap="nowrap"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="160" myoffsettop="13"></small></td>
+				<td myoffsetwidth="319" myoffsetheight="26" myoffsetleft="639" myoffsettop="4" style="color: rgb(51, 51, 51); padding-right: 4px; text-align: right;" width="33%" nowrap="nowrap"><small myoffsetwidth="70" myoffsetheight="14" myoffsetleft="37" myoffsettop="6">livedoor検索</small><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="t" value="search" type="hidden"><input myoffsetwidth="140" myoffsetheight="22" myoffsetleft="111" myoffsettop="2" name="q" style="margin: 0px 4px; width: 140px;" type="search"><input myoffsetwidth="60" myoffsetheight="21" myoffsetleft="255" myoffsettop="3" src="../../../img/search_02.gif" value="検索" width="60" align="absbottom" border="0" height="21" type="image"></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="958" myoffsetheight="31" myoffsetleft="8" myoffsettop="39" style="margin: 0pt auto;" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="31" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="958" myoffsetheight="31" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="331" myoffsetheight="31" myoffsetleft="0" myoffsettop="0" align="left"><a myoffsetwidth="95" myoffsetheight="14" myoffsetleft="0" myoffsettop="17" href="http://www.livedoor.com/"><img myoffsetwidth="95" myoffsetheight="31" myoffsetleft="0" myoffsettop="0" alt="livedoor" src="../../../img/logo/livedoor_logo.gif" width="95" border="0" height="31"></a><a myoffsetwidth="95" myoffsetheight="14" myoffsetleft="95" myoffsettop="17" href="../../../index.html" name="top"><img myoffsetwidth="93" myoffsetheight="31" myoffsetleft="97" myoffsettop="0" alt="ニュース" src="../../../img/logo/livedoor_news.gif" style="margin-left: 2px;" width="93" border="0" height="31"></a></td>
+				<td myoffsetwidth="627" myoffsetheight="31" myoffsetleft="331" myoffsettop="0" style="padding-right: 10px; color: rgb(101, 101, 101);" valign="middle" align="right"><small myoffsetwidth="350" myoffsetheight="14" myoffsetleft="267" myoffsettop="9">最新ニュース！クリックするほどよく分かる&nbsp;｜&nbsp;<a myoffsetwidth="44" myoffsetheight="14" myoffsetleft="516" myoffsettop="9" href="http://www.livedoor.com/">livedoor</a>&nbsp;｜&nbsp;<a myoffsetwidth="36" myoffsetheight="14" myoffsetleft="581" myoffsettop="9" href="http://helpguide.livedoor.com/help/news/index">ヘルプ</a></small></td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="958" myoffsetheight="90" myoffsetleft="8" myoffsettop="75" style="margin-top: 5px;" align="center"><a myoffsetwidth="728" myoffsetheight="14" myoffsetleft="123" myoffsettop="151" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1159681665&amp;creid=1162197334&amp;location=null&amp;keyword=hs0002106&amp;rcook=null&amp;info=16782495211639968051100094" target="_blank"><img myoffsetwidth="728" myoffsetheight="90" myoffsetleft="123" myoffsettop="75" alt="" src="http://image.adv.livedoor.com/IMG/1159681665/1162197334/728-90.gif" style="border: 0pt none ;" width="728" height="90"></a></div>
+		<table myoffsetwidth="958" myoffsetheight="52" myoffsetleft="8" myoffsettop="180" style="margin-top: 15px;" width="100%" bgcolor="#545975" border="0" cellpadding="3" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="52" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="958" myoffsetheight="22" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="333" myoffsetheight="22" myoffsetleft="0" myoffsettop="0">
+					<form myoffsetwidth="327" myoffsetheight="0" myoffsetleft="3" myoffsettop="3" action="http://news.livedoor.com/webapp/journal/search_picture" method="GET">
+					</form>
+				</td>
+			</tr>
+			<tr myoffsetwidth="958" myoffsetheight="30" myoffsetleft="0" myoffsettop="22">
+				<td myoffsetwidth="333" myoffsetheight="30" myoffsetleft="0" myoffsettop="22" style="padding-left: 5px;" nowrap="nowrap"><font myoffsetwidth="325" myoffsetheight="17" myoffsetleft="5" myoffsettop="6" color="#ffffff"><strong myoffsetwidth="325" myoffsetheight="17" myoffsetleft="5" myoffsettop="6">ホットニュース： 11月20日（月）13時20分更新 </strong></font></td>
+				<td myoffsetwidth="510" myoffsetheight="30" myoffsetleft="333" myoffsettop="22" width="100%" align="right"><input myoffsetwidth="130" myoffsetheight="22" myoffsetleft="377" myoffsettop="4" name="word" style="width: 130px;" value="" type="TEXT"></td>
+				<td myoffsetwidth="59" myoffsetheight="30" myoffsetleft="843" myoffsettop="22"><select myoffsetwidth="53" myoffsetheight="20" myoffsetleft="3" myoffsettop="5" name="picture"><option myoffsetwidth="51" myoffsetheight="16" myoffsetleft="5" myoffsettop="6" selected="selected" value="0">記事</option>
+						<option myoffsetwidth="51" myoffsetheight="16" myoffsetleft="5" myoffsettop="22" value="1">写真</option></select></td>
+				<td myoffsetwidth="56" myoffsetheight="30" myoffsetleft="902" myoffsettop="22"><input myoffsetwidth="50" myoffsetheight="24" myoffsetleft="3" myoffsettop="3" value="検索" type="submit"></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="958" myoffsetheight="26" myoffsetleft="8" myoffsettop="231" style="background: rgb(255, 255, 255) url(/img/navi_bg.gif) repeat-x scroll 0pt 0pt; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="center" border="0" cellpadding="3" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="26" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="958" myoffsetheight="26" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="157" myoffsetheight="26" myoffsetleft="0" myoffsettop="0" width="43%" align="center">&nbsp;</td>
+				<td myoffsetwidth="41" myoffsetheight="26" myoffsetleft="157" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="29" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="29" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../../../index.html">トップ</a></small></td>
+				<td myoffsetwidth="63" myoffsetheight="26" myoffsetleft="198" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="51" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="51" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../topics/index.html">トピックス</a></small></td>
+				<td myoffsetwidth="88" myoffsetheight="26" myoffsetleft="261" myoffsettop="0" class="tab" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="76" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="76" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" class="black" href="../hot_news.html">ホットニュース</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="349" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../cid__8/middle_category.html">国内</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="387" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../cid__41/middle_category.html">海外</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="425" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../cid__11/middle_category.html">経済</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="463" myoffsettop="0" style="padding: 5px 6px;" width="2%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../cid__46/middle_category.html">芸能</a></small></td>
+				<td myoffsetwidth="59" myoffsetheight="26" myoffsetleft="501" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="47" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="47" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../cid__5/middle_category.html">スポーツ</a></small></td>
+				<td myoffsetwidth="89" myoffsetheight="26" myoffsetleft="560" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="77" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="http://computers.news.livedoor.com/">コンピューター</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="649" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../area.html">地域</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="687" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../picture.html">写真</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="725" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../../stream/index.html">動画</a></small></td>
+				<td myoffsetwidth="38" myoffsetheight="26" myoffsetleft="763" myoffsettop="0" style="padding: 5px 6px;" width="1%" align="center" nowrap="nowrap"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="6" myoffsettop="6" href="../../../magazine/index.html">雑誌</a></small></td>
+				<td myoffsetwidth="157" myoffsetheight="26" myoffsetleft="801" myoffsettop="0" width="43%" align="center">&nbsp;</td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="958" myoffsetheight="31" myoffsetleft="8" myoffsettop="257" style="padding: 5px 5px 10px;" align="center"><small myoffsetwidth="381" myoffsetheight="14" myoffsetleft="297" myoffsettop="263"><a myoffsetwidth="52" myoffsetheight="14" myoffsetleft="297" myoffsettop="263" href="../cid__34/vender.html">ライブドア</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a myoffsetwidth="61" myoffsetheight="14" myoffsetleft="372" myoffsettop="263" href="../cid__38/category.html">PJニュース</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a myoffsetwidth="72" myoffsetheight="14" myoffsetleft="456" myoffsettop="263" class="black" href="../cid__43/category.html">PJオピニオン</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a myoffsetwidth="80" myoffsetheight="14" myoffsetleft="551" myoffsettop="263" href="../cid__46/vender.html">ファンキー通信</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a myoffsetwidth="24" myoffsetheight="14" myoffsetleft="654" myoffsettop="263" href="../blog_news.html">Blog</a></small></div>
+		<table myoffsetwidth="958" myoffsetheight="1811" myoffsetleft="8" myoffsettop="287" id="container" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="1811" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="958" myoffsetheight="1811" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="738" myoffsetheight="1811" myoffsetleft="0" myoffsettop="0" id="maincont" valign="top">
+					<div myoffsetwidth="738" myoffsetheight="16" myoffsetleft="0" myoffsettop="0" class="ttl"><small myoffsetwidth="72" myoffsetheight="14" myoffsetleft="0" myoffsettop="1">PJオピニオン</small></div>
+					<div myoffsetwidth="738" myoffsetheight="20" myoffsetleft="0" myoffsettop="16" style="height: 20px;">
+					</div>
+					<h1 myoffsetwidth="724" myoffsetheight="29" myoffsetleft="7" myoffsettop="36" style="margin: 0pt 7px 20px; font-size: 24px;">ＮＨＫの受信料、払うのが辛い。</h1>
+					<div myoffsetwidth="724" myoffsetheight="864" myoffsetleft="7" myoffsettop="84" style="margin: 0pt 7px; line-height: 135%;">【ＰＪニュース　10月08日】− わたしは、ＮＨＫの受信料を払っている。こんな事は、わたしが子供の頃は当然の話で、近所でテレビを持っているのにＮＨＫの受信料を払っていない人は、「ずるくて心の歪んだ変人」に思われていた。しかし、今は驚くほど多くの人が、テレビを視聴しているのにＮＨＫの受信料を払っていない。これは、世の中に「ずるくて心の歪んだ変人」が増えたということでは説明がつかない。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="549" myoffsettop="166">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="171">　10月６日の日本経済新聞朝刊に「ＮＨＫ、不払いに法的措置」という見出しで、ＮＨＫが受信料不払いの契約者に強硬策を取るという記事が掲載された。記事によると、全国でＮＨＫと受信契約を結ぶ世帯・事業所は今年３月時点で約3618万件で、このうち約361万件が不払いという。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="439" myoffsettop="252">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="257">　なんと、契約者の一割も不払いなのかと驚いたが、もっとひどい事に、契約そのものをしていない世帯・事業所が全国で989万件にのぼるという。つまり、全国の4607万世帯・事業所の中でＮＨＫに受信料を払っているのは、3257万件で、約30％の世帯・事業所が受信料を払わずにテレビを視聴していることになる。これは異常だ。あまりに不公平だ。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="163" myoffsettop="360">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="365">　放送法第32条では、「協会の放送を受信することのできる受信設備を設置した者は、協会とその放送の受信についての契約をしなければならない」となっており、ＮＨＫのみ受信できないテレビでもない限り、テレビを持っている世帯・事業所はＮＨＫと受信契約をしなければならず、契約をすれば受信料を払わないといけないことになってくる。しかし、受信料支払い義務があいまいで罰則も無いから、数多くの民放が受信料無しで視聴できる現状では、受信料を払いたくない人が多く出てきて当然だと感じる。これは、時代の変化に合わせた法改正ができていないという事だろう。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="262" myoffsettop="511">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="516">　わたしは、ＮＨＫは必要だと考えている。公共放送としてふさわしいかどうか疑問を感じる事もあるが、商業ベースの民放では無理な番組も多い。また、災害時の報道は頼りになると感じるし、年間を通して考えてみると受信料分は視聴していると思う。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="236" myoffsettop="598">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="603">　しかし、やはりＮＨＫは怠慢だと強く感じる。全国で30％もの世帯・事業所が受信料を払っていない現状を作った責任は大きい。不払いの契約者の中で、ＮＨＫの不祥事を理由にしている契約者が現在112万件も居るという。法的措置もいいが、例えばチャンネル数を減らすとか、民間企業がやるような事業の見直しやリストラなど、その前にやるべき事が山ほどあるのではないか。現状で強硬策は理解が得られないのではないか。むしろ、反発が多く出ると思う。なんだか、受信料の口座振替を停止したくなってきた。【了】<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="607" myoffsettop="727">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="732">■関連情報<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="87" myoffsettop="770"><a myoffsetwidth="103" myoffsetheight="17" myoffsetleft="7" myoffsettop="778" href="http://www.pjnews.net/index.php">ＰＪニュース.net</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="110" myoffsettop="792" style="" clear="all">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="797">※この記事は、ＰＪ個人の文責によるもので、法人としてのライブドアの見解・意向を示すものではありません。また、ＰＪニュースはライブドアのニュース部門、ライブドア・ニュースとは無関係です。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="594" myoffsettop="857">
+						<br myoffsetwidth="0" myoffsetheight="22" myoffsetleft="7" myoffsettop="862"> パブリック・ジャーナリスト　葦乃原 光晴【東京都】<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="335" myoffsettop="900"><a myoffsetwidth="215" myoffsetheight="17" myoffsetleft="7" myoffsettop="908" href="../../inquiry/input@id=2543921&amp;t=%EF%BC%AE%EF%BC%A8%EF%BC%AB%E3%81%AE%E5%8F%97%E4%BF%A1%E6%96%99%E3%80%81%E6%89%95%E3%81%86%E3%81%AE%E3%81%8C%E8%BE%9B%E3%81%84%E3%80%82.html">この記事に関するお問い合わせ</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="222" myoffsettop="922">
+						<div myoffsetwidth="724" myoffsetheight="22" myoffsetleft="7" myoffsettop="927" style="text-align: right;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="531" myoffsettop="940" alt="" src="../../../img/yaji_l.gif" style="margin-right: 3px;" widtrh="12" align="absmiddle" border="0" height="12"><a myoffsetwidth="200" myoffsetheight="17" myoffsetleft="531" myoffsettop="929" href="../../project/index.html">パブリック・ジャーナリスト募集</a></div>
+					</div>
+					<table myoffsetwidth="738" myoffsetheight="19" myoffsetleft="0" myoffsettop="968" style="margin-top: 20px;" width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="738" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="738" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="432" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">2006年10月08日08時03分</td>
+							<td myoffsetwidth="306" myoffsetheight="19" myoffsetleft="432" myoffsettop="0" align="right"><a myoffsetwidth="19" myoffsetheight="17" myoffsetleft="181" myoffsettop="1" href="../cid__40/vender.html">PJ</a> ／ <a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="226" myoffsettop="1" href="../vender_list.html">提供元一覧</a></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="738" myoffsetheight="57" myoffsetleft="0" myoffsettop="998" style="border: 2px solid rgb(148, 148, 148); margin: 10px 0pt; padding: 5px 10px; line-height: 135%;">[PR]&nbsp;<a myoffsetwidth="426" myoffsetheight="17" myoffsetleft="47" myoffsettop="1007" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1163752812&amp;creid=1163752846&amp;location=null&amp;keyword=hs0003549&amp;rcook=null&amp;info=16782495611639968050860110" target="_blank">【特集】高限度額・低金利≫安心！＼オススメ６社／［簡単比較］</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="473" myoffsettop="1021"> [PR]&nbsp;<a myoffsetwidth="462" myoffsetheight="17" myoffsetleft="47" myoffsettop="1029" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1163753287&amp;creid=1163753287&amp;location=null&amp;keyword=hs0003550&amp;rcook=null&amp;info=16782495111639968051390104" target="_blank">■■特別取材■■　大阪の２５歳億万長者は、平凡なサラリーマン？</a></div>
+					<div myoffsetwidth="738" myoffsetheight="16" myoffsetleft="0" myoffsettop="1065" style="text-align: right;"><small myoffsetwidth="187" myoffsetheight="14" myoffsetleft="551" myoffsettop="1066"><a myoffsetwidth="86" myoffsetheight="14" myoffsetleft="551" myoffsettop="1066" href="../../trackback/tb_list@id=2543921.html">トラックバック(7)</a>｜<a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="650" myoffsettop="1066" href="http://clip.livedoor.com/redirect?link=http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail&amp;title=%EF%BC%AE%EF%BC%A8%EF%BC%AB%E3%81%AE%E5%8F%97%E4%BF%A1%E6%96%99%E3%80%81%E6%89%95%E3%81%86%E3%81%AE%E3%81%8C%E8%BE%9B%E3%81%84%E3%80%82">クリップ</a><a myoffsetwidth="47" myoffsetheight="12" myoffsetleft="691" myoffsettop="1068" href="http://clip.livedoor.com/page/http://news.livedoor.com/webapp/journal/cid__2543921/detail"><img myoffsetwidth="42" myoffsetheight="12" myoffsetleft="696" myoffsettop="1068" src="http://image.clip.livedoor.com/counter/http://news.livedoor.com/webapp/journal/cid__2543921/detail" style="vertical-align: middle; margin-left: 5px;" border="0"></a></small></div>
+					<table myoffsetwidth="440" myoffsetheight="75" myoffsetleft="149" myoffsettop="1090" style="padding: 10px; background: rgb(243, 243, 243) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; margin-top: 10px;" align="center" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="420" myoffsetheight="55" myoffsetleft="10" myoffsettop="10"><tr myoffsetwidth="420" myoffsetheight="55" myoffsetleft="10" myoffsettop="10">
+							<th myoffsetwidth="420" myoffsetheight="55" myoffsetleft="10" myoffsettop="10"><small myoffsetwidth="420" myoffsetheight="51" myoffsetleft="99" myoffsettop="1"><a myoffsetwidth="95" myoffsetheight="14" myoffsetleft="99" myoffsettop="1" href="http://cms.blog.livedoor.com/cms/article/add?b=%3Ca%20href%3D%22http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail%22%3Elivedoor%20%A5%CB%A5%E5%A1%BC%A5%B9%3C%2Fa%3E%3Cbr%20%2F%3E&amp;bm=1&amp;f=%24body%24&amp;l=http%3A%2F%2Fnews.livedoor.com%2Ftrackback%2F2543921&amp;tb=1"><img myoffsetwidth="17" myoffsetheight="17" myoffsetleft="99" myoffsettop="0" alt="ブログに書く" src="../../../img/icon_blog.gif" style="vertical-align: middle; margin-right: 5px;" width="17" border="0" height="17">ブログに書く</a><a myoffsetwidth="127" myoffsetheight="14" myoffsetleft="194" myoffsettop="1" href="http://clip.livedoor.com/redirect?link=http%3A%2F%2Fnews.livedoor.com%2Fwebapp%2Fjournal%2Fcid__2543921%2Fdetail&amp;title=%EF%BC%AE%EF%BC%A8%EF%BC%AB%E3%81%AE%E5%8F%97%E4%BF%A1%E6%96%99%E3%80%81%E6%89%95%E3%81%86%E3%81%AE%E3%81%8C%E8%BE%9B%E3%81%84%E3%80%82"><img myoffsetwidth="17" myoffsetheight="17" myoffsetleft="229" myoffsettop="0" alt="クリップする" src="../../../img/icon_clip.gif" style="margin: 0pt 5px 0pt 35px; vertical-align: middle;" width="17" border="0" height="17">クリップする</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="321" myoffsettop="12">
+									<div myoffsetwidth="420" myoffsetheight="2" myoffsetleft="0" myoffsettop="24" style="margin: 7px 0pt; text-align: center;"><img myoffsetwidth="420" myoffsetheight="2" myoffsetleft="0" myoffsettop="24" alt="" src="../../../img/line_2.gif" width="420" border="0" height="2"></div> トラックバックURL<input myoffsetwidth="295" myoffsetheight="22" myoffsetleft="117" myoffsettop="33" style="width: 295px; margin-left: 5px;" value="http://news.livedoor.com/trackback/2543921" type="text"></small></th>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="738" myoffsetheight="16" myoffsetleft="0" myoffsettop="1185" class="ttl4" style="margin-top: 20px;"><small myoffsetwidth="65" myoffsetheight="14" myoffsetleft="0" myoffsettop="1186">前後の記事</small></div>
+					<table myoffsetwidth="505" myoffsetheight="134" myoffsetleft="0" myoffsettop="1201" border="0" cellpadding="0" cellspacing="3">
+						<tbody myoffsetwidth="499" myoffsetheight="128" myoffsetleft="3" myoffsettop="3"><tr myoffsetwidth="499" myoffsetheight="23" myoffsetleft="3" myoffsettop="3">
+							<td myoffsetwidth="8" myoffsetheight="23" myoffsetleft="3" myoffsettop="3" style="line-height: 135%;" valign="top">・</td>
+							<td myoffsetwidth="488" myoffsetheight="23" myoffsetleft="14" myoffsettop="3" style="line-height: 135%;"><a myoffsetwidth="348" myoffsetheight="17" myoffsetleft="0" myoffsettop="2" href="../cid__2547570/detail.html">ETC車載器の取付けに1万円以上は妥当かどうか？</a> <img myoffsetwidth="17" myoffsetheight="13" myoffsetleft="356" myoffsettop="6" alt="" src="../../../img/camera.gif" width="17" align="absmiddle" border="0" height="13" hspace="3">&nbsp;<small myoffsetwidth="101" myoffsetheight="14" myoffsetleft="381" myoffsettop="5">(PJ&nbsp;9日07時57分)</small></td>
+						</tr>
+						<tr myoffsetwidth="499" myoffsetheight="23" myoffsetleft="3" myoffsettop="29">
+							<td myoffsetwidth="8" myoffsetheight="23" myoffsetleft="3" myoffsettop="29" style="line-height: 135%;" valign="top">・</td>
+							<td myoffsetwidth="488" myoffsetheight="23" myoffsetleft="14" myoffsettop="29" style="line-height: 135%;"><a myoffsetwidth="143" myoffsetheight="17" myoffsetleft="0" myoffsettop="2" href="../cid__2543977/detail.html">ゴキブリと人間と（下）</a> &nbsp;<small myoffsetwidth="101" myoffsetheight="14" myoffsetleft="153" myoffsettop="5">(PJ&nbsp;8日08時16分)</small></td>
+						</tr>
+						<tr myoffsetwidth="499" myoffsetheight="23" myoffsetleft="3" myoffsettop="55">
+							<td myoffsetwidth="8" myoffsetheight="23" myoffsetleft="3" myoffsettop="55" style="line-height: 135%;" valign="top">・</td>
+							<td myoffsetwidth="488" myoffsetheight="23" myoffsetleft="14" myoffsettop="55" style="line-height: 135%;"><a myoffsetwidth="377" myoffsetheight="17" myoffsetleft="0" myoffsettop="2" href="../cid__2543962/detail.html">善良な喫煙者のかたへ＝居酒屋、昼間レストランの喫煙</a> &nbsp;<small myoffsetwidth="101" myoffsetheight="14" myoffsetleft="387" myoffsettop="5">(PJ&nbsp;8日08時13分)</small></td>
+						</tr>
+						<tr myoffsetwidth="499" myoffsetheight="23" myoffsetleft="3" myoffsettop="81">
+							<td myoffsetwidth="8" myoffsetheight="23" myoffsetleft="3" myoffsettop="81" style="line-height: 135%;" valign="top">・</td>
+							<td myoffsetwidth="488" myoffsetheight="23" myoffsetleft="14" myoffsettop="81" style="line-height: 135%;"><strong myoffsetwidth="347" myoffsetheight="17" myoffsetleft="0" myoffsettop="2">ＮＨＫの受信料、払うのが辛い。&nbsp;<small myoffsetwidth="114" myoffsetheight="14" myoffsetleft="233" myoffsettop="5">(PJ&nbsp;8日08時03分)</small></strong></td>
+						</tr>
+						<tr myoffsetwidth="499" myoffsetheight="23" myoffsetleft="3" myoffsettop="107">
+							<td myoffsetwidth="8" myoffsetheight="23" myoffsetleft="3" myoffsettop="107" style="line-height: 135%;" valign="top">・</td>
+							<td myoffsetwidth="488" myoffsetheight="23" myoffsetleft="14" myoffsettop="107" style="line-height: 135%;"><a myoffsetwidth="273" myoffsetheight="17" myoffsetleft="0" myoffsettop="2" href="../cid__2543795/detail.html">堀江、村上、植草、小嶋の「無罪潔白」？</a> <img myoffsetwidth="17" myoffsetheight="13" myoffsetleft="281" myoffsettop="6" alt="" src="../../../img/camera.gif" width="17" align="absmiddle" border="0" height="13" hspace="3">&nbsp;<small myoffsetwidth="101" myoffsetheight="14" myoffsetleft="306" myoffsettop="5">(PJ&nbsp;8日06時59分)</small></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="738" myoffsetheight="19" myoffsetleft="0" myoffsettop="1334" style="text-align: right; margin-bottom: 10px;"><a myoffsetwidth="124" myoffsetheight="17" myoffsetleft="614" myoffsettop="1336" href="../cid__43/category.html">PJオピニオン一覧</a></div>
+					<div myoffsetwidth="738" myoffsetheight="16" myoffsetleft="0" myoffsettop="1364" class="ttl2" style="margin-top: 10px;"><small myoffsetwidth="128" myoffsetheight="14" myoffsetleft="0" myoffsettop="1364">総合<a myoffsetwidth="102" myoffsetheight="14" myoffsetleft="26" myoffsettop="1364" name="ranking">アクセスランキング</a></small></div>
+					<div myoffsetwidth="738" myoffsetheight="16" myoffsetleft="0" myoffsettop="1379" class="cat"><small myoffsetwidth="416" myoffsetheight="14" myoffsetleft="0" myoffsettop="1380"> <a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="0" myoffsettop="1380" href="detail@select_id=0.html#ranking">総合</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="53" myoffsettop="1380" href="detail@select_id=8.html#ranking">国内</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="106" myoffsettop="1380" href="detail@select_id=41.html#ranking">海外</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="159" myoffsettop="1380" href="detail@select_id=11.html#ranking">経済</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="212" myoffsettop="1380" href="detail@select_id=46.html#ranking">芸能</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="47" myoffsetheight="14" myoffsetleft="265" myoffsettop="1380" href="detail@select_id=5.html#ranking">スポーツ</a>&nbsp;&nbsp;-&nbsp;&nbsp; <a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="339" myoffsettop="1380" href="detail@select_id=25.html#ranking">コンピューター</a> </small></div>
+					<table myoffsetwidth="738" myoffsetheight="113" myoffsetleft="0" myoffsettop="1395" class="ttl_table" width="100%" border="0" cellpadding="3" cellspacing="0">
+						<tbody myoffsetwidth="738" myoffsetheight="113" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="738" myoffsetheight="23" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="27" myoffsetheight="23" myoffsetleft="0" myoffsettop="0" align="center" nowrap="nowrap"><small myoffsetwidth="21" myoffsetheight="14" myoffsetleft="3" myoffsettop="4">1 <img myoffsetwidth="9" myoffsetheight="9" myoffsetleft="15" myoffsettop="8" alt="" src="../../../img/icon2_up.gif" style="margin-left: 1px;" width="9" align="absmiddle" border="0" height="9"></small></td>
+							<td myoffsetwidth="711" myoffsetheight="23" myoffsetleft="27" myoffsettop="0" style="line-height: 105%;" width="100%"><small myoffsetwidth="250" myoffsetheight="14" myoffsetleft="3" myoffsettop="4"><a myoffsetwidth="250" myoffsetheight="14" myoffsetleft="3" myoffsettop="4" href="../cid__2743658/detail.html">「親方日の丸」「役人天国」もう我慢できない！</a></small></td>
+						</tr>
+						<tr myoffsetwidth="738" myoffsetheight="23" myoffsetleft="0" myoffsettop="23">
+							<td myoffsetwidth="27" myoffsetheight="23" myoffsetleft="0" myoffsettop="23" align="center" bgcolor="#f3f3f3" nowrap="nowrap"><small myoffsetwidth="21" myoffsetheight="14" myoffsetleft="3" myoffsettop="4">2 <img myoffsetwidth="9" myoffsetheight="9" myoffsetleft="15" myoffsettop="8" alt="" src="../../../img/icon2_up.gif" style="margin-left: 1px;" width="9" align="absmiddle" border="0" height="9"></small></td>
+							<td myoffsetwidth="711" myoffsetheight="23" myoffsetleft="27" myoffsettop="23" style="line-height: 105%;" width="100%" bgcolor="#f3f3f3"><small myoffsetwidth="268" myoffsetheight="14" myoffsetleft="3" myoffsettop="4"><a myoffsetwidth="268" myoffsetheight="14" myoffsetleft="3" myoffsettop="4" href="../cid__2738879/detail.html">オーマイニュース、鳥越俊太郎氏に一言ご意見！</a></small></td>
+						</tr>
+						<tr myoffsetwidth="738" myoffsetheight="23" myoffsetleft="0" myoffsettop="46">
+							<td myoffsetwidth="27" myoffsetheight="23" myoffsetleft="0" myoffsettop="46" align="center" nowrap="nowrap"><small myoffsetwidth="21" myoffsetheight="14" myoffsetleft="3" myoffsettop="4">3 <img myoffsetwidth="9" myoffsetheight="9" myoffsetleft="15" myoffsettop="8" alt="" src="../../../img/icon2_up.gif" style="margin-left: 1px;" width="9" align="absmiddle" border="0" height="9"></small></td>
+							<td myoffsetwidth="711" myoffsetheight="23" myoffsetleft="27" myoffsettop="46" style="line-height: 105%;" width="100%"><small myoffsetwidth="256" myoffsetheight="14" myoffsetleft="3" myoffsettop="4"><a myoffsetwidth="256" myoffsetheight="14" myoffsetleft="3" myoffsettop="4" href="../cid__2735275/detail.html">地方分権の前にやるべき地方行政の浄化（下）</a></small></td>
+						</tr>
+						<tr myoffsetwidth="738" myoffsetheight="23" myoffsetleft="0" myoffsettop="68">
+							<td myoffsetwidth="27" myoffsetheight="23" myoffsetleft="0" myoffsettop="68" align="center" bgcolor="#f3f3f3" nowrap="nowrap"><small myoffsetwidth="21" myoffsetheight="14" myoffsetleft="3" myoffsettop="4">4 <img myoffsetwidth="9" myoffsetheight="9" myoffsetleft="15" myoffsettop="8" alt="" src="../../../img/icon2_up.gif" style="margin-left: 1px;" width="9" align="absmiddle" border="0" height="9"></small></td>
+							<td myoffsetwidth="711" myoffsetheight="23" myoffsetleft="27" myoffsettop="68" style="line-height: 105%;" width="100%" bgcolor="#f3f3f3"><small myoffsetwidth="131" myoffsetheight="14" myoffsetleft="3" myoffsettop="4"><a myoffsetwidth="131" myoffsetheight="14" myoffsetleft="3" myoffsettop="4" href="../cid__2507328/detail.html">次の職業は「新庄剛志」</a></small></td>
+						</tr>
+						<tr myoffsetwidth="738" myoffsetheight="22" myoffsetleft="0" myoffsettop="91">
+							<td myoffsetwidth="738" myoffsetheight="22" myoffsetleft="0" myoffsettop="91" colspan="2" align="right"><small myoffsetwidth="154" myoffsetheight="14" myoffsetleft="581" myoffsettop="4"><a myoffsetwidth="154" myoffsetheight="14" myoffsetleft="581" myoffsettop="4" href="../ranking@date_id=0.html">総合アクセスランキング一覧</a></small></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="738" myoffsetheight="26" myoffsetleft="0" myoffsettop="1508" style="padding: 3px; text-align: right;"><img myoffsetwidth="16" myoffsetheight="16" myoffsetleft="576" myoffsettop="1514" alt="「NHK」をウェブ検索する" src="../../../img/search.gif" style="margin-right: 3px;" width="16" align="absmiddle" border="0" height="16">「<strong myoffsetwidth="33" myoffsetheight="17" myoffsetleft="603" myoffsettop="1512"><a myoffsetwidth="33" myoffsetheight="17" myoffsetleft="603" myoffsettop="1512" href="http://search.livedoor.com/search/?q=NHK">NHK</a></strong>」<small myoffsetwidth="91" myoffsetheight="14" myoffsetleft="644" myoffsettop="1515">をウェブ検索する</small></div>
+					<table myoffsetwidth="738" myoffsetheight="236" myoffsetleft="0" myoffsettop="1543" style="border: 1px solid rgb(214, 211, 206); margin: 10px 0pt;" width="100%" border="0" cellpadding="5" cellspacing="0">
+						<tbody myoffsetwidth="736" myoffsetheight="234" myoffsetleft="1" myoffsettop="1"><tr myoffsetwidth="736" myoffsetheight="22" myoffsetleft="1" myoffsettop="1">
+							<th myoffsetwidth="736" myoffsetheight="22" myoffsetleft="1" myoffsettop="1" colspan="2" style="padding: 3px 10px; background: rgb(210, 210, 210) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; text-align: left;"><small myoffsetwidth="70" myoffsetheight="14" myoffsetleft="10" myoffsettop="4">注目の情報</small></th>
+						</tr>
+						<tr myoffsetwidth="736" myoffsetheight="70" myoffsetleft="1" myoffsettop="23">
+							<th myoffsetwidth="277" myoffsetheight="212" myoffsetleft="1" myoffsettop="23" rowspan="3" style="border-right: 1px solid rgb(214, 211, 206);"><a myoffsetwidth="200" myoffsetheight="14" myoffsetleft="38" myoffsettop="192" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162808164&amp;creid=1163150220&amp;location=null&amp;keyword=hs9000647&amp;rcook=null&amp;info=16782494211639968050940104" target="_blank"><img myoffsetwidth="200" myoffsetheight="200" myoffsetleft="38" myoffsettop="6" alt="" src="http://image.adv.livedoor.com/IMG/1162808164/1163150220/hanryu_200x200.gif" style="border: 0pt none ;" width="200" height="200"></a></th>
+							<td myoffsetwidth="459" myoffsetheight="70" myoffsetleft="278" myoffsettop="23" style="line-height: 125%;">
+								<table myoffsetwidth="340" myoffsetheight="60" myoffsetleft="60" myoffsettop="5" style="width: 340px;" align="center" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><small myoffsetwidth="237" myoffsetheight="45" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="65" myoffsettop="12" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159354229&amp;location=null&amp;keyword=hs9000648&amp;rcook=null&amp;info=16782494111639968051170099" target="_blank"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="0" alt="" src="http://image.adv.livedoor.com/IMG/1158230981/1159354229/60_60_01.gif" style="margin-right: 5px;" width="60" align="left" border="0" height="60"></a> <strong myoffsetwidth="149" myoffsetheight="14" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="149" myoffsetheight="14" myoffsetleft="65" myoffsettop="1" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159354229&amp;location=null&amp;keyword=hs9000648&amp;rcook=null&amp;info=16782494111639968051170099" target="_blank">ツールバーが強力に！！</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="214" myoffsettop="12"> ツールバーがパワーアップしました！<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="266" myoffsettop="27"> 天気、ニュースがリアルタイムで見れます！ <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="302" myoffsettop="43" clear="all"></small></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="736" myoffsetheight="72" myoffsetleft="1" myoffsettop="93">
+							<td myoffsetwidth="459" myoffsetheight="72" myoffsetleft="278" myoffsettop="93" style="border-style: solid; border-color: rgb(214, 211, 206); border-width: 1px 0pt; line-height: 125%;">
+								<table myoffsetwidth="340" myoffsetheight="60" myoffsetleft="60" myoffsettop="5" style="width: 340px;" align="center" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><small myoffsetwidth="170" myoffsetheight="45" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="65" myoffsettop="12" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159354080&amp;location=null&amp;keyword=hs9000649&amp;rcook=null&amp;info=16782494011639968051530098" target="_blank"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="0" alt="" src="http://image.adv.livedoor.com/IMG/1158230981/1158231591/c_yawaraka.gif" style="margin-right: 5px;" width="60" align="left" border="0" height="60"></a> <strong myoffsetwidth="170" myoffsetheight="14" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="170" myoffsetheight="14" myoffsetleft="65" myoffsettop="1" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159354080&amp;location=null&amp;keyword=hs9000649&amp;rcook=null&amp;info=16782494011639968051530098" target="_blank">やわらか戦車 退却司令室！</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="235" myoffsettop="12"> 話題沸騰のやわらか戦車！<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="218" myoffsettop="27"> 最新情報はこちらでゲット！<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="216" myoffsettop="43" clear="all"></small></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="736" myoffsetheight="70" myoffsetleft="1" myoffsettop="165">
+							<td myoffsetwidth="459" myoffsetheight="70" myoffsetleft="278" myoffsettop="165" style="line-height: 125%;">
+								<table myoffsetwidth="340" myoffsetheight="60" myoffsetleft="60" myoffsettop="5" style="width: 340px;" align="center" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="340" myoffsetheight="60" myoffsetleft="0" myoffsettop="0"><small myoffsetwidth="122" myoffsetheight="45" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="65" myoffsettop="12" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159353580&amp;location=null&amp;keyword=hs9000650&amp;rcook=null&amp;info=16782494311639968051030096" target="_blank"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="0" alt="" src="http://image.adv.livedoor.com/IMG/1158230981/1159353580/hiramatsu.gif" style="margin-right: 5px;" width="60" align="left" border="0" height="60"></a> <strong myoffsetwidth="122" myoffsetheight="14" myoffsetleft="65" myoffsettop="1"><a myoffsetwidth="122" myoffsetheight="14" myoffsetleft="65" myoffsettop="1" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1158230981&amp;creid=1159353580&amp;location=null&amp;keyword=hs9000650&amp;rcook=null&amp;info=16782494311639968051030096" target="_blank">ひらまっちゃんラジオ</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="187" myoffsettop="12"> ライブドア社長、平松<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="178" myoffsettop="27"> 庚三によるラジオ番組 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="185" myoffsettop="43" clear="all"></small></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="738" myoffsetheight="12" myoffsetleft="0" myoffsettop="1799" style="margin-top: 10px;" align="right"><font myoffsetwidth="86" myoffsetheight="12" myoffsetleft="652" myoffsettop="1799" size="-2"><a myoffsetwidth="86" myoffsetheight="12" myoffsetleft="652" myoffsettop="1799" href="detail.html#top">このページの上へ▲</a></font></div>
+				</td>
+				<td myoffsetwidth="220" myoffsetheight="1811" myoffsetleft="738" myoffsettop="0" id="mainright" valign="top" width="220">
+					<table myoffsetwidth="220" myoffsetheight="234" myoffsetleft="0" myoffsettop="0" style="border: 1px solid rgb(141, 145, 144); margin-bottom: 10px;" width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="218" myoffsetheight="232" myoffsetleft="1" myoffsettop="1"><tr myoffsetwidth="218" myoffsetheight="22" myoffsetleft="1" myoffsettop="1">
+							<th myoffsetwidth="218" myoffsetheight="22" myoffsetleft="1" myoffsettop="1" style="padding: 3px; background: rgb(210, 210, 210) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><small myoffsetwidth="18" myoffsetheight="14" myoffsetleft="100" myoffsettop="4">PR</small></th>
+						</tr>
+						<tr myoffsetwidth="218" myoffsetheight="210" myoffsetleft="1" myoffsettop="23">
+							<th myoffsetwidth="218" myoffsetheight="210" myoffsetleft="1" myoffsettop="23" style="padding: 5px 0pt; background: rgb(239, 239, 239) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">
+								<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript">
 <!--
 ord=Math.random()*10000000000000000;
 document.write('<iframe src="http://ad.jp.doubleclick.net/adi/ld.news.rect/;sz=200x200;ord=' + ord + '?" width="200" height="200" border="0" frameborder="0" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no">');
 document.write('</iframe>');
 //-->
-</script>
-<!-- http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1161933328&creid=1161933328&location=null&keyword=hs0003358&rcook=null&info=16782494411639968051310098 -->
-</th>
-</tr>
-</table>
-	
-
-
-	
-	
-<table border="0" cellpadding="3" cellspacing="0" width="100%" style="border:1px solid #bbb;margin-bottom:5px;">
-<tr>
-	<th style="font-weight:bold;padding:5px 3px;background:#fff url(/img/grade.gif) repeat-x 0 0;text-align:left;"><small><img src="../../../img/logo/topics.gif" width="30" height="24" border="0" alt="主なトピックス" style="vertical-align:middle;">&nbsp;主なトピックス</small></th>
-</tr>
-<tr>
-	<td bgcolor="#ffffff" style="padding:3px;"><small>
-<div style="margin-bottom:6px;">・<a href="../cid__2743502/topics_detail.html">社員一同"大歓迎"のTOBとは</a></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2744340/topics_detail.html">バーで露出の自衛隊員8人逮捕</a><img src="../../../img/new.gif" width="33" height="12" align="absmiddle" alt="NEW" style="margin-left:1px;"></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2743782/topics_detail.html">苦戦するヤフーの"幹部メモ"</a></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2743648/topics_detail.html">長男より次男の方が成功する?</a></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2743626/topics_detail.html">俊輔 2点に絡み監督ベタ褒め</a></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2743495/topics_detail.html">竹内結子の暴走に梨園が激怒</a></div>
-
-
-<div style="margin-bottom:6px;">・<a href="../cid__2743750/topics_detail.html">友近 AVまがいの禁断黒ビキニ</a><img src="../../../img/new.gif" width="33" height="12" align="absmiddle" alt="NEW" style="margin-left:1px;"></div>
-
-
-<div align="right"><a href="../topics/index.html">トピックス一覧</a></div></small></td>
-</tr>
-</table>
-<div class="ttl_line"><small>気になるトピックス</small></div>
-<table border="0" cellpadding="5" cellspacing="0" width="100%" class="cont_line">
-<tr>	
-	<td style="line-height:125%;"><small>
-
-<div id="note-1" style="display:none">
-
-<A HREF="../cid__2743594/topics_detail.html">
-<img src="http://image.news.livedoor.com/newsimage/note/n/c/notebcb6f2cdfcef8c48243335c5925a.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="アヴリル、待望の新曲" title="アヴリル、待望の新曲" />
-</A>
-
-<strong><A HREF="../cid__2743594/topics_detail.html">アヴリル、待望の新曲</A></strong><br />
-新曲が映画"エラゴン　遺志を継ぐ者"の主題歌に起用されることがわかった。<br clear="all">
-</div>
-
-<div id="note-2" style="display:none">
-
-<A HREF="../cid__2742992/topics_detail.html">
-<img src="http://image.news.livedoor.com/newsimage/note/n/3/note2322e61c64e8f5a69d7679686b07.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="巨人・小笠原誕生" title="巨人・小笠原誕生" />
-</A>
-
-<strong><A HREF="../cid__2742992/topics_detail.html">巨人・小笠原誕生</A></strong><br />
-大社啓二オーナーに巨人移籍への思いを伝えていたことが判明。<br clear="all">
-</div>
-
-<div id="note-3" style="display:none">
-
-<A HREF="../cid__2743000/topics_detail.html">
-<img src="http://image.news.livedoor.com/newsimage/note/n/4/noteb47853d06c81d3f46512ad0b3aa8.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="HGの"昇天新技"" title="HGの"昇天新技"" />
-</A>
-
-<strong><A HREF="../cid__2743000/topics_detail.html">HGの"昇天新技"</A></strong><br />
-高田総統の公開会見にHGが乱入。<br clear="all">
-</div>
-
-<div id="note-4" style="display:none">
-
-<A HREF="../cid__2743064/topics_detail.html">
-<img src="http://image.news.livedoor.com/newsimage/note/n/8/notea8d09c3e34dc63e5dd9868935ddc.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="Qちゃん失速" title="Qちゃん失速" />
-</A>
-
-<strong><A HREF="../cid__2743064/topics_detail.html">Qちゃん失速</A></strong><br />
-34歳高橋尚子、引退説を全面否定。<br clear="all">
-</div>
-
-<div id="note-5" style="display:none">
-
-<A HREF="../cid__2743604/topics_detail.html">
-<img src="http://image.news.livedoor.com/newsimage/note/n/6/note86fdae387a660b3a16e521cd8bc5.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="松坂が代理人と初会談" title="松坂が代理人と初会談" />
-</A>
-
-<strong><A HREF="../cid__2743604/topics_detail.html">松坂が代理人と初会談</A></strong><br />
-有名代理人と破格のVIP契約への準備を整えた。<br clear="all">
-</div>
-
-<div id="note-6" style="display:none">
-
-<A HREF="http://carlife.news.livedoor.com/event/beijing_detail?id=29708">
-<img src="http://image.news.livedoor.com/newsimage/note/n/4/note044510c9919bc1b132e49665444a.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="日本人記者を無視！" title="日本人記者を無視！" />
-</A>
-
-<strong><A HREF="http://carlife.news.livedoor.com/event/beijing_detail?id=29708">日本人記者を無視！</A></strong><br />
-長城（グレートウォール）が新旧"bB"を合体。<br clear="all">
-</div>
-
-<div id="note-7" style="display:none">
-
-<A HREF="http://carlife.news.livedoor.com/topics/detail?id=29711">
-<img src="http://image.news.livedoor.com/newsimage/note/n/c/note9c1e78ea8dc766e5389bba975e86.jpg" width="80" border="0" align="left" style="margin:0 5px 5px 0;" class="thumbnail" alt="魅惑&洗練&高性能" title="魅惑&洗練&高性能" />
-</A>
-
-<strong><A HREF="http://carlife.news.livedoor.com/topics/detail?id=29711">魅惑&洗練&高性能</A></strong><br />
-日産が12代目スカイラインを発表<br clear="all">
-</div>
-
-
-<script language="javascript">
+</script><iframe myoffsetwidth="200" myoffsetheight="200" myoffsetleft="9" myoffsettop="5" src="http://ad.jp.doubleclick.net/adi/ld.news.rect/;sz=200x200;ord=8094576663786933?" border="0" marginwidth="0" marginheight="0" hspace="0" vspace="0" width="200" frameborder="0" height="200" scrolling="no"></iframe>
+							</th>
+						</tr>
+					</tbody></table>
+					<table myoffsetwidth="220" myoffsetheight="221" myoffsetleft="0" myoffsettop="244" style="border: 1px solid rgb(187, 187, 187); margin-bottom: 5px;" width="100%" border="0" cellpadding="3" cellspacing="0">
+						<tbody myoffsetwidth="218" myoffsetheight="219" myoffsetleft="1" myoffsettop="1"><tr myoffsetwidth="218" myoffsetheight="34" myoffsetleft="1" myoffsettop="1">
+							<th myoffsetwidth="218" myoffsetheight="34" myoffsetleft="1" myoffsettop="1" style="padding: 5px 3px; background: rgb(255, 255, 255) url(/img/grade.gif) repeat-x scroll 0pt 0pt; font-weight: bold; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; text-align: left;"><small myoffsetwidth="118" myoffsetheight="14" myoffsetleft="3" myoffsettop="9"><img myoffsetwidth="30" myoffsetheight="24" myoffsetleft="3" myoffsettop="5" alt="主なトピックス" src="../../../img/logo/topics.gif" style="vertical-align: middle;" width="30" border="0" height="24">&nbsp;主なトピックス</small></th>
+						</tr>
+						<tr myoffsetwidth="218" myoffsetheight="185" myoffsetleft="1" myoffsettop="35">
+							<td myoffsetwidth="218" myoffsetheight="185" myoffsetleft="1" myoffsettop="35" style="padding: 3px;" bgcolor="#ffffff"><small myoffsetwidth="212" myoffsetheight="179" myoffsetleft="3" myoffsettop="3"><div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="3" style="margin-bottom: 6px;">・<a myoffsetwidth="166" myoffsetheight="14" myoffsetleft="10" myoffsettop="4" href="../cid__2743502/topics_detail.html">社員一同"大歓迎"のTOBとは</a></div>
+									<div myoffsetwidth="212" myoffsetheight="28" myoffsetleft="3" myoffsettop="25" style="margin-bottom: 6px;">・<a myoffsetwidth="174" myoffsetheight="14" myoffsetleft="10" myoffsettop="25" href="../cid__2744340/topics_detail.html">バーで露出の自衛隊員8人逮捕</a><img myoffsetwidth="33" myoffsetheight="12" myoffsetleft="4" myoffsettop="40" alt="NEW" src="../../../img/new.gif" style="margin-left: 1px;" width="33" align="absmiddle" height="12"></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="58" style="margin-bottom: 6px;">・<a myoffsetwidth="157" myoffsetheight="14" myoffsetleft="10" myoffsettop="59" href="../cid__2743782/topics_detail.html">苦戦するヤフーの"幹部メモ"</a></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="80" style="margin-bottom: 6px;">・<a myoffsetwidth="167" myoffsetheight="14" myoffsetleft="10" myoffsettop="81" href="../cid__2743648/topics_detail.html">長男より次男の方が成功する?</a></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="101" style="margin-bottom: 6px;">・<a myoffsetwidth="161" myoffsetheight="14" myoffsetleft="10" myoffsettop="102" href="../cid__2743626/topics_detail.html">俊輔 2点に絡み監督ベタ褒め</a></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="123" style="margin-bottom: 6px;">・<a myoffsetwidth="168" myoffsetheight="14" myoffsetleft="10" myoffsettop="124" href="../cid__2743495/topics_detail.html">竹内結子の暴走に梨園が激怒</a></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="145" style="margin-bottom: 6px;">・<a myoffsetwidth="169" myoffsetheight="14" myoffsetleft="10" myoffsettop="145" href="../cid__2743750/topics_detail.html">友近 AVまがいの禁断黒ビキニ</a><img myoffsetwidth="33" myoffsetheight="12" myoffsetleft="180" myoffsettop="147" alt="NEW" src="../../../img/new.gif" style="margin-left: 1px;" width="33" align="absmiddle" height="12"></div>
+									<div myoffsetwidth="212" myoffsetheight="16" myoffsetleft="3" myoffsettop="166" align="right"><a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="138" myoffsettop="167" href="../topics/index.html">トピックス一覧</a></div></small></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="220" myoffsetheight="16" myoffsetleft="0" myoffsettop="469" class="ttl_line"><small myoffsetwidth="99" myoffsetheight="14" myoffsetleft="0" myoffsettop="470">気になるトピックス</small></div>
+					<table myoffsetwidth="220" myoffsetheight="95" myoffsetleft="0" myoffsettop="485" class="cont_line" width="100%" border="0" cellpadding="5" cellspacing="0">
+						<tbody myoffsetwidth="220" myoffsetheight="95" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="220" myoffsetheight="95" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="220" myoffsetheight="95" myoffsetleft="0" myoffsettop="0" style="line-height: 125%;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="5"></small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-1" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743594/topics_detail.html"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="アヴリル、待望の新曲" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/c/notebcb6f2cdfcef8c48243335c5925a.jpg" style="margin: 0pt 5px 5px 0pt;" title="アヴリル、待望の新曲" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743594/topics_detail.html">アヴリル、待望の新曲</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 新曲が映画"エラゴン　遺志を継ぐ者"の主題歌に起用されることがわかった。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="5">									</small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-2" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2742992/topics_detail.html"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="巨人・小笠原誕生" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/3/note2322e61c64e8f5a69d7679686b07.jpg" style="margin: 0pt 5px 5px 0pt;" title="巨人・小笠原誕生" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2742992/topics_detail.html">巨人・小笠原誕生</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 大社啓二オーナーに巨人移籍への思いを伝えていたことが判明。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="5">									</small><div myoffsetwidth="210" myoffsetheight="85" myoffsetleft="5" myoffsettop="5" id="note-3" style="display: block;"><small myoffsetwidth="117" myoffsetheight="54" myoffsetleft="90" myoffsettop="8"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="90" myoffsettop="19" href="../cid__2743000/topics_detail.html"> <img myoffsetwidth="80" myoffsetheight="80" myoffsetleft="5" myoffsettop="5" alt="HGの" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/4/noteb47853d06c81d3f46512ad0b3aa8.jpg" style="margin: 0pt 5px 5px 0pt;" title="HGの" 昇天新技="" width="80" align="left" border="0"> </a> <strong myoffsetwidth="105" myoffsetheight="14" myoffsetleft="90" myoffsettop="8"><a myoffsetwidth="105" myoffsetheight="14" myoffsetleft="90" myoffsettop="8" href="../cid__2743000/topics_detail.html">HGの"昇天新技"</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="195" myoffsettop="19"> 高田総統の公開会見にHGが乱入。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="167" myoffsettop="59" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="90">									</small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-4" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743064/topics_detail.html"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="Qちゃん失速" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/8/notea8d09c3e34dc63e5dd9868935ddc.jpg" style="margin: 0pt 5px 5px 0pt;" title="Qちゃん失速" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743064/topics_detail.html">Qちゃん失速</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 34歳高橋尚子、引退説を全面否定。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="90">									</small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-5" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743604/topics_detail.html"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="松坂が代理人と初会談" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/6/note86fdae387a660b3a16e521cd8bc5.jpg" style="margin: 0pt 5px 5px 0pt;" title="松坂が代理人と初会談" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="../cid__2743604/topics_detail.html">松坂が代理人と初会談</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 有名代理人と破格のVIP契約への準備を整えた。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="90">									</small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-6" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="http://carlife.news.livedoor.com/event/beijing_detail?id=29708"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="日本人記者を無視！" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/4/note044510c9919bc1b132e49665444a.jpg" style="margin: 0pt 5px 5px 0pt;" title="日本人記者を無視！" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="http://carlife.news.livedoor.com/event/beijing_detail?id=29708">日本人記者を無視！</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 長城（グレートウォール）が新旧"bB"を合体。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="90">									</small><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="note-7" style="display: none;"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="http://carlife.news.livedoor.com/topics/detail?id=29711"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="魅惑&amp;洗練&amp;高性能" class="thumbnail" src="http://image.news.livedoor.com/newsimage/note/n/c/note9c1e78ea8dc766e5389bba975e86.jpg" style="margin: 0pt 5px 5px 0pt;" title="魅惑&amp;洗練&amp;高性能" width="80" align="left" border="0"> </a> <strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="http://carlife.news.livedoor.com/topics/detail?id=29711">魅惑&amp;洗練&amp;高性能</a></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"> 日産が12代目スカイラインを発表<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="90">									<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="javascript">
 <!--
         var key = Math.floor(Math.random() * 7) + 1;
         var element = document.getElementById("note-" + key);
@@ -433,67 +237,75 @@ document.write('</iframe>');
                 element.style.display = 'block';
         }
 //-->
-</script>
-</small></td>
-</tr>
-</table>
-
- 
-
-	
-	<div class="ttl_line"><small>特集</small></div><table border="0" cellpadding="5" cellspacing="0" width="100%" class="cont_line"><tr>	<td style="line-height:125%;"><a target="_top" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162892430&creid=1162892430&location=null&keyword=hs9000547&rcook=null&info=16782493711639968051260104">
-<img src="http://image.adv.livedoor.com/IMG/1162892430/1162892430/OMMG200611.gif" width="80" height="60" alt="" border="0" align="left" style="margin:0 5px 5px 0;"></a>
-<strong><small>ウエディング</small></strong><br>
-<a target="_top" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162892430&creid=1162892430&location=null&keyword=hs9000547&rcook=null&info=16782493711639968051260104">
-<small>♪結婚力診断♪<br>
-運命の人に会おう</small></a><br clear="all">	<small><div style="margin-top:10px;"><script language="javascript"><!--	var imgMax  = 5;	var imgRand = Math.floor(Math.random() * imgMax);	if(imgRand == 0)  document.write('<a href="http://ck.rd.livedoor.com/ck/spo_rnavi_01/0928/"><img src="/img/banner/sports.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://ck.rd.livedoor.com/ck/spo_rnavi_01/0928/">ガゼッタ＆マルカ<br>現地発の最新情報！</a>');	else if(imgRand == 1)  document.write('<a href="http://ck.rd.livedoor.com/ck/spo_rnavi_02/0928/"><img src="/img/banner/sports_03.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://ck.rd.livedoor.com/ck/spo_rnavi_02/0928/ ">注目画像が満載！<br>フォトギャラリー</a>');	else if(imgRand == 2)  document.write('<a href="http://sports.livedoor.com/other/volleyball/wc2006/"><img src="/img/banner/sports_02.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://sports.livedoor.com/other/volleyball/wc2006/">世界バレー2006特集<br>菅山、木村も奮闘！</a>');	else if(imgRand == 3)  document.write('<a href="http://carlife.news.livedoor.com/testdrive/"><img src="/img/banner/autos.jpg" width="80" height="60" border="0" align="left" alt="自動車" style="margin:0 5px 5px 0;"></a><strong>自動車</strong><br><a href="http://carlife.news.livedoor.com/testdrive/">試乗レポート<br>新車も続々と！</a>');	else if(imgRand == 4)  document.write('<a href="http://carlife.news.livedoor.com/event/beijing"><img src="/img/banner/autos_02.jpg" width="80" height="60" border="0" align="left" alt="自動車" style="margin:0 5px 5px 0;"></a><strong>自動車</strong><br><a href="http://carlife.news.livedoor.com/event/beijing">北京モーターショー<br>現地から最新情報</a>');	//--></script><br clear="all"></div>	<div style="margin-top:10px;"><script language="javascript"><!--	var imgMax  =  8;	var imgRand = Math.floor(Math.random() * imgMax);	if(imgRand == 0)  document.write('<a href="http://movie.news.livedoor.com/tegami/interview01.html"><img src="/img/banner/movie3.jpg" width="80" height="60" border="0" align="left" alt="手紙" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/tegami/interview01.html">"手紙"インタビュー<br>山田孝之/沢尻エリカ</a>');	else if(imgRand == 1)  document.write('<a href="http://movie.news.livedoor.com/report/sadmovie/"><img src="/img/banner/movie2.jpg" width="80" height="60" border="0" align="left" alt="サッド・ムービー" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/report/sadmovie/">Sad Movie主演の<br>2人にインタビュー</a>');		else if(imgRand == 2)  document.write('<a href="http://movie.news.livedoor.com/pickup/ichibun/"><img src="/img/banner/movie.jpg" width="80" height="60" border="0" align="left" alt="武士の一分" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/pickup/ichibun/">「武士の一分」映画<br>ピックアップ！</a>');	else if(imgRand == 3)  document.write('<a href="http://recruit.livedoor.com/experience/director.html#11"><img src="/img/banner/staff.jpg" width="80" height="60" border="0" align="left" alt="スタッフ募集" style="margin:0 5px 5px 0;"></a><strong>スタッフ募集</strong><br><a href="http://recruit.livedoor.com/experience/director.html#11">トピックス編集員<br>緊急募集！！</a>');	else if(imgRand == 4)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2622381/detail"><img src="http://music.news.livedoor.com/img/banner/interview_06.jpg" width="80" height="60" border="0" align="left" alt="AKB48インタビュー" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2622381/detail">アキバ発・AKB48<br>"天然が多いんです"</a>');	else if(imgRand == 5)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2666158/detail"><img src="http://music.news.livedoor.com/img/banner/interview_03.jpg" width="80" height="60" border="0" align="left" alt="高橋瞳インタビュー" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2666158/detail">高橋瞳インタビュー<br>映画「手紙」主題歌</a>');	else if(imgRand == 6)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2672412/detail"><img src="http://music.news.livedoor.com/img/banner/report.jpg" width="80" height="60" border="0" align="left" alt="倉木麻衣" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2672412/detail">倉木麻衣<br>ライブレポート</a>');	else if(imgRand == 7)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2686240/detail"><img src="http://music.news.livedoor.com/img/banner/report_02.jpg" width="80" height="60" border="0" align="left" alt="Krystal Meyers" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2686240/detail">Krystal Meyers<br>ライブレポート</a>');	//--></script><br clear="all"></div></small></td></tr></table><div style="text-align:center;margin-bottom:5px;"> <a href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1161951738&creid=1163988580&location=null&keyword=hs9000655&rcook=null&info=16782494111639968051450100" target="_blank"><img src="http://image.adv.livedoor.com/IMG/1161951738/1162436376/WOY-120-60-1.gif" width="120" height="60" alt="" style="border:0;"></a></div>
-	
-	
-
-	</td>
-</tr>
-</table>
-
-
-
-
-
-
-
-
-<div align="center" style="margin:10px;"><small><a href="../../../index.html">トップ</a>&nbsp;&nbsp;&nbsp;<a href="../topics/index.html">トピックス</a>&nbsp;&nbsp;&nbsp;<a href="../hot_news.html" class="black">ホットニュース</a>&nbsp;&nbsp;&nbsp;<a href="../cid__8/middle_category.html">国内</a>&nbsp;&nbsp;&nbsp;<a href="../cid__41/middle_category.html">海外</a>&nbsp;&nbsp;&nbsp;<a href="../cid__11/middle_category.html">経済</a>&nbsp;&nbsp;&nbsp;<a href="../cid__46/middle_category.html">芸能</a>&nbsp;&nbsp;&nbsp;<a href="../cid__5/middle_category.html">スポーツ</a>&nbsp;&nbsp;&nbsp;<a href="../cid__25/middle_category.html">コンピューター</a>&nbsp;&nbsp;&nbsp;<a href="../area.html">地域</a>&nbsp;&nbsp;&nbsp;<a href="../picture.html">写真</a>&nbsp;&nbsp;&nbsp;<a href="../../stream/index.html">動画</a>&nbsp;&nbsp;&nbsp;<a href="../../../magazine/index.html">雑誌</a></small></div>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="border-top:1px solid #b6b6b6;">
-<tr>
-<td style="padding:20px 0;">
-<table width="50%" border="0" cellspacing="0" cellpadding="0" align="center">
-<form action="http://news.livedoor.com/webapp/journal/search" method="GET">
-<tr>
-<td>
-  <table border="0" cellspacing="0" cellpadding="0" align="center">
-  <tr>
-  <td colspan="2" nowrap style="padding-bottom:6px" id=tag align="center"><small><a href="http://search.livedoor.com/search/?q=NHK" style="padding-left:0" class="start">ウェブページ</strong><span class="line"> | </span><a href="http://search.livedoor.com/digest/?q=NHK">登録サイト</a><span class="line"> | </span><a href="http://sf.livedoor.com/search?q=NHK">ブログ</a><span class="line"> | </span><a href="http://blogimage.livedoor.com/search?q=NHK">画像</a><span class="line"> | </span><strong class="on">ニュース</strong><span class="line"> | </span><a href="http://dic.livedoor.com/psearch?key=NHK">辞書</a><img src="http://image.livedoor.com/img/top/06/new.gif" width="21" height="9" border="0" alt="new" style="vertical-align:top"></small></td>
-  </tr>
-  <tr>
-  <td align="center"><input type="text" name="word" value="NHK" size="60" style="width:300px"></td>
-  <td align="center"><input type="submit" value="検索" style="width:100px;margin-left:5px;"></td>
-  </tr>
-  </table>
-</td>
-</tr>
-</form>
-</table>
-</td>
-</tr>
-</table>
-
-
-<div align="center" style="border-top:1px solid #b6b6b6;padding-top:10px;"><small>
-<div style="margin-bottom:15px;"><a href="javascript:setStartPage();"><img src="../../../img/btn_ld_home.gif" width="195" height="22" border="0" alt="livedoorをホームに設定する"></a></div>
-
-<div style="margin-bottom:10px;"><a href="http://docs.livedoor.com/info/kiyaku.html">利用規約</a>　<a href="http://docs.livedoor.com/info/privacy.html">プライバシーポリシー</a>　<a href="../../help/blog.html">免責事項</a>　<a href="http://helpguide.livedoor.com/help/news/index">ヘルプ</a>　<a href="http://docs.livedoor.com/ad/">広告掲載</a>　<a href="../../project/index.html">パブリックジャーナリスト募集</a>　<a href="http://career.livedoor.com/ld_recruit/">スタッフ募集</a></div>
-
-
-Copyright (C) 1996-2006 livedoor Co.,Ltd. All rights reserved.</small></div>
-<script src="http://img.ij.impact-ad.jp/bta/b/PT.LIVEDOOR.js"></script>
-</body>
+</script></small></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="220" myoffsetheight="16" myoffsetleft="0" myoffsettop="580" class="ttl_line"><small myoffsetwidth="26" myoffsetheight="14" myoffsetleft="0" myoffsettop="581">特集</small></div>
+					<table myoffsetwidth="220" myoffsetheight="225" myoffsetleft="0" myoffsettop="596" class="cont_line" width="100%" border="0" cellpadding="5" cellspacing="0">
+						<tbody myoffsetwidth="220" myoffsetheight="225" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="220" myoffsetheight="225" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="220" myoffsetheight="225" myoffsetleft="0" myoffsettop="0" style="line-height: 125%;"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="90" myoffsettop="19" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162892430&amp;creid=1162892430&amp;location=null&amp;keyword=hs9000547&amp;rcook=null&amp;info=16782493711639968051260104" target="_top"> <img myoffsetwidth="80" myoffsetheight="60" myoffsetleft="5" myoffsettop="5" alt="" src="http://image.adv.livedoor.com/IMG/1162892430/1162892430/OMMG200611.gif" style="margin: 0pt 5px 5px 0pt;" width="80" align="left" border="0" height="60"></a> <strong myoffsetwidth="73" myoffsetheight="17" myoffsetleft="90" myoffsettop="5"><small myoffsetwidth="73" myoffsetheight="14" myoffsetleft="90" myoffsettop="8">ウエディング</small></strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="163" myoffsettop="19"><a myoffsetwidth="98" myoffsetheight="37" myoffsetleft="90" myoffsettop="25" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1162892430&amp;creid=1162892430&amp;location=null&amp;keyword=hs9000547&amp;rcook=null&amp;info=16782493711639968051260104" target="_top"> <small myoffsetwidth="98" myoffsetheight="34" myoffsetleft="90" myoffsettop="28">♪結婚力診断♪<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="181" myoffsettop="39"> 運命の人に会おう</small></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="188" myoffsettop="59" clear="all"><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="70"></small><div myoffsetwidth="210" myoffsetheight="65" myoffsetleft="5" myoffsettop="80" style="margin-top: 10px;">
+<small myoffsetwidth="116" myoffsetheight="54" myoffsetleft="90" myoffsettop="83">										<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="javascript"><!--
+	var imgMax  = 5;
+	var imgRand = Math.floor(Math.random() * imgMax);
+	if(imgRand == 0)  document.write('<a href="http://ck.rd.livedoor.com/ck/spo_rnavi_01/0928/"><img src="/img/banner/sports.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://ck.rd.livedoor.com/ck/spo_rnavi_01/0928/">ガゼッタ＆マルカ<br>現地発の最新情報！</a>');
+	else if(imgRand == 1)  document.write('<a href="http://ck.rd.livedoor.com/ck/spo_rnavi_02/0928/"><img src="/img/banner/sports_03.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://ck.rd.livedoor.com/ck/spo_rnavi_02/0928/ ">注目画像が満載！<br>フォトギャラリー</a>');
+	else if(imgRand == 2)  document.write('<a href="http://sports.livedoor.com/other/volleyball/wc2006/"><img src="/img/banner/sports_02.jpg" width="80" height="60" border="0" align="left" alt="スポーツ" style="margin:0 5px 5px 0;"></a><strong>スポーツ</strong><br><a href="http://sports.livedoor.com/other/volleyball/wc2006/">世界バレー2006特集<br>菅山、木村も奮闘！</a>');
+	else if(imgRand == 3)  document.write('<a href="http://carlife.news.livedoor.com/testdrive/"><img src="/img/banner/autos.jpg" width="80" height="60" border="0" align="left" alt="自動車" style="margin:0 5px 5px 0;"></a><strong>自動車</strong><br><a href="http://carlife.news.livedoor.com/testdrive/">試乗レポート<br>新車も続々と！</a>');
+	else if(imgRand == 4)  document.write('<a href="http://carlife.news.livedoor.com/event/beijing"><img src="/img/banner/autos_02.jpg" width="80" height="60" border="0" align="left" alt="自動車" style="margin:0 5px 5px 0;"></a><strong>自動車</strong><br><a href="http://carlife.news.livedoor.com/event/beijing">北京モーターショー<br>現地から最新情報</a>');
+	//--></script><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="90" myoffsettop="94" href="http://sports.livedoor.com/other/volleyball/wc2006/"><img myoffsetwidth="80" myoffsetheight="60" myoffsetleft="5" myoffsettop="80" src="/img/banner/sports_02.jpg" alt="スポーツ" style="margin: 0pt 5px 5px 0pt;" width="80" align="left" border="0" height="60"></a><strong myoffsetwidth="51" myoffsetheight="14" myoffsetleft="90" myoffsettop="83">スポーツ</strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="141" myoffsettop="94"><a myoffsetwidth="116" myoffsetheight="34" myoffsetleft="90" myoffsettop="103" href="http://sports.livedoor.com/other/volleyball/wc2006/">世界バレー2006特集<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="206" myoffsettop="114">菅山、木村も奮闘！</a>
+										<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="200" myoffsettop="134" clear="all">
+									</small></div>
+<small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="145">									</small><div myoffsetwidth="210" myoffsetheight="65" myoffsetleft="5" myoffsettop="155" style="margin-top: 10px;">
+<small myoffsetwidth="114" myoffsetheight="54" myoffsetleft="90" myoffsettop="158">										<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="javascript"><!--
+	var imgMax  =  8;
+	var imgRand = Math.floor(Math.random() * imgMax);
+	if(imgRand == 0)  document.write('<a href="http://movie.news.livedoor.com/tegami/interview01.html"><img src="/img/banner/movie3.jpg" width="80" height="60" border="0" align="left" alt="手紙" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/tegami/interview01.html">"手紙"インタビュー<br>山田孝之/沢尻エリカ</a>');
+	else if(imgRand == 1)  document.write('<a href="http://movie.news.livedoor.com/report/sadmovie/"><img src="/img/banner/movie2.jpg" width="80" height="60" border="0" align="left" alt="サッド・ムービー" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/report/sadmovie/">Sad Movie主演の<br>2人にインタビュー</a>');	
+	else if(imgRand == 2)  document.write('<a href="http://movie.news.livedoor.com/pickup/ichibun/"><img src="/img/banner/movie.jpg" width="80" height="60" border="0" align="left" alt="武士の一分" style="margin:0 5px 5px 0;"></a><strong>映画</strong><br><a href="http://movie.news.livedoor.com/pickup/ichibun/">「武士の一分」映画<br>ピックアップ！</a>');
+	else if(imgRand == 3)  document.write('<a href="http://recruit.livedoor.com/experience/director.html#11"><img src="/img/banner/staff.jpg" width="80" height="60" border="0" align="left" alt="スタッフ募集" style="margin:0 5px 5px 0;"></a><strong>スタッフ募集</strong><br><a href="http://recruit.livedoor.com/experience/director.html#11">トピックス編集員<br>緊急募集！！</a>');
+	else if(imgRand == 4)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2622381/detail"><img src="http://music.news.livedoor.com/img/banner/interview_06.jpg" width="80" height="60" border="0" align="left" alt="AKB48インタビュー" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2622381/detail">アキバ発・AKB48<br>"天然が多いんです"</a>');
+	else if(imgRand == 5)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2666158/detail"><img src="http://music.news.livedoor.com/img/banner/interview_03.jpg" width="80" height="60" border="0" align="left" alt="高橋瞳インタビュー" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2666158/detail">高橋瞳インタビュー<br>映画「手紙」主題歌</a>');
+	else if(imgRand == 6)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2672412/detail"><img src="http://music.news.livedoor.com/img/banner/report.jpg" width="80" height="60" border="0" align="left" alt="倉木麻衣" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2672412/detail">倉木麻衣<br>ライブレポート</a>');
+	else if(imgRand == 7)  document.write('<a href="http://news.livedoor.com/webapp/journal/cid__2686240/detail"><img src="http://music.news.livedoor.com/img/banner/report_02.jpg" width="80" height="60" border="0" align="left" alt="Krystal Meyers" style="margin:0 5px 5px 0;"></a><strong>音楽</strong><br><a href="http://news.livedoor.com/webapp/journal/cid__2686240/detail">Krystal Meyers<br>ライブレポート</a>');
+	//--></script><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="90" myoffsettop="169" href="http://news.livedoor.com/webapp/journal/cid__2622381/detail"><img myoffsetwidth="80" myoffsetheight="60" myoffsetleft="5" myoffsettop="155" src="http://music.news.livedoor.com/img/banner/interview_06.jpg" alt="AKB48インタビュー" style="margin: 0pt 5px 5px 0pt;" width="80" align="left" border="0" height="60"></a><strong myoffsetwidth="28" myoffsetheight="14" myoffsetleft="90" myoffsettop="158">音楽</strong><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="118" myoffsettop="169"><a myoffsetwidth="114" myoffsetheight="34" myoffsetleft="90" myoffsettop="178" href="http://news.livedoor.com/webapp/journal/cid__2622381/detail">アキバ発・AKB48<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="185" myoffsettop="189">"天然が多いんです"</a>
+										<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="204" myoffsettop="209" clear="all">
+									</small></div><small myoffsetwidth="0" myoffsetheight="0" myoffsetleft="5" myoffsettop="220"></small></td>
+						</tr>
+					</tbody></table>
+					<div myoffsetwidth="220" myoffsetheight="60" myoffsetleft="0" myoffsettop="821" style="text-align: center; margin-bottom: 5px;"><a myoffsetwidth="120" myoffsetheight="14" myoffsetleft="50" myoffsettop="867" href="http://click.adv.livedoor.com:80/A-affiliate2/click?campid=1161951738&amp;creid=1163988580&amp;location=null&amp;keyword=hs9000655&amp;rcook=null&amp;info=16782494111639968051450100" target="_blank"><img myoffsetwidth="120" myoffsetheight="60" myoffsetleft="50" myoffsettop="821" alt="" src="http://image.adv.livedoor.com/IMG/1161951738/1162436376/WOY-120-60-1.gif" style="border: 0pt none ;" width="120" height="60"></a></div>
+				</td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="938" myoffsetheight="16" myoffsetleft="18" myoffsettop="2108" style="margin: 10px;" align="center"><small myoffsetwidth="632" myoffsetheight="14" myoffsetleft="171" myoffsettop="2109"><a myoffsetwidth="29" myoffsetheight="14" myoffsetleft="171" myoffsettop="2109" href="../../../index.html">トップ</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="51" myoffsetheight="14" myoffsetleft="212" myoffsettop="2109" href="../topics/index.html">トピックス</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="76" myoffsetheight="14" myoffsetleft="275" myoffsettop="2109" class="black" href="../hot_news.html">ホットニュース</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="363" myoffsettop="2109" href="../cid__8/middle_category.html">国内</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="401" myoffsettop="2109" href="../cid__41/middle_category.html">海外</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="439" myoffsettop="2109" href="../cid__11/middle_category.html">経済</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="477" myoffsettop="2109" href="../cid__46/middle_category.html">芸能</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="47" myoffsetheight="14" myoffsetleft="515" myoffsettop="2109" href="../cid__5/middle_category.html">スポーツ</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="574" myoffsettop="2109" href="../cid__25/middle_category.html">コンピューター</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="663" myoffsettop="2109" href="../area.html">地域</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="701" myoffsettop="2109" href="../picture.html">写真</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="739" myoffsettop="2109" href="../../stream/index.html">動画</a>&nbsp;&nbsp;&nbsp;<a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="777" myoffsettop="2109" href="../../../magazine/index.html">雑誌</a></small></div>
+		<table myoffsetwidth="958" myoffsetheight="102" myoffsetleft="8" myoffsettop="2134" style="border-top: 1px solid rgb(182, 182, 182);" width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="958" myoffsetheight="101" myoffsetleft="0" myoffsettop="1"><tr myoffsetwidth="958" myoffsetheight="101" myoffsetleft="0" myoffsettop="1">
+				<td myoffsetwidth="958" myoffsetheight="101" myoffsetleft="0" myoffsettop="1" style="padding: 20px 0pt;">
+					<table myoffsetwidth="479" myoffsetheight="61" myoffsetleft="240" myoffsettop="20" width="50%" align="center" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="479" myoffsetheight="61" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="479" myoffsetheight="16" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="479" myoffsetheight="16" myoffsetleft="0" myoffsettop="0">
+								<form myoffsetwidth="479" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" action="http://news.livedoor.com/webapp/journal/search" method="GET">
+								</form>
+							</td>
+						</tr>
+						<tr myoffsetwidth="479" myoffsetheight="45" myoffsetleft="0" myoffsettop="16">
+							<td myoffsetwidth="479" myoffsetheight="45" myoffsetleft="0" myoffsettop="16">
+								<table myoffsetwidth="405" myoffsetheight="45" myoffsetleft="37" myoffsettop="0" align="center" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="405" myoffsetheight="45" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="405" myoffsetheight="22" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="405" myoffsetheight="22" myoffsetleft="0" myoffsettop="0" colspan="2" id="tag" style="padding-bottom: 6px;" align="center" nowrap="nowrap"><small myoffsetwidth="337" myoffsetheight="14" myoffsetleft="34" myoffsettop="1"><a myoffsetwidth="79" myoffsetheight="14" myoffsetleft="34" myoffsettop="1" class="start" href="http://search.livedoor.com/search/?q=NHK" style="padding-left: 0pt;">ウェブページ<span myoffsetwidth="11" myoffsetheight="14" myoffsetleft="102" myoffsettop="1" class="line"> | </span></a><a myoffsetwidth="57" myoffsetheight="14" myoffsetleft="113" myoffsettop="1" href="http://search.livedoor.com/digest/?q=NHK">登録サイト</a><span myoffsetwidth="11" myoffsetheight="14" myoffsetleft="170" myoffsettop="1" class="line"> | </span><a myoffsetwidth="34" myoffsetheight="14" myoffsetleft="181" myoffsettop="1" href="http://sf.livedoor.com/search?q=NHK">ブログ</a><span myoffsetwidth="11" myoffsetheight="14" myoffsetleft="215" myoffsettop="1" class="line"> | </span><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="226" myoffsettop="1" href="http://blogimage.livedoor.com/search?q=NHK">画像</a><span myoffsetwidth="11" myoffsetheight="14" myoffsetleft="252" myoffsettop="1" class="line"> | </span><strong myoffsetwidth="50" myoffsetheight="14" myoffsetleft="263" myoffsettop="1" class="on">ニュース</strong><span myoffsetwidth="11" myoffsetheight="14" myoffsetleft="313" myoffsettop="1" class="line"> | </span><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="324" myoffsettop="1" href="http://dic.livedoor.com/psearch?key=NHK">辞書</a><img myoffsetwidth="21" myoffsetheight="9" myoffsetleft="350" myoffsettop="0" alt="new" src="http://image.livedoor.com/img/top/06/new.gif" style="vertical-align: top;" width="21" border="0" height="9"></small></td>
+									</tr>
+									<tr myoffsetwidth="405" myoffsetheight="24" myoffsetleft="0" myoffsettop="22">
+										<td myoffsetwidth="300" myoffsetheight="24" myoffsetleft="0" myoffsettop="22" align="center"><input myoffsetwidth="300" myoffsetheight="22" myoffsetleft="0" myoffsettop="1" name="word" size="60" style="width: 300px;" value="NHK" type="text"></td>
+										<td myoffsetwidth="105" myoffsetheight="24" myoffsetleft="300" myoffsettop="22" align="center"><input myoffsetwidth="100" myoffsetheight="24" myoffsetleft="5" myoffsettop="0" style="width: 100px; margin-left: 5px;" value="検索" type="submit"></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="958" myoffsetheight="89" myoffsetleft="8" myoffsettop="2236" style="border-top: 1px solid rgb(182, 182, 182); padding-top: 10px;" align="center"><small myoffsetwidth="958" myoffsetheight="77" myoffsetleft="487" myoffsettop="2247"><div myoffsetwidth="958" myoffsetheight="22" myoffsetleft="8" myoffsettop="2247" style="margin-bottom: 15px;"><a myoffsetwidth="195" myoffsetheight="11" myoffsetleft="390" myoffsettop="2258" href="javascript:setStartPage();"><img myoffsetwidth="195" myoffsetheight="22" myoffsetleft="390" myoffsettop="2247" alt="livedoorをホームに設定する" src="../../../img/btn_ld_home.gif" width="195" border="0" height="22"></a></div>
+				<div myoffsetwidth="958" myoffsetheight="16" myoffsetleft="8" myoffsettop="2284" style="margin-bottom: 10px;"><a myoffsetwidth="52" myoffsetheight="14" myoffsetleft="195" myoffsettop="2285" href="http://docs.livedoor.com/info/kiyaku.html">利用規約</a>　<a myoffsetwidth="114" myoffsetheight="14" myoffsetleft="256" myoffsettop="2285" href="http://docs.livedoor.com/info/privacy.html">プライバシーポリシー</a>　<a myoffsetwidth="52" myoffsetheight="14" myoffsetleft="379" myoffsettop="2285" href="../../help/blog.html">免責事項</a>　<a myoffsetwidth="36" myoffsetheight="14" myoffsetleft="440" myoffsettop="2285" href="http://helpguide.livedoor.com/help/news/index">ヘルプ</a>　<a myoffsetwidth="52" myoffsetheight="14" myoffsetleft="485" myoffsettop="2285" href="http://docs.livedoor.com/ad/">広告掲載</a>　<a myoffsetwidth="156" myoffsetheight="14" myoffsetleft="546" myoffsettop="2285" href="../../project/index.html">パブリックジャーナリスト募集</a>　<a myoffsetwidth="68" myoffsetheight="14" myoffsetleft="711" myoffsettop="2285" href="http://career.livedoor.com/ld_recruit/">スタッフ募集</a></div> Copyright (C) 1996-2006 livedoor Co.,Ltd. All rights reserved.</small></div>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://img.ij.impact-ad.jp/bta/b/PT.LIVEDOOR.js"></script>
+	</body>
 </html>

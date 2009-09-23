@@ -1,269 +1,185 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-2022-jp">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>医療社会学からみたリスク（第6回）[美馬 達哉氏]/SAFETY JAPAN [コラム]/日経BP社
-</title>
-<link rel="stylesheet" href="../../../css/bg.css" type="text/css">
-<link rel="stylesheet" href="../../../css/font.css" type="text/css">
-<script language="JavaScript" type="text/JavaScript"  src="../../../sj2005.js"></script>
-<script language="JavaScript" type="text/JavaScript"  src="../../../browsercheck.js"></script>
-</head>
 
-<a name="TOPPAGE">
-<body onLoad="MM_preloadImages('../../../img/nav_rep2.gif','../../../img/nav_case2.gif','../../../img/nav_int2.gif','../../../img/nav_col2.gif','../../../img/nav_cont2.gif','../../../img/nav_eve2.gif','../../../img/nav_biz2.gif','../../../img/nav_it2.gif','../../../img/nav_med2.gif','../../../img/nav_const2.gif','../../../img/nav_degi2.gif','../../../img/nav_home2.gif','../../../img/nav_fam2.gif','../../../img/icon_sj20052.gif','../../../img/icon_adv2.gif','../../../img/nav_top2.gif')">
-</a>
-<!-- begin: global navigation -->
-<div id="gnav200603">
-<ul>
-<li id="g_www"><a href="http://nikkeibp.jp/" title="nikkeibp.jp"><span>日経BP</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_business"><a href="http://business.nikkeibp.co.jp/" title="日経ビジネスオンライン"><span>ビジネス</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_pc"><a href="http://pc.nikkeibp.co.jp/" title="日経パソコンオンライン"><span>PC</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_arena"><a href="http://arena.nikkeibp.co.jp/" title="デジタルARENA"><span>デジタル</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_itpro"><a href="http://itpro.nikkeibp.co.jp/" title="ITpro"><span>IT</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_techon"><a href="http://techon.nikkeibp.co.jp/" title="Tech-On!"><span>テクノロジー</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_medical"><a href="http://medical.nikkeibp.co.jp/" title="日経メディカルオンライン"><span>医療</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_kenplatz"><a href="http://kenplatz.nikkeibp.co.jp/" title="KEN-Platz"><span>建設・不動産</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_ex"><a href="http://career.nikkei.co.jp/" title="日経キャリアNET"><span>転職</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_sitemap"><a href="../../../../sitemap/index.html" title="日経BP専門情報サイト一覧"><span>サイト一覧</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_sj"><a href="../../../index.html" title="セキュリティ SAFETY JAPAN"><span>SAFETY</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-<li id="g_ad"><a href="../../../../bizit/index.html" title="経営とIT"><span>経営とIT</span><img src="../../../img/spacer.gif" alt="" border="0"></a></li>
-</ul>
-</div>
-<!-- end: global navigation -->
-
-<!-- HEAD-->
-<table width="1000" height="130" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td width="224" valign="top">
-<img src="../../../img/nav/top1.gif" width="224" height="130" border="0" alt=""><br>	  </td>
-		<td align="center" valign="middle" class="top_bg">
-		<iframe width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&spacedesc=v_sj2005_rotation&site=s_nikkeibpjp">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rotation&site=s_nikkeibpjp&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rotation&site=s_nikkeibpjp" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rotation&site=s_nikkeibpjp" border="0"></a>
-</noscript>
-</iframe>	  </td>
-	</tr>
-</table>
-<!-- /HEAD/ -->
-<!-- navi -->
-<table width="1000" height="49" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td width="90" valign="top"><a href="../../../index.html" onMouseOver="MM_swapImage('img0','','../../../img/nav/home2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/home1.gif" alt="HOME" name="img0" width="90" height="49" border="0"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../biz/index.html" onMouseOver="MM_swapImage('img1','','../../../img/nav/biz2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/biz1.gif" alt="ビジネス・経営" name="img1" width="105" height="49" border="0"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../government/index.html" onMouseOver="MM_swapImage('img2','','../../../img/nav/inter2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/inter1.gif" width="105" height="49" border="0" alt="国際・政治" name="img2"></a></td>
-		<td width="120" valign="top">
-	  <a href="../../../it/index.html" onMouseOver="MM_swapImage('img3','','../../../img/nav/it2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/it1.gif" alt="情報セキュリティ" name="img3" width="120" height="49" border="0"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../const/index.html" onMouseOver="MM_swapImage('img4','','../../../img/nav/const2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/const1.gif" width="105" height="49" border="0" alt="建築・土木" name="img4"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../digital/index.html" onMouseOver="MM_swapImage('img5','','../../../img/nav/digi2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/digi1.gif" width="105" height="49" border="0" alt="デジタルライフ（パソコン）" name="img5"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../life/index.html" onMouseOver="MM_swapImage('img6','','../../../img/nav/fam2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/fam1.gif" width="105" height="49" border="0" alt="住まいと暮らし" name="img6"></a></td>
-		<td width="105" valign="top">
-	  <a href="../../../medical/index.html" onMouseOver="MM_swapImage('img7','','../../../img/nav/med2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/med2.gif" width="105" height="49" border="0" alt="医療・食品" name="img7"></a></td>
-		<td valign="top">
-	  <a href="../../../ecology/index.html" onMouseOver="MM_swapImage('img8','','../../../img/nav/eco2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/eco1.gif" border="0" alt="環境・自然" name="img8"></a></td>
-		<td valign="top">
-	  <a href="../../../data/index.html" onMouseOver="MM_swapImage('img9','','../../../img/nav/data2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/data1.gif" border="0" alt="データ" name="img9"></a></td>
-	</tr>
-</table>
-<!-- /navi/ -->
-
-<!-- navi2 -->
-<table width="1000" cellspacing="0" cellpadding="0" border="0" bgcolor="#E8E8E8">
-	<tr>
-		<td width="200">
-<!-- 左 -->
-</td>
-<td valign="bottom" class="search"><FORM ACTION="http://bizboard.nikkeibp.co.jp/b_servlet/OnlineSearchServlet" METHOD="post" target="_blank"><INPUT TYPE="HIDDEN" NAME="j_encoding" VALUE="JIS">
-<INPUT TYPE="HIDDEN" NAME="CONDITION" VALUE="&(@kind==13&@announcemediaid==14&@writemediaid==468)&(@originalurl:=sj)"><img src="../../../img/icon_search.gif">
-<INPUT NAME="SEARCH_KEYWORD" TYPE="TEXT" class="size12" SIZE="20">
-<INPUT type="submit" class="size12" value="記事検索">
-</FORM></td>
-<div id="navi">
-      <td width="170" class="sub"><img src="../../../img/o_arrow.gif">&nbsp;<a href="../../../advisory/index_sj.html">SAFETY JAPANとは</a></td>
-      <td width="200" class="sub"><img src="../../../img/o_arrow.gif">&nbsp;<a href="../../../advisory/index_ad.html">アドバイザリーボードとは</a></td>
-      <td width="100" class="sub"><!--<img src="../../../img/o_arrow.gif">&nbsp;<a href="../../../sitemap.html">サイトマップ</a>--></td>
-      <td width="80" align="right" valign="top"><a href="../../../rss.html" onMouseOver="MM_swapImage('img10','','../../../img/nav/rss2.gif',1)" onMouseOut="MM_swapImgRestore()"><img src="../../../img/nav/rss1.gif" border="0" alt="RSS配信" name="img10"></a></td>
-</div>
-	</tr>
-</table>
-<!-- /navi2/ -->
-
-
-<!-- block -->
-<table width="900" cellspacing="0" cellpadding="0" border="0">
-	<tr valign="top">
-		<td width="200" bgcolor="#E8E8E8">
-<!-- 左 -->
-			<table width="200" border="0" align="center" cellpadding="0" cellspacing="0">
-				<tr>
-					<td align="center">
-						<iframe width="125" height="125" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&spacedesc=v_sj2005_square&site=s_nikkeibpjp">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_square&site=s_nikkeibpjp&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_square&site=s_nikkeibpjp" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_square&site=s_nikkeibpjp" border="0"></a>
-</noscript>
-</iframe>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="../../../common/spacer.gif" height="10">
-					</td>
-				</tr>
-			</table> 
-			<!-- SPECIAL -->
-<iframe src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/special.shtml" name="Special" width="200" height="400" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" hspace="0" vspace="0">この部分は iframe 対応のブラウザで見てください。</iframe><br>
-			<!-- /SPECIAL/ -->
-<!--  NEWS  -->
-<br>
-<iframe src="http://bizboardgw.nikkeibp.co.jp/gw_safety/safety_7.html" name="NEWS" width="200" marginwidth="0" height="1000" marginheight="0" scrolling="no" frameborder="0" hspace="0" vspace="0">この部分は iframe 対応のブラウザで見てください。</iframe>
-<!-- /NEWS/ -->
-		</td>
-		<td width="800" valign="top">
-			<table width="800" cellspacing="0" cellpadding="0" border="0">
-				<tr valign="top">
-<td width="560" align="center">
-<!-- トピックスPR -->
-<img src="../../../common/spacer.gif" width="500" height="10">
-<table width="500" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td align="left">
-<div class="box_topic">
-  <table width="500" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td colspan="3"><img src="../../../img/topics.gif" alt="" width="86" height="25"></td>
-            </tr>
-          <tr>
-            <td colspan="3" valign="top">
-              </td></tr>
-          <tr>
-            <td width="10"><img src="../../../common/spacer.gif" width="1" height="1"></td>
-            <td align="left" valign="top"><iframe src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/topic.shtml" width="480" height="90" name="TOPIC" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" hspace="0" vspace="0">この部分はiframe対応のブラウザで見てください。</iframe></td>
-            <td width="22" align="right" valign="bottom"><img src="../../../img/pr.gif" width="22" height="12"></td>
-          </tr>
-        </table>
-</div>				</td>
-      </tr>
-    </table>
-<img src="../../../common/spacer.gif" width="500" height="10"><br>
-<!--/トピックスPR/-->
-<!-- ナビゲーション -->
-<table border="0" cellspacing="0" cellpadding="0">
-         <tr>
-           <td class="directory_bg">
-		   <table width="560" height="40" border="0" cellspacing="0" cellpadding="0">
-             <tr>
-               <td width="10" rowspan="2" valign="middle"><img src="../../../common/spacer.gif" width="10" height="8"></td>
-               <div id="navi1">
-                 <td width="450" rowspan="2" valign="middle" align="left" class="sub1"><a href="../../../index.html">HOME</a> &gt;&gt; <a href="../../index.html">コラム</a> &gt;&gt; <a href="../index.html">美馬 達哉氏</a></td>
-               </div>
-               <td><img src="../../../common/spacer.gif" alt="" width="1" height="10"></td>
-             </tr>
-             <tr>
-               <td width="110" valign="middle">
-<select onchange="location.href = this.options[selectedIndex].value" >
-<option value="-" selected>記事種別一覧</option>
-<OPTION Value="-">------------</option>
-<option value="http://www.nikkeibp.co.jp/sj/special/">特集</option>
-<option value="http://www.nikkeibp.co.jp/sj/report/">リポート</option>
-<option value="http://www.nikkeibp.co.jp/sj/research/">調査</option>
-<option value="http://www.nikkeibp.co.jp/sj/case/">事例</option>
-<option value="http://www.nikkeibp.co.jp/sj/interview/">インタビュー</option>
-<option value="http://www.nikkeibp.co.jp/sj/column/">コラム</option>
-<option value="http://www.nikkeibp.co.jp/sj/bookreview/">書評</option>
-<option value="http://www.nikkeibp.co.jp/sj/contribute/">特別寄稿</option>
-</select>
-</td>
-  </tr>
-</table>
-</td>
-</tr></table>
-<img src="../../../common/spacer.gif" alt="" width="1" height="10"><br>
-<!-- /ナビゲーション/ -->		
-						
-						<!-- UPdata -->
-						<table cellspacing="0" cellpadding="0" border="0">
-							<tr valign="top">
-								<td width="30">
-							  <img src="../../../common/spacer.gif" width="30" height="10"><br></td>
-							  <td>
-<table width="500" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td><img src="http://www.nikkeibp.co.jp/sj/column/common/spacer.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td><h1><img src="img/tt.gif" alt="コラム　美馬 達哉氏　医療社会学からみたリスク" width="500" height="150" border="0"></h1>
-</td>
-</tr>
-</table>
-<table width="500" border="0" cellspacing="5" cellpadding="0">
-<tr>
-<td align="left"><div align="right" class="size12_br"><a href="04.html#PROF">美馬 達哉（みま・たつや）氏／神経内科医・医療社会学者</a><br>
-  3月28日公開</div></td>
-</tr>
-</table>
-<img src="../../../common/line_dot490.gif" alt="" width="490" height="1"><br>
-<!-- コンテンツ -->
-
-<table width="500" border="0" cellspacing="5" cellpadding="0">
-  <tr>
-    <td><img src="../../../common/spacer.gif" alt="" width="10" height="10"></td>
-  </tr>
-  <tr>
-    <td align="center" class="size14_lg"><strong><span class="size14_or">1</span>｜<a href="02.html" class="size14_lg">2</a>｜<a href="03.html" class="size14_lg">3</a>｜<a href="04.html" class="size14_lg">4</a></strong></td>
-   </tr>
-<tr>
-<td align="left">
-<h1 class="leaf_midashi green">第６回<br>
-牛海綿状脳症（BSE）と科学と二人のブッシュ</h1>
-
-<h2 align="center" class="leaf_kmidashi">BSE対策の「科学的な根拠」</h2>
-<div class="photo_l">
-<img src="img/img01.jpg" border="0">
-</div>
-<span class="size14">
-　本年3月18日にオーストラリアのシドニーで行われた日米戦略対話で、在日米軍再編や国連改革、国際情勢と並んで議題とされたのが牛肉輸入再開問題だ。その際アメリカ側は、日本側の「過剰」な牛肉禁輸措置を批判したという。アメリカ産牛肉の日本への輸入停止とその再開をめぐる議論は、いまや単なる食品衛生の問題にとどまらず、日米貿易や外交ともリンクした政治問題へと発展しているのだ。
-<br><br>
-　アメリカ産牛肉を食べることで生まれる「BSE感染のリスク」をどう評価するかという議論の中で、一つの大きな論点となったのは、日本で現在行われているようにすべての食肉用の牛に対してBSE検査を行うこと（全頭検査）が「科学的かどうか」という点だった。
-<br><br>
-　結局2005年末に食品安全委員会は、肉骨粉対策はすでになされており、BSEの潜伏期間が長いため、若い牛（20カ月齢以下）については検査が不要と結論づけた。直後、その報告に基づいて、全頭検査を行っていないアメリカ産牛肉（特定危険部位を除去し、20ヶ月齢以下に限る）の輸入が再開。その一方で、日本国内での牛については実質的には全頭検査を継続するという二重基準となっていた。ところが、2006年の1月20日には、特定危険部位である脊椎骨が日本向けの輸出用のアメリカ産牛肉に混入していたことが判明し、再び全面禁輸となってしまったというのが現在までの経過である。
-<br><br>
-　この間の報道で特に目についたのは、アメリカ側担当者が「全頭検査は科学的に根拠がない」として日本側の対応を繰り返し批判する場面である。どんなに立派な科学的リスクアセスメントがあっても、そのルールに基づいた処理を現場で運用できなかったのだから話にならないのだが、今回取り上げたいのはそのことではない（消費者は食品安全委員会の報告をどう読めばいいのかについての紹介が、このホームページ上にある<a href="../../../special/114/index.html" target="_blank" class="green">「BSE問題――日本での経緯と現状を再考する」</a>なので参照してほしい）。医療社会学の立場から注目するべき点は、昨今のアメリカでの「科学的な根拠」という言葉の使われ方という側面である。
-<br><br>
-　アメリカでの科学政策史をたどってみると簡単に分かることなのだが、1990年代以降のアメリカ政治で使われる「科学的な根拠」という言葉は、私たちの知っている世界標準での「科学」とは全くかけ離れた意味で用いられる政治的常套句なのだ。この科学と政治をめぐる歴史には、二人の対照的なブッシュ（縁戚関係ではない）、ヴァネバー・ブッシュとG・W・ブッシュの二人が大きく関わっている。
-<br><br>
-</span>
-</td>
-</tr>
-</table>
-<!-- Google　アドセンス -->
-<table width="500" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td align="left"><img src="../../../img/ads_title.gif"></td>
-</tr>
-<tr>
-<td><img src="../../../common/line_dot490.gif" alt="" width="490" height="1"></td>
-</tr>
-<tr>
-<td align="left">
-<script language="JavaScript">
+	
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<title>医療社会学からみたリスク（第6回）[美馬 達哉氏]/SAFETY JAPAN [コラム]/日経BP社 </title>
+		<link href="../../../css/bg.css" rel="stylesheet" type="text/css">
+		<link href="../../../css/font.css" rel="stylesheet" type="text/css">
+		<script language="JavaScript" src="../../../sj2005.js" type="text/JavaScript"></script>
+		<script language="JavaScript" src="../../../browsercheck.js" type="text/JavaScript"></script>
+	</head><body myoffsetwidth="958" myoffsetheight="2146" myoffsetleft="0" myoffsettop="0" onload="MM_preloadImages('../../../img/nav_rep2.gif','../../../img/nav_case2.gif','../../../img/nav_int2.gif','../../../img/nav_col2.gif','../../../img/nav_cont2.gif','../../../img/nav_eve2.gif','../../../img/nav_biz2.gif','../../../img/nav_it2.gif','../../../img/nav_med2.gif','../../../img/nav_const2.gif','../../../img/nav_degi2.gif','../../../img/nav_home2.gif','../../../img/nav_fam2.gif','../../../img/icon_sj20052.gif','../../../img/icon_adv2.gif','../../../img/nav_top2.gif')"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="16" name="TOPPAGE"> </a><div myoffsetwidth="958" myoffsetheight="230" myoffsetleft="8" myoffsettop="16" id="gnav200603">
+			<ul myoffsetwidth="958" myoffsetheight="230" myoffsetleft="8" myoffsettop="16">
+				<li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="16" id="g_www"><a myoffsetwidth="52" myoffsetheight="17" myoffsetleft="48" myoffsettop="17" href="http://nikkeibp.jp/" title="nikkeibp.jp"><span myoffsetwidth="52" myoffsetheight="17" myoffsetleft="48" myoffsettop="17">日経BP</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="100" myoffsettop="31" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="35" id="g_business"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="36" href="http://business.nikkeibp.co.jp/" title="日経ビジネスオンライン"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="36">ビジネス</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="50" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="54" id="g_pc"><a myoffsetwidth="21" myoffsetheight="17" myoffsetleft="48" myoffsettop="56" href="http://pc.nikkeibp.co.jp/" title="日経パソコンオンライン"><span myoffsetwidth="21" myoffsetheight="17" myoffsetleft="48" myoffsettop="56">PC</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="69" myoffsettop="70" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="74" id="g_arena"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="75" href="http://arena.nikkeibp.co.jp/" title="デジタルARENA"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="75">デジタル</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="89" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="93" id="g_itpro"><a myoffsetwidth="13" myoffsetheight="17" myoffsetleft="48" myoffsettop="94" href="http://itpro.nikkeibp.co.jp/" title="ITpro"><span myoffsetwidth="13" myoffsetheight="17" myoffsetleft="48" myoffsettop="94">IT</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="61" myoffsettop="108" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="112" id="g_techon"><a myoffsetwidth="81" myoffsetheight="17" myoffsetleft="48" myoffsettop="113" href="http://techon.nikkeibp.co.jp/" title="Tech-On!"><span myoffsetwidth="81" myoffsetheight="17" myoffsetleft="48" myoffsettop="113">テクノロジー</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="129" myoffsettop="127" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="131" id="g_medical"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="132" href="http://medical.nikkeibp.co.jp/" title="日経メディカルオンライン"><span myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="132">医療</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="80" myoffsettop="146" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="150" id="g_kenplatz"><a myoffsetwidth="88" myoffsetheight="17" myoffsetleft="48" myoffsettop="152" href="http://kenplatz.nikkeibp.co.jp/" title="KEN-Platz"><span myoffsetwidth="88" myoffsetheight="17" myoffsetleft="48" myoffsettop="152">建設・不動産</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="136" myoffsettop="166" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="170" id="g_ex"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="171" href="http://career.nikkei.co.jp/" title="日経キャリアNET"><span myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="171">転職</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="80" myoffsettop="185" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="189" id="g_sitemap"><a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="48" myoffsettop="190" href="../../../../sitemap/index.html" title="日経BP専門情報サイト一覧"><span myoffsetwidth="71" myoffsetheight="17" myoffsetleft="48" myoffsettop="190">サイト一覧</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="119" myoffsettop="204" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="208" id="g_sj"><a myoffsetwidth="56" myoffsetheight="17" myoffsetleft="48" myoffsettop="209" href="../../../index.html" title="セキュリティ SAFETY JAPAN"><span myoffsetwidth="56" myoffsetheight="17" myoffsetleft="48" myoffsettop="209">SAFETY</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="104" myoffsettop="223" alt="" src="../../../img/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="227" id="g_ad"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="228" href="../../../../bizit/index.html" title="経営とIT"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="228">経営とIT</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="242" alt="" src="../../../img/spacer.gif" border="0"></a></li></ul>
+		</div>
+		<table myoffsetwidth="1000" myoffsetheight="130" myoffsetleft="8" myoffsettop="262" width="1000" border="0" cellpadding="0" cellspacing="0" height="130">
+			<tbody myoffsetwidth="1000" myoffsetheight="130" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="130" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="224" myoffsetheight="130" myoffsetleft="0" myoffsettop="0" valign="top" width="224"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="15" alt="" src="../../../img/nav/top1.gif" width="224" border="0" height="130"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+				</td>
+				<td myoffsetwidth="776" myoffsetheight="130" myoffsetleft="224" myoffsettop="0" class="top_bg" valign="middle" align="center">
+					<iframe myoffsetwidth="728" myoffsetheight="90" myoffsetleft="24" myoffsettop="20" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&amp;spacedesc=v_sj2005_rotation&amp;site=s_nikkeibpjp" vspace="0" width="728" frameborder="0" height="90" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rotation&amp;amp;site=s_nikkeibpjp&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rotation&amp;amp;site=s_nikkeibpjp" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rotation&amp;amp;site=s_nikkeibpjp" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+				</td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="1000" myoffsetheight="49" myoffsetleft="8" myoffsettop="392" width="1000" border="0" cellpadding="0" cellspacing="0" height="49">
+			<tbody myoffsetwidth="1000" myoffsetheight="49" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="49" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="90" myoffsetheight="49" myoffsetleft="0" myoffsettop="0" valign="top" width="90"><a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img0','','../../../img/nav/home2.gif',1)"><img myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="HOME" name="img0" src="../../../img/nav/home1.gif" width="90" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="90" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="97" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../biz/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img1','','../../../img/nav/biz2.gif',1)"><img myoffsetwidth="97" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="ビジネス・経営" name="img1" src="../../../img/nav/biz1.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="195" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../government/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img2','','../../../img/nav/inter2.gif',1)"><img myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="国際・政治" name="img2" src="../../../img/nav/inter1.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="120" myoffsetheight="49" myoffsetleft="300" myoffsettop="0" valign="top" width="120"><a myoffsetwidth="111" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../it/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img3','','../../../img/nav/it2.gif',1)"><img myoffsetwidth="111" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="情報セキュリティ" name="img3" src="../../../img/nav/it1.gif" width="120" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="420" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../const/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img4','','../../../img/nav/const2.gif',1)"><img myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="建築・土木" name="img4" src="../../../img/nav/const1.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="525" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="96" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="../../../digital/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img5','','../../../img/nav/digi2.gif',1)"><img myoffsetwidth="96" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="デジタルライフ（パソコン）" name="img5" src="../../../img/nav/digi1.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="630" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="98" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../life/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img6','','../../../img/nav/fam2.gif',1)"><img myoffsetwidth="98" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="住まいと暮らし" name="img6" src="../../../img/nav/fam1.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="105" myoffsetheight="49" myoffsetleft="735" myoffsettop="0" valign="top" width="105"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../medical/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img7','','../../../img/nav/med2.gif',1)"><img myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="医療・食品" name="img7" src="../../../img/nav/med2.gif" width="105" border="0" height="49"></a></td>
+				<td myoffsetwidth="101" myoffsetheight="49" myoffsetleft="840" myoffsettop="0" valign="top"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../ecology/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img8','','../../../img/nav/eco2.gif',1)"><img myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="環境・自然" name="img8" src="../../../img/nav/eco1.gif" border="0"></a></td>
+				<td myoffsetwidth="59" myoffsetheight="49" myoffsetleft="941" myoffsettop="0" valign="top"><a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../data/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img9','','../../../img/nav/data2.gif',1)"><img myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="データ" name="img9" src="../../../img/nav/data1.gif" border="0"></a></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="1000" myoffsetheight="24" myoffsetleft="8" myoffsettop="441" width="1000" bgcolor="#e8e8e8" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="1000" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="24" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="200" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" width="200">
+				</td>
+				<td myoffsetwidth="250" myoffsetheight="24" myoffsetleft="200" myoffsettop="0" class="search" valign="bottom">
+					<form myoffsetwidth="250" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" action="http://bizboard.nikkeibp.co.jp/b_servlet/OnlineSearchServlet" method="post" target="_blank"><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="j_encoding" value="JIS" type="HIDDEN"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="CONDITION" value="&amp;(@kind==13&amp;@announcemediaid==14&amp;@writemediaid==468)&amp;(@originalurl:=sj)" type="HIDDEN"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="16" src="../../../img/icon_search.gif"> <input myoffsetwidth="117" myoffsetheight="22" myoffsetleft="0" myoffsettop="1" class="size12" name="SEARCH_KEYWORD" size="20" type="TEXT"> <input myoffsetwidth="76" myoffsetheight="24" myoffsetleft="122" myoffsettop="0" class="size12" value="記事検索" type="submit"></form>
+				</td>
+				<td myoffsetwidth="0" myoffsetheight="24" myoffsetleft="450" myoffsettop="0">
+					<div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="12" id="navi">
+					</div>
+				</td>
+				<td myoffsetwidth="170" myoffsetheight="24" myoffsetleft="450" myoffsettop="0" class="sub" width="170"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="17" src="../../../img/o_arrow.gif">&nbsp;<a myoffsetwidth="138" myoffsetheight="17" myoffsetleft="5" myoffsettop="3" href="../../../advisory/index_sj.html">SAFETY JAPANとは</a></td>
+				<td myoffsetwidth="200" myoffsetheight="24" myoffsetleft="620" myoffsettop="0" class="sub" width="200"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="17" src="../../../img/o_arrow.gif">&nbsp;<a myoffsetwidth="166" myoffsetheight="17" myoffsetleft="5" myoffsettop="3" href="../../../advisory/index_ad.html">アドバイザリーボードとは</a></td>
+				<td myoffsetwidth="100" myoffsetheight="24" myoffsetleft="820" myoffsettop="0" class="sub" width="100">
+				</td>
+				<td myoffsetwidth="80" myoffsetheight="24" myoffsetleft="920" myoffsettop="0" valign="top" width="80" align="right"><a myoffsetwidth="62" myoffsetheight="17" myoffsetleft="18" myoffsettop="1" href="../../../rss.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('img10','','../../../img/nav/rss2.gif',1)"><img myoffsetwidth="62" myoffsetheight="17" myoffsetleft="18" myoffsettop="1" alt="RSS配信" name="img10" src="../../../img/nav/rss1.gif" border="0"></a></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="1000" myoffsetheight="1544" myoffsetleft="8" myoffsettop="465" width="900" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="1000" myoffsetheight="1544" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="1544" myoffsetleft="0" myoffsettop="0" valign="top">
+				<td myoffsetwidth="200" myoffsetheight="1544" myoffsetleft="0" myoffsettop="0" width="200" bgcolor="#e8e8e8">
+					<table myoffsetwidth="200" myoffsetheight="125" myoffsetleft="0" myoffsettop="0" width="200" align="center" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="200" myoffsetheight="125" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="200" myoffsetheight="125" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="200" myoffsetheight="125" myoffsetleft="0" myoffsettop="0" align="center">
+								<iframe myoffsetwidth="125" myoffsetheight="125" myoffsetleft="38" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&amp;spacedesc=v_sj2005_square&amp;site=s_nikkeibpjp" vspace="0" width="125" frameborder="0" height="125" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_square&amp;amp;site=s_nikkeibpjp&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_square&amp;amp;site=s_nikkeibpjp" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_square&amp;amp;site=s_nikkeibpjp" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+							</td>
+						</tr>
+						<tr myoffsetwidth="200" myoffsetheight="0" myoffsetleft="0" myoffsettop="125">
+							<td myoffsetwidth="200" myoffsetheight="0" myoffsetleft="0" myoffsettop="125"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="../../../common/spacer.gif" height="10"></td>
+						</tr>
+					</tbody></table>
+					<iframe myoffsetwidth="200" myoffsetheight="400" myoffsetleft="0" myoffsettop="125" hspace="0" marginheight="0" marginwidth="0" name="Special" src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/special.shtml" vspace="0" width="200" frameborder="0" height="400" scrolling="no">この部分は iframe 対応のブラウザで見てください。</iframe>
+					<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="200" myoffsettop="525">
+					<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="525">
+					<iframe myoffsetwidth="200" myoffsetheight="1000" myoffsetleft="0" myoffsettop="544" hspace="0" marginheight="0" marginwidth="0" name="NEWS" src="http://bizboardgw.nikkeibp.co.jp/gw_safety/safety_7.html" vspace="0" width="200" frameborder="0" height="1000" scrolling="no">この部分は iframe 対応のブラウザで見てください。</iframe>
+				</td>
+				<td myoffsetwidth="800" myoffsetheight="1544" myoffsetleft="200" myoffsettop="0" valign="top" width="800">
+					<table myoffsetwidth="800" myoffsetheight="1465" myoffsetleft="0" myoffsettop="0" width="800" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="800" myoffsetheight="1465" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="800" myoffsetheight="1465" myoffsetleft="0" myoffsettop="0" valign="top">
+							<td myoffsetwidth="589" myoffsetheight="1465" myoffsetleft="0" myoffsettop="0" width="560" align="center"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="295" myoffsettop="0" src="../../../common/spacer.gif" width="500" height="10"><table myoffsetwidth="500" myoffsetheight="90" myoffsetleft="45" myoffsettop="0" width="500" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" align="left">
+											<div myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" class="box_topic">
+												<table myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" width="500" border="0" cellpadding="0" cellspacing="0">
+													<tbody myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+														<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" colspan="3"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="../../../img/topics.gif" width="86" height="25"></td>
+													</tr>
+													<tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+														<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" colspan="3" valign="top">
+														</td>
+													</tr>
+													<tr myoffsetwidth="500" myoffsetheight="90" myoffsetleft="0" myoffsettop="0">
+														<td myoffsetwidth="6" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" width="10"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="45" src="../../../common/spacer.gif" width="1" height="1"></td>
+														<td myoffsetwidth="480" myoffsetheight="90" myoffsetleft="6" myoffsettop="0" valign="top" align="left">
+															<iframe myoffsetwidth="480" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" hspace="0" marginheight="0" marginwidth="0" name="TOPIC" src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/topic.shtml" vspace="0" width="480" frameborder="0" height="90" scrolling="no">この部分はiframe対応のブラウザで見てください。</iframe>
+														</td>
+														<td myoffsetwidth="14" myoffsetheight="90" myoffsetleft="486" myoffsettop="0" valign="bottom" width="22" align="right"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="14" myoffsettop="90" src="../../../img/pr.gif" width="22" height="12"></td>
+													</tr>
+												</tbody></table>
+											</div>
+										</td>
+									</tr>
+								</tbody></table><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="295" myoffsettop="105" src="../../../common/spacer.gif" width="500" height="10"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="295" myoffsettop="90">
+								<table myoffsetwidth="560" myoffsetheight="40" myoffsetleft="15" myoffsettop="109" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0" class="directory_bg">
+											<table myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0" width="560" border="0" cellpadding="0" cellspacing="0" height="40">
+												<tbody myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="560" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="10" myoffsetheight="40" myoffsetleft="0" myoffsettop="0" rowspan="2" valign="middle" width="10"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="20" src="../../../common/spacer.gif" width="10" height="8"></td>
+													<td myoffsetwidth="111" myoffsetheight="0" myoffsetleft="10" myoffsettop="0">
+														<div myoffsetwidth="111" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="navi1">
+														</div>
+													</td>
+													<td myoffsetwidth="439" myoffsetheight="40" myoffsetleft="121" myoffsettop="0" class="sub1" rowspan="2" valign="middle" width="450" align="left"><a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="12" href="../../../index.html">HOME</a> &gt;&gt; <a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="68" myoffsettop="12" href="../../index.html">コラム</a> &gt;&gt; <a myoffsetwidth="85" myoffsetheight="17" myoffsetleft="136" myoffsettop="12" href="../index.html">美馬 達哉氏</a></td>
+													<td myoffsetwidth="0" myoffsetheight="0" myoffsetleft="560" myoffsettop="0"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="../../../common/spacer.gif" width="1" height="10"></td>
+												</tr>
+												<tr myoffsetwidth="560" myoffsetheight="40" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="111" myoffsetheight="40" myoffsetleft="10" myoffsettop="0" valign="middle" width="110"><select myoffsetwidth="111" myoffsetheight="20" myoffsetleft="0" myoffsettop="10" onchange="location.href = this.options[selectedIndex].value"><option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="31" selected="selected" value="-">記事種別一覧</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="46" value="-">------------</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="62" value="http://www.nikkeibp.co.jp/sj/special/">特集</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="78" value="http://www.nikkeibp.co.jp/sj/report/">リポート</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="93" value="http://www.nikkeibp.co.jp/sj/research/">調査</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="109" value="http://www.nikkeibp.co.jp/sj/case/">事例</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="124" value="http://www.nikkeibp.co.jp/sj/interview/">インタビュー</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="140" value="http://www.nikkeibp.co.jp/sj/column/">コラム</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="156" value="http://www.nikkeibp.co.jp/sj/bookreview/">書評</option>
+															<option myoffsetwidth="109" myoffsetheight="16" myoffsetleft="2" myoffsettop="171" value="http://www.nikkeibp.co.jp/sj/contribute/">特別寄稿</option></select></td>
+												</tr>
+											</tbody></table>
+										</td>
+									</tr>
+								</tbody></table><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="295" myoffsettop="164" alt="" src="../../../common/spacer.gif" width="1" height="10"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="295" myoffsettop="149">
+								<table myoffsetwidth="530" myoffsetheight="1277" myoffsetleft="30" myoffsettop="168" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="530" myoffsetheight="1277" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="530" myoffsetheight="1277" myoffsetleft="0" myoffsettop="0" valign="top">
+										<td myoffsetwidth="30" myoffsetheight="1277" myoffsetleft="0" myoffsettop="0" width="30"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="15" src="../../../common/spacer.gif" width="30" height="10"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+										</td>
+										<td myoffsetwidth="500" myoffsetheight="1277" myoffsetleft="30" myoffsettop="0">
+											<table myoffsetwidth="500" myoffsetheight="109" myoffsetleft="0" myoffsettop="0" width="500" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="500" myoffsetheight="109" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="http://www.nikkeibp.co.jp/sj/column/common/spacer.gif" width="1" height="1"></td>
+												</tr>
+												<tr myoffsetwidth="500" myoffsetheight="109" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="109" myoffsetleft="0" myoffsettop="0">
+														<h1 myoffsetwidth="500" myoffsetheight="66" myoffsetleft="0" myoffsettop="21"><img myoffsetwidth="471" myoffsetheight="66" myoffsetleft="0" myoffsettop="21" alt="コラム　美馬 達哉氏　医療社会学からみたリスク" src="img/tt.gif" width="500" border="0" height="150"></h1>
+													</td>
+												</tr>
+											</tbody></table>
+											<table myoffsetwidth="500" myoffsetheight="48" myoffsetleft="0" myoffsettop="109" width="500" border="0" cellpadding="0" cellspacing="5">
+												<tbody myoffsetwidth="490" myoffsetheight="38" myoffsetleft="5" myoffsettop="5"><tr myoffsetwidth="490" myoffsetheight="38" myoffsetleft="5" myoffsettop="5">
+													<td myoffsetwidth="490" myoffsetheight="38" myoffsetleft="5" myoffsettop="5" align="left">
+														<div myoffsetwidth="490" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" class="size12_br" align="right"><a myoffsetwidth="385" myoffsetheight="17" myoffsetleft="105" myoffsettop="1" href="04.html#PROF">美馬 達哉（みま・たつや）氏／神経内科医・医療社会学者</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="490" myoffsettop="15"> 3月28日公開</div>
+													</td>
+												</tr>
+											</tbody></table><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="172" alt="" src="../../../common/line_dot490.gif" width="490" height="1"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="157">
+											<table myoffsetwidth="500" myoffsetheight="979" myoffsetleft="0" myoffsettop="176" width="500" border="0" cellpadding="0" cellspacing="5">
+												<tbody myoffsetwidth="490" myoffsetheight="969" myoffsetleft="5" myoffsettop="5"><tr myoffsetwidth="490" myoffsetheight="0" myoffsetleft="5" myoffsettop="5">
+													<td myoffsetwidth="490" myoffsetheight="0" myoffsetleft="5" myoffsettop="5"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="../../../common/spacer.gif" width="10" height="10"></td>
+												</tr>
+												<tr myoffsetwidth="490" myoffsetheight="19" myoffsetleft="5" myoffsettop="10">
+													<td myoffsetwidth="490" myoffsetheight="19" myoffsetleft="5" myoffsettop="10" class="size14_lg" align="center"><strong myoffsetwidth="87" myoffsetheight="17" myoffsetleft="202" myoffsettop="1"><span myoffsetwidth="9" myoffsetheight="17" myoffsetleft="202" myoffsettop="1" class="size14_or">1</span>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="228" myoffsettop="1" class="size14_lg" href="02.html">2</a>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="254" myoffsettop="1" class="size14_lg" href="03.html">3</a>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="280" myoffsettop="1" class="size14_lg" href="04.html">4</a></strong></td>
+												</tr>
+												<tr myoffsetwidth="490" myoffsetheight="939" myoffsetleft="5" myoffsettop="34">
+													<td myoffsetwidth="490" myoffsetheight="939" myoffsetleft="5" myoffsettop="34" align="left">
+														<h1 myoffsetwidth="490" myoffsetheight="99" myoffsetleft="0" myoffsettop="21" class="leaf_midashi green">第６回<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="89" myoffsettop="49"> 牛海綿状脳症（BSE）と科学と二人のブッシュ</h1>
+														<h2 myoffsetwidth="490" myoffsetheight="29" myoffsetleft="0" myoffsettop="142" class="leaf_kmidashi" align="center">BSE対策の「科学的な根拠」</h2>
+														<div myoffsetwidth="490" myoffsetheight="0" myoffsetleft="0" myoffsettop="191" class="photo_l"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="191" src="img/img01.jpg" border="0"></div><span myoffsetwidth="490" myoffsetheight="747" myoffsetleft="0" myoffsettop="192" class="size14"> 　本年3月18日にオーストラリアのシドニーで行われた日米戦略対話で、在日米軍再編や国連改革、国際情勢と並んで議題とされたのが牛肉輸入再開問題だ。その際アメリカ側は、日本側の「過剰」な牛肉禁輸措置を批判したという。アメリカ産牛肉の日本への輸入停止とその再開をめぐる議論は、いまや単なる食品衛生の問題にとどまらず、日米貿易や外交ともリンクした政治問題へと発展しているのだ。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="300" myoffsettop="302">
+															<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="306"> 　アメリカ産牛肉を食べることで生まれる「BSE感染のリスク」をどう評価するかという議論の中で、一つの大きな論点となったのは、日本で現在行われているようにすべての食肉用の牛に対してBSE検査を行うこと（全頭検査）が「科学的かどうか」という点だった。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="269" myoffsettop="398">
+															<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="402"> 　結局2005年末に食品安全委員会は、肉骨粉対策はすでになされており、BSEの潜伏期間が長いため、若い牛（20カ月齢以下）については検査が不要と結論づけた。直後、その報告に基づいて、全頭検査を行っていないアメリカ産牛肉（特定危険部位を除去し、20ヶ月齢以下に限る）の輸入が再開。その一方で、日本国内での牛については実質的には全頭検査を継続するという二重基準となっていた。ところが、2006年の1月20日には、特定危険部位である脊椎骨が日本向けの輸出用のアメリカ産牛肉に混入していたことが判明し、再び全面禁輸となってしまったというのが現在までの経過である。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="116" myoffsettop="590">
+															<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="594"> 　この間の報道で特に目についたのは、アメリカ側担当者が「全頭検査は科学的に根拠がない」として日本側の対応を繰り返し批判する場面である。どんなに立派な科学的リスクアセスメントがあっても、そのルールに基づいた処理を現場で運用できなかったのだから話にならないのだが、今回取り上げたいのはそのことではない（消費者は食品安全委員会の報告をどう読めばいいのかについての紹介が、このホームページ上にある<a myoffsetwidth="322" myoffsetheight="17" myoffsetleft="0" myoffsettop="729" class="green" href="../../../special/114/index.html" target="_blank">「BSE問題――日本での経緯と現状を再考する」</a>なので参照してほしい）。医療社会学の立場から注目するべき点は、昨今のアメリカでの「科学的な根拠」という言葉の使われ方という側面である。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="314" myoffsettop="782">
+															<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="786"> 　アメリカでの科学政策史をたどってみると簡単に分かることなのだが、1990年代以降のアメリカ政治で使われる「科学的な根拠」という言葉は、私たちの知っている世界標準での「科学」とは全くかけ離れた意味で用いられる政治的常套句なのだ。この科学と政治をめぐる歴史には、二人の対照的なブッシュ（縁戚関係ではない）、ヴァネバー・ブッシュとG・W・ブッシュの二人が大きく関わっている。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="229" myoffsettop="916">
+															<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="920"></span></td>
+												</tr>
+											</tbody></table>
+											<table myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="1155" width="500" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" align="left"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="../../../img/ads_title.gif"></td>
+												</tr>
+												<tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="../../../common/line_dot490.gif" width="490" height="1"></td>
+												</tr>
+												<tr myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" align="left">
+														<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript">
 <!--
 function google_ad_request_done(google_ads) {
 var s = '';
@@ -298,128 +214,95 @@ google_adtest = 'off';
 google_safe = 'high';
 -->
 </script>
-
-<script language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-
-<noscript>
-<img height=1 width=1 border=0 src="http://pagead2.googlesyndication.com/pagead/imp.gif?client=ca-nikkei-bp-oshiete_html&event=noscript"/>
-</noscript>
-</td>
-</tr>
-</table>
-<!-- /Google　アドセンス -->
-
-<img src="../../../common/line_dot490.gif" alt="" width="490" height="1"><br><br>
-<table width="500" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="30%" align="left"><strong><!--<a href="index.html" class="size12_or">&lt;&lt; ＰＲＥＷ</a>--></strong></td>
-<td align="center" class="size14_lg"><strong><span class="size14_or">1</span>｜<a href="02.html" class="size14_lg">2</a>｜<a href="03.html" class="size14_lg">3</a>｜<a href="04.html" class="size14_lg">4</a></strong></td>
-<td width="30%" align="right"><strong><a href="02.html" class="size12_or"><img src="../../../img/next.gif" border="0"></a> </strong></td>
-  </tr>
-<tr valign="middle">
-<td colspan="2" align="left"><a href="../index.html" class="size16_r"><strong>美馬 達哉氏のコラム一覧へ →</strong></a></td>
-<td align="right" valign="bottom"><img src="../../../common/arrow_or2.gif" alt="" width="11" height="16"> <a href="index.html#TOPPAGE" class="size12_or"><strong>このページのＴＯＰへ</strong></a></td>
-</tr>
-</table>
-
-<table width="500" border="0" cellspacing="0" cellpadding="13">
-<tr>
-<td align="center" class="size12"><a href="../../../index.html">HOME</a> &gt;&gt; <a href="../../index.html">コラム</a> &gt;&gt; <a href="../index.html">美馬 達哉氏</a></td>
-</tr>
-</table>
-							  </td>
-							</tr>
-						</table>
-						
-						<img src="http://www.nikkeibp.co.jp/sj/column/common/spacer.gif" width="1" height="15" border="0" alt=""><br>
-
-
-
-				  <!-- /中ページ/ -->
-				  </td>
-					<td valign="top" width="200">
-<!-- 右NAVI -->
-<!-- バナー -->
-<table width="200" border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td>
-									<iframe width="200" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&spacedesc=v_sj2005_rectangle&site=s_nikkeibpjp">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rectangle&site=s_nikkeibpjp&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rectangle&site=s_nikkeibpjp" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=JIS&spacedesc=v_sj2005_rectangle&site=s_nikkeibpjp" border="0"></a>
-</noscript>
-</iframe>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="../../../common/spacer.gif" alt="" width="10" height="10"></td>
-							</tr>
-						</table>
-
-<!-- インフォメーション -->
-						<iframe src="http://apr.nikkeibp.co.jp/gen-ssi/clad/sj2005/p_sj2005.html" width="200" name="INFO" marginwidth="0" height="300" marginheight="0" scrolling="no" frameborder="0" hspace="0" vspace="0">この部分は iframe 対応のブラウザで見てください。</iframe><br>
-
-<!-- ランキング -->
-<img src="../../../common/spacer.gif" alt="" width="1" height="10"><br>
-<a href="JavaScript:pop1('../../../ranking.html')"><img src="../../../common/banner_best10.gif" width="200" height="62" border="0" alt="もっとも読まれた記事 Best10"></a><br>
-<img src="../../../common/spacer.gif" alt="" width="10" height="10"><br><br>
-
-<!-- /右NAVI/ -->
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<!-- footer -->
-<table width="1000" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td><img src="../../../img/linebot_gr1000_1.gif"></td>
-</tr>
-<tr>
-<td class="present-box1"><img src="../../../img/presented.gif" alt="協賛"></td>
-</tr>
-<tr>
-<td class="present-box2">
-<!-- 協賛ロゴ -->
-<table width="100%" border="0" cellpadding="0" cellspacing="8">
-<tr>
-<td align="center">
-<iframe src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/sponsor_leaf.shtml" width="100%" height="75"name="協賛" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" hspace="0" vspace="0">この部分は iframe 対応のブラウザで見てください。</iframe>
-</td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td><img src="../../../img/linebot_gr1000_2.gif"></td>
-</tr>
-<tr>
-<td align="center" class="footer-box"><table border="0" cellspacing="1" cellpadding="0">
-<tr align="left" valign="top">
-<td rowspan="2"><a href="../../../../index.html" target="_blank"><img src="../../../img/nikkeibp.gif" alt="日経ＢＰ社" width="149" height="22" border="0"></a></td>
-<td><a href="mailto:sj2005@nikkeibp.co.jp"  class="size12_foot">ご意見・お問い合わせ</a> ｜ <a href="../../../../index.html" target="_blank" class="size12_foot">日経BP社案内</a> ｜ <a href="../../../../information/privacy/index.html" target="_blank"  class="size12_foot">プライバシーポリシー</a> ｜ <a href="../../../../../corporate.nikkeibp.co.jp/information/copyright/index.html" target="_blank"  class="size12_foot">著作権・リンクについて</a></td>
-</tr>
-<tr align="left" valign="top">
-<td class="size12">Copyright (c) 2005-2007 Nikkei Business Publications,Inc. All Rights Reserved.</td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- /footer/ -->
-<!--BIZMARK Version 4.5-->
-<script type="text/javascript" language="JavaScript"><!--
+														<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://googleads.g.doubleclick.net/pagead/test_domain.js"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript1.1" src="http://googleads.g.doubleclick.net/pagead/ads?client=ca-nikkeibp-safety_js&amp;output=js&amp;num_ads=5&amp;ad_type=text&amp;adtest=off&amp;ea=0&amp;oe=jis&amp;flash=10.0.32&amp;hl=ja&amp;adsafe=high&amp;dt=1253191922733&amp;correlator=1253191922747&amp;frm=1&amp;ga_vid=834433839.1253191924&amp;ga_sid=1253191924&amp;ga_hid=1636115972&amp;ga_fc=0&amp;u_tz=540&amp;u_his=50&amp;u_java=1&amp;u_h=768&amp;u_w=1024&amp;u_ah=736&amp;u_aw=1024&amp;u_cd=32&amp;u_nplug=7&amp;u_nmime=46&amp;biw=974&amp;bih=513&amp;fu=0&amp;ifi=1&amp;dtd=M"></script>
+														<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img border="0" height="1" src="http://pagead2.googlesyndication.com/pagead/imp.gif?client=ca-nikkei-bp-oshiete_html&amp;event=noscript" width="1" /></noscript>
+													</td>
+												</tr>
+											</tbody></table><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="1170" alt="" src="../../../common/line_dot490.gif" width="490" height="1"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="1155">
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="1174">
+											<table myoffsetwidth="500" myoffsetheight="38" myoffsetleft="0" myoffsettop="1193" width="500" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="500" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="150" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" width="30%" align="left"><strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="10"></strong></td>
+													<td myoffsetwidth="200" myoffsetheight="19" myoffsetleft="150" myoffsettop="0" class="size14_lg" align="center"><strong myoffsetwidth="87" myoffsetheight="17" myoffsetleft="57" myoffsettop="1"><span myoffsetwidth="9" myoffsetheight="17" myoffsetleft="57" myoffsettop="1" class="size14_or">1</span>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="83" myoffsettop="1" class="size14_lg" href="02.html">2</a>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="109" myoffsettop="1" class="size14_lg" href="03.html">3</a>｜<a myoffsetwidth="9" myoffsetheight="17" myoffsetleft="135" myoffsettop="1" class="size14_lg" href="04.html">4</a></strong></td>
+													<td myoffsetwidth="150" myoffsetheight="19" myoffsetleft="350" myoffsettop="0" width="30%" align="right"><strong myoffsetwidth="0" myoffsetheight="0" myoffsetleft="150" myoffsettop="10"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="150" myoffsettop="10" class="size12_or" href="02.html"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="150" myoffsettop="10" src="../../../img/next.gif" border="0"></a> </strong></td>
+												</tr>
+												<tr myoffsetwidth="500" myoffsetheight="19" myoffsetleft="0" myoffsettop="19" valign="middle">
+													<td myoffsetwidth="350" myoffsetheight="19" myoffsetleft="0" myoffsettop="19" colspan="2" align="left"><a myoffsetwidth="227" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" class="size16_r" href="../index.html"><strong myoffsetwidth="227" myoffsetheight="17" myoffsetleft="0" myoffsettop="1">美馬 達哉氏のコラム一覧へ →</strong></a></td>
+													<td myoffsetwidth="150" myoffsetheight="19" myoffsetleft="350" myoffsettop="19" valign="bottom" align="right"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="1" myoffsettop="15" alt="" src="../../../common/arrow_or2.gif" width="11" height="16"> <a myoffsetwidth="149" myoffsetheight="17" myoffsetleft="1" myoffsettop="1" class="size12_or" href="index.html#TOPPAGE"><strong myoffsetwidth="149" myoffsetheight="17" myoffsetleft="1" myoffsettop="1">このページのＴＯＰへ</strong></a></td>
+												</tr>
+											</tbody></table>
+											<table myoffsetwidth="500" myoffsetheight="45" myoffsetleft="0" myoffsettop="1232" width="500" border="0" cellpadding="13" cellspacing="0">
+												<tbody myoffsetwidth="500" myoffsetheight="45" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="500" myoffsetheight="45" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="500" myoffsetheight="45" myoffsetleft="0" myoffsettop="0" class="size12" align="center"><a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="140" myoffsettop="14" href="../../../index.html">HOME</a> &gt;&gt; <a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="208" myoffsettop="14" href="../../index.html">コラム</a> &gt;&gt; <a myoffsetwidth="85" myoffsetheight="17" myoffsetleft="276" myoffsettop="14" href="../index.html">美馬 達哉氏</a></td>
+												</tr>
+											</tbody></table>
+										</td>
+									</tr>
+								</tbody></table><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="295" myoffsettop="1461" alt="" src="http://www.nikkeibp.co.jp/sj/column/common/spacer.gif" width="1" border="0" height="15"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="295" myoffsettop="1445">
+							</td>
+							<td myoffsetwidth="211" myoffsetheight="1465" myoffsetleft="589" myoffsettop="0" valign="top" width="200">
+								<table myoffsetwidth="200" myoffsetheight="200" myoffsetleft="0" myoffsettop="0" width="200" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="200" myoffsetheight="200" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="200" myoffsetheight="200" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="200" myoffsetheight="200" myoffsetleft="0" myoffsettop="0">
+											<iframe myoffsetwidth="200" myoffsetheight="200" myoffsetleft="0" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=JIS&amp;spacedesc=v_sj2005_rectangle&amp;site=s_nikkeibpjp" vspace="0" width="200" frameborder="0" height="200" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rectangle&amp;amp;site=s_nikkeibpjp&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rectangle&amp;amp;site=s_nikkeibpjp" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=JIS&amp;amp;spacedesc=v_sj2005_rectangle&amp;amp;site=s_nikkeibpjp" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+										</td>
+									</tr>
+									<tr myoffsetwidth="200" myoffsetheight="0" myoffsetleft="0" myoffsettop="200">
+										<td myoffsetwidth="200" myoffsetheight="0" myoffsetleft="0" myoffsettop="200"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="" src="../../../common/spacer.gif" width="10" height="10"></td>
+									</tr>
+								</tbody></table>
+								<iframe myoffsetwidth="200" myoffsetheight="300" myoffsetleft="0" myoffsettop="200" hspace="0" marginheight="0" marginwidth="0" name="INFO" src="http://apr.nikkeibp.co.jp/gen-ssi/clad/sj2005/p_sj2005.html" vspace="0" width="200" frameborder="0" height="300" scrolling="no">この部分は iframe 対応のブラウザで見てください。</iframe>
+								<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="200" myoffsettop="500"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="515" alt="" src="../../../common/spacer.gif" width="1" height="10"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="500"><a myoffsetwidth="196" myoffsetheight="17" myoffsetleft="0" myoffsettop="520" href="JavaScript:pop1('../../../ranking.html')"><img myoffsetwidth="196" myoffsetheight="17" myoffsetleft="0" myoffsettop="520" alt="もっとも読まれた記事 Best10" src="../../../common/banner_best10.gif" width="200" border="0" height="62"></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="196" myoffsettop="534"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="554" alt="" src="../../../common/spacer.gif" width="10" height="10"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="538">
+								<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="558">
+							</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="1000" myoffsetheight="152" myoffsetleft="8" myoffsettop="2009" width="1000" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="1000" myoffsetheight="152" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="1000" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="../../../img/linebot_gr1000_1.gif"></td>
+			</tr>
+			<tr myoffsetwidth="1000" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="1000" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" class="present-box1"><img myoffsetwidth="32" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="協賛" src="../../../img/presented.gif"></td>
+			</tr>
+			<tr myoffsetwidth="1000" myoffsetheight="91" myoffsetleft="0" myoffsettop="19">
+				<td myoffsetwidth="1000" myoffsetheight="91" myoffsetleft="0" myoffsettop="19" class="present-box2">
+					<table myoffsetwidth="1000" myoffsetheight="91" myoffsetleft="0" myoffsettop="0" width="100%" border="0" cellpadding="0" cellspacing="8">
+						<tbody myoffsetwidth="984" myoffsetheight="75" myoffsetleft="8" myoffsettop="8"><tr myoffsetwidth="984" myoffsetheight="75" myoffsetleft="8" myoffsettop="8">
+							<td myoffsetwidth="984" myoffsetheight="75" myoffsetleft="8" myoffsettop="8" align="center">
+								<iframe myoffsetwidth="984" myoffsetheight="75" myoffsetleft="0" myoffsettop="0" hspace="0" marginheight="0" marginwidth="0" name="協賛" src="http://bizad.nikkeibp.co.jp/NBP_AD/safety_japan/sponsor_leaf.shtml" vspace="0" width="100%" frameborder="0" height="75" scrolling="no">この部分は iframe 対応のブラウザで見てください。</iframe>
+							</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			<tr myoffsetwidth="1000" myoffsetheight="0" myoffsetleft="0" myoffsettop="110">
+				<td myoffsetwidth="1000" myoffsetheight="0" myoffsetleft="0" myoffsettop="110"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="../../../img/linebot_gr1000_2.gif"></td>
+			</tr>
+			<tr myoffsetwidth="1000" myoffsetheight="41" myoffsetleft="0" myoffsettop="110">
+				<td myoffsetwidth="1000" myoffsetheight="41" myoffsetleft="0" myoffsettop="110" class="footer-box" align="center">
+					<table myoffsetwidth="695" myoffsetheight="41" myoffsetleft="153" myoffsettop="0" border="0" cellpadding="0" cellspacing="1">
+						<tbody myoffsetwidth="693" myoffsetheight="39" myoffsetleft="1" myoffsettop="1"><tr myoffsetwidth="693" myoffsetheight="19" myoffsetleft="1" myoffsettop="1" valign="top" align="left">
+							<td myoffsetwidth="71" myoffsetheight="39" myoffsetleft="1" myoffsettop="1" rowspan="2"><a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../../../index.html" target="_blank"><img myoffsetwidth="71" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="日経ＢＰ社" src="../../../img/nikkeibp.gif" width="149" border="0" height="22"></a></td>
+							<td myoffsetwidth="621" myoffsetheight="19" myoffsetleft="73" myoffsettop="1"><a myoffsetwidth="148" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" class="size12_foot" href="mailto:sj2005@nikkeibp.co.jp">ご意見・お問い合わせ</a> ｜ <a myoffsetwidth="100" myoffsetheight="17" myoffsetleft="174" myoffsettop="1" class="size12_foot" href="../../../../index.html" target="_blank">日経BP社案内</a> ｜ <a myoffsetwidth="141" myoffsetheight="17" myoffsetleft="300" myoffsettop="1" class="size12_foot" href="../../../../information/privacy/index.html" target="_blank">プライバシーポリシー</a> ｜ <a myoffsetwidth="154" myoffsetheight="17" myoffsetleft="467" myoffsettop="1" class="size12_foot" href="../../../../../corporate.nikkeibp.co.jp/information/copyright/index.html" target="_blank">著作権・リンクについて</a></td>
+						</tr>
+						<tr myoffsetwidth="693" myoffsetheight="19" myoffsetleft="1" myoffsettop="21" valign="top" align="left">
+							<td myoffsetwidth="621" myoffsetheight="19" myoffsetleft="73" myoffsettop="21" class="size12">Copyright (c) 2005-2007 Nikkei Business Publications,Inc. All Rights Reserved.</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript"><!--
 var _ANid="nbpsj";
 //--></script>
-<script type="text/javascript" language="JavaScript" src="http://biz2.ogt.jp/js/an_nbpsj.js"></script>
-<noscript><img src="http://biz2.ogt.jp/plog?id=nbpsj" width="1" height="1" alt="" /></noscript>
-<!--END OF BIZMARK-->
-<!-- START RedSheriff Measurement V5.01 -->
-<!-- COPYRIGHT 2002 RedSheriff Limited -->
-<script language="JavaScript" type="text/javascript"><!--
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" src="http://biz2.ogt.jp/js/an_nbpsj.js" type="text/javascript"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="VBScript">Function FFA500_ANtrg(img)
+END Function
+</script><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="2162" src="file://biz2.ogt.jp/plog?id=nbpsj&amp;ref=file%3A///C%3A/Users/8BKSA34196/Desktop/htmls//BSE/056.html&amp;cd=&amp;mk=&amp;ss=253191715776&amp;ls=253191715776&amp;cc=2&amp;vw=file%3A///C%3A/Users/8BKSA34196/Desktop/htmls//BSE/094.html&amp;it=0&amp;js=1&amp;cok=4&amp;tit=%u533B%u7642%u793E%u4F1A%u5B66%u304B%u3089%u307F%u305F%u30EA%u30B9%u30AF%uFF08%u7B2C6%u56DE%uFF09%5B%u7F8E%u99AC%20%u9054%u54C9%u6C0F%5D/SAFETY%20JAPAN%20%5B%u30B3%u30E9%u30E0%5D/%u65E5%u7D4CBP%u793E&amp;v=4.4&amp;dt=191925" onload="if(self.FFA500_ANtrg!=null){FFA500_ANtrg(this);}" id="_ANimg" alt="" width="1" border="0" height="1">
+		<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img alt="" height="1" src="http://biz2.ogt.jp/plog?id=nbpsj" width="1" /></noscript>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript"><!--
 var _rsCI='nikkeibp';
 var _rsCG='sj2005';
   var _rsDT=1;
@@ -443,10 +326,7 @@ var _rsCG='sj2005';
     _rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
   }
   document.write(_rsCL);
-//--></script>
-<noscript>
-<img src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=sj2005" alt="">
-</noscript>
-<!-- END RedSheriff Measurement V5 -->
-</body>
+//--></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript" src="http://secure-jp.imrworldwide.com/v5.js"></script><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="8" myoffsettop="2161" src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=sj2005&amp;rd=1253191925101&amp;si=file%3A///C%3A/Users/8BKSA34196/Desktop/htmls//BSE/094.html&amp;rp=&amp;sr=1024x768&amp;cd=32&amp;lg=ja&amp;je=y&amp;ck=y&amp;tz=9&amp;ct=&amp;hp=&amp;tl=%u533B%u7642%u793E%u4F1A%u5B66%u304B%u3089%u307F%u305F%u30EA%u30B9%u30AF%uFF08%u7B2C6%u56DE%uFF09%5B%u7F8E%u99AC%20%u9054%u54C9%u6C0F%5D/SAFETY%20JAPAN%20%5B%u30B3%u30E9%u30E0%5D/%u65E5%u7D4CBP%u793E" width="1" border="0" height="1">
+		<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img alt="" src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=sj2005" /></noscript>
+	</body>
 </html>

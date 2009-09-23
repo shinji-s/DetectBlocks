@@ -1,474 +1,186 @@
-<?xml version="1.0" encoding="euc-jp"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<html>
 <head profile="http://www.w3.org/2003/g/data-view">
 
-
-
-
-
-
-
-<meta http-equiv="content-type" content="text/html; charset=euc-jp" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta name="rating" content="general" />
-<meta name="distribution" content="global" />
-<meta name="dc.title" content="日経ビジネス オンライン" />
-<meta name="dc.creator.name" content="日経BP社" />
-
-                        
-<meta name="keywords" content="環境,温暖化,二酸化炭素,ポスト京都,京都議定書,CDM,日経ビジネス,日経BP社" />
-<meta name="description" content="今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の枠組みについてのシンポジウムが行われた。そこでの議論をもとに、「ポスト京都」の問題と方向性を探った。" />
-
-	<title>ポスト京都議定書 (環境と経営)：NBonline(日経ビジネス オンライン)</title>
-
-	<link rel="shortcut icon" href="../../../../favicon.ico.html" />
-	<link rel="home" title="日経ビジネス オンライン" href="http://business.nikkeibp.jp/" />
-	<link rel="stylesheet" href="../../../../css/leaf_oct3.css" type="text/css" />
-	<script src="../../../../js/scripts.js" type="text/javascript"></script>
-	<script type="text/javascript">
+	
+		<meta content="text/html; charset=utf-8" http-equiv="content-type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<meta content="general" name="rating">
+		<meta content="global" name="distribution">
+		<meta content="日経ビジネス オンライン" name="dc.title">
+		<meta content="日経BP社" name="dc.creator.name">
+		<meta content="環境,温暖化,二酸化炭素,ポスト京都,京都議定書,CDM,日経ビジネス,日経BP社" name="keywords">
+		<meta content="今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の枠組みについてのシンポジウムが行われた。そこでの議論をもとに、「ポスト京都」の問題と方向性を探った。" name="description">
+		<title>ポスト京都議定書 (環境と経営)：NBonline(日経ビジネス オンライン)</title>
+		<link href="../../../../favicon.ico.html" rel="shortcut icon">
+		<link href="http://business.nikkeibp.jp/" rel="home" title="日経ビジネス オンライン">
+		<link href="../../../../css/leaf_oct3.css" rel="stylesheet" type="text/css">
+		<script src="../../../../js/scripts.js" type="text/javascript"></script>
+		<script type="text/javascript">
 	//addEventToObject(window,'onload',labelTrick);
 	//addEventToObject(window,'onload',enableTooltips);
 	// HTMLがロードされた際、makeSearchLink()関数、makeStockLink()関数を実行
 	addListener(window, 'load', makeSearchLink, false);
 	addListener(window, 'load', makeStockLink, false);
 	</script>
-
-</head>
-
-<body id="nav-manage">
-
-<div id="skipnavigation">
-	<ul>
-		<li><a href="index.html#navigation">メニューへ</a></li>
-		<li><a href="index.html#content">本文へ</a></li>
-	</ul>
-</div>
-
-<!-- BEGIN: GLOBAL NAVIGATION -->
-<div id="gnav200603">
-<ul>
-<li id="g_www"><a href="http://www.nikkeibp.co.jp/" title="nikkeibp.jp" target="_top"><span>日経BP</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_business"><a href="../../../../index.html" title="日経ビジネスオンライン" target="_top"><span>ビジネス</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_pc"><a href="http://pc.nikkeibp.co.jp/" title="日経パソコンオンライン" target="_top"><span>PC</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_arena"><a href="http://arena.nikkeibp.co.jp/" title="デジタルARENA" target="_top"><span>デジタル</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_itpro"><a href="http://itpro.nikkeibp.co.jp/" title="ITpro" target="_top"><span>IT</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_techon"><a href="http://techon.nikkeibp.co.jp/" title="Tech-On!" target="_top"><span>テクノロジー</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_medical"><a href="http://medical.nikkeibp.co.jp/" title="日経メディカルオンライン" target="_top"><span>医療</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0" target="_top"></a></li>
-<li id="g_kenplatz"><a href="http://kenplatz.nikkeibp.co.jp/" title="KEN-Platz" target="_top"><span>建設・不動産</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_ex"><a href="http://career.nikkei.co.jp/" title="日経キャリアNET" target="_top"><span>転職</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_sitemap"><a href="http://www.nikkeibp.co.jp/sitemap/" title="日経BP専門情報サイト一覧" target="_top"><span>サイト一覧</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_sj"><a href="http://www.nikkeibp.co.jp/sj/" title="セキュリティ SAFETY JAPAN" target="_top"><span>SAFETY</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-<li id="g_ad"><a href="http://www.nikkeibp.co.jp/bizit/" title="経営とIT" target="_top"><span>経営とIT</span><img src="../../../../nboimgs/gnavi/spacer.gif" alt="" border="0"></a></li>
-</ul>
-</div>
-<!-- END: GLOBAL NAVIGATION -->
-
-<hr />
-<table width="1000" border="0" cellpadding="0" cellspacing="0" summary="header" style="margin-bottom:5px;">
-<tr>
-<td>
-	<a href="../../../../index.html" accesskey="0" title="NBonline(日経ビジネスオンライン)" class="noborder"><img src="../../../../nboimgs/logo.gif" width="258" height="68" border="0" alt="NBonline(日経ビジネスオンライン)" /></a>
-</td>
-<td rowspan="2">
-	<div id="topad">
-<!-- nbonline_manage_rotation -->
-
-<iframe width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rotation&site=NBonline" border="0"></a>
-</noscript>
-</iframe>
-
-<!-- end of nbonline_manage_rotation -->
-	</div>
-</td>
-</tr>
-<tr>
-<td align="center">
-<div class="nbinfo" style="margin-bottom:10px;">
-<div id="notice"><a href="../../../../info/reguser/index.shtml.html" class="noborder">
-<!--
-<span style="color:#00ccff;">★</span>10月3日、会員登録制を開始します<span style="color:#00ccff;">★</span></a>
--->
-<a href="../../../../info/reguser/index.shtml.html" class="noborder">会員登録制を開始しました</a>
-</div>
-</div>
-</td>
-</table>
-<hr />
-<div id="navigation">
-	<ul>
-		<li class="nav-news"><a href="../../../../news/index.html" target="_top">ニュース</a></li>
-		<li class="nav-nb100"><a href="../../../../nb100/index.html" target="_top">NB100</a></li>
-		<li class="nav-money"><a href="../../../../money/index.html" target="_top">マネー</a></li>
-		<li class="nav-manage"><a href="../../../../manage/index.html" target="_top">経営</a></li>
-		<li class="nav-tech"><a href="../../../../tech/index.html" target="_top">技術</a></li>
-		<li class="nav-world"><a href="../../../../world/index.html" target="_top">国際</a></li>
-		<li class="nav-skillup"><a href="../../../../skillup/index.html" target="_top">自己啓発</a></li>
-		<li class="nav-person"><a href="../../../../person/index.html" target="_top">人</a></li>
-		<li class="nav-life"><a href="../../../../life/index.html" target="_top">ライフ</a></li>
-		<!--<li class="nav-week"><a href="http://business.nikkeibp.co.jp/week/" target="_top">Week</a></li>-->
-		<!--<li class="nav-blog"><a href="http://business.nikkeibp.co.jp/blog/">Blog</a></li>-->
-		<li class="nav-podcast"><a href="../../../../podcast/index.shtml.html" target="_top">Podcast</a></li>
-		<li class="nav-premium"><a href="../../../../premium/index.shtml.html" target="_top">Premium</a></li>
-		<li class="nav-register"><a href="../../../../info/reguser/index.shtml.html" target="_top">会員登録</a></li>
-		<li class="nav-subscribe"><a href="../../../../nbs/index.html" target="_blank">日経ビジネス読者サービス</a></li>
-		<!--<li class="nav-reader"><a href="http://business.nikkeibp.co.jp/premium/" target="_top">定期購読者の方へ</a></li>-->
-		<li class="nav-help"><a href="../../../../info/regfaq/index.html" target="_top">ヘルプ</a></li>
-	</ul>
-</div>
-
-<div id="wrapper">
-
-	<div id="maincontent">
-
-<table border="0" cellpadding="0" cellspacing="0" summary="content" width="770" align="right" class="layout">
-
-<tr>
-<td colspan="2" width="770">
-<div id="kanban">
-				<h3 id="topid108997"><a href="../108997/index.html" title="環境と経営のトップへ">環境と経営</a></h3>
-
-
-
-
-											
-
-<table style="width:100%; border-bottom: 1px solid #666;">
-<tr>
-<td>
-<div class="articlecontrol">
-<a href="../../../../index.html">トップページ</a>＞<a href="../../../../manage/index.html">経営</a>＞<a href="../108997/index.html" title="環境と経営">環境と経営</a>
-</div>
-</td>
-<td width="250" align="left">
-<div class="articlecontrol">
-	<ul>
-
-				<li><a href="index.html#bottom" class="ccomment">コメント</a></li>
-				<li><a href="index.html#bottom" class="ctrackback">トラックバック</a></li>
-								<li><a href="index.html@ST=nboprint.html" class="cprint">印刷</a></li>
-
-	</ul>
-</div>
-</td>
-</tr>
-</table>
-
-</div>
-</td>
-</tr>
-
-<tr>
-<td valign="top" width="560" rowspan="2">
-	<div class="articlecontent">
-	
-		<h1 class="articleheader">ポスト京都議定書</h1>
-					 <h2 class="articleheader">米国・中国・インドは参加するのか<br>環境税と大規模クリーン開発が焦点に</h2> 		<ul class="articledata">
-			<li>2006年9月4日　月曜日</li>
-			
-									<li><a href="../../../../bns/author.jsp@ID=108998&amp;OFFSET=0.html">日経エコロジー編集委員　山岡　則夫</a></li>
-								</ul>
-
-			<table class="articlekeyword" cellpadding="0" cellspacing="0" width="530"><tr><td width="80" valign="middle"><img src="../../../../nboimgs/icon-artkw.jpg" width="55" height="14" border="0" alt="キーワード" /></td><td style="background-color:#eee">　
-    				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=環境.html">環境</a>　
-      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=温暖化.html">温暖化</a>　
-      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=二酸化炭素.html">二酸化炭素</a>　
-      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=ポスト京都.html">ポスト京都</a>　
-      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=京都議定書.html">京都議定書</a>　
-      				<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>　
-      			</td></tr></table>
-
-
-
-		
-
-
-			<p class="kakomi_green_std">
-今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の国際的枠組みについてのシンポジウムが開かれた。そこでの議論をもとに、「<a href="javascript:void(0)" onClick='(window.open("word_3.html","windowpodcast","width=480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>ポスト京都</a>」の問題と方向性を探った。
-</p>
-<br>
-<p align="right"><a href="../109031/index.html">＞スティグリッツ教授にきく地球温暖化防止策</a></p>
-<p>
-<img src="px300_6.jpg" align="right" alt="京都議定書後の国際的枠組みについてのシンポジウム"></p>
-<p>
-　地球温暖化を防止するため、先進各国の温室効果ガス排出量に上限を定めた<a href="javascript:void(0)" onClick='(window.open("word_1.html","windowpodcast","width=480,height=300,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>京都議定書</a>。その第1約束期間が2008年から始まる。日本は1990年比6％削減を約束しており、省エネ対策や<a href="javascript:void(0)" onClick='(window.open("word_4.html","windowpodcast","width=480,height=250,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>クリーン開発メカニズム（CDM）</a>事業など、二酸化炭素削減の努力が盛んに行われている。
-</p>
-<p>
-　だが、それは温暖化防止への第一歩。地球規模でさらなる努力を続けるため、2013年からの第2約束期間（ポスト京都議定書）の枠組みについての議論が活発になっている。
-</p>
-<p>
-　6％減の国際公約を守るだけでも大変な労力とコストがかかるのに、さらにその先なんて考えたくもないというのが、具体的削減が求められるわが国の現場の正直な声。
-</p>
-<p>
-　実際、1997年に京都議定書が採択されてから今日までの間に、様々な問題点が浮かび上がってきた。ポスト京都議定書の枠組みを決めるに当たっては、こうした問題点を踏まえて、有効かつ実行可能な枠組みにしようというコンセンサスの下、議論が進みつつある。
-</p>
-<p>
-<h4>途上国は数値規制を拒否</h4>
-</p>
-<p>
-　問題点の1つは京都議定書において途上国の温室効果ガスの排出に何の数値規制もかかっていないこと。2000年時点で中国の（燃料消費による）二酸化炭素排出量は世界の13％、インドは4％（ちなみに日本は5％）。急速な発展を続ける中国、インドの排出量は無視できない。
-</p>
-<p>
-　数値規制の圧力に対し、途上国側の反発は激しい。
-</p>
-<img src="px300_1.jpg" align="right" alt="インド・エネルギー資源研究所顧問 チャンドラシェカー・ダスグプタ氏">
-<p>
-　「既に過去の化石エネルギー消費で経済発展の恩恵を受けている先進国を規制するからといって、これから発展を図ろうという途上国に規制をかけるのはおかしい。温室効果ガス排出の許容量は基本的に一人当たりで公平に分配すべきであろう。インドの1人当たり二酸化炭素排出量は先進国平均の1割以下で、地球温暖化の加害者というより被害者」（インド・エネルギー資源研究所顧問のチャンドラシェカー・ダスグプタ氏）
-</p>
-<p>
-　京都議定書で先進国に課したような温室効果ガス削減の国別数値目標をそのまま先進国以外に課す案は、同意が得られそうにない。
-</p>
-<img src="px300_4.jpg" align="right" alt="中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授　姜克ジュン氏">
-<p>
-　「協定による数値規制には反対だが、中国政府は自律的に目標を設定している。ことし制定された第11次5カ年計画では、単位GDP（国内総生産）当たりのエネルギー消費を5年後には20%削減することを目標に掲げている」（中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授の姜克ジュン氏）
-</p>
-<p>
-　<a href="javascript:void(0)" onClick='(window.open("word_2.html","windowpodcast","width=480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no")).focus();'>京都メカニズム</a>を活用し「地球環境に取り組むための国際基金である地球環境ファシリティー（GEF）の積極活用やCDMの拡大により、地球温暖化ガスの排出の少ない開発をさらに行いたい」（ダスグプタ氏）
-</p>
-<p>
-　途上国側は、数値規制には反対だが、十分、自主的な努力をしているという主張だ。
-</p>
-<p>
-<h4>経済メカニズムが働く環境税に注目</h4>
-</p>
-<p>
-　一方、先進国側は京都議定書の排出削減義務の数値をクリアできないかもしれないという苦しい状態にある。わが国は温室効果ガスを1990年比6％削減目標に対し、現実には90年比8%増。結局、これから14％を一気に減らす、という厳しい状態に立たされている。
-</p>
-<p>
-　省エネ努力、森林による二酸化炭素吸収、日本企業の途上国CDMプロジェクトで生み出されるクレジットなどでは追いつかず、このままでは、ホットエア（排出削減義務0％のロシアや東欧諸国のエネルギー消費の落ち込みにより自然に生み出された温室効果ガス排出枠）を、言い値で買うことになりそうだ。
-</p>
-<p>
-　先進国がこれ以上数値規制に基づいて排出削減を図るのは、コストも労力も膨大なものになってしまう。
-</p>
-
-		<div align="center"><p style="text-align:left;padding:5px 7px;font-size:13px;line-height:17px;background-color:#f7f7f7;border-width:1px 4px;border-style:solid;border-color:#ccc;width:460px;">次ページ以降は「NBonline会員」(無料)の方および「NBonlineプレミアム」（日経ビジネス読者限定サービス）の会員の方のみお読みいただけます。ご登録(無料)やログインの方法は<b><a href="index.html@P=2.html">次ページ</a></b>をご覧ください。</p></div>
-	
-
-
-
-
-
-	<br />
-
-		
-		
-
-
-
-<div align="center">
-<table cellpadding="0" cellspacing="0" border="0"><tr><td>
-	</td>
-
-<td>
-<div class="multipage">
-<table cellspacing="0" cellpadding="0" align="center"><tr>
-			<td><a href="index.html@P=1.html" class="currentpage">1</a></td>
-					<td><a href="index.html@P=2.html">2</a></td>
-			</tr></table>
-</div>
-</td>
-
-<td>
-	<a href="index.html@P=2.html"><img src="../../../../nboimgs/btn_next.gif" width="30" height="20" alt="Next" border="0" /></a>
-	</td>
-</tr>
-</table>
-</div>
-
-
-
-
-
-
-
-	</div>
-	<!-- /articlecontent -->
-</td>
-
-
-<td width="210" valign="top">
-<div id="sidemenu">
-
-
-	
-</div>
-</td>
-</tr>
-
-<tr>
-<td valign="bottom">
-<div style="margin:10px 0px;">
-<img src="../../../../nboimgs/recommend.jpg" alt="こちらも読んでみませんか？" width="200" height="23" border="0" /><br>
-</div>
-
-
-
-<table width="210">
-</table>
-
-
-<a href="../../../../manage/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
-</td>
-</tr>
-
-<tr>
-<td colspan="2" width="770" valign="top">
-<div id="articlebottom">
-
-
-<a name="bottom"></a>
-
-<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="articlebottom">
-<tr>
-<td align="left">
-<p style="margin-top:0px;margin-bottom:10px;margin-left:10px;"><a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/btn_bknum.jpg" alt="バックナンバー" width="130" height="19" border="0"></a></p>
-</td>
-<td width="5px">
-<img src="../../../../nboimgs/spacer.gif" width="1" height="1" />
-</td>
-<td align="left">
-<span style="font-size:12px;"><a href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">記事・写真・図表の無断転載を禁じます。</a></span>
-</td>
-</tr>
-
-<tr>
-<td valign="top">
-
-<div class="kanrenkiji">
-
-
-
-	<a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/btn_saishin.jpg" alt="環境と経営" width="360" height="20" border="0" /></a>
-<p>[<a href="../108997/index.html">環境と経営</a>]</p>
-
-		<ul>
-						<li>
-							ポスト京都議定書
-							<span>
-												(9月4日) 
-											</span>
-			</li>
-											<li>
-							<a href="../109031/index.html">スティグリッツ教授にきく地球温暖化防止策</a>
-							<span>
-												(9月4日) 
-											</span>
-			</li>
-							</ul>
-									
-<p style="text-align:left; font-size:13px;"><a href="../108997/index.html"><img src="../../../../nboimgs/articlebottom/icon-3ya.gif" width="31" height="14" border="0" />　「環境と経営」の全記事</a></p>
-
-
-
-<p><img src="../../../../nboimgs/articlebottom/btn_gkeyword.jpg" alt="キーワードで最新記事を見る" width="200" height="20"><br />
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=環境.html">環境</a>&nbsp;
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=温暖化.html">温暖化</a>&nbsp;
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=二酸化炭素.html">二酸化炭素</a>&nbsp;
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=ポスト京都.html">ポスト京都</a>&nbsp;
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=京都議定書.html">京都議定書</a>&nbsp;
-		<a href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>&nbsp;
-	</p>
-</div>
-
-<br />
-
-<div class="prempdf">
-
-</div>
-
-</td>
-<td width="5px">
-<img src="../../../../nboimgs/spacer.gif" width="1" height="1" />
-</td>
-<td valign="top" align="left" width="370">
-
-<iframe width="360" height="150" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://apr.nikkeibp.co.jp/gen-ssi/clad/nbo/p_nbo.html">
-</iframe>
-
-<br clear="all" />
-
-
-
-		<div id="feedbackarticle">
-			<form method="post" action="http://business.nikkeibp.co.jp/fb/putfeedback.jsp?REF=/article/manage/20060831/108998/" name="FEEDBACK_BOTTOM">
-			<div class="left">
-				<p class="ask">この記事を</p>
-				<input type="radio" name="_ANS1" value="1" checked="checked" />ほとんど読んだ<br />
-				<input type="radio" name="_ANS1" value="2" />一部だけ読んだ<br />
-				<input type="radio" name="_ANS1" value="3" />あまり読まなかった
-			</div>
-			<div class="left">
-				<p class="ask">内容は</p>
-				<input type="radio" name="_ANS2" value="1" checked="checked" />とても参考になった<br />
-				<input type="radio" name="_ANS2" value="2" />まあ参考になった<br />
-				<input type="radio" name="_ANS2" value="3" />参考にならなかった
-			</div>
-			<p class="alignright">
-				<input type="image" src="../../../../nboimgs/articlebottom/btn_send.gif" value="Send" alt="送信する" />
-				<a href="../../../../fb/fb_detail.jsp@REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_survey" class="noborder"><img src="../../../../nboimgs/articlebottom/btn_comment.gif" alt="コメントする" /></a>				<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_self" class="noborder"><img src="../../../../nboimgs/articlebottom/btn_result.gif" alt="皆様の評価を見る" /></a>
-			</p>
-			<input name="_PARTS_ID" value="FB01" type="hidden" />
-			</form>
-			<p class="feedbacknum">
-				<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" class="noborder" target="_self"><img src="../../../../nboimgs/feedback-comment.gif" alt="コメント数:" width="56" height="12" /></a>
-													<a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html">1
-
-件（コメントを読む）</a>
-								<br />
-				<img src="../../../../nboimgs/feedback-trackback.gif" alt="トラックバック数:" width="85" height="12" border="0" />
-								<!-- begin: trackback frame -->
-<!--<div id="trackback">-->
-<iframe width="350" height="50" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://blog.nikkeibp.co.jp/business/news/archives/100308.html"></iframe>
-<!--</div>-->
-<!-- end: trackback frame -->
-
-			</p>
+	</head><body myoffsetwidth="958" myoffsetheight="5267" myoffsetleft="0" myoffsettop="0" id="nav-manage">
+		<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="16" id="skipnavigation">
+			<ul myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="16">
+				<li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="16"><a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="48" myoffsettop="17" href="index.html#navigation">メニューへ</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="35"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="48" myoffsettop="36" href="index.html#content">本文へ</a></li></ul>
 		</div>
-
-</td>
-</tr>
-</table>
-
-<br clear="all" />
-
-<table width="750" border="0" cellpadding="0" cellspacing="0" summary="articlebottom" bgcolor="#efefef">
-<tr>
-<td valign="top">
-			<div id="adarea">
-<iframe width="380" height="65" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/logo_banner2.shtml">
-</iframe>
-			</div>
-</td>
-<td valign="top">
-		<div id="wideadspace">
-<!-- nbonline_manage_bigsize_rectangle -->
-
-<iframe width="300" height="300" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_bigsize_rectangle&site=NBonline" border="0"></a>
-</noscript>
-</iframe>
-
-<!-- end of nbonline_manage_bigsize_rectangle -->
-
-
-<!-- START RedSheriff Measurement V5.01 -->
-<!-- COPYRIGHT 2002 RedSheriff Limited -->
-<script language="JavaScript" type="text/javascript"><!--
+		<div myoffsetwidth="958" myoffsetheight="230" myoffsetleft="8" myoffsettop="70" id="gnav200603">
+			<ul myoffsetwidth="958" myoffsetheight="230" myoffsetleft="8" myoffsettop="70">
+				<li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="70" id="g_www"><a myoffsetwidth="52" myoffsetheight="17" myoffsetleft="48" myoffsettop="72" href="http://www.nikkeibp.co.jp/" target="_top" title="nikkeibp.jp"><span myoffsetwidth="52" myoffsetheight="17" myoffsetleft="48" myoffsettop="72">日経BP</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="100" myoffsettop="86" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="90" id="g_business"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="91" href="../../../../index.html" target="_top" title="日経ビジネスオンライン"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="91">ビジネス</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="105" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="109" id="g_pc"><a myoffsetwidth="21" myoffsetheight="17" myoffsetleft="48" myoffsettop="110" href="http://pc.nikkeibp.co.jp/" target="_top" title="日経パソコンオンライン"><span myoffsetwidth="21" myoffsetheight="17" myoffsetleft="48" myoffsettop="110">PC</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="69" myoffsettop="124" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="128" id="g_arena"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="129" href="http://arena.nikkeibp.co.jp/" target="_top" title="デジタルARENA"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="129">デジタル</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="143" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="147" id="g_itpro"><a myoffsetwidth="13" myoffsetheight="17" myoffsetleft="48" myoffsettop="148" href="http://itpro.nikkeibp.co.jp/" target="_top" title="ITpro"><span myoffsetwidth="13" myoffsetheight="17" myoffsetleft="48" myoffsettop="148">IT</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="61" myoffsettop="162" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="166" id="g_techon"><a myoffsetwidth="81" myoffsetheight="17" myoffsetleft="48" myoffsettop="168" href="http://techon.nikkeibp.co.jp/" target="_top" title="Tech-On!"><span myoffsetwidth="81" myoffsetheight="17" myoffsetleft="48" myoffsettop="168">テクノロジー</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="129" myoffsettop="182" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="186" id="g_medical"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="187" href="http://medical.nikkeibp.co.jp/" target="_top" title="日経メディカルオンライン"><span myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="187">医療</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="80" myoffsettop="201" alt="" src="../../../../nboimgs/gnavi/spacer.gif" target="_top" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="205" id="g_kenplatz"><a myoffsetwidth="88" myoffsetheight="17" myoffsetleft="48" myoffsettop="206" href="http://kenplatz.nikkeibp.co.jp/" target="_top" title="KEN-Platz"><span myoffsetwidth="88" myoffsetheight="17" myoffsetleft="48" myoffsettop="206">建設・不動産</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="136" myoffsettop="220" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="224" id="g_ex"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="225" href="http://career.nikkei.co.jp/" target="_top" title="日経キャリアNET"><span myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="225">転職</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="80" myoffsettop="239" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="243" id="g_sitemap"><a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="48" myoffsettop="244" href="http://www.nikkeibp.co.jp/sitemap/" target="_top" title="日経BP専門情報サイト一覧"><span myoffsetwidth="71" myoffsetheight="17" myoffsetleft="48" myoffsettop="244">サイト一覧</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="119" myoffsettop="258" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="262" id="g_sj"><a myoffsetwidth="56" myoffsetheight="17" myoffsetleft="48" myoffsettop="264" href="http://www.nikkeibp.co.jp/sj/" target="_top" title="セキュリティ SAFETY JAPAN"><span myoffsetwidth="56" myoffsetheight="17" myoffsetleft="48" myoffsettop="264">SAFETY</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="104" myoffsettop="278" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="282" id="g_ad"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="283" href="http://www.nikkeibp.co.jp/bizit/" target="_top" title="経営とIT"><span myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="283">経営とIT</span><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="297" alt="" src="../../../../nboimgs/gnavi/spacer.gif" border="0"></a></li></ul>
+		</div>
+		<hr myoffsetwidth="958" myoffsetheight="2" myoffsetleft="8" myoffsettop="317">
+		<table myoffsetwidth="1000" myoffsetheight="90" myoffsetleft="8" myoffsettop="327" style="margin-bottom: 5px;" summary="header" width="1000" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="1000" myoffsetheight="90" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1000" myoffsetheight="36" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="237" myoffsetheight="36" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="226" myoffsetheight="17" myoffsetleft="0" myoffsettop="9" accesskey="0" class="noborder" href="../../../../index.html" title="NBonline(日経ビジネスオンライン)"><img myoffsetwidth="226" myoffsetheight="17" myoffsetleft="0" myoffsettop="9" alt="NBonline(日経ビジネスオンライン)" src="../../../../nboimgs/logo.gif" width="258" border="0" height="68"></a></td>
+				<td myoffsetwidth="763" myoffsetheight="90" myoffsetleft="237" myoffsettop="0" rowspan="2">
+					<div myoffsetwidth="763" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" id="topad">
+						<iframe myoffsetwidth="728" myoffsetheight="90" myoffsetleft="0" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&amp;spacedesc=nbonline_manage_rotation&amp;site=NBonline" vspace="0" width="728" frameborder="0" height="90" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rotation&amp;amp;site=NBonline&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rotation&amp;amp;site=NBonline" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rotation&amp;amp;site=NBonline" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+					</div>
+				</td>
+			</tr>
+			<tr myoffsetwidth="1000" myoffsetheight="54" myoffsetleft="0" myoffsettop="36">
+				<td myoffsetwidth="237" myoffsetheight="54" myoffsetleft="0" myoffsettop="36" align="center">
+					<div myoffsetwidth="237" myoffsetheight="19" myoffsetleft="0" myoffsettop="13" class="nbinfo" style="margin-bottom: 10px;">
+						<div myoffsetwidth="237" myoffsetheight="19" myoffsetleft="0" myoffsettop="13" id="notice"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="29" myoffsettop="28" class="noborder" href="../../../../info/reguser/index.shtml.html">  </a><a myoffsetwidth="179" myoffsetheight="17" myoffsetleft="29" myoffsettop="14" class="noborder" href="../../../../info/reguser/index.shtml.html">会員登録制を開始しました</a> </div>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+		<hr myoffsetwidth="958" myoffsetheight="2" myoffsetleft="8" myoffsettop="430">
+		<div myoffsetwidth="958" myoffsetheight="269" myoffsetleft="8" myoffsettop="448" id="navigation">
+			<ul myoffsetwidth="958" myoffsetheight="269" myoffsetleft="8" myoffsettop="448">
+				<li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="448" class="nav-news"><a myoffsetwidth="57" myoffsetheight="17" myoffsetleft="48" myoffsettop="449" href="../../../../news/index.html" target="_top">ニュース</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="467" class="nav-nb100"><a myoffsetwidth="44" myoffsetheight="17" myoffsetleft="48" myoffsettop="468" href="../../../../nb100/index.html" target="_top">NB100</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="486" class="nav-money"><a myoffsetwidth="44" myoffsetheight="17" myoffsetleft="48" myoffsettop="487" href="../../../../money/index.html" target="_top">マネー</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="505" class="nav-manage"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="507" href="../../../../manage/index.html" target="_top">経営</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="525" class="nav-tech"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="526" href="../../../../tech/index.html" target="_top">技術</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="544" class="nav-world"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="48" myoffsettop="545" href="../../../../world/index.html" target="_top">国際</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="563" class="nav-skillup"><a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="48" myoffsettop="564" href="../../../../skillup/index.html" target="_top">自己啓発</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="582" class="nav-person"><a myoffsetwidth="16" myoffsetheight="17" myoffsetleft="48" myoffsettop="583" href="../../../../person/index.html" target="_top">人</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="601" class="nav-life"><a myoffsetwidth="39" myoffsetheight="17" myoffsetleft="48" myoffsettop="603" href="../../../../life/index.html" target="_top">ライフ</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="621" class="nav-podcast"><a myoffsetwidth="55" myoffsetheight="17" myoffsetleft="48" myoffsettop="622" href="../../../../podcast/index.shtml.html" target="_top">Podcast</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="640" class="nav-premium"><a myoffsetwidth="59" myoffsetheight="17" myoffsetleft="48" myoffsettop="641" href="../../../../premium/index.shtml.html" target="_top">Premium</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="659" class="nav-register"><a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="48" myoffsettop="660" href="../../../../info/reguser/index.shtml.html" target="_top">会員登録</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="678" class="nav-subscribe"><a myoffsetwidth="180" myoffsetheight="17" myoffsetleft="48" myoffsettop="679" href="../../../../nbs/index.html" target="_blank">日経ビジネス読者サービス</a></li><li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="697" class="nav-help"><a myoffsetwidth="45" myoffsetheight="17" myoffsetleft="48" myoffsettop="699" href="../../../../info/regfaq/index.html" target="_top">ヘルプ</a></li></ul>
+		</div>
+		<div myoffsetwidth="958" myoffsetheight="4289" myoffsetleft="8" myoffsettop="733" id="wrapper">
+			<div myoffsetwidth="958" myoffsetheight="0" myoffsetleft="8" myoffsettop="733" id="maincontent">
+				<table myoffsetwidth="770" myoffsetheight="2693" myoffsetleft="196" myoffsettop="733" class="layout" summary="content" width="770" align="right" border="0" cellpadding="0" cellspacing="0">
+					<tbody myoffsetwidth="770" myoffsetheight="2693" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="770" myoffsetheight="157" myoffsetleft="0" myoffsettop="0">
+						<td myoffsetwidth="770" myoffsetheight="157" myoffsetleft="0" myoffsettop="0" colspan="2" width="770">
+							<div myoffsetwidth="770" myoffsetheight="138" myoffsetleft="0" myoffsettop="19" id="kanban">
+								<h3 myoffsetwidth="770" myoffsetheight="23" myoffsetleft="0" myoffsettop="19" id="topid108997"><a myoffsetwidth="96" myoffsetheight="19" myoffsetleft="0" myoffsettop="21" href="../108997/index.html" title="環境と経営のトップへ">環境と経営</a></h3>
+								<table myoffsetwidth="770" myoffsetheight="97" myoffsetleft="0" myoffsettop="60" style="border-bottom: 1px solid rgb(102, 102, 102); width: 100%;">
+									<tbody myoffsetwidth="766" myoffsetheight="92" myoffsetleft="2" myoffsettop="2"><tr myoffsetwidth="766" myoffsetheight="92" myoffsetleft="2" myoffsettop="2">
+										<td myoffsetwidth="512" myoffsetheight="92" myoffsetleft="2" myoffsettop="2">
+											<div myoffsetwidth="510" myoffsetheight="19" myoffsetleft="1" myoffsettop="36" class="articlecontrol"><a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="1" myoffsettop="37" href="../../../../index.html">トップページ</a>＞<a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="97" myoffsettop="37" href="../../../../manage/index.html">経営</a>＞<a myoffsetwidth="76" myoffsetheight="17" myoffsetleft="145" myoffsettop="37" href="../108997/index.html" title="環境と経営">環境と経営</a></div>
+										</td>
+										<td myoffsetwidth="252" myoffsetheight="92" myoffsetleft="516" myoffsettop="2" width="250" align="left">
+											<div myoffsetwidth="250" myoffsetheight="58" myoffsetleft="1" myoffsettop="17" class="articlecontrol">
+												<ul myoffsetwidth="250" myoffsetheight="58" myoffsetleft="1" myoffsettop="17">
+													<li myoffsetwidth="210" myoffsetheight="19" myoffsetleft="41" myoffsettop="17"><a myoffsetwidth="49" myoffsetheight="17" myoffsetleft="41" myoffsettop="18" class="ccomment" href="index.html#bottom">コメント</a></li><li myoffsetwidth="210" myoffsetheight="19" myoffsetleft="41" myoffsettop="36"><a myoffsetwidth="89" myoffsetheight="17" myoffsetleft="41" myoffsettop="37" class="ctrackback" href="index.html#bottom">トラックバック</a></li><li myoffsetwidth="210" myoffsetheight="19" myoffsetleft="41" myoffsettop="55"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="41" myoffsettop="57" class="cprint" href="index.html@ST=nboprint.html">印刷</a></li></ul>
+											</div>
+										</td>
+									</tr>
+								</tbody></table>
+							</div>
+						</td>
+					</tr>
+					<tr myoffsetwidth="770" myoffsetheight="0" myoffsetleft="0" myoffsettop="157">
+						<td myoffsetwidth="560" myoffsetheight="1726" myoffsetleft="0" myoffsettop="157" rowspan="2" valign="top" width="560">
+							<div myoffsetwidth="560" myoffsetheight="1704" myoffsetleft="0" myoffsettop="21" class="articlecontent">
+								<h1 myoffsetwidth="560" myoffsetheight="33" myoffsetleft="0" myoffsettop="21" class="articleheader">ポスト京都議定書</h1>
+								<h2 myoffsetwidth="560" myoffsetheight="58" myoffsetleft="0" myoffsettop="76" class="articleheader">米国・中国・インドは参加するのか<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="358" myoffsettop="99">環境税と大規模クリーン開発が焦点に</h2>
+								<ul myoffsetwidth="560" myoffsetheight="38" myoffsetleft="0" myoffsettop="153" class="articledata">
+									<li myoffsetwidth="520" myoffsetheight="19" myoffsetleft="40" myoffsettop="153">2006年9月4日　月曜日</li><li myoffsetwidth="520" myoffsetheight="19" myoffsetleft="40" myoffsettop="173"><a myoffsetwidth="252" myoffsetheight="17" myoffsetleft="40" myoffsettop="174" href="../../../../bns/author.jsp@ID=108998&amp;OFFSET=0.html">日経エコロジー編集委員　山岡　則夫</a></li></ul>
+								<table myoffsetwidth="530" myoffsetheight="38" myoffsetleft="0" myoffsettop="208" class="articlekeyword" width="530" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="530" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="530" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="80" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" valign="middle" width="80"><img myoffsetwidth="71" myoffsetheight="17" myoffsetleft="0" myoffsettop="11" alt="キーワード" src="../../../../nboimgs/icon-artkw.jpg" width="55" border="0" height="14"></td>
+										<td myoffsetwidth="450" myoffsetheight="38" myoffsetleft="80" myoffsettop="0" style="background-color: rgb(238, 238, 238);">　 <a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="16" myoffsettop="1" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E7%92%B0%E5%A2%83.html">環境</a>　 <a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="64" myoffsettop="1" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E6%B8%A9%E6%9A%96%E5%8C%96.html">温暖化</a>　 <a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="128" myoffsettop="1" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E4%BA%8C%E9%85%B8%E5%8C%96%E7%82%AD%E7%B4%A0.html">二酸化炭素</a>　 <a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="224" myoffsettop="1" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E3%83%9D%E3%82%B9%E3%83%88%E4%BA%AC%E9%83%BD.html">ポスト京都</a>　 <a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="311" myoffsettop="1" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E4%BA%AC%E9%83%BD%E8%AD%B0%E5%AE%9A%E6%9B%B8.html">京都議定書</a>　 <a myoffsetwidth="33" myoffsetheight="17" myoffsetleft="0" myoffsettop="20" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>　 </td>
+									</tr>
+								</tbody></table>
+								<p myoffsetwidth="560" myoffsetheight="58" myoffsetleft="0" myoffsettop="262" class="kakomi_green_std"> 今年7月、京都で環境経済学世界大会が開催され、世界のキーマンが集結して地球温暖化防止のため、京都議定書後の国際的枠組みについてのシンポジウムが開かれた。そこでの議論をもとに、「<a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="205" myoffsettop="302" href="javascript:void(0)" onclick="(window.open(" word_3.html="" windowpodcast="" ,="" width="480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no&quot;)).focus();&quot;">ポスト京都</a>」の問題と方向性を探った。 <br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="461" myoffsettop="316">
+								</p><p myoffsetwidth="560" myoffsetheight="19" myoffsetleft="0" myoffsettop="336" align="right"><a myoffsetwidth="305" myoffsetheight="17" myoffsetleft="255" myoffsettop="337" href="../109031/index.html">＞スティグリッツ教授にきく地球温暖化防止策</a></p><p myoffsetwidth="560" myoffsetheight="0" myoffsetleft="0" myoffsettop="371"><img myoffsetwidth="371" myoffsetheight="19" myoffsetleft="189" myoffsettop="371" alt="京都議定書後の国際的枠組みについてのシンポジウム" src="px300_6.jpg" align="right"></p><p myoffsetwidth="560" myoffsetheight="96" myoffsetleft="0" myoffsettop="371"> 　地球温暖化を防止するため、先進各国の温室効果ガス排出量に上限を定めた<a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="356" myoffsettop="391" href="javascript:void(0)" onclick="(window.open(" word_1.html="" windowpodcast="" ,="" width="480,height=300,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no&quot;)).focus();&quot;">京都議定書</a>。その第1約束期間が2008年から始まる。日本は1990年比6％削減を約束しており、省エネ対策や<a myoffsetwidth="548" myoffsetheight="36" myoffsetleft="535" myoffsettop="410" href="javascript:void(0)" onclick="(window.open(" word_4.html="" windowpodcast="" ,="" width="480,height=250,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no&quot;)).focus();&quot;">クリーン開発メカニズム（CDM）</a>事業など、二酸化炭素削減の努力が盛んに行われている。 </p><p myoffsetwidth="560" myoffsetheight="58" myoffsetleft="0" myoffsettop="483"> 　だが、それは温暖化防止への第一歩。地球規模でさらなる努力を続けるため、2013年からの第2約束期間（ポスト京都議定書）の枠組みについての議論が活発になっている。 </p><p myoffsetwidth="560" myoffsetheight="58" myoffsetleft="0" myoffsettop="557"> 　6％減の国際公約を守るだけでも大変な労力とコストがかかるのに、さらにその先なんて考えたくもないというのが、具体的削減が求められるわが国の現場の正直な声。 </p><p myoffsetwidth="560" myoffsetheight="77" myoffsetleft="0" myoffsettop="630"> 　実際、1997年に京都議定書が採択されてから今日までの間に、様々な問題点が浮かび上がってきた。ポスト京都議定書の枠組みを決めるに当たっては、こうした問題点を踏まえて、有効かつ実行可能な枠組みにしようというコンセンサスの下、議論が進みつつある。 </p><p myoffsetwidth="560" myoffsetheight="0" myoffsetleft="0" myoffsettop="723">
+								</p><h4 myoffsetwidth="560" myoffsetheight="19" myoffsetleft="0" myoffsettop="728">途上国は数値規制を拒否</h4>
+								<p myoffsetwidth="560" myoffsetheight="77" myoffsetleft="0" myoffsettop="769"> 　問題点の1つは京都議定書において途上国の温室効果ガスの排出に何の数値規制もかかっていないこと。2000年時点で中国の（燃料消費による）二酸化炭素排出量は世界の13％、インドは4％（ちなみに日本は5％）。急速な発展を続ける中国、インドの排出量は無視できない。 </p><p myoffsetwidth="560" myoffsetheight="19" myoffsetleft="0" myoffsettop="862"> 　数値規制の圧力に対し、途上国側の反発は激しい。 <img myoffsetwidth="452" myoffsetheight="19" myoffsetleft="108" myoffsettop="881" alt="インド・エネルギー資源研究所顧問 チャンドラシェカー・ダスグプタ氏" src="px300_1.jpg" align="right"></p><p myoffsetwidth="560" myoffsetheight="115" myoffsetleft="0" myoffsettop="897"> 　「既に過去の化石エネルギー消費で経済発展の恩恵を受けている先進国を規制するからといって、これから発展を図ろうという途上国に規制をかけるのはおかしい。温室効果ガス排出の許容量は基本的に一人当たりで公平に分配すべきであろう。インドの1人当たり二酸化炭素排出量は先進国平均の1割以下で、地球温暖化の加害者というより被害者」（インド・エネルギー資源研究所顧問のチャンドラシェカー・ダスグプタ氏） </p><p myoffsetwidth="560" myoffsetheight="38" myoffsetleft="0" myoffsettop="1028"> 　京都議定書で先進国に課したような温室効果ガス削減の国別数値目標をそのまま先進国以外に課す案は、同意が得られそうにない。 <img myoffsetwidth="560" myoffsetheight="38" myoffsetleft="0" myoffsettop="1066" alt="中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授　姜克ジュン氏" src="px300_4.jpg" align="right"></p><p myoffsetwidth="560" myoffsetheight="99" myoffsetleft="0" myoffsettop="1082"> 　「協定による数値規制には反対だが、中国政府は自律的に目標を設定している。ことし制定された第11次5カ年計画では、単位GDP（国内総生産）当たりのエネルギー消費を5年後には20%削減することを目標に掲げている」（中国国家発展改革委員会エネルギー研究所エネルギー・環境・気候部長・教授の姜克ジュン氏） </p><p myoffsetwidth="560" myoffsetheight="58" myoffsetleft="0" myoffsettop="1198"> 　<a myoffsetwidth="103" myoffsetheight="17" myoffsetleft="11" myoffsettop="1199" href="javascript:void(0)" onclick="(window.open(" word_2.html="" windowpodcast="" ,="" width="480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no&quot;)).focus();&quot;">京都メカニズム</a>を活用し「地球環境に取り組むための国際基金である地球環境ファシリティー（GEF）の積極活用やCDMの拡大により、地球温暖化ガスの排出の少ない開発をさらに行いたい」（ダスグプタ氏） </p><p myoffsetwidth="560" myoffsetheight="38" myoffsetleft="0" myoffsettop="1271"> 　途上国側は、数値規制には反対だが、十分、自主的な努力をしているという主張だ。 </p><p myoffsetwidth="560" myoffsetheight="0" myoffsetleft="0" myoffsettop="1326">
+								</p><h4 myoffsetwidth="560" myoffsetheight="19" myoffsetleft="0" myoffsettop="1331">経済メカニズムが働く環境税に注目</h4>
+								<p myoffsetwidth="560" myoffsetheight="77" myoffsetleft="0" myoffsettop="1371"> 　一方、先進国側は京都議定書の排出削減義務の数値をクリアできないかもしれないという苦しい状態にある。わが国は温室効果ガスを1990年比6％削減目標に対し、現実には90年比8%増。結局、これから14％を一気に減らす、という厳しい状態に立たされている。 </p><p myoffsetwidth="560" myoffsetheight="77" myoffsetleft="0" myoffsettop="1464"> 　省エネ努力、森林による二酸化炭素吸収、日本企業の途上国CDMプロジェクトで生み出されるクレジットなどでは追いつかず、このままでは、ホットエア（排出削減義務0％のロシアや東欧諸国のエネルギー消費の落ち込みにより自然に生み出された温室効果ガス排出枠）を、言い値で買うことになりそうだ。 </p><p myoffsetwidth="560" myoffsetheight="38" myoffsetleft="0" myoffsettop="1557"> 　先進国がこれ以上数値規制に基づいて排出削減を図るのは、コストも労力も膨大なものになってしまう。 </p><div myoffsetwidth="560" myoffsetheight="63" myoffsetleft="0" myoffsettop="1611" align="center">
+									<p myoffsetwidth="482" myoffsetheight="63" myoffsetleft="39" myoffsettop="1611" style="border-style: solid; border-color: rgb(204, 204, 204); border-width: 1px 4px; padding: 5px 7px; text-align: left; font-size: 13px; line-height: 17px; background-color: rgb(247, 247, 247); width: 460px;">次ページ以降は「NBonline会員」(無料)の方および「NBonlineプレミアム」（日経ビジネス読者限定サービス）の会員の方のみお読みいただけます。ご登録(無料)やログインの方法は<b myoffsetwidth="53" myoffsetheight="14" myoffsetleft="113" myoffsettop="1653"><a myoffsetwidth="53" myoffsetheight="14" myoffsetleft="113" myoffsettop="1653" href="index.html@P=2.html">次ページ</a></b>をご覧ください。</p></div>
+								<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="1687">
+								<div myoffsetwidth="560" myoffsetheight="19" myoffsetleft="0" myoffsettop="1707" align="center">
+									<table myoffsetwidth="47" myoffsetheight="19" myoffsetleft="257" myoffsettop="1707" border="0" cellpadding="0" cellspacing="0">
+										<tbody myoffsetwidth="47" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="47" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+											<td myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+											</td>
+											<td myoffsetwidth="16" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+												<div myoffsetwidth="16" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" class="multipage">
+													<table myoffsetwidth="16" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" align="center" cellpadding="0" cellspacing="0">
+														<tbody myoffsetwidth="16" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="16" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+															<td myoffsetwidth="8" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="8" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" class="currentpage" href="index.html@P=1.html">1</a></td>
+															<td myoffsetwidth="8" myoffsetheight="19" myoffsetleft="8" myoffsettop="0"><a myoffsetwidth="8" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="index.html@P=2.html">2</a></td>
+														</tr>
+													</tbody></table>
+												</div>
+											</td>
+											<td myoffsetwidth="31" myoffsetheight="19" myoffsetleft="16" myoffsettop="0"><a myoffsetwidth="31" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="index.html@P=2.html"><img myoffsetwidth="31" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="Next" src="../../../../nboimgs/btn_next.gif" width="30" border="0" height="20"></a></td>
+										</tr>
+									</tbody></table>
+								</div>
+							</div>
+						</td>
+						<td myoffsetwidth="210" myoffsetheight="0" myoffsetleft="560" myoffsettop="157" valign="top" width="210">
+							<div myoffsetwidth="210" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" id="sidemenu">
+							</div>
+						</td>
+					</tr>
+					<tr myoffsetwidth="770" myoffsetheight="1726" myoffsetleft="0" myoffsettop="157">
+						<td myoffsetwidth="210" myoffsetheight="1726" myoffsetleft="560" myoffsettop="157" valign="bottom">
+							<div myoffsetwidth="210" myoffsetheight="19" myoffsetleft="0" myoffsettop="1669" style="margin: 10px 0px;"><img myoffsetwidth="191" myoffsetheight="17" myoffsetleft="0" myoffsettop="1670" alt="こちらも読んでみませんか？" src="../../../../nboimgs/recommend.jpg" width="200" border="0" height="23"><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="191" myoffsettop="1684">
+							</div>
+							<table myoffsetwidth="210" myoffsetheight="0" myoffsetleft="0" myoffsettop="1698" width="210">
+							</table><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="1698" class="noborder" href="../../../../manage/index.html"><img myoffsetwidth="44" myoffsetheight="18" myoffsetleft="166" myoffsettop="1703" alt="more" src="../../../../nboimgs/chosenbyr_more.jpg" vspace="5" width="40" align="right" height="14"></a></td>
+					</tr>
+					<tr myoffsetwidth="770" myoffsetheight="811" myoffsetleft="0" myoffsettop="1883">
+						<td myoffsetwidth="770" myoffsetheight="811" myoffsetleft="0" myoffsettop="1883" colspan="2" valign="top" width="770">
+							<div myoffsetwidth="770" myoffsetheight="811" myoffsetleft="0" myoffsettop="0" id="articlebottom"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="bottom"></a><table myoffsetwidth="770" myoffsetheight="487" myoffsetleft="0" myoffsettop="0" summary="articlebottom" width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="770" myoffsetheight="487" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="770" myoffsetheight="29" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="395" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" align="left">
+											<p myoffsetwidth="385" myoffsetheight="19" myoffsetleft="10" myoffsettop="0" style="margin-top: 0px; margin-bottom: 10px; margin-left: 10px;"><a myoffsetwidth="101" myoffsetheight="17" myoffsetleft="10" myoffsettop="1" href="../108997/index.html"><img myoffsetwidth="101" myoffsetheight="17" myoffsetleft="10" myoffsettop="1" alt="バックナンバー" src="../../../../nboimgs/articlebottom/btn_bknum.jpg" width="130" border="0" height="19"></a></p></td>
+										<td myoffsetwidth="5" myoffsetheight="29" myoffsetleft="395" myoffsettop="0" width="5px"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="15" src="../../../../nboimgs/spacer.gif" width="1" height="1"></td>
+										<td myoffsetwidth="370" myoffsetheight="29" myoffsetleft="400" myoffsettop="0" align="left"><span myoffsetwidth="206" myoffsetheight="13" myoffsetleft="0" myoffsettop="8" style="font-size: 12px;"><a myoffsetwidth="206" myoffsetheight="13" myoffsetleft="0" myoffsettop="8" href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">記事・写真・図表の無断転載を禁じます。</a></span></td>
+									</tr>
+									<tr myoffsetwidth="770" myoffsetheight="458" myoffsetleft="0" myoffsettop="29">
+										<td myoffsetwidth="395" myoffsetheight="458" myoffsetleft="0" myoffsettop="29" valign="top">
+											<div myoffsetwidth="395" myoffsetheight="214" myoffsetleft="0" myoffsettop="0" class="kanrenkiji"><a myoffsetwidth="76" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../108997/index.html"><img myoffsetwidth="76" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" alt="環境と経営" src="../../../../nboimgs/articlebottom/btn_saishin.jpg" width="360" border="0" height="20"></a><p myoffsetwidth="395" myoffsetheight="19" myoffsetleft="0" myoffsettop="35">[<a myoffsetwidth="76" myoffsetheight="17" myoffsetleft="5" myoffsettop="36" href="../108997/index.html">環境と経営</a>]</p><ul myoffsetwidth="395" myoffsetheight="38" myoffsetleft="0" myoffsettop="70">
+													<li myoffsetwidth="355" myoffsetheight="19" myoffsetleft="40" myoffsettop="70"> ポスト京都議定書 <span myoffsetwidth="58" myoffsetheight="17" myoffsetleft="164" myoffsettop="72"> (9月4日) </span></li><li myoffsetwidth="355" myoffsetheight="19" myoffsetleft="40" myoffsettop="90"><a myoffsetwidth="289" myoffsetheight="17" myoffsetleft="40" myoffsettop="91" href="../109031/index.html">スティグリッツ教授にきく地球温暖化防止策</a> <span myoffsetwidth="58" myoffsetheight="17" myoffsetleft="334" myoffsettop="91"> (9月4日) </span></li></ul>
+												<p myoffsetwidth="395" myoffsetheight="16" myoffsetleft="0" myoffsettop="125" style="text-align: left; font-size: 13px;"><a myoffsetwidth="137" myoffsetheight="14" myoffsetleft="0" myoffsettop="126" href="../108997/index.html"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="137" src="../../../../nboimgs/articlebottom/icon-3ya.gif" width="31" border="0" height="14">　「環境と経営」の全記事</a></p><p myoffsetwidth="395" myoffsetheight="58" myoffsetleft="0" myoffsettop="156"><img myoffsetwidth="193" myoffsetheight="17" myoffsetleft="0" myoffsettop="158" alt="キーワードで最新記事を見る" src="../../../../nboimgs/articlebottom/btn_gkeyword.jpg" width="200" height="20"><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="193" myoffsettop="172"><a myoffsetwidth="32" myoffsetheight="17" myoffsetleft="0" myoffsettop="177" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E7%92%B0%E5%A2%83.html">環境</a>&nbsp; <a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="42" myoffsettop="177" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E6%B8%A9%E6%9A%96%E5%8C%96.html">温暖化</a>&nbsp; <a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="100" myoffsettop="177" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E4%BA%8C%E9%85%B8%E5%8C%96%E7%82%AD%E7%B4%A0.html">二酸化炭素</a>&nbsp; <a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="190" myoffsettop="177" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E3%83%9D%E3%82%B9%E3%83%88%E4%BA%AC%E9%83%BD.html">ポスト京都</a>&nbsp; <a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="271" myoffsettop="177" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=%E4%BA%AC%E9%83%BD%E8%AD%B0%E5%AE%9A%E6%9B%B8.html">京都議定書</a>&nbsp; <a myoffsetwidth="33" myoffsetheight="17" myoffsetleft="0" myoffsettop="196" href="../../../../bns/bnsearch.jsp@BID=1006&amp;OFFSET=0&amp;SEARCH_TEXT=CDM.html">CDM</a>&nbsp; </p></div>
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="230">
+											<div myoffsetwidth="395" myoffsetheight="0" myoffsetleft="0" myoffsettop="249" class="prempdf">
+											</div>
+										</td>
+										<td myoffsetwidth="5" myoffsetheight="458" myoffsetleft="395" myoffsettop="29" width="5px"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="229" src="../../../../nboimgs/spacer.gif" width="1" height="1"></td>
+										<td myoffsetwidth="370" myoffsetheight="458" myoffsetleft="400" myoffsettop="29" valign="top" width="370" align="left">
+											<iframe myoffsetwidth="360" myoffsetheight="150" myoffsetleft="0" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://apr.nikkeibp.co.jp/gen-ssi/clad/nbo/p_nbo.html" vspace="0" width="360" frameborder="0" height="150" scrolling="no">
+											</iframe>
+											<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="360" myoffsettop="150" clear="all">
+											<div myoffsetwidth="370" myoffsetheight="276" myoffsetleft="0" myoffsettop="166" id="feedbackarticle">
+												<form myoffsetwidth="370" myoffsetheight="276" myoffsetleft="0" myoffsettop="166" action="http://business.nikkeibp.co.jp/fb/putfeedback.jsp?REF=/article/manage/20060831/108998/" method="post" name="FEEDBACK_BOTTOM">
+													<div myoffsetwidth="370" myoffsetheight="60" myoffsetleft="0" myoffsettop="166" class="left">
+														<p myoffsetwidth="370" myoffsetheight="60" myoffsetleft="0" myoffsettop="166" class="ask">この記事を<input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="80" myoffsettop="169" checked="checked" name="_ANS1" value="1" type="radio">ほとんど読んだ<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="199" myoffsettop="182"><input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="5" myoffsettop="189" name="_ANS1" value="2" type="radio">一部だけ読んだ<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="129" myoffsettop="202"><input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="5" myoffsettop="209" name="_ANS1" value="3" type="radio">あまり読まなかった </p></div>
+													<div myoffsetwidth="370" myoffsetheight="60" myoffsetleft="0" myoffsettop="242" class="left">
+														<p myoffsetwidth="370" myoffsetheight="60" myoffsetleft="0" myoffsettop="242" class="ask">内容は<input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="53" myoffsettop="245" checked="checked" name="_ANS2" value="1" type="radio">とても参考になった<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="197" myoffsettop="258"><input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="5" myoffsettop="265" name="_ANS2" value="2" type="radio">まあ参考になった<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="139" myoffsettop="278"><input myoffsetwidth="13" myoffsetheight="13" myoffsetleft="5" myoffsettop="286" name="_ANS2" value="3" type="radio">参考にならなかった </p></div>
+													<p myoffsetwidth="370" myoffsetheight="19" myoffsetleft="0" myoffsettop="319" class="alignright"><input myoffsetwidth="49" myoffsetheight="14" myoffsetleft="0" myoffsettop="323" alt="送信する" src="../../../../nboimgs/articlebottom/btn_send.gif" value="Send" type="image"> <a myoffsetwidth="82" myoffsetheight="17" myoffsetleft="54" myoffsettop="320" class="noborder" href="../../../../fb/fb_detail.jsp@REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_survey"><img myoffsetwidth="82" myoffsetheight="21" myoffsetleft="54" myoffsettop="318" alt="コメントする" src="../../../../nboimgs/articlebottom/btn_comment.gif"></a> <a myoffsetwidth="128" myoffsetheight="17" myoffsetleft="141" myoffsettop="320" class="noborder" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_self"><img myoffsetwidth="128" myoffsetheight="21" myoffsetleft="141" myoffsettop="318" alt="皆様の評価を見る" src="../../../../nboimgs/articlebottom/btn_result.gif"></a><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="_PARTS_ID" value="FB01" type="hidden">
+												</p><p myoffsetwidth="370" myoffsetheight="88" myoffsetleft="0" myoffsettop="354" class="feedbacknum"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="0" myoffsettop="355" class="noborder" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html" target="_self"><img myoffsetwidth="72" myoffsetheight="21" myoffsetleft="0" myoffsettop="353" alt="コメント数:" src="../../../../nboimgs/feedback-comment.gif" width="56" height="12"></a> <a myoffsetwidth="140" myoffsetheight="17" myoffsetleft="77" myoffsettop="355" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fmanage%2F20060831%2F108998%2F.html">1 件（コメントを読む）</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="217" myoffsettop="369"><img myoffsetwidth="108" myoffsetheight="17" myoffsetleft="0" myoffsettop="374" alt="トラックバック数:" src="../../../../nboimgs/feedback-trackback.gif" width="85" border="0" height="12"><iframe myoffsetwidth="350" myoffsetheight="50" myoffsetleft="0" myoffsettop="392" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://blog.nikkeibp.co.jp/business/news/archives/100308.html" vspace="0" width="350" frameborder="0" height="50" scrolling="no">
+													</iframe>
+											</p></form></div>
+										</td>
+									</tr>
+								</tbody></table>
+								<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="487" clear="all">
+								<table myoffsetwidth="750" myoffsetheight="304" myoffsetleft="0" myoffsettop="507" summary="articlebottom" width="750" bgcolor="#efefef" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="750" myoffsetheight="304" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="750" myoffsetheight="304" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="415" myoffsetheight="304" myoffsetleft="0" myoffsettop="0" valign="top">
+											<div myoffsetwidth="415" myoffsetheight="65" myoffsetleft="0" myoffsettop="0" id="adarea">
+												<iframe myoffsetwidth="380" myoffsetheight="65" myoffsetleft="0" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/logo_banner2.shtml" vspace="0" width="380" frameborder="0" height="65" scrolling="no">
+												</iframe>
+											</div>
+										</td>
+										<td myoffsetwidth="335" myoffsetheight="304" myoffsetleft="415" myoffsettop="0" valign="top">
+											<div myoffsetwidth="335" myoffsetheight="304" myoffsetleft="0" myoffsettop="0" id="wideadspace">
+												<iframe myoffsetwidth="300" myoffsetheight="300" myoffsetleft="0" myoffsettop="0" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&amp;spacedesc=nbonline_manage_bigsize_rectangle&amp;site=NBonline" vspace="0" width="300" frameborder="0" height="300" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_bigsize_rectangle&amp;amp;site=NBonline&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_bigsize_rectangle&amp;amp;site=NBonline" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_bigsize_rectangle&amp;amp;site=NBonline" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+												<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript"><!--
 var _rsCI='nikkeibp';
 var _rsCG='nbonline-manage';
   var _rsDT=1;
@@ -492,322 +204,86 @@ var _rsCG='nbonline-manage';
     _rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
   }
   document.write(_rsCL);
-//--></script>
-<noscript>
-<img src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=nbonline-manage" alt="">
-</noscript>
-<!-- END RedSheriff Measurement V5 -->
-
-
+//--></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript" src="http://secure-jp.imrworldwide.com/v5.js"></script><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="305" myoffsettop="299" src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=nbonline-manage&amp;rd=1253192781847&amp;si=file%3A///C%3A/Users/8BKSA34196/Desktop/htmls//CO2/007.html&amp;rp=&amp;sr=1024x768&amp;cd=32&amp;lg=ja&amp;je=y&amp;ck=y&amp;tz=9&amp;ct=&amp;hp=&amp;tl=%u30DD%u30B9%u30C8%u4EAC%u90FD%u8B70%u5B9A%u66F8%20%28%u74B0%u5883%u3068%u7D4C%u55B6%29%uFF1ANBonline%28%u65E5%u7D4C%u30D3%u30B8%u30CD%u30B9%20%u30AA%u30F3%u30E9%u30A4%u30F3%29" width="1" border="0" height="1">
+												<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img alt="" src="http://secure-jp.imrworldwide.com/cgi-bin/m?ci=nikkeibp&amp;cg=nbonline-manage" /></noscript>
+											</div>
+										</td>
+									</tr>
+								</tbody></table>
+							</div>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<div myoffsetwidth="958" myoffsetheight="4289" myoffsetleft="8" myoffsettop="733" id="subcontent">
+				<div myoffsetwidth="958" myoffsetheight="41" myoffsetleft="8" myoffsettop="733" id="search">
+					<form myoffsetwidth="958" myoffsetheight="41" myoffsetleft="8" myoffsettop="733" action="http://business.nikkeibp.co.jp/bns/bnsearch.jsp" method="post"><img myoffsetwidth="87" myoffsetheight="17" myoffsetleft="8" myoffsettop="734" alt="サイト内検索" src="../../../../nboimgs/caption-search.gif" width="69" height="13">  <input myoffsetwidth="117" myoffsetheight="22" myoffsetleft="8" myoffsettop="752" id="keyword" name="SEARCH_TEXT" type="text"> <input myoffsetwidth="25" myoffsetheight="14" myoffsetleft="130" myoffsettop="756" alt="探す" class="searchbtn" src="../../../../nboimgs/btn-search.gif" value="search" type="image"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="BID" value="1005" type="hidden"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="OFFSET" value="0" type="hidden"></form>
+				</div><img myoffsetwidth="160" myoffsetheight="17" myoffsetleft="8" myoffsettop="775" alt="読者が選ぶ注目の記事" src="../../../../nboimgs/chosenbyr.jpg" vspace="5" width="210" height="23"><table myoffsetwidth="210" myoffsetheight="272" myoffsetleft="8" myoffsettop="3426" width="210" bgcolor="#ffffff" cellpadding="2" cellspacing="2">
+					<tbody myoffsetwidth="206" myoffsetheight="268" myoffsetleft="2" myoffsettop="2"><tr myoffsetwidth="206" myoffsetheight="36" myoffsetleft="2" myoffsettop="2">
+						<td myoffsetwidth="8" myoffsetheight="36" myoffsetleft="2" myoffsettop="2" bgcolor="#ffffff"><a myoffsetwidth="4" myoffsetheight="17" myoffsetleft="2" myoffsettop="10" class="noborder" href="../../../topics/20061214/115645/index.html" target="_top"><img myoffsetwidth="4" myoffsetheight="21" myoffsetleft="2" myoffsettop="8" alt="" class="pickupphoto" src="../../../../nboimgs/top/columns/100109.jpg" width="48"></a></td>
+						<td myoffsetwidth="196" myoffsetheight="36" myoffsetleft="12" myoffsettop="2" style="text-align: left; background-color: rgb(255, 255, 255); font-size: 12px; line-height: 16px;"><a myoffsetwidth="84" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" class="noborder" href="../../../topics/20060219/100109/index.html" target="_top"><span myoffsetwidth="84" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="20" myoffsetheight="13" myoffsetleft="2" myoffsettop="4">1位</b> 【時流超流】</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="86" myoffsettop="14"><a myoffsetwidth="125" myoffsetheight="13" myoffsetleft="2" myoffsettop="20" class="noborder" href="../../../topics/20061214/115645/index.html" target="_top">“無策”の金融3社に風圧</a></td>
+					</tr>
+					<tr myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="40">
+						<td myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="40" colspan="3" valign="top" bgcolor="#ffffff"><img myoffsetwidth="0" myoffsetheight="17" myoffsetleft="2" myoffsettop="3" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" vspace="5" width="210" height="2"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="2" myoffsettop="2">
+						</td>
+					</tr>
+					<tr myoffsetwidth="206" myoffsetheight="84" myoffsetleft="2" myoffsettop="65">
+						<td myoffsetwidth="8" myoffsetheight="84" myoffsetleft="2" myoffsettop="65" bgcolor="#ffffff"><a myoffsetwidth="4" myoffsetheight="17" myoffsetleft="2" myoffsettop="34" class="noborder" href="../../../world/20061214/115695/index.html" target="_top"><img myoffsetwidth="4" myoffsetheight="21" myoffsetleft="2" myoffsettop="32" alt="" class="pickupphoto" src="../../../../nboimgs/top/columns/100532.jpg" width="48"></a></td>
+						<td myoffsetwidth="196" myoffsetheight="84" myoffsetleft="12" myoffsettop="65" style="text-align: left; background-color: rgb(255, 255, 255); font-size: 12px; line-height: 16px;"><a myoffsetwidth="185" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" class="noborder" href="../../../world/20060308/100532/index.html" target="_top"><span myoffsetwidth="185" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="20" myoffsetheight="13" myoffsetleft="2" myoffsettop="4">2位</b> 【門倉　貴史の「BRICsの素顔」】</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="187" myoffsettop="14"><a myoffsetwidth="143" myoffsetheight="29" myoffsetleft="2" myoffsettop="20" class="noborder" href="../../../world/20061214/115695/index.html" target="_top">中国でもクラシックブーム<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="132" myoffsettop="30">子供1000万人が音楽教室に</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="145" myoffsettop="46"><img myoffsetwidth="95" myoffsetheight="13" myoffsetleft="2" myoffsettop="52" alt="読者コメントを読む" src="../../../../nboimgs/icon_comment.jpg" width="16" height="16"><a myoffsetwidth="190" myoffsetheight="29" myoffsetleft="97" myoffsettop="52" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fworld%2F20061214%2F115695%2F.html">読者コメントを読む( 3 件)</a></td>
+					</tr>
+					<tr myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="151">
+						<td myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="151" colspan="3" valign="top" bgcolor="#ffffff"><img myoffsetwidth="0" myoffsetheight="17" myoffsetleft="2" myoffsettop="3" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" vspace="5" width="210" height="2"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="2" myoffsettop="2">
+						</td>
+					</tr>
+					<tr myoffsetwidth="206" myoffsetheight="68" myoffsetleft="2" myoffsettop="176">
+						<td myoffsetwidth="8" myoffsetheight="68" myoffsetleft="2" myoffsettop="176" bgcolor="#ffffff"><a myoffsetwidth="4" myoffsetheight="17" myoffsetleft="2" myoffsettop="26" class="noborder" href="../../../person/20061128/114497/index.html" target="_top"><img myoffsetwidth="4" myoffsetheight="21" myoffsetleft="2" myoffsettop="24" alt="" class="pickupphoto" src="../../../../nboimgs/top/columns/101451.jpg" width="48"></a></td>
+						<td myoffsetwidth="196" myoffsetheight="68" myoffsetleft="12" myoffsettop="176" style="text-align: left; background-color: rgb(255, 255, 255); font-size: 12px; line-height: 16px;"><a myoffsetwidth="103" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" class="noborder" href="../../../person/20060419/101451/index.html" target="_top"><span myoffsetwidth="103" myoffsetheight="13" myoffsetleft="2" myoffsettop="4" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="20" myoffsetheight="13" myoffsetleft="2" myoffsettop="4">3位</b> 【Road to CEO】</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="105" myoffsettop="14"><a myoffsetwidth="146" myoffsetheight="13" myoffsetleft="2" myoffsettop="20" class="noborder" href="../../../person/20061128/114497/index.html" target="_top">組織には6種類の人間がいる</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="148" myoffsettop="30"><img myoffsetwidth="95" myoffsetheight="13" myoffsetleft="2" myoffsettop="36" alt="読者コメントを読む" src="../../../../nboimgs/icon_comment.jpg" width="16" height="16"><a myoffsetwidth="190" myoffsetheight="29" myoffsetleft="97" myoffsettop="36" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fperson%2F20061128%2F114497%2F.html">読者コメントを読む( 2 件)</a></td>
+					</tr>
+					<tr myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="246">
+						<td myoffsetwidth="206" myoffsetheight="23" myoffsetleft="2" myoffsettop="246" colspan="3" valign="top" bgcolor="#ffffff"><img myoffsetwidth="0" myoffsetheight="17" myoffsetleft="2" myoffsettop="3" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" vspace="5" width="210" height="2"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="2" myoffsettop="2">
+						</td>
+					</tr>
+				</tbody></table>
+				<p myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="3713" style="height: 10px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="3913" src="../../../../nboimgs/spacer.gif" width="1" height="1"><iframe myoffsetwidth="200" myoffsetheight="200" myoffsetleft="8" myoffsettop="3713" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&amp;spacedesc=nbonline_manage_rectangle1&amp;site=NBonline" vspace="0" width="200" frameborder="0" height="200" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle1&amp;amp;site=NBonline&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle1&amp;amp;site=NBonline" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle1&amp;amp;site=NBonline" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+				</p><p myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="3739" style="height: 10px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="3755" src="../../../../nboimgs/spacer.gif" width="1" height="1"><img myoffsetwidth="0" myoffsetheight="17" myoffsetleft="8" myoffsettop="3741" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" vspace="5" width="210" height="2"><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="8" myoffsettop="3739">
+				</p><div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="3765" class="ranking5"><a myoffsetwidth="75" myoffsetheight="17" myoffsetleft="8" myoffsettop="3767" class="noborder" href="../../../topics/20060331/100909/index.html" target="_top"><span myoffsetwidth="75" myoffsetheight="17" myoffsetleft="8" myoffsettop="3767" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="3767">4位</b> NB100</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="83" myoffsettop="3781"><a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="8" myoffsettop="3786" class="noborder" href="../../../topics/20061214/115724/index.html" target="_top">日産自動車</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="3804" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="3809" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="58" myoffsetleft="8" myoffsettop="3814" class="ranking5"><a myoffsetwidth="95" myoffsetheight="17" myoffsetleft="8" myoffsettop="3815" class="noborder" href="../../../topics/20060219/100109/index.html" target="_top"><span myoffsetwidth="95" myoffsetheight="17" myoffsetleft="8" myoffsettop="3815" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="3815">5位</b> 時流超流</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="103" myoffsettop="3829"><a myoffsetwidth="211" myoffsetheight="17" myoffsetleft="8" myoffsettop="3834" class="noborder" href="../../../topics/20061214/115643/index.html" target="_top">自動車メーカー残り寿命10年？</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="219" myoffsettop="3848"><img myoffsetwidth="127" myoffsetheight="17" myoffsetleft="8" myoffsettop="3853" alt="読者コメントを読む" src="../../../../nboimgs/icon_comment.jpg" width="16" height="16"><a myoffsetwidth="179" myoffsetheight="17" myoffsetleft="135" myoffsettop="3853" href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Ftopics%2F20061214%2F115643%2F.html">読者コメントを読む( 17 件)</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="3871" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="3876" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="0" myoffsetleft="8" myoffsettop="3881" style="margin-bottom: 20px;"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="3881" class="noborder" href="../../../../ranking/fbdaily/index.html"><img myoffsetwidth="44" myoffsetheight="18" myoffsetleft="922" myoffsettop="3886" alt="more" src="../../../../nboimgs/chosenbyr_more.jpg" vspace="5" width="40" align="right" height="14"></a></div>
+				<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="8" myoffsettop="3901" clear="all">
+				<iframe myoffsetwidth="210" myoffsetheight="630" myoffsetleft="8" myoffsettop="3921" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/nbo_manage_bt.shtml" vspace="0" width="210" frameborder="0" height="630" scrolling="no">
+				</iframe>
+				<iframe myoffsetwidth="200" myoffsetheight="200" myoffsetleft="223" myoffsettop="4351" bordercolor="#000000" hspace="0" marginheight="0" marginwidth="0" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&amp;spacedesc=nbonline_manage_rectangle2&amp;site=NBonline" vspace="0" width="200" frameborder="0" height="200" scrolling="no"> &amp;lt;comment&amp;gt; &amp;lt;script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle2&amp;amp;site=NBonline&amp;amp;"&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;/comment&amp;gt; &amp;lt;noscript&amp;gt; &amp;lt;a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle2&amp;amp;site=NBonline" target="_blank"&amp;gt; &amp;lt;img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&amp;amp;tocode=eucJP&amp;amp;spacedesc=nbonline_manage_rectangle2&amp;amp;site=NBonline" border="0"&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/noscript&amp;gt; </iframe>
+				<div myoffsetwidth="958" myoffsetheight="19" myoffsetleft="8" myoffsettop="4570" style="margin: 15px 0px 5px;"><img myoffsetwidth="127" myoffsetheight="17" myoffsetleft="8" myoffsettop="4571" alt="アクセスランキング" src="../../../../nboimgs/ranking_1d.jpg" width="210" height="23"></div>
+				<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="4594" class="ranking5"><a myoffsetwidth="95" myoffsetheight="17" myoffsetleft="8" myoffsettop="4595" class="noborder" href="../../../topics/20060219/100109/index.html" target="_top"><span myoffsetwidth="95" myoffsetheight="17" myoffsetleft="8" myoffsettop="4595" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="4595">1位</b> 時流超流</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="103" myoffsettop="4609"><a myoffsetwidth="211" myoffsetheight="17" myoffsetleft="8" myoffsettop="4614" class="noborder" href="../../../topics/20061214/115643/index.html" target="_top">自動車メーカー残り寿命10年？</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="4632" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4637" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="4642" class="ranking5"><a myoffsetwidth="272" myoffsetheight="17" myoffsetleft="8" myoffsettop="4643" class="noborder" href="../../../money/20061010/111397/index.html" target="_top"><span myoffsetwidth="272" myoffsetheight="17" myoffsetleft="8" myoffsettop="4643" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="4643">2位</b> 岩瀬 大輔の投資ファンドは眠らない</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="280" myoffsettop="4657"><a myoffsetwidth="284" myoffsetheight="17" myoffsetleft="8" myoffsettop="4663" class="noborder" href="../../../money/20061212/115480/index.html" target="_top">秘密のベールを脱いだ巨大ファンドの素顔</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="4681" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4686" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="4691" class="ranking5"><a myoffsetwidth="275" myoffsetheight="17" myoffsetleft="8" myoffsettop="4692" class="noborder" href="../../20060406/101070/index.html" target="_top"><span myoffsetwidth="275" myoffsetheight="17" myoffsetleft="8" myoffsettop="4692" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="4692">3位</b> 常盤文克の「新・日本型経営を探る」</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="283" myoffsettop="4706"><a myoffsetwidth="206" myoffsetheight="17" myoffsetleft="8" myoffsettop="4711" class="noborder" href="../../20061215/115764/index.html" target="_top">「よい会社」に「よいヒト」が育つ</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="4729" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4734" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="4739" class="ranking5"><a myoffsetwidth="120" myoffsetheight="17" myoffsetleft="8" myoffsettop="4740" class="noborder" href="../../../person/20060601/103388/index.html" target="_top"><span myoffsetwidth="120" myoffsetheight="17" myoffsetleft="8" myoffsettop="4740" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="4740">4位</b> EXPRESS　X</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="128" myoffsettop="4754"><a myoffsetwidth="712" myoffsetheight="17" myoffsetleft="8" myoffsettop="4759" class="noborder" href="../../../person/20061214/115729/index.html" target="_top">【わかるかも中国人】（14）「スーパー80年代生まれ」の肖像〜中国社会も悩む“一人っ子政策”の申し子たち</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="4778" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4783" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div>
+				<div myoffsetwidth="958" myoffsetheight="38" myoffsetleft="8" myoffsettop="4788" class="ranking5"><a myoffsetwidth="334" myoffsetheight="17" myoffsetleft="8" myoffsettop="4789" class="noborder" href="../../../world/20060406/101059/index.html" target="_top"><span myoffsetwidth="334" myoffsetheight="17" myoffsetleft="8" myoffsettop="4789" style="color: rgb(102, 102, 102);"> <b myoffsetwidth="26" myoffsetheight="17" myoffsetleft="8" myoffsettop="4789">5位</b> 世界鑑測　北村豊の「中国・キタムラリポート」</span></a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="342" myoffsettop="4803"><a myoffsetwidth="308" myoffsetheight="17" myoffsetleft="8" myoffsettop="4808" class="noborder" href="../../../world/20061214/115674/index.html" target="_top">え！中国では下水溝から食用油が作られる？</a></div>
+				<div myoffsetwidth="958" myoffsetheight="10" myoffsetleft="8" myoffsettop="4826" style="margin: 0px; padding: 5px 0px;"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4831" alt="" src="../../../../nboimgs/chosenbyr_line.jpg" width="210" height="2"></div><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="8" myoffsettop="4851" class="noborder" href="../../../../ranking/pvdaily/index.html"><img myoffsetwidth="44" myoffsetheight="18" myoffsetleft="922" myoffsettop="4841" alt="more" src="../../../../nboimgs/chosenbyr_more.jpg" vspace="5" width="40" align="right" height="14"></a><br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="8" myoffsettop="4836" clear="all">
+				<div myoffsetwidth="958" myoffsetheight="19" myoffsetleft="8" myoffsettop="4894" style="margin: 30px 0px 5px;"><img myoffsetwidth="138" myoffsetheight="17" myoffsetleft="8" myoffsettop="4895" alt="NBonlineの情報発信" src="../../../../nboimgs/nbo_info.jpg" width="210" height="23"></div>
+				<ul myoffsetwidth="958" myoffsetheight="58" myoffsetleft="8" myoffsettop="4929">
+					<li myoffsetwidth="918" myoffsetheight="19" myoffsetleft="48" myoffsettop="4929"><a myoffsetwidth="237" myoffsetheight="17" myoffsetleft="48" myoffsettop="4930" href="../../../../nbs/nbsbook.html" target="_top">「書籍、ムック、臨時増刊のご案内」</a></li><li myoffsetwidth="918" myoffsetheight="38" myoffsetleft="48" myoffsettop="4948">高級感溢れる装丁、充実した機能<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="276" myoffsettop="4963"><a myoffsetwidth="182" myoffsetheight="17" myoffsetleft="48" myoffsettop="4969" href="../../../../nbs/diary/index.html" target="_blank">「日経ビジネス・ダイアリー」</a></li></ul><a myoffsetwidth="322" myoffsetheight="17" myoffsetleft="8" myoffsettop="5004" class="noborder" href="../../../../nbs/gs/index.html" target="_blank"><img myoffsetwidth="322" myoffsetheight="21" myoffsetleft="8" myoffsettop="5002" alt="就職活動応援企画　「経営者トップタイプ3診断」" class="aligncenter" src="../../../../nboimgs/cover/shukatsu200.gif" vspace="10" width="200" height="100"></a></div>
 		</div>
-</td>
-</tr>
-</table>
-
-</div>
-</td>
-</tr>
-</table>
-	</div>
-	<!-- /maincontent -->
-
-	<div id="subcontent">
-		<div id="search">
-			<form action="http://business.nikkeibp.co.jp/bns/bnsearch.jsp" method="post">
-				<img src="../../../../nboimgs/caption-search.gif" alt="サイト内検索" width="69" height="13" />
-				<!--<label for="keyword" class="inside">キーワード</label>-->
-				<input type="text" id="keyword" name="SEARCH_TEXT" />
-				<input type="image" src="../../../../nboimgs/btn-search.gif" value="search" alt="探す" class="searchbtn" />
-				<input type="hidden" name="BID" value="1005" />
-				<input type="hidden" name="OFFSET" value="0" />
-			</form>
-		</div>
-
-<img src="../../../../nboimgs/chosenbyr.jpg" alt="読者が選ぶ注目の記事" width="210" height="23" vspace="5"/>
-<table width="210" cellpadding="2" cellspacing="2" bgcolor="#ffffff">
-
-
-	
-	        
-										
-										
-<tr>
-<td bgcolor="#ffffff">
-
-		<a href="../../../topics/20061214/115645/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/100109.jpg" alt="" width="48" class="pickupphoto" /></a>
-	</td>
-
-<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
-<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
-<b>1位</b>
-【時流超流】</span></a><br />
-<a href="../../../topics/20061214/115645/index.html" target="_top" class="noborder" target="_top">“無策”の金融3社に風圧</a> 
-	
-</td>
-</tr>
-
-<tr>
-<td bgcolor="#ffffff" valign="top" colspan="3">
-<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
-</td>
-</tr>
-
-	
-	        
-										
-																
-<tr>
-<td bgcolor="#ffffff">
-
-		<a href="../../../world/20061214/115695/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/100532.jpg" alt="" width="48" class="pickupphoto" /></a>
-	</td>
-
-<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
-<a href="../../../world/20060308/100532/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
-<b>2位</b>
-【門倉　貴史の「BRICsの素顔」】</span></a><br />
-<a href="../../../world/20061214/115695/index.html" target="_top" class="noborder" target="_top">中国でもクラシックブーム<br />子供1000万人が音楽教室に</a> 
-		<br />
-<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fworld%2F20061214%2F115695%2F.html">読者コメントを読む( 3
-
-
-件)</a>
-	
-</td>
-</tr>
-
-<tr>
-<td bgcolor="#ffffff" valign="top" colspan="3">
-<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
-</td>
-</tr>
-
-	
-	        
-										
-										
-<tr>
-<td bgcolor="#ffffff">
-
-		<a href="../../../person/20061128/114497/index.html" class="noborder" target="_top"><img src="../../../../nboimgs/top/columns/101451.jpg" alt="" width="48" class="pickupphoto" /></a>
-	</td>
-
-<td style="text-align:left;background-color:#ffffff;font-size:12px;line-height:16px;">
-<a href="../../../person/20060419/101451/index.html" target="_top" class="noborder" target="_top"><span style="color:#666">
-<b>3位</b>
-【Road to CEO】</span></a><br />
-<a href="../../../person/20061128/114497/index.html" target="_top" class="noborder" target="_top">組織には6種類の人間がいる</a> 
-		<br />
-<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Fperson%2F20061128%2F114497%2F.html">読者コメントを読む( 2
-
-
-件)</a>
-	
-</td>
-</tr>
-
-<tr>
-<td bgcolor="#ffffff" valign="top" colspan="3">
-<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
-</td>
-</tr>
-
-	</table>
-
-
-<p style="height:10px;"><img src="../../../../nboimgs/spacer.gif" width="1" height="1" /></p>
-
-<!-- nbonline_manage_rectangle1 -->
-
-<iframe width="200" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle1&site=NBonline" border="0"></a>
-</noscript>
-</iframe>
-
-<!-- end of nbonline_manage_rectangle1 -->
-<p style="height:10px;"><img src="../../../../nboimgs/spacer.gif" width="1" height="1" /></p>
-
-<img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" vspace="5" /><br />
-
-
-	
-		
-	
-		
-	
-		
-	
-	
-	        
-	        
-										
-																
-<div class="ranking5">
-<a href="../../../topics/20060331/100909/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>4位</b> NB100</span></a><br />
-<a href="../../../topics/20061214/115724/index.html" target="_top" class="noborder">日産自動車</a> 
-	</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-		
-	
-	
-	        
-	        
-										
-										
-<div class="ranking5">
-<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>5位</b> 時流超流</span></a><br />
-<a href="../../../topics/20061214/115643/index.html" target="_top" class="noborder">自動車メーカー残り寿命10年？</a> 
-		<br />
-<img src="../../../../nboimgs/icon_comment.jpg" alt="読者コメントを読む" width="16" height="16" /><a href="../../../../fb/putfeedback.jsp@_PARTS_ID=FB01&amp;VIEW=Y&amp;REF=%2Farticle%2Ftopics%2F20061214%2F115643%2F.html">読者コメントを読む( 17
-
-
-件)</a>
-	</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-		
-	
-
-<div style="margin-bottom:20px;">
-<a href="../../../../ranking/fbdaily/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
-</div>
-
-<br clear="all" />
-
-
-
-
-<iframe width="210" height="630" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/NBP_AD/nbonline/ad/nbo_manage_bt.shtml">
-</iframe>
-
-
-<!-- nbonline_manage_rectangle2 -->
-
-<iframe width="200" height="200" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000" src="http://bizad.nikkeibp.co.jp/html.ng/tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline">
-<comment>
-<script language="javascript1.1" src="http://bizad.nikkeibp.co.jp/js.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline&">
-</script>
-</comment>
-<noscript>
-<a href="http://bizad.nikkeibp.co.jp/click.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline" target="_blank">
-<img src="http://bizad.nikkeibp.co.jp/image.ng/params.richmedia=yes&tocode=eucJP&spacedesc=nbonline_manage_rectangle2&site=NBonline" border="0"></a>
-</noscript>
-</iframe>
-
-<!-- end of nbonline_manage_rectangle2 -->
-
-<div style="margin:15px 0px 5px 0px;">
-<img src="../../../../nboimgs/ranking_1d.jpg" alt="アクセスランキング" width="210" height="23" />
-</div>
-		
-		
-<div class="ranking5">
-<a href="../../../topics/20060219/100109/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>1位</b> 時流超流</span></a><br />
-<a href="../../../topics/20061214/115643/index.html" target="_top" class="noborder">自動車メーカー残り寿命10年？</a>
-</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-
-
-		
-				
-<div class="ranking5">
-<a href="../../../money/20061010/111397/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>2位</b> 岩瀬 大輔の投資ファンドは眠らない</span></a><br />
-<a href="../../../money/20061212/115480/index.html" target="_top" class="noborder">秘密のベールを脱いだ巨大ファンドの素顔</a>
-</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-
-
-		
-		
-<div class="ranking5">
-<a href="../../20060406/101070/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>3位</b> 常盤文克の「新・日本型経営を探る」</span></a><br />
-<a href="../../20061215/115764/index.html" target="_top" class="noborder">「よい会社」に「よいヒト」が育つ</a>
-</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-
-
-		
-				
-<div class="ranking5">
-<a href="../../../person/20060601/103388/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>4位</b> EXPRESS　X</span></a><br />
-<a href="../../../person/20061214/115729/index.html" target="_top" class="noborder">【わかるかも中国人】（14）「スーパー80年代生まれ」の肖像〜中国社会も悩む“一人っ子政策”の申し子たち</a>
-</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-
-
-		
-		
-<div class="ranking5">
-<a href="../../../world/20060406/101059/index.html" target="_top" class="noborder"><span style="color:#666">
-<b>5位</b> 世界鑑測　北村豊の「中国・キタムラリポート」</span></a><br />
-<a href="../../../world/20061214/115674/index.html" target="_top" class="noborder">え！中国では下水溝から食用油が作られる？</a>
-</div>
-<div style="margin:0px 0px 0px 0px;padding:5px 0px 5px 0px;"><img src="../../../../nboimgs/chosenbyr_line.jpg" alt="" width="210" height="2" /></div>
-
-
-<a href="../../../../ranking/pvdaily/index.html" class="noborder"><img src="../../../../nboimgs/chosenbyr_more.jpg" alt="more" width="40" height="14" align="right" vspace="5" /></a>
-<br clear="all" />
-
-<div style="margin:30px 0px 5px 0px;">
-<img src="../../../../nboimgs/nbo_info.jpg" alt="NBonlineの情報発信" width="210" height="23" />
-</div>
-<ul>
-    <li><a href="../../../../nbs/nbsbook.html" target="_top">「書籍、ムック、臨時増刊のご案内」</a></li>
-    <li>高級感溢れる装丁、充実した機能<br><a href="../../../../nbs/diary/index.html" target="_blank">「日経ビジネス・ダイアリー」</a></li>
-</ul>
-<a class="noborder" target="_blank" href="../../../../nbs/gs/index.html"><img class="aligncenter" height="100" alt="就職活動応援企画　「経営者トップタイプ3診断」" width="200" src="../../../../nboimgs/cover/shukatsu200.gif" vspace="10" /></a>
-
-
-
-	</div>
-	<!-- /subcontent -->
-
-
-</div>
-<!-- /wrapper-->
-
-<hr />
-
-<div id="footer">
-	<div id="footersection">
-		<a href="http://www.nikkeibp.co.jp/"><img src="../../../../nboimgs/logo-nikkeibp.gif" alt="日経BP社" width="114" height="18" /></a>
-		<ul>
-			<li>NBonline
-			<ul>
-				<li><a href="../../../../info/reguser/index.shtml.html">会員登録・メール配信</a></li>
-				<li><a href="../../../../info/aboutnbonline/index.shtml.html">このサイトについて</a></li>
-				<li class="last"><a href="../../../../ask_pass/index.html" target="_blank">お問い合わせ</a></li>
-			</ul></li>
-			<li>日経BP社
-			<ul>
-				<li><a href="http://corporate.nikkeibp.co.jp/" target="_blank">会社案内</a></li>
-				<li><a href="http://www.nikkeibp.co.jp/info/privacy/" target="_blank">プライバシーポリシー</a></li>
-				<li><a href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">著作権について</a></li>
-				<li class="last"><a href="http://corporate.nikkeibp.co.jp/info/webad/jpn/index.html" target=_blank>広告ガイド</a></li>
-			</ul></li>
-		</ul>
-		<p>&copy; 2006 Nikkei Business Publications, Inc. All Rights Reserved.</p>
-
-<!--BIZMARK Version 4.5-->
-<script type="text/javascript" language="JavaScript"><!--
+		<hr myoffsetwidth="958" myoffsetheight="2" myoffsetleft="8" myoffsettop="5030">
+		<div myoffsetwidth="958" myoffsetheight="243" myoffsetleft="8" myoffsettop="5040" id="footer">
+			<div myoffsetwidth="958" myoffsetheight="243" myoffsetleft="8" myoffsettop="5040" id="footersection"><a myoffsetwidth="72" myoffsetheight="17" myoffsetleft="8" myoffsettop="5041" href="http://www.nikkeibp.co.jp/"><img myoffsetwidth="72" myoffsetheight="21" myoffsetleft="8" myoffsettop="5039" alt="日経BP社" src="../../../../nboimgs/logo-nikkeibp.gif" width="114" height="18"></a><ul myoffsetwidth="958" myoffsetheight="173" myoffsetleft="8" myoffsettop="5075">
+					<li myoffsetwidth="918" myoffsetheight="77" myoffsetleft="48" myoffsettop="5075">NBonline <ul myoffsetwidth="918" myoffsetheight="58" myoffsetleft="48" myoffsettop="5094">
+							<li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5094"><a myoffsetwidth="147" myoffsetheight="17" myoffsetleft="88" myoffsettop="5095" href="../../../../info/reguser/index.shtml.html">会員登録・メール配信</a></li><li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5114"><a myoffsetwidth="127" myoffsetheight="17" myoffsetleft="88" myoffsettop="5115" href="../../../../info/aboutnbonline/index.shtml.html">このサイトについて</a></li><li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5133" class="last"><a myoffsetwidth="94" myoffsetheight="17" myoffsetleft="88" myoffsettop="5134" href="../../../../ask_pass/index.html" target="_blank">お問い合わせ</a></li></ul>
+					</li><li myoffsetwidth="918" myoffsetheight="96" myoffsetleft="48" myoffsettop="5152">日経BP社 <ul myoffsetwidth="918" myoffsetheight="77" myoffsetleft="48" myoffsettop="5171">
+							<li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5171"><a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="88" myoffsettop="5172" href="http://corporate.nikkeibp.co.jp/" target="_blank">会社案内</a></li><li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5190"><a myoffsetwidth="141" myoffsetheight="17" myoffsetleft="88" myoffsettop="5191" href="http://www.nikkeibp.co.jp/info/privacy/" target="_blank">プライバシーポリシー</a></li><li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5210"><a myoffsetwidth="107" myoffsetheight="17" myoffsetleft="88" myoffsettop="5211" href="http://corporate.nikkeibp.co.jp/information/copyright/" target="_blank">著作権について</a></li><li myoffsetwidth="878" myoffsetheight="19" myoffsetleft="88" myoffsettop="5229" class="last"><a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="88" myoffsettop="5230" href="http://corporate.nikkeibp.co.jp/info/webad/jpn/index.html" target="_blank">広告ガイド</a></li></ul>
+				</li></ul>
+				<p myoffsetwidth="958" myoffsetheight="19" myoffsetleft="8" myoffsettop="5264">© 2006 Nikkei Business Publications, Inc. All Rights Reserved.<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" type="text/javascript"><!--
 var _ANid="nbpnbonline";
 //--></script>
-<script type="text/javascript" language="JavaScript" src="../../../../bizmark/an_nbpnbonline.js"></script>
-<noscript><img src="http://biz2.ogt.jp/plog?id=nbpnbonline" width="1" height="1" alt="" /></noscript>
-<!--END OF BIZMARK-->
-
-	</div>
-</div>
-</body>
+				<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" language="JavaScript" src="../../../../bizmark/an_nbpnbonline.js" type="text/javascript"></script>
+				<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img alt="" height="1" src="http://biz2.ogt.jp/plog?id=nbpnbonline" width="1" /></noscript>
+			</p></div>
+		</div>
+	</body>
 </html>

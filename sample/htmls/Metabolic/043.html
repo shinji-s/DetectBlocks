@@ -1,528 +1,235 @@
- 
-	
-
-	
-
-
-	
-	  	
-	  		
-	  	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja" dir="ltr">
+<html>
 <head>
-<meta http-equiv="Content-Language" content="ja">
-<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta name="copyright" content="&copy; 2004 Nihon Keizai Shimbun, Inc. All rights reserved.">
-<title>日経プレスリリース</title>
-<link rel="start" href="http://www.nikkei.co.jp/" title="NIKKEI NET">
-<link rel="chapter" href="http://markets.nikkei.co.jp/" title="マネー">
-<link rel="chapter" href="http://ir.nikkei.co.jp/" title="I　R">
-<link rel="chapter" href="http://it.nikkei.co.jp/" title="I　T">
-<link rel="chapter" href="http://bizplus.nikkei.co.jp/" title="経営">
-<link rel="chapter" href="http://sumai.nikkei.co.jp/" title="住宅">
-<link rel="chapter" href="http://www.nikkei.co.jp/weekend/" title="生活・グルメ">
-<link rel="chapter" href="http://www.nikkei.co.jp/help/manabi.html" title="教育">
-<link rel="chapter" href="http://job.nikkei.co.jp/" title="就職">
-<link rel="chapter" href="http://kyujin.nikkei.co.jp/" title="求人">
-<link rel="chapter" href="http://car.nikkei.co.jp/" title="クルマ">
-<link rel="chapter" href="http://www.nikkei.co.jp/style/" title="C-style">
-<link rel="chapter" href="http://smartwoman.nikkei.co.jp/" title="ウーマン">
-<link rel="chapter" href="http://nikkei.goo.ne.jp/" title="日経goo">
-<link rel="chapter" href="http://off.nikkei.co.jp/" title="おとなのＯＦＦ">
-<link rel="chapter" href="http://waga.nikkei.co.jp/" title="日経WagaMaga">
-<link rel="chapter" href="http://trendy.nikkei.co.jp/" title="日経トレンディ">
-<link rel="contents" href="http://www.nikkei.co.jp/help/menu.html" title="カテゴリー欄">
-<link rel="copyright" href="http://www.nikkei.co.jp/help/copy.html" title="著作権について">
-<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/css3/common.css">
-<link rel="stylesheet" type="text/css" href="css/add_0410.css">
-<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/js3/ua2.js"></script>
-<script type="text/javascript" src="js/subwin.js"></script>
-<script type="text/javascript"><!--
+
+	
+		<meta content="ja" http-equiv="Content-Language">
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<meta content="© 2004 Nihon Keizai Shimbun, Inc. All rights reserved." name="copyright">
+		<title>日経プレスリリース</title>
+		<link href="http://www.nikkei.co.jp/" rel="start" title="NIKKEI NET">
+		<link href="http://markets.nikkei.co.jp/" rel="chapter" title="マネー">
+		<link href="http://ir.nikkei.co.jp/" rel="chapter" title="I　R">
+		<link href="http://it.nikkei.co.jp/" rel="chapter" title="I　T">
+		<link href="http://bizplus.nikkei.co.jp/" rel="chapter" title="経営">
+		<link href="http://sumai.nikkei.co.jp/" rel="chapter" title="住宅">
+		<link href="http://www.nikkei.co.jp/weekend/" rel="chapter" title="生活・グルメ">
+		<link href="http://www.nikkei.co.jp/help/manabi.html" rel="chapter" title="教育">
+		<link href="http://job.nikkei.co.jp/" rel="chapter" title="就職">
+		<link href="http://kyujin.nikkei.co.jp/" rel="chapter" title="求人">
+		<link href="http://car.nikkei.co.jp/" rel="chapter" title="クルマ">
+		<link href="http://www.nikkei.co.jp/style/" rel="chapter" title="C-style">
+		<link href="http://smartwoman.nikkei.co.jp/" rel="chapter" title="ウーマン">
+		<link href="http://nikkei.goo.ne.jp/" rel="chapter" title="日経goo">
+		<link href="http://off.nikkei.co.jp/" rel="chapter" title="おとなのＯＦＦ">
+		<link href="http://waga.nikkei.co.jp/" rel="chapter" title="日経WagaMaga">
+		<link href="http://trendy.nikkei.co.jp/" rel="chapter" title="日経トレンディ">
+		<link href="http://www.nikkei.co.jp/help/menu.html" rel="contents" title="カテゴリー欄">
+		<link href="http://www.nikkei.co.jp/help/copy.html" rel="copyright" title="著作権について">
+		<link href="http://parts.nikkei.co.jp/parts/css3/common.css" rel="stylesheet" type="text/css">
+		<link href="css/add_0410.css" rel="stylesheet" type="text/css">
+		<script src="http://parts.nikkei.co.jp/parts/js3/ua2.js" type="text/javascript"></script>
+		<script src="js/subwin.js" type="text/javascript"></script>
+		<script type="text/javascript"><!--
 self.k.writelink();
-//--></script>
-<script type="text/javascript">
+//--></script><link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/css3/gecko.css" title="priority">
+		<script type="text/javascript">
 <!--
 function openWindow(file,target,params) {
 	window.open(file,target,params);
 }
 //-->
 </script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/text_menu_def.js"></script>
-<script type="text/Javascript" src="js/act_js/text_releasemenu_def.js.html"></script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/text_menu.js"></script>
-<script type="text/Javascript" src="js/text_releasemenu.js"></script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/form.js"></script>
-</head>
-<body>
-<div id="header">
-<h2 id="logomark"><a href="http://www.nikkei.co.jp/" name="top" accesskey="y"><img src="http://parts.nikkei.co.jp/parts/net3/logo.gif" width="190" height="47" alt="NIKKEI NET"></a></h2>
-<div id="jump">
-<p><a href="detail.cfm@relID=144448&amp;lindID=1.html#topnews">音声ブラウザ専用。こちらより記事見出しへ移動可能です。クリック。</a></p>
-</div>
-<table border="0" cellspacing="0" cellpadding="0" align="right" id="release_link">
-<tr>
-<td rowspan="3" valign="top">
-<ul>
-<li class="koudoku">■<a href="http://www.nikkei.co.jp/hensei/koudoku/" accesskey="u">新聞購読申し込み</a></li>
-<li>■<a href="http://www.nikkei.co.jp/help/nikkei/">日経のイベント</a></li>
-<li>■<a href="http://www.nni.nikkei.co.jp/">ENGLISH</a></li>
-<li>■<a href="http://www.nikkei.co.jp/help/menu.html">サイト一覧</a></li>
-</ul>
-</td>
-<td class="layout"><a href="howto.cfm.html"><img src="img/rel_how_to.gif" width="99" height="19" alt="ご利用方法" class="layout"></a></td></tr>
-<tr><td class="layout"><a href="qa.cfm.html"><img src="img/rel_qa.gif" width="99" height="18" alt="Q&A" class="layout"></a></td></tr>
-<tr><td class="layout"><a href="mailto:rel_quest@nikkei.co.jp"><img src="img/rel_info.gif" width="99" height="18" alt="お問い合わせ" class="layout"></a></td></tr>
-</table>
-<form id="search_form" name="S_FORM" action="detail.cfm@relID=144448&amp;lindID=1.html#" method="get" onsubmit="CheckInput(); return false;">
-<p style="font-size:90%; color:#999999; font-weight:bold;">検索</p>
-<p><input type="text" name="keyword" size="40" class="input1" accesskey="j"></p>
-<p><input type="button" value="記事" class="bt1" accesskey="k" onclick="CheckInput(1); return false;"></p>
-<p><input type="button" value="株価" class="bt1" accesskey="l" onclick="CheckInput(4); return false;"></p>
-<p><input type="button" value="求人" class="bt1" accesskey="m" onclick="CheckInput(7); return false;"></p>
-<input type="hidden" name="site" value="">
-<p class="help"><a href="http://www.nikkei.co.jp/help/kensaku.html" accesskey="m"><img src="http://parts.nikkei.co.jp/parts/net3/info.gif" width="21" height="19" alt="" class="tb">検索案内</a></p>
-<p class="goo">
-<input type="button" value="日経goo" class="bt3" onClick="top.location.href='http://rd.nikkei.co.jp/net/top/pulldown/u=http://nikkei.goo.ne.jp/'"></p>
-</form>
-<table border="0" cellspacing="0" cellpadding="0" summary="座標軸を求めるためのテーブルです">
-<tr><td class="layout"><img id="menu_img" class="layout" src="http://parts.nikkei.co.jp/parts/net3/menu_bar_ann4.gif" width="875" height="24" usemap="#menu" alt=""></td></tr>
-</table>
-<map name="menu">
-<area shape="rect" coords="0,1,79,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp" alt="ニュース">
-<area shape="rect" coords="88,5,134,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://markets.nikkei.co.jp/" alt="マネー：株や為替、預貯金、投信の最新情報。持ち株チェックも">
-<area shape="rect" coords="135,5,161,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://ir.nikkei.co.jp/" alt="IR" onmouseover="menu_show('ir','news/keizai');" onmouseout="menu_hide('ir');">
-<area shape="rect" coords="162,5,188,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://it.nikkei.co.jp/" alt="IT" onmouseover="menu_show('it','news/keizai');" onmouseout="menu_hide('it');">
-<area shape="rect" coords="189,5,230,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://bizplus.nikkei.co.jp/" alt="経営" onmouseover="menu_show('business','news/keizai');" onmouseout="menu_hide('business');">
-<area shape="rect" coords="231,5,272,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://sumai.nikkei.co.jp/" alt="住宅" onmouseover="menu_show('house','news/keizai');" onmouseout="menu_hide('house');">
-<area shape="rect" coords="273,5,352,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/weekend/" alt="生活・グルメ" onmouseover="menu_show('health','news/keizai');" onmouseout="menu_hide('health');">
-<area shape="rect" coords="353,5,394,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/help/manabi.html" alt="教育" onmouseover="menu_show('study','news/keizai');" onmouseout="menu_hide('study');">
-<area shape="rect" coords="395,5,436,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://job.nikkei.co.jp/" alt="就職：学生の就職活動を完全サポート、マイページ利用も可能">
-<area shape="rect" coords="437,5,478,24" href="http://rd.nikkei.co.jp/net/top/pulldown/u=http://kyujin.nikkei.co.jp/" alt="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載">
-<area shape="rect" coords="479,5,524,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://car.nikkei.co.jp/" alt="クルマ：クルマ好き応援サイト">
-<area shape="rect" coords="525,5,581,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/style/" alt="C-Style：ライフスタイルにこだわりを持つ30代男性向けウェブマガジン">
-<area shape="rect" coords="582,5,637,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://smartwoman.nikkei.co.jp/" alt="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載">
-<area shape="rect" coords="638,5,697,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://waga.nikkei.co.jp/" alt="日経WagaMaga：アタマとカラダを刺激する、大人のためのコミュニティー">
-<area shape="rect" coords="790,5,870,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://off.nikkei.co.jp/" alt="おとなのＯＦＦ">
-<area shape="rect" coords="705,5,785,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://trendy.nikkei.co.jp/" alt="日経トレンディ：個人生活を刺激する流行情報誌">
-</map>
-<ul id="mainmenu">
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/">トップ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/main/">主要</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/keizai/">経済</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/sangyo/">企業</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/market/">株・為替</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/kaigai/">国際</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/seiji/">政治</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/shakai/">社会</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://sports.nikkei.co.jp/">スポーツ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/newpro/news/">新製品</a> </li>
-<li class="select">リリース</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/shasetsu/">社説・春秋</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/okuyami/">おくやみ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/netnavi/">ネットナビ</a></li>
-</ul>
-</div>
-<hr>
-
-<form method="post" action="http://release.nikkei.co.jp/result.cfm">
-<div id="contents">
-<div id="contents_title" style="width:99%">
-<h2><a href="index.cfm.html" accesskey="i">プレスリリース</a></h2>
-<p id="title_description">キーワード&nbsp;&nbsp;<input type="text" name="keyword" size="40" class="input1" style="font-size: 12px;"> <input type="submit" value="リリース検 索" style="font-size: 10px;padding:0px;" class="bt1">&nbsp;&nbsp;<span class="re_underline"><a href="help.cfm.html">・検索ヘルプ</a></span></p>
-</div>
-</div>
-</form>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="レイアウト目的のテーブルです" style="clear:both;">
-
-
-	
-		<colgroup><col width="100%"><col></colgroup>
-		
-
-
-
-
-<tr>
-
-<td valign="top">
-<div id="contents">
-<table border="0" cellspacing="0" cellpadding="0" id="release_menu" summary="プレスリリースメニュー">
-<tr>
-	
-		
-	
-	
-	
-	<td><a href="index.cfm.html"><img src="img/menu_img/menu_img1_a.gif" width="85" height="23" alt="最新リリースへ戻る"></a></td>
-	
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_it','news/keizai');" onmouseout="releasemenu_hide('release_it');"><a href="isclass.cfm@lindID=1.html"><img src="img/menu_img/menu_img2_b.gif" width="85" height="23" alt="IT"></a></td>
-	
-			
-			
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_distribution','news/keizai');" onmouseout="releasemenu_hide('release_distribution');"><a href="isclass.cfm@lindID=2.html"><img src="img/menu_img/menu_img3_a.gif" width="85" height="23" alt="流通"></a></td>
-	
-			
-			
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_finance','news/keizai');" onmouseout="releasemenu_hide('release_finance');"><a href="isclass.cfm@lindID=3.html"><img src="img/menu_img/menu_img4_a.gif" width="85" height="23" alt="金融"></a></td>
-	
-			
-			
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_maker','news/keizai');" onmouseout="releasemenu_hide('release_maker');"><a href="isclass.cfm@lindID=4.html"><img src="img/menu_img/menu_img5_a.gif" width="85" height="23" alt="メーカー"></a></td>
-	
-			
-			
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_service','news/keizai');" onmouseout="releasemenu_hide('release_service');"><a href="isclass.cfm@lindID=5.html"><img src="img/menu_img/menu_img6_a.gif" width="85" height="23" alt="サービス"></a></td>
-	
-			
-			
-			
-		
-		
-		
-		<td onmouseover="releasemenu_show('release_construction','news/keizai');" onmouseout="releasemenu_hide('release_construction');"><a href="isclass.cfm@lindID=6.html"><img src="img/menu_img/menu_img7_a.gif" width="85" height="23" alt="建設・住宅"></a></td>
-	
-</tr>
-</table>
-<hr>
-
-			
-				<table border="0" cellspacing="0" class="tablestyle2" id="re_table">
-				<colgroup><col width="100"><col class="keiki_title2"></colgroup>
-
-
-
-				
-					
-						<TR VALIGN="TOP">
-							
-							<TH>業&nbsp;&nbsp;種</TH>
-							<TD>	
-							
-								<a href = "isclass.cfm@lindID=1.html">IT</a>
-							
-								／
-								
-								
-									<a href = "isclassList.cfm@lindID=1&amp;sindID=3.html">
-										システム・ソフト開発
-									</a>
-								
-							</TD>
-							<TH>発表日</TH>
-							
-							<TD>2006/10/25</TD>
-						</TR>
-					
-					
-						<TR>
-							<TR VALIGN="TOP">
-							<TH>企業名</TH>
-							
-							<TD colspan="3">
-								
-									（株）損害保険ジャパン
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-									
-								
-								
-	
-								
-								
-								
-								
-								
-									
-										&nbsp;|&nbsp;
-										
-										
-										<a href="http://nikkei.goo.ne.jp/perfect/basic_70505.html" target="_blank">会社概要</a>
-										
-									
-								
-								
-								
-									
-									&nbsp;|&nbsp;
-									<a href="http://rd.nikkei.co.jp/stock/h/8755" target="_blank">株式コード：8755</a>
-								
-								
-								
-								
-								
-								
-									&nbsp;|&nbsp;
-									ホームページ：
-									<a href="http://www.sompo-japan.co.jp" target="_blank">http://www.sompo-japan.co.jp</a>
-								
-							</TD>
-						</TR>
-					
-				
-			</table>
-			<hr>
-			
-				<p class="re_print" style="margin-top:0px;"><a href="print.cfm@relID=144448.html" target="blank"><img src="img/print.gif" width="18" height="16" alt="" class="tb"></a><a href="print.cfm@relID=144448.html" target="blank">このページをプリントする</a></p>
-				
-				<h1 id="heading" class="heading">ヘルスケア・フロンティア・ジャパン、メタボリックシンドローム予防プログラムを発売</h1>
-				<p>
-				
-				
-				「メタボリックシンドローム予防支援プログラム」の発売について<br><br><br>　株式会社損害保険ジャパン（社長：佐藤　正敏）とオムロンヘルスケア株式会社（社長：赤星　慶一郎）の合弁会社である株式会社ヘルスケア・フロンティア・ジャパン（社長：百瀬　剛）は、メタボリックシンドローム（内臓脂肪症候群）の発症・進行を予防する生活習慣改善プログラム「健康達人　メタボリックシンドローム予防編」を開発し、１１月１日より提供を開始します。本プログラムは、医療保険者向けに、医療制度改革によって義務化された保健事業を支援するサービスの一環として提供します。<br><br><br>１．メタボリックシンドローム予防プログラム発売の背景<br>　国民医療費と生活習慣病患者の増加を背景として、本年６月に医療制度改革関連法が成立しました。これにより健康保険組合、国民健康保険組合などの医療保険者は２００８年度から、これまで任意であった健診・保健指導などの保健事業を実施することが義務化されることとなりました。<br>一方、内臓脂肪の蓄積が糖尿病、高血圧症、高脂血症の発症に深く関係し、重複が多いほど、心筋梗塞や脳卒中の発症リスクが高いことが明らかとなり、これがメタボリックシンドロームとして注目されるようになりました。厚生労働省はメタボリックシンドローム対策を「保健事業の義務化」の軸にすえております。<br>当社で販売している生活習慣改善プログラム「健康達人」シリーズは、１９９９年からオムロン株式会社ヘルスケアビジネスカンパニーが提供を開始し、これまでに６０万人以上に利用されております。また、学術的効果検証によって、減量、血圧の低下、血清脂質の改善などの効果があり、プログラム終了後もその効果が持続することを確認し、学会発表してまいりました。このプログラムを活用し、今般健康増進・疾病予防の観点から、メタボリックシンドローム対策の一環として、その発症をいかに防ぐかということに重点をおいた専用プログラムを開発するに至りました。<br><br><br>２．「健康達人　メタボリックシンドローム予防編」の概要と特長<br>（１）概要<br>　生活習慣改善プログラム「健康達人　メタボリックシンドローム予防編」は、健康的な生活習慣を作るために食事、運動などについてご利用者一人ひとりに最適なアドバイスを提供する行動科学に基づいた実践しやすいプログラムです。<br>ご利用者に健康状態や生活習慣に関する質問票を記入・送付いただき、その回答内容を分析して生活習慣改善に役立つアドバイスシートを返送いたします。ご利用者にはこのアドバイスに基づいて生活習慣を変えていただき、メタボリックシンドロームを予防していただくこととなります。<br><br>（２）特長<br>　本プログラムは、メタボリックシンドロームの概念に沿って、食事、運動などの生活習慣改善アドバイスを統合したプログラムで、内臓脂肪や高血圧などのメタボリックシンドロームの危険因子を総合的に減らすことで、心筋梗塞や脳卒中の発症リスクを低減させます。<br>　ご利用者は健康増進、疾病予防の知識がなくても、アドバイスに従ってスムーズかつ継続的に生活習慣改善に取り組めます。<br><br>（３）価格<br>　ご利用１件あたり５，０００円（税別）<br>　運用基本料として２５０，０００円（税別）<br><br>（４）販売開始<br>　２００６年１１月１日<br><br><br>３．今後の展開<br>　当社では今般開発した「健康達人　メタボリックシンドローム予防編」を医療保険者に対して積極的に案内を行っていきます。また医療保険者に対して「保健事業の義務化」対策を支援すべく、総合的に対応できるサービスを提供していきます。<br><br>以　上<br><br>
-				</p>
-			
-				<div class="tokushu">
-					
-					
-						<h3 class="kiji_link" style="margin-right: 10px;">● 関連リンク</h3>
-						
-						
-							
-								
-							
-							<ul>
-								<li><a href="http://www.sompo-japan.co.jp" target="_blank">
-								
-									（株）損害保険ジャパン　ホームページ
-								
-								</a></li>
-							</ul>
-							<br>
-						
-							
-								
-							
-							<ul>
-								<li><a href="http://www.hfj.co.jp/" target="_blank">
-								
-									（株）ヘルスケア・フロンティア・ジャパン　ホームページ
-								
-								</a></li>
-							</ul>
-							<br>
-						
-					
-					
-					
-					
-					
-					
-				</div>
-				
-				<p class="re_print"><a href="print.cfm@relID=144448.html" target="blank">
-				<img src="img/print.gif" width="18" height="16" alt="" class="tb"></a>
-				<a href="print.cfm@relID=144448.html" target="blank">このページをプリントする</a></p>
-				
+		<script src="http://parts.nikkei.co.jp/parts/js3/text_menu_def.js" type="text/Javascript"></script>
+		<script src="js/act_js/text_releasemenu_def.js.html" type="text/Javascript"></script>
+		<script src="http://parts.nikkei.co.jp/parts/js3/text_menu.js" type="text/Javascript"></script>
+		<script src="js/text_releasemenu.js" type="text/Javascript"></script>
+		<script src="http://parts.nikkei.co.jp/parts/js3/form.js" type="text/Javascript"></script>
+	</head><body myoffsetwidth="974" myoffsetheight="3082" myoffsetleft="0" myoffsettop="0">
+		<div myoffsetwidth="974" myoffsetheight="152" myoffsetleft="0" myoffsettop="0" id="header">
+			<h2 myoffsetwidth="192" myoffsetheight="50" myoffsetleft="0" myoffsettop="0" id="logomark"><a myoffsetwidth="190" myoffsetheight="21" myoffsetleft="5" myoffsettop="29" accesskey="y" href="http://www.nikkei.co.jp/" name="top"><img myoffsetwidth="190" myoffsetheight="47" myoffsetleft="5" myoffsettop="3" alt="NIKKEI NET" src="http://parts.nikkei.co.jp/parts/net3/logo.gif" width="190" height="47"></a></h2>
+			<div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="-100" id="jump">
+				<p myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="detail.cfm@relID=144448&amp;lindID=1.html#topnews">音声ブラウザ専用。こちらより記事見出しへ移動可能です。クリック。</a></p></div>
+			<table myoffsetwidth="140" myoffsetheight="77" myoffsetleft="834" myoffsettop="0" id="release_link" align="right" border="0" cellpadding="0" cellspacing="0">
+				<tbody myoffsetwidth="140" myoffsetheight="77" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="140" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="140" myoffsetheight="77" myoffsetleft="0" myoffsettop="0" rowspan="3" valign="top">
+						<ul myoffsetwidth="140" myoffsetheight="77" myoffsetleft="0" myoffsettop="0">
+							<li myoffsetwidth="140" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" class="koudoku">■<a myoffsetwidth="124" myoffsetheight="17" myoffsetleft="16" myoffsettop="1" accesskey="u" href="http://www.nikkei.co.jp/hensei/koudoku/">新聞購読申し込み</a></li><li myoffsetwidth="140" myoffsetheight="19" myoffsetleft="0" myoffsettop="19">■<a myoffsetwidth="100" myoffsetheight="17" myoffsetleft="16" myoffsettop="20" href="http://www.nikkei.co.jp/help/nikkei/">日経のイベント</a></li><li myoffsetwidth="140" myoffsetheight="19" myoffsetleft="0" myoffsettop="38">■<a myoffsetwidth="63" myoffsetheight="17" myoffsetleft="16" myoffsettop="40" href="http://www.nni.nikkei.co.jp/">ENGLISH</a></li><li myoffsetwidth="140" myoffsetheight="19" myoffsetleft="0" myoffsettop="58">■<a myoffsetwidth="71" myoffsetheight="17" myoffsetleft="16" myoffsettop="59" href="http://www.nikkei.co.jp/help/menu.html">サイト一覧</a></li></ul>
+					</td>
+					<td myoffsetwidth="0" myoffsetheight="0" myoffsetleft="140" myoffsettop="0" class="layout"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="howto.cfm.html"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="ご利用方法" class="layout" src="img/rel_how_to.gif" width="99" height="19"></a></td>
+				</tr>
+				<tr myoffsetwidth="140" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="0" myoffsetheight="0" myoffsetleft="140" myoffsettop="0" class="layout"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="qa.cfm.html"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" alt="Q&amp;A" class="layout" src="img/rel_qa.gif" width="99" height="18"></a></td>
+				</tr>
+				<tr myoffsetwidth="140" myoffsetheight="77" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="0" myoffsetheight="77" myoffsetleft="140" myoffsettop="0" class="layout"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="38" href="mailto:rel_quest@nikkei.co.jp"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="38" alt="お問い合わせ" class="layout" src="img/rel_info.gif" width="99" height="18"></a></td>
+				</tr>
+			</tbody></table>
+			<form myoffsetwidth="974" myoffsetheight="75" myoffsetleft="0" myoffsettop="77" action="detail.cfm@relID=144448&amp;lindID=1.html#" id="search_form" method="get" name="S_FORM" onsubmit="CheckInput(); return false;">
+				<p myoffsetwidth="30" myoffsetheight="15" myoffsetleft="195" myoffsettop="81" style="font-size: 90%; color: rgb(153, 153, 153); font-weight: bold;">検索</p><p myoffsetwidth="213" myoffsetheight="13" myoffsetleft="230" myoffsettop="83"><input myoffsetwidth="213" myoffsetheight="20" myoffsetleft="230" myoffsettop="79" accesskey="j" class="input1" name="keyword" size="40" type="text"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="448" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="448" myoffsettop="78" accesskey="k" class="bt1" onclick="CheckInput(1); return false;" value="記事" type="button"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="501" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="501" myoffsettop="78" accesskey="l" class="bt1" onclick="CheckInput(4); return false;" value="株価" type="button"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="554" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="554" myoffsettop="78" accesskey="m" class="bt1" onclick="CheckInput(7); return false;" value="求人" type="button"><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="site" value="" type="hidden"></p><p myoffsetwidth="74" myoffsetheight="13" myoffsetleft="622" myoffsettop="83" class="help"><a myoffsetwidth="74" myoffsetheight="13" myoffsetleft="622" myoffsettop="83" accesskey="m" href="http://www.nikkei.co.jp/help/kensaku.html"><img myoffsetwidth="21" myoffsetheight="19" myoffsetleft="622" myoffsettop="77" alt="" class="tb" src="http://parts.nikkei.co.jp/parts/net3/info.gif" width="21" height="19">検索案内</a></p><p myoffsetwidth="68" myoffsetheight="13" myoffsetleft="716" myoffsettop="83" class="goo"><input myoffsetwidth="68" myoffsetheight="22" myoffsetleft="716" myoffsettop="78" class="bt3" onclick="top.location.href='http://rd.nikkei.co.jp/net/top/pulldown/u=http://nikkei.goo.ne.jp/'" value="日経goo" type="button">
+			</p><table myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="99" summary="座標軸を求めるためのテーブルです" border="0" cellpadding="0" cellspacing="0">
+				<tbody myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" class="layout"><img myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" class="layout" id="menu_img" src="http://parts.nikkei.co.jp/parts/net3/menu_bar_ann4.gif" usemap="#menu" width="875" height="24"></td>
+				</tr>
+			</tbody></table>
+			<map myoffsetwidth="974" myoffsetheight="0" myoffsetleft="0" myoffsettop="123" name="menu">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="ニュース" coords="0,1,79,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="マネー：株や為替、預貯金、投信の最新情報。持ち株チェックも" coords="88,5,134,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://markets.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="IR" coords="135,5,161,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://ir.nikkei.co.jp/" onmouseout="menu_hide('ir');" onmouseover="menu_show('ir','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="IT" coords="162,5,188,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://it.nikkei.co.jp/" onmouseout="menu_hide('it');" onmouseover="menu_show('it','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="経営" coords="189,5,230,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://bizplus.nikkei.co.jp/" onmouseout="menu_hide('business');" onmouseover="menu_show('business','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="住宅" coords="231,5,272,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://sumai.nikkei.co.jp/" onmouseout="menu_hide('house');" onmouseover="menu_show('house','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="生活・グルメ" coords="273,5,352,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/weekend/" onmouseout="menu_hide('health');" onmouseover="menu_show('health','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="教育" coords="353,5,394,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/help/manabi.html" onmouseout="menu_hide('study');" onmouseover="menu_show('study','news/keizai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="就職：学生の就職活動を完全サポート、マイページ利用も可能" coords="395,5,436,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://job.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載" coords="437,5,478,24" href="http://rd.nikkei.co.jp/net/top/pulldown/u=http://kyujin.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="クルマ：クルマ好き応援サイト" coords="479,5,524,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://car.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="C-Style：ライフスタイルにこだわりを持つ30代男性向けウェブマガジン" coords="525,5,581,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://www.nikkei.co.jp/style/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載" coords="582,5,637,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://smartwoman.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="日経WagaMaga：アタマとカラダを刺激する、大人のためのコミュニティー" coords="638,5,697,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://waga.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="おとなのＯＦＦ" coords="790,5,870,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://off.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="日経トレンディ：個人生活を刺激する流行情報誌" coords="705,5,785,24" href="http://rd.nikkei.co.jp/net/release/pulldown/u=http://trendy.nikkei.co.jp/" shape="rect">
+			</map>
+			<ul myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="123" id="mainmenu">
+				<li myoffsetwidth="38" myoffsetheight="15" myoffsetleft="146" myoffsettop="130"><a myoffsetwidth="31" myoffsetheight="15" myoffsetleft="146" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/">トップ</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="186" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="186" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/main/">主要</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="222" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="222" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/keizai/">経済</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="258" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="258" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/sangyo/">企業</a> |</li><li myoffsetwidth="56" myoffsetheight="15" myoffsetleft="295" myoffsettop="130"><a myoffsetwidth="49" myoffsetheight="15" myoffsetleft="295" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/market/">株・為替</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="352" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="352" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/kaigai/">国際</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="389" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="389" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/seiji/">政治</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="425" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="425" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/shakai/">社会</a> |</li><li myoffsetwidth="58" myoffsetheight="15" myoffsetleft="462" myoffsettop="130"><a myoffsetwidth="51" myoffsetheight="15" myoffsetleft="462" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://sports.nikkei.co.jp/">スポーツ</a> |</li><li myoffsetwidth="42" myoffsetheight="15" myoffsetleft="521" myoffsettop="130"><a myoffsetwidth="42" myoffsetheight="15" myoffsetleft="521" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/newpro/news/">新製品</a></li><li myoffsetwidth="61" myoffsetheight="25" myoffsetleft="570" myoffsettop="128" class="select">リリース</li><li myoffsetwidth="70" myoffsetheight="15" myoffsetleft="641" myoffsettop="130"><a myoffsetwidth="63" myoffsetheight="15" myoffsetleft="641" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/shasetsu/">社説・春秋</a> |</li><li myoffsetwidth="56" myoffsetheight="15" myoffsetleft="712" myoffsettop="130"><a myoffsetwidth="49" myoffsetheight="15" myoffsetleft="712" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/news/okuyami/">おくやみ</a> |</li><li myoffsetwidth="57" myoffsetheight="15" myoffsetleft="769" myoffsettop="130"><a myoffsetwidth="57" myoffsetheight="15" myoffsetleft="769" myoffsettop="130" href="http://rd.nikkei.co.jp/net/release/gennavi/u=http://www.nikkei.co.jp/netnavi/">ネットナビ</a></li></ul>
+		</form></div>
+		<hr myoffsetwidth="974" myoffsetheight="2" myoffsetleft="0" myoffsettop="158">
+		<form myoffsetwidth="974" myoffsetheight="23" myoffsetleft="0" myoffsettop="164" action="http://release.nikkei.co.jp/result.cfm" method="post">
+			<div myoffsetwidth="946" myoffsetheight="23" myoffsetleft="10" myoffsettop="164" id="contents">
+				<div myoffsetwidth="939" myoffsetheight="23" myoffsetleft="10" myoffsettop="164" id="contents_title" style="width: 99%;">
+					<h2 myoffsetwidth="130" myoffsetheight="22" myoffsetleft="11" myoffsettop="165"><a myoffsetwidth="96" myoffsetheight="16" myoffsetleft="28" myoffsettop="167" accesskey="i" href="index.cfm.html">プレスリリース</a></h2>
+					<p myoffsetwidth="418" myoffsetheight="23" myoffsetleft="154" myoffsettop="165" id="title_description">キーワード&nbsp;&nbsp;<input myoffsetwidth="211" myoffsetheight="18" myoffsetleft="219" myoffsettop="167" class="input1" name="keyword" size="40" style="font-size: 12px;" type="text"> <input myoffsetwidth="61" myoffsetheight="18" myoffsetleft="434" myoffsettop="168" class="bt1" style="padding: 0px; font-size: 10px;" value="リリース検 索" type="submit">&nbsp;&nbsp;<span myoffsetwidth="69" myoffsetheight="14" myoffsetleft="503" myoffsettop="170" class="re_underline"><a myoffsetwidth="69" myoffsetheight="14" myoffsetleft="503" myoffsettop="170" href="help.cfm.html">・検索ヘルプ</a></span></p></div>
 			</div>
-		
-		<!--アドセンス広告 -->
-		
-			<p class="ads">
-			<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=rlas"></script>
-			</p>
-		
-		<!-- アドセンス広告おわり -->
-	</td>
-	<td valign="top">
-<div id="right_contents" style="margin-top:6px;">
-<p class="img"><script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=rllad"></script></p>
-</div>
-	</td>
-</tr>
+		</form>
+		<table myoffsetwidth="1159" myoffsetheight="2662" myoffsetleft="0" myoffsettop="189" style="clear: both;" summary="レイアウト目的のテーブルです" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<colgroup myoffsetwidth="1159" myoffsetheight="2662" myoffsetleft="0" myoffsettop="0">
+				<col myoffsetwidth="420" myoffsetheight="2662" myoffsetleft="0" myoffsettop="0" width="100%">
+				<col myoffsetwidth="739" myoffsetheight="2662" myoffsetleft="420" myoffsettop="0">
+			</colgroup>
+			<tbody myoffsetwidth="1159" myoffsetheight="2662" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="1159" myoffsetheight="2608" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="420" myoffsetheight="2608" myoffsetleft="0" myoffsettop="0" valign="top">
+					<div myoffsetwidth="392" myoffsetheight="2376" myoffsetleft="10" myoffsettop="0" id="contents">
+						<table myoffsetwidth="392" myoffsetheight="38" myoffsetleft="10" myoffsettop="0" id="release_menu" summary="プレスリリースメニュー" border="0" cellpadding="0" cellspacing="0">
+							<tbody myoffsetwidth="392" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="392" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+								<td myoffsetwidth="130" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="117" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="index.cfm.html"><img myoffsetwidth="117" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="最新リリースへ戻る" src="img/menu_img/menu_img1_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="13" myoffsetheight="38" myoffsetleft="130" myoffsettop="0" onmouseout="releasemenu_hide('release_it');" onmouseover="releasemenu_show('release_it','news/keizai');"><a myoffsetwidth="13" myoffsetheight="17" myoffsetleft="0" myoffsettop="11" href="isclass.cfm@lindID=1.html"><img myoffsetwidth="13" myoffsetheight="17" myoffsetleft="0" myoffsettop="11" alt="IT" src="img/menu_img/menu_img2_b.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="32" myoffsetheight="38" myoffsetleft="143" myoffsettop="0" onmouseout="releasemenu_hide('release_distribution');" onmouseover="releasemenu_show('release_distribution','news/keizai');"><a myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=2.html"><img myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="流通" src="img/menu_img/menu_img3_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="32" myoffsetheight="38" myoffsetleft="175" myoffsettop="0" onmouseout="releasemenu_hide('release_finance');" onmouseover="releasemenu_show('release_finance','news/keizai');"><a myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=3.html"><img myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="金融" src="img/menu_img/menu_img4_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="55" myoffsetheight="38" myoffsetleft="207" myoffsettop="0" onmouseout="releasemenu_hide('release_maker');" onmouseover="releasemenu_show('release_maker','news/keizai');"><a myoffsetwidth="28" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=4.html"><img myoffsetwidth="28" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="メーカー" src="img/menu_img/menu_img5_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="59" myoffsetheight="38" myoffsetleft="262" myoffsettop="0" onmouseout="releasemenu_hide('release_service');" onmouseover="releasemenu_show('release_service','news/keizai');"><a myoffsetwidth="45" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=5.html"><img myoffsetwidth="45" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="サービス" src="img/menu_img/menu_img6_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="72" myoffsetheight="38" myoffsetleft="320" myoffsettop="0" onmouseout="releasemenu_hide('release_construction');" onmouseover="releasemenu_show('release_construction','news/keizai');"><a myoffsetwidth="56" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=6.html"><img myoffsetwidth="56" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="建設・住宅" src="img/menu_img/menu_img7_a.gif" width="85" height="23"></a></td>
+							</tr>
+						</tbody></table>
+						<hr myoffsetwidth="392" myoffsetheight="2" myoffsetleft="10" myoffsettop="42">
+						<table myoffsetwidth="392" myoffsetheight="111" myoffsetleft="10" myoffsettop="48" class="tablestyle2" id="re_table" border="0" cellspacing="0">
+							<colgroup myoffsetwidth="226" myoffsetheight="110" myoffsetleft="0" myoffsettop="0">
+								<col myoffsetwidth="100" myoffsetheight="110" myoffsetleft="0" myoffsettop="0" width="100">
+								<col myoffsetwidth="126" myoffsetheight="110" myoffsetleft="100" myoffsettop="0" class="keiki_title2">
+							</colgroup>
+							<tbody myoffsetwidth="391" myoffsetheight="110" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="391" myoffsetheight="47" myoffsetleft="0" myoffsettop="0" valign="TOP">
+								<th myoffsetwidth="100" myoffsetheight="47" myoffsetleft="0" myoffsettop="0">業&nbsp;&nbsp;種</th>
+								<td myoffsetwidth="126" myoffsetheight="47" myoffsetleft="100" myoffsettop="0"><a myoffsetwidth="11" myoffsetheight="15" myoffsetleft="6" myoffsettop="7" href="isclass.cfm@lindID=1.html">IT</a> ／ <a myoffsetwidth="103" myoffsetheight="32" myoffsetleft="39" myoffsettop="7" href="isclassList.cfm@lindID=1&amp;sindID=3.html"> システム・ソフト開発 </a></td>
+								<th myoffsetwidth="56" myoffsetheight="47" myoffsetleft="226" myoffsettop="0">発表日</th>
+								<td myoffsetwidth="109" myoffsetheight="47" myoffsetleft="282" myoffsettop="0">2006/10/25</td>
+							</tr>
+							<tr myoffsetwidth="391" myoffsetheight="0" myoffsetleft="0" myoffsettop="47">
+							</tr>
+							<tr myoffsetwidth="391" myoffsetheight="63" myoffsetleft="0" myoffsettop="47" valign="TOP">
+								<th myoffsetwidth="100" myoffsetheight="63" myoffsetleft="0" myoffsettop="47">企業名</th>
+								<td myoffsetwidth="291" myoffsetheight="63" myoffsetleft="100" myoffsettop="47" colspan="3"> （株）損害保険ジャパン &nbsp;|&nbsp; <a myoffsetwidth="56" myoffsetheight="15" myoffsetleft="159" myoffsettop="7" href="http://nikkei.goo.ne.jp/perfect/basic_70505.html" target="_blank">会社概要</a> &nbsp;|&nbsp; <a myoffsetwidth="256" myoffsetheight="32" myoffsetleft="234" myoffsettop="7" href="http://rd.nikkei.co.jp/stock/h/8755" target="_blank">株式コード：8755</a> &nbsp;|&nbsp; ホームページ： <a myoffsetwidth="176" myoffsetheight="15" myoffsetleft="6" myoffsettop="41" href="http://www.sompo-japan.co.jp" target="_blank">http://www.sompo-japan.co.jp</a></td>
+							</tr>
+						</tbody></table>
+						<hr myoffsetwidth="392" myoffsetheight="2" myoffsetleft="10" myoffsettop="163">
+						<p myoffsetwidth="392" myoffsetheight="24" myoffsetleft="10" myoffsettop="169" class="re_print" style="margin-top: 0px;"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="10" myoffsettop="190" href="print.cfm@relID=144448.html" target="blank"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="10" myoffsettop="190" alt="" class="tb" src="img/print.gif" width="18" height="16"></a><a myoffsetwidth="166" myoffsetheight="17" myoffsetleft="10" myoffsettop="173" href="print.cfm@relID=144448.html" target="blank">このページをプリントする</a></p><h1 myoffsetwidth="392" myoffsetheight="56" myoffsetleft="10" myoffsettop="209" class="heading" id="heading">ヘルスケア・フロンティア・ジャパン、メタボリックシンドローム予防プログラムを発売</h1>
+						<p myoffsetwidth="392" myoffsetheight="1944" myoffsetleft="10" myoffsettop="277"> 「メタボリックシンドローム予防支援プログラム」の発売について<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="39" myoffsettop="319">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="325">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="349">　株式会社損害保険ジャパン（社長：佐藤　正敏）とオムロンヘルスケア株式会社（社長：赤星　慶一郎）の合弁会社である株式会社ヘルスケア・フロンティア・ジャパン（社長：百瀬　剛）は、メタボリックシンドローム（内臓脂肪症候群）の発症・進行を予防する生活習慣改善プログラム「健康達人　メタボリックシンドローム予防編」を開発し、１１月１日より提供を開始します。本プログラムは、医療保険者向けに、医療制度改革によって義務化された保健事業を支援するサービスの一環として提供します。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="268" myoffsettop="583">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="589">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="613">１．メタボリックシンドローム予防プログラム発売の背景<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="376" myoffsettop="655">　国民医療費と生活習慣病患者の増加を背景として、本年６月に医療制度改革関連法が成立しました。これにより健康保険組合、国民健康保険組合などの医療保険者は２００８年度から、これまで任意であった健診・保健指導などの保健事業を実施することが義務化されることとなりました。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="36" myoffsettop="799">一方、内臓脂肪の蓄積が糖尿病、高血圧症、高脂血症の発症に深く関係し、重複が多いほど、心筋梗塞や脳卒中の発症リスクが高いことが明らかとなり、これがメタボリックシンドロームとして注目されるようになりました。厚生労働省はメタボリックシンドローム対策を「保健事業の義務化」の軸にすえております。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="151" myoffsettop="943">当社で販売している生活習慣改善プログラム「健康達人」シリーズは、１９９９年からオムロン株式会社ヘルスケアビジネスカンパニーが提供を開始し、これまでに６０万人以上に利用されております。また、学術的効果検証によって、減量、血圧の低下、血清脂質の改善などの効果があり、プログラム終了後もその効果が持続することを確認し、学会発表してまいりました。このプログラムを活用し、今般健康増進・疾病予防の観点から、メタボリックシンドローム対策の一環として、その発症をいかに防ぐかということに重点をおいた専用プログラムを開発するに至りました。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="314" myoffsettop="1183">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1189">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1213">２．「健康達人　メタボリックシンドローム予防編」の概要と特長<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="42" myoffsettop="1279">（１）概要<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="69" myoffsettop="1303">　生活習慣改善プログラム「健康達人　メタボリックシンドローム予防編」は、健康的な生活習慣を作るために食事、運動などについてご利用者一人ひとりに最適なアドバイスを提供する行動科学に基づいた実践しやすいプログラムです。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="36" myoffsettop="1423">ご利用者に健康状態や生活習慣に関する質問票を記入・送付いただき、その回答内容を分析して生活習慣改善に役立つアドバイスシートを返送いたします。ご利用者にはこのアドバイスに基づいて生活習慣を変えていただき、メタボリックシンドロームを予防していただくこととなります。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="360" myoffsettop="1543">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1549">（２）特長<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="69" myoffsettop="1591">　本プログラムは、メタボリックシンドロームの概念に沿って、食事、運動などの生活習慣改善アドバイスを統合したプログラムで、内臓脂肪や高血圧などのメタボリックシンドロームの危険因子を総合的に減らすことで、心筋梗塞や脳卒中の発症リスクを低減させます。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="243" myoffsettop="1711">　ご利用者は健康増進、疾病予防の知識がなくても、アドバイスに従ってスムーズかつ継続的に生活習慣改善に取り組めます。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="94" myoffsettop="1783">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1789">（３）価格<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="69" myoffsettop="1831">　ご利用１件あたり５，０００円（税別）<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="255" myoffsettop="1855">　運用基本料として２５０，０００円（税別）<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="280" myoffsettop="1879">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1885">（４）販売開始<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="101" myoffsettop="1927">　２００６年１１月１日<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="146" myoffsettop="1951">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1957">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="1981">３．今後の展開<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="112" myoffsettop="2023">　当社では今般開発した「健康達人　メタボリックシンドローム予防編」を医療保険者に対して積極的に案内を行っていきます。また医療保険者に対して「保健事業の義務化」対策を支援すべく、総合的に対応できるサービスを提供していきます。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="79" myoffsettop="2143">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="2149">以　上<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="53" myoffsettop="2191">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="2197">
+						</p><div myoffsetwidth="392" myoffsetheight="115" myoffsetleft="10" myoffsettop="2237" class="tokushu">
+							<h3 myoffsetwidth="382" myoffsetheight="23" myoffsetleft="10" myoffsettop="2237" class="kiji_link" style="margin-right: 10px;">● 関連リンク</h3>
+							<ul myoffsetwidth="392" myoffsetheight="24" myoffsetleft="10" myoffsettop="2265">
+								<li myoffsetwidth="387" myoffsetheight="24" myoffsetleft="15" myoffsettop="2265"><a myoffsetwidth="243" myoffsetheight="16" myoffsetleft="40" myoffsettop="2270" href="http://www.sompo-japan.co.jp" target="_blank"> （株）損害保険ジャパン　ホームページ </a></li></ul>
+							<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="10" myoffsettop="2289">
+							<ul myoffsetwidth="392" myoffsetheight="24" myoffsetleft="10" myoffsettop="2308">
+								<li myoffsetwidth="387" myoffsetheight="24" myoffsetleft="15" myoffsettop="2308"><a myoffsetwidth="343" myoffsetheight="16" myoffsetleft="40" myoffsettop="2313" href="http://www.hfj.co.jp/" target="_blank"> （株）ヘルスケア・フロンティア・ジャパン　ホームページ </a></li></ul>
+							<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="10" myoffsettop="2333">
+						</div>
+						<p myoffsetwidth="392" myoffsetheight="24" myoffsetleft="10" myoffsettop="2352" class="re_print"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="10" myoffsettop="2373" href="print.cfm@relID=144448.html" target="blank"> <img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="10" myoffsettop="2373" alt="" class="tb" src="img/print.gif" width="18" height="16"></a> <a myoffsetwidth="166" myoffsetheight="17" myoffsetleft="10" myoffsettop="2356" href="print.cfm@relID=144448.html" target="blank">このページをプリントする</a></p></div>
+					<p myoffsetwidth="420" myoffsetheight="200" myoffsetleft="0" myoffsettop="2392" class="ads">
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=rlas" type="text/javascript"></script><!-- Creative for 420x200 format -->
+<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" type="text/javascript" language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://pagead2.googlesyndication.com/pagead/expansion_embed.js"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://googleads.g.doubleclick.net/pagead/test_domain.js"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins myoffsetwidth="420" myoffsetheight="200" myoffsetleft="0" myoffsettop="2581" style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 200px; position: relative; visibility: visible; width: 420px;"><ins myoffsetwidth="420" myoffsetheight="200" myoffsetleft="0" myoffsettop="0" style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 200px; position: relative; visibility: visible; width: 420px;"><iframe myoffsetwidth="420" myoffsetheight="200" myoffsetleft="0" myoffsettop="0" allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="http://googleads.g.doubleclick.net/pagead/ads?client=ca-nikkei_html&amp;format=420x200_pas_abgnc&amp;output=html&amp;h=200&amp;w=420&amp;lmt=1253104684&amp;channel=release&amp;ad_type=text&amp;color_bg=FFFFFF&amp;color_border=99CCFF&amp;color_line=003399&amp;oe=sjis&amp;flash=10.0.32&amp;hl=ja&amp;url=file%3A%2F%2F%2FC%3A%2FUsers%2F8BKSA34196%2FDesktop%2Fhtmls%2F%2FMetabolic%2F043.html&amp;adsafe=high&amp;dt=1253348269567&amp;correlator=1253348269583&amp;jscb=1&amp;frm=0&amp;ga_vid=1506610755.1253348270&amp;ga_sid=1253348270&amp;ga_hid=1276574343&amp;ga_fc=0&amp;u_tz=540&amp;u_his=50&amp;u_java=1&amp;u_h=768&amp;u_w=1024&amp;u_ah=736&amp;u_aw=1024&amp;u_cd=32&amp;u_nplug=7&amp;u_nmime=46&amp;biw=974&amp;bih=530&amp;fu=0&amp;ifi=1&amp;dtd=465&amp;xpc=DUODLoAmk2&amp;p=file%3A//" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" width="420" frameborder="0" height="200" scrolling="no"></iframe></ins></ins>
 
-
-
-<!-- 業種大分類一覧 -->
-
-<tr>
-<td>
-	<div id="contents">
-	<hr class="vis" style="margin-top: 10px;">
-		<table border="0" cellspacing="0" cellpadding="0" id="release_menu" summary="プレスリリースメニュー">
-			<tr>
-				
-					
-				
-				<td><a href="index.cfm.html"><img src="img/menu_img/menu_img1_a.gif" width="85" height="23" alt="最新リリースへ戻る"></a></td>
-				
-			
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=1.html"><img src="img/menu_img/menu_img2_b.gif" width="85" height="23" alt="IT"></a></td>
-
-			
-					
-					
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=2.html"><img src="img/menu_img/menu_img3_a.gif" width="85" height="23" alt="流通"></a></td>
-
-			
-					
-					
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=3.html"><img src="img/menu_img/menu_img4_a.gif" width="85" height="23" alt="金融"></a></td>
-
-			
-					
-					
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=4.html"><img src="img/menu_img/menu_img5_a.gif" width="85" height="23" alt="メーカー"></a></td>
-
-			
-					
-					
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=5.html"><img src="img/menu_img/menu_img6_a.gif" width="85" height="23" alt="サービス"></a></td>
-
-			
-					
-					
-					
-				
-				
-				
-				
-				<td><a href="isclass.cfm@lindID=6.html"><img src="img/menu_img/menu_img7_a.gif" width="85" height="23" alt="建設・住宅"></a></td>
-
-			
-
+<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+	<img height=1 width=1 border=0 src="http://pagead2.googlesyndication.com/pagead/imp.gif?client=ca-nikkei_html&event=noscript"/>
+</noscript>
+<!-- End Creative -->
+				</p></td>
+				<td myoffsetwidth="739" myoffsetheight="2608" myoffsetleft="420" myoffsettop="0" valign="top">
+					<div myoffsetwidth="729" myoffsetheight="2564" myoffsetleft="0" myoffsettop="6" id="right_contents" style="margin-top: 6px;">
+						<p myoffsetwidth="729" myoffsetheight="0" myoffsetleft="0" myoffsettop="6" class="img">
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=rllad" type="text/javascript"></script><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" type="text/Javascript" src="http://www.nikkei.co.jp/news/main/0707migisenmon.js"></script></p><div myoffsetwidth="729" myoffsetheight="2564" myoffsetleft="0" myoffsettop="6" id="rightCnt"><div myoffsetwidth="729" myoffsetheight="340" myoffsetleft="0" myoffsettop="6" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="52" myoffsetleft="0" myoffsettop="6" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="34" myoffsetleft="0" myoffsettop="6"><a myoffsetwidth="315" myoffsetheight="25" myoffsetleft="0" myoffsettop="11" href="http://sumai.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�Z�܂��̑����T�C�g</a></h2><p myoffsetwidth="729" myoffsetheight="18" myoffsetleft="0" myoffsettop="40"><a myoffsetwidth="81" myoffsetheight="14" myoffsetleft="0" myoffsettop="44" href="http://sumai.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="81" myoffsetheight="18" myoffsetleft="0" myoffsettop="40" src="http://parts.nikkei.co.jp/parts/net4/ttl_cont03.gif" alt="�Z��T�[�`" width="81" height="18"></a></p></div><div myoffsetwidth="729" myoffsetheight="73" myoffsetleft="0" myoffsettop="74" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="74"><a myoffsetwidth="374" myoffsetheight="19" myoffsetleft="0" myoffsettop="78" href="http://sumai.nikkei.co.jp/sp/yamaman/03/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�ǂ��ƒT���́A�ǂ��X�I�т���</a></h3><p myoffsetwidth="729" myoffsetheight="48" myoffsetleft="0" myoffsettop="99">�s�S�̋Ζ��~�x�O�̕�炵<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="225" myoffsettop="117">�Ƒ��̂��߂ɓ����p�p�̃I�����I�t�ɔ���</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="163" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="209" href="http://sumai.nikkei.co.jp/sp/yamaman/03/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="163" src="http://parts.nikkei.co.jp/parts/net4/yamaman_60x60.gif" alt="�Z��T�[�`" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="86" myoffsetleft="0" myoffsettop="239" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="22" myoffsetleft="0" myoffsettop="239"><a myoffsetwidth="401" myoffsetheight="17" myoffsetleft="0" myoffsettop="242" href="http://sumai.nikkei.co.jp/know/success/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�Z�ݑւ��ɁA�Z��[����ǂ����p����H</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="261"><a myoffsetwidth="536" myoffsetheight="17" myoffsetleft="0" myoffsettop="264" href="http://sumai.nikkei.co.jp/sp/31s/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�u����v�}���V�����ɏZ�ށB�����ɂ��鉿�l��T��</a></li><li myoffsetwidth="729" myoffsetheight="22" myoffsetleft="0" myoffsettop="282"><a myoffsetwidth="462" myoffsetheight="17" myoffsetleft="0" myoffsettop="285" href="http://sumai.nikkei.co.jp/sp/luxury/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">������m�邱�Ƃ���n�܂�B�}���V�����̋ɂ݂�</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="304"><a myoffsetwidth="566" myoffsetheight="17" myoffsetleft="0" myoffsettop="307" href="http://sumai.nikkei.co.jp/sp/single_dinks/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�����Ɠ����v���Z�X�H�}���V�����w��҂̖{���𕷂�</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="325" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="325" class="arrow-b-s"><a myoffsetwidth="158" myoffsetheight="17" myoffsetleft="0" myoffsettop="328" href="http://sumai.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�Z��T�[�`���</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="2224" myoffsetleft="0" myoffsettop="346" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="346" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="346"><a myoffsetwidth="338" myoffsetheight="25" myoffsetleft="0" myoffsettop="351" href="http://waga.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��l�̃R�~���j�e�B�[</a></h2><p myoffsetwidth="729" myoffsetheight="16" myoffsetleft="0" myoffsettop="379"><a myoffsetwidth="112" myoffsetheight="14" myoffsetleft="0" myoffsettop="381" href="http://waga.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="112" myoffsetheight="16" myoffsetleft="0" myoffsettop="379" src="http://parts.nikkei.co.jp/parts/net4/ttl_cont01.gif" alt="��oWagaMaga" width="112" border="0" height="16"></a></p></div><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="411" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="411"><a myoffsetwidth="491" myoffsetheight="19" myoffsetleft="0" myoffsettop="415" href="http://waga.nikkei.co.jp/ch/nomura/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">����ŋ�J���Ȃ��Z�J���h���C�t��</a></h3><p myoffsetwidth="729" myoffsetheight="24" myoffsetleft="0" myoffsettop="436">�l�N��ی��̊��p����B��I�N�����ł͕s���������ȁg��Ƃ�h��v���X</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="476" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="522" href="http://waga.nikkei.co.jp/ch/nomura/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="476" src="http://parts.nikkei.co.jp/parts/net4/nomura_6060.gif" alt="��oWagaMaga" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="86" myoffsetleft="0" myoffsettop="552" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="22" myoffsetleft="0" myoffsettop="552"><a myoffsetwidth="300" myoffsetheight="17" myoffsetleft="0" myoffsettop="555" href="http://waga.nikkei.co.jp/vehicle/car.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��u��ցv��1��2.5���~�Ŕq��</a></li><li myoffsetwidth="729" myoffsetheight="22" myoffsetleft="0" myoffsettop="574"><a myoffsetwidth="421" myoffsetheight="17" myoffsetleft="0" myoffsettop="577" href="http://waga.nikkei.co.jp/travel/travel.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�u�T���g���[�o��̋u���C�i���[�v�ւ̗�</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="596"><a myoffsetwidth="276" myoffsetheight="17" myoffsetleft="0" myoffsettop="599" href="http://waga.nikkei.co.jp/play/sports.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�C�`���[�R���i���낱��</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="617"><a myoffsetwidth="499" myoffsetheight="17" myoffsetleft="0" myoffsettop="620" href="http://waga.nikkei.co.jp/ch/mf/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�����ƃA���̒����N���]���������Ȃ钍�ڂ̓s�s</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="639" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="639" class="arrow-b-s"><a myoffsetwidth="158" myoffsetheight="17" myoffsetleft="0" myoffsettop="642" href="http://waga.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��oWagaMaga���</a></li></ul><div myoffsetwidth="729" myoffsetheight="317" myoffsetleft="0" myoffsettop="660" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="54" myoffsetleft="0" myoffsettop="660" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="660"><a myoffsetwidth="515" myoffsetheight="25" myoffsetleft="0" myoffsettop="665" href="http://goethe.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�u�d���o�J�v�̓I�V�����ɂ�Â�</a></h2><p myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="693"><a myoffsetwidth="80" myoffsetheight="14" myoffsetleft="0" myoffsettop="700" href="http://goethe.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="80" myoffsetheight="21" myoffsetleft="0" myoffsettop="693" src="http://parts.nikkei.co.jp/parts/net4/logo_webgate.gif" alt="WEB GOETHE" width="80" border="0" height="21"></a></p></div><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="730" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="730"><a myoffsetwidth="371" myoffsetheight="19" myoffsetleft="0" myoffsettop="734" href="http://goethe.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�m��ꂴ��u�鏑�v�̐��E��`��</a></h3><p myoffsetwidth="729" myoffsetheight="24" myoffsetleft="0" myoffsettop="755">�}�C�N����t�g��{�@�l�̔��В���x����V�l�́u���l�v�����̓���Љ�B</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="795" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="841" href="http://goethe.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="795" src="http://parts.nikkei.co.jp/parts/net4/goethe090918.jpg" alt="WEB GOETHE" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="84" myoffsetleft="0" myoffsettop="871" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="871"><a myoffsetwidth="563" myoffsetheight="17" myoffsetleft="0" myoffsettop="874" href="http://goethe.nikkei.co.jp/gourmet/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">GOETHE�ƃp�[�N�n�C�A�b�g�������X�y�V������y�Y</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="892"><a myoffsetwidth="504" myoffsetheight="17" myoffsetleft="0" myoffsettop="895" href="http://goethe.nikkei.co.jp/gourmet/090915/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">������Ȏ��ԁI�@�[�鑁���ł��y�Y�̔������X��</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="913"><a myoffsetwidth="479" myoffsetheight="17" myoffsetleft="0" myoffsettop="916" href="http://goethe.nikkei.co.jp/human/090910/03.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�S�l���[�X�ɔR����O�H�Y�ƎВ��̒���i��Ғǉ�j</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="934"><a myoffsetwidth="537" myoffsetheight="17" myoffsetleft="0" myoffsettop="937" href="http://goethe.nikkei.co.jp/gchoice/090910/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���ꂼ�u�V���̈֎q�v�̍��S�n�A�g���u�i�E�h�D�[�G</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="955" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="955" class="arrow-b-s"><a myoffsetwidth="143" myoffsetheight="17" myoffsetleft="0" myoffsettop="958" href="http://goethe.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">WEB GOETHE���</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="317" myoffsetleft="0" myoffsettop="976" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="54" myoffsetleft="0" myoffsettop="976" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="976"><a myoffsetwidth="502" myoffsetheight="25" myoffsetleft="0" myoffsettop="981" href="http://marisol.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�t�@�b�V�������r���[�e�B</a></h2><p myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1009"><a myoffsetwidth="103" myoffsetheight="14" myoffsetleft="0" myoffsettop="1016" href="http://marisol.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="103" myoffsetheight="21" myoffsetleft="0" myoffsettop="1009" src="http://parts.nikkei.co.jp/parts/net4/marisol_02.gif" alt="marisol ONLINE on NIKKEI NET" width="103" border="0" height="21"></a></p></div><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="1046" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="1046"><a myoffsetwidth="285" myoffsetheight="19" myoffsetleft="0" myoffsettop="1050" href="http://marisol.nikkei.co.jp/fashion/20090918/skin1.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���u�c������vBOOK</a></h3><p myoffsetwidth="729" myoffsetheight="24" myoffsetleft="0" myoffsettop="1071">��₩�����h�����тЂ��Ƃ��Ƃ񃌃N�`���[�I</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="1111" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="1157" href="http://marisol.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="1111" src="http://parts.nikkei.co.jp/parts/net4/marisol20090918a.jpg" alt="marisol ONLINE on NIKKEI NET" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="85" myoffsetleft="0" myoffsettop="1187" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1187"><a myoffsetwidth="390" myoffsetheight="17" myoffsetleft="0" myoffsettop="1190" href="http://marisol.nikkei.co.jp/fashion/20090916/kikuchi1.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"> �e�r���q�́u�����J�[�f�B�K���I�v</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1208"><a myoffsetwidth="371" myoffsetheight="17" myoffsetleft="0" myoffsettop="1211" href="http://marisol.nikkei.co.jp/trial/20090914/tokyo1.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">TOKYO�A���t�H�[�X�^�C���O�ꌤ��</a></li><li myoffsetwidth="729" myoffsetheight="22" myoffsetleft="0" myoffsettop="1229"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="1246" href="%3Cli%20onClick=" s_objectid="N-senmon2" ;="" var="" s="s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');&quot;"></a><a myoffsetwidth="451" myoffsetheight="17" myoffsetleft="0" myoffsettop="1232" href="http://marisol.nikkei.co.jp/column/20090918/saito1.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�V���O�R�����F��ݔ�͂�98���𖰂点���܂�?!</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1251"><a myoffsetwidth="496" myoffsetheight="17" myoffsetleft="0" myoffsettop="1254" href="http://marisol.nikkei.co.jp/ishiwata/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�ҏW���R�����u����₱���A��X�̂������߁v</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1272" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1272" class="arrow-b-s"><a myoffsetwidth="259" myoffsetheight="17" myoffsetleft="0" myoffsettop="1275" href="http://marisol.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">marisol ONLINE on NIKKEI NET���</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="316" myoffsetleft="0" myoffsettop="1294" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="53" myoffsetleft="0" myoffsettop="1294" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="1294"><a myoffsetwidth="457" myoffsetheight="25" myoffsetleft="0" myoffsettop="1299" href="http://www.nikkei.co.jp/style/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���C�t�X�^�C���E�N���}</a></h2><p myoffsetwidth="729" myoffsetheight="20" myoffsetleft="0" myoffsettop="1327"><a myoffsetwidth="83" myoffsetheight="14" myoffsetleft="0" myoffsettop="1333" href="http://www.nikkei.co.jp/style/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="83" myoffsetheight="20" myoffsetleft="0" myoffsettop="1327" src="http://parts.nikkei.co.jp/parts/net4/A.jpg" alt="C-Style" border="0"></a></p></div><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="1363" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="1363"><a myoffsetwidth="230" myoffsetheight="19" myoffsetleft="0" myoffsettop="1367" href="http://www.nikkei.co.jp/style/car/impression2/030/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�č��ɃW�F���V�[</a></h3><p myoffsetwidth="729" myoffsetheight="24" myoffsetleft="0" myoffsettop="1388">�X�o���E���K�V�B�A�E�g�o�b�N3.6R</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="1428" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="1474" href="http://car.nikkei.co.jp/webcg/article.aspx?id=MMCAn3000025052009" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="1428" src="http://www.nikkei.co.jp/parts/car/golf_60.jpg" alt="C-Style" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="84" myoffsetleft="0" myoffsettop="1504" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1504" class="arrow-b-s"><a myoffsetwidth="362" myoffsetheight="17" myoffsetleft="0" myoffsettop="1507" href="http://www.nikkei.co.jp/style/life-style/green-light/036/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��{�l�Ƀs�^�b�ƃn�}��{���T���[�m</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1525"><a myoffsetwidth="553" myoffsetheight="17" myoffsetleft="0" myoffsettop="1528" href="http://www.nikkei.co.jp/style/life-style/green-light/037/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�אg�X�^�C���󂳂����񂵗����E�N���`�A�[�jV�l�b�N</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1546"><a myoffsetwidth="448" myoffsetheight="17" myoffsetleft="0" myoffsettop="1549" href="http://www.nikkei.co.jp/style/life-style/green-light/035/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���v�ɋ��߂���R�X�g�p�t�H�[�}���X��</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1567"><a myoffsetwidth="303" myoffsetheight="17" myoffsetleft="0" myoffsettop="1570" href="http://www.nikkei.co.jp/style/specials/dezign008/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�j��Ōy�ʃX�[�c�P�[�X�E�[��</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1588" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1588" class="arrow-b-s"><a myoffsetwidth="126" myoffsetheight="17" myoffsetleft="0" myoffsettop="1591" href="http://car.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�N���}���</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="314" myoffsetleft="0" myoffsettop="1609" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="1609" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="1609"><a myoffsetwidth="330" myoffsetheight="25" myoffsetleft="0" myoffsettop="1614" href="http://it.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">IT�E�C���^�[�l�b�g</a></h2><p myoffsetwidth="729" myoffsetheight="16" myoffsetleft="0" myoffsettop="1642"><a myoffsetwidth="121" myoffsetheight="14" myoffsetleft="0" myoffsettop="1644" href="http://it.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="121" myoffsetheight="16" myoffsetleft="0" myoffsettop="1642" src="http://parts.nikkei.co.jp/parts/net4/ttl_cont05.gif" alt="IT PLUS" width="121" border="0" height="16"></a></p></div><div myoffsetwidth="729" myoffsetheight="73" myoffsetleft="0" myoffsettop="1674" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="1674"><a myoffsetwidth="387" myoffsetheight="19" myoffsetleft="0" myoffsettop="1678" href="http://it.nikkei.co.jp/business/column/natsuno.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�������h�s�D��œ�{��C��</a></h3><p myoffsetwidth="729" myoffsetheight="48" myoffsetleft="0" myoffsettop="1699">�V�����œ�{�o�ς̍Đ��͎�����邩�B�܂��ɐ��O��A���X�g�`�����X���B�i�Ė썄�j</p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="1763" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="1809" href="http://it.nikkei.co.jp/business/column/natsuno.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="1763" src="http://it.nikkei.co.jp/photo/senmon/natsunotakeshi1.jpg" alt="IT PLUS" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="63" myoffsetleft="0" myoffsettop="1839" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1839"><a myoffsetwidth="280" myoffsetheight="17" myoffsetleft="0" myoffsettop="1842" href="http://it.nikkei.co.jp/internet/column/koike.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�č��ł͓d�q���Ђ��Ȃ��l�C�H</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1860"><a myoffsetwidth="355" myoffsetheight="17" myoffsetleft="0" myoffsettop="1863" href="http://it.nikkei.co.jp/business/column/katsuma_market.aspx" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">����T�C�g���{�C�Ő����c��ɂ�</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1881"><a myoffsetwidth="388" myoffsetheight="17" myoffsetleft="0" myoffsettop="1884" href="http://it.nikkei.co.jp/security/column/nishimoto_security.aspx&amp;landing=Next" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���|�ēɊw�ԏ��Z�L�����e�B�[����</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1902" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1902" class="arrow-b-s"><a myoffsetwidth="105" myoffsetheight="17" myoffsetleft="0" myoffsettop="1905" href="http://it.nikkei.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">IT PLUS���</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="329" myoffsetleft="0" myoffsettop="1923" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="54" myoffsetleft="0" myoffsettop="1923" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="1923"><a myoffsetwidth="100" myoffsetheight="25" myoffsetleft="0" myoffsettop="1928" href="http://www.nikkei.co.jp/category/career/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">����</a></h2><p myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="1956"><a myoffsetwidth="141" myoffsetheight="14" myoffsetleft="0" myoffsettop="1963" href="http://www.nikkei.co.jp/category/career/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="141" myoffsetheight="21" myoffsetleft="0" myoffsettop="1956" src="http://parts.nikkei.co.jp/parts/net4/kyouiku_02.gif" alt="����" width="141" height="21"></a></p></div><div myoffsetwidth="729" myoffsetheight="49" myoffsetleft="0" myoffsettop="1993" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="1993"><a myoffsetwidth="399" myoffsetheight="19" myoffsetleft="0" myoffsettop="1997" href="http://www.nikkei.co.jp/category/career/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���Ȃ��̃L�����A�A�b�v���</a></h3><p myoffsetwidth="729" myoffsetheight="24" myoffsetleft="0" myoffsettop="2018">��w�E��w�@�E�l�a�`�E�X�N�[�����𖞍�</p></div><p myoffsetwidth="729" myoffsetheight="72" myoffsetleft="0" myoffsettop="2058" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="2116" href="http://www.nikkei.co.jp/category/career/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="72" myoffsetleft="0" myoffsettop="2058" src="http://parts.nikkei.co.jp/parts/net4/manabi_a.gif" alt="����" width="60" border="0"></a></p><ul myoffsetwidth="729" myoffsetheight="84" myoffsetleft="0" myoffsettop="2146" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2146"><a myoffsetwidth="369" myoffsetheight="17" myoffsetleft="0" myoffsettop="2149" href="http://campus.nikkei.co.jp/report/index.html" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��w�E��w�@�i�r�ҏW����ރ��|�[�g</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2168"><a myoffsetwidth="401" myoffsetheight="17" myoffsetleft="0" myoffsettop="2171" href="http://shikaku.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">���i�X�L���@���������͂������</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2189"><a myoffsetwidth="128" myoffsetheight="17" myoffsetleft="0" myoffsettop="2192" href="http://campus.nikkei.co.jp/department/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�����ȏЉ�ꗗ</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2210"><a myoffsetwidth="429" myoffsetheight="17" myoffsetleft="0" myoffsettop="2213" href="http://mba.nikkei.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�l�a�`���r�W�l�X�v���t�F�b�V���i��</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2231" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2231" class="arrow-b-s"><a myoffsetwidth="96" myoffsetheight="17" myoffsetleft="0" myoffsettop="2234" href="http://www.nikkei.co.jp/category/career/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">������</a></li></ul></div><div myoffsetwidth="729" myoffsetheight="318" myoffsetleft="0" myoffsettop="2252" class="rightCnt-box"><div myoffsetwidth="729" myoffsetheight="53" myoffsetleft="0" myoffsettop="2252" class="rightCnt-ttl cfix"><h2 myoffsetwidth="729" myoffsetheight="33" myoffsetleft="0" myoffsettop="2252"><a myoffsetwidth="143" myoffsetheight="25" myoffsetleft="0" myoffsettop="2257" href="http://nikkei.gnavi.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�O����</a></h2><p myoffsetwidth="729" myoffsetheight="20" myoffsetleft="0" myoffsettop="2285"><a myoffsetwidth="155" myoffsetheight="14" myoffsetleft="0" myoffsettop="2291" href="http://nikkei.gnavi.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="155" myoffsetheight="20" myoffsetleft="0" myoffsettop="2285" src="http://parts.nikkei.co.jp/parts/net3/promo_groumet2007.gif" alt="��l�̃��X�g�����K�C�h" border="0" height="20"></a></p></div><div myoffsetwidth="729" myoffsetheight="73" myoffsetleft="0" myoffsettop="2321" class="rightCnt-headNews"><h3 myoffsetwidth="729" myoffsetheight="25" myoffsetleft="0" myoffsettop="2321"><a myoffsetwidth="316" myoffsetheight="19" myoffsetleft="0" myoffsettop="2325" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001100909/z-AREA110/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�����̑�l�̃��X�g����</a></h3><p myoffsetwidth="729" myoffsetheight="48" myoffsetleft="0" myoffsettop="2346"><a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="0" myoffsettop="2349" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001100909/z-AREA110/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�֓�</a> �� <a myoffsetwidth="45" myoffsetheight="17" myoffsetleft="84" myoffsettop="2349" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001200909/z-AREA120/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�֐�</a> �� <a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="171" myoffsettop="2349" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001300909/z-AREA130/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">����</a><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="235" myoffsettop="2363"><a myoffsetwidth="82" myoffsetheight="17" myoffsetleft="0" myoffsettop="2373" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001500909/z-AREA150/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�k�C��</a> �� <a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="124" myoffsettop="2373" href="http://nikkei.gnavi.co.jp/search/t-SPT3780001400909/z-AREA140/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��B</a></p></div><p myoffsetwidth="729" myoffsetheight="60" myoffsetleft="0" myoffsettop="2410" class="rightCnt-headNews-img"><a myoffsetwidth="60" myoffsetheight="14" myoffsetleft="0" myoffsettop="2456" href="http://nikkei.gnavi.co.jp/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');"><img myoffsetwidth="60" myoffsetheight="60" myoffsetleft="0" myoffsettop="2410" src="http://parts.nikkei.co.jp/parts/net4/gnavi_top_promo0909.jpg" alt="��l�̃��X�g�����K�C�h" width="60" border="0" height="60"></a></p><ul myoffsetwidth="729" myoffsetheight="63" myoffsetleft="0" myoffsettop="2486" class="rightCnt-news-list"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2486"><a myoffsetwidth="168" myoffsetheight="17" myoffsetleft="0" myoffsettop="2489" href="http://nikkei.gnavi.co.jp/search/t-SPT3820001100909/z-AREA110/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�������̐l�C�X</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2507"><a myoffsetwidth="170" myoffsetheight="17" myoffsetleft="0" myoffsettop="2510" href="http://nikkei.gnavi.co.jp/search/t-SPT3790001100909/z-AREA110/p-1/" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�ɏ����ґ�Ȗ��킢</a></li><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2528" style="color: rgb(0, 51, 153);">�����ڑ҃��X�g����&nbsp;&nbsp;<a myoffsetwidth="42" myoffsetheight="17" myoffsetleft="235" myoffsettop="2531" href="http://secretary.gnavi.co.jp/nikkei/search_result.php?gDistrict=110" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�֓�</a>�b<a myoffsetwidth="45" myoffsetheight="17" myoffsetleft="301" myoffsettop="2531" href="http://secretary.gnavi.co.jp/nikkei/search_result.php?gDistrict=120" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">�֐�</a>�b<a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="370" myoffsettop="2531" href="http://secretary.gnavi.co.jp/nikkei/search_result.php?gDistrict=130" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">����</a></li></ul><ul myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2549" class="list-area"><li myoffsetwidth="729" myoffsetheight="21" myoffsetleft="0" myoffsettop="2549" class="arrow-b-s"><a myoffsetwidth="312" myoffsetheight="17" myoffsetleft="0" myoffsettop="2552" href="http://nikkei.gnavi.co.jp/" class="list" onclick="s_objectID='N-senmon2'; var s=s_gi('nikkeicojpreleaseprod,nikkeicojpglobal');s.linkTrackVars='prop7';s.prop7='N-senmon2';s.tl(this,'o','N-senmon2');">��l�̃��X�g�����K�C�h���</a></li></ul></div></div>
+					</div>
+				</div></td>
 			</tr>
-		</table>
-	</div>
-</td>
-
-</tr>
-</table>
-<hr>
-
-
-
-
-<hr>
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<colgroup><col width="232"><col><col width="152"></colgroup>
-<tr>
-<td valign="top" class="shago1"><a href="http://www.nikkei.co.jp/hensei/koudoku/"><img src="http://parts.nikkei.co.jp/parts/net3/subscription3.gif" alt="ご購読のお申し込み" width="232" height="35" style="margin-top:22px;"></a></td>
-<td class="shago1"><div id="shagoshago">●<a href="http://www.nikkei.co.jp/honshi/"><b>日本経済新聞</b>&nbsp;</a>・<a href="http://www.nikkei.co.jp/p1/">日経プラス1</a>　●<a href="http://ss.nikkei.co.jp/ss/"><b>日経産業新聞</b></a>　●<a href="http://www.nikkei.co.jp/mj/"><b>日経MJ</b>（流通新聞）</a>　●<a href="http://www.nikkei.co.jp/ks/"><b>日経金融新聞</b></a></div></td>
-<td class="shago1" valign="top"><img src="http://parts.nikkei.co.jp/parts/net3/subscription_bgimg8.gif" alt="" width="152" height="62"></td>
-</tr>
-</table>
-<div id="footer">
-<div id="footer_line">
-
-<p class="img">
-<a href="http://www.nikkei.co.jp">
-<img src="http://parts.nikkei.co.jp/parts/net2/logo_s.gif" alt="NIKKEI NET" width="91"
-height="15"  border="0" align="middle">
-</a></p>
-
-
-<p id="to_top" class="ni"><a href="detail.cfm@relID=144448&amp;lindID=1.html#top">▲ 画面上へ</a></p>
-</div>
-<ul id="help">
-<li><a href="http://www.nikkei.co.jp/help/help.html" accesskey="p">NIKKEI NETについて</a>&nbsp;/</li>
-<li><a href="http://www.nikkei.co.jp/help/copy.html">著作権について</a>&nbsp;/</li>
-<li><a href="http://www.nikkei.co.jp/help/privacy.html">プライバシーポリシー</a>&nbsp;/</li>
-<li><a href="http://www.nikkei.co.jp/help/cookie.html">セキュリティーポリシー</a>&nbsp;/</li>
-<li><a href="http://www.nikkei.co.jp/help/link.html">リンクポリシー</a></li>
-</ul>
-<ul id="nikkeiinfo">
-<li><a href="http://www.nikkei.co.jp/nikkeiinfo/">日本経済新聞社案内</a>&nbsp;|</li>
-<li><a href="http://www.nikkei.co.jp/saiyo/">本社採用</a>&nbsp;|</li>
-<li><a href="http://www.nikkei.co.jp/group.html">日経グループ</a>&nbsp;|</li>
-<li><a href="https://sch.nikkei.co.jp/nikkeinet/" target="_blank">お問い合わせ</a></li>
-</ul>
-<ul id="ad">
-<li><a href="http://www.nikkei.co.jp/ad/mm/">NIKKEI NET 広告ガイド</a>&nbsp;|</li>
-<li><a href="http://www.nikkei.co.jp/ad/">新聞広告ガイド</a>&nbsp;|</li>
-<li><a href="http://www.nikkei.co.jp/rcafe/net/index.html">NIKKEI4946.com&nbsp;(紙面紹介と購読案内)</a></li> 
-</ul>
-<address>
-(C) 2006 Nihon Keizai Shimbun,&nbsp;Inc.&nbsp;All rights reserved.
-</address>
-</div>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/menu_pos.js"></script>
-<script type="text/Javascript" src="js/releasemenu_pos.js"></script>
-<SCRIPT type="text/javascript" src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js"></SCRIPT>
-</body>
+			<tr myoffsetwidth="1159" myoffsetheight="54" myoffsetleft="0" myoffsettop="2608">
+				<td myoffsetwidth="420" myoffsetheight="54" myoffsetleft="0" myoffsettop="2608">
+					<div myoffsetwidth="392" myoffsetheight="44" myoffsetleft="10" myoffsettop="10" id="contents">
+						<hr myoffsetwidth="392" myoffsetheight="2" myoffsetleft="10" myoffsettop="10" class="vis" style="margin-top: 10px;">
+						<table myoffsetwidth="392" myoffsetheight="38" myoffsetleft="10" myoffsettop="16" id="release_menu" summary="プレスリリースメニュー" border="0" cellpadding="0" cellspacing="0">
+							<tbody myoffsetwidth="392" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="392" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+								<td myoffsetwidth="130" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="117" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="index.cfm.html"><img myoffsetwidth="117" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="最新リリースへ戻る" src="img/menu_img/menu_img1_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="13" myoffsetheight="38" myoffsetleft="130" myoffsettop="0"><a myoffsetwidth="13" myoffsetheight="17" myoffsetleft="0" myoffsettop="11" href="isclass.cfm@lindID=1.html"><img myoffsetwidth="13" myoffsetheight="17" myoffsetleft="0" myoffsettop="11" alt="IT" src="img/menu_img/menu_img2_b.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="32" myoffsetheight="38" myoffsetleft="143" myoffsettop="0"><a myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=2.html"><img myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="流通" src="img/menu_img/menu_img3_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="32" myoffsetheight="38" myoffsetleft="175" myoffsettop="0"><a myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=3.html"><img myoffsetwidth="16" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="金融" src="img/menu_img/menu_img4_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="55" myoffsetheight="38" myoffsetleft="207" myoffsettop="0"><a myoffsetwidth="28" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=4.html"><img myoffsetwidth="28" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="メーカー" src="img/menu_img/menu_img5_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="59" myoffsetheight="38" myoffsetleft="262" myoffsettop="0"><a myoffsetwidth="45" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=5.html"><img myoffsetwidth="45" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="サービス" src="img/menu_img/menu_img6_a.gif" width="85" height="23"></a></td>
+								<td myoffsetwidth="72" myoffsetheight="38" myoffsetleft="320" myoffsettop="0"><a myoffsetwidth="56" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="isclass.cfm@lindID=6.html"><img myoffsetwidth="56" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" alt="建設・住宅" src="img/menu_img/menu_img7_a.gif" width="85" height="23"></a></td>
+							</tr>
+						</tbody></table>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+		<hr myoffsetwidth="974" myoffsetheight="2" myoffsetleft="0" myoffsettop="2855">
+		<hr myoffsetwidth="974" myoffsetheight="2" myoffsetleft="0" myoffsettop="2861">
+		<table myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="2867" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<colgroup myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0">
+				<col myoffsetwidth="232" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" width="232">
+				<col myoffsetwidth="590" myoffsetheight="62" myoffsetleft="232" myoffsettop="0">
+				<col myoffsetwidth="152" myoffsetheight="62" myoffsetleft="822" myoffsettop="0" width="152">
+			</colgroup>
+			<tbody myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="232" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" class="shago1" valign="top"><a myoffsetwidth="232" myoffsetheight="14" myoffsetleft="0" myoffsettop="43" href="http://www.nikkei.co.jp/hensei/koudoku/"><img myoffsetwidth="232" myoffsetheight="35" myoffsetleft="0" myoffsettop="22" alt="ご購読のお申し込み" src="http://parts.nikkei.co.jp/parts/net3/subscription3.gif" style="margin-top: 22px;" width="232" height="35"></a></td>
+				<td myoffsetwidth="590" myoffsetheight="62" myoffsetleft="232" myoffsettop="0" class="shago1">
+					<div myoffsetwidth="590" myoffsetheight="17" myoffsetleft="0" myoffsettop="29" id="shagoshago">●<a myoffsetwidth="88" myoffsetheight="14" myoffsetleft="13" myoffsettop="31" href="http://www.nikkei.co.jp/honshi/"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="13" myoffsettop="31">日本経済新聞</b>&nbsp;</a>・<a myoffsetwidth="66" myoffsetheight="14" myoffsetleft="108" myoffsettop="31" href="http://www.nikkei.co.jp/p1/">日経プラス1</a>　●<a myoffsetwidth="84" myoffsetheight="14" myoffsetleft="196" myoffsettop="31" href="http://ss.nikkei.co.jp/ss/"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="196" myoffsettop="31">日経産業新聞</b></a>　●<a myoffsetwidth="113" myoffsetheight="14" myoffsetleft="302" myoffsettop="31" href="http://www.nikkei.co.jp/mj/"><b myoffsetwidth="47" myoffsetheight="14" myoffsetleft="302" myoffsettop="31">日経MJ</b>（流通新聞）</a>　●<a myoffsetwidth="84" myoffsetheight="14" myoffsetleft="437" myoffsettop="31" href="http://www.nikkei.co.jp/ks/"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="437" myoffsettop="31">日経金融新聞</b></a></div>
+				</td>
+				<td myoffsetwidth="152" myoffsetheight="62" myoffsetleft="822" myoffsettop="0" class="shago1" valign="top"><img myoffsetwidth="152" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/net3/subscription_bgimg8.gif" width="152" height="62"></td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="974" myoffsetheight="153" myoffsetleft="0" myoffsettop="2929" id="footer">
+			<div myoffsetwidth="974" myoffsetheight="22" myoffsetleft="0" myoffsettop="2929" id="footer_line">
+				<p myoffsetwidth="200" myoffsetheight="21" myoffsetleft="10" myoffsettop="2929" class="img"><a myoffsetwidth="91" myoffsetheight="17" myoffsetleft="10" myoffsettop="2929" href="http://www.nikkei.co.jp"> <img myoffsetwidth="91" myoffsetheight="15" myoffsetleft="10" myoffsettop="2935" alt="NIKKEI NET" src="http://parts.nikkei.co.jp/parts/net2/logo_s.gif" width="91" align="middle" border="0" height="15"> </a></p><p myoffsetwidth="741" myoffsetheight="22" myoffsetleft="220" myoffsettop="2929" class="ni" id="to_top"><a myoffsetwidth="69" myoffsetheight="14" myoffsetleft="892" myoffsettop="2935" href="detail.cfm@relID=144448&amp;lindID=1.html#top">▲ 画面上へ</a></p></div>
+			<ul myoffsetwidth="974" myoffsetheight="16" myoffsetleft="0" myoffsettop="2966" id="help">
+				<li myoffsetwidth="123" myoffsetheight="14" myoffsetleft="209" myoffsettop="2967"><a myoffsetwidth="112" myoffsetheight="14" myoffsetleft="209" myoffsettop="2967" accesskey="p" href="http://www.nikkei.co.jp/help/help.html">NIKKEI NETについて</a>&nbsp;/</li><li myoffsetwidth="98" myoffsetheight="14" myoffsetleft="332" myoffsettop="2967"><a myoffsetwidth="87" myoffsetheight="14" myoffsetleft="332" myoffsettop="2967" href="http://www.nikkei.co.jp/help/copy.html">著作権について</a>&nbsp;/</li><li myoffsetwidth="125" myoffsetheight="14" myoffsetleft="430" myoffsettop="2967"><a myoffsetwidth="114" myoffsetheight="14" myoffsetleft="430" myoffsettop="2967" href="http://www.nikkei.co.jp/help/privacy.html">プライバシーポリシー</a>&nbsp;/</li><li myoffsetwidth="134" myoffsetheight="14" myoffsetleft="555" myoffsettop="2967"><a myoffsetwidth="123" myoffsetheight="14" myoffsetleft="555" myoffsettop="2967" href="http://www.nikkei.co.jp/help/cookie.html">セキュリティーポリシー</a>&nbsp;/</li><li myoffsetwidth="77" myoffsetheight="14" myoffsetleft="689" myoffsettop="2967"><a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="689" myoffsettop="2967" href="http://www.nikkei.co.jp/help/link.html">リンクポリシー</a></li></ul>
+			<ul myoffsetwidth="974" myoffsetheight="16" myoffsetleft="0" myoffsettop="2988" id="nikkeiinfo">
+				<li myoffsetwidth="124" myoffsetheight="14" myoffsetleft="317" myoffsettop="2989"><a myoffsetwidth="117" myoffsetheight="14" myoffsetleft="317" myoffsettop="2989" href="http://www.nikkei.co.jp/nikkeiinfo/">日本経済新聞社案内</a>&nbsp;|</li><li myoffsetwidth="59" myoffsetheight="14" myoffsetleft="441" myoffsettop="2989"><a myoffsetwidth="52" myoffsetheight="14" myoffsetleft="441" myoffsettop="2989" href="http://www.nikkei.co.jp/saiyo/">本社採用</a>&nbsp;|</li><li myoffsetwidth="81" myoffsetheight="14" myoffsetleft="500" myoffsettop="2989"><a myoffsetwidth="74" myoffsetheight="14" myoffsetleft="500" myoffsettop="2989" href="http://www.nikkei.co.jp/group.html">日経グループ</a>&nbsp;|</li><li myoffsetwidth="76" myoffsetheight="14" myoffsetleft="581" myoffsettop="2989"><a myoffsetwidth="76" myoffsetheight="14" myoffsetleft="581" myoffsettop="2989" href="https://sch.nikkei.co.jp/nikkeinet/" target="_blank">お問い合わせ</a></li></ul>
+			<ul myoffsetwidth="612" myoffsetheight="28" myoffsetleft="181" myoffsettop="3010" id="ad">
+				<li myoffsetwidth="132" myoffsetheight="14" myoffsetleft="267" myoffsettop="3017"><a myoffsetwidth="125" myoffsetheight="14" myoffsetleft="267" myoffsettop="3017" href="http://www.nikkei.co.jp/ad/mm/">NIKKEI NET 広告ガイド</a>&nbsp;|</li><li myoffsetwidth="90" myoffsetheight="14" myoffsetleft="399" myoffsettop="3017"><a myoffsetwidth="83" myoffsetheight="14" myoffsetleft="399" myoffsettop="3017" href="http://www.nikkei.co.jp/ad/">新聞広告ガイド</a>&nbsp;|</li><li myoffsetwidth="218" myoffsetheight="14" myoffsetleft="489" myoffsettop="3017"><a myoffsetwidth="218" myoffsetheight="14" myoffsetleft="489" myoffsettop="3017" href="http://www.nikkei.co.jp/rcafe/net/index.html">NIKKEI4946.com&nbsp;(紙面紹介と購読案内)</a></li></ul>
+			<address myoffsetwidth="974" myoffsetheight="16" myoffsetleft="0" myoffsettop="3044"> (C) 2006 Nihon Keizai Shimbun,&nbsp;Inc.&nbsp;All rights reserved. </address>
+		</div>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/js3/menu_pos.js" type="text/Javascript"></script><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="134" myoffsettop="123" id="submenu_ir" onmouseover="menu_show2('ir');" onmouseout="menu_hide('ir');" style="z-index: 99; left: 134px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="162" myoffsettop="123" id="submenu_it" onmouseover="menu_show2('it');" onmouseout="menu_hide('it');" style="z-index: 99; left: 162px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="231" myoffsettop="123" id="submenu_house" onmouseover="menu_show2('house');" onmouseout="menu_hide('house');" style="z-index: 99; left: 231px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="353" myoffsettop="123" id="submenu_study" onmouseover="menu_show2('study');" onmouseout="menu_hide('study');" style="z-index: 99; left: 353px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="189" myoffsettop="123" id="submenu_business" onmouseover="menu_show2('business');" onmouseout="menu_hide('business');" style="z-index: 99; left: 189px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="273" myoffsettop="123" id="submenu_health" onmouseover="menu_show2('health');" onmouseout="menu_hide('health');" style="z-index: 99; left: 273px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="427" myoffsettop="123" id="submenu_sports" onmouseover="menu_show2('sports');" onmouseout="menu_hide('sports');" style="z-index: 99; left: 427px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="411" myoffsettop="123" id="submenu_c-style" onmouseover="menu_show2('c-style');" onmouseout="menu_hide('c-style');" style="z-index: 99; left: 411px; top: 123px; visibility: hidden; position: absolute;"></div>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="js/releasemenu_pos.js" type="text/Javascript"></script>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js" type="text/javascript"></script>
+	</body>
 </html>
-

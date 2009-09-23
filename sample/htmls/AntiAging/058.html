@@ -1,485 +1,283 @@
-
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja" dir="ltr">
+<html>
 <head>
-<meta http-equiv="Content-Language" content="ja">
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS;">
-<meta http-equiv="Content-Style-Type" content="text/css; charset=Shift_JIS;">
-<meta http-equiv="Content-Script-Type" content="text/javascript; charset=Shift_JIS;">
-<meta name="copyright" content="&copy; 2006 Nihon Keizai Shimbun, Inc. All rights reserved.">
-<meta name="description" content="医療、介護、アンチエイジングなど、日本経済新聞社が運営する日経Waga Maga：健では、セカンドライフを快適に過ごすための健康情報をいち早くお届けします。こだわり世代のセカンドライフを快適に過ごす健康情報をコミュニティで意見交換、情報共有ができます。">
-<meta name="keywords" content="健康，アンチエイジング，医療，介護，日経WagaMaga，日経ワガマガ">
-<title>こだわり世代のための健康情報　｜　日経WagaMaga　｜　健</title>
-<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/waga/css/common.elder.css" media="screen,print">
-<script language="javascript" src="http://parts.nikkei.co.jp/parts/waga/js/common.elder.js"></script>
-<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/js/adgetter.js"></script>
-<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/waga/adframe_def.js"></script>
-</head>
 
-	<body  onLoad="disp_menu(11);">
-
-<!-- ブランドナビゲーション -->
-<!--<div id="pagetop"><a name="top"><img src="http://parts.nikkei.co.jp/parts/waga/images/s.gif" width="1" height="1" alt=""></a></div>-->
-<div class="cmn-jump">
-<p>音声ブラウザ専用。各コンテンツへのショートカットリンクです。</p>
-<ul>
-<li><a href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#mainmenu">こちらよりメインメニューへ移動可能です。クリック。</a></li>
-<li><a href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#contents">こちらより本文へ移動可能です。クリック。</a></li>
-</ul>
-</div>
-<!--<div id="pagetop"><a name="top"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></a></div> -->
-<iframe title="NIKKEI NET Navigation Toolbar" name="NIKKEI NET Navigation Toolbar" src="http://parts.nikkei.co.jp/parts/brandbar/brandbar_noselect_resize.html" width="100%" height="25" frameborder="0" scrolling="no"></iframe>
-<!-- //ブランドナビゲーション -->
-
-<br clear="all">
-
-<!-- ヘッダー -->
-<div id="header"><div id="logo"><h1>アタマとカラダを刺激する、大人のためのコミュニティー。　|　日経WagaMaga</h1><p>
-
-<a href="../index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/img_header_fy01.jpg" alt="" width="293" height="59" border="0" class="logo"></a><a href="index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/img_header_fy02.gif" alt="" width="95" height="59" border="0"></a>
-
-</div><div id="btn">
-<a href="../sns/vc@statemachineStateName=71cf3fd6_10db574c094_-7905&amp;statemachineEventName=GoToMemberTop.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/btn_over40.gif" alt="日経WagaMagaラウンジ" width="261" height="56" border="0" id="over40"></a><img src="http://parts.nikkei.co.jp/parts/waga/images/btn_sub.gif" alt="サブナビゲーション" width="79" height="70" border="0" usemap="#sub">
-<map name="sub"><area shape="rect" coords="0,11,70,26" href="../help/sitemap.aspx.html" alt="サイトマップ"><area shape="rect" coords="0,29,73,45" href="../help/help.aspx.html" alt="ご利用方法"><area shape="rect" coords="0,49,70,64" href="http://www.nikkei.co.jp" alt="NIKKEI NET"></map></div></div>
-<!-- //ヘッダー -->
-
-<!-- グローバルナビゲーション -->
-
-<a name="mainmenu"></a>
-<div id="g-navi">
-<table cellspacing="0">
-  <tr>
-
-		<!-- トップ用 -->
-			
-				<td id="top"><a href="../index.aspx.html" onMouseOver="disp_menu(11);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="39" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n01"><a href="../house/index.aspx.html" onMouseOver="disp_menu(1);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n02"><a href="../money/index.aspx.html" onMouseOver="disp_menu(2);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n03"><a href="../travel/index.aspx.html" onMouseOver="disp_menu(3);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n04"><a href="../play/index.aspx.html" onMouseOver="disp_menu(4);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n05"><a href="../enjoy/index.aspx.html" onMouseOver="disp_menu(5);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n06"><a href="index.aspx.html" class="here" onMouseOver="disp_menu(6);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n07"><a href="../comfort/index.aspx.html" onMouseOver="disp_menu(7);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n08"><a href="../vehicle/index.aspx.html" onMouseOver="disp_menu(8);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n09"><a href="../hobby/index.aspx.html" onMouseOver="disp_menu(9);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-		<!-- それ以外 -->	
-			
-				<td id="n10"><a href="../work/index.aspx.html" onMouseOver="disp_menu(10);"><img src="http://parts.nikkei.co.jp/parts/s.gif" alt="" width="74" height="29"></a></td>
-			
-  </tr>
-</table>
-</div>
-<div id="submenu"></div>
-<noscript>
-	<style>
+	
+		<meta content="ja" http-equiv="Content-Language">
+		<meta content="text/html; charset=utf-8;" http-equiv="Content-Type">
+		<meta content="text/css; charset=utf-8;" http-equiv="Content-Style-Type">
+		<meta content="text/javascript; charset=utf-8;" http-equiv="Content-Script-Type">
+		<meta content="© 2006 Nihon Keizai Shimbun, Inc. All rights reserved." name="copyright">
+		<meta content="医療、介護、アンチエイジングなど、日本経済新聞社が運営する日経Waga Maga：健では、セカンドライフを快適に過ごすための健康情報をいち早くお届けします。こだわり世代のセカンドライフを快適に過ごす健康情報をコミュニティで意見交換、情報共有ができます。" name="description">
+		<meta content="健康，アンチエイジング，医療，介護，日経WagaMaga，日経ワガマガ" name="keywords">
+		<title>こだわり世代のための健康情報　｜　日経WagaMaga　｜　健</title>
+		<link href="http://parts.nikkei.co.jp/parts/waga/css/common.elder.css" media="screen,print" rel="stylesheet" type="text/css">
+		<script language="javascript" src="http://parts.nikkei.co.jp/parts/waga/js/common.elder.js"></script>
+		<script src="http://parts.nikkei.co.jp/parts/js/adgetter.js" type="text/javascript"></script>
+		<script src="http://parts.nikkei.co.jp/parts/waga/adframe_def.js" type="text/javascript"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"></head><body myoffsetwidth="974" myoffsetheight="1500" myoffsetleft="0" myoffsettop="0" onload="disp_menu(11);">
+		<div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" class="cmn-jump">
+			<p myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">音声ブラウザ専用。各コンテンツへのショートカットリンクです。</p><ul myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+				<li myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#mainmenu">こちらよりメインメニューへ移動可能です。クリック。</a></li><li myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#contents">こちらより本文へ移動可能です。クリック。</a></li></ul>
+		</div>
+		<iframe myoffsetwidth="974" myoffsetheight="25" myoffsetleft="0" myoffsettop="0" name="NIKKEI NET Navigation Toolbar" src="http://parts.nikkei.co.jp/parts/brandbar/brandbar_noselect_resize.html" title="NIKKEI NET Navigation Toolbar" width="100%" frameborder="0" height="25" scrolling="no">
+		</iframe>
+		<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="974" myoffsettop="25" clear="all">
+		<div myoffsetwidth="974" myoffsetheight="75" myoffsetleft="0" myoffsettop="25" id="header">
+			<div myoffsetwidth="418" myoffsetheight="75" myoffsetleft="0" myoffsettop="25" id="logo">
+				<h1 myoffsetwidth="418" myoffsetheight="16" myoffsetleft="0" myoffsettop="25">アタマとカラダを刺激する、大人のためのコミュニティー。　|　日経WagaMaga</h1>
+				<p myoffsetwidth="418" myoffsetheight="59" myoffsetleft="0" myoffsettop="41"><a myoffsetwidth="298" myoffsetheight="14" myoffsetleft="0" myoffsettop="86" href="../index.aspx.html"><img myoffsetwidth="293" myoffsetheight="59" myoffsetleft="0" myoffsettop="41" alt="" class="logo" src="http://parts.nikkei.co.jp/parts/waga/images/img_header_fy01.jpg" width="293" border="0" height="59"></a><a myoffsetwidth="95" myoffsetheight="14" myoffsetleft="298" myoffsettop="86" href="index.aspx.html"><img myoffsetwidth="95" myoffsetheight="59" myoffsetleft="298" myoffsettop="41" alt="" src="http://parts.nikkei.co.jp/parts/waga/images/img_header_fy02.gif" width="95" border="0" height="59"></a></p></div>
+			<div myoffsetwidth="347" myoffsetheight="70" myoffsetleft="627" myoffsettop="25" id="btn"><a myoffsetwidth="268" myoffsetheight="14" myoffsetleft="627" myoffsettop="81" href="../sns/vc@statemachineStateName=71cf3fd6_10db574c094_-7905&amp;statemachineEventName=GoToMemberTop.html"><img myoffsetwidth="261" myoffsetheight="56" myoffsetleft="627" myoffsettop="34" alt="日経WagaMagaラウンジ" id="over40" src="http://parts.nikkei.co.jp/parts/waga/images/btn_over40.gif" width="261" border="0" height="56"></a><img myoffsetwidth="79" myoffsetheight="70" myoffsetleft="895" myoffsettop="25" alt="サブナビゲーション" src="http://parts.nikkei.co.jp/parts/waga/images/btn_sub.gif" usemap="#sub" width="79" border="0" height="70"><map myoffsetwidth="347" myoffsetheight="0" myoffsetleft="627" myoffsettop="95" name="sub">
+					<area myoffsetwidth="79" myoffsetheight="70" myoffsetleft="895" myoffsettop="25" alt="サイトマップ" coords="0,11,70,26" href="../help/sitemap.aspx.html" shape="rect">
+					<area myoffsetwidth="79" myoffsetheight="70" myoffsetleft="895" myoffsettop="25" alt="ご利用方法" coords="0,29,73,45" href="../help/help.aspx.html" shape="rect">
+					<area myoffsetwidth="79" myoffsetheight="70" myoffsetleft="895" myoffsettop="25" alt="NIKKEI NET" coords="0,49,70,64" href="http://www.nikkei.co.jp" shape="rect">
+				</map>
+			</div>
+		</div><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="100" name="mainmenu"></a><div myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="100" id="g-navi">
+			<table myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="100" cellspacing="0">
+				<tbody myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="49" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" id="top"><a myoffsetwidth="48" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../index.aspx.html" onmouseover="disp_menu(11);"><img myoffsetwidth="39" myoffsetheight="29" myoffsetleft="4" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="39" height="29"></a></td>
+					<td myoffsetwidth="88" myoffsetheight="29" myoffsetleft="49" myoffsettop="0" id="n01"><a myoffsetwidth="87" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../house/index.aspx.html" onmouseover="disp_menu(1);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="6" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="88" myoffsetheight="29" myoffsetleft="136" myoffsettop="0" id="n02"><a myoffsetwidth="87" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../money/index.aspx.html" onmouseover="disp_menu(2);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="6" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="97" myoffsetheight="29" myoffsetleft="224" myoffsettop="0" id="n03"><a myoffsetwidth="96" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../travel/index.aspx.html" onmouseover="disp_menu(3);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="11" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="97" myoffsetheight="29" myoffsetleft="321" myoffsettop="0" id="n04"><a myoffsetwidth="96" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../play/index.aspx.html" onmouseover="disp_menu(4);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="11" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="97" myoffsetheight="29" myoffsetleft="419" myoffsettop="0" id="n05"><a myoffsetwidth="96" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../enjoy/index.aspx.html" onmouseover="disp_menu(5);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="11" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="78" myoffsetheight="29" myoffsetleft="516" myoffsettop="0" id="n06"><a myoffsetwidth="77" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" class="here" href="index.aspx.html" onmouseover="disp_menu(6);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="1" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="78" myoffsetheight="29" myoffsetleft="594" myoffsettop="0" id="n07"><a myoffsetwidth="77" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../comfort/index.aspx.html" onmouseover="disp_menu(7);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="1" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="97" myoffsetheight="29" myoffsetleft="672" myoffsettop="0" id="n08"><a myoffsetwidth="96" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../vehicle/index.aspx.html" onmouseover="disp_menu(8);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="11" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="78" myoffsetheight="29" myoffsetleft="769" myoffsettop="0" id="n09"><a myoffsetwidth="77" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../hobby/index.aspx.html" onmouseover="disp_menu(9);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="1" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+					<td myoffsetwidth="127" myoffsetheight="29" myoffsetleft="847" myoffsettop="0" id="n10"><a myoffsetwidth="126" myoffsetheight="29" myoffsetleft="0" myoffsettop="0" href="../work/index.aspx.html" onmouseover="disp_menu(10);"><img myoffsetwidth="74" myoffsetheight="29" myoffsetleft="26" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="74" height="29"></a></td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div myoffsetwidth="974" myoffsetheight="24" myoffsetleft="0" myoffsettop="129" id="submenu"><a myoffsetwidth="190" myoffsetheight="13" myoffsetleft="10" myoffsettop="135" href="http://waga.nikkei.co.jp/sns/" class="submenu">��oWagaMaga���E���W</a><a myoffsetwidth="126" myoffsetheight="13" myoffsetleft="225" myoffsettop="135" href="/help/sitemap.aspx?cid=subnavi" class="submenu">�T�C�g�}�b�v</a><a myoffsetwidth="116" myoffsetheight="13" myoffsetleft="376" myoffsettop="135" href="/help/help.aspx?cid=subnavi" class="submenu">�����p��@</a></div>
+		<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+			<style>
 		#submenu { display:none; }
 	</style>
+		</noscript>
+		<table myoffsetwidth="964" myoffsetheight="981" myoffsetleft="5" myoffsettop="158" id="global_layout-content" summary="グローバルレイアウト" cellpadding="0">
+			<tbody myoffsetwidth="964" myoffsetheight="981" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="964" myoffsetheight="981" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="664" myoffsetheight="981" myoffsetleft="0" myoffsettop="0" id="layout_left"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="contents"></a><div myoffsetwidth="654" myoffsetheight="29" myoffsetleft="0" myoffsettop="2" id="ttl-main">
+						<h2 myoffsetwidth="654" myoffsetheight="0" myoffsetleft="0" myoffsettop="2"><img myoffsetwidth="157" myoffsetheight="29" myoffsetleft="0" myoffsettop="2" alt="" src="http://parts.nikkei.co.jp/parts/waga/images/main_ttl_fy.gif" width="157" height="29"></h2>
+						<ul myoffsetwidth="131" myoffsetheight="24" myoffsetleft="523" myoffsettop="5">
+							<li myoffsetwidth="116" myoffsetheight="15" myoffsetleft="538" myoffsettop="10"><a myoffsetwidth="98" myoffsetheight="15" myoffsetleft="556" myoffsettop="10" href="index.aspx.html">健トップページへ</a></li></ul>
+					</div>
+					<div myoffsetwidth="654" myoffsetheight="24" myoffsetleft="0" myoffsettop="31" id="ttl-navi">
+						<ul myoffsetwidth="654" myoffsetheight="24" myoffsetleft="0" myoffsettop="31">
+							<li myoffsetwidth="77" myoffsetheight="14" myoffsetleft="0" myoffsettop="36"><a myoffsetwidth="59" myoffsetheight="14" myoffsetleft="18" myoffsettop="36" href="health.aspx@ichiran=True.html">健康・医療</a></li><li myoffsetwidth="75" myoffsetheight="14" myoffsetleft="92" myoffsettop="36"><a myoffsetwidth="57" myoffsetheight="14" myoffsetleft="110" myoffsettop="36" href="care.aspx@ichiran=True.html">介護・ケア</a></li><li myoffsetwidth="113" myoffsetheight="14" myoffsetleft="182" myoffsettop="36" class="here">▼アンチエイジング</li></ul>
+					</div>
+					<div myoffsetwidth="654" myoffsetheight="878" myoffsetleft="0" myoffsettop="55" id="article">
+						<h2 myoffsetwidth="632" myoffsetheight="29" myoffsetleft="11" myoffsettop="71">＜松下和弘＞第５回　水を飲む＝アンチエイジング</h2>
+						<table myoffsetwidth="80" myoffsetheight="30" myoffsetleft="11" myoffsettop="119" class="img-left" border="0" cellpadding="0" cellspacing="0">
+							<tbody myoffsetwidth="80" myoffsetheight="30" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="80" myoffsetheight="24" myoffsetleft="0" myoffsettop="0">
+								<td myoffsetwidth="80" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="2" myoffsetheight="19" myoffsetleft="0" myoffsettop="3" alt="" src="../photo/f3/20061004f39a4004_04.jpg"></td>
+							</tr>
+							<tr myoffsetwidth="80" myoffsetheight="6" myoffsetleft="0" myoffsettop="24">
+								<td myoffsetwidth="80" myoffsetheight="6" myoffsetleft="0" myoffsettop="24">
+									<p myoffsetwidth="80" myoffsetheight="6" myoffsetleft="0" myoffsettop="0" class="cap">
+								</p></td>
+							</tr>
+						</tbody></table>
+						<p myoffsetwidth="632" myoffsetheight="96" myoffsetleft="11" myoffsettop="119">　人間は体のほとんどが水分でできている。人の老化とは、簡単に言えば体内から水が徐々に失われていくことを指す。『ミネラルウォーター完全ガイド　カラダにいい水・脳にいい水』（大和書房刊）の著者で、生命の水研究所所長の松下和弘氏に、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて聞いた。</p><p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="231">
+							</p><div myoffsetwidth="632" myoffsetheight="24" myoffsetleft="11" myoffsettop="231" align="center">◇　　　◇　　　◇</div>
+						<p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="255">
+						</p><p myoffsetwidth="632" myoffsetheight="48" myoffsetleft="11" myoffsettop="271">　今の日本の食生活で、添加物の含まれていない食材を選ぶのは至難の業（わざ）です。日本人が１年間で摂取する食品添加物の量は平均で３．５キログラムもあるそうです。</p><p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="335">
+						</p><p myoffsetwidth="632" myoffsetheight="120" myoffsetleft="11" myoffsettop="335">　わざわざ添加物の含まれていない食品を探しても、それは大量の農薬で作られた野菜や、合成飼料で育てられた牛や豚の肉かも知れません。私は、添加物や農薬を摂取しないように努力するのは無理な時代になっていると思います。ならば、これらが体内に侵入するのを阻むより、むしろ取り込んでしまった余計なものを、すばやく排出することを考えたほうがずっといいでしょう。</p><p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="471">
+						</p><p myoffsetwidth="632" myoffsetheight="72" myoffsetleft="11" myoffsettop="471">　良い水をたくさん飲めば、体内の毒物が尿としてどんどん出ていきます。何も難しい技術はいらないし、薬品に頼る必要もない。家庭で簡単に作れる体に良い水をたくさん飲むだけで、若々しく健康に暮らすことができるのです。</p><p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="559">
+						</p><p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="559">
+							</p><div myoffsetwidth="632" myoffsetheight="157" myoffsetleft="11" myoffsettop="559" class="author">
+								<h3 myoffsetwidth="630" myoffsetheight="25" myoffsetleft="12" myoffsettop="560" class="ttl">著者紹介</h3>
+								<div myoffsetwidth="610" myoffsetheight="120" myoffsetleft="22" myoffsettop="590" class="box">
+									<p myoffsetwidth="66" myoffsetheight="29" myoffsetleft="566" myoffsettop="590" class="image"><img myoffsetwidth="66" myoffsetheight="19" myoffsetleft="566" myoffsettop="598" alt="著者氏名" src="../photo/byhand/IMG_0569_com.jpg" border="0"></p><h4 myoffsetwidth="610" myoffsetheight="24" myoffsetleft="22" myoffsettop="590">松下和弘（まつした・かずひろ）</h4>
+									<p myoffsetwidth="610" myoffsetheight="17" myoffsetleft="22" myoffsettop="614" class="text">生命の水研究所所長</p><p myoffsetwidth="610" myoffsetheight="50" myoffsetleft="22" myoffsettop="643" class="text"><b myoffsetwidth="28" myoffsetheight="14" myoffsetleft="22" myoffsettop="645">略歴</b><br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="50" myoffsettop="656">１９４６年福島県生まれ。６５年日本電子に入社。９１年、生命の水研究所を設立。主な著書に『水で健康になる！』『心と体をキレイにする　水の新常識』（いずれも共著、実業之日本社刊）など。</p><p myoffsetwidth="610" myoffsetheight="0" myoffsetleft="22" myoffsettop="706">
+									</p><div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="22" myoffsettop="709" class="clear"><img myoffsetwidth="3" myoffsetheight="3" myoffsetleft="22" myoffsettop="709" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+								</div>
+							</div>
+						<p myoffsetwidth="632" myoffsetheight="0" myoffsetleft="11" myoffsettop="731">
+						</p><div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="11" myoffsettop="732" class="clear"><img myoffsetwidth="3" myoffsetheight="3" myoffsetleft="11" myoffsettop="732" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+						<div myoffsetwidth="632" myoffsetheight="18" myoffsetleft="11" myoffsettop="743" id="topic">
+							<div myoffsetwidth="632" myoffsetheight="18" myoffsetleft="11" myoffsettop="743" id="mgn">
+								<p myoffsetwidth="632" myoffsetheight="18" myoffsetleft="11" myoffsettop="743" class="list"><a myoffsetwidth="188" myoffsetheight="13" myoffsetleft="11" myoffsettop="746" href="antiaging.aspx@ichiran=True&amp;page=1.html">&gt;&gt; すべてのバックナンバーを見る</a></p></div>
+						</div>
+						<div myoffsetwidth="632" myoffsetheight="146" myoffsetleft="11" myoffsettop="781" class="catetop-community-in">
+							<h3 myoffsetwidth="632" myoffsetheight="26" myoffsetleft="11" myoffsettop="781" class="ttl">アンチエイジングコミュニティー</h3>
+							<div myoffsetwidth="622" myoffsetheight="95" myoffsetleft="16" myoffsettop="826" class="box">
+								<h5 myoffsetwidth="622" myoffsetheight="24" myoffsetleft="16" myoffsettop="826"><a myoffsetwidth="216" myoffsetheight="15" myoffsetleft="16" myoffsettop="830" href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html">『ミネラルウォーター完全ガイド』</a></h5>
+								<p myoffsetwidth="622" myoffsetheight="33" myoffsetleft="16" myoffsettop="850" class="text"><a myoffsetwidth="611" myoffsetheight="31" myoffsetleft="16" myoffsettop="851" class="text" href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html">　生命の水研究所所長の松下和弘さんが、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて語っています。</a></p><p myoffsetwidth="617" myoffsetheight="25" myoffsetleft="16" myoffsettop="896" class="btn"><a myoffsetwidth="148" myoffsetheight="14" myoffsetleft="485" myoffsettop="907" href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html"><img myoffsetwidth="148" myoffsetheight="25" myoffsetleft="485" myoffsettop="896" alt="ラウンジ会員専用" src="http://parts.nikkei.co.jp/parts/waga/images/btn_community_01.gif" border="0"></a></p></div>
+							<div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="11" myoffsettop="926" class="clear"><img myoffsetwidth="3" myoffsetheight="3" myoffsetleft="11" myoffsettop="926" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+						</div>
+					</div>
+					<div myoffsetwidth="654" myoffsetheight="0" myoffsetleft="0" myoffsettop="933" id="adgt1">
+					</div>
+					<div myoffsetwidth="654" myoffsetheight="0" myoffsetleft="0" myoffsettop="933" id="adgt2">
+					</div>
+					<p myoffsetwidth="654" myoffsetheight="48" myoffsetleft="0" myoffsettop="933">
+						<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="0" myoffsettop="933" clear="all">
+						<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="0" myoffsettop="957" clear="all">
+				</p></td>
+				<td myoffsetwidth="300" myoffsetheight="981" myoffsetleft="664" myoffsettop="0" id="layout_right-contents">
+					<div myoffsetwidth="300" myoffsetheight="167" myoffsetleft="0" myoffsettop="0" id="navigator">
+						<div myoffsetwidth="300" myoffsetheight="49" myoffsetleft="0" myoffsettop="0" id="ttl">
+							<h2 myoffsetwidth="300" myoffsetheight="17" myoffsetleft="0" myoffsettop="0">アンチエイジングコミュニティー</h2>
+							<h3 myoffsetwidth="300" myoffsetheight="32" myoffsetleft="0" myoffsettop="17">『ミネラルウォーター完全ガイド』</h3>
+						</div>
+						<div myoffsetwidth="300" myoffsetheight="83" myoffsetleft="0" myoffsettop="49" id="box">
+							<p myoffsetwidth="286" myoffsetheight="0" myoffsetleft="7" myoffsettop="54"><img myoffsetwidth="93" myoffsetheight="0" myoffsetleft="7" myoffsettop="54" alt="" src="../photo/ff/20061006fc9a6000_06.jpg"></p><div myoffsetwidth="185" myoffsetheight="72" myoffsetleft="105" myoffsettop="54" id="txt">
+								<p myoffsetwidth="185" myoffsetheight="72" myoffsetleft="105" myoffsettop="54">　生命の水研究所所長の松下和弘さんが、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて語っています。</p></div>
+							<div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="7" myoffsettop="126" class="clear"><img myoffsetwidth="93" myoffsetheight="1" myoffsetleft="7" myoffsettop="126" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+						</div>
+						<div myoffsetwidth="300" myoffsetheight="35" myoffsetleft="0" myoffsettop="132" id="entry"><a myoffsetwidth="146" myoffsetheight="14" myoffsetleft="77" myoffsettop="151" href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html"><img myoffsetwidth="146" myoffsetheight="23" myoffsetleft="77" myoffsettop="137" alt="ラウンジ会員専用" src="http://parts.nikkei.co.jp/parts/waga/images/btn_community_01.gif" width="146" border="0" height="23"></a></div>
+					</div>
+					<p myoffsetwidth="300" myoffsetheight="250" myoffsetleft="0" myoffsettop="172" class="ad-banner">
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenlrect?time=20061117225909" type="text/javascript"></script>
+<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" type="text/javascript" src="http://parts.nikkei.co.jp/parts/js/flash.fix.js"></script>
+<!-- Sniffer Code for Flash version=90 -->
+<object myoffsetwidth="300" myoffsetheight="14" myoffsetleft="0" myoffsettop="408" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" id="flashad" width="300" height="250"> <param myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="movie" value="http://adb.nikkei.co.jp/ad/logo/2009b/SanwaShutter090701-WMLargeRect.swf?clickTAG=http%3A//globe.nikkei.co.jp/event.ng/Type%3Dclick%26FlightID%3D65075%26AdID%3D93472%26TargetID%3D2502%26Segments%3D1%2C454%2C455%2C1100%2C1552%2C2122%2C2338%26Targets%3D1751%2C2502%26Values%3D30%2C50%2C63%2C72%2C83%2C92%2C93%2C100%2C170%2C585%2C588%2C745%2C799%2C1119%2C1278%2C1510%2C2247%2C2457%2C2464%2C2541%2C2688%2C2731%2C2763%26RawValues%3DCATEGORYID%252Cwagakenlrect%26Redirect%3Dhttp%3A//www.sanwa-ss.co.jp/corner/garagelife/index.html">  <param myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="quality" value="high"> <param myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="bgcolor" value="#FFFFFF">  <param myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="AllowScriptAccess" value="always"> <embed myoffsetwidth="300" myoffsetheight="250" myoffsetleft="0" myoffsettop="172" src="http://adb.nikkei.co.jp/ad/logo/2009b/SanwaShutter090701-WMLargeRect.swf?clickTAG=http%3A//globe.nikkei.co.jp/event.ng/Type%3Dclick%26FlightID%3D65075%26AdID%3D93472%26TargetID%3D2502%26Segments%3D1%2C454%2C455%2C1100%2C1552%2C2122%2C2338%26Targets%3D1751%2C2502%26Values%3D30%2C50%2C63%2C72%2C83%2C92%2C93%2C100%2C170%2C585%2C588%2C745%2C799%2C1119%2C1278%2C1510%2C2247%2C2457%2C2464%2C2541%2C2688%2C2731%2C2763%26RawValues%3DCATEGORYID%252Cwagakenlrect%26Redirect%3Dhttp%3A//www.sanwa-ss.co.jp/corner/garagelife/index.html" quality="high" bgcolor="#FFFFFF" name="flashad" swliveconnect="TRUE" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" allowscriptaccess="always" width="300" height="250"><noembed myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"></noembed></object><noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+<A HREF="http://globe.nikkei.co.jp/event.ng/Type=click&FlightID=65075&AdID=93472&TargetID=2502&Segments=1,454,455,1100,1552,2122,2338&Targets=1751,2502&Values=30,50,63,72,83,92,93,100,170,585,588,745,799,1119,1278,1510,2247,2457,2464,2541,2688,2731,2763&RawValues=CATEGORYID%2Cwagakenlrect&Redirect=http://www.sanwa-ss.co.jp/corner/garagelife/index.html" target="_top"><IMG SRC="http://adb.nikkei.co.jp/ad/logo/2009b/SanwaShutter090701-WMLargeRect.gif" WIDTH=300 HEIGHT=250 BORDER=0></A>
 </noscript>
 
-<!-- //グローバルナビゲーション -->
-
-<!-- コンテナ -->
-<!-- メインタイトル -->
-
-	<table cellpadding="0" summary="グローバルレイアウト" id="global_layout-content">
-
-
-<tr>
-<td id="layout_left">
-<a name="contents"></a>
-	<div id="ttl-main">
-	<h2><img src="http://parts.nikkei.co.jp/parts/waga/images/main_ttl_fy.gif" alt="" width="157" height="29"></h2>
-	<ul>
-	<li><a href="index.aspx.html">健トップページへ</a></li>
-	</ul>
-	</div>
-	<div id="ttl-navi">
-	<ul>
-
-	
-		<li><a href="health.aspx@ichiran=True.html">健康・医療</a></li>
-		
-		<li><a href="care.aspx@ichiran=True.html">介護・ケア</a></li>
-		
-		<li class="here">▼アンチエイジング</li>
-		
-
-	</ul>
-	</div>
-
-
-<!-- //メインタイトル -->
-<div id="article">
-<!-- 編成コンテンツ枠 -->
-	
-		<h2>＜松下和弘＞第５回　水を飲む＝アンチエイジング</h2>
-	
-
-	<!-- Pictureが3バイト以下は画像を表示しない -->
-	
-		
-			<!-- 画像左寄せ -->
-			<table border="0" cellspacing="0" cellpadding="0" class="img-left">
-			<tr>
-			<td><img src="../photo/f3/20061004f39a4004_04.jpg" alt=""></td>
+					</p><h2 myoffsetwidth="300" myoffsetheight="29" myoffsetleft="0" myoffsettop="427" id="osusume">NIKKEI NET　Link</h2>
+					<div myoffsetwidth="300" myoffsetheight="6" myoffsetleft="0" myoffsettop="456" id="osusume-box">
+						<p myoffsetwidth="300" myoffsetheight="5" myoffsetleft="0" myoffsettop="456" class="exp">
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro1?time=20061117225909" type="text/javascript"></script>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro2?time=20061117225909" type="text/javascript"></script>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro3?time=20061117225909" type="text/javascript"></script>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro4?time=20061117225909" type="text/javascript"></script>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro5?time=20061117225909" type="text/javascript"></script>
+						</p><div myoffsetwidth="300" myoffsetheight="0" myoffsetleft="0" myoffsettop="461" id="adgt4">
+						</div>
+						<div myoffsetwidth="300" myoffsetheight="1" myoffsetleft="0" myoffsettop="461" id="osusume-bottom">
+						</div>
+					</div>
+					<div myoffsetwidth="300" myoffsetheight="0" myoffsetleft="0" myoffsettop="462" id="adgt3">
+					</div>
+				</td>
 			</tr>
-			<tr>
-			<td><p class="cap"></p></td>
-			</tr>
-			</table>
-			<!-- //画像左寄せ -->
-			
-		
-	<!-- 本文 -->
-	<p>　人間は体のほとんどが水分でできている。人の老化とは、簡単に言えば体内から水が徐々に失われていくことを指す。『ミネラルウォーター完全ガイド　カラダにいい水・脳にいい水』（大和書房刊）の著者で、生命の水研究所所長の松下和弘氏に、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて聞いた。</p>
-<p><div align="center">◇　　　◇　　　◇</div></p>
-<p></p>
-<p>　今の日本の食生活で、添加物の含まれていない食材を選ぶのは至難の業（わざ）です。日本人が１年間で摂取する食品添加物の量は平均で３．５キログラムもあるそうです。</p>
-<p></p>
-<p>　わざわざ添加物の含まれていない食品を探しても、それは大量の農薬で作られた野菜や、合成飼料で育てられた牛や豚の肉かも知れません。私は、添加物や農薬を摂取しないように努力するのは無理な時代になっていると思います。ならば、これらが体内に侵入するのを阻むより、むしろ取り込んでしまった余計なものを、すばやく排出することを考えたほうがずっといいでしょう。</p>
-<p></p>
-<p>　良い水をたくさん飲めば、体内の毒物が尿としてどんどん出ていきます。何も難しい技術はいらないし、薬品に頼る必要もない。家庭で簡単に作れる体に良い水をたくさん飲むだけで、若々しく健康に暮らすことができるのです。</p>
-<p></p>
-<p><!-- 著者紹介 --><div class="author"><h3 class="ttl">著者紹介</h3><div class="box"><p class="image"><img src="../photo/byhand/IMG_0569_com.jpg" alt="著者氏名" border="0"></p><h4>松下和弘（まつした・かずひろ）</h4><p class="text">生命の水研究所所長</p><p class="text"><b>略歴</b><br>１９４６年福島県生まれ。６５年日本電子に入社。９１年、生命の水研究所を設立。主な著書に『水で健康になる！』『心と体をキレイにする　水の新常識』（いずれも共著、実業之日本社刊）など。</p>
-<p></p><div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"alt=""></div></div></div><!-- //著者紹介 --></p>
-<p></p>
-	<div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></div>
-	<!-- //本文 -->
-
-	<!-- ページネイション -->
-	
-
-	<!-- //ページネイション -->
-
-<!-- //編成コンテンツ枠 -->
-
-<!-- 関連記事枠 -->
-
-
-		<!-- 関連記事が5バイト以下の場合は表示しない -->
-		
-		<div id="topic">
-		<div id="mgn">
-			<p class="list"><a href="antiaging.aspx@ichiran=True&amp;page=1.html">&gt;&gt; すべてのバックナンバーを見る</A></a></p>
+		</tbody></table>
+		<div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="1159" class="clear"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="1159" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+		<div myoffsetwidth="964" myoffsetheight="245" myoffsetleft="5" myoffsettop="1160" id="cate-list">
+			<table myoffsetwidth="964" myoffsetheight="245" myoffsetleft="5" myoffsettop="1160" id="box" border="0" cellpadding="0" cellspacing="0">
+				<tbody myoffsetwidth="964" myoffsetheight="245" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="964" myoffsetheight="25" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="964" myoffsetheight="25" myoffsetleft="0" myoffsettop="0" colspan="2">
+						<div myoffsetwidth="963" myoffsetheight="25" myoffsetleft="0" myoffsettop="0" id="cate">
+							<h2 myoffsetwidth="96" myoffsetheight="25" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="96" myoffsetheight="25" myoffsetleft="0" myoffsettop="0" alt="カテゴリーリスト" src="http://parts.nikkei.co.jp/parts/waga/images/cate_ttl_j.gif" width="96" height="25"></h2>
+							<p myoffsetwidth="51" myoffsetheight="25" myoffsetleft="912" myoffsettop="0"><img myoffsetwidth="51" myoffsetheight="25" myoffsetleft="912" myoffsettop="0" alt="Category" src="http://parts.nikkei.co.jp/parts/waga/images/cate_ttl_e.gif" width="51" height="25"></p></div>
+					</td>
+				</tr>
+				<tr myoffsetwidth="964" myoffsetheight="220" myoffsetleft="0" myoffsettop="25">
+					<td myoffsetwidth="482" myoffsetheight="220" myoffsetleft="0" myoffsettop="25" id="left">
+						<table myoffsetwidth="481" myoffsetheight="212" myoffsetleft="0" myoffsettop="0" id="cate-table02" cellpadding="0" cellspacing="0">
+							<tbody myoffsetwidth="481" myoffsetheight="212" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="0">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../house/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="住まい 生活：住まい・インテリア・リフォーム等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img01.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="0">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="57" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="39" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../house/house.aspx.html">住まい</a></li><li myoffsetwidth="77" myoffsetheight="24" myoffsetleft="72" myoffsettop="9"><a myoffsetwidth="59" myoffsetheight="15" myoffsetleft="90" myoffsettop="13" href="../house/interior.aspx.html">インテリア</a></li><li myoffsetwidth="77" myoffsetheight="24" myoffsetleft="164" myoffsettop="9"><a myoffsetwidth="59" myoffsetheight="15" myoffsetleft="182" myoffsettop="13" href="../house/reform.aspx.html">リフォーム</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="41" class="bg-w">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="41"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../money/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="資産運用：資産運用・株式投資・年金・不動産等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img02.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="41">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="74" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="56" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../money/asset.aspx.html">資産運用</a></li><li myoffsetwidth="74" myoffsetheight="24" myoffsetleft="89" myoffsettop="9"><a myoffsetwidth="56" myoffsetheight="15" myoffsetleft="107" myoffsettop="13" href="../money/stock.aspx.html">株式投資</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="178" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="196" myoffsettop="13" href="../money/insurance.aspx.html">保険</a></li><li myoffsetwidth="60" myoffsetheight="24" myoffsetleft="239" myoffsettop="9"><a myoffsetwidth="42" myoffsetheight="15" myoffsetleft="257" myoffsettop="13" href="../money/estate.aspx.html">不動産</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="82">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="82"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../travel/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="旅行情報：旅行・ホテル・旅館等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img03.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="82">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../travel/travel.aspx.html">旅行</a></li><li myoffsetwidth="92" myoffsetheight="24" myoffsetleft="61" myoffsettop="9"><a myoffsetwidth="74" myoffsetheight="15" myoffsetleft="79" myoffsettop="13" href="../travel/hotel.aspx.html">ホテル・旅館</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="48" myoffsetleft="0" myoffsettop="123" class="bg-w">
+								<th myoffsetwidth="41" myoffsetheight="48" myoffsetleft="0" myoffsettop="123"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="31" href="../play/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="9" alt="スポーツ：ゴルフ・釣り・スポーツ・食・グルメ・レジャー・町歩き・散歩等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img04.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="48" myoffsetleft="41" myoffsettop="123">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+											<li myoffsetwidth="55" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="37" myoffsetheight="15" myoffsetleft="18" myoffsettop="5" href="../play/golf.aspx.html">ゴルフ</a></li><li myoffsetwidth="42" myoffsetheight="24" myoffsetleft="70" myoffsettop="0"><a myoffsetwidth="24" myoffsetheight="15" myoffsetleft="88" myoffsettop="5" href="../play/angling.aspx.html">釣り</a></li><li myoffsetwidth="69" myoffsetheight="24" myoffsetleft="127" myoffsettop="0"><a myoffsetwidth="51" myoffsetheight="15" myoffsetleft="145" myoffsettop="5" href="../play/sports.aspx.html">スポーツ</a></li><li myoffsetwidth="76" myoffsetheight="24" myoffsetleft="211" myoffsettop="0"><a myoffsetwidth="58" myoffsetheight="15" myoffsetleft="229" myoffsettop="5" href="../play/gourment.aspx.html">食・グルメ</a></li><li myoffsetwidth="67" myoffsetheight="24" myoffsetleft="302" myoffsettop="0"><a myoffsetwidth="49" myoffsetheight="15" myoffsetleft="320" myoffsettop="5" href="../play/leisure.aspx.html">レジャー</a></li><li myoffsetwidth="93" myoffsetheight="24" myoffsetleft="0" myoffsettop="24"><a myoffsetwidth="75" myoffsetheight="15" myoffsetleft="18" myoffsettop="29" href="../play/walk.aspx.html">街歩き・散歩</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="171">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="171"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../enjoy/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="エンターテイメント情報：本・映画・音楽・演劇・美術・テレビ等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img05.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="171">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="32" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="14" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../enjoy/book.aspx.html">本</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="47" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="65" myoffsettop="13" href="../enjoy/movie.aspx.html">映画</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="108" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="126" myoffsettop="13" href="../enjoy/music.aspx.html">音楽</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="169" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="187" myoffsettop="13" href="../enjoy/play.aspx.html">演劇</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="230" myoffsettop="9"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="248" myoffsettop="13" href="../enjoy/art.aspx.html">美術</a></li><li myoffsetwidth="54" myoffsetheight="24" myoffsetleft="291" myoffsettop="9"><a myoffsetwidth="36" myoffsetheight="15" myoffsetleft="309" myoffsettop="13" href="../enjoy/tv.aspx.html">テレビ</a></li></ul>
+									</div>
+								</td>
+							</tr>
+						</tbody></table>
+					</td>
+					<td myoffsetwidth="482" myoffsetheight="220" myoffsetleft="482" myoffsettop="25" id="right">
+						<table myoffsetwidth="481" myoffsetheight="219" myoffsetleft="0" myoffsettop="0" id="cate-table02" cellpadding="0" cellspacing="0">
+							<tbody myoffsetwidth="481" myoffsetheight="219" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="0" class="bg-w">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="健康：健康・医療・介護・ケア・アンチエイジング等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img06.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="0">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="81" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="63" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="health.aspx.html">健康・医療</a></li><li myoffsetwidth="79" myoffsetheight="24" myoffsetleft="96" myoffsettop="9"><a myoffsetwidth="61" myoffsetheight="15" myoffsetleft="114" myoffsettop="13" href="care.aspx.html">介護・ケア</a></li><li myoffsetwidth="119" myoffsetheight="24" myoffsetleft="190" myoffsettop="9"><a myoffsetwidth="101" myoffsetheight="15" myoffsetleft="208" myoffsettop="13" href="antiaging.aspx.html">アンチエイジング</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="48" myoffsetleft="0" myoffsettop="41">
+								<th myoffsetwidth="41" myoffsetheight="48" myoffsetleft="0" myoffsettop="41"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="31" href="../comfort/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="9" alt="ライフスタイル：パソコン・ネット・暮らし・ライフスタイル・仲間づくり・ふれあい・ショッピング・ファッション等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img07.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="48" myoffsetleft="41" myoffsettop="41">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+											<li myoffsetwidth="105" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="87" myoffsetheight="15" myoffsetleft="18" myoffsettop="5" href="../comfort/computer.aspx.html">パソコン・ネット</a></li><li myoffsetwidth="145" myoffsetheight="24" myoffsetleft="120" myoffsettop="0"><a myoffsetwidth="127" myoffsetheight="15" myoffsetleft="138" myoffsettop="5" href="../comfort/life.aspx.html">暮らし・ライフスタイル</a></li><li myoffsetwidth="77" myoffsetheight="24" myoffsetleft="280" myoffsettop="0"><a myoffsetwidth="59" myoffsetheight="15" myoffsetleft="298" myoffsettop="5" href="../comfort/friends.aspx.html">仲間づくり</a></li><li myoffsetwidth="87" myoffsetheight="24" myoffsetleft="0" myoffsettop="24"><a myoffsetwidth="69" myoffsetheight="15" myoffsetleft="18" myoffsettop="29" href="../comfort/shopping.aspx.html">ショッピング</a></li><li myoffsetwidth="84" myoffsetheight="24" myoffsetleft="102" myoffsettop="24"><a myoffsetwidth="66" myoffsetheight="15" myoffsetleft="120" myoffsettop="29" href="../comfort/fashion.aspx.html">ファッション</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="89" class="bg-w">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="89"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../vehicle/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="自動車・バイク・自転車等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img08.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="89">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="60" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="42" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../vehicle/car.aspx.html">自動車</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="48" myoffsetleft="0" myoffsettop="130">
+								<th myoffsetwidth="41" myoffsetheight="48" myoffsetleft="0" myoffsettop="130"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="31" href="../hobby/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="9" alt="趣味：学ぶ・趣味・カメラ・オーディオ・料理・囲碁・将棋・楽器演奏等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img09.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="48" myoffsetleft="41" myoffsettop="130">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="0">
+											<li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="18" myoffsettop="5" href="../hobby/study.aspx.html">学ぶ</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="61" myoffsettop="0"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="79" myoffsettop="5" href="../hobby/hobby.aspx.html">趣味</a></li><li myoffsetwidth="51" myoffsetheight="24" myoffsetleft="122" myoffsettop="0"><a myoffsetwidth="33" myoffsetheight="15" myoffsetleft="140" myoffsettop="5" href="../hobby/camera.aspx.html">カメラ</a></li><li myoffsetwidth="46" myoffsetheight="24" myoffsetleft="188" myoffsettop="0"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="206" myoffsettop="5" href="../hobby/cooking.aspx.html">料理</a></li><li myoffsetwidth="81" myoffsetheight="24" myoffsetleft="249" myoffsettop="0"><a myoffsetwidth="63" myoffsetheight="15" myoffsetleft="267" myoffsettop="5" href="../hobby/igoshogi.aspx.html">囲碁・将棋</a></li><li myoffsetwidth="74" myoffsetheight="24" myoffsetleft="0" myoffsettop="24"><a myoffsetwidth="56" myoffsetheight="15" myoffsetleft="18" myoffsettop="29" href="../hobby/instrument.aspx.html">楽器演奏</a></li></ul>
+									</div>
+								</td>
+							</tr>
+							<tr myoffsetwidth="481" myoffsetheight="41" myoffsetleft="0" myoffsettop="178" class="bg-w">
+								<th myoffsetwidth="41" myoffsetheight="41" myoffsetleft="0" myoffsettop="178"><a myoffsetwidth="41" myoffsetheight="14" myoffsetleft="0" myoffsettop="27" href="../work/index.aspx.html"><img myoffsetwidth="31" myoffsetheight="31" myoffsetleft="5" myoffsettop="5" alt="仕事：働く・人材・ボランティア・NPO・起業・事業承継等の情報" src="http://parts.nikkei.co.jp/parts/waga/images/cate_img10.gif" width="31" border="0" height="31"></a></th>
+								<td myoffsetwidth="440" myoffsetheight="41" myoffsetleft="41" myoffsettop="178">
+									<div myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9" class="cate-list">
+										<ul myoffsetwidth="425" myoffsetheight="0" myoffsetleft="0" myoffsettop="9">
+											<li myoffsetwidth="75" myoffsetheight="24" myoffsetleft="0" myoffsettop="9"><a myoffsetwidth="57" myoffsetheight="15" myoffsetleft="18" myoffsettop="13" href="../work/work.aspx.html">働く・人材</a></li><li myoffsetwidth="123" myoffsetheight="24" myoffsetleft="90" myoffsettop="9"><a myoffsetwidth="105" myoffsetheight="15" myoffsetleft="108" myoffsettop="13" href="../work/npo.aspx.html">ボランティア・NPO</a></li><li myoffsetwidth="109" myoffsetheight="24" myoffsetleft="228" myoffsettop="9"><a myoffsetwidth="91" myoffsetheight="15" myoffsetleft="246" myoffsettop="13" href="../work/business.aspx.html">起業・事業承継</a></li></ul>
+									</div>
+								</td>
+							</tr>
+						</tbody></table>
+					</td>
+				</tr>
+			</tbody></table>
 		</div>
+		<div myoffsetwidth="974" myoffsetheight="75" myoffsetleft="0" myoffsettop="1425" id="nk_footer02">
+			<div myoffsetwidth="974" myoffsetheight="22" myoffsetleft="0" myoffsettop="1425" id="footerblue">
+				<p myoffsetwidth="79" myoffsetheight="19" myoffsetleft="895" myoffsettop="1425" class="totop"><a myoffsetwidth="69" myoffsetheight="14" myoffsetleft="900" myoffsettop="1430" href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#top">▲ 画面上へ</a></p><h2 myoffsetwidth="105" myoffsetheight="21" myoffsetleft="0" myoffsettop="1425"><a myoffsetwidth="91" myoffsetheight="14" myoffsetleft="7" myoffsettop="1424" href="http://www.nikkei.co.jp" target="_top" title="NIKKEI NET について"><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/tr/waga_ls.js" type="text/JavaScript"></script><img myoffsetwidth="91" myoffsetheight="15" myoffsetleft="7" myoffsettop="1428" src="http://waga.tr.nikkei.co.jp/logo_s/:::/C:/Users/8BKSA34196/Desktop/htmls//AntiAging/058.html:::" alt="NIKKEI NET" width="91" align="middle" border="0" height="15">
+						<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img align="middle" alt="NIKKEI NET" border="0" height="17" src="http://waga.tr.nikkei.co.jp/logo_s/waga.nikkei.co.jp/:::/health/antiaging.aspx" width="91" /></noscript></a></h2>
+				<div myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="1446" class="clear"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="1446" alt="" src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1"></div>
+			</div>
+			<div myoffsetwidth="974" myoffsetheight="53" myoffsetleft="0" myoffsettop="1447" id="footernavy">
+				<ul myoffsetwidth="974" myoffsetheight="24" myoffsetleft="0" myoffsettop="1447">
+					<li myoffsetwidth="91" myoffsetheight="13" myoffsetleft="169" myoffsettop="1452"><a myoffsetwidth="80" myoffsetheight="13" myoffsetleft="169" myoffsettop="1452" href="http://www.nikkei.co.jp/help/copy.html" target="_top">著作権について</a> | </li><li myoffsetwidth="120" myoffsetheight="13" myoffsetleft="260" myoffsettop="1452"><a myoffsetwidth="109" myoffsetheight="13" myoffsetleft="260" myoffsettop="1452" href="http://www.nikkei.co.jp/help/privacy.html" target="_top">プライバシーポリシー</a> | </li><li myoffsetwidth="127" myoffsetheight="13" myoffsetleft="380" myoffsettop="1452"><a myoffsetwidth="116" myoffsetheight="13" myoffsetleft="380" myoffsettop="1452" href="http://www.nikkei.co.jp/help/cookie.html" target="_top">セキュリティーポリシー</a> | </li><li myoffsetwidth="83" myoffsetheight="13" myoffsetleft="507" myoffsettop="1452"><a myoffsetwidth="72" myoffsetheight="13" myoffsetleft="507" myoffsettop="1452" href="http://www.nikkei.co.jp/help/link.html" target="_top">リンクポリシー</a> | </li><li myoffsetwidth="81" myoffsetheight="13" myoffsetleft="590" myoffsettop="1452"><a myoffsetwidth="70" myoffsetheight="13" myoffsetleft="590" myoffsettop="1452" href="https://sch.nikkei.co.jp/nikkeinet/wagamaga.html" target="_blank">お問い合わせ</a> | </li><li myoffsetwidth="135" myoffsetheight="13" myoffsetleft="671" myoffsettop="1452"><a myoffsetwidth="135" myoffsetheight="13" myoffsetleft="671" myoffsettop="1452" href="http://www.nikkei.co.jp/ad/mm/" target="_top">NET 広告お申し込みガイド</a></li></ul>
+				<p myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="1471" class="copyright">(C) 2006 Nihon Keizai Shimbun, Inc. All rights reserved.</p></div>
 		</div>
-	
-<!-- //関連記事枠 -->
-
-<!-- コミュニティ枠 -->
-
-	<div class="catetop-community-in">
-	<h3 class="ttl">アンチエイジングコミュニティー</h3>
-	
-	<div class="box">
-	<h5><a href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html">『ミネラルウォーター完全ガイド』</a></h5>
-	<p class="text"><a href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html" class="text">　生命の水研究所所長の松下和弘さんが、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて語っています。</a></p>
-	
-			<p class="btn"><a href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/btn_community_01.gif" alt="ラウンジ会員専用" border="0"></a></p>
-		
-	</div>
-	<div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></div>
-	</div>
-
-<!-- //コミュニティ枠 -->
-
-</div>
-<!-- //メイン記事 -->
-
-<div id="adgt1">
-</div>
-
-<div id="adgt2">
-</div>
-
-<p><br clear="all"><br clear="all"></p>
-
-</td>
-<td id="layout_right-contents">
-<!-- ナビゲーター -->
-
-
-	<div id="navigator">
-	<div id="ttl">
-	<h2>アンチエイジングコミュニティー</h2>
-	<No href=""><h3>『ミネラルウォーター完全ガイド』</h3></a>
-	</div>
-	<div id="box">
-	
-	<p><No href=""><img src="../photo/ff/20061006fc9a6000_06.jpg" alt=""></a></p>
-	
-	<div id="txt">
-	<p>　生命の水研究所所長の松下和弘さんが、健康に良い水とは何か、家庭で実践できる水を使った健康法などについて語っています。</p>
-	</div>
-	<div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></div>
-	</div>
-	<div id="entry">
-	
-			<a href="../sns/vc@statemachineStateName=5072848b_10c6878bbda_-6950&amp;statemachineEventName=ShowCommunity&amp;communityId=140.html"><img src= http://parts.nikkei.co.jp/parts/waga/images/btn_community_01.gif alt="ラウンジ会員専用" width="146" height="23" border="0"></a>
-		
-	</div>
-	</div>
-
-	
-
-<!-- //ナビゲーター -->
-
-<!-- ADバナー -->
-<p class="ad-banner">
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenlrect?time=20061117225909"></script>
-
-</p>
-<!-- //ADバナー -->
-
-<!-- おすすめ情報 -->
-<h2 id="osusume">NIKKEI NET　Link<!--[PR]--></h2>
-<div id="osusume-box">
-<p class="exp"><!--おすすめ情報<a href="#">とは？</a--></p>
-<!-- おすすめ情報コンテンツ -->
-
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro1?time=20061117225909"></script>
-
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro2?time=20061117225909"></script>
-
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro3?time=20061117225909"></script>
-
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro4?time=20061117225909"></script>
-
-
-	<script type="text/javascript" src="http://gavit.nikkei.co.jp/js.ng/cat=wagakenpro5?time=20061117225909"></script>
-
-
-
-<div id="adgt4">
-</div>
-
-<div id="osusume-bottom"></div></div>
-
-<div id="adgt3">
-</div>
-
-
-
-</td>
-</tr>
-</table>
-
-<!-- //コンテナ -->
-
-<!-- カテゴリー一覧 -->
-<div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></div>
-<div id="cate-list">
-<table border="0" cellpadding="0" cellspacing="0" id="box">
-<tr>
-<td colspan="2">
-<div id="cate">
-<h2><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_ttl_j.gif" alt="カテゴリーリスト" width="96" height="25"></h2>
-<p><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_ttl_e.gif" alt="Category" width="51" height="25"></p>
-</div>
-</td>
-</tr>
-<tr>
-<td id="left">
-<table cellpadding="0" cellspacing="0" id="cate-table02">
-<tr>
-<th><a href="../house/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img01.gif" alt="住まい 生活：住まい・インテリア・リフォーム等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../house/house.aspx.html">住まい</a></li>
-<li><a href="../house/interior.aspx.html">インテリア</a></li>
-<li><a href="../house/reform.aspx.html">リフォーム</a></li>
-</ul>
-</div>
-</td>
-</tr>
-<tr class="bg-w">
-<th><a href="../money/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img02.gif" alt="資産運用：資産運用・株式投資・年金・不動産等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../money/asset.aspx.html">資産運用</a></li>
-<li><a href="../money/stock.aspx.html">株式投資</a></li>
-<li><a href="../money/insurance.aspx.html">保険</a></li>
-<li><a href="../money/estate.aspx.html">不動産</a></li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<th><a href="../travel/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img03.gif" alt="旅行情報：旅行・ホテル・旅館等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../travel/travel.aspx.html">旅行</a></li>
-<li><a href="../travel/hotel.aspx.html">ホテル・旅館</a></li>
-</ul>
-</div>
-</td>
-</tr>
-<tr class="bg-w">
-<th><a href="../play/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img04.gif" alt="スポーツ：ゴルフ・釣り・スポーツ・食・グルメ・レジャー・町歩き・散歩等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../play/golf.aspx.html">ゴルフ</a></li>
-<li><a href="../play/angling.aspx.html">釣り</a></li>
-<li><a href="../play/sports.aspx.html">スポーツ</a></li>
-<li><a href="../play/gourment.aspx.html">食・グルメ</a></li>
-<li><a href="../play/leisure.aspx.html">レジャー</a></li>
-<li><a href="../play/walk.aspx.html">街歩き・散歩</a></li>
-</ul>
-</div>
-</td>
-</tr>
-<tr>
-<th><a href="../enjoy/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img05.gif" alt="エンターテイメント情報：本・映画・音楽・演劇・美術・テレビ等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../enjoy/book.aspx.html">本</a></li>
-<li><a href="../enjoy/movie.aspx.html">映画</a></li>
-<li><a href="../enjoy/music.aspx.html">音楽</a></li>
-<li><a href="../enjoy/play.aspx.html">演劇</a></li>
-<li><a href="../enjoy/art.aspx.html">美術</a></li>
-<li><a href="../enjoy/tv.aspx.html">テレビ</a></li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</td>
-<td id="right">
-<table cellpadding="0" cellspacing="0" id="cate-table02">
-<tr class="bg-w">
-<th><a href="index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img06.gif" alt="健康：健康・医療・介護・ケア・アンチエイジング等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="health.aspx.html">健康・医療</a></li>
-<li><a href="care.aspx.html">介護・ケア</a></li>
-<li><a href="antiaging.aspx.html">アンチエイジング</a></li>
-</ul>
-</div></td>
-</tr>
-<tr>
-<th><a href="../comfort/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img07.gif" alt="ライフスタイル：パソコン・ネット・暮らし・ライフスタイル・仲間づくり・ふれあい・ショッピング・ファッション等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../comfort/computer.aspx.html">パソコン・ネット</a></li>
-<li><a href="../comfort/life.aspx.html">暮らし・ライフスタイル</a></li>
-<li><a href="../comfort/friends.aspx.html">仲間づくり</a></li>
-<li><a href="../comfort/shopping.aspx.html">ショッピング</a></li>
-<li><a href="../comfort/fashion.aspx.html">ファッション</a></li>
-</ul>
-</div></td>
-</tr>
-<tr class="bg-w">
-<th><a href="../vehicle/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img08.gif" alt="自動車・バイク・自転車等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../vehicle/car.aspx.html">自動車</a></li>
-</ul>
-</div></td>
-</tr>
-<tr>
-<th><a href="../hobby/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img09.gif" alt="趣味：学ぶ・趣味・カメラ・オーディオ・料理・囲碁・将棋・楽器演奏等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../hobby/study.aspx.html">学ぶ</a></li>
-<li><a href="../hobby/hobby.aspx.html">趣味</a></li>
-<li><a href="../hobby/camera.aspx.html">カメラ</a></li>
-<li><a href="../hobby/cooking.aspx.html">料理</a></li>
-<li><a href="../hobby/igoshogi.aspx.html">囲碁・将棋</a></li>
-<li><a href="../hobby/instrument.aspx.html">楽器演奏</a></li>
-</ul>
-</div></td>
-</tr>
-<tr class="bg-w">
-<th><a href="../work/index.aspx.html"><img src="http://parts.nikkei.co.jp/parts/waga/images/cate_img10.gif" alt="仕事：働く・人材・ボランティア・NPO・起業・事業承継等の情報" width="31" height="31" border="0"></a></th>
-<td>
-<div class="cate-list">
-<ul>
-<li><a href="../work/work.aspx.html">働く・人材</a></li>
-<li><a href="../work/npo.aspx.html">ボランティア・NPO</a></li>
-<li><a href="../work/business.aspx.html">起業・事業承継</a></li>
-</ul>
-</div></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</div>
-<!-- //カテゴリー一覧 -->
-
-<!-- フッター -->
-
-<!-- フッター -->
-<div id="nk_footer02">
-	<div id="footerblue">
-  <p class="totop" ><a href="antiaging.aspx@ichiran=True&amp;i=20061004f3004f3&amp;page=1.html#top">▲ 画面上へ</a></p>
-  <h2><a href="http://www.nikkei.co.jp" title="NIKKEI NET について" target="_top">
-
-	<script type="text/JavaScript" src="http://parts.nikkei.co.jp/parts/tr/waga_ls.js"></script>
-	<noscript>
-	<img src="http://waga.tr.nikkei.co.jp/logo_s/waga.nikkei.co.jp/:::/health/antiaging.aspx" alt="NIKKEI NET" width="91" height="17" border="0" align="middle"></a></noscript>
-
-  </a></h2>
-  <div class="clear"><img src="http://parts.nikkei.co.jp/parts/s.gif" width="1" height="1" alt=""></div>
-	</div>
-	<div id="footernavy">
-  <ul>
-   <li><a href="http://www.nikkei.co.jp/help/copy.html" target="_top">著作権について</a> | </li>
-   <li><a href="http://www.nikkei.co.jp/help/privacy.html" target="_top">プライバシーポリシー</a> | </li>
-   <li><a href="http://www.nikkei.co.jp/help/cookie.html" target="_top">セキュリティーポリシー</a> | </li>
-   <li><a href="http://www.nikkei.co.jp/help/link.html" target="_top">リンクポリシー</a> | </li>
-   <li><a href="https://sch.nikkei.co.jp/nikkeinet/wagamaga.html" target="_blank">お問い合わせ</a> | </li>
-   <li><a href="http://www.nikkei.co.jp/ad/mm/" target="_top">NET 広告お申し込みガイド</a></li>
-  </ul>
-  <p class="copyright">(C) 2006 Nihon Keizai Shimbun, Inc. All rights reserved.</p>
-</div></div>
-<!-- //フッター -->
-<script type="text/javascript">adgetter('wmKen');</script>
-<script type="text/javascript"src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js"></script>
-</body>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" type="text/javascript">adgetter('wmKen');</script>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js" type="text/javascript"></script>
+	</body>
 </html>
-<!-- //フッター -->

@@ -1,215 +1,162 @@
- 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja" dir="ltr">
+<html>
 <head>
-<meta http-equiv="Content-Language" content="ja">
-<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta name="copyright" content="&copy; 2006 Nihon Keizai Shimbun, Inc. All rights reserved.">
-<meta name="description" content="日本経済新聞社のニュースサイト・NIKKEI NETの国際、海外ニュースを集めたページ。現地記者が世界各地を紹介するコラム「世界街めぐり」、米ダウ・ジョーンズ、英フィナンシャルタイムズのニュースも。">
-<meta name="keywords" content="日経,ニュース,速報,米国,アジア,欧州,FT,DJ,世界街めぐり,外電,特派員">
-<META NAME="FJZONE_UPDATE" CONTENT="20061119">
-<META NAME="FJZONE_CATEGORY" CONTENT="&lt;a href=http://www.nikkei.co.jp&gt;トップ&lt;/a&gt; &GT; &lt;a href=http://www.nikkei.co.jp/news/kaigai/&gt; 国際 &lt;/a&gt;"> 
-<title>NIKKEI NET：国際                                                                                                                                                                                                                                                            ニュース</title>
-<link rel="start" href="../../index.html" title="NIKKEI NET">
-<link rel="chapter" href="http://markets.nikkei.co.jp/" title="マネー">
-<link rel="chapter" href="http://ir.nikkei.co.jp/" title="I　R">
-<link rel="chapter" href="http://it.nikkei.co.jp/it/" title="I　T">
-<link rel="chapter" href="http://bizplus.nikkei.co.jp/" title="経営">
-<link rel="chapter" href="http://sumai.nikkei.co.jp/" title="住宅">
-<link rel="chapter" href="../../weekend/index.html" title="生活・グルメ">
-<link rel="chapter" href="../../help/manabi.html" title="教育">
-<link rel="chapter" href="http://job.nikkei.co.jp/" title="就職">
-<link rel="chapter" href="http://kyujin.nikkei.co.jp/" title="求人">
-<link rel="chapter" href="http://car.nikkei.co.jp/" title="クルマ">
-<link rel="chapter" href="../../style/index.html" title="C-style">
-<link rel="chapter" href="http://smartwoman.nikkei.co.jp/" title="ウーマン">
-<link rel="chapter" href="http://nikkei.goo.ne.jp/" title="日経goo">
-<link rel="chapter" href="http://off.nikkei.co.jp/" title="おとなのＯＦＦ">
-<link rel="chapter" href="http://waga.nikkei.co.jp/" title="日経WagaMaga">
-<link rel="chapter" href="http://trendy.nikkei.co.jp/" title="日経トレンディ">
-<link rel="contents" href="../../help/menu.html" title="サイト一覧">
-<link rel="copyright" href="../../help/copy.html" title="著作権について">
-<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/css3/common.css">
-<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/js3/ua2.js"></script>
-<script type="text/javascript"><!--
+
+	
+		<meta content="ja" http-equiv="Content-Language">
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<meta content="© 2006 Nihon Keizai Shimbun, Inc. All rights reserved." name="copyright">
+		<meta content="日本経済新聞社のニュースサイト・NIKKEI NETの国際、海外ニュースを集めたページ。現地記者が世界各地を紹介するコラム「世界街めぐり」、米ダウ・ジョーンズ、英フィナンシャルタイムズのニュースも。" name="description">
+		<meta content="日経,ニュース,速報,米国,アジア,欧州,FT,DJ,世界街めぐり,外電,特派員" name="keywords">
+		<meta content="20061119" name="FJZONE_UPDATE">
+		<meta content="&lt;a href=http://www.nikkei.co.jp&gt;トップ&lt;/a&gt; &amp;GT; &lt;a href=http://www.nikkei.co.jp/news/kaigai/&gt; 国際 &lt;/a&gt;" name="FJZONE_CATEGORY">
+		<title>NIKKEI NET：国際 ニュース</title>
+		<link href="../../index.html" rel="start" title="NIKKEI NET">
+		<link href="http://markets.nikkei.co.jp/" rel="chapter" title="マネー">
+		<link href="http://ir.nikkei.co.jp/" rel="chapter" title="I　R">
+		<link href="http://it.nikkei.co.jp/it/" rel="chapter" title="I　T">
+		<link href="http://bizplus.nikkei.co.jp/" rel="chapter" title="経営">
+		<link href="http://sumai.nikkei.co.jp/" rel="chapter" title="住宅">
+		<link href="../../weekend/index.html" rel="chapter" title="生活・グルメ">
+		<link href="../../help/manabi.html" rel="chapter" title="教育">
+		<link href="http://job.nikkei.co.jp/" rel="chapter" title="就職">
+		<link href="http://kyujin.nikkei.co.jp/" rel="chapter" title="求人">
+		<link href="http://car.nikkei.co.jp/" rel="chapter" title="クルマ">
+		<link href="../../style/index.html" rel="chapter" title="C-style">
+		<link href="http://smartwoman.nikkei.co.jp/" rel="chapter" title="ウーマン">
+		<link href="http://nikkei.goo.ne.jp/" rel="chapter" title="日経goo">
+		<link href="http://off.nikkei.co.jp/" rel="chapter" title="おとなのＯＦＦ">
+		<link href="http://waga.nikkei.co.jp/" rel="chapter" title="日経WagaMaga">
+		<link href="http://trendy.nikkei.co.jp/" rel="chapter" title="日経トレンディ">
+		<link href="../../help/menu.html" rel="contents" title="サイト一覧">
+		<link href="../../help/copy.html" rel="copyright" title="著作権について">
+		<link href="http://parts.nikkei.co.jp/parts/css3/common.css" rel="stylesheet" type="text/css">
+		<script src="http://parts.nikkei.co.jp/parts/js3/ua2.js" type="text/javascript"></script>
+		<script type="text/javascript"><!--
 self.k.writelink();
-//--></script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/text_menu_def.js"></script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/text_menu.js"></script>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/form.js"></script>
-</head>
-<body>
-<div id="header">
-<h2 id="logomark"><a href="../../index.html" name="top" accesskey="y"><img src="http://parts.nikkei.co.jp/parts/net3/logo.gif" width="190" height="47" alt="NIKKEI NET"></a></h2>
-<div id="jump">
-<p><a href="20061119STXKA002219112006.html#topnews">音声ブラウザ専用。こちらより記事見出しへ移動可能です。クリック。</a></p>
-</div>
-<div id="link_half2">
-<p class="img"><iframe width="234" height="60" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" src="http://gavit.nikkei.co.jp/html.ng/cat=wohbr?200611192300">　</iframe></p>
-<p class="img"><iframe width="234" height="60" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" src="http://gavit.nikkei.co.jp/html.ng/cat=wohbl?200611192300">　</iframe></p>
-<ul>
-<li class="koudoku">■<a href="../../hensei/koudoku/index.html" accesskey="u">新聞購読申し込み</a></li>
-<li>■<a href="../../help/nikkei/index.html">日経のイベント</a></li>
-<li>■<a href="http://www.nni.nikkei.co.jp/">ENGLISH</a></li>
-<li>■<a href="../../help/menu.html">サイト一覧</a></li>
-</ul>
-</div>
-<form id="search_form" name="S_FORM" action="20061119STXKA002219112006.html#" method="get" onsubmit="CheckInput(); return false;">
-<p style="font-size:90%; color:#999999; font-weight:bold;">検索</p>
-<p><input type="text" name="keyword" size="40" class="input1" accesskey="j"></p>
-<p><input type="button" value="記事" class="bt1" accesskey="k" onclick="CheckInput(1); return false;"></p>
-<p><input type="button" value="株価" class="bt1" accesskey="l" onclick="CheckInput(4); return false;"></p>
-<p><input type="button" value="求人" class="bt1" accesskey="m" onclick="CheckInput(7); return false;"></p>
-<input type="hidden" name="site" value="">
-<p class="help"><a href="../../help/kensaku.html" accesskey="m"><img src="http://parts.nikkei.co.jp/parts/net3/info.gif" width="21" height="19" alt="" class="tb">検索案内</a></p>
-<p class="goo"><input type="button" value="日経goo" class="bt3" onClick="top.location.href='http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://nikkei.goo.ne.jp/'"></p>
-</form>
-<table border="0" cellspacing="0" cellpadding="0" summary="座標軸を求めるためのテーブルです">
-<tr><td class="layout"><img id="menu_img" class="layout" src="http://parts.nikkei.co.jp/parts/net3/menu_bar_ann4.gif" width="875" height="24" usemap="#menu" alt=""></td></tr>
-</table>
-<map name="menu">
-<area shape="rect" coords="0,1,79,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp" alt="ニュース">
-<area shape="rect" coords="88,5,134,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://markets.nikkei.co.jp/" alt="マネー：株や為替、預貯金、投信の最新情報。持ち株チェックも">
-<area shape="rect" coords="135,5,161,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://ir.nikkei.co.jp/" alt="IR" onmouseover="menu_show('ir','news/kaigai');" onmouseout="menu_hide('ir');">
-<area shape="rect" coords="162,5,188,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://it.nikkei.co.jp/" alt="IT" onmouseover="menu_show('it','news/kaigai');" onmouseout="menu_hide('it');">
-<area shape="rect" coords="189,5,230,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://bizplus.nikkei.co.jp/" alt="経営" onmouseover="menu_show('business','news/kaigai');" onmouseout="menu_hide('business');">
-<area shape="rect" coords="231,5,272,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://sumai.nikkei.co.jp/" alt="住宅" onmouseover="menu_show('house','news/kaigai');" onmouseout="menu_hide('house');">
-<area shape="rect" coords="273,5,352,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/weekend/" alt="生活・グルメ" onmouseover="menu_show('health','news/kaigai');" onmouseout="menu_hide('health');">
-<area shape="rect" coords="353,5,394,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/help/manabi.html" alt="教育" onmouseover="menu_show('study','news/kaigai');" onmouseout="menu_hide('study');">
-<area shape="rect" coords="395,5,436,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://job.nikkei.co.jp/" alt="就職：学生の就職活動を完全サポート、マイページ利用も可能">
-<area shape="rect" coords="437,5,478,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://kyujin.nikkei.co.jp/" alt="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載">
-<area shape="rect" coords="479,5,524,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://car.nikkei.co.jp/" alt="クルマ：クルマ好き応援サイト">
-<area shape="rect" coords="525,5,581,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/style/" alt="C-Style：ライフスタイルにこだわりを持つ30代男性向けウェブマガジン" onmouseover="menu_show('c-style','top');" onmouseout="menu_hide('c-style');">
-<area shape="rect" coords="582,5,637,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://smartwoman.nikkei.co.jp/" alt="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載">
-<area shape="rect" coords="638,5,697,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://waga.nikkei.co.jp/" alt="日経WagaMaga：アタマとカラダを刺激する、大人のためのコミュニティー">
-<area shape="rect" coords="790,5,870,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://off.nikkei.co.jp/" alt="おとなのＯＦＦ">
-<area shape="rect" coords="705,5,785,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://trendy.nikkei.co.jp/" alt="日経トレンディ：個人生活を刺激する流行情報誌">
-</map>
-<ul id="mainmenu">
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/">トップ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/main/">主要</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/keizai/">経済</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/sangyo/">企業</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/market/">株・為替</a> </li>
-<li class="select">国際 </a> </li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/seiji/">政治</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/shakai/">社会</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://sports.nikkei.co.jp/">スポーツ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/newpro/news/">新製品</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://release.nikkei.co.jp/">リリース</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/shasetsu/">社説・春秋</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/okuyami/">おくやみ</a> |</li>
-<li><a href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/netnavi/">ネットナビ</a></li>
-</ul>
-</div>
-<hr>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="レイアウト目的のテーブルです">
-<colgroup><col width="100%"><col></colgroup>
-<tr>
-<td valign="top">
-<div id="contents">
-<div id="contents_title">
-<h2><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/" accesskey="i">国際                                                                                                                                                                                                                                                            </a></h2>
-<p id="title_description"></p>
-<p id="contents_title_link">&gt;&gt;&nbsp;<a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/">記事一覧</a></p>
-</div>
-<ul class="submenu">
-<li class="top">▼トップ</li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/us/">米国</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/eu/">欧州</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/china/">中国ビジネス</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/asia/">アジア・他</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/">英FT</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/djindex.html">米DJ</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/column/">街めぐり</a></li>
-</ul>
-<a name="topnews" accesskey="o" href="20061119STXKA002219112006.html"></a>
-<h1 id="heading" class="heading"><!--FJZONE START NAME="MIDASHI" --><!-- headline -->ＰＫＯ派遣への同意否定・ダルフールでスーダン外相<!-- /headline --><!--FJZONE END NAME="MIDASHI" --></h1>
-<p>
-<!--FJZONE START NAME="HONBUN" -->
-　【ナイロビ19日共同】スーダンからの報道によると、西部ダルフール地方の紛争問題で同国のアコル外相は18日、「アフリカ連合（ＡＵ）と国連の合同平和維持活動（ＰＫＯ）部隊の派遣には同意していない」と述べ、依然として国連部隊の関与を拒否していることを明らかにした。<br><br>
-　国連のアナン事務総長は16日、ＡＵ本部のあるエチオピアでＡＵやアラブ連盟などと会合した後、スーダン政府が合同ＰＫＯ部隊派遣に基本的に同意したと発表していた。<br><br>
-　しかし同会合に参加したアコル外相は「同意したのは、ダルフールのＡＵ部隊に対する国連技術部隊の支援だけ」と強調。ＡＵと国連の合同司令部設置や１万7000人規模の部隊駐留の提案も拒否したと述べ、あくまでＡＵ部隊の増強を求める従来の立場を再確認した。
-(13:04)<!--FJZONE END NAME="HONBUN" -->
-</p>
-<div class="kiji">
-<h3 class="kiji_link">● 関連記事</h3>
-<ul>
-<li><a href="http://www.nikkei.co.jp/news/kaigai/20060826AT2M2501625082006.html">米、スーダンに高官派遣へ・国連部隊受け入れ迫る(8/26)</a></li>
-<li><a href="20060917STXKA000117092006.html">スーダン大統領、ＰＫＯ拒否(9/17)</a></li>
-</ul>
-</div>
-<div id="sub_text_ad">
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt1?200611192300"></script>
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt2?200611192300"></script>
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt3?200611192300"></script>
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt4?200611192300"></script>
-</div>
-<script type="text/Javascript" src="packhead.js"></script>
-<div id="sub_text_ad">
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts1?200611192300"></script>
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts2?200611192300"></script>
-<script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts3?200611192300"></script>
-</div>
-<script type="text/Javascript" src="packtoday.js"></script>
-<p class="k_link">&gt;&gt;&nbsp;<a href="../past/index.cfm@g=G1.html">過去記事一覧</a></p>
-<hr class="vis" style="margin-top: 10px;">
-<ul class="submenu" style="margin:0px;">
-<li class="top">▼トップ</li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/us/">米国</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/eu/">欧州</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/china/">中国ビジネス</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/asia/">アジア・他</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/">英FT</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/djindex.html">米DJ</a></li>
-<li style="width: 80px;"><a href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/column/">街めぐり</a></li>
-</ul>
-</div>
-</td>
-<td valign="top">
-<div id="right_contents">
-<p class="img"><script type="text/JavaScript" src="http://gavit.nikkei.co.jp/js.ng/cat=woladn?200611192300"></script></p>
-<script type="text/javascript" src="../../misc/promo/tool_phrase.js"></script>
-<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/js3/parts.tool_output.js"></script>
-</div>
-</td>
-</tr>
-</table>
-<hr>
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<colgroup><col width="232"><col><col width="152"></colgroup>
-<tr>
-<td valign="top" class="shago1"><a href="../../hensei/koudoku/index.html"><img src="http://parts.nikkei.co.jp/parts/net3/subscription3.gif" alt="ご購読のお申し込み" width="232" height="35" style="margin-top:22px;"></a></td>
-<td class="shago1"><div id="shagoshago">●<a href="../../honshi/index.html"><b>日本経済新聞</b>&nbsp;</a>・<a href="../../p1/index.html">日経プラス1</a>　●<a href="http://ss.nikkei.co.jp/ss/"><b>日経産業新聞</b></a>　●<a href="../../mj/index.html"><b>日経MJ</b>（流通新聞）</a>　●<a href="../../ks/index.html"><b>日経金融新聞</b></a></div></td>
-<td class="shago1" valign="top"><img src="http://parts.nikkei.co.jp/parts/net3/subscription_bgimg8.gif" alt="" width="152" height="62"></td>
-</tr>
-</table>
-<div id="nk_footer">
-<div id="footermenu">
-<p class="pagetop" ><a href="20061119STXKA002219112006.html#top">▲ 画面上へ</a></p>
-<h2><a href="../../index.html" title="NIKKEI NET について" target="_top"><script type="text/JavaScript" src="http://parts.nikkei.co.jp/parts/tr/www_ls.js"></script>
-<noscript><img src="http://www.tr.nikkei.co.jp/logo_s/:::/news/kaigai/20061119STXKA002219112006.html" alt="NIKKEI NET" width="91" height="15" border="0" align="middle"></noscript>
-</a></h2>
-<div class="cmn_clear" ><img src="../../parts/s.gif" width="1" height="1" alt=""></div>
-<ul>
-<li>NIKKEI NETについて：</li>
-<li><a href="../../help/copy.html" target="_top">著作権について</a> | </li>
-<li><a href="../../help/privacy.html" target="_top">プライバシーポリシー</a> | </li>
-<li><a href="../../help/cookie.html" target="_top">セキュリティーポリシー</a> | </li>
-<li><a href="../../help/link.html" target="_top">リンクポリシー</a> | </li>
-<li><a href="https://sch.nikkei.co.jp/nikkeinet/" target="_blank">お問い合わせ</a> | </li>
-<li><a href="../../ad/mm/index.html" target="_top">NET 広告お申し込みガイド</a></li>
-</ul>
-<div id="nikkeiinfo">
-<p>日本経済新聞社について：<strong><a href="../../privacy/index.html" target="_top">個人情報の取り扱い</a></strong> | <a href="../../saiyo/index.html" target="_top">本社採用案内</a> | <a href="http://www.nikkei.com/" target="_top">日経グループ情報</a> | <a href="../../nikkeiinfo/index.html" target="_top">会社情報・お知らせ</a> | <a href="http://www.nikkei-ad.com/" target="_top">新聞広告お申し込みガイド</a> | <a href="http://www.nikkei4946.com/index.asp" target="_top">NIKKEI4946.com（紙面紹介と購読案内）</a></p>
-</div>
-<p class="copyright">
-(C) 2006 Nihon Keizai Shimbun,&nbsp;Inc.&nbsp;All rights reserved.</p>
-</div></div>
-<script type="text/Javascript" src="http://parts.nikkei.co.jp/parts/js3/menu_pos.js"></script>
-<SCRIPT type="text/javascript" src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js"></SCRIPT>
-</body>
+//--></script><link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/css3/gecko.css" title="priority">
+		<script src="http://parts.nikkei.co.jp/parts/js3/text_menu_def.js" type="text/Javascript"></script>
+		<script src="http://parts.nikkei.co.jp/parts/js3/text_menu.js" type="text/Javascript"></script>
+		<script src="http://parts.nikkei.co.jp/parts/js3/form.js" type="text/Javascript"></script>
+	</head><body myoffsetwidth="974" myoffsetheight="965" myoffsetleft="0" myoffsettop="0">
+		<div myoffsetwidth="974" myoffsetheight="152" myoffsetleft="0" myoffsettop="0" id="header">
+			<h2 myoffsetwidth="192" myoffsetheight="50" myoffsetleft="0" myoffsettop="0" id="logomark"><a myoffsetwidth="190" myoffsetheight="21" myoffsetleft="5" myoffsettop="29" accesskey="y" href="../../index.html" name="top"><img myoffsetwidth="190" myoffsetheight="47" myoffsetleft="5" myoffsettop="3" alt="NIKKEI NET" src="http://parts.nikkei.co.jp/parts/net3/logo.gif" width="190" height="47"></a></h2>
+			<div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="-100" id="jump">
+				<p myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" href="20061119STXKA002219112006.html#topnews">音声ブラウザ専用。こちらより記事見出しへ移動可能です。クリック。</a></p></div>
+			<div myoffsetwidth="974" myoffsetheight="70" myoffsetleft="0" myoffsettop="0" id="link_half2">
+				<p myoffsetwidth="234" myoffsetheight="60" myoffsetleft="737" myoffsettop="10" class="img">
+					<iframe myoffsetwidth="234" myoffsetheight="60" myoffsetleft="737" myoffsettop="10" marginheight="0" marginwidth="0" src="http://gavit.nikkei.co.jp/html.ng/cat=wohbr?200611192300" width="234" frameborder="0" height="60" scrolling="no">　</iframe>
+				</p><p myoffsetwidth="234" myoffsetheight="60" myoffsetleft="500" myoffsettop="10" class="img">
+					<iframe myoffsetwidth="234" myoffsetheight="60" myoffsetleft="500" myoffsettop="10" marginheight="0" marginwidth="0" src="http://gavit.nikkei.co.jp/html.ng/cat=wohbl?200611192300" width="234" frameborder="0" height="60" scrolling="no">　</iframe>
+				</p><ul myoffsetwidth="116" myoffsetheight="61" myoffsetleft="381" myoffsettop="10">
+					<li myoffsetwidth="116" myoffsetheight="12" myoffsetleft="381" myoffsettop="11" class="koudoku">■<a myoffsetwidth="93" myoffsetheight="13" myoffsetleft="393" myoffsettop="11" accesskey="u" href="../../hensei/koudoku/index.html">新聞購読申し込み</a></li><li myoffsetwidth="116" myoffsetheight="12" myoffsetleft="381" myoffsettop="26">■<a myoffsetwidth="75" myoffsetheight="13" myoffsetleft="393" myoffsettop="26" href="../../help/nikkei/index.html">日経のイベント</a></li><li myoffsetwidth="116" myoffsetheight="12" myoffsetleft="381" myoffsettop="41">■<a myoffsetwidth="47" myoffsetheight="13" myoffsetleft="393" myoffsettop="41" href="http://www.nni.nikkei.co.jp/">ENGLISH</a></li><li myoffsetwidth="116" myoffsetheight="12" myoffsetleft="381" myoffsettop="56">■<a myoffsetwidth="54" myoffsetheight="13" myoffsetleft="393" myoffsettop="56" href="../../help/menu.html">サイト一覧</a></li></ul>
+			</div>
+			<form myoffsetwidth="974" myoffsetheight="75" myoffsetleft="0" myoffsettop="77" action="20061119STXKA002219112006.html#" id="search_form" method="get" name="S_FORM" onsubmit="CheckInput(); return false;">
+				<p myoffsetwidth="30" myoffsetheight="15" myoffsetleft="195" myoffsettop="81" style="font-size: 90%; color: rgb(153, 153, 153); font-weight: bold;">検索</p><p myoffsetwidth="213" myoffsetheight="13" myoffsetleft="230" myoffsettop="83"><input myoffsetwidth="213" myoffsetheight="20" myoffsetleft="230" myoffsettop="79" accesskey="j" class="input1" name="keyword" size="40" type="text"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="448" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="448" myoffsettop="78" accesskey="k" class="bt1" onclick="CheckInput(1); return false;" value="記事" type="button"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="501" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="501" myoffsettop="78" accesskey="l" class="bt1" onclick="CheckInput(4); return false;" value="株価" type="button"></p><p myoffsetwidth="48" myoffsetheight="13" myoffsetleft="554" myoffsettop="83"><input myoffsetwidth="48" myoffsetheight="22" myoffsetleft="554" myoffsettop="78" accesskey="m" class="bt1" onclick="CheckInput(7); return false;" value="求人" type="button"><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="site" value="" type="hidden"></p><p myoffsetwidth="74" myoffsetheight="13" myoffsetleft="622" myoffsettop="83" class="help"><a myoffsetwidth="74" myoffsetheight="13" myoffsetleft="622" myoffsettop="83" accesskey="m" href="../../help/kensaku.html"><img myoffsetwidth="21" myoffsetheight="19" myoffsetleft="622" myoffsettop="77" alt="" class="tb" src="http://parts.nikkei.co.jp/parts/net3/info.gif" width="21" height="19">検索案内</a></p><p myoffsetwidth="68" myoffsetheight="13" myoffsetleft="716" myoffsettop="83" class="goo"><input myoffsetwidth="68" myoffsetheight="22" myoffsetleft="716" myoffsettop="78" class="bt3" onclick="top.location.href='http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://nikkei.goo.ne.jp/'" value="日経goo" type="button">
+			</p><table myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="99" summary="座標軸を求めるためのテーブルです" border="0" cellpadding="0" cellspacing="0">
+				<tbody myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0">
+					<td myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" class="layout"><img myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" class="layout" id="menu_img" src="http://parts.nikkei.co.jp/parts/net3/menu_bar_ann4.gif" usemap="#menu" width="875" height="24"></td>
+				</tr>
+			</tbody></table>
+			<map myoffsetwidth="974" myoffsetheight="0" myoffsetleft="0" myoffsettop="123" name="menu">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="ニュース" coords="0,1,79,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="マネー：株や為替、預貯金、投信の最新情報。持ち株チェックも" coords="88,5,134,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://markets.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="IR" coords="135,5,161,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://ir.nikkei.co.jp/" onmouseout="menu_hide('ir');" onmouseover="menu_show('ir','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="IT" coords="162,5,188,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://it.nikkei.co.jp/" onmouseout="menu_hide('it');" onmouseover="menu_show('it','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="経営" coords="189,5,230,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://bizplus.nikkei.co.jp/" onmouseout="menu_hide('business');" onmouseover="menu_show('business','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="住宅" coords="231,5,272,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://sumai.nikkei.co.jp/" onmouseout="menu_hide('house');" onmouseover="menu_show('house','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="生活・グルメ" coords="273,5,352,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/weekend/" onmouseout="menu_hide('health');" onmouseover="menu_show('health','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="教育" coords="353,5,394,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/help/manabi.html" onmouseout="menu_hide('study');" onmouseover="menu_show('study','news/kaigai');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="就職：学生の就職活動を完全サポート、マイページ利用も可能" coords="395,5,436,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://job.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="求人：日経の転職サイトとWeb上の企業ページから自動的に収集した求人情報を掲載" coords="437,5,478,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://kyujin.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="クルマ：クルマ好き応援サイト" coords="479,5,524,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://car.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="C-Style：ライフスタイルにこだわりを持つ30代男性向けウェブマガジン" coords="525,5,581,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://www.nikkei.co.jp/style/" onmouseout="menu_hide('c-style');" onmouseover="menu_show('c-style','top');" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="ウーマン：働く女性向けのニュースや生活情報、参加型コンテンツ満載" coords="582,5,637,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://smartwoman.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="日経WagaMaga：アタマとカラダを刺激する、大人のためのコミュニティー" coords="638,5,697,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://waga.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="おとなのＯＦＦ" coords="790,5,870,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://off.nikkei.co.jp/" shape="rect">
+				<area myoffsetwidth="875" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="日経トレンディ：個人生活を刺激する流行情報誌" coords="705,5,785,24" href="http://rd.nikkei.co.jp/net/news/kaigai/pulldown/u=http://trendy.nikkei.co.jp/" shape="rect">
+			</map>
+			<ul myoffsetwidth="974" myoffsetheight="29" myoffsetleft="0" myoffsettop="123" id="mainmenu">
+				<li myoffsetwidth="38" myoffsetheight="15" myoffsetleft="144" myoffsettop="130"><a myoffsetwidth="31" myoffsetheight="15" myoffsetleft="144" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/">トップ</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="184" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="184" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/main/">主要</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="220" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="220" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/keizai/">経済</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="256" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="256" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/sangyo/">企業</a> |</li><li myoffsetwidth="49" myoffsetheight="15" myoffsetleft="293" myoffsettop="130"><a myoffsetwidth="49" myoffsetheight="15" myoffsetleft="293" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/market/">株・為替</a></li><li myoffsetwidth="47" myoffsetheight="25" myoffsetleft="348" myoffsettop="128" class="select">国際  </li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="405" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="405" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/seiji/">政治</a> |</li><li myoffsetwidth="35" myoffsetheight="15" myoffsetleft="442" myoffsettop="130"><a myoffsetwidth="28" myoffsetheight="15" myoffsetleft="442" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/shakai/">社会</a> |</li><li myoffsetwidth="58" myoffsetheight="15" myoffsetleft="478" myoffsettop="130"><a myoffsetwidth="51" myoffsetheight="15" myoffsetleft="478" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://sports.nikkei.co.jp/">スポーツ</a> |</li><li myoffsetwidth="49" myoffsetheight="15" myoffsetleft="538" myoffsettop="130"><a myoffsetwidth="42" myoffsetheight="15" myoffsetleft="538" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/newpro/news/">新製品</a> |</li><li myoffsetwidth="53" myoffsetheight="15" myoffsetleft="588" myoffsettop="130"><a myoffsetwidth="46" myoffsetheight="15" myoffsetleft="588" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://release.nikkei.co.jp/">リリース</a> |</li><li myoffsetwidth="70" myoffsetheight="15" myoffsetleft="643" myoffsettop="130"><a myoffsetwidth="63" myoffsetheight="15" myoffsetleft="643" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/shasetsu/">社説・春秋</a> |</li><li myoffsetwidth="56" myoffsetheight="15" myoffsetleft="714" myoffsettop="130"><a myoffsetwidth="49" myoffsetheight="15" myoffsetleft="714" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/news/okuyami/">おくやみ</a> |</li><li myoffsetwidth="57" myoffsetheight="15" myoffsetleft="771" myoffsettop="130"><a myoffsetwidth="57" myoffsetheight="15" myoffsetleft="771" myoffsettop="130" href="http://rd.nikkei.co.jp/net/news/kaigai/gennavi/u=http://www.nikkei.co.jp/netnavi/">ネットナビ</a></li></ul>
+		</form></div>
+		<hr myoffsetwidth="974" myoffsetheight="2" myoffsetleft="0" myoffsettop="158">
+		<table myoffsetwidth="974" myoffsetheight="579" myoffsetleft="0" myoffsettop="164" summary="レイアウト目的のテーブルです" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<colgroup myoffsetwidth="974" myoffsetheight="579" myoffsetleft="0" myoffsettop="0">
+				<col myoffsetwidth="664" myoffsetheight="579" myoffsetleft="0" myoffsettop="0" width="100%">
+				<col myoffsetwidth="310" myoffsetheight="579" myoffsetleft="664" myoffsettop="0">
+			</colgroup>
+			<tbody myoffsetwidth="974" myoffsetheight="579" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="974" myoffsetheight="579" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="664" myoffsetheight="579" myoffsetleft="0" myoffsettop="0" valign="top">
+					<div myoffsetwidth="636" myoffsetheight="553" myoffsetleft="10" myoffsettop="0" id="contents">
+						<div myoffsetwidth="638" myoffsetheight="23" myoffsetleft="10" myoffsettop="0" id="contents_title">
+							<h2 myoffsetwidth="130" myoffsetheight="22" myoffsetleft="11" myoffsettop="1"><a myoffsetwidth="32" myoffsetheight="16" myoffsetleft="60" myoffsettop="3" accesskey="i" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/">国際 </a></h2>
+							<p myoffsetwidth="0" myoffsetheight="23" myoffsetleft="154" myoffsettop="1" id="title_description">
+							</p><p myoffsetwidth="610" myoffsetheight="23" myoffsetleft="24" myoffsettop="1" id="contents_title_link">&gt;&gt;&nbsp;<a myoffsetwidth="56" myoffsetheight="14" myoffsetleft="578" myoffsettop="6" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/">記事一覧</a></p></div>
+						<ul myoffsetwidth="636" myoffsetheight="20" myoffsetleft="10" myoffsettop="25" class="submenu">
+							<li myoffsetwidth="131" myoffsetheight="21" myoffsetleft="10" myoffsettop="25" class="top">▼トップ</li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="143" myoffsettop="25" style="width: 80px;"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="173" myoffsettop="29" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/us/">米国</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="231" myoffsettop="25" style="width: 80px;"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="261" myoffsettop="29" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/eu/">欧州</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="319" myoffsettop="25" style="width: 80px;"><a myoffsetwidth="73" myoffsetheight="14" myoffsetleft="326" myoffsettop="29" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/china/">中国ビジネス</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="407" myoffsettop="25" style="width: 80px;"><a myoffsetwidth="56" myoffsetheight="14" myoffsetleft="422" myoffsettop="29" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/asia/">アジア・他</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="495" myoffsettop="25" style="width: 80px;"><a myoffsetwidth="28" myoffsetheight="14" myoffsetleft="524" myoffsettop="29" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/">英FT</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="10" myoffsettop="48" style="width: 80px;"><a myoffsetwidth="28" myoffsetheight="14" myoffsetleft="39" myoffsettop="52" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/djindex.html">米DJ</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="98" myoffsettop="48" style="width: 80px;"><a myoffsetwidth="45" myoffsetheight="14" myoffsetleft="119" myoffsettop="52" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/column/">街めぐり</a></li></ul><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="186" myoffsettop="55" accesskey="o" href="20061119STXKA002219112006.html" name="topnews"></a><h1 myoffsetwidth="636" myoffsetheight="33" myoffsetleft="10" myoffsettop="71" class="heading" id="heading">ＰＫＯ派遣への同意否定・ダルフールでスーダン外相</h1>
+						<p myoffsetwidth="636" myoffsetheight="240" myoffsetleft="10" myoffsettop="116">  　【ナイロビ19日共同】スーダンからの報道によると、西部ダルフール地方の紛争問題で同国のアコル外相は18日、「アフリカ連合（ＡＵ）と国連の合同平和維持活動（ＰＫＯ）部隊の派遣には同意していない」と述べ、依然として国連部隊の関与を拒否していることを明らかにした。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="579" myoffsettop="181">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="188"> 　国連のアナン事務総長は16日、ＡＵ本部のあるエチオピアでＡＵやアラブ連盟などと会合した後、スーダン政府が合同ＰＫＯ部隊派遣に基本的に同意したと発表していた。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="523" myoffsettop="253">
+							<br myoffsetwidth="0" myoffsetheight="24" myoffsetleft="10" myoffsettop="260"> 　しかし同会合に参加したアコル外相は「同意したのは、ダルフールのＡＵ部隊に対する国連技術部隊の支援だけ」と強調。ＡＵと国連の合同司令部設置や１万7000人規模の部隊駐留の提案も拒否したと述べ、あくまでＡＵ部隊の増強を求める従来の立場を再確認した。 (13:04) </p><div myoffsetwidth="636" myoffsetheight="73" myoffsetleft="10" myoffsettop="372" class="kiji">
+							<h3 myoffsetwidth="636" myoffsetheight="23" myoffsetleft="10" myoffsettop="372" class="kiji_link">● 関連記事</h3>
+							<ul myoffsetwidth="636" myoffsetheight="46" myoffsetleft="10" myoffsettop="400">
+								<li myoffsetwidth="636" myoffsetheight="23" myoffsetleft="10" myoffsettop="400"><a myoffsetwidth="366" myoffsetheight="16" myoffsetleft="30" myoffsettop="403" href="http://www.nikkei.co.jp/news/kaigai/20060826AT2M2501625082006.html">米、スーダンに高官派遣へ・国連部隊受け入れ迫る(8/26)</a></li><li myoffsetwidth="636" myoffsetheight="23" myoffsetleft="10" myoffsettop="422"><a myoffsetwidth="216" myoffsetheight="16" myoffsetleft="30" myoffsettop="426" href="20060917STXKA000117092006.html">スーダン大統領、ＰＫＯ拒否(9/17)</a></li></ul>
+						</div>
+						<div myoffsetwidth="636" myoffsetheight="4" myoffsetleft="10" myoffsettop="457" id="sub_text_ad">
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt1?200611192300" type="text/JavaScript"></script>
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt2?200611192300" type="text/JavaScript"></script>
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt3?200611192300" type="text/JavaScript"></script>
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxt4?200611192300" type="text/JavaScript"></script>
+						</div>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="packhead.js" type="text/Javascript"></script>
+						<div myoffsetwidth="636" myoffsetheight="4" myoffsetleft="10" myoffsettop="474" id="sub_text_ad">
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts1?200611192300" type="text/JavaScript"></script>
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts2?200611192300" type="text/JavaScript"></script>
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=antxts3?200611192300" type="text/JavaScript"></script>
+						</div>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="packtoday.js" type="text/Javascript"></script>
+						<p myoffsetwidth="636" myoffsetheight="19" myoffsetleft="10" myoffsettop="491" class="k_link">&gt;&gt;&nbsp;<a myoffsetwidth="84" myoffsetheight="14" myoffsetleft="31" myoffsettop="494" href="../past/index.cfm@g=G1.html">過去記事一覧</a></p><hr myoffsetwidth="636" myoffsetheight="2" myoffsetleft="10" myoffsettop="527" class="vis" style="margin-top: 10px;">
+						<ul myoffsetwidth="636" myoffsetheight="20" myoffsetleft="10" myoffsettop="533" class="submenu" style="margin: 0px;">
+							<li myoffsetwidth="131" myoffsetheight="21" myoffsetleft="10" myoffsettop="533" class="top">▼トップ</li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="143" myoffsettop="533" style="width: 80px;"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="173" myoffsettop="537" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/us/">米国</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="231" myoffsettop="533" style="width: 80px;"><a myoffsetwidth="26" myoffsetheight="14" myoffsetleft="261" myoffsettop="537" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/eu/">欧州</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="319" myoffsettop="533" style="width: 80px;"><a myoffsetwidth="73" myoffsetheight="14" myoffsetleft="326" myoffsettop="537" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/china/">中国ビジネス</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="407" myoffsettop="533" style="width: 80px;"><a myoffsetwidth="56" myoffsetheight="14" myoffsetleft="422" myoffsettop="537" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/asia/">アジア・他</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="495" myoffsettop="533" style="width: 80px;"><a myoffsetwidth="28" myoffsetheight="14" myoffsetleft="524" myoffsettop="537" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/">英FT</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="10" myoffsettop="556" style="width: 80px;"><a myoffsetwidth="28" myoffsetheight="14" myoffsetleft="39" myoffsettop="560" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/news/kaigai/media/djindex.html">米DJ</a></li><li myoffsetwidth="86" myoffsetheight="21" myoffsetleft="98" myoffsettop="556" style="width: 80px;"><a myoffsetwidth="45" myoffsetheight="14" myoffsetleft="119" myoffsettop="560" href="http://rd.nikkei.co.jp/net/news/kaigai/topnavi/u=http://www.nikkei.co.jp/kaigai/column/">街めぐり</a></li></ul>
+					</div>
+				</td>
+				<td myoffsetwidth="310" myoffsetheight="579" myoffsetleft="664" myoffsettop="0" valign="top">
+					<div myoffsetwidth="300" myoffsetheight="250" myoffsetleft="0" myoffsettop="0" id="right_contents">
+						<p myoffsetwidth="300" myoffsetheight="250" myoffsetleft="0" myoffsettop="0" class="img">
+							<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://gavit.nikkei.co.jp/js.ng/cat=woladn?200611192300" type="text/JavaScript"></script><a myoffsetwidth="300" myoffsetheight="14" myoffsetleft="0" myoffsettop="236" href="http://gavit.nikkei.co.jp/event.ng/Type=click&amp;Segments=1,454,455,1734,1735,1736,1737,1748,1899&amp;Targets=2103,2533,2081,2884,2985,2997,3003,2054,2577&amp;Values=30,50,63,72,86,92,102,150,585,588,745,799,1114,1278,1559,1585,2457,2464,2541,2688,2731&amp;RawValues=CATEGORYID%2Cwoladn&amp;TargetID=2577&amp;FlightID=66751&amp;AdID=96408&amp;Redirect=http://r.advg.jp/adptg_count/r%3Fadptg_aid%3D1389%26adptg_mid%3D1718%26adptg_lid%3D1" target="_top"><img myoffsetwidth="300" myoffsetheight="250" myoffsetleft="0" myoffsettop="0" src="http://adb.nikkei.co.jp/ad/logo/2009b/RecruitAgent090914-LargeRect.gif" alt="" width="300" border="0" height="250"></a>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="../../misc/promo/tool_phrase.js" type="text/javascript"></script>
+						<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/js3/parts.tool_output.js" type="text/javascript"></script>
+					</p></div>
+				</td>
+			</tr>
+		</tbody></table>
+		<hr myoffsetwidth="974" myoffsetheight="2" myoffsetleft="0" myoffsettop="747">
+		<table myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="753" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<colgroup myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0">
+				<col myoffsetwidth="232" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" width="232">
+				<col myoffsetwidth="590" myoffsetheight="62" myoffsetleft="232" myoffsettop="0">
+				<col myoffsetwidth="152" myoffsetheight="62" myoffsetleft="822" myoffsettop="0" width="152">
+			</colgroup>
+			<tbody myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="974" myoffsetheight="62" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="232" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" class="shago1" valign="top"><a myoffsetwidth="232" myoffsetheight="14" myoffsetleft="0" myoffsettop="43" href="../../hensei/koudoku/index.html"><img myoffsetwidth="232" myoffsetheight="35" myoffsetleft="0" myoffsettop="22" alt="ご購読のお申し込み" src="http://parts.nikkei.co.jp/parts/net3/subscription3.gif" style="margin-top: 22px;" width="232" height="35"></a></td>
+				<td myoffsetwidth="590" myoffsetheight="62" myoffsetleft="232" myoffsettop="0" class="shago1">
+					<div myoffsetwidth="590" myoffsetheight="17" myoffsetleft="0" myoffsettop="29" id="shagoshago">●<a myoffsetwidth="88" myoffsetheight="14" myoffsetleft="13" myoffsettop="31" href="../../honshi/index.html"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="13" myoffsettop="31">日本経済新聞</b>&nbsp;</a>・<a myoffsetwidth="66" myoffsetheight="14" myoffsetleft="108" myoffsettop="31" href="../../p1/index.html">日経プラス1</a>　●<a myoffsetwidth="84" myoffsetheight="14" myoffsetleft="196" myoffsettop="31" href="http://ss.nikkei.co.jp/ss/"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="196" myoffsettop="31">日経産業新聞</b></a>　●<a myoffsetwidth="113" myoffsetheight="14" myoffsetleft="302" myoffsettop="31" href="../../mj/index.html"><b myoffsetwidth="47" myoffsetheight="14" myoffsetleft="302" myoffsettop="31">日経MJ</b>（流通新聞）</a>　●<a myoffsetwidth="84" myoffsetheight="14" myoffsetleft="437" myoffsettop="31" href="../../ks/index.html"><b myoffsetwidth="84" myoffsetheight="14" myoffsetleft="437" myoffsettop="31">日経金融新聞</b></a></div>
+				</td>
+				<td myoffsetwidth="152" myoffsetheight="62" myoffsetleft="822" myoffsettop="0" class="shago1" valign="top"><img myoffsetwidth="152" myoffsetheight="62" myoffsetleft="0" myoffsettop="0" alt="" src="http://parts.nikkei.co.jp/parts/net3/subscription_bgimg8.gif" width="152" height="62"></td>
+			</tr>
+		</tbody></table>
+		<div myoffsetwidth="974" myoffsetheight="150" myoffsetleft="0" myoffsettop="815" id="nk_footer">
+			<div myoffsetwidth="974" myoffsetheight="150" myoffsetleft="0" myoffsettop="815" id="footermenu">
+				<p myoffsetwidth="79" myoffsetheight="13" myoffsetleft="895" myoffsettop="820" class="pagetop"><a myoffsetwidth="69" myoffsetheight="14" myoffsetleft="900" myoffsettop="820" href="20061119STXKA002219112006.html#top">▲ 画面上へ</a></p><h2 myoffsetwidth="101" myoffsetheight="19" myoffsetleft="0" myoffsettop="818"><a myoffsetwidth="91" myoffsetheight="14" myoffsetleft="5" myoffsettop="819" href="../../index.html" target="_top" title="NIKKEI NET について"><script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/tr/www_ls.js" type="text/JavaScript"></script><img myoffsetwidth="91" myoffsetheight="15" myoffsetleft="5" myoffsettop="822" src="http://www.tr.nikkei.co.jp/logo_s/:::/C:/Users/8BKSA34196/Desktop/htmls//Sudan/087.html:::" alt="NIKKEI NET" width="91" align="middle" border="0" height="15">
+						<noscript myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0"><img align="middle" alt="NIKKEI NET" border="0" height="15" src="http://www.tr.nikkei.co.jp/logo_s/:::/news/kaigai/20061119STXKA002219112006.html" width="91" /></noscript></a></h2>
+				<div myoffsetwidth="974" myoffsetheight="0" myoffsetleft="0" myoffsettop="838" class="cmn_clear"><img myoffsetwidth="0" myoffsetheight="0" myoffsetleft="487" myoffsettop="838" alt="" src="../../parts/s.gif" width="1" height="1"></div>
+				<ul myoffsetwidth="974" myoffsetheight="16" myoffsetleft="0" myoffsettop="848">
+					<li myoffsetwidth="119" myoffsetheight="14" myoffsetleft="89" myoffsettop="849">NIKKEI NETについて：</li><li myoffsetwidth="98" myoffsetheight="14" myoffsetleft="208" myoffsettop="849"><a myoffsetwidth="87" myoffsetheight="14" myoffsetleft="208" myoffsettop="849" href="../../help/copy.html" target="_top">著作権について</a> | </li><li myoffsetwidth="125" myoffsetheight="14" myoffsetleft="306" myoffsettop="849"><a myoffsetwidth="114" myoffsetheight="14" myoffsetleft="306" myoffsettop="849" href="../../help/privacy.html" target="_top">プライバシーポリシー</a> | </li><li myoffsetwidth="134" myoffsetheight="14" myoffsetleft="431" myoffsettop="849"><a myoffsetwidth="123" myoffsetheight="14" myoffsetleft="431" myoffsettop="849" href="../../help/cookie.html" target="_top">セキュリティーポリシー</a> | </li><li myoffsetwidth="88" myoffsetheight="14" myoffsetleft="565" myoffsettop="849"><a myoffsetwidth="77" myoffsetheight="14" myoffsetleft="565" myoffsettop="849" href="../../help/link.html" target="_top">リンクポリシー</a> | </li><li myoffsetwidth="87" myoffsetheight="14" myoffsetleft="653" myoffsettop="849"><a myoffsetwidth="76" myoffsetheight="14" myoffsetleft="653" myoffsettop="849" href="https://sch.nikkei.co.jp/nikkeinet/" target="_blank">お問い合わせ</a> | </li><li myoffsetwidth="145" myoffsetheight="14" myoffsetleft="740" myoffsettop="849"><a myoffsetwidth="145" myoffsetheight="14" myoffsetleft="740" myoffsettop="849" href="../../ad/mm/index.html" target="_top">NET 広告お申し込みガイド</a></li></ul>
+				<div myoffsetwidth="696" myoffsetheight="59" myoffsetleft="139" myoffsettop="874" id="nikkeiinfo">
+					<p myoffsetwidth="650" myoffsetheight="41" myoffsetleft="162" myoffsettop="883">日本経済新聞社について：<strong myoffsetwidth="122" myoffsetheight="14" myoffsetleft="308" myoffsettop="886"><a myoffsetwidth="122" myoffsetheight="14" myoffsetleft="308" myoffsettop="886" href="../../privacy/index.html" target="_top">個人情報の取り扱い</a></strong> | <a myoffsetwidth="78" myoffsetheight="14" myoffsetleft="441" myoffsettop="886" href="../../saiyo/index.html" target="_top">本社採用案内</a> | <a myoffsetwidth="100" myoffsetheight="14" myoffsetleft="530" myoffsettop="886" href="http://www.nikkei.com/" target="_top">日経グループ情報</a> | <a myoffsetwidth="107" myoffsetheight="14" myoffsetleft="641" myoffsettop="886" href="../../nikkeiinfo/index.html" target="_top">会社情報・お知らせ</a> | <a myoffsetwidth="144" myoffsetheight="14" myoffsetleft="309" myoffsettop="906" href="http://www.nikkei-ad.com/" target="_top">新聞広告お申し込みガイド</a> | <a myoffsetwidth="220" myoffsetheight="14" myoffsetleft="464" myoffsettop="906" href="http://www.nikkei4946.com/index.asp" target="_top">NIKKEI4946.com（紙面紹介と購読案内）</a></p></div>
+				<p myoffsetwidth="974" myoffsetheight="32" myoffsetleft="0" myoffsettop="933" class="copyright"> (C) 2006 Nihon Keizai Shimbun,&nbsp;Inc.&nbsp;All rights reserved.</p></div>
+		</div>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/js3/menu_pos.js" type="text/Javascript"></script><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="134" myoffsettop="123" id="submenu_ir" onmouseover="menu_show2('ir');" onmouseout="menu_hide('ir');" style="z-index: 99; left: 134px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="162" myoffsettop="123" id="submenu_it" onmouseover="menu_show2('it');" onmouseout="menu_hide('it');" style="z-index: 99; left: 162px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="231" myoffsettop="123" id="submenu_house" onmouseover="menu_show2('house');" onmouseout="menu_hide('house');" style="z-index: 99; left: 231px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="353" myoffsettop="123" id="submenu_study" onmouseover="menu_show2('study');" onmouseout="menu_hide('study');" style="z-index: 99; left: 353px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="189" myoffsettop="123" id="submenu_business" onmouseover="menu_show2('business');" onmouseout="menu_hide('business');" style="z-index: 99; left: 189px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="273" myoffsettop="123" id="submenu_health" onmouseover="menu_show2('health');" onmouseout="menu_hide('health');" style="z-index: 99; left: 273px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="427" myoffsettop="123" id="submenu_sports" onmouseover="menu_show2('sports');" onmouseout="menu_hide('sports');" style="z-index: 99; left: 427px; top: 123px; visibility: hidden; position: absolute;"></div><div myoffsetwidth="0" myoffsetheight="0" myoffsetleft="411" myoffsettop="123" id="submenu_c-style" onmouseover="menu_show2('c-style');" onmouseout="menu_hide('c-style');" style="z-index: 99; left: 411px; top: 123px; visibility: hidden; position: absolute;"></div>
+		<script myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" src="http://parts.nikkei.co.jp/parts/RSI/RSI.NIKKEI.P.js" type="text/javascript"></script>
+	</body>
 </html>

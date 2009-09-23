@@ -1,406 +1,400 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<title>胃のサイエンス | 胃がん</title>
-<link href="../../css/common.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../../js/mouseover.js"></script>
-<script type="text/javascript" src="../../js/subwin.js"></script>
-<script type="text/javascript" src="../../js/subwin.js"></script>
-<style type="text/css">
+
+	
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta content="text/css" http-equiv="Content-Style-Type">
+		<meta content="text/javascript" http-equiv="Content-Script-Type">
+		<title>胃のサイエンス | 胃がん</title>
+		<link href="../../css/common.css" rel="stylesheet" type="text/css">
+		<script src="../../js/mouseover.js" type="text/javascript"></script>
+		<script src="../../js/subwin.js" type="text/javascript"></script>
+		<script src="../../js/subwin.js" type="text/javascript"></script>
+		<style type="text/css">
 <!--
 body {
 	background-image :   url(../../images/common/bg.gif);
 }
 -->
 </style>
-</head>
-<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" bgcolor="#ffffff">
-<a name="top"></a>
-<table width="766" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="14" rowspan="2" background="../../images/common/hed_left.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td width="70" height="9" bgcolor="#FFFFFF"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td width="659" height="9" bgcolor="#FFFFFF"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td width="23" rowspan="2" background="../../images/common/hed_right.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td valign="middle" background="../../images/common/hed_middle01.gif"> <a href="../../index.html"><img src="../../images/common/hed_home.gif" alt="ホーム" width="46" height="15" hspace="6" border="0"></a></td>
-<td height="31" align="right" valign="middle" background="../../images/common/hed_middle02.gif"> <table border="0" cellpadding="0" cellspacing="0" background="sickness04.html">
-<tr>
-<td width="98"><a href="../../product/index.html"><img src="../../images/common/hed_prod.gif" alt="製品情報" width="71" height="16" border="0"></a></td>
-<td width="101"><a href="../../inquiry/index.html"><img src="../../images/common/hed_inq.gif" alt="お問い合わせ" width="81" height="16" border="0"></a></td>
-<td width="101"><a href="../../sitemap.html"><img src="../../images/common/hed_map.gif" alt="サイトマップ" width="83" height="14" border="0"></a></td>
-<form action="http://search.i-no-science.com/cgi-bin/namazu.cgi" method="get"  name="form1">
-<input type="hidden" name="sort" value="score">
-<input type="hidden" name="lang" value="ja">
-<input type="hidden" name="max" value="10">
-<input type="hidden" name="idxname" value="ino_ind">
-<input type="hidden" name="reference" value="off">
-<td width="77"><img src="../../images/common/hed_search.gif" alt="サイト内検索"width="77" height="16"></td>
-<td width="112" align="right" class="font"><input type="text" name="query" class="search" size="11"></td>
-<td width="49" align="right"><input type="image" src="../../images/common/hed_search02.gif" name="submit" align="middle" border="0" width="44" height="19" alt="検索"></td>
-</form>
-</tr>
-</table></td>
-</tr>
-</table>
-<!-- gnav -->
-<table width="752" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="195" align="right"><a href="../../check/index.html" onMouseOver="swImg('gnav01','../../images/common/gnav01_on.gif')" onMouseOut="swImg('gnav01','../../images/common/gnav01.gif')"><img src="../../images/common/gnav01.gif" alt="今すぐ知りたい！胃の症状と対策" name="gnav01" width="186" height="44" border="0"></a></td>
-<td width="186"><a href="../index.html"><img src="../../images/common/gnav02_on.gif" alt="知っていると安心！家庭の胃学" name="gnav02" width="186" height="44" border="0"></a></td>
-<td width="186"><a href="../../column/index.html" onMouseOver="swImg('gnav03','../../images/common/gnav03_on.gif')" onMouseOut="swImg('gnav03','../../images/common/gnav03.gif')"><img src="../../images/common/gnav03.gif" alt="知ってびっくり！胃の世界" name="gnav03" width="186" height="44" border="0"></a></td>
-<td width="185"><a href="../../ad/index.html" onMouseOver="swImg('gnav04','../../images/common/gnav04_on.gif')" onMouseOut="swImg('gnav04','../../images/common/gnav04.gif')"><img src="../../images/common/gnav04.gif" alt="セルベール・サクロンのご紹介" name="gnav04" width="185" height="44" border="0"></a></td>
-</tr>
-</table>
-<!-- /gnav -->
-<table width="752" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td height="17"><img src="../../images/common/dot.gif" alt="" width="8" height="17"></td>
-<td height="17" valign="top"></td>
-<td width="10" height="17" valign="bottom"></td>
-<td width="534" height="17" valign="top"></td>
-</tr>
-<tr>
-<td width="10" rowspan="4"><img src="../../images/common/dot.gif" alt="" width="10" height="1"></td>
-<td width="198" rowspan="3" valign="top"><!-- snav -->
-<table width="198" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td height="42" valign="top"><a href="../../index.html"><img src="../../images/common/nav_titile.gif" alt="胃のサイエンス" width="198" height="32" border="0"></a></td>
-</tr>
-<tr>
-<td height="37" background="../../images/common/snav02_on.gif"><table width="188" border="0" cellspacing="0" cellpadding="0" background="sickness04.html">
-<tr>
-<td width="8"><img src="../../images/common/dot.gif" alt="" width="8" height="1"></td>
-<td width="180" class="txt01d">主な胃の病気、胃の状態や症状</td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td background="../../images/common/snav03_on.gif"><table width="188" border="0" cellspacing="0" cellpadding="0" background="sickness04.html">
-<tr>
-<td width="28" height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td width="161" class="txt01b"><a href="sickness01.html">急性胃炎</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness02.html">慢性胃炎</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness03.html">胃潰瘍</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="carrent">胃がん</td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness05.html">ポリープ</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness06.html">逆流性食道炎</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness07.html">食中毒</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness08.html">胃下垂・胃アトニー</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness09.html">胃けいれん</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness10.html">胃拡張</a></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td height="11" valign="top"><img src="../../images/common/snav04_on.gif" alt="" width="198" height="9"></td>
-</tr>
-<tr>
-<td height="37" background="../../images/common/snav02.gif"><table width="188" border="0" cellspacing="0" cellpadding="0" background="sickness04.html">
-<tr>
-<td width="8"><img src="../../images/common/dot.gif" alt="" width="8" height="1"></td>
-<td width="180"><span class="txt03d">不安解消。</span><span class="txt01d">病院で行う胃の検査</span></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td background="../../images/common/snav03.gif"><table width="188" border="0" cellspacing="0" cellpadding="0" background="sickness04.html">
-<tr>
-<td width="28" height="33" align="right" valign="top"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" vspace="4" border="0"></td>
-<td width="161" class="txt01b"><a href="../inspection/inspection01.html">バリウム検査<br>
-（X線・レントゲン）</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="../inspection/inspection02.html">内視鏡検査</a></td>
-</tr>
-<tr>
-<td height="22" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="../inspection/inspection03.html">ピロリ菌検査</a></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td height="29" valign="top"><img src="../../images/common/snav04.gif" alt="" width="198" height="9"></td>
-</tr>
-<tr>
-<td height="45" valign="top"><a href="../../promo/selbelle.html"><img src="../../images/common/navi_btn_sel.gif" alt="セルベール" width="195" height="35" border="0"></a></td>
-</tr>
-<tr>
-<td height="45" valign="top"><a href="../../promo/saclon.html"><img src="../../images/common/navi_btn_sac.gif" alt="サクロン" width="195" height="35" border="0"></a></td>
-</tr>
-</table>
-<!-- /snav --></td>
-<td width="10" rowspan="3"><img src="../../images/common/dot.gif" alt="" width="10" height="1"></td>
-<td width="534" height="5" valign="top"> <table width="534" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td colspan="2" rowspan="2"><img src="../../images/medical/lin_cal_c01.gif" alt="" width="30" height="24"></td>
-<td height="8" background="../../images/medical/lin_cal_top.gif"><img src="../../images/common/dot.gif" alt="" width="474" height="1"></td>
-<td colspan="2" rowspan="2"><img src="../../images/medical/lin_cal_c04.gif" alt="" width="30" height="24"></td>
-</tr>
-<tr>
-<td height="16" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<!--one-->
-<tr>
-<td width="10" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="10" height="1"></td>
-<td width="20" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="20" height="8"></td>
-<td width="474" bgcolor="#fffae7"> <table border="0" cellpadding="0" cellspacing="0" background="sickness04.html">
-<tr>
-<td width="15"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" border="0"></td>
-<td class="txt03b"><a href="../index.html">知っていると安心！家庭の胃学</a></td>
-</tr>
-</table></td>
-<td width="21" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="21" height="1"></td>
-<td width="9" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-</tr>
-<!--one-->
-<!--one-->
-<tr>
-<td width="10" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td width="14" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td bgcolor="#fffae7"><img src="../../images/medical/sickness/tit_sic01.gif" alt="主な胃の病気、胃の状態や症状" width="335" height="24" vspace="5"></td>
-<td width="15" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td width="9" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-</tr>
-<!--one-->
-<!--spacer-->
-<tr>
-<td width="10" height="1" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td height="5" colspan="3" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="1" height="5"></td>
-<td width="9" height="1" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<!--spacer-->
-<!--line-->
-<tr>
-<td width="10" height="1" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td height="1" colspan="3" background="../../images/common/lin_glay.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td width="9" height="1" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<!--line-->
-<!--one-->
-<tr>
-<td width="10" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td width="14" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td bgcolor="#fffae7"><img src="../../images/medical/sickness/tit_sic04_sub.gif" alt="胃がん" width="66" height="21" vspace="25"></td>
-<td width="15" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td width="9" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt=""  width="8" height="8"></td>
-</tr>
-<!--one-->
-<!--one-->
-<tr>
-<td width="10" background="../../images/medical/lin_cal_left.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td width="14" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-<td colspan="2" bgcolor="#fffae7"> <table width="474" border="0" cellpadding="0" cellspacing="0" background="sickness04.html">
-<tr>
-<td valign="top" class="txt02a">胃がんは、正常な胃粘膜細胞の遺伝子が何らかの原因で傷つき、がん細胞へと突然変異したものです。がん細胞は無限に細胞分裂を行うため、増殖し始めるとどんどん進行します。粘膜、粘膜下層までのがんは早期がんといわれ、多くが手術で治りますが、がんが筋層・漿膜まで達する進行がんは、胃の周囲や他臓器に転移している可能性が高くなり、完全に治る見込みが少なくなります。<br>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td width="2%" valign="top" class="txt02a">・</td>
-<td class="txt02a">胃がんは、がんによる死亡の中では肺がんに次いで第2位です。</td>
-</tr>
-<tr>
-<td valign="top" class="txt02a">・</td>
-<td class="txt02a">早期に正しい治療をすれば、ほとんど治ります。</td>
-</tr>
-</table>
-<br>
-<!--start_症状-->
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td colspan="2" height="32" valign="top"><img src="../../images/medical/sickness/tit_sic01_01.gif" alt="症状" width="57" height="26"></td>
-</tr>
-<tr>
-<td width="2%" valign="top" class="txt02a">・</td>
-<td class="txt02a">初期症状はほとんどなし。症状が出ているようなら、かなり進行している。</td>
-</tr>
-<tr>
-<td valign="top" class="txt02a">・</td>
-<td class="txt02a">みぞおちの痛み、膨満感、吐き気、胸焼けなど、胃炎や胃潰瘍の症状に似ている。</td>
-</tr>
-</table>
-<!--end_症状-->
-<br>
-<!--start_原因-->
-<table width="99%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td colspan="2" height="32" valign="top"><img src="../../images/medical/sickness/tit_sic01_02.gif" alt="原因" width="57" height="26"></td>
-</tr>
-<tr>
-<td colspan="2" class="txt02a">がん発生のメカニズムは、胃がんに限らず解明されていませんが、発生リスクの高くなる生活習慣などはわかっています。ピロリ菌も主原因のひとつといわれています。</td>
-</tr>
-<tr>
-<td width="2%" valign="top" class="txt02a">・</td>
-<td class="txt02a">偏食が多い、ストレスが多い、酒量が多い、ヘビースモーカー、ピロリ菌の感染、コーヒーを過剰に飲む、遺伝、など。</td>
-</tr>
-</table>
-<!--end_原因-->
-<br>
-<!--start_治療-->
-<table width="474" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td height="32" valign="top"><img src="../../images/medical/sickness/tit_sic01_03.gif" alt="治療" width="57" height="26"></td>
-</tr>
-<tr>
-<td class="txt02a">バリウム検査や内視鏡検査の他に、他の臓器にがんが転移していないかをみるために超音波検査やCT検査を行います。<br>
-がんが胃粘膜にとどまっていて、リンパ節にも転移していないような早期の胃がんなら、内視鏡での治療が可能です。がんの切除（EMR）、レーザー光線の照射、がんに抗癌剤やエタノール注入、などを行い、がん細胞を取り除きます。これらの治療は、お腹に傷を付けずに行えますので、短期間の入院ですみます。<br>
-リンパ節への転移がみられたり、粘膜下層よりも深く進んだがんは、外科手術を行い、胃を3分の2あるいは全部切り取ります。同時にリンパ節、場合によっては転移している周辺の臓器も切り取ります。<br>
-再発の可能性はがんの進行程度でかわってきます。手術後は2〜3カ月に1回、定期的に検診を受けるようにしましょう。<br>
-<table align="right" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td width="14"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" border="0"></td>
-<td class="txt01b"><a href="../../condition/factor/factor06.html">ピロリ菌とは</a></td>
-<td width="5">&nbsp;</td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!--end_治療--> </td>
-</tr>
-<tr>
-<td> <br>
-<br>
-<!--start_そのほかの胃の病気、状態や症状ナビ-->
-<table width="474" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td background="../../images/common/lin_orange01.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td class="txt01b" height="27" align="center" bgcolor="#FFF0C5">そのほかの胃の病気、胃の状態や症状</td>
-</tr>
-<tr>
-<td background="../../images/common/lin_orange01.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td> <table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td><img src="../../images/common/dot.gif" alt="" width="3" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness01.html">急性胃炎</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness02.html">慢性胃炎</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness03.html">胃潰瘍</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_04.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b">胃がん</td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness05.html">ポリープ</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness06.html">逆流性食道炎</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td background="../../images/common/lin_orange01.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td> <table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td><img src="../../images/common/dot.gif" alt="" width="3" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness07.html">食中毒</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness08.html">胃下垂・胃アトニー</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness09.html">胃けいれん</a></td>
-<td><img src="../../images/common/dot.gif" alt="" width="10" height="27"></td>
-<td><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="5" border="0"></td>
-<td class="txt01b"><a href="sickness10.html">胃拡張</a></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td background="../../images/common/lin_orange01.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-</table>
-<!--end_そのほかの胃の病気、状態や症状ナビ-->
-<br> </td>
-</tr>
-</table></td>
-<td width="9" background="../../images/medical/lin_cal_rig.gif"><img src="../../images/common/dot.gif" alt="" width="8" height="8"></td>
-</tr>
-<!--one-->
-<!--one-->
-<tr>
-<td colspan="2" rowspan="2" valign="bottom"><img src="../../images/medical/lin_cal_c02.gif" alt="" width="30" height="24"></td>
-<td height="15" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-<td colspan="2" rowspan="2" valign="bottom"><img src="../../images/medical/lin_cal_c03.gif" alt="" width="30" height="24"></td>
-</tr>
-<!--one-->
-<!--one-->
-<tr>
-<td height="9" background="../../images/medical/lin_cal_bot.gif" bgcolor="#fffae7"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<!--one-->
-</table>
-<br> </td>
-</tr>
-<tr>
-<td align="left" valign="top" background="../../images/common/lin_glay03.gif" class="def01"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-<tr>
-<td height="41"><table border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td width="34" align="right"><img src="../../images/common/lst_01.gif" alt="" width="8" height="10" hspace="6" border="0"></td>
-<td class="txt03b"><a href="../index.html">知っていると安心！家庭の胃学トップへ</a></td>
-</tr>
-</table></td>
-</tr>
-<tr>
-<td height="1" colspan="3" valign="top" background="../../images/common/lin_glay.gif"><img src="../../images/common/dot.gif" alt="" width="1" height="1"></td>
-</tr>
-</table>
-<!--start_フッタ-->
-<table width="752" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="10" class="def"></td>
-<td width="679" height="38"><table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="42" height="24"><a href="http://www.eisai.co.jp/index.html" target="_blank"><img src="../../images/common/eisai.gif" alt="エーザイ株式会社" width="39" height="24" border="0"></a></td>
-<td><a href="javascript:winCOPY('../../copyright.html','copyright')" onmouseover="window.status='著作権について';return true;" onmouseout="window.status=''"><img src="../../images/common/copyright.gif" alt="Copyright(C) Eisai Co., Ltd. All rights reserved." border="0"></a></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!--end_フッタ-->
-</body>
+	</head><body myoffsetwidth="974" myoffsetheight="1263" myoffsetleft="0" myoffsettop="0" leftmargin="0" topmargin="0" bgcolor="#ffffff" marginheight="0" marginwidth="0"><a myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="top"></a><table myoffsetwidth="766" myoffsetheight="40" myoffsetleft="0" myoffsettop="0" width="766" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="766" myoffsetheight="40" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="766" myoffsetheight="9" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="14" myoffsetheight="40" myoffsetleft="0" myoffsettop="0" rowspan="2" width="14" background="../../images/common/hed_left.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="20" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+				<td myoffsetwidth="70" myoffsetheight="9" myoffsetleft="14" myoffsettop="0" width="70" bgcolor="#ffffff" height="9"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="4" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+				<td myoffsetwidth="659" myoffsetheight="9" myoffsetleft="84" myoffsettop="0" width="659" bgcolor="#ffffff" height="9"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="4" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+				<td myoffsetwidth="23" myoffsetheight="40" myoffsetleft="743" myoffsettop="0" rowspan="2" width="23" background="../../images/common/hed_right.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="20" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+			</tr>
+			<tr myoffsetwidth="766" myoffsetheight="31" myoffsetleft="0" myoffsettop="9">
+				<td myoffsetwidth="70" myoffsetheight="31" myoffsetleft="14" myoffsettop="9" valign="middle" background="../../images/common/hed_middle01.gif"><a myoffsetwidth="58" myoffsetheight="14" myoffsetleft="0" myoffsettop="9" href="../../index.html"><img myoffsetwidth="46" myoffsetheight="15" myoffsetleft="6" myoffsettop="8" alt="ホーム" src="../../images/common/hed_home.gif" width="46" border="0" height="15" hspace="6"></a></td>
+				<td myoffsetwidth="659" myoffsetheight="31" myoffsetleft="84" myoffsettop="9" valign="middle" align="right" background="../../images/common/hed_middle02.gif" height="31">
+					<table myoffsetwidth="538" myoffsetheight="22" myoffsetleft="121" myoffsettop="5" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="538" myoffsetheight="22" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="538" myoffsetheight="22" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="98" myoffsetheight="22" myoffsetleft="0" myoffsettop="0" width="98"><a myoffsetwidth="71" myoffsetheight="14" myoffsetleft="0" myoffsettop="5" href="../../product/index.html"><img myoffsetwidth="71" myoffsetheight="16" myoffsetleft="0" myoffsettop="3" alt="製品情報" src="../../images/common/hed_prod.gif" width="71" border="0" height="16"></a></td>
+							<td myoffsetwidth="101" myoffsetheight="22" myoffsetleft="98" myoffsettop="0" width="101"><a myoffsetwidth="81" myoffsetheight="14" myoffsetleft="0" myoffsettop="5" href="../../inquiry/index.html"><img myoffsetwidth="81" myoffsetheight="16" myoffsetleft="0" myoffsettop="3" alt="お問い合わせ" src="../../images/common/hed_inq.gif" width="81" border="0" height="16"></a></td>
+							<td myoffsetwidth="101" myoffsetheight="22" myoffsetleft="199" myoffsettop="0" width="101"><a myoffsetwidth="83" myoffsetheight="14" myoffsetleft="0" myoffsettop="4" href="../../sitemap.html"><img myoffsetwidth="83" myoffsetheight="14" myoffsetleft="0" myoffsettop="4" alt="サイトマップ" src="../../images/common/hed_map.gif" width="83" border="0" height="14"></a></td>
+							<td myoffsetwidth="0" myoffsetheight="22" myoffsetleft="300" myoffsettop="0">
+								<form myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="3" action="http://search.i-no-science.com/cgi-bin/namazu.cgi" method="get" name="form1"><input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="sort" value="score" type="hidden"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="lang" value="ja" type="hidden"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="max" value="10" type="hidden"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="idxname" value="ino_ind" type="hidden"> <input myoffsetwidth="0" myoffsetheight="0" myoffsetleft="0" myoffsettop="0" name="reference" value="off" type="hidden"></form>
+							</td>
+							<td myoffsetwidth="77" myoffsetheight="22" myoffsetleft="300" myoffsettop="0" width="77"><img myoffsetwidth="77" myoffsetheight="16" myoffsetleft="0" myoffsettop="3" alt="サイト内検索" src="../../images/common/hed_search.gif" width="77" height="16"></td>
+							<td myoffsetwidth="112" myoffsetheight="22" myoffsetleft="377" myoffsettop="0" class="font" width="112" align="right"><input myoffsetwidth="72" myoffsetheight="22" myoffsetleft="40" myoffsettop="0" class="search" name="query" size="11" type="text"></td>
+							<td myoffsetwidth="49" myoffsetheight="22" myoffsetleft="489" myoffsettop="0" width="49" align="right"><input myoffsetwidth="44" myoffsetheight="19" myoffsetleft="5" myoffsettop="1" alt="検索" name="submit" src="../../images/common/hed_search02.gif" width="44" align="middle" border="0" height="19" type="image"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="752" myoffsetheight="44" myoffsetleft="0" myoffsettop="40" width="752" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="752" myoffsetheight="44" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="752" myoffsetheight="44" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="195" myoffsetheight="44" myoffsetleft="0" myoffsettop="0" width="195" align="right"><a myoffsetwidth="186" myoffsetheight="14" myoffsetleft="9" myoffsettop="30" href="../../check/index.html" onmouseout="swImg('gnav01','../../images/common/gnav01.gif')" onmouseover="swImg('gnav01','../../images/common/gnav01_on.gif')"><img myoffsetwidth="186" myoffsetheight="44" myoffsetleft="9" myoffsettop="0" alt="今すぐ知りたい！胃の症状と対策" name="gnav01" src="../../images/common/gnav01.gif" width="186" border="0" height="44"></a></td>
+				<td myoffsetwidth="186" myoffsetheight="44" myoffsetleft="195" myoffsettop="0" width="186"><a myoffsetwidth="186" myoffsetheight="14" myoffsetleft="0" myoffsettop="30" href="../index.html"><img myoffsetwidth="186" myoffsetheight="44" myoffsetleft="0" myoffsettop="0" alt="知っていると安心！家庭の胃学" name="gnav02" src="../../images/common/gnav02_on.gif" width="186" border="0" height="44"></a></td>
+				<td myoffsetwidth="186" myoffsetheight="44" myoffsetleft="381" myoffsettop="0" width="186"><a myoffsetwidth="186" myoffsetheight="14" myoffsetleft="0" myoffsettop="30" href="../../column/index.html" onmouseout="swImg('gnav03','../../images/common/gnav03.gif')" onmouseover="swImg('gnav03','../../images/common/gnav03_on.gif')"><img myoffsetwidth="186" myoffsetheight="44" myoffsetleft="0" myoffsettop="0" alt="知ってびっくり！胃の世界" name="gnav03" src="../../images/common/gnav03.gif" width="186" border="0" height="44"></a></td>
+				<td myoffsetwidth="185" myoffsetheight="44" myoffsetleft="567" myoffsettop="0" width="185"><a myoffsetwidth="185" myoffsetheight="14" myoffsetleft="0" myoffsettop="30" href="../../ad/index.html" onmouseout="swImg('gnav04','../../images/common/gnav04.gif')" onmouseover="swImg('gnav04','../../images/common/gnav04_on.gif')"><img myoffsetwidth="185" myoffsetheight="44" myoffsetleft="0" myoffsettop="0" alt="セルベール・サクロンのご紹介" name="gnav04" src="../../images/common/gnav04.gif" width="185" border="0" height="44"></a></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="752" myoffsetheight="1141" myoffsetleft="0" myoffsettop="84" width="752" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="752" myoffsetheight="1141" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="752" myoffsetheight="17" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="10" myoffsetheight="17" myoffsetleft="0" myoffsettop="0" height="17"><img myoffsetwidth="8" myoffsetheight="17" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="8" height="17"></td>
+				<td myoffsetwidth="198" myoffsetheight="17" myoffsetleft="10" myoffsettop="0" valign="top" height="17">
+				</td>
+				<td myoffsetwidth="10" myoffsetheight="17" myoffsetleft="208" myoffsettop="0" valign="bottom" width="10" height="17">
+				</td>
+				<td myoffsetwidth="534" myoffsetheight="17" myoffsetleft="218" myoffsettop="0" valign="top" width="534" height="17">
+				</td>
+			</tr>
+			<tr myoffsetwidth="752" myoffsetheight="1081" myoffsetleft="0" myoffsettop="17">
+				<td myoffsetwidth="10" myoffsetheight="1124" myoffsetleft="0" myoffsettop="17" rowspan="4" width="10"><img myoffsetwidth="10" myoffsetheight="1" myoffsetleft="0" myoffsettop="562" alt="" src="../../images/common/dot.gif" width="10" height="1"></td>
+				<td myoffsetwidth="198" myoffsetheight="1123" myoffsetleft="10" myoffsettop="17" rowspan="3" valign="top" width="198">
+					<table myoffsetwidth="198" myoffsetheight="551" myoffsetleft="0" myoffsettop="0" width="198" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="198" myoffsetheight="551" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="198" myoffsetheight="42" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="198" myoffsetheight="42" myoffsetleft="0" myoffsettop="0" valign="top" height="42"><a myoffsetwidth="198" myoffsetheight="14" myoffsetleft="0" myoffsettop="18" href="../../index.html"><img myoffsetwidth="198" myoffsetheight="32" myoffsetleft="0" myoffsettop="0" alt="胃のサイエンス" src="../../images/common/nav_titile.gif" width="198" border="0" height="32"></a></td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="38" myoffsetleft="0" myoffsettop="42">
+							<td myoffsetwidth="198" myoffsetheight="38" myoffsetleft="0" myoffsettop="42" background="../../images/common/snav02_on.gif" height="37">
+								<table myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" width="188" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="8" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" width="8"><img myoffsetwidth="8" myoffsetheight="1" myoffsetleft="0" myoffsettop="19" alt="" src="../../images/common/dot.gif" width="8" height="1"></td>
+										<td myoffsetwidth="180" myoffsetheight="38" myoffsetleft="8" myoffsettop="0" class="txt01d" width="180">主な胃の病気、胃の状態や症状</td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="220" myoffsetleft="0" myoffsettop="80">
+							<td myoffsetwidth="198" myoffsetheight="220" myoffsetleft="0" myoffsettop="80" background="../../images/common/snav03_on.gif">
+								<table myoffsetwidth="188" myoffsetheight="220" myoffsetleft="0" myoffsettop="0" width="188" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="188" myoffsetheight="220" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="0" width="28" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="0" class="txt01b" width="161"><a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness01.html">急性胃炎</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="22">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="22" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="22" class="txt01b"><a myoffsetwidth="64" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness02.html">慢性胃炎</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="44">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="44" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="44" class="txt01b"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness03.html">胃潰瘍</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="66">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="66" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="66" class="carrent">胃がん</td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="88">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="88" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="88" class="txt01b"><a myoffsetwidth="56" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness05.html">ポリープ</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="110">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="110" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="110" class="txt01b"><a myoffsetwidth="96" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness06.html">逆流性食道炎</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="132">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="132" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="132" class="txt01b"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness07.html">食中毒</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="154">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="154" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="154" class="txt01b"><a myoffsetwidth="126" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness08.html">胃下垂・胃アトニー</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="176">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="176" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="176" class="txt01b"><a myoffsetwidth="77" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness09.html">胃けいれん</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="198">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="198" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="198" class="txt01b"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="sickness10.html">胃拡張</a></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="11" myoffsetleft="0" myoffsettop="300">
+							<td myoffsetwidth="198" myoffsetheight="11" myoffsetleft="0" myoffsettop="300" valign="top" height="11"><img myoffsetwidth="198" myoffsetheight="9" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/snav04_on.gif" width="198" height="9"></td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="38" myoffsetleft="0" myoffsettop="311">
+							<td myoffsetwidth="198" myoffsetheight="38" myoffsetleft="0" myoffsettop="311" background="../../images/common/snav02.gif" height="37">
+								<table myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" width="188" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="8" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" width="8"><img myoffsetwidth="8" myoffsetheight="1" myoffsetleft="0" myoffsettop="19" alt="" src="../../images/common/dot.gif" width="8" height="1"></td>
+										<td myoffsetwidth="180" myoffsetheight="38" myoffsetleft="8" myoffsettop="0" width="180"><span myoffsetwidth="75" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" class="txt03d">不安解消。</span><span myoffsetwidth="180" myoffsetheight="36" myoffsetleft="75" myoffsettop="1" class="txt01d">病院で行う胃の検査</span></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="82" myoffsetleft="0" myoffsettop="350">
+							<td myoffsetwidth="198" myoffsetheight="82" myoffsetleft="0" myoffsettop="350" background="../../images/common/snav03.gif">
+								<table myoffsetwidth="188" myoffsetheight="82" myoffsetleft="0" myoffsettop="0" width="188" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="188" myoffsetheight="82" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="188" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="28" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" valign="top" width="28" align="right" height="33"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="4" alt="" src="../../images/common/lst_01.gif" vspace="4" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="38" myoffsetleft="28" myoffsettop="0" class="txt01b" width="161"><a myoffsetwidth="117" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="../inspection/inspection01.html">バリウム検査<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="91" myoffsettop="15"> （X線・レントゲン）</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="38">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="38" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="38" class="txt01b"><a myoffsetwidth="80" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="../inspection/inspection02.html">内視鏡検査</a></td>
+									</tr>
+									<tr myoffsetwidth="188" myoffsetheight="22" myoffsetleft="0" myoffsettop="60">
+										<td myoffsetwidth="28" myoffsetheight="22" myoffsetleft="0" myoffsettop="60" align="right" height="22"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="15" myoffsettop="6" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+										<td myoffsetwidth="160" myoffsetheight="22" myoffsetleft="28" myoffsettop="60" class="txt01b"><a myoffsetwidth="88" myoffsetheight="17" myoffsetleft="0" myoffsettop="3" href="../inspection/inspection03.html">ピロリ菌検査</a></td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="29" myoffsetleft="0" myoffsettop="432">
+							<td myoffsetwidth="198" myoffsetheight="29" myoffsetleft="0" myoffsettop="432" valign="top" height="29"><img myoffsetwidth="198" myoffsetheight="9" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/snav04.gif" width="198" height="9"></td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="45" myoffsetleft="0" myoffsettop="461">
+							<td myoffsetwidth="198" myoffsetheight="45" myoffsetleft="0" myoffsettop="461" valign="top" height="45"><a myoffsetwidth="195" myoffsetheight="14" myoffsetleft="0" myoffsettop="21" href="../../promo/selbelle.html"><img myoffsetwidth="195" myoffsetheight="35" myoffsetleft="0" myoffsettop="0" alt="セルベール" src="../../images/common/navi_btn_sel.gif" width="195" border="0" height="35"></a></td>
+						</tr>
+						<tr myoffsetwidth="198" myoffsetheight="45" myoffsetleft="0" myoffsettop="506">
+							<td myoffsetwidth="198" myoffsetheight="45" myoffsetleft="0" myoffsettop="506" valign="top" height="45"><a myoffsetwidth="195" myoffsetheight="14" myoffsetleft="0" myoffsettop="21" href="../../promo/saclon.html"><img myoffsetwidth="195" myoffsetheight="35" myoffsetleft="0" myoffsettop="0" alt="サクロン" src="../../images/common/navi_btn_sac.gif" width="195" border="0" height="35"></a></td>
+						</tr>
+					</tbody></table>
+				</td>
+				<td myoffsetwidth="10" myoffsetheight="1123" myoffsetleft="208" myoffsettop="17" rowspan="3" width="10"><img myoffsetwidth="10" myoffsetheight="1" myoffsetleft="0" myoffsettop="561" alt="" src="../../images/common/dot.gif" width="10" height="1"></td>
+				<td myoffsetwidth="534" myoffsetheight="1081" myoffsetleft="218" myoffsettop="17" valign="top" width="534" height="5">
+					<table myoffsetwidth="534" myoffsetheight="1062" myoffsetleft="0" myoffsettop="0" width="534" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="534" myoffsetheight="1062" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="534" myoffsetheight="8" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" colspan="2" rowspan="2"><img myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/medical/lin_cal_c01.gif" width="30" height="24"></td>
+							<td myoffsetwidth="474" myoffsetheight="8" myoffsetleft="30" myoffsettop="0" background="../../images/medical/lin_cal_top.gif" height="8"><img myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="4" alt="" src="../../images/common/dot.gif" width="474" height="1"></td>
+							<td myoffsetwidth="30" myoffsetheight="24" myoffsetleft="504" myoffsettop="0" colspan="2" rowspan="2"><img myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/medical/lin_cal_c04.gif" width="30" height="24"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="16" myoffsetleft="0" myoffsettop="8">
+							<td myoffsetwidth="474" myoffsetheight="16" myoffsetleft="30" myoffsettop="8" bgcolor="#fffae7" height="16"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="8" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="19" myoffsetleft="0" myoffsettop="24">
+							<td myoffsetwidth="10" myoffsetheight="19" myoffsetleft="0" myoffsettop="24" width="10" background="../../images/medical/lin_cal_left.gif"><img myoffsetwidth="10" myoffsetheight="1" myoffsetleft="0" myoffsettop="9" alt="" src="../../images/common/dot.gif" width="10" height="1"></td>
+							<td myoffsetwidth="20" myoffsetheight="19" myoffsetleft="10" myoffsettop="24" width="20" bgcolor="#fffae7"><img myoffsetwidth="20" myoffsetheight="8" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="20" height="8"></td>
+							<td myoffsetwidth="474" myoffsetheight="19" myoffsetleft="30" myoffsettop="24" width="474" bgcolor="#fffae7">
+								<table myoffsetwidth="227" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="227" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="227" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="15" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" width="15"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="0" myoffsettop="5" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10"></td>
+										<td myoffsetwidth="212" myoffsetheight="19" myoffsetleft="15" myoffsettop="0" class="txt03b"><a myoffsetwidth="212" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../index.html">知っていると安心！家庭の胃学</a></td>
+									</tr>
+								</tbody></table>
+							</td>
+							<td myoffsetwidth="21" myoffsetheight="19" myoffsetleft="504" myoffsettop="24" width="21" bgcolor="#fffae7"><img myoffsetwidth="21" myoffsetheight="1" myoffsetleft="0" myoffsettop="9" alt="" src="../../images/common/dot.gif" width="21" height="1"></td>
+							<td myoffsetwidth="9" myoffsetheight="19" myoffsetleft="525" myoffsettop="24" width="9" background="../../images/medical/lin_cal_rig.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="34" myoffsetleft="0" myoffsettop="43">
+							<td myoffsetwidth="10" myoffsetheight="34" myoffsetleft="0" myoffsettop="43" width="10" background="../../images/medical/lin_cal_left.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="13" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="20" myoffsetheight="34" myoffsetleft="10" myoffsettop="43" width="14" bgcolor="#fffae7"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="13" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="474" myoffsetheight="34" myoffsetleft="30" myoffsettop="43" bgcolor="#fffae7"><img myoffsetwidth="335" myoffsetheight="24" myoffsetleft="0" myoffsettop="5" alt="主な胃の病気、胃の状態や症状" src="../../images/medical/sickness/tit_sic01.gif" vspace="5" width="335" height="24"></td>
+							<td myoffsetwidth="21" myoffsetheight="34" myoffsetleft="504" myoffsettop="43" width="15" bgcolor="#fffae7"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="13" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="9" myoffsetheight="34" myoffsetleft="525" myoffsettop="43" width="9" background="../../images/medical/lin_cal_rig.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="13" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="5" myoffsetleft="0" myoffsettop="77">
+							<td myoffsetwidth="10" myoffsetheight="5" myoffsetleft="0" myoffsettop="77" width="10" background="../../images/medical/lin_cal_left.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="2" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+							<td myoffsetwidth="515" myoffsetheight="5" myoffsetleft="10" myoffsettop="77" colspan="3" bgcolor="#fffae7" height="5"><img myoffsetwidth="1" myoffsetheight="5" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="5"></td>
+							<td myoffsetwidth="9" myoffsetheight="5" myoffsetleft="525" myoffsettop="77" width="9" background="../../images/medical/lin_cal_rig.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="2" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="1" myoffsetleft="0" myoffsettop="82">
+							<td myoffsetwidth="10" myoffsetheight="1" myoffsetleft="0" myoffsettop="82" width="10" background="../../images/medical/lin_cal_left.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+							<td myoffsetwidth="515" myoffsetheight="1" myoffsetleft="10" myoffsettop="82" colspan="3" background="../../images/common/lin_glay.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+							<td myoffsetwidth="9" myoffsetheight="1" myoffsetleft="525" myoffsettop="82" width="9" background="../../images/medical/lin_cal_rig.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="71" myoffsetleft="0" myoffsettop="83">
+							<td myoffsetwidth="10" myoffsetheight="71" myoffsetleft="0" myoffsettop="83" width="10" background="../../images/medical/lin_cal_left.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="32" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="20" myoffsetheight="71" myoffsetleft="10" myoffsettop="83" width="14" bgcolor="#fffae7"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="32" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="474" myoffsetheight="71" myoffsetleft="30" myoffsettop="83" bgcolor="#fffae7"><img myoffsetwidth="66" myoffsetheight="21" myoffsetleft="0" myoffsettop="25" alt="胃がん" src="../../images/medical/sickness/tit_sic04_sub.gif" vspace="25" width="66" height="21"></td>
+							<td myoffsetwidth="21" myoffsetheight="71" myoffsetleft="504" myoffsettop="83" width="15" bgcolor="#fffae7"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="32" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="9" myoffsetheight="71" myoffsetleft="525" myoffsettop="83" width="9" background="../../images/medical/lin_cal_rig.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="32" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="884" myoffsetleft="0" myoffsettop="154">
+							<td myoffsetwidth="10" myoffsetheight="884" myoffsetleft="0" myoffsettop="154" width="10" background="../../images/medical/lin_cal_left.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="438" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="20" myoffsetheight="884" myoffsetleft="10" myoffsettop="154" width="14" bgcolor="#fffae7"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="438" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+							<td myoffsetwidth="495" myoffsetheight="884" myoffsetleft="30" myoffsettop="154" colspan="2" bgcolor="#fffae7">
+								<table myoffsetwidth="474" myoffsetheight="884" myoffsetleft="0" myoffsettop="0" width="474" background="sickness04.html" border="0" cellpadding="0" cellspacing="0">
+									<tbody myoffsetwidth="474" myoffsetheight="884" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="730" myoffsetleft="0" myoffsettop="0">
+										<td myoffsetwidth="474" myoffsetheight="730" myoffsetleft="0" myoffsettop="0" class="txt02a" valign="top">胃がんは、正常な胃粘膜細胞の遺伝子が何らかの原因で傷つき、がん細胞へと突然変異したものです。がん細胞は無限に細胞分裂を行うため、増殖し始めるとどんどん進行します。粘膜、粘膜下層までのがんは早期がんといわれ、多くが手術で治りますが、がんが筋層・漿膜まで達する進行がんは、胃の周囲や他臓器に転移している可能性が高くなり、完全に治る見込みが少なくなります。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="269" myoffsettop="111">
+											<table myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="115" width="100%" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="9" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" class="txt02a" valign="top" width="2%">・</td>
+													<td myoffsetwidth="465" myoffsetheight="19" myoffsetleft="9" myoffsettop="0" class="txt02a">胃がんは、がんによる死亡の中では肺がんに次いで第2位です。</td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="19" myoffsetleft="0" myoffsettop="19">
+													<td myoffsetwidth="9" myoffsetheight="19" myoffsetleft="0" myoffsettop="19" class="txt02a" valign="top">・</td>
+													<td myoffsetwidth="465" myoffsetheight="19" myoffsetleft="9" myoffsettop="19" class="txt02a">早期に正しい治療をすれば、ほとんど治ります。</td>
+												</tr>
+											</tbody></table>
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="154">
+											<table myoffsetwidth="474" myoffsetheight="109" myoffsetleft="0" myoffsettop="173" width="100%" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="474" myoffsetheight="109" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="32" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="474" myoffsetheight="32" myoffsetleft="0" myoffsettop="0" colspan="2" valign="top" height="32"><img myoffsetwidth="57" myoffsetheight="26" myoffsetleft="0" myoffsettop="0" alt="症状" src="../../images/medical/sickness/tit_sic01_01.gif" width="57" height="26"></td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="32">
+													<td myoffsetwidth="9" myoffsetheight="38" myoffsetleft="0" myoffsettop="32" class="txt02a" valign="top" width="2%">・</td>
+													<td myoffsetwidth="465" myoffsetheight="38" myoffsetleft="9" myoffsettop="32" class="txt02a">初期症状はほとんどなし。症状が出ているようなら、かなり進行している。</td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="70">
+													<td myoffsetwidth="9" myoffsetheight="38" myoffsetleft="0" myoffsettop="70" class="txt02a" valign="top">・</td>
+													<td myoffsetwidth="465" myoffsetheight="38" myoffsetleft="9" myoffsettop="70" class="txt02a">みぞおちの痛み、膨満感、吐き気、胸焼けなど、胃炎や胃潰瘍の症状に似ている。</td>
+												</tr>
+											</tbody></table>
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="282">
+											<table myoffsetwidth="469" myoffsetheight="128" myoffsetleft="0" myoffsettop="301" width="99%" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="469" myoffsetheight="128" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="469" myoffsetheight="32" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="469" myoffsetheight="32" myoffsetleft="0" myoffsettop="0" colspan="2" valign="top" height="32"><img myoffsetwidth="57" myoffsetheight="26" myoffsetleft="0" myoffsettop="0" alt="原因" src="../../images/medical/sickness/tit_sic01_02.gif" width="57" height="26"></td>
+												</tr>
+												<tr myoffsetwidth="469" myoffsetheight="58" myoffsetleft="0" myoffsettop="32">
+													<td myoffsetwidth="469" myoffsetheight="58" myoffsetleft="0" myoffsettop="32" class="txt02a" colspan="2">がん発生のメカニズムは、胃がんに限らず解明されていませんが、発生リスクの高くなる生活習慣などはわかっています。ピロリ菌も主原因のひとつといわれています。</td>
+												</tr>
+												<tr myoffsetwidth="469" myoffsetheight="38" myoffsetleft="0" myoffsettop="90">
+													<td myoffsetwidth="9" myoffsetheight="38" myoffsetleft="0" myoffsettop="90" class="txt02a" valign="top" width="2%">・</td>
+													<td myoffsetwidth="460" myoffsetheight="38" myoffsetleft="9" myoffsettop="90" class="txt02a">偏食が多い、ストレスが多い、酒量が多い、ヘビースモーカー、ピロリ菌の感染、コーヒーを過剰に飲む、遺伝、など。</td>
+												</tr>
+											</tbody></table>
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="429">
+											<table myoffsetwidth="474" myoffsetheight="282" myoffsetleft="0" myoffsettop="448" width="474" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="474" myoffsetheight="282" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="32" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="474" myoffsetheight="32" myoffsetleft="0" myoffsettop="0" valign="top" height="32"><img myoffsetwidth="57" myoffsetheight="26" myoffsetleft="0" myoffsettop="0" alt="治療" src="../../images/medical/sickness/tit_sic01_03.gif" width="57" height="26"></td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="250" myoffsetleft="0" myoffsettop="32">
+													<td myoffsetwidth="474" myoffsetheight="250" myoffsetleft="0" myoffsettop="32" class="txt02a">バリウム検査や内視鏡検査の他に、他の臓器にがんが転移していないかをみるために超音波検査やCT検査を行います。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="339" myoffsettop="34"> がんが胃粘膜にとどまっていて、リンパ節にも転移していないような早期の胃がんなら、内視鏡での治療が可能です。がんの切除（EMR）、レーザー光線の照射、がんに抗癌剤やエタノール注入、などを行い、がん細胞を取り除きます。これらの治療は、お腹に傷を付けずに行えますので、短期間の入院ですみます。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="222" myoffsettop="130"> リンパ節への転移がみられたり、粘膜下層よりも深く進んだがんは、外科手術を行い、胃を3分の2あるいは全部切り取ります。同時にリンパ節、場合によっては転移している周辺の臓器も切り取ります。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="407" myoffsettop="188"> 再発の可能性はがんの進行程度でかわってきます。手術後は2〜3カ月に1回、定期的に検診を受けるようにしましょう。<br myoffsetwidth="0" myoffsetheight="0" myoffsetleft="332" myoffsettop="226">
+														<table myoffsetwidth="103" myoffsetheight="19" myoffsetleft="371" myoffsettop="230" align="right" border="0" cellpadding="0" cellspacing="0">
+															<tbody myoffsetwidth="103" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="103" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+																<td myoffsetwidth="14" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" width="14"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="0" myoffsettop="5" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10"></td>
+																<td myoffsetwidth="84" myoffsetheight="19" myoffsetleft="14" myoffsettop="0" class="txt01b"><a myoffsetwidth="84" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../../condition/factor/factor06.html">ピロリ菌とは</a></td>
+																<td myoffsetwidth="5" myoffsetheight="19" myoffsetleft="98" myoffsettop="0" width="5">&nbsp;</td>
+															</tr>
+														</tbody></table>
+													</td>
+												</tr>
+											</tbody></table>
+										</td>
+									</tr>
+									<tr myoffsetwidth="474" myoffsetheight="154" myoffsetleft="0" myoffsettop="730">
+										<td myoffsetwidth="474" myoffsetheight="154" myoffsetleft="0" myoffsettop="730">
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="19">
+											<table myoffsetwidth="474" myoffsetheight="96" myoffsetleft="0" myoffsettop="38" width="474" border="0" cellpadding="0" cellspacing="0">
+												<tbody myoffsetwidth="474" myoffsetheight="96" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="0">
+													<td myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" background="../../images/common/lin_orange01.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="27" myoffsetleft="0" myoffsettop="1">
+													<td myoffsetwidth="474" myoffsetheight="27" myoffsetleft="0" myoffsettop="1" class="txt01b" align="center" bgcolor="#fff0c5" height="27">そのほかの胃の病気、胃の状態や症状</td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="28">
+													<td myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="28" background="../../images/common/lin_orange01.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="29">
+													<td myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="29">
+														<table myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" border="0" cellpadding="0" cellspacing="0">
+															<tbody myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="474" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+																<td myoffsetwidth="3" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="3" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="3" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="3" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="51" myoffsetheight="38" myoffsetleft="21" myoffsettop="0" class="txt01b"><a myoffsetwidth="48" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="sickness01.html">急性胃炎</a></td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="72" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="82" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="51" myoffsetheight="38" myoffsetleft="100" myoffsettop="0" class="txt01b"><a myoffsetwidth="48" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="sickness02.html">慢性胃炎</a></td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="151" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="161" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="39" myoffsetheight="38" myoffsetleft="179" myoffsettop="0" class="txt01b"><a myoffsetwidth="32" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="sickness03.html">胃潰瘍</a></td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="219" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="229" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_04.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="39" myoffsetheight="38" myoffsetleft="247" myoffsettop="0" class="txt01b">胃がん</td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="285" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="295" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="48" myoffsetheight="38" myoffsetleft="313" myoffsettop="0" class="txt01b"><a myoffsetwidth="42" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="sickness05.html">ポリープ</a></td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="361" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="38" myoffsetleft="371" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="14" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="75" myoffsetheight="38" myoffsetleft="389" myoffsettop="0" class="txt01b"><a myoffsetwidth="64" myoffsetheight="36" myoffsetleft="0" myoffsettop="1" href="sickness06.html">逆流性食道炎</a></td>
+																<td myoffsetwidth="10" myoffsetheight="38" myoffsetleft="464" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="6" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+															</tr>
+														</tbody></table>
+													</td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="67">
+													<td myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="67" background="../../images/common/lin_orange01.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="27" myoffsetleft="0" myoffsettop="68">
+													<td myoffsetwidth="474" myoffsetheight="27" myoffsetleft="0" myoffsettop="68">
+														<table myoffsetwidth="404" myoffsetheight="27" myoffsetleft="0" myoffsettop="0" border="0" cellpadding="0" cellspacing="0">
+															<tbody myoffsetwidth="404" myoffsetheight="27" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="404" myoffsetheight="27" myoffsetleft="0" myoffsettop="0">
+																<td myoffsetwidth="3" myoffsetheight="27" myoffsetleft="0" myoffsettop="0"><img myoffsetwidth="3" myoffsetheight="27" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="3" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="27" myoffsetleft="3" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="9" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="48" myoffsetheight="27" myoffsetleft="21" myoffsettop="0" class="txt01b"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="0" myoffsettop="5" href="sickness07.html">食中毒</a></td>
+																<td myoffsetwidth="10" myoffsetheight="27" myoffsetleft="69" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="27" myoffsetleft="79" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="9" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="126" myoffsetheight="27" myoffsetleft="97" myoffsettop="0" class="txt01b"><a myoffsetwidth="126" myoffsetheight="17" myoffsetleft="0" myoffsettop="5" href="sickness08.html">胃下垂・胃アトニー</a></td>
+																<td myoffsetwidth="10" myoffsetheight="27" myoffsetleft="223" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="27" myoffsetleft="233" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="9" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="77" myoffsetheight="27" myoffsetleft="251" myoffsettop="0" class="txt01b"><a myoffsetwidth="77" myoffsetheight="17" myoffsetleft="0" myoffsettop="5" href="sickness09.html">胃けいれん</a></td>
+																<td myoffsetwidth="10" myoffsetheight="27" myoffsetleft="328" myoffsettop="0"><img myoffsetwidth="10" myoffsetheight="27" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="10" height="27"></td>
+																<td myoffsetwidth="18" myoffsetheight="27" myoffsetleft="338" myoffsettop="0"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="5" myoffsettop="9" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="5"></td>
+																<td myoffsetwidth="48" myoffsetheight="27" myoffsetleft="356" myoffsettop="0" class="txt01b"><a myoffsetwidth="48" myoffsetheight="17" myoffsetleft="0" myoffsettop="5" href="sickness10.html">胃拡張</a></td>
+															</tr>
+														</tbody></table>
+													</td>
+												</tr>
+												<tr myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="95">
+													<td myoffsetwidth="474" myoffsetheight="1" myoffsetleft="0" myoffsettop="95" background="../../images/common/lin_orange01.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+												</tr>
+											</tbody></table>
+											<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="135">
+										</td>
+									</tr>
+								</tbody></table>
+							</td>
+							<td myoffsetwidth="9" myoffsetheight="884" myoffsetleft="525" myoffsettop="154" width="9" background="../../images/medical/lin_cal_rig.gif"><img myoffsetwidth="8" myoffsetheight="8" myoffsetleft="0" myoffsettop="438" alt="" src="../../images/common/dot.gif" width="8" height="8"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="15" myoffsetleft="0" myoffsettop="1038">
+							<td myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="1038" colspan="2" rowspan="2" valign="bottom"><img myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/medical/lin_cal_c02.gif" width="30" height="24"></td>
+							<td myoffsetwidth="474" myoffsetheight="15" myoffsetleft="30" myoffsettop="1038" bgcolor="#fffae7" height="15"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="7" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+							<td myoffsetwidth="30" myoffsetheight="24" myoffsetleft="504" myoffsettop="1038" colspan="2" rowspan="2" valign="bottom"><img myoffsetwidth="30" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/medical/lin_cal_c03.gif" width="30" height="24"></td>
+						</tr>
+						<tr myoffsetwidth="534" myoffsetheight="9" myoffsetleft="0" myoffsettop="1053">
+							<td myoffsetwidth="474" myoffsetheight="9" myoffsetleft="30" myoffsettop="1053" background="../../images/medical/lin_cal_bot.gif" bgcolor="#fffae7" height="9"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="4" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+						</tr>
+					</tbody></table>
+					<br myoffsetwidth="0" myoffsetheight="19" myoffsetleft="0" myoffsettop="1062">
+				</td>
+			</tr>
+			<tr myoffsetwidth="752" myoffsetheight="1" myoffsetleft="0" myoffsettop="1098">
+				<td myoffsetwidth="534" myoffsetheight="1" myoffsetleft="218" myoffsettop="1098" class="def01" valign="top" align="left" background="../../images/common/lin_glay03.gif"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+			</tr>
+			<tr myoffsetwidth="752" myoffsetheight="41" myoffsetleft="0" myoffsettop="1099">
+				<td myoffsetwidth="534" myoffsetheight="41" myoffsetleft="218" myoffsettop="1099" height="41">
+					<table myoffsetwidth="298" myoffsetheight="19" myoffsetleft="0" myoffsettop="11" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="298" myoffsetheight="19" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="298" myoffsetheight="19" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="34" myoffsetheight="19" myoffsetleft="0" myoffsettop="0" width="34" align="right"><img myoffsetwidth="8" myoffsetheight="10" myoffsetleft="20" myoffsettop="5" alt="" src="../../images/common/lst_01.gif" width="8" border="0" height="10" hspace="6"></td>
+							<td myoffsetwidth="264" myoffsetheight="19" myoffsetleft="34" myoffsettop="0" class="txt03b"><a myoffsetwidth="264" myoffsetheight="17" myoffsetleft="0" myoffsettop="1" href="../index.html">知っていると安心！家庭の胃学トップへ</a></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			<tr myoffsetwidth="752" myoffsetheight="1" myoffsetleft="0" myoffsettop="1140">
+				<td myoffsetwidth="742" myoffsetheight="1" myoffsetleft="10" myoffsettop="1140" colspan="3" valign="top" background="../../images/common/lin_glay.gif" height="1"><img myoffsetwidth="1" myoffsetheight="1" myoffsetleft="0" myoffsettop="0" alt="" src="../../images/common/dot.gif" width="1" height="1"></td>
+			</tr>
+		</tbody></table>
+		<table myoffsetwidth="752" myoffsetheight="38" myoffsetleft="0" myoffsettop="1225" width="752" border="0" cellpadding="0" cellspacing="0">
+			<tbody myoffsetwidth="752" myoffsetheight="38" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="752" myoffsetheight="38" myoffsetleft="0" myoffsettop="0">
+				<td myoffsetwidth="11" myoffsetheight="38" myoffsetleft="0" myoffsettop="0" class="def" width="10">
+				</td>
+				<td myoffsetwidth="741" myoffsetheight="38" myoffsetleft="11" myoffsettop="0" width="679" height="38">
+					<table myoffsetwidth="354" myoffsetheight="24" myoffsetleft="0" myoffsettop="7" border="0" cellpadding="0" cellspacing="0">
+						<tbody myoffsetwidth="354" myoffsetheight="24" myoffsetleft="0" myoffsettop="0"><tr myoffsetwidth="354" myoffsetheight="24" myoffsetleft="0" myoffsettop="0">
+							<td myoffsetwidth="42" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" width="42" height="24"><a myoffsetwidth="39" myoffsetheight="14" myoffsetleft="0" myoffsettop="10" href="http://www.eisai.co.jp/index.html" target="_blank"><img myoffsetwidth="39" myoffsetheight="24" myoffsetleft="0" myoffsettop="0" alt="エーザイ株式会社" src="../../images/common/eisai.gif" width="39" border="0" height="24"></a></td>
+							<td myoffsetwidth="312" myoffsetheight="24" myoffsetleft="42" myoffsettop="0"><a myoffsetwidth="312" myoffsetheight="17" myoffsetleft="0" myoffsettop="4" href="javascript:winCOPY('../../copyright.html','copyright')" onmouseout="window.status=''" onmouseover="window.status='著作権について';return true;"><img myoffsetwidth="312" myoffsetheight="17" myoffsetleft="0" myoffsettop="4" alt="Copyright(C) Eisai Co., Ltd. All rights reserved." src="../../images/common/copyright.gif" border="0"></a></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+	</body>
 </html>
