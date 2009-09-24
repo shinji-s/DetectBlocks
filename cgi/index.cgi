@@ -62,6 +62,7 @@ my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
 # for API (xml)
 my $format = $cgi->param('format');
+my $DetectSender_flag = 1 if $format;
 
 if ($format) {
     print $cgi->header(-charset => 'utf8', -type => "text/$format");
@@ -137,45 +138,47 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
     }
 }
 
-# 色つきのhtmlを別ファイルに掃く
-unless ($format) {
-    open  F, "> ./COLOR_$pid.html" or die;
-    print F $tree->as_HTML("<>&","\t", {});
-    close F;
+# API
+if ($format eq 'xml') {
+    &print_xml;
 }
-
-# 解析結果などを出力
-if ($url || ($topic && $docno)) {
-    if ($format) {
-	&print_xml;
+else {
+    my $output_html = $tree->as_HTML("<>&","\t", {});
+    # API
+    if ($format eq 'html') {
+	print $output_html;
     }
+    # CGI
     else {
-	if ($topic && $docno) {
-	    # # http://www.anti-ageing.jp/show/d200609250001.html
-	    # print qq(<a href="$orig_encode_url" target="_blank">色なし</a>, <a href="$orig_url" target="blank">$orig_url</a>, );
-	    print qq(<a href="$orig_url" target="blank">$orig_url</a>, );
-	    (my $tmp_no = $docno) =~ s/\.html//;
-	    (my $tmp_url = $orig_url) =~ s/http\:\/\///;
-	    $tmp_url .= '.html' if $tmp_url !~ /\.html?$/;
-	    # http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
-	    print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
-	} else {
-	    print qq(<a href="$url" target="_blank">元ページ</a><br>\n);
-	}
-	print qq(<strong>色 : </strong>);
-	&read_and_print_colortable($CSS);
+        # 色つきのhtmlを別ファイルに掃く
+	open  F, "> ./sender_$pid.html" or die;
+	print F $output_html;
+	close F;
 
-	if ($topic && $docno) {
-	    print qq(<strong>発信者\(正解\) : </strong>);
-	    print $ans_ref->{$topic}{$docno} ? $ans_ref->{$topic}{$docno} : 'なし';
-	    print qq(<br>\n);
+	if ($url || ($topic && $docno)) {
+	    # ナビゲーション的なリンク
+	    &print_link;
+
+	    # 色づかいの表示
+	    &read_and_print_colortable($CSS);
+
+	    # 正しい発信者の表示
+	    &print_correct_sender;
+
+	    # 解析結果などを出力
+	    print qq(<iframe src="./sender_$pid.html" width="100%" height="100%"></iframe>\n);
 	}
-	print qq(<iframe src="./COLOR_$pid.html" width="100%" height="100%"></iframe>\n);
     }
 }
 
 # footer
 &print_footer unless $format;
+
+
+
+
+
+
 
 sub read_orig_url {
     my ($topic, $docno) = @_;
@@ -216,6 +219,8 @@ sub read_ISA_ans {
 
 sub read_and_print_colortable {
     my ($css_url) = @_;
+
+    print qq(<strong>色 : </strong>);
 
     # CSSを読み込む
     my @buf;
@@ -401,3 +406,28 @@ sub print_xml {
 
     $writer->end();
 }
+
+sub print_link {
+
+    if ($topic && $docno) {
+	# http://www.anti-ageing.jp/show/d200609250001.html
+	print qq(<a href="$orig_url" target="blank">$orig_url</a>, );
+	(my $tmp_no = $docno) =~ s/\.html//;
+	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
+	$tmp_url .= '.html' if $tmp_url !~ /\.html?$/; # .phpとかの場合最後にhtmlがついてる
+	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
+	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
+    } else {
+	print qq(<a href="$url" target="_blank">元ページ</a><br>\n);
+    }
+}
+
+sub print_correct_sender {
+
+    if ($topic && $docno) {
+	print qq(<strong>発信者\(正解\) : </strong>);
+	print $ans_ref->{$topic}{$docno} ? $ans_ref->{$topic}{$docno} : 'なし';
+	print qq(<br>\n);
+    }
+}
+
