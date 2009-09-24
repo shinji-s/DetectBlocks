@@ -811,9 +811,18 @@ sub print_node {
  	print ' 【', $elem->attr('iteration'), '】';
     }
 
+    if ($elem->attr('iteration_number')) {
+ 	print ' (', $elem->attr('iteration_number'), ')';
+    }
+
     if ($elem->attr('text')) {
 	print ' ', length $elem->attr('text') > 10 ? substr($elem->attr('text'), 0, 10) . '‥‥' : $elem->attr('text');
     }
+    elsif ($elem->tag eq 'img' && $elem->attr('alt')) {
+	print ' ', length $elem->attr('alt') > 10 ? substr($elem->attr('alt'), 0, 10) . '‥‥' : $elem->attr('alt');
+    }
+
+
     print "\n";
 
     # もう子供がいない
@@ -895,16 +904,23 @@ sub detect_iteration {
 	    for ($k = $j; $k < $j+$i; $k++){
 		$flag = 1 if defined $BLOCK_TAGS{$tags[$k]};
 	    }
-	    # aの後ろに同じテキストが来る場合
+	    # 例外処理
 	    if ($flag == 0) {
+		# aの後ろに同じテキストが来る場合
+		# ★ <a>HOME</a><font>|</font> <a>SITEMAP</a><font>|</font> ... の場合は??
 		for ($k = $j; $k < $j+$i; $k++){
-		    if ($tags[$k] eq 'a' && 
-			$k+1 < $j+$i && $tags[$k+1] eq '~text' && 
-			$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' &&
-			$substrings[$k+1] eq $substrings[$k+$i+1] &&
-			($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
-			$flag = 1;
-			$div_char = ($elem->content_list)[$k+1]->attr('text');
+		    if ($tags[$k] eq 'a' &&
+		    	$k+1 < $j+$i && $tags[$k+1] eq '~text' && 
+		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1] &&
+		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
+		    	$flag = 1;
+		    	$div_char = ($elem->content_list)[$k+1]->attr('text');
+		    }
+		}
+		# a, img の繰り返し(headerとか)
+		if ($i == 1) {
+		    for ($k = $j; $k < $j+$i; $k++){
+			$flag = 1 if $substrings[$k] =~ /_a_\+_img_-/ && $substrings[$k] eq $substrings[$k+$i+1];
 		    }
 		}
 	    }
@@ -918,6 +934,19 @@ sub detect_iteration {
 	    if ($k - $j >= $ITERATION_TH * $i) {
 		$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
 		$elem->attr('div_char', $div_char) if $div_char;
+
+		my $iteration_num = int(($k - $j) / $i);
+		my ($counter_block, $counter_iteration) = (0, 0);
+		my $end = $j + $iteration_num * $i - 1;
+		for my $l ($j..$end) {
+		    ($elem->content_list)[$l]->attr('iteration_number', $counter_iteration.'/'.$iteration_num);
+		    $counter_block++;
+		    if ($counter_block == $i) {
+			$counter_block = 0;
+			$counter_iteration++;
+		    }
+		}
+
 		last LOOP;
 	    }
 	}
