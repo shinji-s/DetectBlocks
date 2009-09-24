@@ -1,9 +1,31 @@
-- Usage
-  -- perl -I../perl test.pl HTML URL 
+# $Id$
 
-  -- HTMLで領域に色をつけて表示
-     (1) data/style.cssを適当なディレクトリにコピー
-     (2) 下記のようにhtmlファイルをstyle.cssと同じディレクトリに掃く
-         perl -I../perl test.pl -add_class2html HTML URL > somewhere/test.html
-     
-To shibuta@nlp.kuee.kyoto-u.ac.jp
+- 必要なモジュール
+ -- HTML::Treebuilder
+
+- プログラム
+ -- サンプルプログラム : scripts/test.pl
+ -- Usage : perl -I../perl test.pl htmlfile URL
+    (* htmlfileはutf8にencodeしたもの)
+    (* URLはhtmlfileに対応したものを指定)
+
+- CGI (領域名に色をつけて表示 + 発信者候補を表示)
+   !! DetectSender, NEの設定を行わないと動きません.
+      そちらのREADMEも合わせてご覧ください
+
+ -- cgi/index.cgi, cgi/style.cssをpublic_html以下の同一ディレクトリにコピー
+
+ -- 以下をcvsでcheckout
+   - NE
+     CVS_RSH=ssh cvs -d reed:/share/service/cvs co NE
+   - Utils
+     CVS_RSH=ssh cvs -d reed:/share/service/cvs co Utils
+   - DetectSender
+     CVS_RSH=ssh cvs -d reed:/share/service/cvs co NE
+
+ -- index.cgi  l.24~27 を以下のように書き換える
+   - $DetectSender_default : DetectSenderをcheckoutしたディレクトリ
+   - $DetectBlocks_default : DetectBlocksをcheckoutしたディレクトリ
+   - $NE_default           : NEをcheckoutしたディレクトリ
+   - $Utils_default        : Utilsをcheckoutしたディレクトリ
+   
