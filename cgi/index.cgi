@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/share/usr/bin/perl
 
 # $Id$
 
@@ -62,7 +62,7 @@ my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
 # for API (xml)
 my $format = $cgi->param('format');
-my $DetectSender_flag = 1 if $format;
+$DetectSender_flag = 1 if $format;
 
 if ($format) {
     print $cgi->header(-charset => 'utf8', -type => "text/$format");
@@ -156,17 +156,13 @@ else {
 	close F;
 
 	if ($url || ($topic && $docno)) {
-	    # ナビゲーション的なリンク
-	    &print_link;
+	    &print_link; # ナビゲーション的なリンク
 
-	    # 色づかいの表示
-	    &read_and_print_colortable($CSS);
+	    &read_and_print_colortable($CSS); # 色づかいの表示
+	    
+	    &print_correct_sender; # 正しい発信者の表示
 
-	    # 正しい発信者の表示
-	    &print_correct_sender;
-
-	    # 解析結果などを出力
-	    print qq(<iframe src="./sender_$pid.html" width="100%" height="100%"></iframe>\n);
+	    print qq(<iframe src="./sender_$pid.html" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
 	}
     }
 }
@@ -414,7 +410,7 @@ sub print_link {
 	print qq(<a href="$orig_url" target="blank">$orig_url</a>, );
 	(my $tmp_no = $docno) =~ s/\.html//;
 	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
-	$tmp_url .= '.html' if $tmp_url !~ /\.html?$/; # .phpとかの場合最後にhtmlがついてる
+	$tmp_url .= '.html' if $tmp_url !~ /(\.html?|\/)$/; # .phpとかの場合最後にhtmlがついてる
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
 	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
     } else {
