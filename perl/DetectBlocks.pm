@@ -27,6 +27,7 @@ our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
+our $ITERATION_DIV_CHAR = '\||｜|\>|＞|\<|＜|\/|\s'; # a-textの繰り返しのtextとなりうる文字列
 
 our $MAINTEXT_MIN = 200;
 
@@ -890,6 +891,7 @@ sub detect_iteration {
     }
     
     my $child_num = scalar $elem->content_list;
+    my $iteration_ref;
     # ブロックの大きさ
   LOOP:
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
@@ -913,49 +915,66 @@ sub detect_iteration {
 		    	$k+1 < $j+$i && $tags[$k+1] eq '~text' && 
 		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1] &&
 		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
-		    	$flag = 1;
 		    	$div_char = ($elem->content_list)[$k+1]->attr('text');
+			# text部分の文字列を制限
+		    	$flag = 1 if $div_char =~ /^\s*($ITERATION_DIV_CHAR)+\s*$/;
 		    }
 		}
 		# a, img の繰り返し(headerとか)
 		if ($i == 1) {
 		    for ($k = $j; $k < $j+$i; $k++){
-			$flag = 1 if $substrings[$k] =~ /_a_\+_img_-/ && $substrings[$k] eq $substrings[$k+$i+1];
+			$flag = 1 if $substrings[$k] eq '_a_+_img_-' && $substrings[$k] eq $substrings[$k+$i+1];
 		    }
 		}
 	    }
-	    next if($flag == 0);
+	    next if $flag == 0;
 
 	    for ($k = $j+$i; $k < $child_num; $k++) {
 		last if ($substrings[$k] ne $substrings[$k - $i]);
 	    }
 
+	    # # 繰り返し発見
+	    # if ($k - $j >= $ITERATION_TH * $i) {
+	    # 	%{$iteration_ref->[$i]} = (j => $j, k => $k,
+	    # 				   iteration => join(':', splice(@substrings, $j, $i)), div_char => $div_char);
+	    # 	next LOOP;
+	    # }
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
-		$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
-		$elem->attr('div_char', $div_char) if $div_char;
+	    	$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
+	    	$elem->attr('div_char', $div_char) if $div_char;
 
-		my $iteration_num = int(($k - $j) / $i);
-		my ($counter_block, $counter_iteration) = (0, 0);
-		my $end = $j + $iteration_num * $i - 1;
-		for my $l ($j..$end) {
-		    ($elem->content_list)[$l]->attr('iteration_number', $counter_iteration.'/'.$iteration_num);
-		    $counter_block++;
-		    if ($counter_block == $i) {
-			$counter_block = 0;
-			$counter_iteration++;
-		    }
-		}
+	    	# 繰り返し番号を付与
+	    	$this->attach_iteration_number($elem, $i, $j, $k);
 
-		last LOOP;
+	    	last LOOP;
 	    }
 	}
     }
+
+    # Dumpvalue->new->dumpValue($iteration_ref);
 
     for my $child_elem ($elem->content_list){
 	$this->detect_iteration($child_elem);
     }
 }
+
+sub attach_iteration_number {
+    my ($this, $elem, $i, $j, $k) = @_;
+
+    my $iteration_num = int(($k - $j) / $i);
+    my ($counter_block, $counter_iteration) = (0, 0);
+    my $end = $j + $iteration_num * $i - 1;
+    for my $l ($j..$end) {
+	($elem->content_list)[$l]->attr('iteration_number', $counter_iteration.'/'.$iteration_num);
+	$counter_block++;
+	if ($counter_block == $i) {
+	    $counter_block = 0;
+	    $counter_iteration++;
+	}
+    }
+}
+
 
 sub get_text {
     my ($this, $elem) = @_;
