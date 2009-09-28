@@ -119,7 +119,12 @@ sub new{
 
     my $this = {};
     $this->{opt} = $opt;
-    $this->{juman} = new Juman();
+
+    # 32/64bit
+    my $machine =`uname -n`;
+    my $JUMAN_COMMAND = $machine =~ /^orchid/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+
+    $this->{juman} = new Juman(-Command => $JUMAN_COMMAND);
 
     bless $this;
 }
