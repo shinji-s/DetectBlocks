@@ -161,8 +161,6 @@ sub detectblocks{
     # テキストをタグ化
     $body->objectify_text;
 
-    # $body->delete_ignorable_whitespace();
-
     # 自分以下のテキストの長さを記述
     $this->attach_elem_length($body);
     $this->{alltextlen} = $body->attr('length');
@@ -184,8 +182,6 @@ sub detectblocks{
 
 	$this->text2div($body);
     }
-
-    # $body->deobjectify_text;
 }
 
 # 不要な属性を削除
@@ -938,30 +934,44 @@ sub detect_iteration {
 		last if ($substrings[$k] ne $substrings[$k - $i]);
 	    }
 
-	    # # 繰り返し発見
-	    # if ($k - $j >= $ITERATION_TH * $i) {
-	    # 	%{$iteration_ref->[$i]} = (j => $j, k => $k,
-	    # 				   iteration => join(':', splice(@substrings, $j, $i)), div_char => $div_char);
-	    # 	next LOOP;
-	    # }
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
-	    	$elem->attr('iteration', join(':', splice(@substrings, $j, $i)));
-	    	$elem->attr('div_char', $div_char) if $div_char;
+	    	%{$iteration_ref->[$i]} = (j => $j, k => $k, iteration => [splice(@substrings, $j, $i)], div_char => $div_char);
+	    	next LOOP;
+	    }
+	}
+    }
+    
+    # 最適な繰り返し単位を見つける
+    $this->select_iteration($elem, $iteration_ref) if defined $iteration_ref;
+    
+    for my $child_elem ($elem->content_list){
+	$this->detect_iteration($child_elem);
+    }
+}
 
+sub select_iteration {
+    my ($this, $elem, $iteration_ref) = @_;
+
+    my ($iteration_string_buf, $max_k);
+  LOOP:
+    for (my $i = $#$iteration_ref; $i >= 1; $i--) {
+	my $ref = $iteration_ref->[$i];
+	foreach my $iteration_string (@{$ref->{iteration}}) {
+	    if (!$iteration_string_buf && $i != 1) {
+		($max_k, $iteration_string_buf) = ($ref->{k}, $iteration_string);
+	    }
+	    elsif ($iteration_string_buf ne $iteration_string || $i == 1) {
+		$max_k = $ref->{k} if !$max_k;
 	    	# 繰り返し番号を付与
-	    	$this->attach_iteration_number($elem, $i, $j, $k);
-
-	    	last LOOP;
+	    	$elem->attr('iteration', join(':', @{$ref->{iteration}}));
+	    	$elem->attr('div_char', $ref->{div_char}) if $ref->{div_char};
+	    	$this->attach_iteration_number($elem, $i, $ref->{j}, $max_k);
+		last LOOP;
 	    }
 	}
     }
 
-    # Dumpvalue->new->dumpValue($iteration_ref);
-
-    for my $child_elem ($elem->content_list){
-	$this->detect_iteration($child_elem);
-    }
 }
 
 sub attach_iteration_number {
