@@ -1,4 +1,4 @@
-#!/share/usr/bin/perl
+#!/share/usr-x86_64/bin/perl
 
 # $Id$
 
@@ -52,7 +52,6 @@ my $DetectSender_flag = $cgi->param('DetectSender_flag');
 my %blockopt = (get_more_block => 1, add_class2html => 1);
 # 発信者解析のoption
 my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1);
-
 # 表示の際に相対パスを絶対パスに直すか
 $blockopt{rel2abs} = $cgi->param('rel2abs');
 
@@ -115,6 +114,7 @@ $DetectBlocks->addCSSlink($tree, 'style.css');
 # 発信者解析を行う
 my $DetectSender;
 if ($DetectSender_flag && (($topic && $docno) || $url)) {
+
     my $config = &read_config({32 => $bit32});
     my @urls;
 
