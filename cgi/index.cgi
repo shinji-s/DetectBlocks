@@ -51,7 +51,7 @@ my $DetectSender_flag = $cgi->param('DetectSender_flag');
 # 領域抽出のoption
 my %blockopt = (get_more_block => 1, add_class2html => 1);
 # 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1);
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1, NER => 1);
 # 表示の際に相対パスを絶対パスに直すか
 $blockopt{rel2abs} = $cgi->param('rel2abs');
 
@@ -61,7 +61,7 @@ my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
 # for API (xml)
 my $format = $cgi->param('format');
-$DetectSender_flag = 1 if $format;
+$DetectSender_flag = 1 if $format eq 'xml';
 
 if ($format) {
     print $cgi->header(-charset => 'utf8', -type => "text/$format");
