@@ -3,7 +3,7 @@
 # $Id$
 
 # 使い方
-# COLOR.cgiとstyle.cssを$HOME/public_html以下の同じディレクトリに置く
+# index.cgiとstyle.cssを$HOME/public_html以下の同じディレクトリに置く
 
 use strict;
 use utf8;
@@ -13,6 +13,7 @@ use CGI::Carp qw(fatalsToBrowser);
 
 my $uname = `uname -n`;
 my $bit32 = $uname =~ /^reed/ ? 1 : 0;
+my $bit_num = `uname -m`;
 
 # スタイルシートのパス
 my $CSS = './style.css';
@@ -51,7 +52,7 @@ my $DetectSender_flag = $cgi->param('DetectSender_flag');
 # 領域抽出のoption
 my %blockopt = (get_more_block => 1, add_class2html => 1);
 # 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1, NER => 1);
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1);
 # 表示の際に相対パスを絶対パスに直すか
 $blockopt{rel2abs} = $cgi->param('rel2abs');
 
@@ -61,6 +62,7 @@ my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
 # for API (xml)
 my $format = $cgi->param('format');
+my $input_type = $cgi->param('input_type'); # URLを直接入力 or wisdomの文書セット
 $DetectSender_flag = 1 if $format eq 'xml';
 
 if ($format) {
@@ -115,7 +117,8 @@ $DetectBlocks->addCSSlink($tree, 'style.css');
 my $DetectSender;
 if ($DetectSender_flag && (($topic && $docno) || $url)) {
 
-    my $config = &read_config({32 => $bit32});
+    # my $config = &read_config({32 => $bit32});
+    my $config = &read_config({bit_num => $bit_num});
     my @urls;
 
     $DetectSender = new DetectSender(\%senderopt, $config);
@@ -276,7 +279,6 @@ END_OF_HTML
 sub print_form {
 
 print <<"END_OF_HTML";
-<body>
 <form method="GET" action="$ENV{SCRIPT_NAME}">
 block:<input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="40">, 
 sender:<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="40">,
@@ -286,97 +288,91 @@ END_OF_HTML
     print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender>);
 
     my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
-    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs>);
+    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs><br>\n);
 
-    print qq(<input type="hidden" name="input_url" value="$url">\n) if ($url);
-    print qq(<input type="hidden" name="topic" value="$topic">\n) if ($topic);
-    print qq(<input type="hidden" name="docno" value="$docno">\n) if ($docno);
-
-print << "END_OF_HTML";
-<input type="submit" value="Send">
-</form>
-<form method="GET" action="$ENV{SCRIPT_NAME}">
-<input type="hidden" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
-<input type="hidden" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
+print <<"END_OF_HTML";
+<select name="input_type">
 END_OF_HTML
+    # URL指定
+    if ($input_type eq 'url') {
+	print qq(<option selected="selected" value="url">URLを指定</option>);
+	print qq(<option value="topic">TOPICを指定</option>);
+	print qq(</select>);
 
-    if ($url) {
-        print qq(URLを指定 : <input type="text" name="inputurl" value="$url" size="50">);
-    } else {
-        $ans_ref = &read_ISA_ans($topic, $docno);
-        print qq(URLを指定 : <input type="text" name="inputurl" value="http://www.kyoto-u.ac.jp/ja" size="50">);
-    }
-
-print << "END_OF_HTML";
-<input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
-<input type="hidden" name="rel2abs" value="$blockopt{rel2abs}">
-<input type="submit" value="Send">
-</form>
-END_OF_HTML
-
-# ディレクトリを調べる
-opendir(DIR, "$DetectBlocks_ROOT/sample/htmls/");
-my @topic = readdir(DIR);
-closedir(DIR);
-
-# トピック
-print << "END_OF_HTML";
-<form method="GET" action="$ENV{SCRIPT_NAME}">\n
-<input type="hidden" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="50">
-<input type="hidden" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="50">
-TOPIC:<select name="topic">
-END_OF_HTML
-
-    if (!$topic) {
-        print qq(<option selected="selected" value="">Select Topic</option>\n);
-    } 
-    for (my $i = 0;$i < @topic;$i++) {
-        my $tmp = $topic[$i];
-        next if $tmp =~ /CVS|^\.+$/;
-    
-        if ($topic && $topic eq $tmp) {
-	    print qq(<option name="topic" value="$tmp" selected="selected">$tmp</option>\n);
-        } else {
-	    print qq(<option name="topic "value="$tmp">$tmp</option>\n);
-        }
-    }
-    print qq(</select>);
-
-
-    # 文書番号
-    if ($topic) {
-	# ファイルを調べる
-	opendir(F, "$DetectBlocks_ROOT/sample/htmls/$topic");
-	my @docno = sort readdir(F);
-	closedir(F);
-
-	print qq(ID:<form method="GET" action="$ENV{SCRIPT_NAME}">\n);
-
-	print qq(<select name="docno" width="100">\n);
-	if (!$docno) {
-	    print qq(<option name="docno" value="" selected="selected">Select Document</option>\n);	
+	print qq(&nbsp;&nbsp;&nbsp;&nbsp;URLを入力 : );
+	if ($url) {
+	    print qq(<input type="text" name="inputurl" value="$url" size="50">);
+	} else {
+	    $ans_ref = &read_ISA_ans($topic, $docno);
+	    print qq(<input type="text" name="inputurl" value="http://www.kyoto-u.ac.jp/ja" size="50">);
 	}
+    }
+    # TOPIC指定
+    elsif ($input_type eq 'topic') {
+	$ans_ref = &read_ISA_ans($topic, $docno);
+	
+	print qq(<option value="url">URLを指定</option>);
+	print qq(<option selected="selected" value="topic">TOPICを指定</option>);
+	print qq(</select>);
 
-	for (my $i = 0; $i < @docno; $i++) {
-	    my $tmp_docno = $docno[$i];
-	    next if $tmp_docno =~ /CVS|^\.+$/;
+        # ディレクトリを調べる
+	opendir(DIR, "$DetectBlocks_ROOT/sample/htmls/");
+	my @topic = readdir(DIR);
+	closedir(DIR);
 
-	    my $tmp_ans = $ans_ref->{$topic}{$tmp_docno} ? $ans_ref->{$topic}{$tmp_docno} : 'なし';
-	    if ($docno && $docno eq $tmp_docno) {
-		print qq(<option name="docno" value="$tmp_docno" selected="selected">$tmp_docno ($tmp_ans)</option>\n);
+        # トピック
+	print qq(\n&nbsp;&nbsp;&nbsp;&nbsp;TOPIC:<select name="topic">);
+        if (!$topic) {
+	    print qq(<option selected="selected" value="">Select Topic</option>\n);
+        } 
+	for (my $i = 0;$i < @topic;$i++) {
+	    my $tmp = $topic[$i];
+	    next if $tmp =~ /CVS|^\.+$/;
+	    
+	    if ($topic && $topic eq $tmp) {
+		print qq(<option name="topic" value="$tmp" selected="selected">$tmp</option>\n);
 	    } else {
-		print qq(<option name="docno "value="$tmp_docno">$tmp_docno ($tmp_ans)</option>\n);
+		print qq(<option name="topic "value="$tmp">$tmp</option>\n);
 	    }
 	}
-	print qq(</select>\n);
-    }
+	print qq(</select>);
 
-print << "END_OF_HTML";
-<input type="hidden" name="DetectSender_flag" value="$DetectSender_flag">
-<input type="hidden" name="rel2abs" value="$blockopt{rel2abs}">
-<input type="submit" value="Send">
-</form>
-END_OF_HTML
+
+        # 文書番号
+        if ($topic) {
+	    # ファイルを調べる
+	    opendir(F, "$DetectBlocks_ROOT/sample/htmls/$topic");
+	    my @docno = sort readdir(F);
+	    closedir(F);
+
+	    print qq(<form method="GET" action="$ENV{SCRIPT_NAME}">\n);
+
+	    print qq(  ID:<select name="docno" width="100">\n);
+	    if (!$docno) {
+		print qq(<option name="docno" value="" selected="selected">Select Document</option>\n);	
+	    }
+
+	    for (my $i = 0; $i < @docno; $i++) {
+		my $tmp_docno = $docno[$i];
+		next if $tmp_docno =~ /CVS|^\.+$/;
+
+		my $tmp_ans = $ans_ref->{$topic}{$tmp_docno} ? $ans_ref->{$topic}{$tmp_docno} : 'なし';
+		if ($docno && $docno eq $tmp_docno) {
+		    print qq(<option name="docno" value="$tmp_docno" selected="selected">$tmp_docno ($tmp_ans)</option>\n);
+		} else {
+		    print qq(<option name="docno "value="$tmp_docno">$tmp_docno ($tmp_ans)</option>\n);
+		}
+	    }
+	    print qq(</select>\n);
+	}
+    }
+    else {
+	print qq(<option value="url">URLを指定</option>);
+	print qq(<option value="topic">TOPICを指定</option>);
+	print qq(</select>);
+    }
+    print qq(<input type="submit" value="Send">);
+    print qq(</form>);
 }
 
 sub print_footer {
