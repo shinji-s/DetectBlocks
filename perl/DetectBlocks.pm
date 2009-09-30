@@ -33,6 +33,7 @@ our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
 our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
+Sour $FOOTER_STRING_EX = 'all\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
 our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
@@ -588,6 +589,15 @@ sub check_footer {
 	$this->{alltextlen} * (1 - $elem->attr('ratio_end')) < $FOOTER_END_TH) {
 	foreach my $text (@$texts) {
 	    if ($text =~ /$FOOTER_STRING/i) {
+		$footer_flag = 1;
+		last;
+	    }
+	}
+    }
+    # all right researved は無条件でOK
+    else {
+	foreach my $text (@$texts) {
+	    if ($text =~ /$FOOTER_STRING_EX/i) {
 		$footer_flag = 1;
 		last;
 	    }
