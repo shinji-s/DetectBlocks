@@ -22,8 +22,13 @@ my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default);
 my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $cgi);
 BEGIN {
     # 各cvsのdefaultとするRootディレクトリ
+    # 開発版用
     $DetectBlocks_default = '/home/funayama/cvs/DetectBlocks';
     $DetectSender_default = '/home/funayama/DetectSender';
+    # 安定版用
+    # $DetectBlocks_default = '/home/funayama/cvs/stable/DetectBlocks';
+    # $DetectSender_default = '/home/funayama/cvs/stable/DetectSender';
+
     $NE_default = '/home/funayama/M1_2008/NE';
     $Utils_default = '/home/funayama/cvs/Utils';
 
@@ -60,9 +65,11 @@ my $pid = $$;
 my $url = $cgi->param('inputurl');
 my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
-# for API (xml)
-my $format = $cgi->param('format');
-my $input_type = $cgi->param('input_type'); # URLを直接入力 or wisdomの文書セット
+my $format = $cgi->param('format'); # for API (xml or html)
+my $input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
+my $ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
+
+($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
 $DetectSender_flag = 1 if $format eq 'xml';
 
 if ($format) {
@@ -285,14 +292,22 @@ sender:<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" si
 END_OF_HTML
 
     my $checkedsender = $DetectSender_flag ? ' checked' : '';
-    print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender>);
+    print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender>, );
 
     my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
-    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs><br>\n);
+    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs>, );
 
-print <<"END_OF_HTML";
-<select name="input_type">
-END_OF_HTML
+    my $ne_selected;
+    $ne_selected->{$ne_type} = ' selected="selected"';
+    print qq(固有表現解析:<select name="ne_type">\n);
+    print qq(<option value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE</option>\n);
+    print qq(<option value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf</option>\n);
+    print qq(<option value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない</option>\n);
+    print qq(</select>\n);
+    
+    print qq(<br>\n);
+    print qq(<select name="input_type">\n);
+
     # URL指定
     if ($input_type eq 'url') {
 	print qq(<option selected="selected" value="url">URLを指定</option>);
