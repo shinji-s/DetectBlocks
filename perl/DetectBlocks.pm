@@ -122,8 +122,8 @@ sub new{
     $this->{opt} = $opt;
 
     # 32/64bit
-    my $machine =`uname -n`;
-    my $JUMAN_COMMAND = $machine =~ /^orchid/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+    my $machine =`uname -m`;
+    my $JUMAN_COMMAND = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
 
     $this->{juman} = new Juman(-Command => $JUMAN_COMMAND);
 
@@ -207,121 +207,121 @@ sub detect_block {
 
     my @texts = $this->get_text($elem);
 
-    # さらに分割するかどうかを判定 (する:1, しない:0)
+    # # さらに分割するかどうかを判定 (する:1, しない:0)
     my $divide_flag = $this->check_divide_block($elem, \@texts) if !$option->{parent};
 
     if (defined $option->{parent} ||  
-	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
-	my $myblocktype;
+    	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
+    	my $myblocktype;
 
 	
-	# フッター
-	# 条件 : 以下のすべてを満たす
-	# - ブロックの開始がページ末尾から300文字以内
-	# - ブロックの終了がページ末尾から100文字以内
-	# - 「copyright」など特別な文字列を含む
-	if ($this->check_footer($elem, \@texts)) {
-	    $myblocktype = 'footer';
-	}
+    	# フッター
+    	# 条件 : 以下のすべてを満たす
+    	# - ブロックの開始がページ末尾から300文字以内
+    	# - ブロックの終了がページ末尾から100文字以内
+    	# - 「copyright」など特別な文字列を含む
+    	if ($this->check_footer($elem, \@texts)) {
+    	    $myblocktype = 'footer';
+    	}
 
-	# ヘッダー
-	# 条件 : 以下のすべてを満たす
-	# - ブロックの開始がページ先頭から100文字以内
-	# - ブロックの終了がページ先頭から200文字以内
-	# - index.*へのリンクを持つ
-	elsif ($this->check_header($elem)) {
-	    $myblocktype = 'header';
-	}
+    	# ヘッダー
+    	# 条件 : 以下のすべてを満たす
+    	# - ブロックの開始がページ先頭から100文字以内
+    	# - ブロックの終了がページ先頭から200文字以内
+    	# - index.*へのリンクを持つ
+    	elsif ($this->check_header($elem)) {
+    	    $myblocktype = 'header';
+    	}
 
-	# リンク領域
-	# - ブロック以下のaタグを含む繰り返しの割合の和が8割以上
-	elsif ($elem->attr("length") != 0 && $this->check_link_block($elem) / $elem->attr("length") > $LINK_RATIO_TH) {
-	    $myblocktype = 'link';
-	}
+    	# リンク領域
+    	# - ブロック以下のaタグを含む繰り返しの割合の和が8割以上
+    	elsif ($elem->attr("length") != 0 && $this->check_link_block($elem) / $elem->attr("length") > $LINK_RATIO_TH) {
+    	    $myblocktype = 'link';
+    	}
 
-	# img
-	# - 葉の画像の割合が8割以上
-	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
-		> $IMG_RATIO_TH) {
-	    $myblocktype = 'img';
-	}
+    	# img
+    	# - 葉の画像の割合が8割以上
+    	elsif ((($leaf_string1 =~ s/_img_//g) / ($leaf_string2 =~ s/_//g) * 2)
+    		> $IMG_RATIO_TH) {
+    	    $myblocktype = 'img';
+    	}
 
-	# form
-	# - ブロック以下にformタグがある
-	# - フロック以下に<input type="submit">がある
-	elsif ($this->check_form($elem)) {
-	    $myblocktype = 'form';
-	}
+    	# form
+    	# - ブロック以下にformタグがある
+    	# - フロック以下に<input type="submit">がある
+    	elsif ($this->check_form($elem)) {
+    	    $myblocktype = 'form';
+    	}
 
-	# 中身なし
-	elsif ($elem->attr('length') == 0) {
-	    ;
-	}
+    	# 中身なし
+    	elsif ($elem->attr('length') == 0) {
+    	    ;
+    	}
 
         # 本文 ★ CheckUnknownBlockの段階でJUMANがかかっているので非効率(要修正)
-	# - 以下のいずれかを満たす
-	# -- 長さが200文字以内
-	# -- 「の」を除く助詞のブロック以下の全形態素に占める割合が5%以上
-	# -- 句点、読点のブロック以下の全形態素に占める割合が5%以上
-	elsif ($this->check_maintext($elem, \@texts)) {
-	    $myblocktype = 'maintext';
-	}
+    	# - 以下のいずれかを満たす
+    	# -- 長さが200文字以内
+    	# -- 「の」を除く助詞のブロック以下の全形態素に占める割合が5%以上
+    	# -- 句点、読点のブロック以下の全形態素に占める割合が5%以上
+    	elsif ($this->check_maintext($elem, \@texts)) {
+    	    $myblocktype = 'maintext';
+    	}
 
-	# リンク領域(カレンダー)
-	# ^(月|火|水|木|金|土|日)$ を7回含む
-	elsif ($this->check_calender($elem, \@texts)) {
-	    $myblocktype = 'link';
-	}
+    	# リンク領域(カレンダー)
+    	# ^(月|火|水|木|金|土|日)$ を7回含む
+    	elsif ($this->check_calender($elem, \@texts)) {
+    	    $myblocktype = 'link';
+    	}
 
-	# それ以外の場合
-	else {
-	    $myblocktype = 'unknown_block';
-	}
+    	# それ以外の場合
+    	else {
+    	    $myblocktype = 'unknown_block';
+    	}
 
-	if ($myblocktype) {
-	    if (defined $option->{parent}) {
-		my ($start, $end) = ($option->{start}, $option->{end});
-		for my $i ($start..$end) {
-		    my $tmp_elem = ($option->{parent}->content_list)[$i];
-		    $this->attach_attr_blocktype($tmp_elem, $myblocktype, 'myblocktype', {pos => $i - $start + 1, total => $end - $start + 1});
-		}
-	    }
-	    else {
-		$this->attach_attr_blocktype($elem, $myblocktype, 'myblocktype')
-	    }
+    	if ($myblocktype) {
+    	    if (defined $option->{parent}) {
+    		my ($start, $end) = ($option->{start}, $option->{end});
+    		for my $i ($start..$end) {
+    		    my $tmp_elem = ($option->{parent}->content_list)[$i];
+    		    $this->attach_attr_blocktype($tmp_elem, $myblocktype, 'myblocktype', {pos => $i - $start + 1, total => $end - $start + 1});
+    		}
+    	    }
+    	    else {
+    		$this->attach_attr_blocktype($elem, $myblocktype, 'myblocktype')
+    	    }
 
-	    # 確定した領域の下からもっと細かい領域を探す
-	    if ($this->{opt}{get_more_block} && $myblocktype !~ /$NO_MORE_TAG/) {
-		# そのための情報を得る
-		$this->detect_string($elem);
+    	    # 確定した領域の下からもっと細かい領域を探す
+    	    if ($this->{opt}{get_more_block} && $myblocktype !~ /$NO_MORE_TAG/) {
+    		# そのための情報を得る
+    		$this->detect_string($elem);
 
-		$this->detect_more_blocks($elem, \@texts) ;
-	    }
-	}
+    		$this->detect_more_blocks($elem, \@texts) ;
+    	    }
+    	}
     }
     else {
-	my $block_start;
-	for (my $i = 0;$i < $elem->content_list; $i++) {
-	    my $child_elem = ($elem->content_list)[$i];
-	    # block要素 or textが50%以上のblock
-	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
-		(defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i)) {
-		# インライン要素の末尾を検出
-		if (defined $block_start) {
-		    $this->detect_block_region($elem, $block_start, $i-1);
-		    undef $block_start;
-		}
-		$this->detect_block($child_elem);
-	    }
-	    # インライン要素の先頭を検出
-	    elsif (!defined $block_start) {
-		$block_start = $i;
-	    }
-	}
-	# 末尾
-	if (defined $block_start) {
-	    $this->detect_block_region($elem, $block_start, scalar $elem->content_list - 1);
-	}
+    	my $block_start;
+    	for (my $i = 0;$i < $elem->content_list; $i++) {
+    	    my $child_elem = ($elem->content_list)[$i];
+    	    # block要素 or textが50%以上のblock
+    	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
+    		(defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i)) {
+    		# インライン要素の末尾を検出
+    		if (defined $block_start) {
+    		    $this->detect_block_region($elem, $block_start, $i-1);
+    		    undef $block_start;
+    		}
+    		$this->detect_block($child_elem);
+    	    }
+    	    # インライン要素の先頭を検出
+    	    elsif (!defined $block_start) {
+    		$block_start = $i;
+    	    }
+    	}
+    	# 末尾
+    	if (defined $block_start) {
+    	    $this->detect_block_region($elem, $block_start, scalar $elem->content_list - 1);
+    	}
     }
 }
 
@@ -640,28 +640,28 @@ sub check_divide_block {
     
     # チェック
     foreach my $child_elem ($elem->content_list) {
-	## address
-	if (defined $child_elem->find('address')) {
-	    return 1 ;
-	}
+    	## address
+    	if (defined $child_elem->find('address')) {
+    	    return 1 ;
+    	}
 
-	## form (以下のような場合は分割しない)
-	#------------------------------------#
-	# <table>                            #
-	# <tr><td><form> </form></td></tr>   #
-	# <tr><td><input> </input></td></tr> #
-	# </table>                           #
-	#------------------------------------#
-	unless ($elem->tag eq 'table' && !$child_elem->find('table')) {
-	    return 1 if defined $child_elem->find('form');
-	}
+    	## form (以下のような場合は分割しない)
+    	#------------------------------------#
+    	# <table>                            #
+    	# <tr><td><form> </form></td></tr>   #
+    	# <tr><td><input> </input></td></tr> #
+    	# </table>                           #
+    	#------------------------------------#
+    	unless ($elem->tag eq 'table' && !$child_elem->find('table')) {
+    	    return 1 if defined $child_elem->find('form');
+    	}
 
-	## copyright
-	# 分割するとfooter領域が出現する
-	# (address不要かも)
-	if ($this->check_divide_block_by_copyright($elem, $texts)) {
-	    return 1;
-	}
+    	## copyright
+    	# 分割するとfooter領域が出現する
+    	# (address不要かも)
+    	if ($this->check_divide_block_by_copyright($elem, $texts)) {
+    	    return 1;
+    	}
     }
 
     return 0;
@@ -674,10 +674,11 @@ sub check_divide_block_by_copyright {
 
     # content_listサイズが1ならさらに潜る
     if ($elem->content_list == 1) {
-	return $this->check_divide_block_by_copyright(($elem->content_list)[0], $texts);
+    	return $this->check_divide_block_by_copyright(($elem->content_list)[0], $texts);
     }
     else {
 	foreach my $child_elem ($elem->content_list) {
+	    next if $child_elem ne 'HTML::Element';
 	    my @child_texts = $this->get_text($child_elem);
 	    return 1 if !$this->check_footer($elem, $texts) && $this->check_footer($child_elem, \@child_texts);
 	}
@@ -908,7 +909,6 @@ sub detect_iteration {
 
 	# スタートポイント
 	for (my $j = 0; $j < $child_num; $j++) {
-
 	    my $k;
 	    my ($flag, $div_char) = (0, '');
 
@@ -945,7 +945,7 @@ sub detect_iteration {
 
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
-		my @buf_substrings = @substrings;
+	    	my @buf_substrings = @substrings;
 	    	%{$iteration_ref->[$i]} = (j => $j, k => $k, iteration => [splice(@buf_substrings, $j, $i)], div_char => $div_char);
 	    	next LOOP;
 	    }
@@ -954,7 +954,7 @@ sub detect_iteration {
     
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
-    
+
     for my $child_elem ($elem->content_list){
 	$this->detect_iteration($child_elem);
     }
@@ -1025,7 +1025,9 @@ sub get_text {
 
 # BLOCKをHTML上で色分けして表示するために整形
 sub addCSSlink {
-    my ($this, $tmp_elem, $css_url) = @_;
+    my ($this, $tmp_elem) = @_;
+
+    my $css_url = '../style.css';
 
     my $head = $tmp_elem->find('head');
     my $body = $tmp_elem->find('body');
