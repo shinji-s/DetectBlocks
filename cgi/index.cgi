@@ -14,12 +14,13 @@ use CGI::Carp qw(fatalsToBrowser);
 my $uname = `uname -n`;
 my $bit32 = $uname =~ /^reed/ ? 1 : 0;
 my $bit_num = `uname -m`;
+my $pid = $$;
 
 # スタイルシートのパス
 my $CSS = './style.css';
 
-my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default);
-my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $cgi);
+my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default, $EBMT_default);
+my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $EBMT_ROOT, $cgi);
 BEGIN {
     # 各cvsのdefaultとするRootディレクトリ
     # 開発版用
@@ -31,6 +32,7 @@ BEGIN {
 
     $NE_default = '/home/funayama/M1_2008/NE';
     $Utils_default = '/home/funayama/cvs/Utils';
+    $EBMT_default = '/home/funayama/cvs/EBMT';
 
     $cgi = new CGI;
     # ROOTの場所を指定
@@ -38,8 +40,9 @@ BEGIN {
     $DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : $DetectSender_default;
     $NE_ROOT = $NE_default;
     $Utils_ROOT = $Utils_default;
+    $EBMT_ROOT = $EBMT_default;
 }
-use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $Utils_ROOT/perl $NE_ROOT/perl));
+use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $Utils_ROOT/perl $NE_ROOT/perl $EBMT_ROOT/lib));
 use DetectBlocks2;
 use DetectSender;
 use Utils;
@@ -57,11 +60,10 @@ my $DetectSender_flag = $cgi->param('DetectSender_flag');
 # 領域抽出のoption
 my %blockopt = (get_more_block => 1, add_class2html => 1);
 # 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1);
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE);
 # 表示の際に相対パスを絶対パスに直すか
 $blockopt{rel2abs} = $cgi->param('rel2abs');
 
-my $pid = $$;
 my $url = $cgi->param('inputurl');
 my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
@@ -95,6 +97,10 @@ $url = &shellEsc($url);
 my $ans_ref;
 # form
 &print_form unless $format;
+
+# debugの出力
+my $FH = $senderopt{debug2file};
+open $FH, "> ./debug_$pid.dat" or die;
 
 ## 解析
 # 対象ページ解析
@@ -133,9 +139,11 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
     $DetectSender->DetectSender($tree, $url);
 
     # "Xのページ => X"など
+    print $FH "--\n* Replace String\n";
     $DetectSender->ReplaceString;
 
     # 文単位でFiltering -> 名詞句抽出 -> 名詞句単位でFiltering
+    print $FH "--\n* Filtering and Select Candidates\n";
     $DetectSender->SelectCandidates;
     
     unless ($format) {
@@ -180,9 +188,7 @@ else {
 # footer
 &print_footer unless $format;
 
-
-
-
+close $blockopt{debug2file};
 
 
 
@@ -423,10 +429,12 @@ sub print_link {
 	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
 	$tmp_url .= '.html' if $tmp_url !~ /(\.html?|\/)$/; # .phpとかの場合最後にhtmlがついてる
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
-	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a><br>\n);
+	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a>, );
     } else {
-	print qq(<a href="$url" target="_blank">元ページ</a><br>\n);
+	print qq(<a href="$url" target="_blank">元ページ</a>, );
     }
+
+    print qq(<a href="./debug_$pid.dat" target="_blank">ログを表示</a><br>\n);
 }
 
 sub print_correct_sender {
