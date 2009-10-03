@@ -74,6 +74,13 @@ my $ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; 
 ($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
 $DetectSender_flag = 1 if $format eq 'xml';
 
+# url入力からtopic入力(or 逆)に変えた瞬間に解析してしまうのを防止
+if ($input_type eq 'url' && $topic) {
+    ($topic, $docno) = ('', '');
+} elsif ($input_type eq 'topic' && $url) {
+    $url = '';
+}
+
 if ($format) {
     print $cgi->header(-charset => 'utf8', -type => "text/$format");
 }
