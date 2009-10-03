@@ -331,7 +331,7 @@ sub detect_more_blocks {
     # print $elem->{myblocktype},"\n";
     
     # このブロック以下をチェックする意味があるか
-    return if !$this->check_this_block_or_not($elem);
+    return if !$this->check_under_this_block($elem);
 
     my $myblocktype_more;
     my $elem_length = $elem->attr('length');
@@ -382,11 +382,10 @@ sub detect_more_blocks {
     }
 }
 
-sub check_this_block_or_not {
+sub check_under_this_block {
     my ($this, $elem) = @_;
 
     foreach my $more_block_name (@MORE_BLOCK_NAMES) {
-	# print ' ',$more_block_name,' ',$elem->{'_'.$more_block_name}{num},"\n";
 	return 1 if $elem->{'_'.$more_block_name}{num} >= $MORE_BLOCK_NUM_TH;
     }
 
@@ -928,7 +927,7 @@ sub detect_iteration {
 		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
 		    	$div_char = ($elem->content_list)[$k+1]->attr('text');
 			# text部分の文字列を制限
-		    	$flag = 1 if $div_char =~ /^\s*($ITERATION_DIV_CHAR)+\s*$/;
+		    	$flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
 		    }
 		}
 		# a, img の繰り返し(headerとか)
@@ -941,47 +940,47 @@ sub detect_iteration {
 	    next if $flag == 0;
 
 	    for ($k = $j+$i; $k < $child_num; $k++) {
-		last if ($substrings[$k] ne $substrings[$k - $i]);
+	    	last if $substrings[$k] ne $substrings[$k - $i];
 	    }
 
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
-	    	%{$iteration_ref->[$i]} = (j => $j, k => $k, iteration => [splice(@substrings, $j, $i)], div_char => $div_char);
+		my @buf_substrings = @substrings;
+	    	%{$iteration_ref->[$i]} = (j => $j, k => $k, iteration => [splice(@buf_substrings, $j, $i)], div_char => $div_char);
 	    	next LOOP;
 	    }
 	}
     }
     
     # 最適な繰り返し単位を見つける
-    $this->select_iteration($elem, $iteration_ref) if defined $iteration_ref;
+    $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
     
     for my $child_elem ($elem->content_list){
 	$this->detect_iteration($child_elem);
     }
 }
 
-sub select_iteration {
+sub select_best_iteration {
     my ($this, $elem, $iteration_ref) = @_;
 
-    my ($iteration_string_buf, $max_k);
-  LOOP:
+    my $flag;
+    # 最適なiterationを探す
+    my $best_iteration_size = 0;
     for (my $i = $#$iteration_ref; $i >= 1; $i--) {
-	my $ref = $iteration_ref->[$i];
-	foreach my $iteration_string (@{$ref->{iteration}}) {
-	    if (!$iteration_string_buf && $i != 1) {
-		($max_k, $iteration_string_buf) = ($ref->{k}, $iteration_string);
-	    }
-	    elsif ($iteration_string_buf ne $iteration_string || $i == 1) {
-		$max_k = $ref->{k} if !$max_k;
-	    	# 繰り返し番号を付与
-	    	$elem->attr('iteration', join(':', @{$ref->{iteration}}));
-	    	$elem->attr('div_char', $ref->{div_char}) if $ref->{div_char};
-	    	$this->attach_iteration_number($elem, $i, $ref->{j}, $max_k);
-		last LOOP;
-	    }
+  	my $ref = $iteration_ref->[$i];
+	next if !defined $ref;
+	if ($best_iteration_size == 0 || $best_iteration_size >= scalar @{$ref->{iteration}}) {
+	    ($best_iteration_size, $flag) = (scalar @{$ref->{iteration}}, 1);
 	}
     }
 
+    # iteration_numberを付与
+    if ($flag) {
+	my $ref = $iteration_ref->[$best_iteration_size];
+	$elem->attr('iteration', join(':', @{$ref->{iteration}}));
+	$elem->attr('div_char', $ref->{div_char}) if $ref->{div_char};
+	$this->attach_iteration_number($elem, $best_iteration_size, $ref->{j}, $ref->{k});
+    }
 }
 
 sub attach_iteration_number {
