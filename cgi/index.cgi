@@ -15,6 +15,8 @@ my $uname = `uname -n`;
 my $bit32 = $uname =~ /^reed/ ? 1 : 0;
 my $bit_num = `uname -m`;
 my $pid = $$;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
+my $mmddhhmmJ = sprintf("%02d%02d-%02d%02d", $mon +1, $mday, $hour, $min);
 
 # スタイルシートのパス
 my $CSS = './style.css';
@@ -107,7 +109,8 @@ my $ans_ref;
 
 # debugの出力
 my $FH = $senderopt{debug2file};
-open $FH, "> ./debug_$pid.dat" or die;
+my $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
+open $FH, "> $log_file" or die;
 
 ## 解析
 # 対象ページ解析
@@ -176,7 +179,8 @@ else {
     # CGI
     else {
         # 色つきのhtmlを別ファイルに掃く
-	open  F, "> ./sender_$pid.html" or die;
+	my $analysis_result_file = './analysis_result/sender_'.$mmddhhmmJ.'_'.$pid.'.html';
+	open  F, "> $analysis_result_file" or die;
 	print F $output_html;
 	close F;
 
@@ -187,7 +191,7 @@ else {
 	    
 	    &print_correct_sender; # 正しい発信者の表示
 
-	    print qq(<iframe src="./sender_$pid.html" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
+	    print qq(<iframe src="$analysis_result_file" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
 	}
     }
 }
@@ -195,7 +199,7 @@ else {
 # footer
 &print_footer unless $format;
 
-close $blockopt{debug2file};
+close $FH;
 
 
 
@@ -436,12 +440,13 @@ sub print_link {
 	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
 	$tmp_url .= '.html' if $tmp_url !~ /(\.html?|\/)$/; # .phpとかの場合最後にhtmlがついてる
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
-	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a>, );
+	print qq(<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">Cache</a>);
     } else {
-	print qq(<a href="$url" target="_blank">元ページ</a>, );
+	print qq(<a href="$url" target="_blank">元ページ</a>);
     }
 
-    print qq(<a href="./debug_$pid.dat" target="_blank">ログを表示</a><br>\n);
+    print qq(, <a href="$log_file" target="_blank">ログを表示</a>) if $DetectSender_flag;
+    print qq(<br>\n);
 }
 
 sub print_correct_sender {
