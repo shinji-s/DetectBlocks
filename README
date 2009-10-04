@@ -8,19 +8,24 @@
  -- サンプルプログラム : scripts/test.pl
  -- Usage : perl -I../perl test.pl htmlfile URL
     (* htmlfileはutf8にencodeしたもの)
-    (* URLはhtmlfileに対応したものを指定)
+    (* URLは指定しなくてもよい)
 
  -- オプション
-   * add_class2html       : 領域情報を付与したものをhtml形式で出力
-   * add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
-   * get_more_block       : profile, address領域も付与
+   * -add_class2html       : 領域情報を付与したものをhtml形式で出力
+   * -add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
+   * -get_more_block       : profile, address領域も付与
 
-- とりうる領域名(myblocktypeの取りうる値)
+- とりうる領域名
  -- デフォルト
-    header, footer, link, img, form, maintext, unknown_block
+   * myblocktype : header, footer, link, img, form, maintext, unknown_block
 
  -- get_more_blockオプションをつけた場合
-    デフォルト(myblocktype) + profile, address(myblocktype_more)
+   * myblocktype : デフォルトと同じ
+   * myblocktype_more : profile, address
+
+
+
+
 
 - CGI (領域名に色をつけて表示 + 発信者候補を表示)
    !! DetectSender, NEの設定を行わないと動きません.
