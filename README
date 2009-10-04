@@ -3,11 +3,24 @@
 - 必要なモジュール
  -- HTML::Treebuilder
 
+
 - プログラム
  -- サンプルプログラム : scripts/test.pl
  -- Usage : perl -I../perl test.pl htmlfile URL
     (* htmlfileはutf8にencodeしたもの)
     (* URLはhtmlfileに対応したものを指定)
+
+ -- オプション
+   * add_class2html       : 領域情報を付与したものをhtml形式で出力
+   * add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
+   * get_more_block       : profile, address領域も付与
+
+- とりうる領域名(myblocktypeの取りうる値)
+ -- デフォルト
+    header, footer, link, img, form, maintext, unknown_block
+
+ -- get_more_blockオプションをつけた場合
+    デフォルト(myblocktype) + profile, address(myblocktype_more)
 
 - CGI (領域名に色をつけて表示 + 発信者候補を表示)
    !! DetectSender, NEの設定を行わないと動きません.
