@@ -543,6 +543,7 @@ sub attach_attr_blocktype {
     # 全てのタグにblock名を付与(★仮)
     if ($this->{opt}{add_blockname2alltag} && $elem->content_list) {
 	foreach my $child_elem ($elem->content_list) {
+	    next if $this->is_stop_elem($child_elem);
 	    $this->attach_attr_blocktype($child_elem, $myblocktype, $attrname, $num);
 	}
     }
