@@ -539,6 +539,13 @@ sub attach_attr_blocktype {
 	my $classname = $elem->attr('class') ? $elem->attr('class').' myblock_'.$myblocktype : 'myblock_'.$myblocktype;
 	$elem->attr('class' , $classname);
     }
+
+    # 全てのタグにblock名を付与(★仮)
+    if ($this->{opt}{add_blockname2alltag} && $elem->content_list) {
+	foreach my $child_elem ($elem->content_list) {
+	    $this->attach_attr_blocktype($child_elem, $myblocktype, $attrname, $num);
+	}
+    }
 }
 
 sub check_form {

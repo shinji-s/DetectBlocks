@@ -25,8 +25,9 @@ use Dumpvalue;
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
+# add_blockname2alltagは後々に撲滅
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'add_blockname2alltag');
 
 my $DetectBlocks = new DetectBlocks2(\%opt);
 
