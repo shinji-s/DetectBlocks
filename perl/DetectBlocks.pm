@@ -9,6 +9,7 @@ use Data::Dumper;
 use Encode;
 use Dumpvalue;
 use Juman;
+use Unicode::Japanese;
 
 use Encode;
 use Encode::Guess;
@@ -44,7 +45,7 @@ our $FOOTER_STRING_EX = 'all\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; 
 
 # maintext用の文字列
 our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
-our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
+our $MAINTEXT_POINT_TH = 0.05;    # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のブロックはmore_blockを探さない
 our $NO_MORE_TAG = '^(header|img|form)$';
@@ -130,7 +131,6 @@ sub new{
     # 32/64bit
     my $machine =`uname -m`;
     my $JUMAN_COMMAND = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
-
     $this->{juman} = new Juman(-Command => $JUMAN_COMMAND);
 
     bless $this;
@@ -215,8 +215,6 @@ sub detect_block {
 
     # # さらに分割するかどうかを判定 (する:1, しない:0)
     my $divide_flag = $this->check_divide_block($elem, \@texts) if !$option->{parent};
-
-
 
     if (defined $option->{parent} ||
     	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
@@ -363,7 +361,7 @@ sub detect_more_blocks {
 	}
 
 	else {
-	    my $devide_flag = 1;;
+	    my $devide_flag = 1;
 	    foreach my $more_block_name (@MORE_BLOCK_NAMES)  {
 		my $block_ref = $elem->{'_'.$more_block_name};
 
@@ -640,11 +638,15 @@ sub check_maintext {
 
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
     foreach my $text (@$texts) {
-	my $result = $this->{juman}->analysis($text);
-	foreach my $mrph ($result->mrph) {
-	    $total_mrph_num++;
-	    $particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
-	    $punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
+	$text = Unicode::Japanese->new($text)->h2z->getu();
+	$text = s/。/。%%%/g;
+	foreach my $text_splitted (split('%%%', $text)) {
+	    my $result = $this->{juman}->analysis($text_splitted);
+	    foreach my $mrph ($result->mrph) {
+		$total_mrph_num++;
+		$particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
+		$punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
+	    }
 	}
     }
 
