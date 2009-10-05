@@ -1,3 +1,65 @@
+2009-10-05 Monday 16:38  funayama
+
+	* perl/DetectBlocks2.pm (1.50): use h2z and split by kuten when
+	  analysing by JUMAN.
+
+2009-10-05 Monday 16:28  nikaido
+
+	* perl/BlogCheck.pm (1.2): [no log message]
+
+2009-10-05 Monday 15:06  nikaido
+
+	* script/test.pl (1.17): blogcheck option¤òÄÉ²Ã
+
+2009-10-05 Monday 14:58  nikaido
+
+	* perl/BlogCheck.pm (1.1): added BlogCheck.pm
+
+2009-10-05 Monday 09:22  funayama
+
+	* perl/DetectBlocks2.pm (1.49):
+	  table$B$N7+$jJV$79=B$$r=@Fp$KG'<1$9$k$h$&$KJQ99(B.
+	  maintext$BMQ$NJ8;zNs$r:o=|(B.  $B4X?tL>$r>/$7JQ99(B.
+
+2009-10-04 Sunday 21:55  funayama
+
+	* perl/DetectBlocks2.pm (1.48):
+	  add_blockname2alltag$B%*%W%7%g%s;~$K(BStopTag$B$K$O(Bmyblocktype$B$rIUM?$7$J$$$h$&$KJQ99(B.
+
+2009-10-04 Sunday 17:49  funayama
+
+	* perl/DetectBlocks2.pm (1.47), script/test.pl (1.16):
+	  ROOT$B$N%?%0$@$1$G$J$/(BROOT$B0J2<$NA4$F$N%?%0$K(Bmyblocktype$B$rIUM?$9$k(Boption$B$rDI2C(B.
+
+2009-10-04 Sunday 17:45  funayama
+
+	* README (1.7): $B@0M}(B2.
+
+2009-10-04 Sunday 17:25  funayama
+
+	* README (1.6): $B@0M}(B.
+
+2009-10-03 Saturday 19:13  funayama
+
+	* perl/DetectBlocks2.pm (1.46): bugfixed.
+
+2009-10-03 Saturday 18:01  funayama
+
+	* cgi/index.cgi (1.15), README (1.5):
+	  $B%m%0$N(Bfile$BL>$rJQ99(B.
+
+2009-10-03 Saturday 17:06  funayama
+
+	* cgi/index.cgi (1.14): smallchange.
+
+2009-10-03 Saturday 17:00  funayama
+
+	* cgi/index.cgi (1.13): $B%m%0$rI=<($9$k$h$&$KJQ99(B.
+
+2009-10-03 Saturday 15:02  funayama
+
+	* ChangeLog (1.3): updated.
+
 2009-10-03 Saturday 14:51  funayama
 
 	* perl/DetectBlocks2.pm (1.45): iteration$B$NItJ,$rJQ99(B.
