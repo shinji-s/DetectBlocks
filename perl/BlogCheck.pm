@@ -12,7 +12,8 @@ use Encode;
 use Encode::Guess;
 
 # ブログのURL
-our $BLOG_URL = 'blog|ameblo|diary';
+our $BLOG_URL = 'blog|diary';
+our $BLOG_URL_S = 'ameblo|/mt/|cocolog|fc2';
 
 # ブログ特有の語
 our $BLOG_STRING = 'トラックバック|コメント|comment|プロフィール|trackback|ブログ|blog|投稿者|posted by';
@@ -48,22 +49,27 @@ sub blog_check {
     $this->blog_url($url);
 
     # ブログ特有の語の個数でブログかどうか判断
-    $this->check_blog_string($body);
+    if ($BLOG_FLAG = 2) {
+	$BLOG_FLAG = 1;
+    } else {
+	$this->check_blog_string($body);
+    }    
     $this->blog_sender($body);
 }
 
 # URLからブログかどうか判断する
 sub blog_url{
     my ($this, $url) = @_;
-
     if (defined $url) {
 	$this->{url} = $url;
-	if ($url =~ /$BLOG_URL/) {
+	if ($url =~ /$BLOG_URL_S/) {
+	    $BLOG_FLAG = 2;
+	}
+	elsif ($url =~ /$BLOG_URL/) {
 	    $BLOG_FLAG = 1;
 	}
     }
 }
-
 
 # ブログ特有の語の頻度でブログかどうか判断する
 sub check_blog_string {
