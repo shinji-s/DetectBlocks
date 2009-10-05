@@ -29,6 +29,13 @@ our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
 our $ITERATION_DIV_CHAR = '\||｜|\>|＞|\<|＜|\/|\s'; # a-textの繰り返しのtextとなりうる文字列
 
+# 柔軟なtableの繰り返しの検出
+our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
+our $TABLE_TR_MIN = 3; # これ以下のtrしか持たないtableは対象外
+our $TABLE_TD_MIN = 2; # これ以下のtdしか持たないtableは対象外
+our $ITERATION_TABLE_RATIO_MIN = 0.30; # これ以下の長さしかないtableは対象外
+our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象外
+
 our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
@@ -36,7 +43,6 @@ our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[�
 our $FOOTER_STRING_EX = 'all\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
-our $MAINTEXT_STRING = '。|、|ます|です|でした|ました';
 our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
 our $MAINTEXT_POINT_TH = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
 
@@ -181,7 +187,7 @@ sub detectblocks{
     if ($this->{opt}{add_class2html}) {
 	$this->remove_deco_attr($body);	    
 
-	$this->text2div($body);
+	$this->text2span($body);
     }
 }
 
@@ -210,10 +216,12 @@ sub detect_block {
     # # さらに分割するかどうかを判定 (する:1, しない:0)
     my $divide_flag = $this->check_divide_block($elem, \@texts) if !$option->{parent};
 
-    if (defined $option->{parent} ||  
-    	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag)) {
-    	my $myblocktype;
 
+
+    if (defined $option->{parent} ||
+    	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
+	$elem->attr('iteration') =~ /\*/) {
+    	my $myblocktype;
 	
     	# フッター
     	# 条件 : 以下のすべてを満たす
@@ -267,11 +275,21 @@ sub detect_block {
     	    $myblocktype = 'maintext';
     	}
 
+	
+	#---------------- 例外的な条件 ----------------#
     	# リンク領域(カレンダー)
     	# ^(月|火|水|木|金|土|日)$ を7回含む
     	elsif ($this->check_calender($elem, \@texts)) {
     	    $myblocktype = 'link';
     	}
+
+	# 本文
+	# 表っぽいと判断されたtableはunknownにしない
+	elsif ($elem->attr('iteration') =~ /\*$/) {
+	    $myblocktype = 'maintext';
+	}
+	#---------------- 例外的な条件 ----------------#
+
 
     	# それ以外の場合
     	else {
@@ -645,7 +663,7 @@ sub check_divide_block {
 
     # 下階層を調べる意味があるかをチェック(ある:1, ない:0)
     return 0 if !$this->check_multiple_block($elem);
-    
+
     # チェック
     foreach my $child_elem ($elem->content_list) {
     	## address
@@ -896,6 +914,46 @@ sub get_leaf_string {
     return $string;
 }
 
+sub cut_table_substring {
+    my ($this, $substrings_ref) = @_;
+
+    # trから始まる && 全行が同じcol数 && 3col以上
+    my ($pre_col_num, $cur_col_num);
+    foreach my $substring (@$substrings_ref) {
+	next if $substring =~ /^_tr_\+_th_/; # 例 : Agaricus 055のような場合に対処
+
+	return if $substring !~ /^_tr_/;
+	$cur_col_num = scalar split('_td_', $substring) -1;
+	return if ($pre_col_num > 0 && $pre_col_num != $cur_col_num) || $cur_col_num <= $TABLE_TD_MIN;
+	$pre_col_num = $cur_col_num;
+
+    }
+
+    my $substrings_ref_buf;
+    for (my $i = 0; $i < @$substrings_ref; $i++) {
+	# substringsの左側2カラム以外の部分は'*'に変換
+	# 例 : <変換前> _tr_+_td_+_img_-_td_+_~text_-_td_+_~text_--
+	#      <変換後> _tr_+_td_+_img_-_td_+_~text_-_td_*
+	if ($substrings_ref->[$i] =~ /^(_tr_\+_td_\+(?:.+?)-_td_\+(?:.+?)-_td_)/) {
+	    $substrings_ref_buf->[$i] = $1.'*';
+	}
+	# thとかの場合
+	else {
+	    $substrings_ref_buf->[$i] = $substrings_ref->[$i]
+	}
+    }
+
+    # 同じsubstringsの割合が閾値以上
+    my %group_substrings;
+    foreach my $substring (@$substrings_ref_buf) {
+	$group_substrings{$substring}++;
+    }
+    foreach my $num (reverse sort values %group_substrings) {
+	@$substrings_ref = @$substrings_ref_buf if $num / scalar @$substrings_ref > $TR_SUBSTRING_RATIO;
+	last;
+    }
+}
+
 sub detect_iteration {
     my ($this, $elem) = @_;
 
@@ -909,6 +967,16 @@ sub detect_iteration {
 	push @tags, $child_elem->tag;
     }
     
+    # 本当の表っぽいtableタグを検出(柔軟な繰り返しの検出のため)
+    if (defined $elem->{ratio_end}) {
+	my $block_ratio = $elem->{ratio_end} - $elem->{ratio_start};
+	if ($elem->tag =~ /table|tbody/ &&
+	    $block_ratio < $ITERATION_TABLE_RATIO_MAX && $block_ratio > $ITERATION_TABLE_RATIO_MIN) {
+	    my @tr_num = $elem->find('tr');
+	    $this->cut_table_substring(\@substrings) if scalar @tr_num > $TABLE_TR_MIN;
+	}
+    }
+
     my $child_num = scalar $elem->content_list;
     my $iteration_ref;
     # ブロックの大きさ
@@ -928,9 +996,10 @@ sub detect_iteration {
 	    if ($flag == 0) {
 		# aの後ろに同じテキストが来る場合
 		# ★ <a>HOME</a><font>|</font> <a>SITEMAP</a><font>|</font> ... の場合は??
+		#   -> @tagsでなく@substringsを利用? $i==2?
+		#   -> 例ページを忘れた
 		for ($k = $j; $k < $j+$i; $k++){
-		    if ($tags[$k] eq 'a' &&
-		    	$k+1 < $j+$i && $tags[$k+1] eq '~text' && 
+		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
 		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1] &&
 		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
 		    	$div_char = ($elem->content_list)[$k+1]->attr('text');
@@ -945,6 +1014,7 @@ sub detect_iteration {
 		    }
 		}
 	    }
+
 	    next if $flag == 0;
 
 	    for ($k = $j+$i; $k < $child_num; $k++) {
@@ -967,6 +1037,7 @@ sub detect_iteration {
 	$this->detect_iteration($child_elem);
     }
 }
+
 
 sub select_best_iteration {
     my ($this, $elem, $iteration_ref) = @_;
@@ -1117,12 +1188,12 @@ sub url2layers {
     return $layers;
 }
 
-sub text2div {
+sub text2span {
     my ($this, $elem) = @_;
 
     if ($elem->content_list) {
 	for my $child_elem ($elem->content_list) {
-	    $this->text2div($child_elem);
+	    $this->text2span($child_elem);
 	}
     }
     else {
