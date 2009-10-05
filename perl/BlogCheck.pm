@@ -25,7 +25,7 @@ our $BLOG_STRING_NUM = 10;
 our $NBLOG_STRING_NUM = 3;
 
 # ブログなら 1 にする
-my $BLOG_FLAG = 0;
+our $BLOG_FLAG = 0;
 
 # ブログの発信者後のワード
 our $BLOG_SENDER = '(posted by (.+?) at |^(.+?) at \d|author(.+?)$|commented by (.+?)$|(.+?)日記$|投稿者(.+?)$)';
@@ -54,7 +54,7 @@ sub blog_check {
     } else {
 	$this->check_blog_string($body);
     }    
-    $this->blog_sender($body);
+    # $this->blog_sender($body);
 }
 
 # URLからブログかどうか判断する
