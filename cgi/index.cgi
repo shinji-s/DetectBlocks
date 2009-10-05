@@ -47,6 +47,7 @@ BEGIN {
 use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $Utils_ROOT/perl $NE_ROOT/perl $EBMT_ROOT/lib));
 use DetectBlocks2;
 use DetectSender;
+use BlogCheck;
 use Utils;
 use ReadConf;
 
@@ -60,7 +61,7 @@ $| = 1;
 my $DetectSender_flag = $cgi->param('DetectSender_flag');
 
 # 領域抽出のoption
-my %blockopt = (get_more_block => 1, add_class2html => 1);
+my %blockopt = (get_more_block => 1, add_class2html => 1, blogcheck => 1);
 # 発信者解析のoption
 my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE);
 # 表示の際に相対パスを絶対パスに直すか
@@ -116,6 +117,7 @@ open $FH, "> $log_file" or die;
 # 対象ページ解析
 my ($raw_html, $orig_url);
 my $DetectBlocks = new DetectBlocks2(\%blockopt);
+my $BlogCheck = new BlogCheck($DetectBlocks);
 
 # HTMLソースを取得
 if ($url) {
@@ -131,22 +133,28 @@ elsif ($topic && $docno) {
     $orig_url = &read_orig_url($topic, $docno);
 }
 
+# 領域抽出
 $DetectBlocks->maketree($raw_html, $orig_url);
 $DetectBlocks->detectblocks;
+
+# blogかどうか判断
+$BlogCheck->blog_check;
+
+# 後処理
 my $tree = $DetectBlocks->gettree;
 $DetectBlocks->addCSSlink($tree, 'style.css');
+$DetectBlocks->post_process;
 
 # 発信者解析を行う
 my $DetectSender;
 if ($DetectSender_flag && (($topic && $docno) || $url)) {
 
-    # my $config = &read_config({32 => $bit32});
     my $config = &read_config({bit_num => $bit_num});
     my @urls;
 
     $DetectSender = new DetectSender(\%senderopt, $config);
     
-    $DetectSender->DetectSender($tree, $url);
+    $DetectSender->DetectSender($tree, $url, $DetectBlocks->{alltextlen});
 
     # "Xのページ => X"など
     print $FH "--\n* Replace String\n";
@@ -186,6 +194,8 @@ else {
 
 	if ($url || ($topic && $docno)) {
 	    &print_link; # ナビゲーション的なリンク
+
+	    &print_blogcheck_result;
 
 	    &read_and_print_colortable($CSS); # 色づかいの表示
 	    
@@ -287,7 +297,8 @@ sub output_log {
 
 sub shellEsc {
     $_ = shift;
-    s/([\&\;\`\'\\\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
+    s/([\;\`\'\\\"\|\*\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
+    # s/([\&\;\`\'\\\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
     return $_;
 }
 
@@ -407,6 +418,14 @@ END_OF_HTML
     print qq(</form>);
 }
 
+sub print_blogcheck_result {
+
+    print qq(, <font style="color:red;"><b>);
+    print $BlogCheck::BLOG_FLAG == 1 ? qq(BLOG) : qq(not BLOG);
+    print qq(</b></font>);
+    print qq(<br>\n);
+}
+
 sub print_footer {
 print << "END_OF_HTML";
 </body>
@@ -446,7 +465,6 @@ sub print_link {
     }
 
     print qq(, <a href="$log_file" target="_blank">ログを表示</a>) if $DetectSender_flag;
-    print qq(<br>\n);
 }
 
 sub print_correct_sender {
