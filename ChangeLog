@@ -1,3 +1,19 @@
+2009-10-06 Tuesday 08:02  funayama
+
+	* cgi/index.cgi (1.16): display blog_ check result.
+
+2009-10-06 Tuesday 08:01  funayama
+
+	* perl/BlogCheck.pm (1.3): comment out calling function blog_sender
+
+2009-10-05 Monday 18:36  funayama
+
+	* perl/DetectBlocks2.pm (1.51): add function post_process
+
+2009-10-05 Monday 16:42  funayama
+
+	* ChangeLog (1.4): updated.
+
 2009-10-05 Monday 16:38  funayama
 
 	* perl/DetectBlocks2.pm (1.50): use h2z and split by kuten when
