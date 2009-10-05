@@ -184,12 +184,20 @@ sub detectblocks{
 
     $this->detect_block($body);
 
-    if ($this->{opt}{add_class2html}) {
-	$this->remove_deco_attr($body);	    
-
-	$this->text2span($body);
-    }
+    $this->post_process($body) if $this->{opt}{add_class2html} && !$this->{opt}{blogcheck};
 }
+
+sub post_process {
+    my ($this, $body) = @_;
+
+    $body = $this->{tree}->find('body') if !defined $body;
+
+    # HTMLからいらないattrを削除
+    $this->remove_deco_attr($body);	    
+    # ~textタグをspanタグに変換
+    $this->text2span($body);
+}
+
 
 # 不要な属性を削除
 sub remove_deco_attr {
