@@ -662,16 +662,12 @@ sub check_maintext {
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
     $this->ResetJUMAN;
     foreach my $text (@$texts) {
-	print '111 ', $text,"\n";
 	$text = Unicode::Japanese->new($text)->h2z->getu();
 	$text =~ s/。/。%%%/g;
-	print 'aaa ', $text,"\n";
 	foreach my $text_splitted (split('%%%', $text)) {
-	    print 'bbb ', $text_splitted,"\n";
 	    $this->ResetJUMAN;
 	    my $result = $this->{juman}->analysis($text_splitted);
 	    foreach my $mrph ($result->mrph) {
-		# print '!!! ', $mrph->hinsi,"\n";
 		$total_mrph_num++;
 		$particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
 		$punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
