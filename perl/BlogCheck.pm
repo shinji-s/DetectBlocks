@@ -49,7 +49,7 @@ sub blog_check {
     $this->blog_url($url);
 
     # ブログ特有の語の個数でブログかどうか判断
-    if ($BLOG_FLAG = 2) {
+    if ($BLOG_FLAG == 2) {
 	$BLOG_FLAG = 1;
     } else {
 	$this->check_blog_string($body);
