@@ -122,6 +122,9 @@ our $EXCEPTIONAL_BLOCK_TAGS = '^(br|li)$';
 # HTMLにする際に捨てる属性
 our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
 
+our $counter_JUMAN;
+our $JUMAN_TH = 30;
+
 sub new{
     my (undef, $opt) = @_;
 
@@ -130,8 +133,9 @@ sub new{
 
     # 32/64bit
     my $machine =`uname -m`;
-    my $JUMAN_COMMAND = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
-    $this->{juman} = new Juman(-Command => $JUMAN_COMMAND);
+    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+    $JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
+    &ResetJUMAN($this, {first => 1});
 
     bless $this;
 }
@@ -602,6 +606,7 @@ sub check_header {
 	    if (@img_elems > 0) {
 		foreach my $img_elem (grep($_->attr('length') >= $ALT4HEADER_TH, @img_elems)) {
 		    # 末尾の形態素条件
+		    $this->ResetJUMAN;
  		    my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
 		    return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
 		}
@@ -638,6 +643,16 @@ sub check_footer {
     return $footer_flag;
 }
 
+# JUMAN_THはnew時のoptionで変更可能
+sub ResetJUMAN {
+    my ($this, $option) = @_;
+    
+    $counter_JUMAN++;
+    if ($counter_JUMAN > $JUMAN_TH || $option->{first}) {
+    	$this->{juman} = new Juman(-Command => $this->{JUMAN_COMMAND});
+    	$counter_JUMAN = 0;
+    }
+}
 
 sub check_maintext {
     my ($this, $elem, $texts) = @_;
@@ -645,12 +660,18 @@ sub check_maintext {
     return 1 if($elem->attr('length') > $MAINTEXT_MIN);
 
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
+    $this->ResetJUMAN;
     foreach my $text (@$texts) {
+	print '111 ', $text,"\n";
 	$text = Unicode::Japanese->new($text)->h2z->getu();
-	$text = s/。/。%%%/g;
+	$text =~ s/。/。%%%/g;
+	print 'aaa ', $text,"\n";
 	foreach my $text_splitted (split('%%%', $text)) {
+	    print 'bbb ', $text_splitted,"\n";
+	    $this->ResetJUMAN;
 	    my $result = $this->{juman}->analysis($text_splitted);
 	    foreach my $mrph ($result->mrph) {
+		# print '!!! ', $mrph->hinsi,"\n";
 		$total_mrph_num++;
 		$particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
 		$punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
