@@ -98,9 +98,6 @@ if ($url && $url !~ /^http\:\/\//) {
 }
 $url = &shellEsc($url);
 
-# ログ
-&output_log($url);
-
 # header
 &print_header unless $format; 
 
@@ -153,6 +150,7 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
     my @urls;
 
     $DetectSender = new DetectSender(\%senderopt, $config);
+    $DetectSender->{blog_flag} = $BlogCheck::BLOG_FLAG;
     
     $DetectSender->DetectSender($tree, $url, $DetectBlocks->{alltextlen});
 
@@ -173,6 +171,9 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
 	print qq(</select>\n&nbsp;&nbsp;)
     }
 }
+
+# ログ
+&output_log($url);
 
 # API
 if ($format eq 'xml') {
@@ -287,11 +288,36 @@ sub read_and_print_colortable {
 }
 
 sub output_log {
-    my $log = $_ ? $_ : "$topic.$docno";
+    my ($url) = @_;
+
+    return if !$url && (!$topic || !$docno);
+
+    my $log = $url ? $url : "$topic.$docno";
     my $date = `date`;
 
     open  F, ">> ./url.log" or die;
-    print F "$date\t$log\n";
+    print F '-' x 100,"\n";
+    print F "DATE: $date";
+    print F "PID: $pid\n";
+    print F "URL: $log\n";
+    print F "BLOG: ", $BlogCheck::BLOG_FLAG,"\n";
+    if ($DetectSender_flag) {
+	print F "SENDER:\n";
+	foreach my $sender ($DetectSender->Display_Information_Sender({array => 'all'})) {
+	    print F "\t$sender\n";
+	}
+    }
+    if ($ENV{REMOTE_ADDR}) {
+	my $env = "";
+	# for ("HTTP_REFERER", "HTTP_FROM", "HTTP_USER_AGENT", "REMOTE_HOST", "REMOTE_ADDR", "REMOTE_PORT") {
+	for ("SCRIPT_NAME", "QUERY_STRING", "HTTP_FROM", "HTTP_USER_AGENT", "REMOTE_HOST", "REMOTE_ADDR", "REMOTE_PORT") {
+	    if ($ENV{$_}) {
+		chomp $ENV{$_};
+		$env .= "$_: $ENV{$_}\n";
+	    }
+	}
+	print F $env;
+    }
     close F;
 }
 
@@ -322,17 +348,17 @@ END_OF_HTML
     my $checkedsender = $DetectSender_flag ? ' checked' : '';
     print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender>, );
 
-    my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
-    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs>, );
-
     my $ne_selected;
     $ne_selected->{$ne_type} = ' selected="selected"';
     print qq(固有表現解析:<select name="ne_type">\n);
     print qq(<option value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE</option>\n);
     print qq(<option value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf</option>\n);
     print qq(<option value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない</option>\n);
-    print qq(</select>\n);
+    print qq(</select>\n, );
     
+    my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
+    print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs>);
+
     print qq(<br>\n);
     print qq(<select name="input_type">\n);
 
@@ -414,14 +440,14 @@ END_OF_HTML
 	print qq(<option value="topic">TOPICを指定</option>);
 	print qq(</select>);
     }
-    print qq(<input type="submit" value="Send">);
+    print qq(<input type="submit" value="解析">);
     print qq(</form>);
 }
 
 sub print_blogcheck_result {
 
-    print qq(, <font style="color:red;"><b>);
-    print $BlogCheck::BLOG_FLAG == 1 ? qq(BLOG) : qq(not BLOG);
+    print qq(, <font style="color:);
+    print $BlogCheck::BLOG_FLAG == 1 ? qq(red;"><b>BLOG) : qq(blue;"><b>notBLOG);
     print qq(</b></font>);
     print qq(<br>\n);
 }
