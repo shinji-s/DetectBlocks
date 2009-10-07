@@ -1,3 +1,23 @@
+2009-10-07 Wednesday 16:37  funayama
+
+	* cgi/index.cgi (1.17): add blog author to final output.
+
+2009-10-06 Tuesday 22:45  funayama
+
+	* perl/DetectBlocks2.pm (1.53): small change.
+
+2009-10-06 Tuesday 10:24  funayama
+
+	* perl/BlogCheck.pm (1.4): bug fixed.
+
+2009-10-06 Tuesday 10:11  funayama
+
+	* perl/DetectBlocks2.pm (1.52): new Juman every 30 times.
+
+2009-10-06 Tuesday 08:03  funayama
+
+	* ChangeLog (1.5): updated.
+
 2009-10-06 Tuesday 08:02  funayama
 
 	* cgi/index.cgi (1.16): display blog_ check result.
