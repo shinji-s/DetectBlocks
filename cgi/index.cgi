@@ -73,8 +73,13 @@ my $docno = $cgi->param('docno');
 my $format = $cgi->param('format'); # for API (xml or html)
 my $input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
 my $ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
+my $Trans_flag = $cgi->param('Trans_flag'); # Transliteration
+
+# inputurlに引数が入る場合用
+$url =~ s/@/&/g;
 
 ($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
+$senderopt{Trans} = $Trans_flag;
 $DetectSender_flag = 1 if $format eq 'xml';
 
 # url入力からtopic入力(or 逆)に変えた瞬間に解析してしまうのを防止
@@ -323,7 +328,7 @@ sub output_log {
 
 sub shellEsc {
     $_ = shift;
-    s/([\;\`\'\\\"\|\*\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
+    s/([\;\`\'\\\"\|\*\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
     # s/([\&\;\`\'\\\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r])/\\$1/g;
     return $_;
 }
@@ -356,6 +361,9 @@ END_OF_HTML
     print qq(<option value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない</option>\n);
     print qq(</select>\n, );
     
+    my $checkedtrans = $Trans_flag ? ' checked' : '';
+    print qq(Transliteration:<input type="checkbox" name="Trans_flag" value="1"$checkedtrans>, );
+
     my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
     print qq(絶対パス:<input type="checkbox" name="rel2abs" value="1"$checkedabs>);
 
