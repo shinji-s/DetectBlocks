@@ -133,7 +133,7 @@ sub new{
 
     # 32/64bit
     my $machine =`uname -m`;
-    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+    $this->{JUMAN_COMMAND} = $this->{opt}{juman} ? $this->{opt}{juman} : ($machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman');
     $JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
     &ResetJUMAN($this, {first => 1});
 
