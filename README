@@ -14,6 +14,7 @@
    * -add_class2html       : 領域情報を付与したものをhtml形式で出力
    * -add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
    * -get_more_block       : profile, address領域も付与
+   * -juman jumanpath      : jumanのpathを指定
 
 - とりうる領域名
  -- デフォルト
