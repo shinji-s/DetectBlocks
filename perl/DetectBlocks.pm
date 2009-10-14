@@ -957,7 +957,13 @@ sub get_leaf_string {
 }
 
 sub cut_table_substring {
-    my ($this, $substrings_ref) = @_;
+    my ($this, $elem, $substrings_ref) = @_;
+
+    my $block_ratio = $elem->{ratio_end} - $elem->{ratio_start};
+    return if $elem->tag !~ /table|tbody/ || $block_ratio >= $ITERATION_TABLE_RATIO_MAX || $block_ratio <= $ITERATION_TABLE_RATIO_MIN;
+
+    my @tr_num = $elem->find('tr');
+    return if scalar @tr_num <= $TABLE_TR_MIN; # table中のtrの数が少ない
 
     # trから始まる && 全行が同じcol数 && 3col以上
     my ($pre_col_num, $cur_col_num);
@@ -1010,14 +1016,7 @@ sub detect_iteration {
     }
     
     # 本当の表っぽいtableタグを検出(柔軟な繰り返しの検出のため)
-    if (defined $elem->{ratio_end}) {
-	my $block_ratio = $elem->{ratio_end} - $elem->{ratio_start};
-	if ($elem->tag =~ /table|tbody/ &&
-	    $block_ratio < $ITERATION_TABLE_RATIO_MAX && $block_ratio > $ITERATION_TABLE_RATIO_MIN) {
-	    my @tr_num = $elem->find('tr');
-	    $this->cut_table_substring(\@substrings) if scalar @tr_num > $TABLE_TR_MIN;
-	}
-    }
+    $this->cut_table_substring($elem, \@substrings) if defined $elem->{ratio_end};
 
     my $child_num = scalar $elem->content_list;
     my $iteration_ref;
