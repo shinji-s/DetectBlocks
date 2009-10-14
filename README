@@ -14,7 +14,10 @@
    * -add_class2html       : 領域情報を付与したものをhtml形式で出力
    * -add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
    * -get_more_block       : profile, address領域も付与
-   * -juman jumanpath      : jumanのpathを指定
+   * -juman jumanpath      : jumanのpathを指定(例 : -juman /home/funayama/tool/bin/juman)
+			   : 指定しない場合はデフォルトのjumanを使う			     
+                           : 京大の計算機環境で動かす際には'kyoto_u'とすることで32/64bitの判定を自動的に行う
+
 
 - とりうる領域名
  -- デフォルト

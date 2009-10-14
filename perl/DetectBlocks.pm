@@ -131,9 +131,17 @@ sub new{
     my $this = {};
     $this->{opt} = $opt;
 
-    # 32/64bit
-    my $machine =`uname -m`;
-    $this->{JUMAN_COMMAND} = $this->{opt}{juman} ? $this->{opt}{juman} : ($machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman');
+    if ($this->{opt}{juman}) {
+	# 京大の環境
+	if ($this->{opt}{juman} eq 'kyoto_u') {
+	    my $machine =`uname -m`; # 32/64bit判定
+	    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+	}
+	# jumanのpathを指定した場合
+	else {
+	    $this->{JUMAN_COMMAND} = $this->{opt}{juman};
+	}
+    }
     $JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
     &ResetJUMAN($this, {first => 1});
 
@@ -649,7 +657,14 @@ sub ResetJUMAN {
     
     $counter_JUMAN++;
     if ($counter_JUMAN > $JUMAN_TH || $option->{first}) {
-    	$this->{juman} = new Juman(-Command => $this->{JUMAN_COMMAND});
+	# $this->{opt}{juman}を指定した場合
+	if ($this->{JUMAN_COMMAND}) {
+	    $this->{juman} = new Juman(-Command => $this->{JUMAN_COMMAND});
+	}
+	# $this->{opt}{juman}が空ならばデフォルトのjumanを使う
+	else {
+	    $this->{juman} = new Juman;
+	}
     	$counter_JUMAN = 0;
     }
 }
