@@ -40,7 +40,7 @@ our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象�
 our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|（(c|Ｃ)）|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
 our $FOOTER_STRING_EX = 'all\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
@@ -965,7 +965,7 @@ sub cut_table_substring {
     my @tr_num = $elem->find('tr');
     return if scalar @tr_num <= $TABLE_TR_MIN; # table中のtrの数が少ない
 
-    # trから始まる && 全行が同じcol数 && 3col以上
+    # trから始まる && 全行が同じcol数 && 3col(=tdが3つ)以上
     my ($pre_col_num, $cur_col_num);
     foreach my $substring (@$substrings_ref) {
 	next if $substring =~ /^_tr_\+_th_/; # 例 : Agaricus 055のような場合に対処
