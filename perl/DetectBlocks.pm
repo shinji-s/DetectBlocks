@@ -1020,6 +1020,7 @@ sub detect_iteration {
 
     my $child_num = scalar $elem->content_list;
     my $iteration_ref;
+    my $iteration_buffer;
     # ブロックの大きさ
   LOOP:
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
@@ -1065,11 +1066,17 @@ sub detect_iteration {
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
 	    	my @buf_substrings = @substrings;
-	    	%{$iteration_ref->[$i]} = (j => $j, k => $k, iteration => [splice(@buf_substrings, $j, $i)], div_char => $div_char);
-	    	next LOOP;
+		my @iteration_types = splice(@buf_substrings, $j, $i); 
+		if (!defined $iteration_buffer->{join(':', @iteration_types)}) { # jの番号だけが異なるものが検出されるのを防止
+		    my %hash = (j => $j, k => $k, iteration => \@iteration_types, div_char => $div_char);
+		    push @{$iteration_ref->[$i]}, \%hash;
+		    $iteration_buffer->{join(':', @iteration_types)} = 1;
+		}
 	    }
 	}
     }
+
+    # Dumpvalue->new->dumpValue($iteration_ref);
     
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
@@ -1085,21 +1092,30 @@ sub select_best_iteration {
 
     my $flag;
     # 最適なiterationを探す
+    my $best_iteration_block_size = 0;
     my $best_iteration_size = 0;
+    my $j_buf;
     for (my $i = $#$iteration_ref; $i >= 1; $i--) {
-  	my $ref = $iteration_ref->[$i];
-	next if !defined $ref;
-	if ($best_iteration_size == 0 || $best_iteration_size >= scalar @{$ref->{iteration}}) {
-	    ($best_iteration_size, $flag) = (scalar @{$ref->{iteration}}, 1);
+	next if !defined $iteration_ref->[$i];
+	for (my $j = 0; $j < @{$iteration_ref->[$i]}; $j++) {
+	    my $ref = $iteration_ref->[$i][$j];
+	    next if !defined $ref;
+	        # 初期状態の場合                   # 繰り返し単位がより細かいものがあった場合                  # より大きな繰り返し領域があった場合
+	    if ($best_iteration_block_size == 0 || $best_iteration_block_size > scalar @{$ref->{iteration}} || $best_iteration_size < $ref->{k} - $ref->{j}) {
+		($best_iteration_block_size, $best_iteration_size, $j_buf, $flag) = (scalar @{$ref->{iteration}}, $ref->{k} - $ref->{j}, $j, 1);
+	    }
 	}
     }
 
     # iteration_numberを付与
+    # 現在は一番大きく、一番細かい単位にのみ付与
+    # ★ 全ての繰り返しを検出・付与すべき (例 : MinusIon090の上部, 検出はしている)
+    # ★ Rootのみでなくその一段下の部分にも繰り返し情報を付与すべき
     if ($flag) {
-	my $ref = $iteration_ref->[$best_iteration_size];
+	my $ref = $iteration_ref->[$best_iteration_block_size][$j_buf];
 	$elem->attr('iteration', join(':', @{$ref->{iteration}}));
 	$elem->attr('div_char', $ref->{div_char}) if $ref->{div_char};
-	$this->attach_iteration_number($elem, $best_iteration_size, $ref->{j}, $ref->{k});
+	$this->attach_iteration_number($elem, $best_iteration_block_size, $ref->{j}, $ref->{k});
     }
 }
 
