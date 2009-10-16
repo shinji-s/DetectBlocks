@@ -169,6 +169,11 @@ sub maketree{
 	$this->{url_layers_ref} = &url2layers($this->{url}); # urlを'/'で区切る
     }
 
+    if (!$tree->find("base") && defined($url)){
+        my $new_elem = new HTML::Element('base', 'href' => $url."/");
+        $tree->find("head")->unshift_content($new_elem);
+    }
+
     $this->{tree} = $tree;
 }
 
@@ -1186,11 +1191,11 @@ sub addCSSlink {
 
     # CSSの部分を追加
     # <link rel="stylesheet" type="text/css" href="style.css">
-    $head->push_content(['link', {'href' => $css_url, 'rel' => 'stylesheet', 'type' => 'text/css'}]);
+    $head->unshift_content(['link', {'href' => $css_url, 'rel' => 'stylesheet', 'type' => 'text/css'}]);
     # CSSの優先順位を変更
-    my $tmp = $head->content->[-1];
-    $head->content->[-1] = $head->content->[0];
-    $head->content->[0] = $tmp;
+#    my $tmp = $head->content->[-1];
+#    $head->content->[-1] = $head->content->[0];
+#    $head->content->[0] = $tmp;
 
     # エンコードをutf-8に統一
     # <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
