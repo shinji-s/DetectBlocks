@@ -1,3 +1,64 @@
+2009-10-18 Sunday 22:46  funayama
+
+	* perl/DetectBlocks2.pm (1.60): footerÊ¸»úÎó¤Ësome rights
+	  reserved.¤òÄÉ²Ã.
+
+2009-10-18 Sunday 22:45  funayama
+
+	* cgi/index.cgi (1.21): bug fixed.
+
+2009-10-18 Sunday 18:45  funayama
+
+	* cgi/index.cgi (1.20): [no log message]
+
+2009-10-18 Sunday 17:55  funayama
+
+	* cgi/index.cgi (1.19):
+	  È¯¿®¼Ô²òÀÏ»þ¤ËROOT¤Îindex.htmlÅù¤â²òÀÏ¤¹¤ë¤«¤É¤¦¤«¤ò»ØÄê¤Ç¤­¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-10-16 Friday 19:48  shibuta
+
+	* perl/DetectBlocks2.pm (1.59): baseã‚¿ã‚°ã®è£œå®Œã€‚
+	  style.cssãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚¿ã‚°æŒ¿å…¥ã‚’pushã‹ã‚‰unshiftã«å¤‰æ›´ã€‚
+
+2009-10-15 Thursday 19:22  funayama
+
+	* perl/DetectBlocks2.pm (1.58):
+	  iteration¤ò·«¤êÊÖ¤·¤¬°ìÈÖÂç¤­¤¤ÉôÊ¬¤Î¤â¤Î¤ËÂÐ¤·¤ÆÉÕÍ¿¤¹¤ëÍÑ¤ËÊÑ¹¹.
+	  Îã : td td a a a a a  ÊÑ¹¹Á° -> td¤¬2²ó  ÊÑ¹¹¸å ->  a¤¬5²ó
+
+2009-10-14 Wednesday 19:45  funayama
+
+	* perl/DetectBlocks2.pm (1.57): FOOTERÍÑ¤ÎÊ¸»úÎó¤ò¾¯¤·ÊÑ¹¹.
+
+2009-10-14 Wednesday 15:49  funayama
+
+	* perl/DetectBlocks2.pm (1.56): small change.
+
+2009-10-14 Wednesday 14:43  funayama
+
+	* README (1.9), perl/DetectBlocks2.pm (1.55):
+	  DetectBlock2¤ònew¤¹¤ëºÝ¤Ëjuman¤ò»ØÄê¤·¤Ê¤¤¾ì¹ç¤Ï
+	  juman¤Î-COMMAND¤Ê¤·¤Çnew¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-10-13 Tuesday 18:50  funayama
+
+	* README (1.8): small change.
+
+2009-10-13 Tuesday 18:49  funayama
+
+	* perl/DetectBlocks2.pm (1.54), script/test.pl (1.18):
+	  juman¤Îpath¤ò³°¤«¤éoption¤Ç»ØÄê¤Ç¤­¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-10-09 Friday 16:21  funayama
+
+	* cgi/index.cgi (1.18):
+	  Transliteration¤Î´Ø·¸¤Ë¤¢¤ëÊ¸»úÎó¤ò¥Þ¡¼¥¸¤¹¤ë¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã.
+
+2009-10-07 Wednesday 16:43  funayama
+
+	* ChangeLog (1.6): updated.
+
 2009-10-07 Wednesday 16:37  funayama
 
 	* cgi/index.cgi (1.17): add blog author to final output.
