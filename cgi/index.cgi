@@ -147,8 +147,10 @@ $BlogCheck->blog_check;
 my $tree = $DetectBlocks->gettree;
 $DetectBlocks->addCSSlink($tree, 'style.css');
 $DetectBlocks->post_process;
-$DetectBlocks->{title_text} = $tree->find('title')->{'_content'}[0];
-$tree->find('title')->{'_content'}[0] = $topic.$docno.':'.$tree->find('title')->{'_content'}[0] if $topic && $docno;
+if ($url || ($topic && $docno)) {
+    $DetectBlocks->{title_text} = $tree->find('title')->{'_content'}[0];
+    $tree->find('title')->{'_content'}[0] = $topic.$docno.':'.$tree->find('title')->{'_content'}[0] if $topic && $docno;
+}
 
 # 発信者解析を行う
 my $DetectSender;
