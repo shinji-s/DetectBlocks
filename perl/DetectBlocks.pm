@@ -40,8 +40,8 @@ our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象�
 our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|（(c|Ｃ)）|著作権|all\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
-our $FOOTER_STRING_EX = 'all\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|（(c|Ｃ)）|著作権|(all|some)\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
+our $FOOTER_STRING_EX = '(some|all)\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
 our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
