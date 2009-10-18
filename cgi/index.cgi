@@ -61,9 +61,9 @@ $| = 1;
 my $DetectSender_flag = $cgi->param('DetectSender_flag');
 
 # 領域抽出のoption
-my %blockopt = (get_more_block => 1, add_class2html => 1, blogcheck => 1);
+my %blockopt = (get_more_block => 1, add_class2html => 1, blogcheck => 1, juman => 'kyoto_u'); # juman : 京大の環境
 # 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, robot_name => '090826', add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE);
+my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE);
 # 表示の際に相対パスを絶対パスに直すか
 $blockopt{rel2abs} = $cgi->param('rel2abs');
 
@@ -81,6 +81,7 @@ $url =~ s/@/&/g;
 ($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
 $senderopt{Trans} = $Trans_flag;
 $DetectSender_flag = 1 if $format eq 'xml';
+$senderopt{robot_name} = '090826' if $cgi->param('document_set') == 'all';
 
 # url入力からtopic入力(or 逆)に変えた瞬間に解析してしまうのを防止
 if ($input_type eq 'url' && $topic) {
@@ -353,6 +354,9 @@ END_OF_HTML
     my $checkedsender = $DetectSender_flag ? ' checked' : '';
     print qq(発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender>, );
 
+    my $checkeddocset = $cgi->param('document_set') ? ' checked' : '';
+    print qq(ROOTも解析:<input type="checkbox" name="document_set" value="all"$checkeddocset>, ) if $input_type eq 'topic';
+
     my $ne_selected;
     $ne_selected->{$ne_type} = ' selected="selected"';
     print qq(固有表現解析:<select name="ne_type">\n);
@@ -372,8 +376,8 @@ END_OF_HTML
 
     # URL指定
     if ($input_type eq 'url') {
-	print qq(<option selected="selected" value="url">URLを指定</option>);
 	print qq(<option value="topic">TOPICを指定</option>);
+	print qq(<option selected="selected" value="url">URLを指定</option>);
 	print qq(</select>);
 
 	print qq(&nbsp;&nbsp;&nbsp;&nbsp;URLを入力 : );
@@ -388,8 +392,8 @@ END_OF_HTML
     elsif ($input_type eq 'topic') {
 	$ans_ref = &read_ISA_ans($topic, $docno);
 	
-	print qq(<option value="url">URLを指定</option>);
 	print qq(<option selected="selected" value="topic">TOPICを指定</option>);
+	print qq(<option value="url">URLを指定</option>);
 	print qq(</select>);
 
         # ディレクトリを調べる
