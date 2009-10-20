@@ -153,6 +153,7 @@ sub maketree{
 
     # copyright置換
     $htmltext =~ s/\&copy\;/\(c\)/g;
+    $htmltext =~ s/©/\(c\)/g;
 
     my $tree = HTML::TreeBuilder->new;
     $tree->p_strict(1); # タグの閉じ忘れを補完する
