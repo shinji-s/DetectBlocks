@@ -61,9 +61,10 @@ our $MORE_BLOCK_RATIO_TH = 0.4;
 our $MORE_BLOCK_LENGTH_MAX_TH = 500;
 
 # プロフィール領域用の文字列
-our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
+our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|ユーザ[名]?|user\-?(?:id|name)|誕生日|性別|出身|年齢|アバター|プロフィール|profile|自己紹介';
 # 住所領域用の文字列 ★誤りが多いので停止中 : (\p{Han}){2,3}[都道府県]|(\p{Han}){1,5}[市町村区]  -> 例 : 室町時代
-our $ADDRESS_STRING = '(郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(e?-?mail|ｅ?−?(ｍａｉｌ|メール))|(tel|ｔｅｌ)|フリーダイ(ヤ|ア)ル|(fax|ｆａｘ)';
+our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}';
+our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
 # 以下のtagは解析対象にしない
 our $TAG_IGNORED = '^(script|style|br|option)$';
@@ -466,9 +467,8 @@ sub detect_string {
     # 属性付与(hash)
     # 自分以下で例えばプロフィール領域に必要な文字の数, 必要な文字を含むブロックの長さとその比, を付与
     foreach my $more_block_name (@MORE_BLOCK_NAMES) {
-# 	print join(':', $this->get_text($elem)),"\n";
-# 	print $more_block_name,"\n";
-# 	Dumpvalue->new->dumpValue($ref->{$more_block_name});
+	# print "--\n$more_block_name > ",$elem->tag,' > ',$elem->attr('ratio_start'),' > ',join(':', $this->get_text($elem)),"\n";
+	# Dumpvalue->new->dumpValue($ref->{$more_block_name});
  	$elem->attr('_'.$more_block_name, $ref->{$more_block_name});
     }
     
@@ -482,15 +482,15 @@ sub check_more_block_string {
 
     my ($profile, $address);
     # profile
-    if (my $matches = ($text =~ s/($PROFILE_STRING)/\1/ig)) {
+    if (my @matches = ($text =~ /($PROFILE_STRING)/g)) {
 	$profile->{length} += $elem->attr('length');
-	$profile->{num} += $matches;
+	$profile->{num} += scalar @matches;
     }
 
     # address
-    if (my $matches = ($text =~ s/($ADDRESS_STRING)/\1/ig)) {
-	$address->{length} += $elem->attr('length');
-	$address->{num} += $matches;
+    if (my @matches = ($text =~ /($ADDRESS_STRING)/g)) {
+    	$address->{length} += $elem->attr('length');
+    	$address->{num} += scalar @matches;
     }
 
     return ({profile => $profile, address => $address});
