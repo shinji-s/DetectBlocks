@@ -102,6 +102,9 @@ if ($url && $url !~ /^http\:\/\//) {
 }
 $url = &shellEsc($url);
 
+# 何かしらの解析が行われるというflag
+my $analysis_flag = ($url || ($topic && $docno)) ? 1 : 0;
+
 # header
 &print_header unless $format; 
 
@@ -143,8 +146,8 @@ $BlogCheck->blog_check;
 my $tree = $DetectBlocks->gettree;
 $DetectBlocks->addCSSlink($tree, 'style.css');
 $DetectBlocks->post_process;
-if ($url || ($topic && $docno)) {
-    $DetectBlocks->{title_text} = $tree->find('title')->{'_content'}[0];
+if ($analysis_flag) {
+    $DetectBlocks->{title_text} = defined $tree->find('title') ? $tree->find('title')->{'_content'}[0] : 'no_title';
     # $tree->find('title')->{'_content'}[0] = $topic.$docno.':'.$tree->find('title')->{'_content'}[0] if $topic && $docno;
 }
 
@@ -153,7 +156,7 @@ if ($url || ($topic && $docno)) {
 
 # 発信者解析を行う
 my $DetectSender;
-if ($DetectSender_flag && (($topic && $docno) || $url)) {
+if ($DetectSender_flag && $analysis_flag) {
 
     my $config = &read_config({bit_num => $bit_num});
     my @urls;
@@ -173,7 +176,7 @@ if ($DetectSender_flag && (($topic && $docno) || $url)) {
     
     unless ($format) {
 	# 発信者を表示
-	print qq(<span style="font-size:10pt;">発信者候補 : </span><select name="topic">\n);
+	print qq(<span style="font-size:10pt;">発信者候補 : </span><select>\n);
 	foreach my $sender ($DetectSender->Display_Information_Sender({array => 'all'})) {
 	    print qq(<option>$sender</option>\n);
 	}
@@ -202,7 +205,7 @@ else {
 	print F $output_html;
 	close F;
 
-	if ($url || ($topic && $docno)) {
+	if ($analysis_flag) {
 
 	    &read_and_print_colortable($CSS); # 色づかいの表示
 	    
@@ -298,7 +301,7 @@ sub read_and_print_colortable {
 sub output_log {
     my ($url) = @_;
 
-    return if !$url && (!$topic || !$docno);
+    return if !$analysis_flag;
 
     my $log = $url ? $url : "$topic.$docno";
     my $date = `date +%Y年%m月%d日_%A_%H時%M分%S秒`;
@@ -346,6 +349,35 @@ print <<"END_OF_HTML";
 <title>ページ領域抽出CGI</title>
 <script type="text/javascript">
 <!--
+function gotoNextSelect(obj) {
+    var arg=new Array();
+
+    for(var i=0;i<obj.elements.length;i++){
+	var elem_value = obj.elements[i].value;
+	var elem_type = obj.elements[i].type;
+	var elem_name = obj.elements[i].name;
+
+	if (elem_type == 'checkbox' || elem_type == 'radio') {
+	    if (obj.elements[i].checked == true) {
+		arg.push(obj.elements[i].name+'='+elem_value);
+	    }
+	}
+	else if (elem_type == 'text') {
+	    if (elem_value.search(/.+/) != -1) {
+		arg.push(obj.elements[i].name+'='+elem_value);
+	    }		
+	}
+	else if (elem_type == 'select-one') {
+	    arg.push(obj.elements[i].name+'='+elem_value);
+	}
+    }
+    location.href="$ENV{SCRIPT_NAME}"+'?'+arg.join('&');
+}
+
+function reset_param() {
+    location.href="$ENV{SCRIPT_NAME}";
+}
+
 function toggle(id) {
     if (document.getElementById(id).style.display == "none") {
 	document.getElementById(id).style.display = "block";
@@ -353,10 +385,56 @@ function toggle(id) {
 	document.getElementById(id).style.display = "none";
     }
 }
+
+function disableunder() {
+    var array=document.getElementById('sender_option').getElementsByTagName('input');
+
+    if (document.getElementById('DetectSender_flag').checked==true) {
+	for(var i=0; i<array.length; i++) {
+	    array[i].disabled=false;
+	}
+	document.getElementById('sender_option').style.color = "black"
+    }
+    else {
+	for(var i=0; i<array.length; i++) {
+	    array[i].disabled=true;
+	}
+	document.getElementById('sender_option').style.color = "#888888";
+    }
+}
 // -->
 </script>
+
 </head>
 END_OF_HTML
+
+}
+
+sub print_url_log {
+    opendir(DIR, "./url_log");
+    my @url_logs = readdir(DIR);
+    closedir(DIR);
+    
+    # url_091019.log
+    my $date_ref;
+    foreach my $url_log (@url_logs) {
+	my ($yy, $mm, $dd) = ($url_log =~ /^url_(\d{2})(\d{2})(\d{2}).log$/);
+	$date_ref->{'20'.$yy}{$mm}{$dd} = $url_log if $yy && $mm && $dd;
+    }
+
+    print qq(<ul style="margin:0px;">\n);
+    foreach my $year (sort keys %$date_ref) {
+	print qq(<li>$year</li>\n);
+	print qq(<ul style="margin:0px;">\n);
+	foreach my $month (sort keys %{$date_ref->{$year}}) {
+	    print qq(<li>$month&nbsp;-&nbsp;);
+	    foreach my $day (sort keys %{$date_ref->{$year}{$month}}) {
+		print qq(<a href="./url_log/).$date_ref->{$year}{$month}{$day}.qq(" target="_blank">$day</a>&nbsp;);
+	    }
+	    print qq(</li>\n);
+	}
+    }
+
 
 }
 
@@ -364,40 +442,43 @@ sub print_form {
 
     print qq(<span style="font-size:10pt;">);
     print qq([<a href="javascript:void(0)" onclick="toggle('option')">■option表示/非表示</a>]);
-    print qq(&nbsp;&nbsp;[<a href="javascript:void(0)" onclick="toggle('color_parts')">■色使いの表示/非表示</a>]) if $url || ($topic && $docno);
-    &print_link;
-    &print_blogcheck_result;
+    print qq(&nbsp;&nbsp;[<a href="javascript:void(0)" onclick="toggle('color_parts')">■色使いの表示/非表示</a>]) if $analysis_flag;
+    print qq(&nbsp;&nbsp;[<a href="javascript:void(0)" onclick="toggle('url_log')">■URLのLOG</a>]);
+    &print_link if $analysis_flag;
+    &print_blogcheck_result if $analysis_flag;
     print qq(</span>);
 
+    print qq(<div id="url_log" style="display:none;border:1px dashed black;background-color:#dddddd;font-size:10pt;margin:0 0 5px 0;">);
+    &print_url_log;
+    print qq(</div>);
+
+
 print <<"END_OF_HTML";
-<form method="GET" action="$ENV{SCRIPT_NAME}" style="margin:0px;">
-<div id="option" style="display:none;border:1px dashed black;background-color:#dddddd;">
+<form method="GET" action="$ENV{SCRIPT_NAME}" style="margin:0px;" id="myoption" name="myoption">
+<div id="option" style="display:none;border:1px dashed black;background-color:#dddddd;font-size:10pt;">
 ■解析に用いるモジュールを指定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;DetectBlocks&nbsp;:&nbsp;<input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="100"><br> 
 &nbsp;&nbsp;&nbsp;&nbsp;DetectSender&nbsp;:&nbsp;<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="100"><br>
 END_OF_HTML
 
     my $checkedsender = $DetectSender_flag ? ' checked' : '';
-    print qq(■発信者解析:<input type="checkbox" name="DetectSender_flag" value="1"$checkedsender><br>);
+    print qq(■発信者解析:<input type="checkbox" name="DetectSender_flag" id="DetectSender_flag" value="1" onchange="disableunder()"$checkedsender><br>);
 
+    print qq(<div id="sender_option" style="color:#888888;">\n);
     my $checkeddocset = $cgi->param('document_set') ? ' checked' : '';
-    print qq(&nbsp;&nbsp;&nbsp;&nbsp;周辺ページも解析:<input type="checkbox" name="document_set" value="all"$checkeddocset><br>) if $input_type eq 'topic';
+    print qq(&nbsp;&nbsp;&nbsp;&nbsp;周辺ページも解析:<input type="checkbox" name="document_set" disabled value="all"$checkeddocset><br>) if $input_type eq 'topic';
 
     my $ne_selected;
     $ne_selected->{$ne_type} = ' checked';
     print qq(&nbsp;&nbsp;&nbsp;&nbsp;固有表現解析:);
-    print qq(<input type="radio" name="ne_type" value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE&nbsp;&nbsp);
-    print qq(<input type="radio" name="ne_type" value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf&nbsp;&nbsp);
-    print qq(<input type="radio" name="ne_type" value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない);
+    print qq(<input type="radio" name="ne_type" disabled value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE&nbsp;&nbsp);
+    print qq(<input type="radio" name="ne_type" disabled value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf&nbsp;&nbsp);
+    print qq(<input type="radio" name="ne_type" disabled value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない);
     print qq(<br>\n);
-    # print qq(&nbsp;&nbsp;&nbsp;&nbsp;固有表現解析:<select name="ne_type">\n);
-    # print qq(<option value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE</option>\n);
-    # print qq(<option value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf</option>\n);
-    # print qq(<option value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない</option>\n);
-    # print qq(</select><br>\n);
     
     my $checkedtrans = $Trans_flag ? ' checked' : '';
-    print qq(&nbsp;&nbsp;&nbsp;&nbsp;Transliteration:<input type="checkbox" name="Trans_flag" value="1"$checkedtrans><br>\n);
+    print qq(&nbsp;&nbsp;&nbsp;&nbsp;Transliteration:<input type="checkbox" name="Trans_flag" disabled value="1"$checkedtrans><br>\n);
+    print qq(</div>\n);
 
     my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
     print qq(■その他<br>\n);
@@ -405,21 +486,23 @@ END_OF_HTML
     print qq(<br>\n);
     print qq(</div>);
 
-    print qq(<select name="input_type">\n);
-
+    print qq(<select name="input_type" id="input_type" onchange="gotoNextSelect(this.form)">\n);
     # URL指定
     if ($input_type eq 'url') {
 	print qq(<option value="topic">TOPICを指定</option>);
 	print qq(<option selected="selected" value="url">URLを指定</option>);
 	print qq(</select>);
 
-	print qq(&nbsp;&nbsp;&nbsp;&nbsp;URLを入力 : );
+	my $value_of_url;
 	if ($url) {
-	    print qq(<input type="text" name="inputurl" value="$url" size="50">);
+	    $value_of_url = $url;
 	} else {
+	    $value_of_url = 'http://www.kyoto-u.ac.jp/ja';
 	    $ans_ref = &read_ISA_ans($topic, $docno);
-	    print qq(<input type="text" name="inputurl" value="http://www.kyoto-u.ac.jp/ja" size="50">);
 	}
+	print qq(<input type="text" name="inputurl" id="inputurl" value="$value_of_url" size="50">);
+	print qq(<input type="submit" value="解析">);
+	print qq(<input type="button" value="Reset" onclick="reset_param()">);
     }
     # TOPIC指定
     elsif ($input_type eq 'topic') {
@@ -435,7 +518,7 @@ END_OF_HTML
 	closedir(DIR);
 
         # トピック
-	print qq(\n&nbsp;&nbsp;&nbsp;&nbsp;TOPIC:<select name="topic">);
+	print qq(<select name="topic" id="topic" onchange="gotoNextSelect(this.form)">);
         if (!$topic) {
 	    print qq(<option selected="selected" value="">Select Topic</option>\n);
         } 
@@ -459,9 +542,7 @@ END_OF_HTML
 	    my @docno = sort readdir(F);
 	    closedir(F);
 
-	    #print qq(<form method="GET" action="$ENV{SCRIPT_NAME}">\n);
-
-	    print qq(  ID:<select name="docno" width="100">\n);
+	    print qq(<select name="docno" id="docno" onchange="gotoNextSelect(this.form)">\n);
 	    if (!$docno) {
 		print qq(<option name="docno" value="" selected="selected">Select Document</option>\n);	
 	    }
@@ -478,6 +559,8 @@ END_OF_HTML
 		}
 	    }
 	    print qq(</select>\n);
+	    print qq(<input type="submit" value="解析">);
+	    print qq(<input type="button" value="Reset" onclick="reset_param()">);
 	}
     }
     else {
@@ -485,21 +568,17 @@ END_OF_HTML
 	print qq(<option value="topic">TOPICを指定</option>);
 	print qq(</select>);
     }
-    print qq(<input type="submit" value="解析">);
     print qq(</form>);
 
 print << "END_OF_HTML";
-
 END_OF_HTML
 }
 
 sub print_blogcheck_result {
 
-    if ($url || ($topic && $docno)) {
-	print qq(&nbsp;&nbsp;[BLOG判定:<font style="color:);
-	print $BlogCheck::BLOG_FLAG == 1 ? qq(red;"><b>BLOG) : qq(blue;"><b>notBLOG);
-	print qq(</b></font>]);
-    }
+    print qq(&nbsp;&nbsp;[BLOG判定:<font style="color:);
+    print $BlogCheck::BLOG_FLAG == 1 ? qq(red;"><b>BLOG) : qq(blue;"><b>notBLOG);
+    print qq(</b></font>]);
     print qq(<br>\n);
 }
 
@@ -543,7 +622,7 @@ sub print_link {
 
     print qq(&nbsp;&nbsp;[<a href="$log_file" target="_blank">▽LOGを表示</a>]) if $DetectSender_flag;
 
-    print qq(&nbsp;&nbsp;[title:),length($DetectBlocks->{title_text}) > 20 ? substr($DetectBlocks->{title_text}, 0, 20).'...' : $DetectBlocks->{title_text}, qq(]);
+    print qq(&nbsp;&nbsp;[title:),length($DetectBlocks->{title_text}) > 20 ? substr($DetectBlocks->{title_text}, 0, 20).'...' : $DetectBlocks->{title_text}, qq(]) if $analysis_flag;
 }
 
 sub print_correct_sender {
