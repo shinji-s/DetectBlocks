@@ -153,7 +153,8 @@ sub maketree{
     my ($this, $htmltext, $url) = @_;
 
     # copyright置換
-    $htmltext =~ s/\&copy\;/\(c\)/g;
+    $htmltext =~ s/\&copy\;?/\(c\)/g;
+    $htmltext =~ s/\&nbsp\;?/ /g;
     $htmltext =~ s/©/\(c\)/g;
 
     my $tree = HTML::TreeBuilder->new;
