@@ -68,6 +68,7 @@ $blockopt{rel2abs} = $cgi->param('rel2abs');
 my $url = $cgi->param('inputurl');
 my $topic = $cgi->param('topic');
 my $docno = $cgi->param('docno');
+(my $docno_num = $docno) =~ s/\.html$//;
 my $format = $cgi->param('format'); # for API (xml or html)
 my $input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
 my $ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
@@ -77,9 +78,8 @@ my $Trans_flag = $cgi->param('Trans_flag'); # Transliteration
 $url =~ s/@/&/g;
 
 ($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
-$senderopt{Trans} = $Trans_flag;
-$DetectSender_flag = 1 if $format eq 'xml';
-$senderopt{robot_name} = '090826' if $cgi->param('document_set') == 'all';
+$senderopt{Trans} = $Trans_flag; # transliterationをマージするか
+$DetectSender_flag = 1 if $format eq 'xml'; # for API
 
 # url入力からtopic入力(or 逆)に変えた瞬間に解析してしまうのを防止
 if ($input_type eq 'url' && $topic) {
@@ -103,7 +103,7 @@ if ($url && $url !~ /^http\:\/\//) {
 $url = &shellEsc($url);
 
 # 何かしらの解析が行われるというflag
-my $analysis_flag = ($url || ($topic && $docno)) ? 1 : 0;
+my $analysis_flag = $input_type && ($url || ($topic && $docno)) ? 1 : 0;
 
 # header
 &print_header unless $format; 
@@ -116,56 +116,80 @@ my $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
 open $FH, "> $log_file" or die;
 
 ## 解析
+my $config = &read_config({bit_num => $bit_num});
+my @urls;
+# 周辺ページも解析を行うか
+$senderopt{robot_name} = $DetectSender_flag && $cgi->param('document_set') eq 'all' ? $config->{robot_name} : 0;
+
 # 対象ページ解析
-my ($raw_html, $orig_url);
+my ($input_string, $url_orig);
 my $DetectBlocks = new DetectBlocks2(\%blockopt);
 my $BlogCheck = new BlogCheck($DetectBlocks);
+my $DetectSender = new DetectSender(\%senderopt, $config) if $DetectSender_flag && $analysis_flag;
 
 # HTMLソースを取得
 if ($url) {
-    ($raw_html, $orig_url) = $DetectBlocks->Get_Source_String($url);
+    ($input_string, $url_orig) = $DetectBlocks->Get_Source_String($url);
+    push @urls, {type => 'orig', url => $url_orig, filepath => undef, input_string => $input_string};
 }
 # キャッシュ
 elsif ($topic && $docno) {
-    open(FILE, "<:utf8", "$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
-    while(<FILE>){
-	$raw_html .= $_;
+    # 解析対象ページをpush
+    $input_string = &read_string_from_file("$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
+    $url_orig = &read_orig_url($topic, $docno);
+    push @urls, {type => 'orig', url => $url_orig, filepath => $ARGV[0], input_string => $input_string};
+
+    # 解析対象ページ以外をpush
+    if ($senderopt{robot_name}) {
+    	my $other_file_dir = $config->{ROOT_DIR}.'/htmls/'.$senderopt{robot_name}.'/'.$topic.'/'.$docno_num;
+
+	if ($url_orig) {
+	    # リンク元の文字列やURLをみて解析するかどうかを判断
+	    my @URL_List = $DetectSender->Read_Other_URLs($other_file_dir, $url_orig);
+
+	    if (scalar @URL_List) {
+		foreach my $ref (@URL_List) {
+		    my $other_input_string = &read_string_from_file($ref->{filepath});
+		    push @urls, {type => 'other', url => $ref->{link}, filepath => $ref->{filepath}, input_string => $other_input_string,
+				 link_string => join(', ', @{$ref->{link_string}})};
+		}
+	    }
+	}
     }
-    close(FILE);
-    $orig_url = &read_orig_url($topic, $docno);
 }
 
-# 領域抽出
-$DetectBlocks->maketree($raw_html, $orig_url);
-$DetectBlocks->detectblocks;
+# 各URLごとに候補文を抽出
+my ($tree_orig, $title_text);
+foreach my $url_ref (@urls) {
+    print $FH '>> ', $url_ref->{url},"\n";
 
-# blogかどうか判断
-$BlogCheck->blog_check;
+    ## ページ領域抽出
+    $DetectBlocks->maketree($url_ref->{input_string}, $url_ref->{url});
+    $DetectBlocks->detectblocks;
 
-# 後処理
-my $tree = $DetectBlocks->gettree;
-$DetectBlocks->addCSSlink($tree, 'style.css');
-$DetectBlocks->post_process;
-if ($analysis_flag) {
-    $DetectBlocks->{title_text} = defined $tree->find('title') ? $tree->find('title')->{'_content'}[0] : 'no_title';
-    # $tree->find('title')->{'_content'}[0] = $topic.$docno.':'.$tree->find('title')->{'_content'}[0] if $topic && $docno;
+    # blogかどうか判断
+    $BlogCheck->blog_check;
+    $DetectSender->{blog_flag} = $BlogCheck::BLOG_FLAG;
+
+    # 後処理
+    my $tree = $DetectBlocks->gettree;
+    $DetectBlocks->addCSSlink($tree, 'style.css');
+    $DetectBlocks->post_process;
+    $tree_orig = $tree if $url_ref->{type} eq 'orig';
+    if ($analysis_flag && $url_ref->{type} eq 'orig') {
+	$title_text = defined $tree->find('title') ? $tree->find('title')->{'_content'}[0] : 'no_title';
+    }
+
+    # 発信者解析を行う
+    if ($DetectSender_flag && $analysis_flag) {
+	$DetectSender->DetectSender($tree, $url_ref->{url}, $DetectBlocks->{alltextlen});
+    }
 }
 
 # form
 &print_form unless $format;
 
-# 発信者解析を行う
-my $DetectSender;
 if ($DetectSender_flag && $analysis_flag) {
-
-    my $config = &read_config({bit_num => $bit_num});
-    my @urls;
-
-    $DetectSender = new DetectSender(\%senderopt, $config);
-    $DetectSender->{blog_flag} = $BlogCheck::BLOG_FLAG;
-    
-    $DetectSender->DetectSender($tree, $url, $DetectBlocks->{alltextlen});
-
     # "Xのページ => X"など
     print $FH "--\n* Replace String\n";
     $DetectSender->ReplaceString;
@@ -191,8 +215,8 @@ if ($DetectSender_flag && $analysis_flag) {
 if ($format eq 'xml') {
     &print_xml;
 }
-else {
-    my $output_html = $tree->as_HTML("<>&","\t", {});
+elsif ($analysis_flag) {
+    my $output_html = $tree_orig->as_HTML("<>&","\t", {});
     # API
     if ($format eq 'html') {
 	print $output_html;
@@ -205,14 +229,11 @@ else {
 	print F $output_html;
 	close F;
 
-	if ($analysis_flag) {
+	&print_correct_sender; # 正しい発信者の表示
 
-	    &read_and_print_colortable($CSS); # 色づかいの表示
+	&read_and_print_colortable($CSS); # 色づかいの表示
 	    
-	    &print_correct_sender; # 正しい発信者の表示
-
-	    print qq(<iframe src="$analysis_result_file" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
-	}
+	print qq(<iframe src="$analysis_result_file" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
     }
 }
 
@@ -225,18 +246,18 @@ close $FH;
 
 sub read_orig_url {
     my ($topic, $docno) = @_;
-    my $orig_url;
+    my $url_orig;
     
     open URL, "<:encoding(utf8)", $ORIG_URL_LIST or die;
     while (<URL>) {
 	my ($ltopic, $ldocno, $lurl) = split(/ /, $_);
 	if ($topic eq $ltopic && $docno eq "$ldocno.html") {
-	    $orig_url = $lurl;
+	    $url_orig = $lurl;
 	}
     }
     close URL;
 
-    return $orig_url;
+    return $url_orig;
 }
 
 
@@ -263,7 +284,7 @@ sub read_ISA_ans {
 sub read_and_print_colortable {
     my ($css_url) = @_;
 
-    print qq(<div id="color_parts" style="display:none;");
+    print qq(<div id="color_parts" style="display:none;font-size:10pt;margin-bottom:3px;");
     print qq(<strong>色 : </strong>);
 
     # CSSを読み込む
@@ -276,7 +297,8 @@ sub read_and_print_colortable {
 
 	if ($_ =~ /Type \: ([^\s]+)/ || $_ =~ /END_OF_COLOR/) {
 	    if (scalar @buf > 0) {
-		print qq(&nbsp;&nbsp;$type : ),join(', ', @buf);
+		# print qq(&nbsp;&nbsp;$type : ),join(', ', @buf);
+		print qq(&nbsp;&nbsp;&nbsp;),join(', ', @buf);
 		last if  $_ =~ /END_OF_COLOR/;
 	    }
 	    @buf = ();
@@ -435,7 +457,6 @@ sub print_url_log {
 	}
     }
 
-
 }
 
 sub print_form {
@@ -455,38 +476,41 @@ sub print_form {
 
 print <<"END_OF_HTML";
 <form method="GET" action="$ENV{SCRIPT_NAME}" style="margin:0px;" id="myoption" name="myoption">
-<div id="option" style="display:none;border:1px dashed black;background-color:#dddddd;font-size:10pt;">
+<div id="option" style="display:none;border:1px dashed black;background-color:#dddddd;font-size:10pt;margin:0 0 5px 0;">
 ■解析に用いるモジュールを指定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;DetectBlocks&nbsp;:&nbsp;<input type="text" name="DetectBlocks_ROOT" value="$DetectBlocks_ROOT" size="100"><br> 
 &nbsp;&nbsp;&nbsp;&nbsp;DetectSender&nbsp;:&nbsp;<input type="text" name="DetectSender_ROOT" value="$DetectSender_ROOT" size="100"><br>
 END_OF_HTML
 
     my $checkedsender = $DetectSender_flag ? ' checked' : '';
-    print qq(■発信者解析:<input type="checkbox" name="DetectSender_flag" id="DetectSender_flag" value="1" onchange="disableunder()"$checkedsender><br>);
+    print qq(■<input type="checkbox" name="DetectSender_flag" id="DetectSender_flag" value="1" onchange="disableunder()"$checkedsender>発信者解析<br>);
 
-    print qq(<div id="sender_option" style="color:#888888;">\n);
+    my ($disabled, $disabled_color) = !$DetectSender_flag ? (' disabled',  qq( style="color:#888888;")) : ('', '');
+    print qq(<div id="sender_option"$disabled_color>\n);
     my $checkeddocset = $cgi->param('document_set') ? ' checked' : '';
-    print qq(&nbsp;&nbsp;&nbsp;&nbsp;周辺ページも解析:<input type="checkbox" name="document_set" disabled value="all"$checkeddocset><br>) if $input_type eq 'topic';
+    print qq(&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="document_set"$disabled value="all"$checkeddocset>周辺ページも解析(時間がかかるため固有表現解析OFFを推奨)<br>) if $input_type eq 'topic';
 
     my $ne_selected;
     $ne_selected->{$ne_type} = ' checked';
     print qq(&nbsp;&nbsp;&nbsp;&nbsp;固有表現解析:);
-    print qq(<input type="radio" name="ne_type" disabled value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE&nbsp;&nbsp);
-    print qq(<input type="radio" name="ne_type" disabled value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf&nbsp;&nbsp);
-    print qq(<input type="radio" name="ne_type" disabled value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない);
+    print qq(<input type="radio" name="ne_type"$disabled value="two_stage_NE"),$ne_selected->{two_stage_NE},qq(>two-stage-NE&nbsp;&nbsp);
+    print qq(<input type="radio" name="ne_type"$disabled value="knp_ne_crf"),$ne_selected->{knp_ne_crf},qq(>knp -ne-crf&nbsp;&nbsp);
+    print qq(<input type="radio" name="ne_type"$disabled value="no_NE"),$ne_selected->{no_NE},qq(>固有表現解析を行わない);
     print qq(<br>\n);
     
     my $checkedtrans = $Trans_flag ? ' checked' : '';
-    print qq(&nbsp;&nbsp;&nbsp;&nbsp;Transliteration:<input type="checkbox" name="Trans_flag" disabled value="1"$checkedtrans><br>\n);
+    print qq(&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="Trans_flag"$disabled value="1"$checkedtrans>Transliteration<br>\n);
     print qq(</div>\n);
 
     my $checkedabs = $blockopt{rel2abs} ? ' checked' : '';
     print qq(■その他<br>\n);
-    print qq(&nbsp;&nbsp;&nbsp;&nbsp;相対パスを絶対パスに変換:<input type="checkbox" name="rel2abs" value="1"$checkedabs>);    
-    print qq(<br>\n);
+    print qq(&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="rel2abs" value="1"$checkedabs>相対パスを絶対パスに変換<br>\n);
     print qq(</div>);
 
     print qq(<select name="input_type" id="input_type" onchange="gotoNextSelect(this.form)">\n);
+    if ($input_type eq '') {
+	print qq(<option value="0">Select method</option>);
+    }
     # URL指定
     if ($input_type eq 'url') {
 	print qq(<option value="topic">TOPICを指定</option>);
@@ -559,13 +583,15 @@ END_OF_HTML
 		}
 	    }
 	    print qq(</select>\n);
-	    print qq(<input type="submit" value="解析">);
-	    print qq(<input type="button" value="Reset" onclick="reset_param()">);
+	    if ($analysis_flag) {
+		print qq(<input type="submit" value="解析">);
+		print qq(<input type="button" value="Reset" onclick="reset_param()">);
+	    }
 	}
     }
     else {
-	print qq(<option value="url">URLを指定</option>);
 	print qq(<option value="topic">TOPICを指定</option>);
+	print qq(<option value="url">URLを指定</option>);
 	print qq(</select>);
     }
     print qq(</form>);
@@ -610,19 +636,26 @@ sub print_link {
 
     if ($topic && $docno) {
 	# http://www.anti-ageing.jp/show/d200609250001.html
-	print qq(&nbsp;&nbsp;[<a href="$orig_url" target="blank">▽元ページを表示</a>]);
-	(my $tmp_no = $docno) =~ s/\.html//;
-	(my $tmp_url = $orig_url) =~ s/http\:\/\///;
+	print qq(&nbsp;&nbsp;[<a href="$url_orig" target="blank">▽解析対象ページ</a>);
+	my $counter = 1;
+	foreach my $url_ref (@urls) {
+	    if ($url_ref->{type} eq 'other') {
+		print qq(,&nbsp;<a href="),$url_ref->{url},qq(" target="blank" title="),$url_ref->{link_string},qq(">▽$counter</a>);
+		$counter++;
+	    }
+	}
+	print qq(]);
+	(my $tmp_url = $url_orig) =~ s/http\:\/\///;
 	$tmp_url .= '.html' if $tmp_url !~ /(\.html?|\/)$/; # .phpとかの場合最後にhtmlがついてる
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
-	print qq(&nbsp;&nbsp;[<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$tmp_no/web/$tmp_url" target="_blank">▽Cacheを表示</a>]);
+	print qq(&nbsp;&nbsp;[<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$docno_num/web/$tmp_url" target="_blank">▽Cacheを表示</a>]);
     } else {
 	print qq(&nbsp;&nbsp;[<a href="$url" target="_blank">▽元ページを表示</a>]);
     }
 
     print qq(&nbsp;&nbsp;[<a href="$log_file" target="_blank">▽LOGを表示</a>]) if $DetectSender_flag;
 
-    print qq(&nbsp;&nbsp;[title:),length($DetectBlocks->{title_text}) > 20 ? substr($DetectBlocks->{title_text}, 0, 20).'...' : $DetectBlocks->{title_text}, qq(]) if $analysis_flag;
+    print qq(&nbsp;&nbsp;[title:),length($title_text) > 20 ? substr($title_text, 0, 20).'...' : $title_text, qq(]) if $analysis_flag;
 }
 
 sub print_correct_sender {
