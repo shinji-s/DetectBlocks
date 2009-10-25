@@ -13,7 +13,7 @@ use Encode::Guess;
 
 # ブログのURL
 our $BLOG_URL = 'blog|diary';
-our $BLOG_URL_S = 'ameblo|/mt/|cocolog|fc2';
+# our $BLOG_URL_S = 'ameblo|/mt/|cocolog|fc2';
 
 # ブログ特有の語
 our $BLOG_STRING = 'トラックバック|コメント|comment|プロフィール|trackback|ブログ|blog|投稿者|posted by';
@@ -32,10 +32,14 @@ our $BLOG_SENDER = '(posted by (.+?) at |^(.+?) at \d|author(.+?)$|commented by 
 
 
 sub new {
-    my ($this, $DetectBlocks) = @_;
+    my ($this, $DetectBlocks, $option) = @_;
     my $this = {
 	DetectBlocks => $DetectBlocks
 	};
+
+    # 辞書(フルパス)を指定
+    my $dic_path = defined $option->{dic_path} ? $option->{dic_path} : '../dic/blog_url_strings.dic';
+    $this->{BLOG_URL_S} = &read_dic($dic_path);
 
     bless $this;
 }
@@ -62,7 +66,8 @@ sub blog_url{
     my ($this, $url) = @_;
     if (defined $url) {
 	$this->{url} = $url;
-	if ($url =~ /$BLOG_URL_S/) {
+	# if ($url =~ /$BLOG_URL_S/) {
+	if ($url =~ /$this->{BLOG_URL_S}/) {
 	    $BLOG_FLAG = 2;
 	}
 	elsif ($url =~ /$BLOG_URL/) {
@@ -116,4 +121,19 @@ sub blog_sender {
 	}
     }
 }
+
+sub read_dic {
+    my ($dic_path) = @_;
+
+    my @regular_expression;
+    open DIC, '< :encoding(utf-8)', $dic_path or die "Cannot open dic : $dic_path\n";
+    while (<DIC>) {
+	chomp;
+	next if $_ =~ /^($|\#)/;
+	push @regular_expression, $_;
+    }
+    close DIC;
+    return join('|', @regular_expression);
+}
+
 1;
