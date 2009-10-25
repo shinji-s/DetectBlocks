@@ -1,0 +1,44 @@
+# $Id$
+# FC2
+blog\d+\.fc2\.com
+
+# アメーバ
+\/ameblo.jp\/
+
+#livedoor
+\/blog\.livedoor\.jp\/
+
+# yahooブログ
+\/blogs\.yahoo\.co\.jp
+
+# やぷろぐ
+\/yaplog\.jp\/
+
+# シーサー
+\.seesaa\.net\/
+
+# 楽天
+\/plaza\.rakuten\.co\.jp\/
+
+# goo
+\/blog\.goo\.ne\.jp\/
+
+# JUGEM
+\.jugem\.jp\/
+
+# ココログ
+cocolog\-nifty\.com\/
+
+# はてなダイアリー
+\/d\.hatena\.ne\.jp\/
+
+# Autopage
+\.ap\.teacup\.com\/
+
+# エキサイトブログ
+\.exblog\.jp\/
+
+# CURURU
+\/diary\.cururu\.jp\/
+
+\/mt\/
