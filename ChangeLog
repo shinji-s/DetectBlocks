@@ -1,3 +1,16 @@
+2009-10-25 Sunday 19:01  funayama
+
+	* perl/BlogCheck.pm (1.5): 有名どころのブログのURLを追加.
+	  URLのリストを外部ファイルから読みこむように変更.
+
+2009-10-25 Sunday 18:59  funayama
+
+	* dic/blog_url_strings.dic (1.1): added.
+
+2009-10-25 Sunday 15:18  funayama
+
+	* ChangeLog (1.8): updated.
+
 2009-10-25 Sunday 15:17  funayama
 
 	* cgi/index.cgi (1.24):
