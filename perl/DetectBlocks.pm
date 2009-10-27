@@ -16,6 +16,10 @@ use Encode::Guess;
 
 
 our $TEXTPER_TH = 0.5;
+# our $TEXTPER_TH = 700;
+our $TEXTPER_TH_RATE = 0.5;
+our $TEXTPER_TH_LENGTH = 600;
+
 
 our $HEADER_START_TH = 100; # これより小さければheader
 our $HEADER_END_TH = 200; # これより小さければheader
@@ -40,7 +44,7 @@ our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象�
 our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|Copyright|\(c\)|（(c|Ｃ)）|著作権|(all|some)\s?rights\s?reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
+our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|copy\s*right|\(c\)|（(c|Ｃ)）|著作権|(all|some)\s*rights\s*reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
 our $FOOTER_STRING_EX = '(some|all)\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
@@ -232,6 +236,19 @@ sub remove_deco_attr {
     }
 }
 
+sub get_ok_flag {
+    my ($this, $elem) = @_;
+    my $flag;
+
+    if ($this->{alltextlen} > $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE) {
+	return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
+    }
+    elsif ($this->{alltextlen} <= $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE) {
+	return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
+    }
+
+    return 0;
+}
 
 sub detect_block {
     my ($this, $elem, $option) = @_;
@@ -246,6 +263,8 @@ sub detect_block {
 
     if (defined $option->{parent} ||
     	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
+    	# ((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') < $TEXTPER_TH)) && !$divide_flag) ||
+    	# ((!$elem->content_list || $this->get_ok_flag($elem)) && !$divide_flag) ||
 	$elem->attr('iteration') =~ /\*/) {
     	my $myblocktype;
 	
@@ -349,6 +368,8 @@ sub detect_block {
     	    my $child_elem = ($elem->content_list)[$i];
     	    # block要素 or textが50%以上のblock
     	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
+    	    # if (($this->{alltextlen} && $child_elem->attr('length') >= $TEXTPER_TH) ||
+    	    # if (($this->{alltextlen} && !$this->get_ok_flag($elem)) ||
     		(defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i)) {
     		# インライン要素の末尾を検出
     		if (defined $block_start) {
@@ -902,6 +923,10 @@ sub print_node {
  	print ' (', $elem->attr('iteration_number'), ')';
     }
 
+    if ($elem->attr("length") != 0) {
+	printf "《_a_:%.2f》" ,$this->check_link_block($elem) / $elem->attr("length");
+    }
+
     if ($elem->attr('text')) {
 	print ' ', length $elem->attr('text') > 10 ? substr($elem->attr('text'), 0, 10) . '‥‥' : $elem->attr('text');
     }
@@ -1015,8 +1040,7 @@ sub detect_iteration {
     # 子供がいない
     return if ($elem->content_list == 0);
 
-    my @substrings;
-    my @tags;
+    my (@substrings, @tags);
     for my $child_elem ($elem->content_list){
 	push @substrings, $child_elem->attr('subtree_string');
 	push @tags, $child_elem->tag;
@@ -1026,8 +1050,7 @@ sub detect_iteration {
     $this->cut_table_substring($elem, \@substrings) if defined $elem->{ratio_end};
 
     my $child_num = scalar $elem->content_list;
-    my $iteration_ref;
-    my $iteration_buffer;
+    my ($iteration_ref, $iteration_buffer);
     # ブロックの大きさ
   LOOP:
     for (my $i = $ITERATION_BLOCK_SIZE; $i >= 1; $i--) {
@@ -1074,17 +1097,16 @@ sub detect_iteration {
 	    if ($k - $j >= $ITERATION_TH * $i) {
 	    	my @buf_substrings = @substrings;
 		my @iteration_types = splice(@buf_substrings, $j, $i); 
-		if (!defined $iteration_buffer->{join(':', @iteration_types)}) { # jの番号だけが異なるものが検出されるのを防止
-		    my %hash = (j => $j, k => $k, iteration => \@iteration_types, div_char => $div_char);
-		    push @{$iteration_ref->[$i]}, \%hash;
-		    $iteration_buffer->{join(':', @iteration_types)} = 1;
-		}
+
+		my %hash = (j => $j, k => $k, iteration => \@iteration_types, iteration_string => join(':', @iteration_types), div_char => $div_char);
+		push @{$iteration_ref->[$i]}, \%hash;
+		$iteration_buffer->{join(':', @iteration_types)} = 1;
+
+		$j = $k-1
 	    }
 	}
     }
 
-    # Dumpvalue->new->dumpValue($iteration_ref);
-    
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
 
@@ -1097,43 +1119,87 @@ sub detect_iteration {
 sub select_best_iteration {
     my ($this, $elem, $iteration_ref) = @_;
 
-    my $flag;
+    # print '--',"\n";
+    # Dumpvalue->new->dumpValue($iteration_ref);
+    
     # 最適なiterationを探す
     my $best_iteration_block_size = 0;
     my $best_iteration_size = 0;
     my $j_buf;
+    my @best_iterations_buffer;
     for (my $i = $#$iteration_ref; $i >= 1; $i--) {
 	next if !defined $iteration_ref->[$i];
 	for (my $j = 0; $j < @{$iteration_ref->[$i]}; $j++) {
 	    my $ref = $iteration_ref->[$i][$j];
 	    next if !defined $ref;
-	        # 初期状態の場合                   # 繰り返し単位がより細かいものがあった場合                  # より大きな繰り返し領域があった場合
-	    if ($best_iteration_block_size == 0 || $best_iteration_block_size > scalar @{$ref->{iteration}} || $best_iteration_size < $ref->{k} - $ref->{j}) {
-		($best_iteration_block_size, $best_iteration_size, $j_buf, $flag) = (scalar @{$ref->{iteration}}, $ref->{k} - $ref->{j}, $j, 1);
+
+	    # 初期状態
+	    if (scalar @best_iterations_buffer == 0) {
+		$this->push_best_iteration_info(\@best_iterations_buffer, -1, $ref, $i);
+	    }
+	    else {
+		my $covered_flag;
+		for (my $m = 0; $m < @best_iterations_buffer; $m++) {
+		    my $best_now = $best_iterations_buffer[$m];
+		    # 既存のものと重複がある場合
+		    if ($ref->{j} <= $best_now->{j} && $best_now->{k} <= $ref->{k}) {
+			#        string : a a a a a 
+			#——————————————————————
+			# best_now(i=2) : --- ---   (破棄)
+			#      ref(i=1) : - - - - - (採用=上書き)
+			$this->push_best_iteration_info(\@best_iterations_buffer, $m, $ref, $i) if $i < $best_now->{i};
+
+			$covered_flag = 1;
+			last;
+		    }
+		}
+
+		# 既存のものと重複がない場合 -> 採用
+		$this->push_best_iteration_info(\@best_iterations_buffer, -1, $ref, $i) if !$covered_flag;
 	    }
 	}
     }
+    # Dumpvalue->new->dumpValue(\@best_iterations_buffer);
+    # print '---',"\n";
 
-    # iteration_numberを付与
-    # 現在は一番大きく、一番細かい単位にのみ付与
-    # ★ 全ての繰り返しを検出・付与すべき (例 : MinusIon090の上部, 検出はしている)
-    # ★ Rootのみでなくその一段下の部分にも繰り返し情報を付与すべき
-    if ($flag) {
-	my $ref = $iteration_ref->[$best_iteration_block_size][$j_buf];
-	$elem->attr('iteration', join(':', @{$ref->{iteration}}));
-	$elem->attr('div_char', $ref->{div_char}) if $ref->{div_char};
-	$this->attach_iteration_number($elem, $best_iteration_block_size, $ref->{j}, $ref->{k});
+    if (scalar @best_iterations_buffer) {
+	my $tmp;
+	# (親ノード)
+	# 重複したものは削除 例: a a a b b a a -> a,b,a とおもいきや a,b
+	$elem->attr('iteration', join(',', grep {!$tmp->{$_}++} (map {$_->{iteration_string}} @best_iterations_buffer)));
+
+	# (子ノード)
+	# 全てに対して付与
+	foreach my $ref (@best_iterations_buffer) {
+	    $this->attach_iteration_number($elem, $ref->{i}, $ref);
+	}
+    }
+}
+
+sub push_best_iteration_info {
+    my ($this, $best_iterations_buffer, $pos, $ref, $i) = @_;
+
+    if ($pos == -1) {
+	push @$best_iterations_buffer, {i => $i};
+    }
+    else {
+	$best_iterations_buffer->[$pos]{i} = $i
+    }
+    foreach my $key (keys %$ref) {
+	$best_iterations_buffer->[$pos]{$key} = $ref->{$key};
     }
 }
 
 sub attach_iteration_number {
-    my ($this, $elem, $i, $j, $k) = @_;
+    my ($this, $elem, $i, $ref) = @_;
+    my ($j, $k, $iteration_string) = ($ref->{j}, $ref->{k}, $ref->{iteration_string});
 
     my $iteration_num = int(($k - $j) / $i);
     my ($counter_block, $counter_iteration) = (0, 0);
     my $end = $j + $iteration_num * $i - 1;
     for my $l ($j..$end) {
-	($elem->content_list)[$l]->attr('iteration_number', $counter_iteration.'/'.$iteration_num);
+	# _a_+_~text_-:_~text_%0/4
+	($elem->content_list)[$l]->attr('iteration_number', $iteration_string.'%'.$counter_iteration.'/'.$iteration_num);
 	$counter_block++;
 	if ($counter_block == $i) {
 	    $counter_block = 0;
