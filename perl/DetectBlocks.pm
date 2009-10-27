@@ -1198,8 +1198,17 @@ sub attach_iteration_number {
     my ($counter_block, $counter_iteration) = (0, 0);
     my $end = $j + $iteration_num * $i - 1;
     for my $l ($j..$end) {
+	my $attr;
+	# 複数ある場合はコンマ区切りで付与
+	if (($elem->content_list)[$l]->attr('iteration_number')) {
+	    $attr .= ($elem->content_list)[$l]->attr('iteration_number').','.$iteration_string.'%'.$counter_iteration.'/'.$iteration_num;
+	}
+	else {
+	    $attr = $iteration_string.'%'.$counter_iteration.'/'.$iteration_num;
+	}
+	
 	# _a_+_~text_-:_~text_%0/4
-	($elem->content_list)[$l]->attr('iteration_number', $iteration_string.'%'.$counter_iteration.'/'.$iteration_num);
+	($elem->content_list)[$l]->attr('iteration_number', $attr);
 	$counter_block++;
 	if ($counter_block == $i) {
 	    $counter_block = 0;
