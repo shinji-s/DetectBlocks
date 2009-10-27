@@ -1,3 +1,21 @@
+2009-10-27 Tuesday 18:57  funayama
+
+	* perl/DetectBlocks2.pm (1.65): bug fixed.
+
+2009-10-27 Tuesday 15:45  funayama
+
+	* perl/DetectBlocks2.pm (1.64): *
+	  繰り返しをすべて発見するように変更.	 付与した情報:	    - 親 ->
+	  自分以下の繰り返しパターン全て      - 子 ->
+	  自分を含む繰り返しパターンとその繰り返し番号
+
+	  *
+	  debug時に自分以下のaタグを含む繰り返しの割合を出力するように変更.
+
+2009-10-25 Sunday 19:01  funayama
+
+	* ChangeLog (1.9): updated.
+
 2009-10-25 Sunday 19:01  funayama
 
 	* perl/BlogCheck.pm (1.5): 有名どころのブログのURLを追加.
