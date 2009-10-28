@@ -118,8 +118,14 @@ our %BLOCK_TAGS = (
                    tr => 1,
                    ul => 1,
                    xmp => 1,
-		   br => 1
+		   br => 1,
+		   map => 1,
+		   area => 1
 		       );
+
+our %TAG_with_ALT = (area => 1, img => 1);
+
+
 # あるブロック以下の全てのブロックのテキスト量が50%以下の場合に
 # まわりのインライン要素と同様に1つのmyblocknameにまとめる
 our $EXCEPTIONAL_BLOCK_TAGS = '^(br|li)$';
@@ -828,7 +834,7 @@ sub attach_elem_length {
     # もう子供がいない
     if ($elem->content_list == 0){
 	my $tag = $elem->tag;
-	if ($tag eq 'img') {
+	if ($TAG_with_ALT{$tag} && !$elem->attr('usemap')) {
 	    $length_all = length($elem->attr("alt")) if (defined $elem->attr("alt"));
 	}
 	# ホワイトスペースは無視
@@ -930,7 +936,7 @@ sub print_node {
     if ($elem->attr('text')) {
 	print ' ', length $elem->attr('text') > 10 ? substr($elem->attr('text'), 0, 10) . '‥‥' : $elem->attr('text');
     }
-    elsif ($elem->tag eq 'img' && $elem->attr('alt')) {
+    elsif ($TAG_with_ALT{$elem->tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
 	print ' ', length $elem->attr('alt') > 10 ? substr($elem->attr('alt'), 0, 10) . '‥‥' : $elem->attr('alt');
     }
 
@@ -1230,7 +1236,7 @@ sub get_text {
 	push @texts, $elem->attr('text');
     }
     # 画像の場合altを返す
-    elsif ($elem->tag eq 'img') {
+    elsif ($TAG_with_ALT{$elem->tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
 	push @texts, $elem->attr('alt');
     }
 
