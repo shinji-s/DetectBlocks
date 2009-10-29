@@ -1,3 +1,20 @@
+2009-10-29 Thursday 15:41  funayama
+
+	* perl/DetectBlocks2.pm (1.67): a_+_~text_-:_a_と同時に
+	  _a_:_a_+_~text_-もiterationとして検出するように変更.
+
+2009-10-28 Wednesday 14:49  funayama
+
+	* perl/DetectBlocks2.pm (1.66): map, areaタグをブロックタグに追加.
+	  areaタグのalt属性をget_text,
+	  attach_elem_length時に考慮するように変更.
+	  imgタグでusemap属性を持っている際にはalt属性をget_text,
+	  attach_elem_length時に考慮しないように変更.
+
+2009-10-27 Tuesday 18:57  funayama
+
+	* ChangeLog (1.10): updated.
+
 2009-10-27 Tuesday 18:57  funayama
 
 	* perl/DetectBlocks2.pm (1.65): bug fixed.
