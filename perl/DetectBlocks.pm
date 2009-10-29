@@ -1048,6 +1048,7 @@ sub detect_iteration {
 
     my (@substrings, @tags);
     for my $child_elem ($elem->content_list){
+
 	push @substrings, $child_elem->attr('subtree_string');
 	push @tags, $child_elem->tag;
     }
@@ -1074,9 +1075,11 @@ sub detect_iteration {
 	    if ($flag == 0) {
 		# aの後ろに同じテキストが来る場合
 		# ★ <a>HOME</a><font>|</font> <a>SITEMAP</a><font>|</font> ... の場合は??
-		#   -> @tagsでなく@substringsを利用? $i==2?
+		#   -> @tagsでなく@substringsを利用?(substrings[$m] =~ /~text/ みたいな)
+		#   -> $i==2?
 		#   -> 例ページを忘れた
 		for ($k = $j; $k < $j+$i; $k++){
+		    # _a_+_~text_-:_~text_
 		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
 		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1] &&
 		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
@@ -1084,8 +1087,16 @@ sub detect_iteration {
 			# text部分の文字列を制限
 		    	$flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
 		    }
+		    # ~text_:_a_+_~text_-
+		    elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
+		    	$k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i] &&
+		    	($elem->content_list)[$k]->attr('text') eq ($elem->content_list)[$k+$i]->attr('text')) {
+		    	$div_char = ($elem->content_list)[$k]->attr('text');
+			# text部分の文字列を制限
+		    	$flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
+		    }
 		}
-		# a, img の繰り返し(headerとか)
+		# _a_+_img_-
 		if ($i == 1) {
 		    for ($k = $j; $k < $j+$i; $k++){
 			$flag = 1 if $substrings[$k] eq '_a_+_img_-' && $substrings[$k] eq $substrings[$k+$i+1];
@@ -1104,14 +1115,19 @@ sub detect_iteration {
 	    	my @buf_substrings = @substrings;
 		my @iteration_types = splice(@buf_substrings, $j, $i); 
 
-		my %hash = (j => $j, k => $k, iteration => \@iteration_types, iteration_string => join(':', @iteration_types), div_char => $div_char);
-		push @{$iteration_ref->[$i]}, \%hash;
-		$iteration_buffer->{join(':', @iteration_types)} = 1;
+		# $jのみ異なるものは無視
+		if (!defined $iteration_buffer->{$k.'%'.join(':', @iteration_types)}) {
+		    my %hash = (j => $j, k => $k, iteration => \@iteration_types, iteration_string => join(':', @iteration_types), div_char => $div_char);
+		    push @{$iteration_ref->[$i]}, \%hash;
 
-		$j = $k-1
+		    $iteration_buffer->{$k.'%'.join(':', @iteration_types)} = 1;
+		}
+		# $j = $k-1
 	    }
 	}
     }
+
+    # Dumpvalue->new->dumpValue($iteration_buffer);
 
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
