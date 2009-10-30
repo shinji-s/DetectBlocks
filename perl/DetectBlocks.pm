@@ -1399,4 +1399,16 @@ sub Get_Source_String {
 }
 
 
+sub addJavascript {
+
+    my ($this) = @_;
+    my $newScript = new HTML::Element('script', 'type' => 'text/javascript', src => './layer.js');
+
+    $this->{tree}->find('body')->push_content($newScript);
+
+    return 1;
+}
+
+
+
 1;
