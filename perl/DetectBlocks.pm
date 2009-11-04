@@ -1189,6 +1189,9 @@ sub select_best_iteration {
 	# (親ノード)
 	# 重複したものは削除 例: a a a b b a a -> a,b,a とおもいきや a,b
 	$elem->attr('iteration', join(',', grep {!$tmp->{$_}++} (map {$_->{iteration_string}} @best_iterations_buffer)));
+	undef $tmp;
+	my $div_char = join(',', grep {!$tmp->{$_}++} (map {$_->{div_char}} @best_iterations_buffer));
+	$elem->attr('div_char', $div_char) if $div_char;
 
 	# (子ノード)
 	# 全てに対して付与
