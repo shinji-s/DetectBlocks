@@ -32,7 +32,7 @@ our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
-our $ITERATION_DIV_CHAR = '\||｜|\>|＞|\<|＜|\/|\s'; # a-textの繰り返しのtextとなりうる文字列
+our $ITERATION_DIV_CHAR = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s'; # a-textの繰り返しのtextとなりうる文字列
 
 # 柔軟なtableの繰り返しの検出
 our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
@@ -1077,7 +1077,7 @@ sub detect_iteration {
 		# ★ <a>HOME</a><font>|</font> <a>SITEMAP</a><font>|</font> ... の場合は??
 		#   -> @tagsでなく@substringsを利用?(substrings[$m] =~ /~text/ みたいな)
 		#   -> $i==2?
-		#   -> 例ページを忘れた
+		#   -> 例 : Cancer 004
 		for ($k = $j; $k < $j+$i; $k++){
 		    # _a_+_~text_-:_~text_
 		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
@@ -1134,6 +1134,7 @@ sub detect_iteration {
 
     for my $child_elem ($elem->content_list){
 	$this->detect_iteration($child_elem);
+	$child_elem->attr('div_char', $elem->attr('div_char')) if $elem->attr('div_char');
     }
 }
 
@@ -1186,11 +1187,12 @@ sub select_best_iteration {
 
     if (scalar @best_iterations_buffer) {
 	my $tmp;
+	my $div_char = join('%', grep {!$tmp->{$_}++} (map {$_->{div_char}} @best_iterations_buffer));
+	undef $tmp;
+
 	# (親ノード)
 	# 重複したものは削除 例: a a a b b a a -> a,b,a とおもいきや a,b
 	$elem->attr('iteration', join(',', grep {!$tmp->{$_}++} (map {$_->{iteration_string}} @best_iterations_buffer)));
-	undef $tmp;
-	my $div_char = join(',', grep {!$tmp->{$_}++} (map {$_->{div_char}} @best_iterations_buffer));
 	$elem->attr('div_char', $div_char) if $div_char;
 
 	# (子ノード)
