@@ -561,8 +561,9 @@ sub make_new_elem {
     # 仮ノードに必要な情報を獲得
     my $length = 0;
     my ($subtree_string, $leaf_string);
-    my $ratio_start = $this->get_ratio($elem, $start, $end);
-    my $ratio_end = $this->get_ratio($elem, $end, $start);
+    my $ratio_start = $this->get_new_node_ratio($elem, $start, $end);
+    my $ratio_end = $this->get_new_node_ratio($elem, $end, $start);
+    my ($iteration, $div_char) = $this->get_new_node_iteration($elem, $start, $end);
 
     foreach my $tmp (($elem->content_list)[$start..$end]) {
 	$length += $tmp->attr('length');
@@ -571,7 +572,8 @@ sub make_new_elem {
     }
     my $new_elem = new HTML::Element('div', 'length' => $length,
 				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
-				     'ratio_start' => $ratio_start, 'ratio_end' => $ratio_end);
+				     'ratio_start' => $ratio_start, 'ratio_end' => $ratio_end,
+				     'iteration' => $iteration, 'div_char' => $div_char);
     
     # cloneを作成(こうしないと$elem->content_listのpush_contentした部分が消失)
     my $clone_elem = $elem->clone;
@@ -581,7 +583,7 @@ sub make_new_elem {
 	
     return $new_elem;
 }
-sub get_ratio {
+sub get_new_node_ratio {
     my ($this, $elem, $start, $end) = @_;
     
     my $search_str = $start < $end ? 'start' : 'end';
@@ -594,7 +596,31 @@ sub get_ratio {
 	$start < $end ? $i++ : $i--;
     } while ($i != $end);
 }
+sub get_new_node_iteration {
+    my ($this, $elem, $start, $end) = @_;
 
+    my (%new_node_iteration, %new_node_div_char);
+    foreach my $child_elem (($elem->content_list)[$start..$end]) {
+	if ($child_elem->attr('iteration_number')) {
+	    foreach my $iteration (split(',', $child_elem->attr('iteration_number'))) {
+		my ($iteration_type, $buf) = split('%', $iteration);
+		my ($num, $total) = split('/', $buf);
+		# ★ 本当は繰り返しの場所を検出しておき、新ノードに属する繰り返しかをチェックすべき
+		# ★ ここではiterationの大きさと仮ノードの大きさを比較(暫定的措置)
+		$new_node_iteration{$iteration} = 1 if $iteration_type && $end - $start + 1 >= split(':', $iteration_type);
+	    }
+	}
+	if ($child_elem->attr('div_char')) {
+	    foreach my $div_char (split('%', $child_elem->attr('div_char'))) {
+		$new_node_div_char{$div_char} = 1 if $div_char;
+	    }
+	}
+    }
+
+    # print join(',', keys %new_node_iteration),"\n";
+    # print join('%', keys %new_node_div_char),"\n";
+    return join(',', keys %new_node_iteration), join('%', keys %new_node_div_char);
+}
 
 sub attach_attr_blocktype {
     my ($this, $elem, $myblocktype, $attrname, $num) = @_;
