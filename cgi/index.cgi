@@ -10,6 +10,8 @@ use utf8;
 use CGI;
 use Dumpvalue;
 use CGI::Carp qw(fatalsToBrowser);
+use Encode;
+use Encode::Guess;
 
 my $bit_num = `uname -m`;
 my $pid = $$;
@@ -19,12 +21,15 @@ my $mmddhhmmJ = sprintf("%02d%02d-%02d%02d", $mon +1, $mday, $hour, $min);
 # スタイルシートのパス
 my $CSS = './style.css';
 
+my ($api_method);
 my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default, $EBMT_default);
 my ($DetectBlocks_ROOT, $DetectSender_ROOT, $NE_ROOT, $Utils_ROOT, $EBMT_ROOT, $cgi);
 BEGIN {
+    $api_method = $ENV{'REQUEST_METHOD'};
+
     # 各cvsのdefaultとするRootディレクトリ
     # 開発版用
-    $DetectBlocks_default = '/home/funayama/cvs/DetectBlocks';
+    $DetectBlocks_default = '/home/funayama/DetectBlocks';
     $DetectSender_default = '/home/funayama/DetectSender';
     # 安定版用
     # $DetectBlocks_default = '/home/funayama/cvs/stable/DetectBlocks';
@@ -34,10 +39,19 @@ BEGIN {
     $Utils_default = '/home/funayama/cvs/Utils';
     $EBMT_default = '/home/funayama/cvs/EBMT';
 
-    $cgi = new CGI;
     # ROOTの場所を指定
-    $DetectBlocks_ROOT = $cgi->param('DetectBlocks_ROOT') ? $cgi->param('DetectBlocks_ROOT') : $DetectBlocks_default;
-    $DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : $DetectSender_default;
+    # POST
+    if ($api_method eq 'POST') {
+	$DetectBlocks_ROOT = $DetectBlocks_default;
+	$DetectSender_ROOT = $DetectSender_default;
+    }
+    # GET
+    else {
+	$cgi = new CGI;
+	$DetectBlocks_ROOT = $cgi->param('DetectBlocks_ROOT') ? $cgi->param('DetectBlocks_ROOT') : $DetectBlocks_default;
+	$DetectSender_ROOT = $cgi->param('DetectSender_ROOT') ? $cgi->param('DetectSender_ROOT') : $DetectSender_default;
+    }
+
     $NE_ROOT = $NE_default;
     $Utils_ROOT = $Utils_default;
     $EBMT_ROOT = $EBMT_default;
@@ -55,31 +69,23 @@ my $ORIG_URL_LIST = $DetectBlocks_ROOT.'/sample/icc-url.txt'; # 元URLリスト�
 
 $| = 1;
 
-# 発信者解析を行うかどうか
-my $DetectSender_flag = $cgi->param('DetectSender_flag');
-
 # 領域抽出のoption
 my %blockopt = (get_more_block => 1, add_class2html => 1, blogcheck => 1, juman => 'kyoto_u'); # juman : 京大の環境
 # 発信者解析のoption
-my %senderopt = (evaluate => 1, ExtractCN => 1, no_dupl => 1, add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE);
-# 表示の際に相対パスを絶対パスに直すか
-$blockopt{rel2abs} = $cgi->param('rel2abs');
+my %senderopt = (evaluate => 1, ExtractCN => 1, add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE, no_dupl => 1);
+# $senderopt{debug} = 1;
 
-my $url = $cgi->param('inputurl');
-my $topic = $cgi->param('topic');
-my $docno = $cgi->param('docno');
-(my $docno_num = $docno) =~ s/\.html$//;
-my $format = $cgi->param('format'); # for API (xml or html)
-my $input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
-my $ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
-my $Trans_flag = $cgi->param('Trans_flag'); # Transliteration
+# 解析のためのパラメータを得る
+my ($url, $topic, $pre_topic, $docno, $docno_num);
+my ($input_type, $ne_type, $Trans_flag, $DetectSender_flag);
+my ($format);
+&get_param;
 
 # inputurlに引数が入る場合用
 $url =~ s/@/&/g;
 
 ($senderopt{NER}, $senderopt{necrf}) = $ne_type eq 'two_stage_NE' ? (1, 0) : ($ne_type eq 'knp_ne_crf' ? (1, 1) : (0, 0));
 $senderopt{Trans} = $Trans_flag; # transliterationをマージするか
-$DetectSender_flag = 1 if $format eq 'xml'; # for API
 
 # url入力からtopic入力(or 逆)に変えた瞬間に解析してしまうのを防止
 if ($input_type eq 'url' && $topic) {
@@ -87,13 +93,6 @@ if ($input_type eq 'url' && $topic) {
 } elsif ($input_type eq 'topic' && $url) {
     $url = '';
 }
-
-if ($format) {
-    print $cgi->header(-charset => 'utf8', -type => "text/$format");
-}
-else {
-    print $cgi->header(-charset => 'utf-8');
-}    
 
 # urlチェック
 if ($url && $url !~ /^http\:\/\//) {
@@ -103,7 +102,7 @@ if ($url && $url !~ /^http\:\/\//) {
 $url = &shellEsc($url);
 
 # 何かしらの解析が行われるというflag
-my $analysis_flag = $input_type && ($url || ($topic && $docno)) ? 1 : 0;
+my $analysis_flag = ($input_type && ($url || ($topic && $docno))) || $format ? 1 : 0;
 
 # header
 &print_header unless $format; 
@@ -111,136 +110,156 @@ my $analysis_flag = $input_type && ($url || ($topic && $docno)) ? 1 : 0;
 my $ans_ref;
 
 # debugの出力
-my $FH = $senderopt{debug2file};
-my $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
-open $FH, "> $log_file" or die;
+my ($FH, $log_file);
+unless ($format) {
+    $FH = $senderopt{debug2file};
+    $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
+    open $FH, "> $log_file" or die;
+}
 
 ## 解析
 my $config = &read_config({bit_num => $bit_num});
 my @urls;
 # 周辺ページも解析を行うか
-$senderopt{robot_name} = $DetectSender_flag && $cgi->param('document_set') eq 'all' ? $config->{robot_name} : 0;
+$senderopt{robot_name} = $DetectSender_flag && $cgi && $cgi->param('document_set') eq 'all' ? $config->{robot_name} : 0;
 
 # 対象ページ解析
+my ($DetectBlocks, $BlogCheck, $DetectSender);
 my ($input_string, $url_orig);
-my $DetectBlocks = new DetectBlocks2(\%blockopt);
-my $BlogCheck = new BlogCheck($DetectBlocks);
-my $DetectSender = new DetectSender(\%senderopt, $config) if $DetectSender_flag && $analysis_flag;
+my ($tree_orig, $title_text);
+if ($analysis_flag) {
+    $DetectBlocks = new DetectBlocks2(\%blockopt);
+    $BlogCheck = new BlogCheck($DetectBlocks, {dic_path => $DetectBlocks_ROOT.'/dic/blog_url_strings.dic'});
+    $DetectSender = new DetectSender(\%senderopt, $config) if $DetectSender_flag;
 
-# HTMLソースを取得
-if ($url) {
-    ($input_string, $url_orig) = $DetectBlocks->Get_Source_String($url);
-    push @urls, {type => 'orig', url => $url_orig, filepath => undef, input_string => $input_string};
-}
-# キャッシュ
-elsif ($topic && $docno) {
-    # 解析対象ページをpush
-    $input_string = &read_string_from_file("$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
-    $url_orig = &read_orig_url($topic, $docno);
-    push @urls, {type => 'orig', url => $url_orig, filepath => $ARGV[0], input_string => $input_string};
+    # HTMLソースを取得
+    if ($url) {
+	($input_string, $url_orig) = $DetectBlocks->Get_Source_String($url);
+	push @urls, {type => 'orig', url => $url_orig, filepath => undef, input_string => $input_string};
+    }
+    # POST
+    elsif ($api_method eq 'POST') {
+	my $length = $ENV{'CONTENT_LENGTH'} or 0;
+	read(STDIN, $input_string, $length);
+	$input_string = decode('utf8', $input_string);
+	push @urls, {type => 'orig', url => 'http://100mangoku.net/', filepath => undef, input_string => $input_string};
+    }
+    # キャッシュ
+    elsif ($topic && $docno) {
+	# 解析対象ページをpush
+	$input_string = &read_string_from_file("$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
+	$url_orig = &read_orig_url($topic, $docno);
+	push @urls, {type => 'orig', url => $url_orig, filepath => $ARGV[0], input_string => $input_string};
 
-    # 解析対象ページ以外をpush
-    if ($senderopt{robot_name}) {
-    	my $other_file_dir = $config->{ROOT_DIR}.'/htmls/'.$senderopt{robot_name}.'/'.$topic.'/'.$docno_num;
+	# 解析対象ページ以外をpush
+	if ($senderopt{robot_name}) {
+	    my $other_file_dir = $config->{ROOT_DIR}.'/htmls/'.$senderopt{robot_name}.'/'.$topic.'/'.$docno_num;
 
-	if ($url_orig) {
-	    # リンク元の文字列やURLをみて解析するかどうかを判断
-	    my @URL_List = $DetectSender->Read_Other_URLs($other_file_dir, $url_orig);
+	    if ($url_orig) {
+		# リンク元の文字列やURLをみて解析するかどうかを判断
+		my @URL_List = $DetectSender->Read_Other_URLs($other_file_dir, $url_orig);
 
-	    if (scalar @URL_List) {
-		foreach my $ref (@URL_List) {
-		    my $other_input_string = &read_string_from_file($ref->{filepath});
-		    push @urls, {type => 'other', url => $ref->{link}, filepath => $ref->{filepath}, input_string => $other_input_string,
-				 link_string => join(', ', @{$ref->{link_string}})};
+		if (scalar @URL_List) {
+		    foreach my $ref (@URL_List) {
+			my $other_input_string = &read_string_from_file($ref->{filepath});
+			push @urls, {type => 'other', url => $ref->{link}, filepath => $ref->{filepath}, input_string => $other_input_string,
+				     link_string => join(', ', @{$ref->{link_string}})};
+		    }
 		}
 	    }
 	}
     }
-}
 
-# 各URLごとに候補文を抽出
-my ($tree_orig, $title_text);
-foreach my $url_ref (@urls) {
-    print $FH '>> ', $url_ref->{url},"\n";
+    # 各URLごとに候補文を抽出
+    foreach my $url_ref (@urls) {
+	print $FH '>> ', $url_ref->{url},"\n" unless $format;
 
-    ## ページ領域抽出
-    $DetectBlocks->maketree($url_ref->{input_string}, $url_ref->{url});
-    $DetectBlocks->detectblocks;
+	## ページ領域抽出
+	$DetectBlocks->maketree($url_ref->{input_string}, $url_ref->{url});
+	$DetectBlocks->detectblocks;
 
-    # blogかどうか判断
-    $BlogCheck->blog_check;
-    $DetectSender->{blog_flag} = $BlogCheck::BLOG_FLAG;
+	# blogかどうか判断
+	$BlogCheck->blog_check;
+	$DetectSender->{blog_flag} = $BlogCheck::BLOG_FLAG;
 
-    # 後処理
-    my $tree = $DetectBlocks->gettree;
-    $DetectBlocks->addCSSlink($tree, 'style.css');
-    $DetectBlocks->post_process;
-    $tree_orig = $tree if $url_ref->{type} eq 'orig';
-    if ($analysis_flag && $url_ref->{type} eq 'orig') {
-	$title_text = defined $tree->find('title') ? $tree->find('title')->{'_content'}[0] : 'no_title';
-    }
+	# 後処理
+	my $tree = $DetectBlocks->gettree;
+	$DetectBlocks->addCSSlink($tree, 'style.css');
+	$DetectBlocks->post_process;
+	if ($url_ref->{type} eq 'orig') {
+	    $tree_orig = $tree;
+	    $title_text = defined $tree->find('title') ? $tree->find('title')->{'_content'}[0] : 'no_title';
+	}
 
-    # 発信者解析を行う
-    if ($DetectSender_flag && $analysis_flag) {
+	# Dumpvalue->new->dumpValue($tree);
+	# Dumpvalue->new->dumpValue($DetectBlocks);
+
+	next if !$DetectSender_flag;
+
+	# 発信者解析を行う
 	$DetectSender->DetectSender($tree, $url_ref->{url}, $DetectBlocks->{alltextlen});
+
+	# Dumpvalue->new->dumpValue($DetectSender);
     }
 }
 
 # form
 &print_form unless $format;
 
-if ($DetectSender_flag && $analysis_flag) {
-    # "Xのページ => X"など
-    print $FH "--\n* Replace String\n";
-    $DetectSender->ReplaceString;
+if ($analysis_flag) {
+    if ($DetectSender_flag) {
+	# "Xのページ => X"など
+	print $FH "--\n* Replace String\n" unless $format; 
+	$DetectSender->ReplaceString;
 
-    # 文単位でFiltering -> 名詞句抽出 -> 名詞句単位でFiltering
-    print $FH "--\n* Filtering and Select Candidates\n";
-    $DetectSender->SelectCandidates;
-    
-    unless ($format) {
-	# 発信者を表示
-	print qq(<span style="font-size:10pt;">発信者候補 : </span><select>\n);
-	foreach my $sender ($DetectSender->Display_Information_Sender({array => 'all'})) {
-	    print qq(<option>$sender</option>\n);
+	# Dumpvalue->new->dumpValue($DetectSender);
+
+	# 文単位でFiltering -> 名詞句抽出 -> 名詞句単位でFiltering
+	print $FH "--\n* Filtering and Select Candidates\n" unless $format;
+	$DetectSender->SelectCandidates;
+	
+	unless ($format) {
+	    # 発信者を表示
+	    print qq(<span style="font-size:10pt;">発信者候補 : </span><select>\n);
+	    foreach my $sender ($DetectSender->Display_Information_Sender({array => 'all'})) {
+		print qq(<option>$sender</option>\n);
+	    }
+	    print qq(</select>\n&nbsp;&nbsp;)
 	}
-	print qq(</select>\n&nbsp;&nbsp;)
     }
-}
 
-# ログ
-&output_log($url);
+    # ログ
+    &output_log($url) unless $format;
 
-# API
-if ($format eq 'xml') {
-    &print_xml;
-}
-elsif ($analysis_flag) {
-    my $output_html = $tree_orig->as_HTML("<>&","\t", {});
     # API
-    if ($format eq 'html') {
-	print $output_html;
+    if ($format eq 'xml') {
+	&print_xml;
     }
-    # CGI
     else {
-        # 色つきのhtmlを別ファイルに掃く
-	my $analysis_result_file = './analysis_result/sender_'.$mmddhhmmJ.'_'.$pid.'.html';
-	open  F, "> $analysis_result_file" or die;
-	print F $output_html;
-	close F;
+	my $output_html = $tree_orig->as_HTML("<>&","\t", {});
+	# API
+	if ($format eq 'html') {
+	    print $output_html;
+	}
+	# CGI
+	else {
+	    # 色つきのhtmlを別ファイルに掃く
+	    my $analysis_result_file = './analysis_result/sender_'.$mmddhhmmJ.'_'.$pid.'.html';
+	    open  F, "> $analysis_result_file" or die;
+	    print F $output_html;
+	    close F;
 
-	&print_correct_sender; # 正しい発信者の表示
-
-	&read_and_print_colortable($CSS); # 色づかいの表示
-	    
-	print qq(<iframe src="$analysis_result_file" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
+	    &print_correct_sender; # 正しい発信者の表示
+	    &read_and_print_colortable($CSS); # 色づかいの表示
+	    print qq(<iframe src="$analysis_result_file" width="100%" height="100%"></iframe>\n); # 解析結果などを出力
+	}
     }
 }
 
 # footer
 &print_footer unless $format;
 
-close $FH;
+close $FH  unless $format;
 
 
 
@@ -322,8 +341,6 @@ sub read_and_print_colortable {
 
 sub output_log {
     my ($url) = @_;
-
-    return if !$analysis_flag;
 
     my $log = $url ? $url : "$topic.$docno";
     my $date = `date +%Y年%m月%d日_%A_%H時%M分%S秒`;
@@ -465,8 +482,10 @@ sub print_form {
     print qq([<a href="javascript:void(0)" onclick="toggle('option')">■option表示/非表示</a>]);
     print qq(&nbsp;&nbsp;[<a href="javascript:void(0)" onclick="toggle('color_parts')">■色使いの表示/非表示</a>]) if $analysis_flag;
     print qq(&nbsp;&nbsp;[<a href="javascript:void(0)" onclick="toggle('url_log')">■URLのLOG</a>]);
-    &print_link if $analysis_flag;
-    &print_blogcheck_result if $analysis_flag;
+    if ($analysis_flag) {
+	&print_link;
+	&print_blogcheck_result;
+    }
     print qq(</span>);
 
     print qq(<div id="url_log" style="display:none;border:1px dashed black;background-color:#dddddd;font-size:10pt;margin:0 0 5px 0;">);
@@ -507,7 +526,10 @@ END_OF_HTML
     print qq(&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="rel2abs" value="1"$checkedabs>相対パスを絶対パスに変換<br>\n);
     print qq(</div>);
 
-    print qq(<select name="input_type" id="input_type" onchange="gotoNextSelect(this.form)">\n);
+    print qq(<input type="hidden" name="pre_topic" id="pre_topic" value="$topic">\n);
+
+    # print qq(<select name="input_type" id="input_type" onchange="gotoNextSelect(this.form)">\n);
+    print qq(<select name="input_type" id="input_type" onchange="myoption.submit();">\n);
     if ($input_type eq '') {
 	print qq(<option value="0">Select method</option>);
     }
@@ -542,7 +564,8 @@ END_OF_HTML
 	closedir(DIR);
 
         # トピック
-	print qq(<select name="topic" id="topic" onchange="gotoNextSelect(this.form)">);
+	# print qq(<select name="topic" id="topic" onchange="gotoNextSelect(this.form)">);
+	print qq(<select name="topic" id="topic" onchange="myoption.submit();">);
         if (!$topic) {
 	    print qq(<option selected="selected" value="">Select Topic</option>\n);
         } 
@@ -558,7 +581,6 @@ END_OF_HTML
 	}
 	print qq(</select>);
 
-
         # 文書番号
         if ($topic) {
 	    # ファイルを調べる
@@ -566,7 +588,8 @@ END_OF_HTML
 	    my @docno = sort readdir(F);
 	    closedir(F);
 
-	    print qq(<select name="docno" id="docno" onchange="gotoNextSelect(this.form)">\n);
+	    # print qq(<select name="docno" id="docno" onchange="gotoNextSelect(this.form)">\n);
+	    print qq(<select name="docno" id="docno" onchange="myoption.submit();">\n);
 	    if (!$docno) {
 		print qq(<option name="docno" value="" selected="selected">Select Document</option>\n);	
 	    }
@@ -622,10 +645,22 @@ sub print_xml {
     $writer->xmlDecl('utf-8');    
 
     $writer->startTag('information_senders');
-    foreach my $sender ($DetectSender->Display_Information_Sender({array => 'sender'})) {
-	$writer->startTag('information_sender');
-	$writer->characters($sender);
-	$writer->endTag('information_sender');
+    foreach my $ref ($DetectSender->Display_Information_Sender({array => 'sender'})) {
+	foreach my $blocktype (@{$ref->{blocktype}}) {
+	    $writer->startTag('information_sender');
+
+	    # <blocktype>footer</blocktype>
+	    $writer->startTag('blocktype');
+	    $writer->characters($blocktype);
+	    $writer->endTag('blocktype');
+
+	    # <string>金沢市産業局観光交流課</string>
+	    $writer->startTag('string');
+	    $writer->characters($ref->{string});
+	    $writer->endTag('string');
+
+	    $writer->endTag('information_sender');
+	}
     }
     $writer->endTag('information_senders');
 
@@ -640,7 +675,7 @@ sub print_link {
 	my $counter = 1;
 	foreach my $url_ref (@urls) {
 	    if ($url_ref->{type} eq 'other') {
-		print qq(,&nbsp;<a href="),$url_ref->{url},qq(" target="blank" title="),$url_ref->{link_string},qq(">▽$counter</a>);
+		print qq(,&nbsp;<a href="),$url_ref->{url},qq(" target="blank" title="),$url_ref->{link_string},qq( % ),$url_ref->{url},qq(">▽$counter</a>);
 		$counter++;
 	    }
 	}
@@ -650,12 +685,12 @@ sub print_link {
 	# http://www1.crawl.kclab.jgn2.jp/~akamine/cache/Agaricus/00001/web/www.keysoft.jp/abmk/index.html
 	print qq(&nbsp;&nbsp;[<a href="http://www1.crawl.kclab.jgn2.jp/~akamine/cache/$topic/00$docno_num/web/$tmp_url" target="_blank">▽Cacheを表示</a>]);
     } else {
-	print qq(&nbsp;&nbsp;[<a href="$url" target="_blank">▽元ページを表示</a>]);
+	print qq(&nbsp;&nbsp;[<a href="$url" target="_blank">▽解析対象ページ</a>]);
     }
 
     print qq(&nbsp;&nbsp;[<a href="$log_file" target="_blank">▽LOGを表示</a>]) if $DetectSender_flag;
 
-    print qq(&nbsp;&nbsp;[title:),length($title_text) > 20 ? substr($title_text, 0, 20).'...' : $title_text, qq(]) if $analysis_flag;
+    print qq(&nbsp;&nbsp;[title:),length($title_text) > 20 ? substr($title_text, 0, 20).'...' : $title_text, qq(]);
 }
 
 sub print_correct_sender {
@@ -669,3 +704,35 @@ sub print_correct_sender {
     }
 }
 
+sub get_param {
+    # POST
+    if ($api_method eq 'POST') {
+	$format = 'xml';
+	$ne_type = 'two_stage_NE';
+	$DetectSender_flag = 1;
+
+	print "Content-type: text/xml\n\n";
+    }
+    # GET
+    else {
+	$url = $cgi->param('inputurl');
+	$topic = $cgi->param('topic');
+	$docno = $cgi->param('docno');
+	($docno_num = $docno) =~ s/\.html$//;
+	$format = $cgi->param('format'); # for API (xml or html)
+	$input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
+	$ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
+	$Trans_flag = $cgi->param('Trans_flag'); # Transliteration
+
+	$pre_topic = $cgi->param('pre_topic');
+	undef $docno if $topic && $topic ne $pre_topic;
+
+        # 表示の際に相対パスを絶対パスに直すか
+	$blockopt{rel2abs} = $cgi->param('rel2abs');
+	
+        # 発信者解析を行うかどうか
+	$DetectSender_flag = $format eq 'xml' ? 1 : $cgi->param('DetectSender_flag');
+
+	print $format ? $cgi->header(-charset => 'utf8', -type => "text/$format") : $cgi->header(-charset => 'utf-8');
+    }
+}
