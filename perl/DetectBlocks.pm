@@ -32,7 +32,7 @@ our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
-our $ITERATION_DIV_CHAR = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s'; # a-textの繰り返しのtextとなりうる文字列
+our $ITERATION_DIV_CHAR = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}'; # a-textの繰り返しのtextとなりうる文字列
 
 # 柔軟なtableの繰り返しの検出
 our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
