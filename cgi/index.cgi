@@ -646,21 +646,24 @@ sub print_xml {
 
     $writer->startTag('information_senders');
     foreach my $ref ($DetectSender->Display_Information_Sender({array => 'sender'})) {
-	foreach my $blocktype (@{$ref->{blocktype}}) {
-	    $writer->startTag('information_sender');
+	next if ref($ref->{blocktype}) ne 'ARRAY';
+	$writer->startTag('information_sender');
 
+	$writer->startTag('blocktypes');
+	foreach my $blocktype (@{$ref->{blocktype}}) {
 	    # <blocktype>footer</blocktype>
 	    $writer->startTag('blocktype');
 	    $writer->characters($blocktype);
 	    $writer->endTag('blocktype');
-
-	    # <string>金沢市産業局観光交流課</string>
-	    $writer->startTag('string');
-	    $writer->characters($ref->{string});
-	    $writer->endTag('string');
-
-	    $writer->endTag('information_sender');
 	}
+	$writer->endTag('blocktypes');
+
+	# <string>金沢市産業局観光交流課</string>
+	$writer->startTag('string');
+	$writer->characters($ref->{string});
+	$writer->endTag('string');
+
+	$writer->endTag('information_sender');
     }
     $writer->endTag('information_senders');
 

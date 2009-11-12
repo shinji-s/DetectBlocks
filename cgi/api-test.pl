@@ -20,7 +20,7 @@ binmode STDIN, ':encoding(utf8)';
 my %opt;
 &GetOptions(\%opt, 'post');
 
-my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index.cgi';
+my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index_dev.cgi';
 
 # UserAgent の作成
 my $ua = LWP::UserAgent->new;
@@ -51,16 +51,19 @@ my $response = $ua->request($req);
 print decode('utf8', $response->content);
 
 # XML読み込み
-my $data = XMLin(decode('utf8', $response->content));
+# my $data = XMLin(decode('utf8', $response->content));
+my $data = XMLin(decode('utf8', $response->content), ForceArray => 1);
 
 # 出力
 if (ref($data->{information_sender}) eq 'ARRAY') {
     print "\n--- Information Sender ---\n";
     foreach my $information_sender (@{$data->{information_sender}}) {
 	# 領域名
-	print ' ',$information_sender->{blocktype};
+	foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
+	    print ' ',$blocktype;
+	}
 	# 抽出文字列
-	print ' ',$information_sender->{string},"\n";
+	print ' ',$information_sender->{string}[0],"\n";
     }
 }
 
