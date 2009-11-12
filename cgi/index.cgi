@@ -57,7 +57,7 @@ BEGIN {
     $EBMT_ROOT = $EBMT_default;
 }
 use lib split(' ', qq($DetectBlocks_ROOT/perl $DetectSender_ROOT/perl $Utils_ROOT/perl $NE_ROOT/perl $EBMT_ROOT/lib));
-use DetectBlocks2;
+use DetectBlocks;
 use DetectSender;
 use BlogCheck;
 use Utils;
@@ -128,7 +128,7 @@ my ($DetectBlocks, $BlogCheck, $DetectSender);
 my ($input_string, $url_orig);
 my ($tree_orig, $title_text);
 if ($analysis_flag) {
-    $DetectBlocks = new DetectBlocks2(\%blockopt);
+    $DetectBlocks = new DetectBlocks(\%blockopt);
     $BlogCheck = new BlogCheck($DetectBlocks, {dic_path => $DetectBlocks_ROOT.'/dic/blog_url_strings.dic'});
     $DetectSender = new DetectSender(\%senderopt, $config) if $DetectSender_flag;
 

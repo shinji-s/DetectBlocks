@@ -15,8 +15,7 @@
 use utf8;
 use strict;
 use RepeatCheck;
-#use DetectBlocks;
-use DetectBlocks2;
+use DetectBlocks;
 use Encode;
 use Encode::Guess;
 use Getopt::Long;
@@ -29,7 +28,7 @@ binmode STDOUT, ":utf8";
 my (%opt);
 GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'add_blockname2alltag', 'blogcheck', 'juman=s');
 
-my $DetectBlocks = new DetectBlocks2(\%opt);
+my $DetectBlocks = new DetectBlocks(\%opt);
 my $BlogCheck;
 if ($opt{blogcheck}) {
     require BlogCheck;

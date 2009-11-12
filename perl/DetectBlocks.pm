@@ -1,4 +1,4 @@
-package DetectBlocks2;
+package DetectBlocks;
 
 # $Id$
 
