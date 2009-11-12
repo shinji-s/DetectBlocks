@@ -1,3 +1,49 @@
+2009-11-12 Thursday 18:15  funayama
+
+	* cgi/: api-test.pl (1.2), index.cgi (1.25):
+	  HTML¤òPOST¤Ç¤­¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-11-12 Thursday 13:12  funayama
+
+	* perl/DetectBlocks2.pm (1.72):
+	  a-text¤Î·«¤êÊÖ¤·¤Îtext¤È¤Ê¤ê¤¦¤ëÊ¸»úÎó¤Ëµ­¹æ¤òÄÉ²Ã.
+
+2009-11-06 Friday 19:16  funayama
+
+	* perl/DetectBlocks2.pm (1.71):
+	  ¿·¥Î¡¼¥É¤òÉÕÍ¿¤¹¤ëºİ¤Ëiteration_number¤Èdiv_char¤òÅÏ¤·¤Æ¤Ê¤«¤Ã¤¿¤Î¤ò½¤Àµ.
+
+2009-11-05 Thursday 22:50  funayama
+
+	* sample/htmls/: Agaricus/064.html (1.3), BirthRate/064.html (1.3),
+	  Cancer/007.html (1.3), Electromagnetic/128.html (1.3),
+	  Metabolic/014.html (1.3), NHK/054.html (1.3), Obstetrics/024.html
+	  (1.3), Pension/036.html (1.3), Pension/038.html (1.3),
+	  Pension/064.html (1.3): utf8¤Ë¤Ê¤Ã¤Æ¤¤¤Ê¤«¤Ã¤¿¤â¤Î¤ònkf¤·Ä¾¤·¤¿.
+
+2009-11-05 Thursday 15:56  funayama
+
+	* perl/DetectBlocks2.pm (1.70): small change.
+
+2009-11-04 Wednesday 15:43  funayama
+
+	* perl/DetectBlocks2.pm (1.69): aa > bb > cc > dd
+	  ¤Î¤è¤¦¤Ê·«¤êÊÖ¤·¤Î¾ì¹ç¤Ëdiv_char=">"¤È¤¤¤¦attr¤ò¿Æ¤ËÉÕÍ¿¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-10-30 Friday 18:48  shibuta
+
+	* perl/DetectBlocks2.pm (1.68):
+	  layer.jsã‚’åŠ ãˆã‚‹é–¢æ•°addJavascriptã‚’è¿½åŠ 
+
+2009-10-30 Friday 18:43  shibuta
+
+	* cgi/layer.js (1.1):
+	  myblocktypeÂ°À­¤ò»ı¤Ä¥¨¥ì¥á¥ó¥È¤Î¾å¤Ë¥ì¥¤¥ä¡¼¤ò¤«¤Ö¤»¤ëjavascript
+
+2009-10-29 Thursday 15:42  funayama
+
+	* ChangeLog (1.11): updated.
+
 2009-10-29 Thursday 15:41  funayama
 
 	* perl/DetectBlocks2.pm (1.67): a_+_~text_-:_a_¤ÈÆ±»ş¤Ë
