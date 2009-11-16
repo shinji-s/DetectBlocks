@@ -5,6 +5,7 @@ package DetectBlocks;
 use strict;
 use utf8;
 use HTML::TreeBuilder;
+use ModifiedTreeBuilder;
 use Data::Dumper;
 use Encode;
 use Dumpvalue;
@@ -167,11 +168,13 @@ sub maketree{
     $htmltext =~ s/\&nbsp\;?/ /g;
     $htmltext =~ s/©/\(c\)/g;
 
-    my $tree = HTML::TreeBuilder->new;
+    my $tree = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
+    # my $tree = ModifiedTreeBuilder->new;
+
     $tree->p_strict(1); # タグの閉じ忘れを補完する
     $tree->parse($htmltext);
     $tree->eof;
-    
+
     #url処理
     if (defined $url) {
 	$this->{url} = $url;
@@ -918,6 +921,38 @@ sub settree{
     my ($this, $tree) = @_;
 
     $this->{tree} = $tree;
+}
+
+sub print_offset {
+    my ($this, $elem, $num, $p_elem) = @_;
+
+    return if ref($elem) ne 'HTML::Element';
+
+    if (defined $elem->attr('myblocktype')) {
+	my $offset;
+	# offsetが存在する
+	if (defined $elem->attr('-offset')) {
+	    $offset = $elem->attr('-offset');
+	}
+	# offsetが存在せず兄が存在する
+	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
+	    $offset = ($p_elem->content_list)[$num-1]->attr('-offset') ? ($p_elem->content_list)[$num-1]->attr('-offset') : undef;
+	}
+	# offsetが存在せず兄が存在しない
+	elsif (ref($p_elem) eq 'HTML::Element') {
+	    $offset = defined $p_elem->attr('-offset') ? $p_elem->attr('-offset') : undef
+	}
+
+	if (defined $offset) {
+	    print $offset,' ',$elem->attr('myblocktype'),"\n";
+	}
+    }
+
+    if ($elem->content_list) {
+	for (my $i = 0;$i < $elem->content_list; $i++) {
+	    $this->print_offset(($elem->content_list)[$i], $i, $elem);
+	}
+    }
 }
 
 sub printtree {

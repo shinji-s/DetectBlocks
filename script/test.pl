@@ -26,7 +26,9 @@ binmode STDOUT, ":utf8";
 
 # add_blockname2alltagは後々に撲滅
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'add_blockname2alltag', 'blogcheck', 'juman=s');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'add_blockname2alltag', 'blogcheck', 'juman=s', 'modify', 'print_offset');
+
+$opt{modify} = 1 if $opt{print_offset};
 
 my $DetectBlocks = new DetectBlocks(\%opt);
 my $BlogCheck;
@@ -78,6 +80,11 @@ if ($opt{add_class2html}) {
     $DetectBlocks->addCSSlink($tree, 'style.css');    
 
     print $tree->as_HTML("<>&","\t", {});
+}
+# offsetを出力
+elsif ($opt{print_offset}) {
+    my $body = $tree->find('body');
+    $DetectBlocks->print_offset($body, undef, undef);
 }
 else {
 # 木の表示
