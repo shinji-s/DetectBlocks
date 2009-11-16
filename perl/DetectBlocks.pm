@@ -937,12 +937,12 @@ sub print_offset {
 	# offsetが存在せず兄が存在する
 	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
 	    if (($p_elem->content_list)[$num-1]->attr('-offset')) {
-		$offset = ($p_elem->content_list)[$num-1]->attr('-offset');
+		$offset = ($p_elem->content_list)[$num-1]->attr('-offset') + bytes::length($p_elem->as_HTML(''));
 	    }
 	}
 	# offsetが存在せず兄が存在しない
 	elsif (ref($p_elem) eq 'HTML::Element') {
-	    $offset = defined $p_elem->attr('-offset') ? $p_elem->attr('-offset') + bytes::length($p_elem->as_HTML('')): undef
+	    $offset = defined $p_elem->attr('-offset') ? $p_elem->attr('-offset') : undef
 	}
 
 	if (defined $offset) {
