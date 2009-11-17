@@ -166,8 +166,9 @@ sub maketree{
     # copyright置換
     $htmltext =~ s/\&copy\;?/\(c\)/g;
     $htmltext =~ s/\&nbsp\;?/ /g;
-    $htmltext =~ s/©/\(c\)/g;
-
+    if (!$this->{opt}{print_offset}) {
+	$htmltext =~ s/©/\(c\)/g ;
+    }
     my $tree = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
     # my $tree = ModifiedTreeBuilder->new;
 
@@ -509,7 +510,7 @@ sub detect_string {
 sub check_more_block_string {
     my ($this, $elem) = @_;
 
-    my $text = $elem->attr('text');
+    my $text = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
 
     my ($profile, $address);
     # profile
@@ -609,7 +610,11 @@ sub get_new_node_iteration {
 		my ($iteration_type, $buf) = split('%', $iteration);
 		my ($num, $total) = split('/', $buf);
 		# ★ 本当は繰り返しの場所を検出しておき、新ノードに属する繰り返しかをチェックすべき
-		# ★ ここではiterationの大きさと仮ノードの大きさを比較(暫定的措置)
+		#    例 : div a font a font div a font a font
+		#             =============
+		#               新ノード -> a font の繰り返しは必要
+		#                        -> div a font a font の繰り返しは不要
+		# ★ 暫定的にiterationの大きさ(この例は2or5)と仮ノードの大きさ(この例は4)を比較 -> うまくいかない例ってある??
 		$new_node_iteration{$iteration} = 1 if $iteration_type && $end - $start + 1 >= split(':', $iteration_type);
 	    }
 	}
@@ -864,11 +869,12 @@ sub attach_elem_length {
     if ($elem->content_list == 0){
 	my $tag = $elem->tag;
 	if ($TAG_with_ALT{$tag} && !$elem->attr('usemap')) {
-	    $length_all = length($elem->attr("alt")) if (defined $elem->attr("alt"));
+	    $length_all = ($this->{opt}{print_offset} ? length(decode('utf8', $elem->attr("alt"))) : length($elem->attr("alt"))) if defined $elem->attr("alt");
 	}
 	# ホワイトスペースは無視
-	elsif ($tag eq '~text' && $elem->attr('text') !~ /^\s+$/) {
-	    $length_all = length($elem->attr("text"));
+	elsif ($tag eq '~text') {
+	    my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
+	    $length_all = length($text_buf) if $text_buf !~ /^\s+$/;
 	}
 	else {
 	    $length_all = 0;
@@ -997,10 +1003,12 @@ sub print_node {
     }
 
     if ($elem->attr('text')) {
-	print ' ', length $elem->attr('text') > 10 ? substr($elem->attr('text'), 0, 10) . '‥‥' : $elem->attr('text');
+	my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
+	print ' ', length $text_buf > 10 ? substr($text_buf, 0, 10) . '‥‥' : $text_buf;
     }
     elsif ($TAG_with_ALT{$elem->tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
-	print ' ', length $elem->attr('alt') > 10 ? substr($elem->attr('alt'), 0, 10) . '‥‥' : $elem->attr('alt');
+	my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('alt')) : $elem->attr('alt');
+	print ' ', length $text_buf > 10 ? substr($text_buf, 0, 10) . '‥‥' : $text_buf;
     }
 
 
@@ -1144,19 +1152,29 @@ sub detect_iteration {
 		for ($k = $j; $k < $j+$i; $k++){
 		    # _a_+_~text_-:_~text_
 		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
-		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1] &&
-		    	($elem->content_list)[$k+1]->attr('text') eq ($elem->content_list)[$k+$i+1]->attr('text')) {
-		    	$div_char = ($elem->content_list)[$k+1]->attr('text');
-			# text部分の文字列を制限
-		    	$flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
+		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1]) {
+			my $text_buf_a = $this->{opt}{print_offset} ?
+			    decode('utf8', ($elem->content_list)[$k+1]->attr('text')) : ($elem->content_list)[$k+1]->attr('text');
+			my $text_buf_b = $this->{opt}{print_offset} ?
+			    decode('utf8', ($elem->content_list)[$k+$i+1]->attr('text')):($elem->content_list)[$k+$i+1]->attr('text');
+			if ($text_buf_a eq $text_buf_b) {
+			    $div_char = $text_buf_a;
+			    # text部分の文字列を制限
+			    $flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
+			}
 		    }
 		    # ~text_:_a_+_~text_-
 		    elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
-		    	$k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i] &&
-		    	($elem->content_list)[$k]->attr('text') eq ($elem->content_list)[$k+$i]->attr('text')) {
-		    	$div_char = ($elem->content_list)[$k]->attr('text');
-			# text部分の文字列を制限
-		    	$flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
+			   $k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i]) {
+			my $text_buf_a = $this->{opt}{print_offset} ?
+			    decode('utf8', ($elem->content_list)[$k]->attr('text')) : ($elem->content_list)[$k]->attr('text');
+			my $text_buf_b = $this->{opt}{print_offset} ?
+			    decode('utf8', ($elem->content_list)[$k+$i]->attr('text')):($elem->content_list)[$k+$i]->attr('text');
+			if ($text_buf_a eq $text_buf_b) {
+			    $div_char = $text_buf_a;
+			    # text部分の文字列を制限
+			    $flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
+			}
 		    }
 		}
 		# _a_+_img_-
@@ -1317,11 +1335,12 @@ sub get_text {
     my @texts;
     # text
     if ($elem->tag eq '~text') {
-	push @texts, $elem->attr('text');
+	push @texts, $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
     }
     # 画像の場合altを返す
     elsif ($TAG_with_ALT{$elem->tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
-	push @texts, $elem->attr('alt');
+	push @texts, $this->{opt}{print_offset} ? decode('utf8', $elem->attr('alt')) : $elem->attr('alt');
+	# push @texts, $elem->attr('alt');
     }
 
     for my $child_elem ($elem->content_list){

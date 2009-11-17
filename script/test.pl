@@ -45,7 +45,13 @@ if ($opt{get_source}) {
 }
 # キャッシュ
 else {
-    open(FILE, "<:utf8", $ARGV[0]);
+    # offsetモードは特別扱い
+    if ($opt{print_offset}) {
+	open(FILE, "<", $ARGV[0]);
+    }
+    else {
+	open(FILE, "<:utf8", $ARGV[0]);
+    }
     while(<FILE>){
 	$str .= $_;
     }
