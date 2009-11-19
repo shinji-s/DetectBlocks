@@ -18,9 +18,11 @@ binmode STDOUT, ':encoding(utf8)';
 binmode STDIN, ':encoding(utf8)';
 
 my %opt;
-&GetOptions(\%opt, 'post');
+&GetOptions(\%opt, 'post', 'url=s');
 
-my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index_dev.cgi';
+my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index.cgi';
+
+$opt{url} = 'http://100mangoku.net/' unless $opt{url};
 
 # UserAgent の作成
 my $ua = LWP::UserAgent->new;
@@ -37,7 +39,7 @@ if ($opt{post}) {
 # GET
 else {
     # 入力URL
-    my $inputurl = 'http://100mangoku.net/';
+    my $inputurl = $opt{url};
     $inputurl = uri_escape_utf8($inputurl);
 
     my $req_url = "$base_url?format=xml&inputurl=$inputurl";
@@ -51,7 +53,6 @@ my $response = $ua->request($req);
 print decode('utf8', $response->content);
 
 # XML読み込み
-# my $data = XMLin(decode('utf8', $response->content));
 my $data = XMLin(decode('utf8', $response->content), ForceArray => 1);
 
 # 出力
@@ -60,7 +61,7 @@ if (ref($data->{information_sender}) eq 'ARRAY') {
     foreach my $information_sender (@{$data->{information_sender}}) {
 	# 領域名
 	foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
-	    print ' ',$blocktype;
+	    print $blocktype;
 	}
 	# 抽出文字列
 	print ' ',$information_sender->{string}[0],"\n";
