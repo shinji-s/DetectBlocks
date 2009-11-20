@@ -595,6 +595,7 @@ sub get_new_node_ratio {
     my $i =  $start;
     # brなどはratioの情報がない
     do {
+	next if ref(($elem->content_list)[$i]) ne 'HTML::Element';
 	$ratio = ($elem->content_list)[$i]->attr('ratio_'.$search_str);
 	return $ratio if $ratio;
 	$start < $end ? $i++ : $i--;
@@ -943,7 +944,8 @@ sub print_offset {
 	# offsetが存在せず兄が存在する
 	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
 	    if (($p_elem->content_list)[$num-1]->attr('-offset')) {
-		$offset = ($p_elem->content_list)[$num-1]->attr('-offset') + bytes::length($p_elem->as_HTML(''));
+		my $brothrer_elem = ($p_elem->content_list)[$num-1];
+		$offset = $brothrer_elem->attr('-offset') + bytes::length($brothrer_elem->as_HTML(''));
 	    }
 	}
 	# offsetが存在せず兄が存在しない
