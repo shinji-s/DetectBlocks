@@ -1,3 +1,44 @@
+2009-11-20 Friday 18:28  funayama
+
+	* perl/DetectBlocks.pm (1.78): bug fixed.
+
+2009-11-19 Thursday 20:03  shibata
+
+	* cgi/api-test.pl (1.4): url¤ò¥ª¥×¥·¥ç¥ó²½
+
+2009-11-17 Tuesday 13:05  funayama
+
+	* perl/DetectBlocks.pm (1.77), script/test.pl (1.21):
+	  print_offset$B;~$OJ8;z?t$G$J$/%P%$%H?t$G?t$($k$h$&$KJQ99(B.
+
+2009-11-16 Monday 20:42  funayama
+
+	* perl/: DetectBlocks.pm (1.75), DetectBlocks.pm (1.76): small
+	  change.
+
+2009-11-16 Monday 20:13  funayama
+
+	* perl/DetectBlocks.pm (1.74), script/test.pl (1.20), README
+	  (1.10): ÎÎ°èÌ¾¤È¤½¤Îoffset¾ğÊó¤ò½ĞÎÏ¤¹¤ëoption¤òÄÉ²Ã.
+
+2009-11-16 Monday 20:06  funayama
+
+	* perl/ModifiedTreeBuilder.pm (1.1), script/test_TreeBuilder.pl
+	  (1.1): added.
+
+2009-11-12 Thursday 21:06  funayama
+
+	* cgi/index.cgi (1.27), perl/DetectBlocks.pm (1.73), script/test.pl
+	  (1.19): DetectBlocks2.pm -> DetectBlocks.pm ¤ËÊÑ¹¹.
+
+2009-11-12 Thursday 20:33  funayama
+
+	* cgi/: api-test.pl (1.3), index.cgi (1.26): small change.
+
+2009-11-12 Thursday 18:17  funayama
+
+	* ChangeLog (1.12): updated.
+
 2009-11-12 Thursday 18:15  funayama
 
 	* cgi/: api-test.pl (1.2), index.cgi (1.25):
@@ -5,12 +46,12 @@
 
 2009-11-12 Thursday 13:12  funayama
 
-	* perl/DetectBlocks2.pm (1.72):
+	* perl/DetectBlocks.pm (1.72):
 	  a-text¤Î·«¤êÊÖ¤·¤Îtext¤È¤Ê¤ê¤¦¤ëÊ¸»úÎó¤Ëµ­¹æ¤òÄÉ²Ã.
 
 2009-11-06 Friday 19:16  funayama
 
-	* perl/DetectBlocks2.pm (1.71):
+	* perl/DetectBlocks.pm (1.71):
 	  ¿·¥Î¡¼¥É¤òÉÕÍ¿¤¹¤ëºİ¤Ëiteration_number¤Èdiv_char¤òÅÏ¤·¤Æ¤Ê¤«¤Ã¤¿¤Î¤ò½¤Àµ.
 
 2009-11-05 Thursday 22:50  funayama
@@ -23,16 +64,16 @@
 
 2009-11-05 Thursday 15:56  funayama
 
-	* perl/DetectBlocks2.pm (1.70): small change.
+	* perl/DetectBlocks.pm (1.70): small change.
 
 2009-11-04 Wednesday 15:43  funayama
 
-	* perl/DetectBlocks2.pm (1.69): aa > bb > cc > dd
+	* perl/DetectBlocks.pm (1.69): aa > bb > cc > dd
 	  ¤Î¤è¤¦¤Ê·«¤êÊÖ¤·¤Î¾ì¹ç¤Ëdiv_char=">"¤È¤¤¤¦attr¤ò¿Æ¤ËÉÕÍ¿¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-10-30 Friday 18:48  shibuta
 
-	* perl/DetectBlocks2.pm (1.68):
+	* perl/DetectBlocks.pm (1.68):
 	  layer.jsã‚’åŠ ãˆã‚‹é–¢æ•°addJavascriptã‚’è¿½åŠ 
 
 2009-10-30 Friday 18:43  shibuta
@@ -46,12 +87,12 @@
 
 2009-10-29 Thursday 15:41  funayama
 
-	* perl/DetectBlocks2.pm (1.67): a_+_~text_-:_a_¤ÈÆ±»ş¤Ë
+	* perl/DetectBlocks.pm (1.67): a_+_~text_-:_a_¤ÈÆ±»ş¤Ë
 	  _a_:_a_+_~text_-¤âiteration¤È¤·¤Æ¸¡½Ğ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-10-28 Wednesday 14:49  funayama
 
-	* perl/DetectBlocks2.pm (1.66): map, area¥¿¥°¤ò¥Ö¥í¥Ã¥¯¥¿¥°¤ËÄÉ²Ã.
+	* perl/DetectBlocks.pm (1.66): map, area¥¿¥°¤ò¥Ö¥í¥Ã¥¯¥¿¥°¤ËÄÉ²Ã.
 	  area¥¿¥°¤ÎaltÂ°À­¤òget_text,
 	  attach_elem_length»ş¤Ë¹ÍÎ¸¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 	  img¥¿¥°¤ÇusemapÂ°À­¤ò»ı¤Ã¤Æ¤¤¤ëºİ¤Ë¤ÏaltÂ°À­¤òget_text,
@@ -63,11 +104,11 @@
 
 2009-10-27 Tuesday 18:57  funayama
 
-	* perl/DetectBlocks2.pm (1.65): bug fixed.
+	* perl/DetectBlocks.pm (1.65): bug fixed.
 
 2009-10-27 Tuesday 15:45  funayama
 
-	* perl/DetectBlocks2.pm (1.64): *
+	* perl/DetectBlocks.pm (1.64): *
 	  ·«¤êÊÖ¤·¤ò¤¹¤Ù¤ÆÈ¯¸«¤¹¤ë¤è¤¦¤ËÊÑ¹¹.	 ÉÕÍ¿¤·¤¿¾ğÊó:	    - ¿Æ ->
 	  ¼«Ê¬°Ê²¼¤Î·«¤êÊÖ¤·¥Ñ¥¿¡¼¥óÁ´¤Æ      - »Ò ->
 	  ¼«Ê¬¤ò´Ş¤à·«¤êÊÖ¤·¥Ñ¥¿¡¼¥ó¤È¤½¤Î·«¤êÊÖ¤·ÈÖ¹æ
@@ -100,7 +141,7 @@
 
 2009-10-24 Saturday 21:30  funayama
 
-	* perl/DetectBlocks2.pm (1.63): &nbsp;¤ò¥¹¥Ú¡¼¥¹¤ËÃÖ´¹¤Ê¤É.
+	* perl/DetectBlocks.pm (1.63): &nbsp;¤ò¥¹¥Ú¡¼¥¹¤ËÃÖ´¹¤Ê¤É.
 
 2009-10-22 Thursday 18:22  funayama
 
@@ -109,11 +150,11 @@
 
 2009-10-20 Tuesday 17:46  funayama
 
-	* perl/DetectBlocks2.pm (1.62): bug fixed.
+	* perl/DetectBlocks.pm (1.62): bug fixed.
 
 2009-10-20 Tuesday 14:39  funayama
 
-	* perl/DetectBlocks2.pm (1.61): copyright¥Ş¡¼¥¯¤Î°·¤¤¤òÊÑ¹¹.
+	* perl/DetectBlocks.pm (1.61): copyright¥Ş¡¼¥¯¤Î°·¤¤¤òÊÑ¹¹.
 
 2009-10-19 Monday 17:32  funayama
 
@@ -125,7 +166,7 @@
 
 2009-10-18 Sunday 22:46  funayama
 
-	* perl/DetectBlocks2.pm (1.60): footerÊ¸»úÎó¤Ësome rights
+	* perl/DetectBlocks.pm (1.60): footerÊ¸»úÎó¤Ësome rights
 	  reserved.¤òÄÉ²Ã.
 
 2009-10-18 Sunday 22:45  funayama
@@ -143,26 +184,26 @@
 
 2009-10-16 Friday 19:48  shibuta
 
-	* perl/DetectBlocks2.pm (1.59): baseã‚¿ã‚°ã®è£œå®Œã€‚
+	* perl/DetectBlocks.pm (1.59): baseã‚¿ã‚°ã®è£œå®Œã€‚
 	  style.cssãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚¿ã‚°æŒ¿å…¥ã‚’pushã‹ã‚‰unshiftã«å¤‰æ›´ã€‚
 
 2009-10-15 Thursday 19:22  funayama
 
-	* perl/DetectBlocks2.pm (1.58):
+	* perl/DetectBlocks.pm (1.58):
 	  iteration¤ò·«¤êÊÖ¤·¤¬°ìÈÖÂç¤­¤¤ÉôÊ¬¤Î¤â¤Î¤ËÂĞ¤·¤ÆÉÕÍ¿¤¹¤ëÍÑ¤ËÊÑ¹¹.
 	  Îã : td td a a a a a  ÊÑ¹¹Á° -> td¤¬2²ó  ÊÑ¹¹¸å ->  a¤¬5²ó
 
 2009-10-14 Wednesday 19:45  funayama
 
-	* perl/DetectBlocks2.pm (1.57): FOOTERÍÑ¤ÎÊ¸»úÎó¤ò¾¯¤·ÊÑ¹¹.
+	* perl/DetectBlocks.pm (1.57): FOOTERÍÑ¤ÎÊ¸»úÎó¤ò¾¯¤·ÊÑ¹¹.
 
 2009-10-14 Wednesday 15:49  funayama
 
-	* perl/DetectBlocks2.pm (1.56): small change.
+	* perl/DetectBlocks.pm (1.56): small change.
 
 2009-10-14 Wednesday 14:43  funayama
 
-	* README (1.9), perl/DetectBlocks2.pm (1.55):
+	* README (1.9), perl/DetectBlocks.pm (1.55):
 	  DetectBlock2¤ònew¤¹¤ëºİ¤Ëjuman¤ò»ØÄê¤·¤Ê¤¤¾ì¹ç¤Ï
 	  juman¤Î-COMMAND¤Ê¤·¤Çnew¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
@@ -172,7 +213,7 @@
 
 2009-10-13 Tuesday 18:49  funayama
 
-	* perl/DetectBlocks2.pm (1.54), script/test.pl (1.18):
+	* perl/DetectBlocks.pm (1.54), script/test.pl (1.18):
 	  juman¤Îpath¤ò³°¤«¤éoption¤Ç»ØÄê¤Ç¤­¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-10-09 Friday 16:21  funayama
@@ -190,7 +231,7 @@
 
 2009-10-06 Tuesday 22:45  funayama
 
-	* perl/DetectBlocks2.pm (1.53): small change.
+	* perl/DetectBlocks.pm (1.53): small change.
 
 2009-10-06 Tuesday 10:24  funayama
 
@@ -198,7 +239,7 @@
 
 2009-10-06 Tuesday 10:11  funayama
 
-	* perl/DetectBlocks2.pm (1.52): new Juman every 30 times.
+	* perl/DetectBlocks.pm (1.52): new Juman every 30 times.
 
 2009-10-06 Tuesday 08:03  funayama
 
@@ -214,7 +255,7 @@
 
 2009-10-05 Monday 18:36  funayama
 
-	* perl/DetectBlocks2.pm (1.51): add function post_process
+	* perl/DetectBlocks.pm (1.51): add function post_process
 
 2009-10-05 Monday 16:42  funayama
 
@@ -222,7 +263,7 @@
 
 2009-10-05 Monday 16:38  funayama
 
-	* perl/DetectBlocks2.pm (1.50): use h2z and split by kuten when
+	* perl/DetectBlocks.pm (1.50): use h2z and split by kuten when
 	  analysing by JUMAN.
 
 2009-10-05 Monday 16:28  nikaido
@@ -239,18 +280,18 @@
 
 2009-10-05 Monday 09:22  funayama
 
-	* perl/DetectBlocks2.pm (1.49):
+	* perl/DetectBlocks.pm (1.49):
 	  table$B$N7+$jJV$79=B$$r=@Fp$KG'<1$9$k$h$&$KJQ99(B.
 	  maintext$BMQ$NJ8;zNs$r:o=|(B.  $B4X?tL>$r>/$7JQ99(B.
 
 2009-10-04 Sunday 21:55  funayama
 
-	* perl/DetectBlocks2.pm (1.48):
+	* perl/DetectBlocks.pm (1.48):
 	  add_blockname2alltag$B%*%W%7%g%s;~$K(BStopTag$B$K$O(Bmyblocktype$B$rIUM?$7$J$$$h$&$KJQ99(B.
 
 2009-10-04 Sunday 17:49  funayama
 
-	* perl/DetectBlocks2.pm (1.47), script/test.pl (1.16):
+	* perl/DetectBlocks.pm (1.47), script/test.pl (1.16):
 	  ROOT$B$N%?%0$@$1$G$J$/(BROOT$B0J2<$NA4$F$N%?%0$K(Bmyblocktype$B$rIUM?$9$k(Boption$B$rDI2C(B.
 
 2009-10-04 Sunday 17:45  funayama
@@ -263,7 +304,7 @@
 
 2009-10-03 Saturday 19:13  funayama
 
-	* perl/DetectBlocks2.pm (1.46): bugfixed.
+	* perl/DetectBlocks.pm (1.46): bugfixed.
 
 2009-10-03 Saturday 18:01  funayama
 
@@ -284,7 +325,7 @@
 
 2009-10-03 Saturday 14:51  funayama
 
-	* perl/DetectBlocks2.pm (1.45): iteration$B$NItJ,$rJQ99(B.
+	* perl/DetectBlocks.pm (1.45): iteration$B$NItJ,$rJQ99(B.
 
 2009-09-30 Wednesday 16:39  funayama
 
@@ -292,11 +333,11 @@
 
 2009-09-30 Wednesday 15:11  funayama
 
-	* perl/DetectBlocks2.pm (1.44): bug fixed.
+	* perl/DetectBlocks.pm (1.44): bug fixed.
 
 2009-09-30 Wednesday 12:56  funayama
 
-	* perl/DetectBlocks2.pm (1.43):
+	* perl/DetectBlocks.pm (1.43):
 	  copyright$B$N$h$&$JJ8;zNs$,$"$C$?>l9g$O%Z!<%8$NKvHx$K=q$+$l$F$$$J$/$F$b(Bfooter$B$K$9$k(B($B>r7o>/$787$7$a(B).
 
 2009-09-29 Tuesday 16:36  funayama
@@ -309,7 +350,7 @@
 
 2009-09-28 Monday 18:56  funayama
 
-	* perl/DetectBlocks2.pm (1.42):
+	* perl/DetectBlocks.pm (1.42):
 	  li-a-text$B$r(B8$B2s7+$jJV$7$F$$$k;~$J$I$K(B4$B2s(B-4$B2s$N7+$jJV$7$HG'<1$5$l$J$$$h$&$KJQ99(B.
 
 2009-09-28 Monday 15:36  funayama
@@ -323,12 +364,12 @@
 
 2009-09-28 Monday 14:33  funayama
 
-	* perl/DetectBlocks2.pm (1.41):
+	* perl/DetectBlocks.pm (1.41):
 	  32/64bit$B$NN>J}$KBP1~$9$k$h$&$K(Bjuman$B$N(Bcommand$B$rJQ99(B.
 
 2009-09-27 Sunday 23:08  funayama
 
-	* perl/DetectBlocks2.pm (1.40):
+	* perl/DetectBlocks.pm (1.40):
 	  a-text$B$N7+$jJV$7$r8!=P$9$k:]$K(Btext$BItJ,$NJ8;zNs$r0J2<$K@)8B(B.
 	  | $B!C(B > < $B!d(B $B!c(B \s
 
@@ -338,7 +379,7 @@
 
 2009-09-24 Thursday 20:28  funayama
 
-	* perl/DetectBlocks2.pm (1.39):
+	* perl/DetectBlocks.pm (1.39):
 	  a_+_img_-$B$N7+$jJV$7$r8!=P$9$k$h$&$KJQ99(B.
 	  $BI=<(;~$K(Balt$B%F%-%9%H$r=PNO$9$k$h$&$KJQ99(B.
 
@@ -1288,25 +1329,25 @@
 
 2009-09-15 Tuesday 16:01  funayama
 
-	* perl/DetectBlocks2.pm (1.38):
+	* perl/DetectBlocks.pm (1.38):
 	  iteration$B$rMxMQ$7$F%Q%s$/$:$d%a%K%e!<$N$h$&$JNN0h$KB0@-CM$H$7$F(Bdiv_char$B$rIUM?$9$k$h$&$KJQ99(B.
 	  ($BNc(B) $B0J2<$N>l9g!V(Bdiv_char=" > "$B!W$rIUM?(B.  HOME
 	  > $BG3>F7O%@%$%(%C%H>&IJ0lMw(B > 10$BF|4V%5%$%m%9%j%`(B
 
 2009-09-14 Monday 16:15  funayama
 
-	* perl/DetectBlocks2.pm (1.37):
+	* perl/DetectBlocks.pm (1.37):
 	  $B%9%Z!<%9$N$_$N(Bunknown$B%V%m%C%/$r:n$i$J$$$h$&$KJQ99(B.
 
 2009-09-14 Monday 16:00  funayama
 
-	* perl/DetectBlocks2.pm (1.36):
+	* perl/DetectBlocks.pm (1.36):
 	  $B!V%[!<%`%i%s%G%#!<%k!W$O7r:_$+!)(B
 	  $B$N!V%[!<%`!W$,(Bfooter$BJ8;zNs$H$7$F8!=P$5$l$k8=>]$r=$@5(B.
 
 2009-09-14 Monday 15:45  funayama
 
-	* perl/DetectBlocks2.pm (1.35):
+	* perl/DetectBlocks.pm (1.35):
 	  li$B$NO"B3$rJ,3d$7$J$$$h$&$KJQ99(B.
 
 2009-09-14 Monday 14:21  funayama
@@ -1316,7 +1357,7 @@
 
 2009-09-14 Monday 03:12  funayama
 
-	* perl/DetectBlocks2.pm (1.34), cgi/index.cgi (1.4), script/test.pl
+	* perl/DetectBlocks.pm (1.34), cgi/index.cgi (1.4), script/test.pl
 	  (1.15): $B2hA|$H(BCSS$B$r@dBP%Q%9$K$9$k%*%W%7%g%s$rDI2C(B.
 
 2009-09-10 Thursday 19:04  funayama
@@ -1334,29 +1375,29 @@
 
 2009-09-07 Monday 22:10  funayama
 
-	* perl/DetectBlocks2.pm (1.33):
+	* perl/DetectBlocks.pm (1.33):
 	  index.html¤Ë¥ê¥ó¥¯¤¬¤Ê¤¤¾ì¹ç¤Ç¤â²èÁü¤Îalt¤ò¸«¤Æheader¤ò¸¡½Ğ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-09-05 Saturday 14:50  funayama
 
-	* perl/DetectBlocks2.pm (1.32): set timeout.
+	* perl/DetectBlocks.pm (1.32): set timeout.
 
 2009-09-05 Saturday 13:06  funayama
 
-	* script/test.pl (1.14), perl/DetectBlocks2.pm (1.31):
+	* script/test.pl (1.14), perl/DetectBlocks.pm (1.31):
 	  get_source¤ÎÉôÊ¬¤ò´Ø¿ô²½.
 
 2009-09-05 Saturday 02:20  funayama
 
-	* perl/DetectBlocks2.pm (1.30): small bug fixed.
+	* perl/DetectBlocks.pm (1.30): small bug fixed.
 
 2009-09-03 Thursday 07:16  funayama
 
-	* perl/DetectBlocks2.pm (1.29): small change.
+	* perl/DetectBlocks.pm (1.29): small change.
 
 2009-08-31 Monday 23:37  funayama
 
-	* perl/DetectBlocks2.pm (1.28): ½»½êÎÎ°è(address)¤Î¼ÂÁõ.  address,
+	* perl/DetectBlocks.pm (1.28): ½»½êÎÎ°è(address)¤Î¼ÂÁõ.  address,
 	  profile¤Î¥Ö¥í¥Ã¥¯¤ÎÄ¹¤µ¤ËºÇÂçÃÍ500¤òÀßÄê.
 
 2009-08-30 Sunday 21:48  funayama
@@ -1365,7 +1406,7 @@
 
 2009-08-30 Sunday 21:48  funayama
 
-	* perl/DetectBlocks2.pm (1.27), script/test.pl (1.13):
+	* perl/DetectBlocks.pm (1.27), script/test.pl (1.13):
 	  ¤³¤ì¤Ş¤Ç¤Î¥Ö¥í¥Ã¥¯¤È¤ÏÊÌ¤ËprofileÎÎ°è¤ò¼ÂÁõ.	option
 	  -get_more_block¤òÄÉ²Ã.  ²òÀÏÁ°¤Ë&copy;¤ò(c)¤ËÃÖ´¹¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
@@ -1375,49 +1416,48 @@
 
 2009-08-28 Friday 17:58  funayama
 
-	* perl/DetectBlocks2.pm (1.26), script/test.pl (1.12):
+	* perl/DetectBlocks.pm (1.26), script/test.pl (1.12):
 	  ¥¿¥°¤ÎÊÄ¤¸Ëº¤ì¤ò½¤Àµ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 	  as_HTML»ş¤Ï(¥Ç¥Õ¥©¥ë¥È¤Ç)p,li,dt,dd¤ÎÊÄ¤¸¥¿¥°¤ò¾ÊÎ¬¤¹¤ë¤è¤¦¤Ë¤Ê¤Ã¤Æ¤¤¤¿¤Î¤ò½¤Àµ.
 
 2009-08-28 Friday 16:50  funayama
 
-	* perl/DetectBlocks2.pm (1.25), script/test.pl (1.11): [no log
+	* perl/DetectBlocks.pm (1.25), script/test.pl (1.11): [no log
 	  message]
 
 2009-08-24 Monday 20:29  funayama
 
-	* perl/DetectBlocks2.pm (1.24): small bug fixed.
+	* perl/DetectBlocks.pm (1.24): small bug fixed.
 
 2009-08-21 Friday 14:23  shibuta
 
-	* perl/DetectBlocks2.pm (1.23):
-	  ã¡ã‚‡ã£ã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’æ›¸ã„ãŸ
+	* perl/DetectBlocks.pm (1.23): ã¡ã‚‡ã£ã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’æ›¸ã„ãŸ
 
 2009-08-21 Friday 13:37  funayama
 
-	* perl/DetectBlocks2.pm (1.22): small change.
+	* perl/DetectBlocks.pm (1.22): small change.
 
 2009-08-11 Tuesday 17:35  funayama
 
-	* perl/DetectBlocks2.pm (1.21):
+	* perl/DetectBlocks.pm (1.21):
 	  ¥Ö¥í¥Ã¥¯Ê¬³ä¤ò¤¹¤ë¤«¤É¤¦¤«¤Î¾ò·ï¤ò½¤Àµ.
 
 2009-08-10 Monday 20:55  funayama
 
-	* perl/DetectBlocks2.pm (1.20): FooterÍÑ¤ÎÊ¸»úÎó¤ò½¤Àµ.
+	* perl/DetectBlocks.pm (1.20): FooterÍÑ¤ÎÊ¸»úÎó¤ò½¤Àµ.
 	  ÎÎ°è¤ò¤µ¤é¤ËÊ¬³ä¤¹¤ë¤«¤É¤¦¤«¤ÎÈ½Äê¤ò¤â¤¦¾¯¤·¿¿ÌÌÌÜ¤Ë.
 
 2009-08-04 Tuesday 17:15  funayama
 
-	* perl/DetectBlocks2.pm (1.19): HeaderÎÎ°è¤ò½¤Àµ.  bug fixed.
+	* perl/DetectBlocks.pm (1.19): HeaderÎÎ°è¤ò½¤Àµ.  bug fixed.
 
 2009-07-29 Wednesday 00:04  funayama
 
-	* perl/DetectBlocks2.pm (1.18): headerÎÎ°è¤òÄÉ²Ã(²¾).
+	* perl/DetectBlocks.pm (1.18): headerÎÎ°è¤òÄÉ²Ã(²¾).
 
 2009-07-28 Tuesday 17:55  funayama
 
-	* perl/DetectBlocks2.pm (1.17):
+	* perl/DetectBlocks.pm (1.17):
 	  »Ò¶¡¤Ë50%°Ê¾å¤Î¥Æ¥­¥¹¥ÈÎÌ¤ò¤â¤Ä¥Ö¥í¥Ã¥¯¤¬¤¢¤Ã¤Æ¤â¡¢¤½¤ì°Ê³°¤ÎÉôÊ¬¤Ë50%°Ê²¼¤Î¥Æ¥­¥¹¥ÈÎÌ¤Î¥¤¥ó¥é¥¤¥óÍ×ÁÇ¤¬Ê£¿ô¤¢¤ì¤Ğ
 	  ¤½¤³¤ò°ì¤Ä¤Î¤«¤¿¤Ş¤ê¤È¤·¤ÆÈ½ÃÇ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
@@ -1425,11 +1465,11 @@
 
 2009-07-27 Monday 14:53  funayama
 
-	* perl/DetectBlocks2.pm (1.16): À°Íı.
+	* perl/DetectBlocks.pm (1.16): À°Íı.
 
 2009-07-26 Sunday 20:26  funayama
 
-	* perl/DetectBlocks2.pm (1.15): formÎÎ°è¤òÄÉ²Ã and small bug fix.
+	* perl/DetectBlocks.pm (1.15): formÎÎ°è¤òÄÉ²Ã and small bug fix.
 
 2009-07-25 Saturday 16:51  funayama
 
@@ -1438,32 +1478,32 @@
 
 2009-07-25 Saturday 16:50  funayama
 
-	* perl/DetectBlocks2.pm (1.14):
+	* perl/DetectBlocks.pm (1.14):
 	  ¤¢¤ë¥Ö¥í¥Ã¥¯°Ê²¼¤ÎÁ´¥Ö¥í¥Ã¥¯¤Î¥Æ¥­¥¹¥ÈÎÌ¤¬¥Ú¡¼¥¸Á´ÂÎ¤Î50%°Ê²¼¤Î¾ì¹ç,
 	  Ï¢Â³¤¹¤ë¥¤¥ó¥é¥¤¥óÍ×ÁÇ¤ËÆ±¤¸ÎÎ°èÌ¾¤òÉÕÍ¿¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-07-24 Friday 12:09  shibuta
 
-	* perl/DetectBlocks2.pm (1.13):
+	* perl/DetectBlocks.pm (1.13):
 	  ãƒ•ãƒ©ãƒƒãƒˆãªç¹°ã‚Šè¿”ã—ç™ºè¦‹è¿½åŠ 
 
 2009-07-24 Friday 01:32  funayama
 
-	* perl/DetectBlocks2.pm (1.12):
+	* perl/DetectBlocks.pm (1.12):
 	  HTML½ĞÎÏ»ş¤ËÉÔÍ×¤Êattribute¤ò´°Á´¤Ëºï½ü¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-07-23 Thursday 15:46  shibuta
 
-	* perl/DetectBlocks2.pm (1.11): ç´°éƒ¨å¤‰æ›´
+	* perl/DetectBlocks.pm (1.11): ç´°éƒ¨å¤‰æ›´
 
 2009-07-23 Thursday 12:56  funayama
 
-	* perl/DetectBlocks2.pm (1.10): ÎÎ°è¤ò¤µ¤é¤ËÊ¬³ä¤¹¤ë¤«¤É¤¦¤«¤òÈ½Äê.
+	* perl/DetectBlocks.pm (1.10): ÎÎ°è¤ò¤µ¤é¤ËÊ¬³ä¤¹¤ë¤«¤É¤¦¤«¤òÈ½Äê.
 	  linkÎÎ°è¤ÎÈ½ÃÇ¤òÊÑ¹¹.
 
 2009-07-22 Wednesday 04:16  funayama
 
-	* perl/DetectBlocks2.pm (1.9):
+	* perl/DetectBlocks.pm (1.9):
 	  get_text´Ø¿ô¤ò¥Õ¥é¥Ã¥È¤Ê¥Æ¥­¥¹¥È¤Ç¤Ï¤Ê¤¯ÇÛÎó¤ÇÊÖ¤¹¤è¤¦¤ËÊÑ¹¹.
 	  ¤½¤ì¤ËÈ¼¤¤check_footer´Ø¿ô¤òÄÉ²Ã.  check_maintext¤Î´Ø¿ô¤òÄÉ²Ã.
 	  ·ÁÂÖÁÇ²òÀÏ¤ò¹Ô¤¤¶çÅÀ,½õ»ì¤Î³ä¹ç¤ò¹ÍÎ¸¤·¤ÆËÜÊ¸ÎÎ°è¤òÈ½ÃÇ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
@@ -1471,40 +1511,40 @@
 
 2009-07-21 Tuesday 21:38  funayama
 
-	* perl/DetectBlocks2.pm (1.8):
+	* perl/DetectBlocks.pm (1.8):
 	  ÎÎ°è¤ò¤µ¤é¤ËÊ¬³ä¤¹¤ë¤«¤É¤¦¤«¤ò¥Á¥§¥Ã¥¯¤¹¤ë´Ø¿ô¤òÄÉ²Ã.  script,
 	  style¥¿¥°¤Ê¤É¤Ïtext¤È¤·¤Ê¤¤¤è¤¦¤Ëis_stop_elem´Ø¿ô¤òÄÉ²Ã.
 
 2009-07-21 Tuesday 00:38  funayama
 
-	* perl/DetectBlocks2.pm (1.7): &get_text()¤ò½¤Àµ.
+	* perl/DetectBlocks.pm (1.7): &get_text()¤ò½¤Àµ.
 	  img¥¿¥°¤Î¾ì¹çalt¤ò¼è¤é¤Ê¤¤.
 	  script¥¿¥°¤Î¾ì¹ç°Ê²¼¤Î»Ò¶¡¤òÄ´¤Ù¤Ê¤¤.
 
 2009-07-20 Monday 15:03  funayama
 
-	* perl/DetectBlocks2.pm (1.6):
+	* perl/DetectBlocks.pm (1.6):
 	  ºÇ¸å¤Ë~text¥¿¥°¤òdiv¥¿¥°¤ËÊÑ¹¹¤»¤º¤Ëspan¥¿¥°¤ËÊÑ¹¹¤¹¤ë¤è¤¦¤Ë½¤Àµ.
 	  TreeBuilder¤¬Îã¤¨¤Ğ²¼µ­¤Î¤è¤¦¤Ê½ñ¤­´¹¤¨¤ò¾¡¼ê¤Ë¹Ô¤¦¤¿¤á.
 	  <p><div>¥Æ¥­¥¹¥È</div></p> -> <p></p><div>¥Æ¥­¥¹¥È</div>
 
 2009-07-20 Monday 01:29  funayama
 
-	* perl/DetectBlocks2.pm (1.5): sub
+	* perl/DetectBlocks.pm (1.5): sub
 	  print_node{}¤ËHTML::Element¤Îcheck¤òÄÉ²Ã.
 	  ¸µ¤ÎCSS¤òÈ¿±Ç¤·¤Ê¤¤¤è¤¦¤ËÊÑ¹¹.
 
 2009-07-17 Friday 22:00  funayama
 
-	* perl/DetectBlocks2.pm (1.4): bug fixed.
+	* perl/DetectBlocks.pm (1.4): bug fixed.
 
 2009-07-17 Friday 21:24  shibata
 
-	* perl/DetectBlocks2.pm (1.3): ¥ê¥ó¥¯ÎÎ°èÈ½Äê¤Î½¤Àµ
+	* perl/DetectBlocks.pm (1.3): ¥ê¥ó¥¯ÎÎ°èÈ½Äê¤Î½¤Àµ
 
 2009-07-17 Friday 20:25  shibata
 
-	* perl/DetectBlocks2.pm (1.2): img¤ÈfooterÈ½Äê¤Îbug fixed.
+	* perl/DetectBlocks.pm (1.2): img¤ÈfooterÈ½Äê¤Îbug fixed.
 
 2009-07-17 Friday 19:55  shibata
 
@@ -1512,7 +1552,7 @@
 
 2009-07-17 Friday 19:55  shibata
 
-	* perl/DetectBlocks2.pm (1.1): added.
+	* perl/DetectBlocks.pm (1.1): added.
 
 2009-07-17 Friday 09:48  shibata
 
@@ -1523,62 +1563,13 @@
 	* perl/RepeatCheck.pm (1.5):
 	  text¤¬¶õÇò¤Î¤ß¤«¤é¤Ê¤ë¾ì¹ç¤Ëskip¤¹¤ë¤è¤¦¤Ë
 
-2009-07-16 Thursday 23:33  shibata
-
-	* perl/DetectBlocks.pm (1.26):
-	  ¥ê¥ó¥¯ÎÎ°èÈ½Äê¤Îºİ¤Ë¥ê¥ó¥¯¤¬2¤Ä°Ê¾å¤Ê¤¤¤È¤¤¤±¤Ê¤¤¤è¤¦¤ËÊÑ¹¹
-
-2009-07-16 Thursday 23:07  shibata
-
-	* perl/DetectBlocks.pm (1.25): offset¤ò»ı¤Ä¤è¤¦¤Ë
-	  ²¼¤ÎÊı(offset¤Î³ä¹ç¤¬0.9°Ê¾å)¤À¤±¤òfooter¤È¤ß¤Ê¤¹¤è¤¦¤Ë
-
-2009-07-16 Thursday 21:31  shibata
-
-	* perl/DetectBlocks.pm (1.24): <a name=...>¤Ï¥ê¥ó¥¯¤È»×¤ï¤Ê¤¤¤è¤¦¤Ë
-
-2009-07-16 Thursday 16:59  shibuta
-
-	* perl/DetectBlocks.pm (1.23): unknown_text -> unknown_block
-
-2009-07-16 Thursday 16:32  shibuta
-
-	* perl/DetectBlocks.pm (1.22): add comment
-
-2009-07-14 Tuesday 17:54  shibuta
-
-	* perl/DetectBlocks.pm (1.21):
-	  å­è¦ç´ ã‚’æŒãŸãªã„ãƒ†ã‚­ã‚¹ãƒˆã§é–¾å€¤ä»¥ä¸Šã®ã‚‚ã®ã‚’æ¨ã¦ãªã„ã‚ˆã†ã«ä¿®æ­£ã€‚
-	  ä¾‹:Whailng/021.html
-
-2009-07-14 Tuesday 11:26  funayama
-
-	* perl/DetectBlocks.pm (1.20): Footer,
-	  Copyright¤ÎÃê½Ğ¾ò·ï¤ÎÊ¸»úÎó(Allrights Reserved)¤òÄÉ²Ã.
-
 2009-07-13 Monday 21:18  funayama
 
 	* data/style.css (1.3): small change.
 
-2009-07-13 Monday 21:17  funayama
-
-	* perl/DetectBlocks.pm (1.19): - copyright¥Ö¥í¥Ã¥¯¤Ë¤¹¤ë¾ò·ï¤ò´ËÏÂ.
-	  - footer¤Ê¤É¤ÎÈ½ÃÇ¤Ë»È¤¦Ê¸»úÎó¤òÀ°Íı.  - ´Ø¿ôwriteblock¤ÎÀ°Íı.
-	  -- link¤Èfooter¤Î¶¦Â¸¤òµö¤¹¤è¤¦¤Ë¾ò·ï¤òÊÑ¹¹.
-
-2009-07-13 Monday 13:36  funayama
-
-	* perl/DetectBlocks.pm (1.18): Copyright¥Ş¡¼¥¯¤ÎÀµµ¬É½¸½¤ò½¤Àµ.
-	  (c) -> \(c\)
-
 2009-07-10 Friday 14:47  funayama
 
 	* data/style.css (1.2): CSS¤ÎÇÛ¿§¤òÊÑ¹¹.
-
-2009-07-10 Friday 02:19  funayama
-
-	* perl/DetectBlocks.pm (1.17):
-	  ÆÈ¼«¤ÎCSS¤ÎÍ¥Àè½ç°Ì¤ò¥È¥Ã¥×¤Ë¤â¤Ã¤Æ¤¯¤ë¤è¤¦¤ËÊÑ¹¹.
 
 2009-07-09 Thursday 22:38  shibuta
 
@@ -1591,71 +1582,29 @@
 
 2009-07-09 Thursday 21:37  funayama
 
-	* script/test.pl (1.6), README (1.3), perl/DetectBlocks.pm (1.16):
+	* script/test.pl (1.6), README (1.3):
 	  HTML·Á¼°¤Ç½ĞÎÏ¤·¤ÆÎÎ°è¤Ë¿§¤ò¤Ä¤±¤ë¥ª¥×¥·¥ç¥ó(-add_class2html)¤òÄÉ²Ã.
 
 2009-07-09 Thursday 14:53  funayama
 
-	* perl/: DetectBlocks.pm (1.15), RepeatCheck.pm (1.4):
-	  ¥×¥í¥°¥é¥àÀ°Íı.
-
-2009-07-08 Wednesday 18:29  shibuta
-
-	* perl/DetectBlocks.pm (1.14): printæ™‚ã®2é‡è¡¨ç¤ºä¿®æ­£
-
-2009-07-08 Wednesday 16:54  funayama
-
-	* perl/DetectBlocks.pm (1.13): bug fixed.
-	  HTML::Element¤Îcheck¤ò¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
+	* perl/RepeatCheck.pm (1.4): ¥×¥í¥°¥é¥àÀ°Íı.
 
 2009-07-07 Tuesday 14:23  nikaido
 
-	* perl/: DetectBlocks.pm (1.12), RepeatCheck.pm (1.3): add repeat.
+	* perl/RepeatCheck.pm (1.3): add repeat.
 
 2009-07-03 Friday 19:26  shibuta
 
-	* perl/: DetectBlocks.pm (1.11), RepeatCheck.pm (1.2):
-	  objectify_text wo riyou shite repeat hakken
+	* perl/RepeatCheck.pm (1.2): objectify_text wo riyou shite repeat
+	  hakken
 
 2009-07-03 Friday 17:51  nikaido
 
 	* perl/RepeatCheck.pm (1.1): add RepeatCheck.pm
 
-2009-07-03 Friday 17:49  nikaido
-
-	* perl/DetectBlocks.pm (1.10): add repeat
-
-2009-07-01 Wednesday 09:47  shibuta
-
-	* perl/DetectBlocks.pm (1.9): small change
-
-2009-06-26 Friday 00:58  shibuta
-
-	* perl/DetectBlocks.pm (1.8): add recheckblock
-
 2009-06-24 Wednesday 16:58  shibata
 
 	* script/test.pl (1.5): HTML¥½¡¼¥¹¤ò¼èÆÀ¤¹¤ë¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã
-
-2009-06-24 Wednesday 12:40  shibuta
-
-	* perl/DetectBlocks.pm (1.7): processing of text is changed.
-
-2009-06-24 Wednesday 01:06  shibuta
-
-	* perl/DetectBlocks.pm (1.6): checkmaintext small change
-
-2009-06-24 Wednesday 00:22  shibuta
-
-	* perl/DetectBlocks.pm (1.5): alt, copyright
-
-2009-06-23 Tuesday 19:34  shibuta
-
-	* perl/DetectBlocks.pm (1.4): add maintext in myblocktypes.
-
-2009-06-22 Monday 22:28  shibuta
-
-	* perl/DetectBlocks.pm (1.3): small change DetectBlocks.pm
 
 2009-06-22 Monday 18:37  shibuta
 
@@ -2593,7 +2542,7 @@
 
 2009-06-22 Monday 18:06  shibuta
 
-	* perl/DetectBlocks.pm (1.2), script/test.pl (1.3): add sample.
+	* script/test.pl (1.3): add sample.
 
 2009-06-22 Monday 15:38  shibuta
 
@@ -2609,11 +2558,9 @@
 
 2009-06-22 Monday 14:55  shibuta
 
-	* perl/DetectBlocks.pm (1.1), script/test.pl (1.1): Initial
-	  revision
+	* script/test.pl (1.1): Initial revision
 
 2009-06-22 Monday 14:55  shibuta
 
-	* perl/DetectBlocks.pm (1.1.1.1), script/test.pl (1.1.1.1): [no log
-	  message]
+	* script/test.pl (1.1.1.1): [no log message]
 
