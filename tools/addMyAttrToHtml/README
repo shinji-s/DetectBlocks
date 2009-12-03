@@ -1,0 +1,44 @@
+
+
+//****************************************************************
+HTMLファイルに対して任意のJavaScriptコードを実行した上でその結果となるHTMLファイルを出力するプログラム。
+	(http://code.google.com/p/wkhtmltopdf/のwkhtmltopdfのソースコードを少しいじっただけです。)
+//****************************************************************
+
+
+＊実行方法
+
+	・実行させたいJavaScriptコードをmyExecJs.jsとして作成する。
+		(alertなどの新しいウインドウを作ったり、入力待ちなどの状態になるものは無理)
+
+	・実行ファイルwkhtmltopdfと同じディレクトリにmyExecJs.jsを置く。
+
+	・「./wkhtmltopdf http://www.google.co.jp test.html」などとして実行する。
+			  (URLのかわりにHTMLファイルでも可能)
+
+	****************注意***************
+		・staticExe内のwkhtmltopdfが実行できない環境では以下のようにqtのインストールとビルドを実行する。
+			(基本的にlinux？)
+
+		・Xが動いてないと使えません。
+		    - Xvfbなどで仮想的にXを起動させると使えました。
+		    - puttyなどで遠隔の場合、「export DISPLAY=:1」、「Xvfb :1 &」としてXを起動する。
+
+		・proxyを通す場合、「-p http://proxy.kuins.net:8080」のようにオプションを付ける。
+
+
+
+＊ビルド方法
+	・wkhtmltopdf-0.8.3.tar.bz2を解凍し、wkhtmltopdf-0.8.3内で「cmake .」を実行。
+		(qtがインストールされるので３０分くらい時間がかかる)
+
+	・wkhtmltopdf-0.8.3/wkhtmltopdf.ccファイルをaddMyPatch/wkhtmltopdf.ccファイルで置き換える。
+
+	・makeを実行。
+
+	・実行ファイルwkhtmltopdfができる。
+
+
+
+
+
