@@ -72,56 +72,56 @@ our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:
 our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
 # 以下のtagは解析対象にしない
-our $TAG_IGNORED = '^(script|style|br|option)$';
+our $TAG_IGNORED = '^(?:script|style|br|option)$';
 
 # 以下のtagを子供以下にふくむ場合は領域を分割
 our @MORE_DIVIDE_TAG = qw/address form/;
 
 #ブロックタグのハッシュ
-our %BLOCK_TAGS = (
-                   address => 1,
+our %BLOCK_TAGS		      =	 (
+                   address    => 1,
                    blockquote => 1,
-                   caption => 1,
-                   center => 1,
-                   dd => 1,
-                   dir => 1,
-                   div => 1,
-                   dl => 1,
-                   dt => 1,
-                   fieldset => 1,
-                   form => 1,
-                   h1 => 1,
-                   h2 => 1,
-                   h3 => 1,
-                   h4 => 1,
-                   h5 => 1,
-                   h6 => 1,
-                   hr => 1,
-                   isindex => 1,
-                   li => 1,
-                   listing => 1,
-                   menu => 1,
-                   multicol => 1,
-                   noframes => 1,
-                   noscript => 1,
-                   ol => 1,
-                   option => 1,
-                   p => 1,
-                   plaintext => 1,
-                   pre => 1,
-                   select => 1,
-                   table => 1,
-                   tbody => 1,
-                   td => 1,
-                   tfoot => 1,
-                   th => 1,
-                   thead => 1,
-                   tr => 1,
-                   ul => 1,
-                   xmp => 1,
-		   br => 1,
-		   map => 1,
-		   area => 1
+                   caption    => 1,
+                   center     => 1,
+                   dd	      => 1,
+                   dir	      => 1,
+                   div	      => 1,
+                   dl	      => 1,
+                   dt	      => 1,
+                   fieldset   => 1,
+                   form	      => 1,
+                   h1	      => 1,
+                   h2	      => 1,
+                   h3	      => 1,
+                   h4	      => 1,
+                   h5	      => 1,
+                   h6	      => 1,
+                   hr	      => 1,
+                   isindex    => 1,
+                   li	      => 1,
+                   listing    => 1,
+                   menu	      => 1,
+                   multicol   => 1,
+                   noframes   => 1,
+                   noscript   => 1,
+                   ol	      => 1,
+                   option     => 1,
+                   p	      => 1,
+                   plaintext  => 1,
+                   pre	      => 1,
+                   select     => 1,
+                   table      => 1,
+                   tbody      => 1,
+                   td	      => 1,
+                   tfoot      => 1,
+                   th	      => 1,
+                   thead      => 1,
+                   tr	      => 1,
+                   ul	      => 1,
+                   xmp	      => 1,
+		   br	      => 1,
+		   map	      => 1,
+		   area	      => 1
 		       );
 
 our %TAG_with_ALT = (area => 1, img => 1);
@@ -374,7 +374,8 @@ sub detect_block {
     }
     else {
     	my $block_start;
-    	for (my $i = 0;$i < $elem->content_list; $i++) {
+	my $array_size = scalar $elem->content_list;
+    	for (my $i = 0;$i < $array_size; $i++) {
     	    my $child_elem = ($elem->content_list)[$i];
     	    # block要素 or textが50%以上のblock
     	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
@@ -846,7 +847,7 @@ sub check_calender {
     my $counter;
     my %buf;
     foreach my $text (@$texts) {
-	if ($text =~ /^(月|火|水|木|金|土|日|mon|tue|wed|thu|fri|satb|sun)$/i) {
+	if ($text =~ /^([月火水木金土日]|mon|tue|wed|thu|fri|sat|sun)$/i) {
 	    $buf{$text} = 1;
 	    return 1 if scalar keys %buf == 7;
 	}
@@ -909,11 +910,11 @@ sub attach_offset_ratio {
     
     # 累積
     my $accumulative_length = $offset;
-    for my $child_elem ($elem->content_list){
-	if (!$this->is_stop_elem($child_elem)) {
-	    $this->attach_offset_ratio($child_elem, $accumulative_length);
-	    $accumulative_length += $child_elem->attr('length');
-	}
+    foreach my $child_elem ($elem->content_list){
+    	if (!$this->is_stop_elem($child_elem)) {
+    	    $this->attach_offset_ratio($child_elem, $accumulative_length);
+    	    $accumulative_length += $child_elem->attr('length');
+    	}
     }
 }
 
@@ -959,7 +960,8 @@ sub print_offset {
     }
 
     if ($elem->content_list) {
-	for (my $i = 0;$i < $elem->content_list; $i++) {
+	my $array_size = scalar $elem->content_list;
+	for (my $i = 0;$i < $array_size; $i++) {
 	    $this->print_offset(($elem->content_list)[$i], $i, $elem);
 	}
     }
@@ -1089,7 +1091,8 @@ sub cut_table_substring {
     }
 
     my $substrings_ref_buf;
-    for (my $i = 0; $i < @$substrings_ref; $i++) {
+    my $array_size = scalar @$substrings_ref;
+    for (my $i = 0; $i < $array_size; $i++) {
 	# substringsの左側2カラム以外の部分は'*'に変換
 	# 例 : <変換前> _tr_+_td_+_img_-_td_+_~text_-_td_+_~text_--
 	#      <変換後> _tr_+_td_+_img_-_td_+_~text_-_td_*
@@ -1235,7 +1238,8 @@ sub select_best_iteration {
     my @best_iterations_buffer;
     for (my $i = $#$iteration_ref; $i >= 1; $i--) {
 	next if !defined $iteration_ref->[$i];
-	for (my $j = 0; $j < @{$iteration_ref->[$i]}; $j++) {
+	my $iteration_ref_size = scalar @{$iteration_ref->[$i]};
+	for (my $j = 0; $j < $iteration_ref_size; $j++) {
 	    my $ref = $iteration_ref->[$i][$j];
 	    next if !defined $ref;
 
@@ -1245,7 +1249,8 @@ sub select_best_iteration {
 	    }
 	    else {
 		my $covered_flag;
-		for (my $m = 0; $m < @best_iterations_buffer; $m++) {
+		my $best_iterations_buffer_size = scalar @best_iterations_buffer;
+		for (my $m = 0; $m < $best_iterations_buffer_size; $m++) {
 		    my $best_now = $best_iterations_buffer[$m];
 		    # 既存のものと重複がある場合
 		    if ($ref->{j} <= $best_now->{j} && $best_now->{k} <= $ref->{k}) {
@@ -1458,10 +1463,7 @@ sub text2span {
 sub is_stop_elem {
     my ($this, $elem) = @_;
 
-    if ($elem->tag =~ /$TAG_IGNORED/i) {
-	return 1;
-    }
-    return 0;
+    return $elem->tag =~ /$TAG_IGNORED/i ? 1 : 0;
 }
 
 
