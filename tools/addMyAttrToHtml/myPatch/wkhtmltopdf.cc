@@ -17,7 +17,6 @@
 #include "wkhtmltopdf.hh"
 #include <QUuid>
 #include <QtPlugin>
-#include <QtNetwork>
 #include <iostream>
 #include <qnetworkreply.h>
 #include <string.h>
@@ -284,7 +283,9 @@ void WKHtmlToPdf::run(int argc, const char ** argv) {
 		loginTry=0;
 		page->mainFrame()->load(guessUrlFromString(u));
 		pages.push_back(page);
-		break; //１個だけに制限
+//**************************一個だけに制限
+		break; 
+//**************************
 	}
 }
 
@@ -302,7 +303,6 @@ void WKHtmlToPdf::sslErrors(QNetworkReply *reply, const QList<QSslError> &error)
  * Print out the document to the pdf file
  */
 void WKHtmlToPdf::printPage() {
-	if(myReloadFlag != 0) return;
 	//If there are still pages loading wait til they are done
 	if(loading != 0) return;
 	//Give some user feed back
@@ -317,104 +317,52 @@ void WKHtmlToPdf::printPage() {
 			temp.push_back(lout);
 		}
 	}
-	//Tell the printer object to print the file <out>
-//	fprintf(stderr, "%s\n", lout.toLocal8Bit().constData());
-//	fprintf(stderr, "\n");
-
-	//We currently only support margins with the same unit
-	if(margin_left.second != margin_right.second ||
-	   margin_left.second != margin_top.second ||	  
-	   margin_left.second != margin_bottom.second) {
-		fprintf(stderr, "Currently all margin units must be the same!\n");
-		exit(1);
- 	}
 
 	pageNum = 0;
 #ifdef __EXTENSIVE_WKHTMLTOPDF_QT_HACK__
-	QPainter painter;
-	painter.begin(&printer);
-	pageStart.push_back(0);
-	QVector< QVector<QWebFrame::Heading> > headings;
 
-	if(print_toc || outline) {
-		for(int i=0; i < in.size(); ++i) {
-			if(cover[0] && i == 0) {headings.push_back( QVector<QWebFrame::Heading>() ); continue;}
-			if(!quiet) {fprintf(stderr, "Finding headings %d of %d      \r",i,in.size()); fflush(stdout);}
-			headings.push_back(pages[i]->mainFrame()->headings(&printer, printMediaType));
+//************************
+		QSize vsize(1280,800);
+		pages[0]->setViewportSize(vsize);
+
+		if(QFile::exists("myExecJs.js")) {
+			QFile iJs("myExecJs.js");
+			iJs.open(QIODevice::ReadOnly);
+			pages[0]->mainFrame()->evaluateJavaScript(iJs.readAll());
+			iJs.close();
 		}
-	}
-	
-	if(print_toc) {
-		TocItem * root = new TocItem();
-		for(int i=0; i < in.size(); ++i)buildToc(root,headings[i],0);
-		pageStart.back() += tocPrinter.countPages(root, &printer, &painter);
-		delete root;
-	}
+		QString xxx(pages[0]->mainFrame()->toHtml());
+		QTextCodec *codec;
+		codec = QTextCodec::codecForHtml(xxx.toUtf8());
 
-	if(!print_toc && !outline &&
-	   !header_left[0] && !header_center[0] && !header_right[0] &&
-	   !footer_left[0] && !footer_center[0] && !footer_right[0]) {
-		for(int i=0; i < in.size(); ++i) pageStart.push_back(0);
-	} else {
-		for(int i=0; i < in.size(); ++i) {
-			if(!quiet) {fprintf(stderr, "Counting pages %d of %d      \r",i,in.size()); fflush(stdout);}
-			if(cover[0] && i == 0) {
-				pageStart.push_front(0);
-				pageStart.back() +=  pages[i]->mainFrame()->countPages(&printer, printMediaType);
-				continue;
-			}
-			pageStart.push_back( pageStart.back() + pages[i]->mainFrame()->countPages(&printer, printMediaType) );
-		}
-	}
+		QFile oHtml(lout);
+		oHtml.open(QIODevice::WriteOnly);
+//  oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
+		oHtml.write(codec->fromUnicode(xxx).constData());
+		oHtml.close();
+//*********************
 
-	TocItem * root = NULL;
-	if(print_toc || outline) {
- 		root = new TocItem();
-		for(int i=0; i < in.size(); ++i) buildToc(root,headings[i],pageStart[i]+1);
-		tocPrinter.populateSections(root);
-	}
-	TocItem toc;
-	if(print_toc) {
-	  tocPrinter.page2sectionshigh[0][0] = &toc;
-	  tocPrinter.page2sectionslow[0][0] = &toc;
-	  toc.value = QString(tocPrinter.header_text);
-	  
-	}
-
-	for(int i=0; i < in.size(); ++i) {
-		currentPage = i;
-		if(i != 0) printer.newPage();
-		if(print_toc && i == (cover[0] == '\0'?0:1)) {
-			currentPage = -1;
-			tocPrinter.print(root, &printer, &painter);
-			printer.newPage();
-			currentPage = i;
-		}
-		pages[i]->mainFrame()->print(&printer,&painter, printMediaType);
-	}
-	if(outline) tocPrinter.outline(root, &printer);
-	if(root) delete root;
 #else
 	currentPage = 0;
 //************************
-	QSize vsize(1280,800);
-	pages[0]->setViewportSize(vsize);
+    QSize vsize(1280,800);
+    pages[0]->setViewportSize(vsize);
 
-	if(QFile::exists("myExecJs.js")) {
-		QFile iJs("myExecJs.js");
-		iJs.open(QIODevice::ReadOnly);
-		pages[0]->mainFrame()->evaluateJavaScript(iJs.readAll());
-		iJs.close();
-	}
-	QString xxx(pages[0]->mainFrame()->toHtml());
-	QTextCodec *codec;
-	codec = QTextCodec::codecForHtml(xxx.toUtf8());
+    if(QFile::exists("myExecJs.js")) {
+        QFile iJs("myExecJs.js");
+        iJs.open(QIODevice::ReadOnly);
+        pages[0]->mainFrame()->evaluateJavaScript(iJs.readAll());
+        iJs.close();
+    }
+    QString xxx(pages[0]->mainFrame()->toHtml());
+    QTextCodec *codec;
+    codec = QTextCodec::codecForHtml(xxx.toUtf8());
 
-	QFile oHtml(lout);
-	oHtml.open(QIODevice::WriteOnly);
-//	oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
-	oHtml.write(codec->fromUnicode(xxx).constData());
-	oHtml.close();		
+    QFile oHtml(lout);
+    oHtml.open(QIODevice::WriteOnly);
+//  oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
+    oHtml.write(codec->fromUnicode(xxx).constData());
+    oHtml.close();
 //*********************
 
 #endif
@@ -589,9 +537,8 @@ int main(int argc, char * argv[]) {
 #endif
 	QApplication a(argc,argv, use_graphics); //Construct application, required for printing
 	a.setStyle(new QCommonStyle()); // Plain style
+
 	x.init();
-//	fprintf(stderr, argv[1]);
-//	fprintf(stderr, "\n");
 	for(int i=1; i < argc; ++i)
 		if(!strcmp(argv[i],"--read-args-from-stdin")) {
 			char buff[20400];
