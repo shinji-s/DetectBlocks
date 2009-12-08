@@ -53,7 +53,11 @@ our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合が�
 our $MAINTEXT_POINT_TH = 0.05;    # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のブロックはmore_blockを探さない
-our $NO_MORE_TAG = '^(header|img|form)$';
+our %NO_MORE_TAG = (
+    header => 1,
+    img	   => 1,
+    form   => 1
+    );
 
 # more_blockとして検出するもの(優先度順に記述)
 our @MORE_BLOCK_NAMES = qw/profile address/;
@@ -72,7 +76,12 @@ our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:
 our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
 # 以下のtagは解析対象にしない
-our $TAG_IGNORED = '^(?:script|style|br|option)$';
+our %TAG_IGNORED = (
+    script => 1,
+    style  => 1,
+    br	   => 1,
+    option => 1
+    );
 
 # 以下のtagを子供以下にふくむ場合は領域を分割
 our @MORE_DIVIDE_TAG = qw/address form/;
@@ -129,7 +138,7 @@ our %TAG_with_ALT = (area => 1, img => 1);
 
 # あるブロック以下の全てのブロックのテキスト量が50%以下の場合に
 # まわりのインライン要素と同様に1つのmyblocknameにまとめる
-our $EXCEPTIONAL_BLOCK_TAGS = '^(br|li)$';
+our %EXCEPTIONAL_BLOCK_TAGS  = (br => 1, li => 1);
 
 # HTMLにする際に捨てる属性
 our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
@@ -147,7 +156,7 @@ sub new{
 	# 京大の環境
 	if ($this->{opt}{juman} eq 'kyoto_u') {
 	    my $machine =`uname -m`; # 32/64bit判定
-	    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+	    $this->{JUMAN_COMMAND} = $machine eq 'x86_64' ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
 	}
 	# jumanのpathを指定した場合
 	else {
@@ -270,9 +279,11 @@ sub detect_block {
 
     # # さらに分割するかどうかを判定 (する:1, しない:0)
     my $divide_flag = $this->check_divide_block($elem, \@texts) if !$option->{parent};
+    my @content_list = $elem->content_list;
+    my $elem_length = $elem->attr('length');
 
     if (defined $option->{parent} ||
-    	((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
+    	((!@content_list || ($this->{alltextlen} && $elem_length / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
     	# ((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') < $TEXTPER_TH)) && !$divide_flag) ||
     	# ((!$elem->content_list || $this->get_ok_flag($elem)) && !$divide_flag) ||
 	$elem->attr('iteration') =~ /\*/) {
@@ -298,7 +309,7 @@ sub detect_block {
 
     	# リンク領域
     	# - ブロック以下のaタグを含む繰り返しの割合の和が8割以上
-    	elsif ($elem->attr("length") != 0 && $this->check_link_block($elem) / $elem->attr("length") > $LINK_RATIO_TH) {
+    	elsif ($elem_length != 0 && $this->check_link_block($elem) / $elem_length > $LINK_RATIO_TH) {
     	    $myblocktype = 'link';
     	}
 
@@ -317,7 +328,7 @@ sub detect_block {
     	}
 
     	# 中身なし
-    	elsif ($elem->attr('length') == 0) {
+    	elsif ($elem_length == 0) {
     	    ;
     	}
 
@@ -364,7 +375,7 @@ sub detect_block {
     	    }
 
     	    # 確定した領域の下からもっと細かい領域を探す
-    	    if ($this->{opt}{get_more_block} && $myblocktype !~ /$NO_MORE_TAG/) {
+    	    if ($this->{opt}{get_more_block} && !$NO_MORE_TAG{lc($myblocktype)}) {
     		# そのための情報を得る
     		$this->detect_string($elem);
 
@@ -374,14 +385,16 @@ sub detect_block {
     }
     else {
     	my $block_start;
-	my $array_size = scalar $elem->content_list;
+
+	my $array_size = scalar @content_list;
     	for (my $i = 0;$i < $array_size; $i++) {
-    	    my $child_elem = ($elem->content_list)[$i];
+    	    my $child_elem = $content_list[$i];
+	    my $ctag = $child_elem->tag;
     	    # block要素 or textが50%以上のblock
     	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
     	    # if (($this->{alltextlen} && $child_elem->attr('length') >= $TEXTPER_TH) ||
     	    # if (($this->{alltextlen} && !$this->get_ok_flag($elem)) ||
-    		(defined $BLOCK_TAGS{$child_elem->tag} && $child_elem->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i)) {
+    		(defined $BLOCK_TAGS{$ctag} && !$EXCEPTIONAL_BLOCK_TAGS{lc($ctag)})) {
     		# インライン要素の末尾を検出
     		if (defined $block_start) {
     		    $this->detect_block_region($elem, $block_start, $i-1);
@@ -396,7 +409,7 @@ sub detect_block {
     	}
     	# 末尾
     	if (defined $block_start) {
-    	    $this->detect_block_region($elem, $block_start, scalar $elem->content_list - 1);
+    	    $this->detect_block_region($elem, $block_start, $array_size - 1);
     	}
     }
 }
@@ -411,13 +424,14 @@ sub detect_more_blocks {
 
     my $myblocktype_more;
     my $elem_length = $elem->attr('length');
+    my @content_list = $elem->content_list;
 
     # myblocktypeで決定した領域をさらに分割「できる」かどうか
     # 分割できる
     if ($this->check_multiple_block($elem)) {
 	# 子供が1ブロックしかない場合無条件で再帰
-	if (scalar grep($BLOCK_TAGS{$_->tag} && $_->tag !~ /$EXCEPTIONAL_BLOCK_TAGS/i, $elem->content_list) == 1) {
-	    $this->detect_more_blocks(($elem->content_list)[0]);
+	if (scalar grep($BLOCK_TAGS{$_->tag} && !$EXCEPTIONAL_BLOCK_TAGS{lc($_->tag)}, @content_list) == 1) {
+	    $this->detect_more_blocks($content_list[0]);
 	}
 
 	else {
@@ -427,7 +441,7 @@ sub detect_more_blocks {
 
 		# 条件 : 必要な文字列をx個以上含む && 比が0.x以上 && ブロックの長さがxxx以下
 		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH && $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH &&
-		    $elem->attr('length') < $MORE_BLOCK_LENGTH_MAX_TH) {
+		    $elem_length < $MORE_BLOCK_LENGTH_MAX_TH) {
 		    # 属性付与
 		    $devide_flag = 0;
 		    $this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
@@ -437,7 +451,7 @@ sub detect_more_blocks {
 
 	    # 再帰
 	    if ($devide_flag) {
-		foreach my $child_elem ($elem->content_list) {
+		foreach my $child_elem (@content_list) {
 		    $this->detect_more_blocks($child_elem);
 		}
 	    }
@@ -535,9 +549,11 @@ sub check_more_block_string {
 sub check_multiple_block {
     my ($this, $elem) = @_;
 	
-    if (ref($elem) eq 'HTML::Element' && $elem->content_list) {
-	if ($elem->content_list == 1) {
-	    return $this->check_multiple_block(($elem->content_list)[0]);
+    my @content_list = $elem->content_list;
+    
+    if (ref($elem) eq 'HTML::Element' && scalar @content_list) {
+	if (@content_list == 1) {
+	    return $this->check_multiple_block($content_list[0]);
 	}
 	else {
 	    return 1;
@@ -646,9 +662,11 @@ sub attach_attr_blocktype {
 	$elem->attr('class' , $classname);
     }
 
+    my @content_list = $elem->content_list;
+
     # 全てのタグにblock名を付与(★仮)
-    if ($this->{opt}{add_blockname2alltag} && $elem->content_list) {
-	foreach my $child_elem ($elem->content_list) {
+    if ($this->{opt}{add_blockname2alltag} && @content_list) {
+	foreach my $child_elem (@content_list) {
 	    next if $this->is_stop_elem($child_elem);
 	    $this->attach_attr_blocktype($child_elem, $myblocktype, $attrname, $num);
 	}
@@ -684,7 +702,7 @@ sub check_header {
 	    if (@img_elems > 0) {
 		foreach my $img_elem (grep($_->attr('length') >= $ALT4HEADER_TH, @img_elems)) {
 		    # 末尾の形態素条件
-		    $this->ResetJUMAN;
+		    # $this->ResetJUMAN;
  		    my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
 		    return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
 		}
@@ -745,17 +763,18 @@ sub check_maintext {
     return 1 if($elem->attr('length') > $MAINTEXT_MIN);
 
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
-    $this->ResetJUMAN;
+    # $this->ResetJUMAN;
     foreach my $text (@$texts) {
 	$text = Unicode::Japanese->new($text)->h2z->getu();
 	$text =~ s/。/。%%%/g;
 	foreach my $text_splitted (split('%%%', $text)) {
-	    $this->ResetJUMAN;
+	    # $this->ResetJUMAN;
 	    my $result = $this->{juman}->analysis($text_splitted);
 	    foreach my $mrph ($result->mrph) {
 		$total_mrph_num++;
 		$particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
-		$punc_mark_num++ if $mrph->bunrui =~ /^(読点|句点)$/;
+		my $bunrui = $mrph->bunrui;
+		$punc_mark_num++ if $bunrui eq '読点' || $bunrui eq '句点';
 	    }
 	}
     }
@@ -810,12 +829,14 @@ sub check_divide_block_by_copyright {
 
     return 0 if ref($elem) ne 'HTML::Element';
 
+    my @content_list = $elem->content_list;
+
     # content_listサイズが1ならさらに潜る
-    if ($elem->content_list == 1) {
-    	return $this->check_divide_block_by_copyright(($elem->content_list)[0], $texts);
+    if (@content_list == 1) {
+    	return $this->check_divide_block_by_copyright($content_list[0], $texts);
     }
     else {
-	foreach my $child_elem ($elem->content_list) {
+	foreach my $child_elem (@content_list) {
 	    next if $child_elem ne 'HTML::Element';
 	    my @child_texts = $this->get_text($child_elem);
 	    return 1 if !$this->check_footer($elem, $texts) && $this->check_footer($child_elem, \@child_texts);
@@ -866,9 +887,11 @@ sub attach_elem_length {
     if (ref($elem) eq 'HTML::Element' && $elem->attr('class')) {
 	$elem->attr('class', undef);
     }
+
+    my @content_list = $elem->content_list;
     
     # もう子供がいない
-    if ($elem->content_list == 0){
+    if (@content_list == 0){
 	my $tag = $elem->tag;
 	if ($TAG_with_ALT{$tag} && !$elem->attr('usemap')) {
 	    $length_all = ($this->{opt}{print_offset} ? length(decode('utf8', $elem->attr("alt"))) : length($elem->attr("alt"))) if defined $elem->attr("alt");
@@ -884,7 +907,7 @@ sub attach_elem_length {
     }
     # さらに子供をたどる
     else {
-	for my $child_elem ($elem->content_list){
+	for my $child_elem (@content_list){
 	    if (!$this->is_stop_elem($child_elem)) {
 		$length_all += $this->attach_elem_length($child_elem);
 	    }
@@ -944,8 +967,8 @@ sub print_offset {
 	}
 	# offsetが存在せず兄が存在する
 	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
-	    if (($p_elem->content_list)[$num-1]->attr('-offset')) {
-		my $brothrer_elem = ($p_elem->content_list)[$num-1];
+	    my $brothrer_elem = ($p_elem->content_list)[$num-1];
+	    if ($brothrer_elem->attr('-offset')) {
 		$offset = $brothrer_elem->attr('-offset') + bytes::length($brothrer_elem->as_HTML(''));
 	    }
 	}
@@ -959,10 +982,11 @@ sub print_offset {
 	}
     }
 
-    if ($elem->content_list) {
-	my $array_size = scalar $elem->content_list;
+    my @content_list = $elem->content_list;
+    if (@content_list) {
+	my $array_size = scalar @content_list;
 	for (my $i = 0;$i < $array_size; $i++) {
-	    $this->print_offset(($elem->content_list)[$i], $i, $elem);
+	    $this->print_offset($content_list[$i], $i, $elem);
 	}
     }
 }
@@ -1034,10 +1058,11 @@ sub get_subtree_string {
     my ($this, $elem) = @_;
 
     my $string = '_' . $elem->tag . '_';
+    my @content_list = $elem->content_list;
 
-    if ($elem->content_list) {
+    if (@content_list) {
 	$string .= '+';
-	for my $child_elem ($elem->content_list){
+	for my $child_elem (@content_list){
 	    $string .= $this->get_subtree_string($child_elem);
 	}
 	$string .= '-';
@@ -1051,14 +1076,15 @@ sub get_subtree_string {
 sub get_leaf_string {
     my ($this, $elem) = @_;
 
+    my @content_list = $elem->content_list;
     my $string;
-    unless ($elem->content_list) {
+    unless (@content_list) {
 	$string = '_' . $elem->tag . '_';
     }
 
-    if ($elem->content_list) {
+    if (@content_list) {
 	$string .= '+';
-	for my $child_elem ($elem->content_list){
+	for my $child_elem (@content_list){
 	    $string .= $this->get_leaf_string($child_elem);
 	}
 	$string .= '-';
@@ -1119,11 +1145,13 @@ sub cut_table_substring {
 sub detect_iteration {
     my ($this, $elem) = @_;
 
+    my @content_list = $elem->content_list;
+
     # 子供がいない
-    return if ($elem->content_list == 0);
+    return if (@content_list == 0);
 
     my (@substrings, @tags);
-    for my $child_elem ($elem->content_list){
+    for my $child_elem (@content_list){
 
 	push @substrings, $child_elem->attr('subtree_string');
 	push @tags, $child_elem->tag;
@@ -1132,7 +1160,7 @@ sub detect_iteration {
     # 本当の表っぽいtableタグを検出(柔軟な繰り返しの検出のため)
     $this->cut_table_substring($elem, \@substrings) if defined $elem->{ratio_end};
 
-    my $child_num = scalar $elem->content_list;
+    my $child_num = scalar @content_list;
     my ($iteration_ref, $iteration_buffer);
     # ブロックの大きさ
   LOOP:
@@ -1159,9 +1187,9 @@ sub detect_iteration {
 		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
 		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1]) {
 			my $text_buf_a = $this->{opt}{print_offset} ?
-			    decode('utf8', ($elem->content_list)[$k+1]->attr('text')) : ($elem->content_list)[$k+1]->attr('text');
+			    decode('utf8', $content_list[$k+1]->attr('text')) : $content_list[$k+1]->attr('text');
 			my $text_buf_b = $this->{opt}{print_offset} ?
-			    decode('utf8', ($elem->content_list)[$k+$i+1]->attr('text')):($elem->content_list)[$k+$i+1]->attr('text');
+			    decode('utf8', $content_list[$k+$i+1]->attr('text')):$content_list[$k+$i+1]->attr('text');
 			if ($text_buf_a eq $text_buf_b) {
 			    $div_char = $text_buf_a;
 			    # text部分の文字列を制限
@@ -1172,9 +1200,9 @@ sub detect_iteration {
 		    elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
 			   $k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i]) {
 			my $text_buf_a = $this->{opt}{print_offset} ?
-			    decode('utf8', ($elem->content_list)[$k]->attr('text')) : ($elem->content_list)[$k]->attr('text');
+			    decode('utf8', $content_list[$k]->attr('text')) : $content_list[$k]->attr('text');
 			my $text_buf_b = $this->{opt}{print_offset} ?
-			    decode('utf8', ($elem->content_list)[$k+$i]->attr('text')):($elem->content_list)[$k+$i]->attr('text');
+			    decode('utf8', $content_list[$k+$i]->attr('text')):$content_list[$k+$i]->attr('text');
 			if ($text_buf_a eq $text_buf_b) {
 			    $div_char = $text_buf_a;
 			    # text部分の文字列を制限
@@ -1218,7 +1246,7 @@ sub detect_iteration {
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
 
-    for my $child_elem ($elem->content_list){
+    for my $child_elem (@content_list){
 	$this->detect_iteration($child_elem);
 	$child_elem->attr('div_char', $elem->attr('div_char')) if $elem->attr('div_char');
     }
@@ -1314,16 +1342,17 @@ sub attach_iteration_number {
     my $end = $j + $iteration_num * $i - 1;
     for my $l ($j..$end) {
 	my $attr;
+	my $l_elem = ($elem->content_list)[$l];
 	# 複数ある場合はコンマ区切りで付与
-	if (($elem->content_list)[$l]->attr('iteration_number')) {
-	    $attr .= ($elem->content_list)[$l]->attr('iteration_number').','.$iteration_string.'%'.$counter_iteration.'/'.$iteration_num;
+	if ($l_elem->attr('iteration_number')) {
+	    $attr .= $l_elem->attr('iteration_number').','.$iteration_string.'%'.$counter_iteration.'/'.$iteration_num;
 	}
 	else {
 	    $attr = $iteration_string.'%'.$counter_iteration.'/'.$iteration_num;
 	}
 	
 	# _a_+_~text_-:_~text_%0/4
-	($elem->content_list)[$l]->attr('iteration_number', $attr);
+	$l_elem->attr('iteration_number', $attr);
 	$counter_block++;
 	if ($counter_block == $i) {
 	    $counter_block = 0;
@@ -1338,14 +1367,14 @@ sub get_text {
 
     return if $this->is_stop_elem($elem);
 
-
     my @texts;
+    my $tag = $elem->tag;
     # text
-    if ($elem->tag eq '~text') {
+    if ($tag eq '~text') {
 	push @texts, $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
     }
     # 画像の場合altを返す
-    elsif ($TAG_with_ALT{$elem->tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
+    elsif ($TAG_with_ALT{$tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
 	push @texts, $this->{opt}{print_offset} ? decode('utf8', $elem->attr('alt')) : $elem->attr('alt');
 	# push @texts, $elem->attr('alt');
     }
@@ -1446,8 +1475,10 @@ sub url2layers {
 sub text2span {
     my ($this, $elem) = @_;
 
-    if ($elem->content_list) {
-	for my $child_elem ($elem->content_list) {
+    my @content_list = $elem->content_list;
+
+    if (@content_list) {
+	for my $child_elem (@content_list) {
 	    $this->text2span($child_elem);
 	}
     }
@@ -1463,7 +1494,7 @@ sub text2span {
 sub is_stop_elem {
     my ($this, $elem) = @_;
 
-    return $elem->tag =~ /$TAG_IGNORED/i ? 1 : 0;
+    return $TAG_IGNORED{lc($elem->tag)} ? 1 : 0;
 }
 
 
