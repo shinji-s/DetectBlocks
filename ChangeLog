@@ -1,3 +1,58 @@
+2009-12-08 Tuesday 18:00  funayama
+
+	* perl/DetectBlocks.pm (1.80): ��®��.	  ����ɽ��    ->content,
+	  ->tag�θƤӽФ����
+
+2009-12-05 Saturday 14:14  shibuta
+
+	* tools/addMyAttrToHtml/myPatch/static-build.sh (1.1):
+	  staticビルド用シェル、svn使わないように修正したもの
+
+2009-12-05 Saturday 14:13  shibuta
+
+	* tools/addMyAttrToHtml/: myPatch/wkhtmltopdf.cc (1.2), README
+	  (1.2): [no log message]
+
+2009-12-05 Saturday 14:12  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.1):
+	  　reedでビルドしたstatic実行ファイル
+
+2009-12-05 Saturday 14:10  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf (1.2):
+	  staticな実行ファイルにアップデート
+
+2009-12-03 Thursday 23:52  shibuta
+
+	* tools/addMyAttrToHtml/wkhtmltopdf-0.8.3.tar.bz2 (1.1):
+	  wkhtmltopdf-0.8.3.tar.bz2
+
+2009-12-03 Thursday 23:46  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf (1.1): wkhtmltopdf
+
+2009-12-03 Thursday 23:46  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/myExecJs.js (1.1): myExecJs.js
+
+2009-12-03 Thursday 23:45  shibuta
+
+	* tools/addMyAttrToHtml/myPatch/wkhtmltopdf.cc (1.1):
+	  wkhtmltopdf.cc
+
+2009-12-03 Thursday 23:42  shibuta
+
+	* tools/addMyAttrToHtml/README (1.1): README
+
+2009-12-03 Thursday 16:16  funayama
+
+	* perl/DetectBlocks.pm (1.79): ���������®��.
+
+2009-11-20 Friday 18:29  funayama
+
+	* ChangeLog (1.13): updated.
+
 2009-11-20 Friday 18:28  funayama
 
 	* perl/DetectBlocks.pm (1.78): bug fixed.
