@@ -4,9 +4,9 @@ package DetectBlocks;
 
 use strict;
 use utf8;
-use HTML::TreeBuilder;
+# use HTML::TreeBuilder;
 use ModifiedTreeBuilder;
-use Data::Dumper;
+# use Data::Dumper;
 use Encode;
 use Dumpvalue;
 use Juman;
@@ -19,7 +19,7 @@ use Encode::Guess;
 our $TEXTPER_TH = 0.5;
 # our $TEXTPER_TH = 700;
 our $TEXTPER_TH_RATE = 0.5;
-our $TEXTPER_TH_LENGTH = 600;
+our $TEXTPER_TH_LENGTH = 500;
 
 
 our $HEADER_START_TH = 100; # これより小さければheader
@@ -259,12 +259,17 @@ sub get_ok_flag {
     my ($this, $elem) = @_;
     my $flag;
 
-    if ($this->{alltextlen} > $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE) {
-	return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
-    }
-    elsif ($this->{alltextlen} <= $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE) {
-	return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
-    }
+
+    # return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
+
+    return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
+
+    # if ($this->{alltextlen} > $TEXTPER_TH_LENGTH) {
+    # 	return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
+    # }
+    # else {
+    # 	return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
+    # }
 
     return 0;
 }
