@@ -19,7 +19,7 @@ use Encode::Guess;
 our $TEXTPER_TH = 0.5;
 # our $TEXTPER_TH = 700;
 our $TEXTPER_TH_RATE = 0.5;
-our $TEXTPER_TH_LENGTH = 500;
+our $TEXTPER_TH_LENGTH = 3000;
 
 
 our $HEADER_START_TH = 100; # これより小さければheader
@@ -156,7 +156,7 @@ sub new{
 	# 京大の環境
 	if ($this->{opt}{juman} eq 'kyoto_u') {
 	    my $machine =`uname -m`; # 32/64bit判定
-	    $this->{JUMAN_COMMAND} = $machine eq 'x86_64' ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+	    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
 	}
 	# jumanのpathを指定した場合
 	else {
@@ -259,10 +259,11 @@ sub get_ok_flag {
     my ($this, $elem) = @_;
     my $flag;
 
+    return 0 if $this->{alltextlen} == 0;
 
     # return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
 
-    return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
+    # return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
 
     # if ($this->{alltextlen} > $TEXTPER_TH_LENGTH) {
     # 	return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
@@ -270,6 +271,10 @@ sub get_ok_flag {
     # else {
     # 	return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
     # }
+
+    my $TH  =  $this->{alltextlen} > $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE ? $TEXTPER_TH_LENGTH :
+	$TEXTPER_TH_RATE * $this->{alltextlen};
+    return 1 if $elem->attr('length') < $TH;
 
     return 0;
 }
@@ -288,9 +293,7 @@ sub detect_block {
     my $elem_length = $elem->attr('length');
 
     if (defined $option->{parent} ||
-    	((!@content_list || ($this->{alltextlen} && $elem_length / $this->{alltextlen} < $TEXTPER_TH)) && !$divide_flag) ||
-    	# ((!$elem->content_list || ($this->{alltextlen} && $elem->attr('length') < $TEXTPER_TH)) && !$divide_flag) ||
-    	# ((!$elem->content_list || $this->get_ok_flag($elem)) && !$divide_flag) ||
+    	((!@content_list || $this->get_ok_flag($elem)) && !$divide_flag) ||
 	$elem->attr('iteration') =~ /\*/) {
     	my $myblocktype;
 	
@@ -396,9 +399,7 @@ sub detect_block {
     	    my $child_elem = $content_list[$i];
 	    my $ctag = $child_elem->tag;
     	    # block要素 or textが50%以上のblock
-    	    if (($this->{alltextlen} && $child_elem->attr('length') / $this->{alltextlen} >= $TEXTPER_TH) ||
-    	    # if (($this->{alltextlen} && $child_elem->attr('length') >= $TEXTPER_TH) ||
-    	    # if (($this->{alltextlen} && !$this->get_ok_flag($elem)) ||
+    	    if (($this->{alltextlen} && !$this->get_ok_flag($elem)) ||
     		(defined $BLOCK_TAGS{$ctag} && !$EXCEPTIONAL_BLOCK_TAGS{lc($ctag)})) {
     		# インライン要素の末尾を検出
     		if (defined $block_start) {
