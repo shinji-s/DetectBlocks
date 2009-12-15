@@ -325,16 +325,19 @@ void WKHtmlToPdf::printPage() {
 		QSize vsize(1280,800);
 		pages[0]->setViewportSize(vsize);
 
-		if(QFile::exists("myExecJs.js")) {
-			QFile iJs("myExecJs.js");
+		if(QFile::exists(javascript)) {
+			QFile iJs(javascript);
 			iJs.open(QIODevice::ReadOnly);
 			pages[0]->mainFrame()->evaluateJavaScript(iJs.readAll());
 			iJs.close();
 		}
 		QString xxx(pages[0]->mainFrame()->toHtml());
 		QTextCodec *codec;
-		codec = QTextCodec::codecForHtml(xxx.toUtf8());
-
+		if(utf8) {
+			codec = QTextCodec::codecForName("utf8");
+		} else {
+			codec = QTextCodec::codecForHtml(xxx.toUtf8());
+		}
 		QFile oHtml(lout);
 		oHtml.open(QIODevice::WriteOnly);
 //  oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
@@ -348,16 +351,19 @@ void WKHtmlToPdf::printPage() {
     QSize vsize(1280,800);
     pages[0]->setViewportSize(vsize);
 
-    if(QFile::exists("myExecJs.js")) {
-        QFile iJs("myExecJs.js");
+    if(QFile::exists(javascript)) {
+        QFile iJs(javascript);
         iJs.open(QIODevice::ReadOnly);
         pages[0]->mainFrame()->evaluateJavaScript(iJs.readAll());
         iJs.close();
     }
     QString xxx(pages[0]->mainFrame()->toHtml());
     QTextCodec *codec;
-    codec = QTextCodec::codecForHtml(xxx.toUtf8());
-
+    if(utf8) {
+		codec = QTextCodec::codecForName("utf8");
+	} else {
+		codec = QTextCodec::codecForHtml(xxx.toUtf8());
+	}
     QFile oHtml(lout);
     oHtml.open(QIODevice::WriteOnly);
 //  oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
