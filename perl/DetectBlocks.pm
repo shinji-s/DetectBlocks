@@ -28,6 +28,8 @@ our $ALT4HEADER_TH = 15; # 画像のみのheaderの際に必要なalt_text
 
 our $FOOTER_START_TH = 300; # これより大きければfooter
 our $FOOTER_END_TH = 100; # これより大きければfooter
+our $FOOTER_HEIGHT_RATE = 0.5; # ブロックの高さこれより大きければfooterでない
+
 our $LINK_RATIO_TH = 0.66; #link領域の割合
 our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
 
@@ -215,6 +217,12 @@ sub detectblocks{
     $this->attach_elem_length($body);
     $this->{alltextlen} = $body->attr('length');
 
+    # レンダリング時のページ全体の大きさ
+    if ($this->{opt}{pos_info}) {
+	$this->{body_height} = $body->attr('myheight');
+	$this->{body_width} = $body->attr('mywidth');
+    }
+
     # テキストの累積率を記述
     $this->attach_offset_ratio($body);
     # 自分以下のタグ木を記述
@@ -398,11 +406,11 @@ sub detect_block {
     	for (my $i = 0;$i < $array_size; $i++) {
     	    my $child_elem = $content_list[$i];
 	    my $ctag = $child_elem->tag;
-    	    # block要素 or textが50%以上のblock
-    	    if (($this->{alltextlen} && !$this->get_ok_flag($elem)) ||
-    		(defined $BLOCK_TAGS{$ctag} && !$EXCEPTIONAL_BLOCK_TAGS{lc($ctag)})) {
+    	    # textが50%以上のblock or block要素
+    	    if (($this->{alltextlen} && !$this->get_ok_flag($child_elem)) ||
+    		(defined $BLOCK_TAGS{lc($ctag)} && !$EXCEPTIONAL_BLOCK_TAGS{lc($ctag)})) {
     		# インライン要素の末尾を検出
-    		if (defined $block_start) {
+		if (defined $block_start) {
     		    $this->detect_block_region($elem, $block_start, $i-1);
     		    undef $block_start;
     		}
@@ -722,6 +730,11 @@ sub check_header {
 sub check_footer {
     my ($this, $elem, $texts) = @_;
 
+    # サイドバーなどがfooterになることを防止
+    if ($this->{opt}{pos_info}) {
+	return 0 if $elem->attr('myheight') > 0 && $elem->attr('myheight') / $this->{body_height} > 0.3;
+    }
+
     my $footer_flag = 0;
     if ($this->{alltextlen} * (1 - $elem->attr('ratio_start')) < $FOOTER_START_TH &&
 	$this->{alltextlen} * (1 - $elem->attr('ratio_end')) < $FOOTER_END_TH) {
@@ -853,7 +866,7 @@ sub check_divide_block_by_copyright {
 }
 
 sub check_link_block {
-    my ($this, $elem) = @_;
+    my ($this, $elem, $depth) = @_;
 
     # 8割を超える範囲に<a>タグを含む繰り返しあり
     if ($elem->attr('iteration') =~ /_a_/) {
@@ -862,7 +875,7 @@ sub check_link_block {
 
     my $sum = 0;
     for my $child_elem ($elem->content_list){
-	$sum += $this->check_link_block($child_elem);
+	$sum += $this->check_link_block($child_elem, $depth++);
     }
 
     return $sum;
