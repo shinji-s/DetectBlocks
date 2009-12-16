@@ -3,11 +3,17 @@ package SetPosition;
 use strict;
 use utf8;
 use Digest::MD5 qw/md5_hex/;
+use POSIX;
 
 use DetectBlocks;
 
 
 our %opt = ('proxy'=>'http://proxy.kuins.net:8080/', 'nodec'=>1);
+
+# 子プロセスが終了するまで待つ時間の最大値(秒)
+our $loopLimit = 30;
+# 子プロセスの状態を確認する間隔(秒)
+our $interval = 0.5;
 
 
 # 位置情報を書き込む
@@ -31,15 +37,41 @@ sub execAddPosition {
     close(FILE);
 
     # htmlに位置情報等を書き込む
-    system "$execpath",'-j',"$jspath", "$cache", "$cache";
+#    system "$execpath",'-j',"$jspath", "$cache", "$cache";
+    my $pid = fork();
+    if ($pid > 0) {
+        my $i = 0;
+        while ($i < $loopLimit) {
+            my $status = waitpid($pid, &POSIX::WNOHANG);
+            if ($status == 0) {
+		select(undef, undef, undef, $interval);
+                $i += $interval;
+            } elsif ($status > 0) {
+		last;
+            } else {
+		$returnhtml = -1;
+		last;
+	    }
+	    if ($i >= $loopLimit) {
+		kill(&POSIX::SIGKILL, $pid);
+		waitpid($pid,0);
+		$returnhtml = -1;
+		last;
+	    }
+	}
+    } elsif ($pid == 0) {
+	exec "$execpath",'-j',"$jspath", "$cache", "$cache";
+    } else {
+	$returnhtml = -1;
+    }
 
     # 位置情報が書き込まれたファイルを文字列にする
-    open(FILE, "<" . $cache);
-    while(<FILE>){$returnhtml .= $_;}
-    close(FILE);
-
-    unlink($cache);
-
+    if ($returnhtml != -1) {
+	open(FILE, "<" . $cache);
+	while(<FILE>){$returnhtml .= $_;}
+	close(FILE);
+	unlink($cache);
+    }
     return $returnhtml;
 }
 
