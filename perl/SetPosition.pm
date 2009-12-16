@@ -11,9 +11,15 @@ our %opt = ('proxy'=>'http://proxy.kuins.net:8080/', 'nodec'=>1);
 
 
 # 位置情報を書き込む
+# エラーの場合は-1を返す
 sub execAddPosition {
 
     my ($html, $execpath, $jspath) = @_;
+
+    unless (-e $execpath && -e $jspath) {
+	print "not exist execpath or jspath\n";
+	return -1;
+    }
 
     # 一時ファイル名
     my $cache = 'cache_' . substr(md5_hex($html), 0, 20) . '.html';
