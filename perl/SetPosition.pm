@@ -37,7 +37,8 @@ sub execAddPosition {
     close(FILE);
 
     # htmlに位置情報等を書き込む
-#    system "$execpath",'-j',"$jspath", "$cache", "$cache";
+    # 子プロセスを生成し、htmlに位置情報を書き込む処理を走らせる
+    # $loopLimit以上子プロセスが動き続けている場合はkillして-1を返す
     my $pid = fork();
     if ($pid > 0) {
         my $i = 0;
