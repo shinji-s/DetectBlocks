@@ -1525,6 +1525,7 @@ sub Get_Source_String {
     my $ua = new LWP::UserAgent;
     $ua->agent('Mozilla/5.0');
     $ua->proxy('http', $this->{opt}{proxy}) if defined $this->{opt}{proxy};
+    $ua->proxy('http', $option->{proxy}) if defined $option->{proxy};
     $ua->timeout($option->{timeout}) if $option->{timeout};
     $ua->max_redirect($option->{max_redirect}) if $option->{max_redirect};
     $ua->parse_head(0);
@@ -1534,7 +1535,12 @@ sub Get_Source_String {
     print $url,"\n" if $this->{opt}{debug};
     return $response->status_line unless $response->is_success;
 
-    my $input_string = decode(guess_encoding($response->content, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $response->content);
+    my $input_string;
+    if (defined $option->{nodec}) {
+	$input_string = $response->content;
+    } else {
+	$input_string = decode(guess_encoding($response->content, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $response->content);
+    }
 
     return ($input_string, $url);
 }
