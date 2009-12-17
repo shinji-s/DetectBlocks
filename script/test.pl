@@ -20,19 +20,20 @@ use Encode;
 use Encode::Guess;
 use Getopt::Long;
 use Dumpvalue;
+use SetPosition;
 
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
 # add_blockname2alltagは後々に撲滅
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset', 'pos_info');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset', 'pos_info', 'set_pos_info');
 
-$opt{modify} = 1 if $opt{print_offset};
-if ($opt{get_source}) {
-    $opt{pos_info} = 0;
-    print 'pos_info mode disabeled.',"\n";
-}
+my $execpath = '../tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed';
+my $jspath = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';
+
+$opt{pos_info} = 1 if $opt{set_pos_info};
+$opt{modify}   = 1 if $opt{print_offset};
 
 my $DetectBlocks = new DetectBlocks(\%opt);
 my $BlogCheck;
@@ -62,6 +63,10 @@ else {
     close(FILE);
 
     $url = $ARGV[1];
+}
+
+if ($opt{set_pos_info}) {
+    $str = decode('utf8', &SetPosition::execAddPosition(encode('utf8', $str), $execpath, $jspath));
 }
 
 $DetectBlocks->maketree($str, $url);
