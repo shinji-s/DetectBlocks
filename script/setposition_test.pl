@@ -2,6 +2,10 @@
 
 use strict;
 use utf8;
+use Getopt::Long;
+
+my (%opt);
+GetOptions(\%opt, 'source_url=s');
 
 use SetPosition;
 
@@ -18,7 +22,7 @@ if ($str eq "") {
 my $execpath = '../tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed';
 my $jspath = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';
 
-print &SetPosition::setPosition($str, $execpath, $jspath);
+print &SetPosition::setPosition($str, $execpath, $jspath, \%opt);
 
 
 
