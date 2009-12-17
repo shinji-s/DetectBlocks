@@ -336,7 +336,7 @@ void WKHtmlToPdf::printPage() {
 		if(utf8) {
 			codec = QTextCodec::codecForName("utf8");
 		} else {
-			codec = QTextCodec::codecForHtml(xxx.toUtf8());
+			codec = QTextCodec::codecForHtml(xxx.toUtf8(), QTextCodec::codecForName("utf8"));
 		}
 		QFile oHtml(lout);
 		oHtml.open(QIODevice::WriteOnly);
@@ -362,7 +362,7 @@ void WKHtmlToPdf::printPage() {
     if(utf8) {
 		codec = QTextCodec::codecForName("utf8");
 	} else {
-		codec = QTextCodec::codecForHtml(xxx.toUtf8());
+		codec = QTextCodec::codecForHtml(xxx.toUtf8(), QTextCodec::codecForName("utf8"));
 	}
     QFile oHtml(lout);
     oHtml.open(QIODevice::WriteOnly);
