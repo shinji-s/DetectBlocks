@@ -25,12 +25,12 @@ use SetPosition;
 binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
-# add_blockname2alltagは後々に撲滅
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset', 'pos_info', 'set_pos_info');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset',
+	   'pos_info', 'set_pos_info');
 
 my $execpath = '../tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed';
-my $jspath = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';
+my $jspath   = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';
 
 $opt{pos_info} = 1 if $opt{set_pos_info};
 $opt{modify}   = 1 if $opt{print_offset};
@@ -46,7 +46,13 @@ my $str = "";
 my $url;
 # HTMLソースを取得
 if ($opt{get_source}) {
-    ($str, $url) = $DetectBlocks->Get_Source_String($opt{get_source});
+    if ($opt{pos_info}) {
+	$str = decode('utf8', &SetPosition::setPosition($opt{get_source}, $execpath, $jspath));
+	$url = $opt{get_source};
+    }
+    else {
+	($str, $url) = $DetectBlocks->Get_Source_String($opt{get_source});
+    }
 }
 # キャッシュ
 else {
@@ -62,11 +68,11 @@ else {
     }
     close(FILE);
 
-    $url = $ARGV[1];
-}
+    if ($opt{pos_info}) {
+	$str = decode('utf8', &SetPosition::execAddPosition(encode('utf8', $str), $execpath, $jspath));
+    }
 
-if ($opt{set_pos_info}) {
-    $str = decode('utf8', &SetPosition::execAddPosition(encode('utf8', $str), $execpath, $jspath));
+    $url = $ARGV[1];
 }
 
 $DetectBlocks->maketree($str, $url);

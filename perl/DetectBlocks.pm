@@ -37,6 +37,13 @@ our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
 our $ITERATION_DIV_CHAR = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}'; # a-textの繰り返しのtextとなりうる文字列
 
+# カラム構成の検出
+our $COLUMN_HEIGHT_MIN = 0.7;
+our $CHILD_COLUMN_WIDTH_MAX = 0.7;
+our $CHILD_COLUMN_WIDTH_change = 0.95;
+our $CHILD_COLUMN_HEIGHT_change = 0.96;
+
+    
 # 柔軟なtableの繰り返しの検出
 our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
 our $TABLE_TR_MIN = 3; # これ以下のtrしか持たないtableは対象外
@@ -143,6 +150,7 @@ our %TAG_with_ALT = (area => 1, img => 1);
 our %EXCEPTIONAL_BLOCK_TAGS  = (br => 1, li => 1);
 
 # HTMLにする際に捨てる属性
+# our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string myheight_rate mywidth_rate mytop_rate myleft_rate/;
 our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
 
 our $counter_JUMAN;
@@ -217,10 +225,19 @@ sub detectblocks{
     $this->attach_elem_length($body);
     $this->{alltextlen} = $body->attr('length');
 
-    # レンダリング時のページ全体の大きさ
     if ($this->{opt}{pos_info}) {
-	$this->{body_height} = $body->attr('myheight');
-	$this->{body_width} = $body->attr('mywidth');
+	# bodyをrootにすると大きすぎる
+	my $root_elem = $this->find_root_elem($body);
+
+	# ブロックの位置情報を取得(root以下)
+	$this->{root_height} = $root_elem->attr('myheight');
+	$this->{root_width}  = $root_elem->attr('mywidth');
+	$this->{root_top}    = $root_elem->attr('mytop');
+	$this->{root_left}   = $root_elem->attr('myleft');
+	$this->attach_pos_info($root_elem);
+
+	# カラム構成を取得
+	$this->get_column_structure($root_elem, undef);
     }
 
     # テキストの累積率を記述
@@ -237,6 +254,65 @@ sub detectblocks{
 
     $this->post_process($body) if $this->{opt}{add_class2html} && !$this->{opt}{blogcheck};
 }
+
+sub find_root_elem {
+    my ($this, $elem) = @_;
+
+    my @content_list = $elem->content_list;
+    
+    my ($max_rate, $index) = (0, undef);
+    for (my $i = 0; $i < @content_list; $i++) {
+	my $tmp_rate = $content_list[$i]->attr('length') / $this->{alltextlen};
+	if ($tmp_rate > $max_rate) {
+	    $max_rate = $tmp_rate;
+	    $index = $i;
+	}
+    }
+
+    if ($max_rate > 0.99 && defined $index) {
+	return $this->find_root_elem($content_list[$index]);	
+    }
+    else {
+	return $elem;
+    }
+}
+
+sub get_column_structure {
+    my ($this, $elem, $parent_elem) = @_;
+
+    my $flag = 0;
+    foreach my $child_elem ($elem->content_list) {
+	if ($this->is_column($child_elem, $elem)) {
+	    $this->get_column_structure($child_elem, $elem);
+	    $flag = 1;
+	}
+    }
+
+    if (!$flag && !defined $elem->attr('col_num')) {
+	$elem->attr('col_num', ++$this->{allcolumnnum});
+    }
+}
+
+sub is_column {
+    my ($this, $child_elem, $elem) = @_;
+
+    if ($child_elem->attr('myheight_rate') > $COLUMN_HEIGHT_MIN && $child_elem->attr('length')) {
+
+	if (
+	    # width以下で分割してもwidthがほとんど変わらない場合は分割しない.
+	    $child_elem->attr('mywidth_rate') < $CHILD_COLUMN_WIDTH_MAX &&
+	    $child_elem->attr('mywidth_rate') / $elem->attr('mywidth_rate') > $CHILD_COLUMN_WIDTH_change &&
+	    $child_elem->attr('myheight_rate') / $elem->attr('myheight_rate') < $CHILD_COLUMN_HEIGHT_change
+	    ) {
+	    return  0;
+	}
+	else {
+	    return 1;
+	}
+    }
+    return 0;
+}
+
 
 sub post_process {
     my ($this, $body) = @_;
@@ -724,7 +800,7 @@ sub check_footer {
 
     # サイドバーなどがfooterになることを防止
     if ($this->{opt}{pos_info}) {
-	return 0 if $elem->attr('myheight') > 0 && $elem->attr('myheight') / $this->{body_height} > 0.3;
+	return 0 if $elem->attr('myheight') > 0 && $elem->attr('myheight') / $this->{root_height} > 0.3;
     }
 
     my $footer_flag = 0;
@@ -886,6 +962,24 @@ sub check_calender {
     }
 }
 
+sub attach_pos_info {
+    my ($this, $elem) = @_;    
+
+    return if $this->is_stop_elem($elem);
+
+    # 属性付与
+    $elem->attr('myleft_rate', ($elem->attr('myleft') - $this->{root_left}) / $this->{root_width});
+    $elem->attr('mytop_rate', ($elem->attr('mytop') - $this->{root_top}) / $this->{root_height});
+    $elem->attr('mywidth_rate', $elem->attr('mywidth') / $this->{root_width});
+    $elem->attr('myheight_rate', $elem->attr('myheight') / $this->{root_height});
+    
+    # 再帰
+    foreach my $child_elem ($elem->content_list){
+    	if (!$this->is_stop_elem($child_elem)) {
+    	    $this->attach_pos_info($child_elem);
+    	}
+    }
+}
 
 sub attach_elem_length {
     my ($this, $elem) = @_;
@@ -1017,6 +1111,8 @@ sub print_node {
 
     my $space = ' ' x ($depth * 2);
     my $length = $elem->attr('length');
+    print $space, '●COL_NUM : ', $elem->attr('col_num'), "\n" if $elem->attr('col_num');
+
     printf "%s %s [%d] (%.2f-%.2f)", $space, $elem->tag, $length, $elem->attr('ratio_start') * 100, $elem->attr('ratio_end') * 100;
 
     if ($elem->attr('myblocktype')) {
@@ -1040,6 +1136,9 @@ sub print_node {
     if ($elem->attr("length") != 0) {
 	printf "《_a_:%.2f》" ,$this->check_link_block($elem) / $elem->attr("length");
     }
+
+    printf " *(t, l, h, w) = (%.2f, %.2f, %.2f, %.2f)" ,
+    $elem->attr('mytop_rate'), $elem->attr('myleft_rate'), $elem->attr('myheight_rate'), $elem->attr('mywidth_rate');
 
     if ($elem->attr('text')) {
 	my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
