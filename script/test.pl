@@ -26,7 +26,7 @@ binmode STDOUT, ":utf8";
 
 # add_blockname2alltagは後々に撲滅
 my (%opt);
-GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'add_blockname2alltag', 'blogcheck', 'juman=s', 'modify', 'print_offset', 'pos_info');
+GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset', 'pos_info');
 
 $opt{modify} = 1 if $opt{print_offset};
 if ($opt{get_source}) {

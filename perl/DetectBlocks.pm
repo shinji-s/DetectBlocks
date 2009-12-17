@@ -677,14 +677,6 @@ sub attach_attr_blocktype {
     }
 
     my @content_list = $elem->content_list;
-
-    # 全てのタグにblock名を付与(★仮)
-    if ($this->{opt}{add_blockname2alltag} && @content_list) {
-	foreach my $child_elem (@content_list) {
-	    next if $this->is_stop_elem($child_elem);
-	    $this->attach_attr_blocktype($child_elem, $myblocktype, $attrname, $num);
-	}
-    }
 }
 
 sub check_form {
