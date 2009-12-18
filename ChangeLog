@@ -1,3 +1,149 @@
+2009-12-18 Friday 22:01  funayama
+
+	* script/test.pl (1.28): small change.
+
+2009-12-18 Friday 22:01  funayama
+
+	* perl/DetectBlocks.pm (1.87): header¤Èfooter¤ò°ÌÃÖ¤Ë¤è¤êÀ©¸Â.
+
+2009-12-18 Friday 11:34  funayama
+
+	* script/test.pl (1.27): bug fixed.
+
+2009-12-18 Friday 03:28  shibuta
+
+	* script/test.pl (1.26): css¤ÈjavascriptÍÑ¤Ë½¤Àµ
+
+2009-12-18 Friday 02:20  shibuta
+
+	* script/setposition_test.pl (1.3): ¤Á¤ç¤Ã¤È½¤Àµ
+
+2009-12-18 Friday 02:18  shibuta
+
+	* perl/SetPosition.pm (1.5):
+	  option¤Çsource_url¤ò»ØÄê¤·¤¿¾ì¹ç¡¢css¤Èjavascript¤ÎÁêÂĞ¥Ñ¥¹¤òÀäÂĞ¥Ñ¥¹¤Ë½¤Àµ¤¹¤ë¤è¤¦¤ËÊÑ¹¹
+
+2009-12-17 Thursday 21:42  funayama
+
+	* perl/DetectBlocks.pm (1.86), script/test.pl (1.25):
+	  ¥«¥é¥à¤ò¸¡½Ğ¤¹¤ë¤è¤¦¤ËÊÑ¹¹.
+
+2009-12-17 Thursday 14:09  funayama
+
+	* script/test.pl (1.24):
+	  °ÌÃÖ¾ğÊó¤ò¼èÆÀ¤¹¤ë¥ª¥×¥·¥ç¥óset_pos_info¤òÄÉ²Ã.
+
+2009-12-17 Thursday 13:16  funayama
+
+	* perl/DetectBlocks.pm (1.85), script/test.pl (1.23):
+	  add_blockname2alltag¥ª¥×¥·¥ç¥ó¤òËĞÌÇ.
+
+2009-12-17 Thursday 10:47  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.4):
+	  ½ĞÎÏ¥Õ¥¡¥¤¥ë¤Î¥Ç¥Õ¥©¥ë¥ÈÊ¸»ú¥³¡¼¥É¤¬utf-8¤Ë¤Ê¤ë¤è¤¦½¤Àµ
+
+2009-12-17 Thursday 09:38  shibuta
+
+	* tools/addMyAttrToHtml/: staticExe/wkhtmltopdf (1.5),
+	  myPatch/wkhtmltopdf.cc (1.4):
+	  å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’utf-8ã«è¨­å®š
+
+2009-12-16 Wednesday 23:51  shibuta
+
+	* perl/SetPosition.pm (1.4): ã‚³ãƒ¡ãƒ³ãƒˆä¿®æ­£
+
+2009-12-16 Wednesday 23:47  shibuta
+
+	* perl/SetPosition.pm (1.3):
+	  wkhtmltopdfãŒ30ç§’ä»¥ä¸Šæ­¢ã¾ã‚‰ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼ã¨ã—ã¦-1ã‚’è¿”ã™ã‚ˆã†ä¿®æ­£
+
+2009-12-16 Wednesday 20:39  shibuta
+
+	* perl/SetPosition.pm (1.2): ¥¨¥é¡¼»ş¤Ë-1¤òÊÖ¤¹¤è¤¦¤Ë½¤Àµ
+
+2009-12-16 Wednesday 20:38  shibuta
+
+	* script/setposition_test.pl (1.2): °ú¿ô¤òÍ¿¤¨¤ë¤è¤¦¤Ë½¤Àµ
+
+2009-12-16 Wednesday 18:35  shibuta
+
+	* script/setposition_test.pl (1.1): SetPosition.pm¤ò»È¤¦Îã
+
+2009-12-16 Wednesday 18:22  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.3):
+	  reed¤Ç¥³¥ó¥Ñ¥¤¥ë¤·¤¿wkhtmltopdf-reed¤ò¥Ğ¥¤¥Ê¥ê¤È¤·¤Æadd
+
+2009-12-16 Wednesday 18:21  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.2): °ìÃ¶ºï½ü
+
+2009-12-16 Wednesday 18:18  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf (1.4):
+	  ãƒã‚¤ãƒŠãƒªã¨ã—ã¦wkhtmltopdfã‚’add
+
+2009-12-16 Wednesday 18:16  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf (1.3):
+	  ä¸€æ—¦wkhtmltopdfå‰Šé™¤
+
+2009-12-16 Wednesday 18:12  shibuta
+
+	* perl/SetPosition.pm (1.1):
+	  tools/addMyAttrToHtml/staticExe/wkhtmltopdfã‚’å®Ÿè¡Œã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+
+2009-12-16 Wednesday 18:04  shibuta
+
+	* perl/DetectBlocks.pm (1.84):
+	  Get_sourceé–¢æ•°ã‚’ã¡ã‚‡ã£ã¨å¤‰æ›´
+
+2009-12-16 Wednesday 00:59  shibuta
+
+	* tools/addMyAttrToHtml/myPatch/wkhtmltopdf.cc (1.3):
+	  ã¡ã‚‡ã£ã¨å¤‰æ›´
+
+2009-12-16 Wednesday 00:58  shibuta
+
+	* tools/addMyAttrToHtml/myPatch/arguments.cc (1.1):
+	  ã‚ªãƒ—ã‚·ãƒ§ãƒ³è¿½åŠ  uã¨j
+
+2009-12-16 Wednesday 00:57  shibuta
+
+	* tools/addMyAttrToHtml/myPatch/wkhtmltopdf.hh (1.1):
+	  å¤‰æ•°å®£è¨€ã‚’åŠ ãˆãŸ
+
+2009-12-15 Tuesday 19:01  funayama
+
+	* script/test.pl (1.22):
+	  ¥Ú¡¼¥¸Ãæ¤Î°ÌÃÖ¾ğÊó¤ò¹ÍÎ¸¤¹¤ë¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã.
+
+2009-12-15 Tuesday 18:25  funayama
+
+	* perl/DetectBlocks.pm (1.83):
+	  ¥Ú¡¼¥¸Ãæ¤Î°ÌÃÖ¾ğÊó¤ò¹ÍÎ¸¤¹¤ë¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã(Ä¶»ÃÄê).
+
+2009-12-14 Monday 20:36  funayama
+
+	* perl/DetectBlocks.pm (1.82): 50%¥ë¡¼¥ë¤ò¼ã´³ÊÑ¹¹.
+
+2009-12-12 Saturday 15:48  funayama
+
+	* sample/091212_siteop_plus.dat (1.1): added.
+
+2009-12-10 Thursday 17:58  funayama
+
+	* sample/091203_siteop.dat (1.1): added.
+
+2009-12-10 Thursday 16:47  funayama
+
+	* perl/DetectBlocks.pm (1.81): stable.
+
+2009-12-08 Tuesday 18:02  funayama
+
+	* ChangeLog (1.14): updated.
+
 2009-12-08 Tuesday 18:00  funayama
 
 	* perl/DetectBlocks.pm (1.80): ¹âÂ®²½.	  Àµµ¬É½¸½    ->content,
