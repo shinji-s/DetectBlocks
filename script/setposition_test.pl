@@ -5,6 +5,8 @@ use utf8;
 use Getopt::Long;
 
 my (%opt);
+
+# source_urlはcssとjavascriptのhref値もしくはsrc値を絶対パスに修正するオプション。URLを指定
 GetOptions(\%opt, 'source_url=s');
 
 use SetPosition;
