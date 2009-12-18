@@ -1026,7 +1026,7 @@ sub check_calender {
 sub attach_pos_info {
     my ($this, $elem) = @_;    
 
-    return if $this->is_stop_elem($elem);
+    return if $this->is_stop_elem($elem) || !$this->{root_width} || !$this->{root_height};
 
     # 属性付与
     $elem->attr('myleft_rate', ($elem->attr('myleft') - $this->{root_left}) / $this->{root_width});
