@@ -230,7 +230,7 @@ sub detectblocks{
     if ($this->{opt}{pos_info}) {
 	# bodyをrootにすると大きすぎる
 	my $root_elem = $this->find_root_elem($body);
-	$root_elem = $body if !$root_elem->{'myheight'} || !$root_elem{'mywidth'};
+	$root_elem = $body if !$root_elem->{'myheight'} || !$root_elem->{'mywidth'};
 
 	# ブロックの位置情報を取得(root以下)
 	$this->{root_height} = $root_elem->attr('myheight');
