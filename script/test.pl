@@ -47,10 +47,6 @@ my $url;
 # HTMLソースを取得
 if ($opt{get_source}) {
 
-    if ($opt{pos_info}) {
-	# Get_Source_String用オプション。decodeしないように設定
-	$opt{'nodec'} = 1;
-    }
     ($str, $url) = $DetectBlocks->Get_Source_String($opt{get_source}, \%opt);
     unless (defined $opt{'source_url'}) {
 	$opt{'source_url'} = $url;
@@ -74,10 +70,7 @@ else {
 }
 
 if ($opt{set_pos_info}) {
-    my $encode = guess_encoding($str, qw/ascii euc-jp shiftjis 7bit-jis utf8/);
-    $str = encode($encode, $str) if Encode::is_utf8($str);
     $str = &SetPosition::setPosition($str, $execpath, $jspath, \%opt);
-    $str = decode($encode, $str);
 }
 
 $DetectBlocks->maketree($str, $url);
