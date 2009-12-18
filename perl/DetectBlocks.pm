@@ -43,6 +43,8 @@ our $CHILD_COLUMN_WIDTH_MAX = 0.7;
 our $CHILD_COLUMN_WIDTH_change = 0.95;
 our $CHILD_COLUMN_HEIGHT_change = 0.96;
 
+# headerとfooterが先頭・末尾から許す割合
+our $HEADER_FOOTER_RATE = 0.4;
     
 # 柔軟なtableの繰り返しの検出
 our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
@@ -770,6 +772,13 @@ sub check_form {
 sub check_header {
     my ($this, $elem) = @_;
 
+    if ($this->{opt}{pos_info}) {
+	return 0 if
+	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
+	    $elem->attr('mytop_rate') + $elem->attr('myheight_rate') > $HEADER_FOOTER_RATE;
+	    ;
+    }
+
     my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
     my $link2index = $elem->look_down('_tag' => 'a', 'href' => qr/(?:$domain\/|(?:\.\.\/)+|^\/|^)(?:index\.(?:html|htm|php|cgi))?$/) ? 1 :0;
 
@@ -798,9 +807,11 @@ sub check_header {
 sub check_footer {
     my ($this, $elem, $texts) = @_;
 
-    # サイドバーなどがfooterになることを防止
     if ($this->{opt}{pos_info}) {
-	return 0 if $elem->attr('myheight') > 0 && $elem->attr('myheight') / $this->{root_height} > 0.3;
+	return 0 if
+	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
+	    $elem->attr('mytop_rate') < $HEADER_FOOTER_RATE;
+	    ;
     }
 
     my $footer_flag = 0;
