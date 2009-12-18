@@ -73,7 +73,7 @@ else {
     $url = $ARGV[1];
 }
 
-if ($opt{pos_info}) {
+if ($opt{set_pos_info}) {
     my $encode = guess_encoding($str, qw/ascii euc-jp shiftjis 7bit-jis utf8/);
     $str = encode($encode, $str) if Encode::is_utf8($str);
     $str = &SetPosition::setPosition($str, $execpath, $jspath, \%opt);
