@@ -230,8 +230,23 @@ sub detectblocks{
     if ($this->{opt}{pos_info}) {
 	# bodyをrootにすると大きすぎる
 	my $root_elem = $this->find_root_elem($body);
-	$root_elem = $body if !$root_elem->{'myheight'} || !$root_elem->{'mywidth'};
 
+	# 自分以下で最大のwidth, heightを探す
+	$this->detect_max_shape($body);
+
+	# rootが幅1とかの場合があるのでｓの対処★ 暫定
+	if (!$root_elem->{'myheight'} || !$root_elem->{'mywidth'}) {
+	    $root_elem = $body;
+	}
+	if ($root_elem->{'myheight'} < $root_elem->{'myheight_max'}) {
+	    $root_elem = $body;
+	    $root_elem->{'myheight'} = $root_elem->{'myheight_max'};
+	}
+	if ($root_elem->{'mywidth'} < $root_elem->{'mywidth_max'}) {
+	    $root_elem = $body;
+	    $root_elem->{'mywidth'} = $root_elem->{'mywidth_max'};
+	}
+	
 	# ブロックの位置情報を取得(root以下)
 	$this->{root_height} = $root_elem->attr('myheight');
 	$this->{root_width}  = $root_elem->attr('mywidth');
@@ -241,9 +256,6 @@ sub detectblocks{
 
 	# カラム構成を取得
 	$this->get_column_structure($root_elem, undef);
-
-	# 自分以下で最大のwidth, heightを探す
-	$this->detect_max_shape($body);
     }
 
     # テキストの累積率を記述
