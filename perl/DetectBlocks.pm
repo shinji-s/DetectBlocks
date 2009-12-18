@@ -240,6 +240,9 @@ sub detectblocks{
 
 	# カラム構成を取得
 	$this->get_column_structure($root_elem, undef);
+
+	# 自分以下で最大のwidth, heightを探す
+	$this->detect_max_shape($body);
     }
 
     # テキストの累積率を記述
@@ -256,6 +259,40 @@ sub detectblocks{
 
     $this->post_process($body) if $this->{opt}{add_class2html} && !$this->{opt}{blogcheck};
 }
+
+sub detect_max_shape {
+    my ($this, $elem) = @_;
+
+    my ($max_width, $max_height) = ($elem->attr('mywidth'), $elem->attr('myheight'));
+    my ($max_width_elem, $max_height_elem) = ($elem, $elem); # 不要??
+
+    my @content_list = $elem->content_list;
+    if (!scalar @content_list) {
+	;
+    }
+    else {
+	foreach my $child_elem (@content_list) {
+	    my ($child_max_width, $child_max_height) = $this->detect_max_shape($child_elem);
+	    if ($max_width < $child_max_width) {
+		$max_width	= $child_max_width ;
+		$max_width_elem = $child_elem;
+	    }
+	    if ($max_height < $child_max_height) {
+		$max_height	 = $child_max_height;
+		$max_height_elem = $child_elem;
+	    }
+	}
+    }
+
+    # 属性付与
+    $elem->attr('mywidth_max', $max_width);
+    $elem->attr('myheight_max', $max_height);
+    $elem->attr('_mywidth_max_elem', $max_width_elem);
+    $elem->attr('_myheight_max_elem', $max_height_elem);
+    
+    return ($max_width, $max_height);
+}
+
 
 sub find_root_elem {
     my ($this, $elem) = @_;
@@ -527,7 +564,7 @@ sub detect_more_blocks {
 	}
 
 	else {
-	    my $devide_flag = 1;
+	    my $divide_flag = 1;
 	    foreach my $more_block_name (@MORE_BLOCK_NAMES)  {
 		my $block_ref = $elem->{'_'.$more_block_name};
 
@@ -535,14 +572,14 @@ sub detect_more_blocks {
 		if ($block_ref->{num} >= $MORE_BLOCK_NUM_TH && $block_ref->{ratio} > $MORE_BLOCK_RATIO_TH &&
 		    $elem_length < $MORE_BLOCK_LENGTH_MAX_TH) {
 		    # 属性付与
-		    $devide_flag = 0;
+		    $divide_flag = 0;
 		    $this->attach_attr_blocktype($elem, $more_block_name, 'myblocktype_more');
 		    # last;
 		}
 	    }
 
 	    # 再帰
-	    if ($devide_flag) {
+	    if ($divide_flag) {
 		foreach my $child_elem (@content_list) {
 		    $this->detect_more_blocks($child_elem);
 		}
@@ -776,7 +813,6 @@ sub check_header {
 	return 0 if
 	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
 	    $elem->attr('mytop_rate') + $elem->attr('myheight_rate') > $HEADER_FOOTER_RATE;
-	    ;
     }
 
     my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
@@ -887,12 +923,26 @@ sub check_maintext {
     }
 }
 
+# 位置情報を利用して変な形の領域かどうかを調べる
+# 0 : 普通の形, 1 : 変な形
+sub check_shape {
+    my ($this, $elem) = @_;
+    
+    # このブロックの形が変(★2は暫定)
+    return 1 if $elem->attr('myheight_max') > 2 * $elem->attr('myheight') || $elem->attr('mywidth_max') > 2 * $elem->attr('mywidth');
+    
+    return 0;
+}
+
 sub check_divide_block {
     my ($this, $elem, $texts) = @_;
 
     # 下階層を調べる意味があるかをチェック(ある:1, ない:0)
     return 0 if !$this->check_multiple_block($elem);
 
+    # 変な形のblock
+    return 1 if $this->{pos_info} && $this->check_shape($elem);
+    
     # チェック
     foreach my $child_elem ($elem->content_list) {
     	## address
@@ -1148,8 +1198,14 @@ sub print_node {
 	printf "《_a_:%.2f》" ,$this->check_link_block($elem) / $elem->attr("length");
     }
 
-    printf " *(t, l, h, w) = (%.2f, %.2f, %.2f, %.2f)" ,
-    $elem->attr('mytop_rate'), $elem->attr('myleft_rate'), $elem->attr('myheight_rate'), $elem->attr('mywidth_rate');
+    # printf " *(t, l, h, w) = (%.2f, %.2f, %.2f, %.2f)" ,
+    # $elem->attr('mytop_rate'), $elem->attr('myleft_rate'), $elem->attr('myheight_rate'), $elem->attr('mywidth_rate');
+
+    printf " *(h, w) = (%d, %d)",
+    $elem->attr('myheight'), $elem->attr('mywidth'); 
+
+    printf " *(mh, mw) = (%d, %d)",
+    $elem->attr('myheight_max'), $elem->attr('mywidth_max'); 
 
     if ($elem->attr('text')) {
 	my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
