@@ -60,6 +60,8 @@ public:
 //****************************************************
 	const char * javascript;
 	bool utf8;
+	int window_width;
+	int window_height;
 //****************************************************
 	QNetworkProxy::ProxyType proxyType; //Type of proxy to use
 	int proxyPort; //The port of the proxy to use

@@ -322,7 +322,7 @@ void WKHtmlToPdf::printPage() {
 #ifdef __EXTENSIVE_WKHTMLTOPDF_QT_HACK__
 
 //************************
-		QSize vsize(1280,800);
+		QSize vsize(window_width,window_height);
 		pages[0]->setViewportSize(vsize);
 
 		if(QFile::exists(javascript)) {
@@ -348,7 +348,7 @@ void WKHtmlToPdf::printPage() {
 #else
 	currentPage = 0;
 //************************
-    QSize vsize(1280,800);
+    QSize vsize(window_width,window_height);
     pages[0]->setViewportSize(vsize);
 
     if(QFile::exists(javascript)) {
