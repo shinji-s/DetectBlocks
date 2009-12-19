@@ -1695,7 +1695,11 @@ sub Get_Source_String {
     require LWP::UserAgent;
 
     my $ua = new LWP::UserAgent;
-    $ua->agent('Mozilla/5.0');
+    if ($option->{Google_agent}) {
+	$ua->agent('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.48 Safari/525.19');
+    } else {
+	$ua->agent('Mozilla/5.0');
+    }
     $ua->proxy('http', $this->{opt}{proxy}) if defined $this->{opt}{proxy};
     $ua->proxy('http', $option->{proxy}) if defined $option->{proxy};
     $ua->timeout($option->{timeout}) if $option->{timeout};
