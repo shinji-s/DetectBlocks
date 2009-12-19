@@ -55,7 +55,7 @@ sub execAddPosition {
 #    $html = &SetPosition::setCharset($html);
 
     # htmlの一時ファイル作成
-    open(FILE, ">" , $cache);
+    open(FILE, ">$cache");
     print FILE $html;
     close(FILE);
 
@@ -91,7 +91,7 @@ sub execAddPosition {
 
     # 位置情報が書き込まれたファイルを文字列にする
     if ($returnhtml != -1) {
-	open(FILE, "<" , $cache);
+	open(FILE, "<$cache");
 	while(<FILE>){$returnhtml .= $_;}
 	close(FILE);
 	unlink($cache);
@@ -115,7 +115,7 @@ sub setPosition {
     my $html;
     # ローカルのファイルの場合
     if (-e $target) {
-	open(FILE, "<:" , $target);
+	open(FILE, "<" . $target);
 	while(<FILE>){$html.=$_;}
 	close(FILE);
     }
@@ -198,11 +198,12 @@ sub setCharset {
 
     my ($html) = @_;
 
-    if ($html =~ /<meta.+?charset\=([^\s\"\']+).+?>/i) {
+    if ($html =~ /<meta.+?charset\=([a-zA-Z0-9\-_]+).+?>/i) {
 	if (Encode::is_utf8($html)) {
 	    my $tag = $&;
+	    my $orig = $&;
 	    $tag =~ s/$1/utf-8/;
-	    $html =~ s/$&/$tag/;
+	    $html =~ s/$orig/$tag/;
 	    $charCode = 'utf8';
 	} else {
 	    $charCode = guess_encoding($html, qw/ascii euc-jp shiftjis utf8 7bit-jis/);
