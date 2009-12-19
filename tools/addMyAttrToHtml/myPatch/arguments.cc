@@ -417,8 +417,8 @@ void WKHtmlToPdf::initArgs() {
 //**********************************
 	addarg("javascript",'j',"Executed JavaScript", new AHStrSetter(javascript, "javascript","myExecJs.js"));
 	addarg("utf8",'u',"Output charset is utf-8", new AHConstSetter<bool>(utf8,true,false));
-	addarg("w-width",'W',"Set window width size", new AHIntSetter(window_width,"window_width",1280));
-	addarg("w-height",'H',"Set window height size", new AHIntSetter(window_height,"window_height",800));
+	addarg("w-width",0,"Set window width size", new AHIntSetter(window_width,"window_width",1280));
+	addarg("w-height",0,"Set window height size", new AHIntSetter(window_height,"window_height",800));
 //**********************************
 }
 
