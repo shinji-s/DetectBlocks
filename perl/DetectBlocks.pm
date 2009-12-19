@@ -311,6 +311,7 @@ sub find_root_elem {
     my ($this, $elem) = @_;
 
     my @content_list = $elem->content_list;
+    return $elem if !$this->{alltextlen};
     
     my ($max_rate, $index) = (0, undef);
     for (my $i = 0; $i < @content_list; $i++) {
