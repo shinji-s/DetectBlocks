@@ -23,6 +23,10 @@ function writePos() {
 	if(backgroundColor = computedStyle.backgroundColor){
 	    elem.setAttribute("myBackgroundColor", backgroundColor);
 	}
+	// 背景画像を得る
+	if(backgroundImage = computedStyle.backgroundImage){
+	    elem.setAttribute("myBackgroundImage", backgroundImage);
+	}
 	// 枠線を得る
 	if(borderColor = computedStyle.borderColor){
 	    elem.setAttribute("myBorderColor", borderColor);
