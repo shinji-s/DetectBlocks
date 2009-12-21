@@ -823,10 +823,10 @@ sub check_form {
 sub check_header {
     my ($this, $elem) = @_;
 
-    if ($this->{opt}{pos_info}) {
-	return 0 if
-	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
-	    $elem->attr('mytop_rate') + $elem->attr('myheight_rate') > $HEADER_FOOTER_RATE;
+    if ($this->{opt}{pos_info} && $elem->{pos_valid_flag}) {
+    	return 0 if
+    	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
+    	    $elem->attr('mytop_rate') + $elem->attr('myheight_rate') > $HEADER_FOOTER_RATE;
     }
 
     my $domain = $this->{domain} ? $this->{domain} : '\/\/\/';
@@ -857,15 +857,15 @@ sub check_header {
 sub check_footer {
     my ($this, $elem, $texts) = @_;
 
-    if ($this->{opt}{pos_info}) {
-	return 0 if
-	    $elem->look_down(sub {defined($_[0]->attr('col_num')) }) ||
-	    $elem->attr('mytop_rate') < $HEADER_FOOTER_RATE;
-	    ;
+    my $ng_flag = 0;
+    if ($this->{opt}{pos_info} && $elem->{pos_valid_flag}) {
+	$ng_flag = 1 if
+    	    $elem->look_down(sub {defined($_[0]->attr('col_num'))}) ||
+    	    $elem->attr('mytop_rate') < $HEADER_FOOTER_RATE;
     }
 
     my $footer_flag = 0;
-    if ($this->{alltextlen} * (1 - $elem->attr('ratio_start')) < $FOOTER_START_TH &&
+    if (!$ng_flag && $this->{alltextlen} * (1 - $elem->attr('ratio_start')) < $FOOTER_START_TH &&
 	$this->{alltextlen} * (1 - $elem->attr('ratio_end')) < $FOOTER_END_TH) {
 	foreach my $text (@$texts) {
 	    if ($text =~ /$FOOTER_STRING/i) {
@@ -955,7 +955,7 @@ sub check_divide_block {
     return 0 if !$this->check_multiple_block($elem);
 
     # 変な形のblock
-    return 1 if $this->{pos_info} && $this->check_shape($elem);
+    return 1 if $this->{opt}{pos_info} && $elem->{pos_valid_flag} && $this->check_shape($elem);
     
     # チェック
     foreach my $child_elem ($elem->content_list) {
@@ -1048,6 +1048,8 @@ sub attach_pos_info {
     $elem->attr('mywidth_rate', $elem->attr('mywidth') / $this->{root_width});
     $elem->attr('myheight_rate', $elem->attr('myheight') / $this->{root_height});
     
+    $elem->attr('pos_valid_flag', 1) if $elem->{'mywidth_rate'} && $elem->{'myheight_rate'};
+
     # 再帰
     foreach my $child_elem ($elem->content_list){
     	if (!$this->is_stop_elem($child_elem)) {
