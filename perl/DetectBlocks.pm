@@ -1011,9 +1011,10 @@ sub check_divide_block_by_copyright {
 sub check_link_block {
     my ($this, $elem, $depth) = @_;
 
+    my $iteration_string = $elem->attr('iteration');
     # 8割を超える範囲に<a>タグを含む繰り返しあり
-    if ($elem->attr('iteration') =~ /_a_/) {
-	return $elem->attr('length');
+    if ($iteration_string =~ /_a_/) {
+	return !$elem->attr('div_char') && $iteration_string =~ /_a_\+_~text_-/ ? 0 : $elem->attr('length');
     }
 
     my $sum = 0;
@@ -1496,7 +1497,7 @@ sub select_best_iteration {
 
     if (scalar @best_iterations_buffer) {
 	my $tmp;
-	my $div_char = join('%', grep {!$tmp->{$_}++} (map {$_->{div_char}} @best_iterations_buffer));
+	my $div_char = join('%', grep {!$tmp->{$_}++ && $_} (map {$_->{div_char}} @best_iterations_buffer));
 	undef $tmp;
 
 	# (親ノード)
