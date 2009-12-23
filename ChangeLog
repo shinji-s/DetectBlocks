@@ -1,3 +1,97 @@
+2009-12-23 Wednesday 22:04  funayama
+
+	* perl/DetectBlocks.pm (1.98):
+	  a-text¤Î·«¤êÊÖ¤·block¤ÎÂç¤­¤µ¤ò2¤ËÀ©¸Â.
+	  °Ê²¼¤Î¤è¤¦¤ÊÊ¸Ãæ¤Ë·«¤êÊÖ¤·¤òÉÕÍ¿¤·¤Ê¤¤¤è¤¦¤ËÊÑ¹¹.
+	  <a>»ÔÌ±</a>¡¢<a>½÷À­</a>¡¢<a>»Ò¶¡</a>¤¿¤Á
+
+2009-12-23 Wednesday 20:34  funayama
+
+	* perl/DetectBlocks.pm (1.97): ·«¤êÊÖ¤·ÉôÊ¬¤òÀ°Íı.
+	  °Ê²¼¤ÎÎãÊ¸¤¬3²ó¤Îa-text¤È¤Ê¤é¤Ê¤¤¤è¤¦¤ËÊÑ¹¹
+	  "<a>»ÔÌ±</a>¡¢<a>½÷À­</a>¡¢<a>»Ò¶¡</a>¤¿¤Á¤¬¡Ä¤·¤¿¡£"
+
+2009-12-22 Tuesday 13:16  funayama
+
+	* perl/DetectBlocks.pm (1.96): div_char¤Îbug fix linkÎÎ°è¤Îbug fix
+
+2009-12-22 Tuesday 07:16  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/myExecJs.js (1.2): ÇØ·Ê²èÁüÄÉ²Ã
+
+2009-12-21 Monday 16:02  funayama
+
+	* perl/DetectBlocks.pm (1.95): small change.
+
+2009-12-20 Sunday 00:17  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.6): small
+	  change
+
+2009-12-20 Sunday 00:10  shibuta
+
+	* tools/addMyAttrToHtml/: myPatch/arguments.cc (1.3),
+	  staticExe/wkhtmltopdf (1.7): small change
+
+2009-12-20 Sunday 00:02  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf (1.6):
+	  ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ 
+
+2009-12-19 Saturday 23:54  shibuta
+
+	* tools/addMyAttrToHtml/: myPatch/arguments.cc (1.2),
+	  myPatch/wkhtmltopdf.hh (1.2), myPatch/wkhtmltopdf.cc (1.5),
+	  staticExe/wkhtmltopdf-reed (1.5): window
+	  size¤òÀßÄê¤Ç¤­¤ë¥ª¥×¥·¥ç¥óÄÉ²Ã
+
+2009-12-19 Saturday 22:34  shibuta
+
+	* perl/DetectBlocks.pm (1.94):
+	  userAgent¤òGoogleChrome¤Ë¤¹¤ë¤¿¤á¤Î¥ª¥×¥·¥ç¥óÄÉ²Ã
+
+2009-12-19 Saturday 17:07  shibuta
+
+	* perl/SetPosition.pm (1.7): bug fixed
+
+2009-12-19 Saturday 12:47  funayama
+
+	* perl/DetectBlocks.pm (1.93): bug fixed.
+
+2009-12-19 Saturday 04:08  funayama
+
+	* perl/DetectBlocks.pm (1.92): Illegal
+	  division¤Èbody¤ÎÉı¤¬0¤È¤«¤Ë¤Ê¤ë¾ì¹ç¤ËÈæÎ¨¤Î·×»»¤¬¤ª¤«¤·¤¯¤Ê¤ëÌäÂê¤ËÂĞ½è(»ÃÄê).
+
+2009-12-19 Saturday 03:47  funayama
+
+	* perl/DetectBlocks.pm (1.91): bug fixed.
+
+2009-12-19 Saturday 03:43  funayama
+
+	* perl/DetectBlocks.pm (1.90): bug fixed.
+
+2009-12-19 Saturday 03:37  funayama
+
+	* perl/DetectBlocks.pm (1.89): bug fixed.
+
+2009-12-19 Saturday 02:46  shibuta
+
+	* script/test.pl (1.29): SetPosition.pm¤Î½¤Àµ¤ËÂĞ±ş¤·¤Æ¤Á¤ç¤Ã¤È½¤Àµ
+
+2009-12-19 Saturday 02:45  shibuta
+
+	* perl/SetPosition.pm (1.6):
+	  ¥Ğ¥°½¤Àµ¡¢µÚ¤ÓÊ¸»ú¥³¡¼¥É¼ş¤ê¤ò²şÁ±¡£utf8¥Õ¥é¥°¤¬¤Ä¤¤¤¿html¤òÊÖ¤¹¡£
+
+2009-12-19 Saturday 02:43  shibuta
+
+	* script/setposition_test.pl (1.4): ¤Á¤ç¤Ã¤È½¤Àµ
+
+2009-12-19 Saturday 00:42  funayama
+
+	* ChangeLog (1.16): updated.
+
 2009-12-19 Saturday 00:42  funayama
 
 	* perl/DetectBlocks.pm (1.88):
