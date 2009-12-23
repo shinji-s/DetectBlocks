@@ -1218,11 +1218,13 @@ sub print_node {
     # printf " *(t, l, h, w) = (%.2f, %.2f, %.2f, %.2f)" ,
     # $elem->attr('mytop_rate'), $elem->attr('myleft_rate'), $elem->attr('myheight_rate'), $elem->attr('mywidth_rate');
 
-    printf " *(h, w) = (%d, %d)",
-    $elem->attr('myheight'), $elem->attr('mywidth'); 
+    # printf " *(h, w) = (%d, %d)",
+    # $elem->attr('myheight'), $elem->attr('mywidth'); 
 
-    printf " *(mh, mw) = (%d, %d)",
-    $elem->attr('myheight_max'), $elem->attr('mywidth_max'); 
+    # printf " *(mh, mw) = (%d, %d)",
+    # $elem->attr('myheight_max'), $elem->attr('mywidth_max'); 
+
+    # print '[',$elem->attr('div_char'),']' if defined $elem->attr('div_char');
 
     if ($elem->attr('text')) {
 	my $text_buf = $this->{opt}{print_offset} ? decode('utf8', $elem->attr('text')) : $elem->attr('text');
@@ -1363,7 +1365,7 @@ sub detect_iteration {
 	# スタートポイント
 	for (my $j = 0; $j < $child_num; $j++) {
 	    my $k;
-	    my ($flag, $div_char) = (0, '');
+	    my ($flag, $a_text_flag, $div_char) = (0, 0, '');
 
 	    # ブロックタグをチェック
 	    for ($k = $j; $k < $j+$i; $k++){
@@ -1372,36 +1374,26 @@ sub detect_iteration {
 	    # 例外処理
 	    if ($flag == 0) {
 		# aの後ろに同じテキストが来る場合
-		# ★ <a>HOME</a><font>|</font> <a>SITEMAP</a><font>|</font> ... の場合は??
-		#   -> @tagsでなく@substringsを利用?(substrings[$m] =~ /~text/ みたいな)
-		#   -> $i==2?
-		#   -> 例 : Cancer 004
 		for ($k = $j; $k < $j+$i; $k++){
 		    # _a_+_~text_-:_~text_
-		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' && 
+		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' &&
 		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1]) {
-			my $text_buf_a = $this->{opt}{print_offset} ?
-			    decode('utf8', $content_list[$k+1]->attr('text')) : $content_list[$k+1]->attr('text');
-			my $text_buf_b = $this->{opt}{print_offset} ?
-			    decode('utf8', $content_list[$k+$i+1]->attr('text')):$content_list[$k+$i+1]->attr('text');
-			if ($text_buf_a eq $text_buf_b) {
-			    $div_char = $text_buf_a;
-			    # text部分の文字列を制限
-			    $flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
-			}
+
+			($flag, $a_text_flag, $div_char) = $this->Get_div_char(
+			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+1]->attr('text')) : $content_list[$k+1]->attr('text'),
+			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i+1]->attr('text')):$content_list[$k+$i+1]->attr('text'),
+			    $flag, $div_char
+			    );
 		    }
 		    # ~text_:_a_+_~text_-
 		    elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
 			   $k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i]) {
-			my $text_buf_a = $this->{opt}{print_offset} ?
-			    decode('utf8', $content_list[$k]->attr('text')) : $content_list[$k]->attr('text');
-			my $text_buf_b = $this->{opt}{print_offset} ?
-			    decode('utf8', $content_list[$k+$i]->attr('text')):$content_list[$k+$i]->attr('text');
-			if ($text_buf_a eq $text_buf_b) {
-			    $div_char = $text_buf_a;
-			    # text部分の文字列を制限
-			    $flag = 1 if $div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/;
-			}
+
+			($flag, $a_text_flag, $div_char) = $this->Get_div_char(
+			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k]->attr('text')) : $content_list[$k]->attr('text'),
+			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i]->attr('text')):$content_list[$k+$i]->attr('text'),
+			    $flag, $div_char
+			    );
 		    }
 		}
 		# _a_+_img_-
@@ -1415,7 +1407,17 @@ sub detect_iteration {
 	    next if $flag == 0;
 
 	    for ($k = $j+$i; $k < $child_num; $k++) {
-	    	last if $substrings[$k] ne $substrings[$k - $i];
+		# 繰り返し終了
+		last if $substrings[$k] ne $substrings[$k - $i];
+
+		# a-textの場合
+		#-------------------------------------------#
+                # 下の例文が3回のa-textとなることを防ぐ	    #
+		# <a>市民</a>、<a>女性</a>、<a>子供</a>たち #
+                #-------------------------------------------#
+		if ($a_text_flag) {
+		    last if $content_list[$k]->tag eq '~text' && $content_list[$k]->attr('text') ne $div_char;
+		}
 	    }
 
 	    # 繰り返し発見
@@ -1430,7 +1432,6 @@ sub detect_iteration {
 
 		    $iteration_buffer->{$k.'%'.join(':', @iteration_types)} = 1;
 		}
-		# $j = $k-1
 	    }
 	}
     }
@@ -1444,6 +1445,23 @@ sub detect_iteration {
 	$this->detect_iteration($child_elem);
 	$child_elem->attr('div_char', $elem->attr('div_char')) if $elem->attr('div_char');
     }
+}
+
+
+sub Get_div_char {
+    my ($this, $text_buf_a, $text_buf_b, $flag, $div_char) = @_;
+    my ($a_text_flag);
+
+    if ($text_buf_a eq $text_buf_b) {
+	$div_char = $text_buf_a;
+	# text部分の文字列を制限
+	if ($div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/) {
+	    $flag = 1;
+	    $a_text_flag = 1;
+	}
+    }
+
+    return ($flag, $a_text_flag, $div_char);
 }
 
 
