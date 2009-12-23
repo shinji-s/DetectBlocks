@@ -23,33 +23,36 @@ our $TEXTPER_TH_LENGTH = 3000;
 
 
 our $HEADER_START_TH = 100; # これより小さければheader
-our $HEADER_END_TH = 200; # これより小さければheader
-our $ALT4HEADER_TH = 15; # 画像のみのheaderの際に必要なalt_text
+our $HEADER_END_TH   = 200; # これより小さければheader
+our $ALT4HEADER_TH   = 15;  # 画像のみのheaderの際に必要なalt_text
 
-our $FOOTER_START_TH = 300; # これより大きければfooter
-our $FOOTER_END_TH = 100; # これより大きければfooter
+our $FOOTER_START_TH	= 300; # これより大きければfooter
+our $FOOTER_END_TH	= 100; # これより大きければfooter
 our $FOOTER_HEIGHT_RATE = 0.5; # ブロックの高さこれより大きければfooterでない
 
 our $LINK_RATIO_TH = 0.66; #link領域の割合
-our $IMG_RATIO_TH = 0.8; # これより大きければimg (葉だけ数える)
+our $IMG_RATIO_TH  = 0.80; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
-our $ITERATION_TH = 2; # 繰り返し回数がこれ以上
-our $ITERATION_DIV_CHAR = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}'; # a-textの繰り返しのtextとなりうる文字列
+our $ITERATION_TH	  = 2; # 繰り返し回数がこれ以上
+our $ITERATION_DIV_CHAR	  = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}'; # a-textの繰り返しのtextとなりうる文字列
+
+our $A_TEXT_ITERATION_MIN = 3;   # a-textで必ず繰り返しとして検出する最低数
+our $A_TEXT_RATE	  = 0.5; # a-text部分のblock割合がこれ以下ならiterationにしない
 
 # カラム構成の検出
-our $COLUMN_HEIGHT_MIN = 0.7;
-our $CHILD_COLUMN_WIDTH_MAX = 0.7;
-our $CHILD_COLUMN_WIDTH_change = 0.95;
+our $COLUMN_HEIGHT_MIN		= 0.7;
+our $CHILD_COLUMN_WIDTH_MAX	= 0.7;
+our $CHILD_COLUMN_WIDTH_change	= 0.95;
 our $CHILD_COLUMN_HEIGHT_change = 0.96;
 
 # headerとfooterが先頭・末尾から許す割合
 our $HEADER_FOOTER_RATE = 0.4;
     
 # 柔軟なtableの繰り返しの検出
-our $TR_SUBSTRING_RATIO = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
-our $TABLE_TR_MIN = 3; # これ以下のtrしか持たないtableは対象外
-our $TABLE_TD_MIN = 2; # これ以下のtdしか持たないtableは対象外
+our $TR_SUBSTRING_RATIO	       = 0.5; # 繰り返しとして認識されるための同じsubstringの割合(tr要素以下)
+our $TABLE_TR_MIN	       = 3; # これ以下のtrしか持たないtableは対象外
+our $TABLE_TD_MIN	       = 2; # これ以下のtdしか持たないtableは対象外
 our $ITERATION_TABLE_RATIO_MIN = 0.30; # これ以下の長さしかないtableは対象外
 our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象外
 
@@ -61,7 +64,7 @@ our $FOOTER_STRING_EX = '(some|all)\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d
 
 # maintext用の文字列
 our $MAINTEXT_PARTICLE_TH = 0.05; # 助詞の全形態素に占める割合がこれ以上なら本文
-our $MAINTEXT_POINT_TH = 0.05;    # 句点の全形態素に占める割合がこれ以上なら本文
+our $MAINTEXT_POINT_TH	  = 0.05; # 句点の全形態素に占める割合がこれ以上なら本文
 
 # 以下のブロックはmore_blockを探さない
 our %NO_MORE_TAG = (
@@ -1374,26 +1377,28 @@ sub detect_iteration {
 	    # 例外処理
 	    if ($flag == 0) {
 		# aの後ろに同じテキストが来る場合
-		for ($k = $j; $k < $j+$i; $k++){
-		    # _a_+_~text_-:_~text_
-		    if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' &&
-		    	$k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1]) {
+		if ($i == 2) {
+		    for ($k = $j; $k < $j+$i; $k++){
+			# _a_+_~text_-:_~text_
+			if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' &&
+			    $k+$i+1 < $child_num && $tags[$k+$i+1] eq '~text' && $substrings[$k+1] eq $substrings[$k+$i+1]) {
 
-			($flag, $a_text_flag, $div_char) = $this->Get_div_char(
-			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+1]->attr('text')) : $content_list[$k+1]->attr('text'),
-			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i+1]->attr('text')):$content_list[$k+$i+1]->attr('text'),
-			    $flag, $div_char
-			    );
-		    }
-		    # ~text_:_a_+_~text_-
-		    elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
-			   $k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i]) {
+			    ($flag, $a_text_flag, $div_char) = $this->Get_div_char(
+				$this->{opt}{print_offset} ? decode('utf8', $content_list[$k+1]->attr('text')) : $content_list[$k+1]->attr('text'),
+				$this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i+1]->attr('text')):$content_list[$k+$i+1]->attr('text'),
+				$flag, $div_char
+				);
+			}
+			# ~text_:_a_+_~text_-
+			elsif ($tags[$k] eq '~text' && $k+1 < $j+$i && $tags[$k+1] eq 'a' && 
+			       $k+$i < $child_num && $tags[$k+$i] eq '~text' && $substrings[$k] eq $substrings[$k+$i]) {
 
-			($flag, $a_text_flag, $div_char) = $this->Get_div_char(
-			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k]->attr('text')) : $content_list[$k]->attr('text'),
-			    $this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i]->attr('text')):$content_list[$k+$i]->attr('text'),
-			    $flag, $div_char
-			    );
+			    ($flag, $a_text_flag, $div_char) = $this->Get_div_char(
+				$this->{opt}{print_offset} ? decode('utf8', $content_list[$k]->attr('text')) : $content_list[$k]->attr('text'),
+				$this->{opt}{print_offset} ? decode('utf8', $content_list[$k+$i]->attr('text')):$content_list[$k+$i]->attr('text'),
+				$flag, $div_char
+				);
+			}
 		    }
 		}
 		# _a_+_img_-
@@ -1416,21 +1421,25 @@ sub detect_iteration {
 		# <a>市民</a>、<a>女性</a>、<a>子供</a>たち #
                 #-------------------------------------------#
 		if ($a_text_flag) {
-		    last if $content_list[$k]->tag eq '~text' && $content_list[$k]->attr('text') ne $div_char;
+		    last if $tags[$k] eq '~text' && $content_list[$k]->attr('text') ne $div_char;
 		}
 	    }
 
 	    # 繰り返し発見
 	    if ($k - $j >= $ITERATION_TH * $i) {
-	    	my @buf_substrings = @substrings;
-		my @iteration_types = splice(@buf_substrings, $j, $i); 
+		# 普通の文中のa-textの繰り返しは許さない
+                #                    繰り返し回数が少ない                      繰り返し部分の占める割合が低い
+		if (!$a_text_flag || ($k - $j) / $i > $A_TEXT_ITERATION_MIN || scalar @tags * $A_TEXT_RATE < $k - $j) {
+		    my @buf_substrings = @substrings;
+		    my @iteration_types = splice(@buf_substrings, $j, $i); 
 
-		# $jのみ異なるものは無視
-		if (!defined $iteration_buffer->{$k.'%'.join(':', @iteration_types)}) {
-		    my %hash = (j => $j, k => $k, iteration => \@iteration_types, iteration_string => join(':', @iteration_types), div_char => $div_char);
-		    push @{$iteration_ref->[$i]}, \%hash;
+		    # $jのみ異なるものは無視
+		    if (!defined $iteration_buffer->{$k.'%'.join(':', @iteration_types)}) {
+			my %hash = (j => $j, k => $k, iteration => \@iteration_types, iteration_string => join(':', @iteration_types), div_char => $div_char);
+			push @{$iteration_ref->[$i]}, \%hash;
 
-		    $iteration_buffer->{$k.'%'.join(':', @iteration_types)} = 1;
+			$iteration_buffer->{$k.'%'.join(':', @iteration_types)} = 1;
+		    }
 		}
 	    }
 	}
