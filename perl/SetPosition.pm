@@ -10,10 +10,9 @@ use Encode::Guess;
 use DetectBlocks;
 
 
-our %thisopt = ('proxy'=>'http://proxy.kuins.net:8080/');
+# loopLimit:子プロセスが終了するまで待つ時間の最大値(秒)
+our %thisopt = ('proxy'=>'http://proxy.kuins.net:8080/', 'Google_agent'=>1, 'loopLimit'=>30, 'getCharCode'=>1);
 
-# 子プロセスが終了するまで待つ時間の最大値(秒)
-our $loopLimit = 30;
 # 子プロセスの状態を確認する間隔(秒)
 our $interval = 0.5;
 
@@ -65,6 +64,7 @@ sub execAddPosition {
     my $pid = fork();
     if ($pid > 0) {
         my $i = 0;
+	my $loopLimit = $opt->{'loopLimit'};
         while ($i < $loopLimit) {
             my $status = waitpid($pid, &POSIX::WNOHANG);
             if ($status == 0) {
@@ -97,6 +97,8 @@ sub execAddPosition {
 	unlink($cache);
 	$returnhtml = decode(guess_encoding($returnhtml, qw/ascii euc-jp shiftjis 7bit-jis utf8/), $returnhtml);
     }
+
+    return ($returnhtml, $charCode) if ($opt->{'getCharCode'});
     return $returnhtml;
 }
 
@@ -153,6 +155,7 @@ sub rel_path2abs_path {
 	    next if ($absPath == -1);
 	    my $newText = $elemText;
 	    $newText =~ s/\Q$relPath\E/$absPath/;
+	    $newText =~ s/\&amp;/\&/g;
 	    $html =~ s/\Q$elemText\E/$newText/;
 	}
     }
