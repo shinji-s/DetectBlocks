@@ -11,7 +11,7 @@ use DetectBlocks;
 
 
 # loopLimit:子プロセスが終了するまで待つ時間の最大値(秒)
-our %thisopt = ('proxy'=>'http://proxy.kuins.net:8080/', 'Google_agent'=>1, 'loopLimit'=>30, 'getCharCode'=>1);
+our %thisopt = ('proxy'=>'http://proxy.kuins.net:8080/', 'Google_agent'=>1, 'loopLimit'=>30);
 
 # 子プロセスの状態を確認する間隔(秒)
 our $interval = 0.5;
