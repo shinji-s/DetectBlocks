@@ -155,8 +155,7 @@ our %TAG_with_ALT = (area => 1, img => 1);
 our %EXCEPTIONAL_BLOCK_TAGS  = (br => 1, li => 1);
 
 # HTMLにする際に捨てる属性
-# our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string myheight_rate mywidth_rate mytop_rate myleft_rate/;
-our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string/;
+our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string mywidth_rate myheight_rate mytop_rate myleft_rate mybackgroundcolor/;
 
 our $counter_JUMAN;
 our $JUMAN_TH = 30;
@@ -1011,13 +1010,77 @@ sub check_divide_block_by_copyright {
     return 0;
 }
 
+sub ignore_a_text {
+    my ($this, $iteration_string) = @_;
+    
+    my $a_text_flag = 0;
+    # a-textがあるかをチェック
+    # _a_+_~text_-:_~text_:_br_%0/41, 
+    $iteration_string =~ s/\%\d+\/\d+//g;
+    my @iteration_strings = split(/,/, $iteration_string);
+  LOOP:
+    for (my $i = 0; $i < @iteration_strings; $i++) {
+	my $tag_string = $iteration_strings[$i];
+	
+	# aタグを含まない繰り返しは無視
+	if ($tag_string !~ /_a_/) {
+	    undef $iteration_strings[$i];
+	    next;
+	}
+
+	# print "\n",'pre ',$tag_string,"\n";
+	# print "<br>";
+	my @tags = split(/:/, $tag_string);
+	for (my $i = 0; $i < @tags; $i++) {
+	    my $i_next = $i == $#tags ? 0 : $i+1;
+	    my $checked_string = $tags[$i].':'.$tags[$i_next];
+	    if ($checked_string eq '_a_+_~text_-:_~text_') {
+		$a_text_flag = 1;
+		$tags[$i] = $tags[$i_next] = undef;
+		$i++;
+	    }
+	    elsif ($tags[$i] eq '_a_+_~text_-') {
+	    	$a_text_flag = 1;		
+	    	$tags[$i] = undef;
+	    }
+	}
+	$iteration_strings[$i] = join(':', grep(defined $_, @tags));
+	# print $a_text_flag,"\n";
+	# print "<br>";
+	# print 'pos ',$iteration_strings[$i],"\n";
+	# print "<br>";
+    }
+
+    return ($a_text_flag, \@iteration_strings);
+}
+
 sub check_link_block {
     my ($this, $elem, $depth) = @_;
 
     my $iteration_string = $elem->attr('iteration');
     # 8割を超える範囲に<a>タグを含む繰り返しあり
     if ($iteration_string =~ /_a_/) {
-	return !$elem->attr('div_char') && $iteration_string =~ /_a_\+_~text_-/ ? 0 : $elem->attr('length');
+	# a-text以外の部分でlink領域についたiterationかどうかを判断する
+	my ($a_text_flag, $iteration_strings) = $this->ignore_a_text($iteration_string);
+	$iteration_string = join(',', @$iteration_strings);
+
+	# a-textを含む場合
+	if ($a_text_flag) {
+	    my $flag = 0;
+	    foreach my $tag_string (@$iteration_strings) {
+		next if !defined $tag_string;
+		if (defined $elem->attr('div_char') &&
+		    (scalar grep($_ eq 'br', split(/_/, $tag_string))) < 2 && (scalar grep($_ eq '~text', split(/_/, $tag_string))) < 2) {
+		    return $elem->attr('length');
+		}
+	    }
+	    return 0;
+	}
+	# a-textを含まない場合
+	else {
+	    # blockタグを含む
+	    return $elem->attr('length') if scalar grep(defined $BLOCK_TAGS{$_} > 0, split(/_/, $iteration_string)) > 0;
+	}
     }
 
     my $sum = 0;
@@ -1376,8 +1439,14 @@ sub detect_iteration {
 	    }
 	    # 例外処理
 	    if ($flag == 0) {
+		# _a_+_img_-
+		if ($i == 1) {
+		    for ($k = $j; $k < $j+$i; $k++){
+			$flag = 1 if $substrings[$k] eq '_a_+_img_-' && $substrings[$k] eq $substrings[$k+$i+1];
+		    }
+		}
 		# aの後ろに同じテキストが来る場合
-		if ($i == 2) {
+		elsif ($i == 2) {
 		    for ($k = $j; $k < $j+$i; $k++){
 			# _a_+_~text_-:_~text_
 			if ($tags[$k] eq 'a' && $k+1 < $j+$i && $tags[$k+1] eq '~text' &&
@@ -1401,12 +1470,6 @@ sub detect_iteration {
 			}
 		    }
 		}
-		# _a_+_img_-
-		if ($i == 1) {
-		    for ($k = $j; $k < $j+$i; $k++){
-			$flag = 1 if $substrings[$k] eq '_a_+_img_-' && $substrings[$k] eq $substrings[$k+$i+1];
-		    }
-		}
 	    }
 
 	    next if $flag == 0;
@@ -1423,6 +1486,7 @@ sub detect_iteration {
 		if ($a_text_flag) {
 		    last if $tags[$k] eq '~text' && $content_list[$k]->attr('text') ne $div_char;
 		}
+
 	    }
 
 	    # 繰り返し発見
@@ -1430,6 +1494,7 @@ sub detect_iteration {
 		# 普通の文中のa-textの繰り返しは許さない
                 #                    繰り返し回数が少ない                      繰り返し部分の占める割合が低い
 		if (!$a_text_flag || ($k - $j) / $i > $A_TEXT_ITERATION_MIN || scalar @tags * $A_TEXT_RATE < $k - $j) {
+
 		    my @buf_substrings = @substrings;
 		    my @iteration_types = splice(@buf_substrings, $j, $i); 
 
@@ -1450,6 +1515,7 @@ sub detect_iteration {
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
 
+    # 再帰
     for my $child_elem (@content_list){
 	$this->detect_iteration($child_elem);
 	$child_elem->attr('div_char', $elem->attr('div_char')) if $elem->attr('div_char');
