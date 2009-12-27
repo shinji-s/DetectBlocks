@@ -1,3 +1,24 @@
+2009-12-27 Sunday 17:28  funayama
+
+	* perl/DetectBlocks.pm (1.99):
+	  iterationを全て獲得していたことによる悪影響を除去.
+
+2009-12-27 Sunday 17:26  funayama
+
+	* README (1.11): small chenge.
+
+2009-12-26 Saturday 20:54  shibuta
+
+	* perl/SetPosition.pm (1.9): bug fixed
+
+2009-12-26 Saturday 20:29  shibuta
+
+	* perl/SetPosition.pm (1.8): 文字コードを返すオプションを追加
+
+2009-12-23 Wednesday 22:06  funayama
+
+	* ChangeLog (1.17): updated.
+
 2009-12-23 Wednesday 22:04  funayama
 
 	* perl/DetectBlocks.pm (1.98):
