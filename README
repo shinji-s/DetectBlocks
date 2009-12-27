@@ -48,7 +48,7 @@
    - DetectSender
      CVS_RSH=ssh cvs -d reed:/share/service/cvs co NE
 
- -- index.cgi  l.24~27 を以下のように書き換える
+ -- index.cgi  以下を書き換える
    - $DetectSender_default : DetectSenderをcheckoutしたディレクトリ
    - $DetectBlocks_default : DetectBlocksをcheckoutしたディレクトリ
    - $NE_default           : NEをcheckoutしたディレクトリ
