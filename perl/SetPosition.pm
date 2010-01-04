@@ -144,7 +144,10 @@ sub rel_path2abs_path {
 
     # typeがcssとjavascriptのタグを収集
     my @elems;
-    while($html =~ /<[^<^>]*type\=.text\/(css|javascript)[^<^>]*>/ig){
+    while($html =~ /<[^<^>]*type\=.text\/(css|javascript)[^<^>]*>/ig) {
+	push(@elems, $&);
+    }
+    while ($html =~ /<[^<^>]*rel\=.stylesheet[^<^>]*>/ig) {
 	push(@elems, $&);
     }
     # hrefかsrcの値を絶対パスにして置換する
