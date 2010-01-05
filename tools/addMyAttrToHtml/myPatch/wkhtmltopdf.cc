@@ -341,8 +341,14 @@ void WKHtmlToPdf::printPage() {
 		QFile oHtml(lout);
 		oHtml.open(QIODevice::WriteOnly);
 //  oHtml.write(pages[0]->mainFrame()->toHtml().toUtf8().constData());
+		if(writeURL) {
+			QString yyy(pages[0]->mainFrame()->url().toString());
+			oHtml.write(codec->fromUnicode(yyy).constData());
+			oHtml.write("\n");
+		}
 		oHtml.write(codec->fromUnicode(xxx).constData());
 		oHtml.close();
+//		fprintf(stderr, "***%s***\n\n", pages[0]->mainFrame()->url().toString().toUtf8().constData());
 //*********************
 
 #else

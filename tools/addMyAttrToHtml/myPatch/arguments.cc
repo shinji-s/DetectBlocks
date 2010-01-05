@@ -419,6 +419,7 @@ void WKHtmlToPdf::initArgs() {
 	addarg("utf8",'u',"Output charset is utf-8", new AHConstSetter<bool>(utf8,true,false));
 	addarg("w-width",0,"Set window width size", new AHIntSetter(window_width,"window_width",1280));
 	addarg("w-height",0,"Set window height size", new AHIntSetter(window_height,"window_height",800));
+	addarg("writeURL",0,"Write URL", new AHConstSetter<bool>(writeURL,true,false));
 //**********************************
 }
 

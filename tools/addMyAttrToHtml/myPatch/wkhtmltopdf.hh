@@ -62,6 +62,7 @@ public:
 	bool utf8;
 	int window_width;
 	int window_height;
+	bool writeURL;
 //****************************************************
 	QNetworkProxy::ProxyType proxyType; //Type of proxy to use
 	int proxyPort; //The port of the proxy to use
