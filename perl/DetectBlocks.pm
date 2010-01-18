@@ -160,7 +160,7 @@ our @DECO_ATTRS = qw/bgcolor style id subtree_string leaf_string mywidth_rate my
 our $counter_JUMAN;
 our $JUMAN_TH = 30;
 
-sub new{
+sub new {
     my (undef, $opt) = @_;
 
     my $this = {};
@@ -808,6 +808,13 @@ sub attach_attr_blocktype {
     }
 
     my @content_list = $elem->content_list;
+    # 全てのタグにblock名を付与(★仮)
+    if ($this->{opt}{add_blockname2alltag} && scalar  @content_list > 0) {
+	foreach my $child_elem (@content_list) {
+	    next if $this->is_stop_elem($child_elem);
+	    $this->attach_attr_blocktype($child_elem, $myblocktype, $attrname, $num);
+	}
+    }
 }
 
 sub check_form {
@@ -1013,7 +1020,7 @@ sub check_divide_block_by_copyright {
 sub ignore_a_text {
     my ($this, $iteration_string) = @_;
     
-    my $a_text_flag = 0;
+    my ($a_text_text_flag, $a_text_flag) = (0, 0);
     # a-textがあるかをチェック
     # _a_+_~text_-:_~text_:_br_%0/41, 
     $iteration_string =~ s/\%\d+\/\d+//g;
@@ -1029,12 +1036,12 @@ sub ignore_a_text {
 	}
 
 	# print "\n",'pre ',$tag_string,"\n";
-	# print "<br>";
 	my @tags = split(/:/, $tag_string);
 	for (my $i = 0; $i < @tags; $i++) {
 	    my $i_next = $i == $#tags ? 0 : $i+1;
 	    my $checked_string = $tags[$i].':'.$tags[$i_next];
 	    if ($checked_string eq '_a_+_~text_-:_~text_') {
+		$a_text_text_flag = 1;
 		$a_text_flag = 1;
 		$tags[$i] = $tags[$i_next] = undef;
 		$i++;
@@ -1046,12 +1053,10 @@ sub ignore_a_text {
 	}
 	$iteration_strings[$i] = join(':', grep(defined $_, @tags));
 	# print $a_text_flag,"\n";
-	# print "<br>";
 	# print 'pos ',$iteration_strings[$i],"\n";
-	# print "<br>";
     }
 
-    return ($a_text_flag, \@iteration_strings);
+    return ($a_text_text_flag, $a_text_flag, \@iteration_strings);
 }
 
 sub check_link_block {
@@ -1061,7 +1066,7 @@ sub check_link_block {
     # 8割を超える範囲に<a>タグを含む繰り返しあり
     if ($iteration_string =~ /_a_/) {
 	# a-text以外の部分でlink領域についたiterationかどうかを判断する
-	my ($a_text_flag, $iteration_strings) = $this->ignore_a_text($iteration_string);
+	my ($a_text_text_flag, $a_text_flag, $iteration_strings) = $this->ignore_a_text($iteration_string);
 	$iteration_string = join(',', @$iteration_strings);
 
 	# a-textを含む場合
