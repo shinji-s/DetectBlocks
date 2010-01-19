@@ -1,3 +1,45 @@
+2010-01-19 Tuesday 20:17  funayama
+
+	* README (1.12): small change.
+
+2010-01-19 Tuesday 20:15  funayama
+
+	* perl/BlogCheck.pm (1.6), perl/DetectBlocks.pm (1.102),
+	  script/test.pl (1.31): juman¤ò»È¤ï¤Ê¤¤¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã.
+
+2010-01-19 Tuesday 16:58  funayama
+
+	* perl/DetectBlocks.pm (1.101): Àµµ¬É½¸½¤Ëo¥ª¥×¥·¥ç¥ó¤ò¤Ä¤±¤¿.
+
+2010-01-18 Monday 22:41  funayama
+
+	* perl/DetectBlocks.pm (1.100), script/test.pl (1.30):
+	  add_blockname2alltag¥ª¥×¥·¥ç¥ó¤òÉü³è.
+
+2010-01-05 Tuesday 18:38  funayama
+
+	* VERSION (1.1): VERSION´ÉÍı³«»Ï.
+
+2010-01-05 Tuesday 14:36  shibuta
+
+	* tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed (1.7):
+	  url¤òÄÉµ­¤¹¤ë¥ª¥×¥·¥ç¥óÄÉ²Ã
+
+2010-01-05 Tuesday 14:25  shibuta
+
+	* tools/addMyAttrToHtml/: myPatch/arguments.cc (1.4),
+	  myPatch/wkhtmltopdf.cc (1.6), myPatch/wkhtmltopdf.hh (1.3),
+	  staticExe/wkhtmltopdf (1.8):
+	  urlã‚’æ›¸ãè¾¼ã‚€ã‚ªãƒ—ã‚·ãƒ§ãƒ³è¿½åŠ 
+
+2010-01-04 Monday 19:26  shibuta
+
+	* perl/SetPosition.pm (1.10): ¤Á¤ç¤Ã¤ÈÊÑ¹¹
+
+2009-12-27 Sunday 17:30  funayama
+
+	* ChangeLog (1.18): updated.
+
 2009-12-27 Sunday 17:28  funayama
 
 	* perl/DetectBlocks.pm (1.99):
