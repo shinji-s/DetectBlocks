@@ -674,13 +674,13 @@ sub check_more_block_string {
 
     my ($profile, $address);
     # profile
-    if (my @matches = ($text =~ /($PROFILE_STRING)/g)) {
+    if (my @matches = ($text =~ /($PROFILE_STRING)/go)) {
 	$profile->{length} += $elem->attr('length');
 	$profile->{num} += scalar @matches;
     }
 
     # address
-    if (my @matches = ($text =~ /($ADDRESS_STRING)/g)) {
+    if (my @matches = ($text =~ /($ADDRESS_STRING)/go)) {
     	$address->{length} += $elem->attr('length');
     	$address->{num} += scalar @matches;
     }
@@ -877,7 +877,7 @@ sub check_footer {
     if (!$ng_flag && $this->{alltextlen} * (1 - $elem->attr('ratio_start')) < $FOOTER_START_TH &&
 	$this->{alltextlen} * (1 - $elem->attr('ratio_end')) < $FOOTER_END_TH) {
 	foreach my $text (@$texts) {
-	    if ($text =~ /$FOOTER_STRING/i) {
+	    if ($text =~ /$FOOTER_STRING/io){
 		$footer_flag = 1;
 		last;
 	    }
@@ -886,7 +886,7 @@ sub check_footer {
     # all right researved は無条件でOK
     else {
 	foreach my $text (@$texts) {
-	    if ($text =~ /$FOOTER_STRING_EX/i) {
+	    if ($text =~ /$FOOTER_STRING_EX/io) {
 		$footer_flag = 1;
 		last;
 	    }
@@ -1535,7 +1535,7 @@ sub Get_div_char {
     if ($text_buf_a eq $text_buf_b) {
 	$div_char = $text_buf_a;
 	# text部分の文字列を制限
-	if ($div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/) {
+	if ($div_char =~ /^\s*(?:$ITERATION_DIV_CHAR)+\s*$/o) {
 	    $flag = 1;
 	    $a_text_flag = 1;
 	}
