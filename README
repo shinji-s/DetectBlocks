@@ -18,6 +18,7 @@
    * -juman jumanpath      : jumanのpathを指定(例 : -juman /home/funayama/tool/bin/juman)
 			   : 指定しない場合はデフォルトのjumanを使う			     
                            : 京大の計算機環境で動かす際には'kyoto_u'とすることで32/64bitの判定を自動的に行う
+   * -without_juman        : jumanを使わない(高速、精度低?)
 
 
 - とりうる領域名
