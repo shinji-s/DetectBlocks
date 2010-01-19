@@ -9,7 +9,6 @@ use ModifiedTreeBuilder;
 # use Data::Dumper;
 use Encode;
 use Dumpvalue;
-use Juman;
 use Unicode::Japanese;
 
 use Encode;
@@ -89,6 +88,9 @@ our $PROFILE_STRING = '通称|管理人|氏名|名前|author|ニックネーム|
 our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}';
 our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
+# jumanを使わない場合の助詞、句点、判定詞
+our $josi_string = '[。、がをにへとやだ]';
+
 # 以下のtagは解析対象にしない
 our %TAG_IGNORED = (
     script => 1,
@@ -166,19 +168,22 @@ sub new {
     my $this = {};
     $this->{opt} = $opt;
 
-    if ($this->{opt}{juman}) {
-	# 京大の環境
-	if ($this->{opt}{juman} eq 'kyoto_u') {
-	    my $machine =`uname -m`; # 32/64bit判定
-	    $this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+    if (!$this->{opt}{without_juman}) {
+	require Juman;
+	if ($this->{opt}{juman}) {
+	    # 京大の環境
+	    if ($this->{opt}{juman} eq 'kyoto_u') {
+		my $machine =`uname -m`; # 32/64bit判定
+		$this->{JUMAN_COMMAND} = $machine =~ /x86_64/ ? '/share/usr-x86_64/bin/juman' : '/share/usr/bin/juman';
+	    }
+	    # jumanのpathを指定した場合
+	    else {
+		$this->{JUMAN_COMMAND} = $this->{opt}{juman};
+	    }
 	}
-	# jumanのpathを指定した場合
-	else {
-	    $this->{JUMAN_COMMAND} = $this->{opt}{juman};
-	}
+	$JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
+	&ResetJUMAN($this, {first => 1});
     }
-    $JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
-    &ResetJUMAN($this, {first => 1});
 
     bless $this;
 }
@@ -851,10 +856,16 @@ sub check_header {
 	    my @img_elems = $elem->find('img');
 	    if (@img_elems > 0) {
 		foreach my $img_elem (grep($_->attr('length') >= $ALT4HEADER_TH, @img_elems)) {
-		    # 末尾の形態素条件
-		    # $this->ResetJUMAN;
- 		    my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
-		    return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
+		    if ($this->{opt}{without_juman}) {
+			my $alt_text = $img_elem->attr('alt');
+			return 1 if $alt_text =~ /$josi_string$/o;
+		    }
+		    else {
+			# 末尾の形態素条件
+			# $this->ResetJUMAN if !$this->{opt}{without_juman};
+			my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
+			return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
+		    }
 		}
 	    }
 	}
@@ -920,18 +931,25 @@ sub check_maintext {
     return 1 if($elem->attr('length') > $MAINTEXT_MIN);
 
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
-    # $this->ResetJUMAN;
+    # $this->ResetJUMAN if !$this->{opt}{without_juman};
     foreach my $text (@$texts) {
 	$text = Unicode::Japanese->new($text)->h2z->getu();
 	$text =~ s/。/。%%%/g;
 	foreach my $text_splitted (split('%%%', $text)) {
-	    # $this->ResetJUMAN;
-	    my $result = $this->{juman}->analysis($text_splitted);
-	    foreach my $mrph ($result->mrph) {
-		$total_mrph_num++;
-		$particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
-		my $bunrui = $mrph->bunrui;
-		$punc_mark_num++ if $bunrui eq '読点' || $bunrui eq '句点';
+	    if ($this->{opt}{without_juman}) {
+		my @buf = $text_splitted =~ /$josi_string/go;
+		$particle_num   += scalar @buf;
+		$total_mrph_num += length($text_splitted);
+	    }
+	    else {
+		# $this->ResetJUMAN if !$this->{opt}{without_juman};
+		my $result = $this->{juman}->analysis($text_splitted);
+		foreach my $mrph ($result->mrph) {
+		    $total_mrph_num++;
+		    $particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
+		    my $bunrui = $mrph->bunrui;
+		    $punc_mark_num++ if $bunrui eq '読点' || $bunrui eq '句点';
+		}
 	    }
 	}
     }

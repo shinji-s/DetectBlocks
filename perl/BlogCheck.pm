@@ -16,7 +16,7 @@ our $BLOG_URL = 'blog|diary';
 # our $BLOG_URL_S = 'ameblo|/mt/|cocolog|fc2';
 
 # ブログ特有の語
-our $BLOG_STRING = 'トラックバック|コメント|comment|プロフィール|trackback|ブログ|blog|投稿者|posted by';
+our $BLOG_STRING = 'trackback|トラックバック|comment|コメント|プロフィール|profile|ブログ|blog|投稿者|posted by';
 
 # ブログと判定するブログ特有の語の最小数
 our $BLOG_STRING_NUM = 10;
