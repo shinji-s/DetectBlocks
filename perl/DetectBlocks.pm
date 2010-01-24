@@ -58,7 +58,7 @@ our $ITERATION_TABLE_RATIO_MAX = 0.95; # これ以上の長さのtableは対象�
 our $MAINTEXT_MIN = 200;
 
 # FOOTER用の文字列
-our $FOOTER_STRING = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|copy\s*right|\(c\)|（(c|Ｃ)）|著作権|(all|some)\s*rights\s*reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
+our $FOOTER_STRING    = '住所|所在地|郵便番号|電話番号|著作権|問[い]?合[わ]?せ|利用案内|tel|.+[都道府県].+[市区町村]|(06|03)\-?\d{4}\-?\d{4}|\d{3}\-?\d{3}\-?\d{4}|mail|copy\s*right|\(c\)|（(c|Ｃ)）|著作権|(all|some)\s*rights\s*reserved|免責事項|プライバシー.?ポリシー|home|ホーム(?:ページ|[^\p{Kana}]|$)';
 our $FOOTER_STRING_EX = '(some|all)\s?rights\s?reserved|copyright\s.*(?:\(c\)|\d{4})'; # Copyright
 
 # maintext用の文字列
@@ -89,7 +89,7 @@ our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:
 our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
 # jumanを使わない場合の助詞、句点、判定詞
-our $josi_string = '[。、がをにへとやだ]';
+our $josi_string = '[。、がをにへとやだで]';
 
 # 以下のtagは解析対象にしない
 our %TAG_IGNORED = (
@@ -167,6 +167,8 @@ sub new {
 
     my $this = {};
     $this->{opt} = $opt;
+    
+    # $this->{opt}{without_juman} = 1;
 
     if (!$this->{opt}{without_juman}) {
 	require Juman;
@@ -730,21 +732,33 @@ sub make_new_elem {
     my ($this, $elem, $start, $end) = @_;
     
     # 仮ノードに必要な情報を獲得
-    my $length = 0;
+    my $length		       = 0;
     my ($subtree_string, $leaf_string);
-    my $ratio_start = $this->get_new_node_ratio($elem, $start, $end);
-    my $ratio_end = $this->get_new_node_ratio($elem, $end, $start);
+    my $ratio_start	       = $this->get_new_node_ratio($elem, $start, $end);
+    my $ratio_end	       = $this->get_new_node_ratio($elem, $end, $start);
     my ($iteration, $div_char) = $this->get_new_node_iteration($elem, $start, $end);
+    my ($mytop, $myleft, $mywidth, $myheight);
+    if ($this->{opt}{pos_info}) {
+	($mytop, $myleft)     = ($elem->attr('mytop'), $elem->attr('myleft'));
+	($myheight, $mywidth) = ($elem->attr('myheight'), $elem->attr('mywidth'));
+    }
 
     foreach my $tmp (($elem->content_list)[$start..$end]) {
 	$length += $tmp->attr('length');
 	$subtree_string .= $tmp->attr('subtree_string');
 	$leaf_string .= $tmp->attr('leaf_string');
     }
-    my $new_elem = new HTML::Element('div', 'length' => $length,
-				     'subtree_string' => $subtree_string, 'leaf_string' => $leaf_string,
-				     'ratio_start' => $ratio_start, 'ratio_end' => $ratio_end,
-				     'iteration' => $iteration, 'div_char' => $div_char);
+    my $new_elem = new HTML::Element(
+	'div',
+	'length'	 => $length,
+	'subtree_string' => $subtree_string,
+	'leaf_string'	 => $leaf_string,
+	'ratio_start'	 => $ratio_start,
+	'ratio_end'	 => $ratio_end,
+	'iteration'	 => $iteration,
+	'div_char'	 => $div_char,
+	'mytop'          => $mytop,
+	);
     
     # cloneを作成(こうしないと$elem->content_listのpush_contentした部分が消失)
     my $clone_elem = $elem->clone;
