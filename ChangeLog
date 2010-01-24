@@ -1,3 +1,12 @@
+2010-01-24 Sunday 21:46  funayama
+
+	* perl/DetectBlocks.pm (1.103):
+	  make_new_nodeする際に位置情報も引き継ぐように修正.
+
+2010-01-19 Tuesday 20:17  funayama
+
+	* ChangeLog (1.19): updated.
+
 2010-01-19 Tuesday 20:17  funayama
 
 	* README (1.12): small change.
