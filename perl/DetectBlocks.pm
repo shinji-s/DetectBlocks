@@ -878,7 +878,9 @@ sub check_header {
 			# 末尾の形態素条件
 			# $this->ResetJUMAN if !$this->{opt}{without_juman};
 			my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
-			return 1 if $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
+			return 1 if
+			    ref($last_mrph) eq  'Juman::Morpheme' &&
+			    $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
 		    }
 		}
 	    }
