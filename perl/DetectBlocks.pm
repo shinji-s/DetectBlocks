@@ -877,7 +877,7 @@ sub check_header {
 		    else {
 			# 末尾の形態素条件
 			# $this->ResetJUMAN if !$this->{opt}{without_juman};
-			my $last_mrph = ($this->{juman}->analysis($img_elem->attr('alt'))->mrph)[-1];
+			my $last_mrph = ($this->{juman}->analysis(&han2zen($img_elem->attr('alt')))->mrph)[-1];
 			return 1 if
 			    ref($last_mrph) eq  'Juman::Morpheme' &&
 			    $last_mrph->bunrui !~ /^(句点|読点)$/ && $last_mrph->hinsi !~ /^(助詞|助動詞|判定詞)$/;
@@ -959,7 +959,7 @@ sub check_maintext {
 	    }
 	    else {
 		# $this->ResetJUMAN if !$this->{opt}{without_juman};
-		my $result = $this->{juman}->analysis($text_splitted);
+		my $result = $this->{juman}->analysis(&han2zen($text_splitted));
 		foreach my $mrph ($result->mrph) {
 		    $total_mrph_num++;
 		    $particle_num++ if $mrph->hinsi eq '助詞' && $mrph->midasi ne "の";
@@ -1867,6 +1867,10 @@ sub addJavascript {
     return 1;
 }
 
+sub han2zen {
+    my ($text) = @_;
+    return Unicode::Japanese->new($text)->h2z->getu();
+}
 
 
 1;
