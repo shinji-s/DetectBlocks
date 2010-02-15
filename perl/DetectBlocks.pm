@@ -34,7 +34,7 @@ our $IMG_RATIO_TH  = 0.80; # これより大きければimg (葉だけ数える)
 
 our $ITERATION_BLOCK_SIZE = 8; # 繰り返しのかたまりの最大
 our $ITERATION_TH	  = 2; # 繰り返し回数がこれ以上
-our $ITERATION_DIV_CHAR	  = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}'; # a-textの繰り返しのtextとなりうる文字列
+our $ITERATION_DIV_CHAR	  = '\||｜|│|\>|＞|\<|＜|\/|\-|ー|—|−|\s|\p{InCJKSymbolsAndPunctuation}|\p{S}|(?:\]\s*\[)'; # a-textの繰り返しのtextとなりうる文字列
 
 our $A_TEXT_ITERATION_MIN = 3;   # a-textで必ず繰り返しとして検出する最低数
 our $A_TEXT_RATE	  = 0.5; # a-text部分のblock割合がこれ以下ならiterationにしない
