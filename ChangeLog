@@ -1,3 +1,30 @@
+2010-02-15 Monday 17:31  funayama
+
+	* perl/DetectBlocks.pm (1.107):
+	  a-textの繰り返しのtext部分に許す文字列に ][ を追加.
+
+2010-02-03 Wednesday 17:56  funayama
+
+	* sample/icc-url-orig-redirect.txt (1.1): added.
+
+2010-02-02 Tuesday 15:16  funayama
+
+	* perl/DetectBlocks.pm (1.106):
+	  add_blockname2alltagオプション時にselectタグなど特定のタグに領域名が付与されないbugを修正.
+
+2010-01-27 Wednesday 18:07  funayama
+
+	* perl/DetectBlocks.pm (1.105):
+	  Jumanで解析する前に全角に変換するように変更.
+
+2010-01-25 Monday 21:34  funayama
+
+	* perl/DetectBlocks.pm (1.104): bug fixed.
+
+2010-01-24 Sunday 21:49  funayama
+
+	* ChangeLog (1.20): updated.
+
 2010-01-24 Sunday 21:46  funayama
 
 	* perl/DetectBlocks.pm (1.103):
