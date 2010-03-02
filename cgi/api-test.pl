@@ -18,7 +18,7 @@ binmode STDOUT, ':encoding(utf8)';
 binmode STDIN, ':encoding(utf8)';
 
 my %opt;
-&GetOptions(\%opt, 'post', 'url=s');
+&GetOptions(\%opt, 'post', 'url=s', 'feature');
 
 my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index.cgi';
 
@@ -42,7 +42,14 @@ else {
     my $inputurl = $opt{url};
     $inputurl = uri_escape_utf8($inputurl);
 
-    my $req_url = "$base_url?format=xml&inputurl=$inputurl";
+    # my $req_url = "$base_url?format=xml&inputurl=$inputurl";
+    my $req_url;
+    if ($opt{feature}) {
+	$req_url = "$base_url?format=xml&inputurl=$inputurl&feature=1";
+    }
+    else {
+	$req_url = "$base_url?format=xml&inputurl=$inputurl";
+    }
 
     # API問い合わせ
     $req = HTTP::Request->new(GET => $req_url);
@@ -59,12 +66,19 @@ my $data = XMLin(decode('utf8', $response->content), ForceArray => 1);
 if (ref($data->{information_sender}) eq 'ARRAY') {
     print "\n--- Information Sender ---\n";
     foreach my $information_sender (@{$data->{information_sender}}) {
-	# 領域名
-	foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
-	    print $blocktype;
-	}
 	# 抽出文字列
 	print ' ',$information_sender->{string}[0],"\n";
+	if ($opt{feature}) {
+	    foreach my $feature (@{$information_sender->{features}[0]{feature}}) {
+		print "\t$feature\n";
+	    }
+	}
+	else {
+	    # 領域名
+	    foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
+		print $blocktype;
+	    }
+	}
     }
 }
 
