@@ -1,3 +1,11 @@
+2010-03-02 Tuesday 20:11  funayama
+
+	* cgi/api-test.pl (1.5): featureを返すオプション(-feature)を追加.
+
+2010-02-15 Monday 17:32  funayama
+
+	* ChangeLog (1.21): updated.
+
 2010-02-15 Monday 17:31  funayama
 
 	* perl/DetectBlocks.pm (1.107):
