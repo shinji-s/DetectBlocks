@@ -199,12 +199,12 @@ sub maketree{
     if (!$this->{opt}{print_offset}) {
 	$htmltext =~ s/©/\(c\)/g ;
     }
-    my $tree = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
+    $this->{tree} = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
     # my $tree = ModifiedTreeBuilder->new;
 
-    $tree->p_strict(1); # タグの閉じ忘れを補完する
-    $tree->parse($htmltext);
-    $tree->eof;
+    $this->{tree}->p_strict(1); # タグの閉じ忘れを補完する
+    $this->{tree}->parse($htmltext);
+    $this->{tree}->eof;
 
     #url処理
     if (defined $url) {
@@ -216,12 +216,10 @@ sub maketree{
 	$this->{url_layers_ref} = &url2layers($this->{url}); # urlを'/'で区切る
     }
 
-    if (!$tree->find("base") && defined($url)){
+    if (!$this->{tree}->find("base") && defined($url)){
         my $new_elem = new HTML::Element('base', 'href' => $url."/");
-        $tree->find("head")->unshift_content($new_elem);
+        $this->{tree}->find("head")->unshift_content($new_elem);
     }
-
-    $this->{tree} = $tree;
 }
 
 sub detectblocks{
@@ -540,15 +538,15 @@ sub detect_block {
     else {
     	my $block_start;
 
-	my $array_size = scalar @content_list;
+    	my $array_size = scalar @content_list;
     	for (my $i = 0;$i < $array_size; $i++) {
     	    my $child_elem = $content_list[$i];
-	    my $ctag = $child_elem->tag;
+    	    my $ctag = $child_elem->tag;
     	    # textが50%以上のblock or block要素
     	    if (($this->{alltextlen} && !$this->get_ok_flag($child_elem)) ||
     		(defined $BLOCK_TAGS{lc($ctag)} && !$EXCEPTIONAL_BLOCK_TAGS{lc($ctag)})) {
     		# インライン要素の末尾を検出
-		if (defined $block_start) {
+    		if (defined $block_start) {
     		    $this->detect_block_region($elem, $block_start, $i-1);
     		    undef $block_start;
     		}
@@ -765,6 +763,7 @@ sub make_new_elem {
     foreach my $tmp (($clone_elem->content_list)[$start..$end]) {
 	$new_elem->push_content($tmp);
     }
+    $clone_elem->delete;
 	
     return $new_elem;
 }
@@ -875,7 +874,7 @@ sub check_header {
 		    }
 		    else {
 			# 末尾の形態素条件
-			# $this->ResetJUMAN if !$this->{opt}{without_juman};
+			# $this->ResetJUMAN;
 			my $last_mrph = ($this->{juman}->analysis(&han2zen($img_elem->attr('alt')))->mrph)[-1];
 			return 1 if
 			    ref($last_mrph) eq  'Juman::Morpheme' &&
@@ -927,7 +926,7 @@ sub ResetJUMAN {
     my ($this, $option) = @_;
     
     $counter_JUMAN++;
-    if ($counter_JUMAN > $JUMAN_TH || $option->{first}) {
+    if (($counter_JUMAN > $JUMAN_TH || $option->{first}) && !$this->{opt}{without_juman}) {
 	# $this->{opt}{juman}を指定した場合
 	if ($this->{JUMAN_COMMAND}) {
 	    $this->{juman} = new Juman(-Command => $this->{JUMAN_COMMAND});
@@ -946,7 +945,7 @@ sub check_maintext {
     return 1 if($elem->attr('length') > $MAINTEXT_MIN);
 
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
-    # $this->ResetJUMAN if !$this->{opt}{without_juman};
+    # $this->ResetJUMAN;
     foreach my $text (@$texts) {
 	$text = Unicode::Japanese->new($text)->h2z->getu();
 	$text =~ s/。/。%%%/g;
@@ -957,7 +956,7 @@ sub check_maintext {
 		$total_mrph_num += length($text_splitted);
 	    }
 	    else {
-		# $this->ResetJUMAN if !$this->{opt}{without_juman};
+		# $this->ResetJUMAN;
 		my $result = $this->{juman}->analysis(&han2zen($text_splitted));
 		foreach my $mrph ($result->mrph) {
 		    $total_mrph_num++;
@@ -1763,7 +1762,7 @@ sub Rel2Abs {
     my ($this, $link) = @_;
 
     # もともと絶対リンク
-    return $link if $link =~ /^http\:\/\//;
+    return $link if $link =~ /^https?\:\/\//;
 
     $link =~ s/^\.\///; # ./bb.html -> bb.html
 

@@ -14,7 +14,6 @@
 
 use utf8;
 use strict;
-use RepeatCheck;
 use DetectBlocks;
 use Encode;
 use Encode::Guess;
@@ -111,3 +110,6 @@ else {
     $DetectBlocks->printtree;
     print '=' x 50, "\n";
 }
+
+# treeをメモリ上から消去
+$DetectBlocks->{tree}->delete;
