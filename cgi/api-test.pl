@@ -21,6 +21,7 @@ my %opt;
 &GetOptions(\%opt, 'post', 'url=s', 'feature');
 
 my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index.cgi';
+# my $base_url = 'http://orchid.kuee.kyoto-u.ac.jp/ISA/index_dev.cgi';
 
 $opt{url} = 'http://100mangoku.net/' unless $opt{url};
 
@@ -31,8 +32,9 @@ my $req;
 # POST
 if ($opt{post}) {
     my $html = &get_html;
+    my $header = ['FEATURE' => 1] if $opt{feature};
 
-    $req = HTTP::Request->new(POST => $base_url);
+    $req = HTTP::Request->new(POST => $base_url, $header);
     $req->content(encode('utf8', $html));
 }
 
@@ -67,16 +69,16 @@ if (ref($data->{information_sender}) eq 'ARRAY') {
     print "\n--- Information Sender ---\n";
     foreach my $information_sender (@{$data->{information_sender}}) {
 	# 抽出文字列
+	if (!$opt{feature}) {
+	    # 領域名
+	    foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
+		print $blocktype;
+	    }
+	}
 	print ' ',$information_sender->{string}[0],"\n";
 	if ($opt{feature}) {
 	    foreach my $feature (@{$information_sender->{features}[0]{feature}}) {
 		print "\t$feature\n";
-	    }
-	}
-	else {
-	    # 領域名
-	    foreach my $blocktype (@{$information_sender->{blocktypes}[0]{blocktype}}) {
-		print $blocktype;
 	    }
 	}
     }

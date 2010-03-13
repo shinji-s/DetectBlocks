@@ -18,8 +18,10 @@ my $pid = $$;
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime(time);
 my $mmddhhmmJ = sprintf("%02d%02d-%02d%02d", $mon +1, $mday, $hour, $min);
 
+# CGIを設置したディレクトリ
+my $CGI_DIR = '/home/funayama/public_html/ISA'; # 自分の環境にあわせて変更
 # スタイルシートのパス
-my $CSS = './style.css';
+my $CSS = $CGI_DIR.'/style.css';
 
 my ($api_method);
 my ($DetectBlocks_default, $DetectSender_default, $NE_default, $Utils_default, $EBMT_default);
@@ -64,13 +66,14 @@ use Utils;
 use ReadConf;
 
 # 表示に必要なデータ
-my $ISANS = $DetectBlocks_ROOT.'/sample/siteop-20080702.dat'; # 発信者の正解データ
+my $ISANS = $DetectBlocks_ROOT.'/sample/091212_siteop_plus.dat'; # 発信者の正解データ
 my $ORIG_URL_LIST = $DetectBlocks_ROOT.'/sample/icc-url.txt'; # 元URLリストのパス
 
 $| = 1;
 
 # 領域抽出のoption
 my %blockopt = (get_more_block => 1, add_class2html => 1, blogcheck => 1, juman => 'kyoto_u'); # juman : 京大の環境
+$blockopt{pos_info} = 1;
 # 発信者解析のoption
 my %senderopt = (evaluate => 1, ExtractCN => 1, add_class2html => 1, get_more_block => 1, debug2file => *DEBUG2FILE, no_dupl => 1);
 # $senderopt{debug} = 1;
@@ -79,6 +82,7 @@ my %senderopt = (evaluate => 1, ExtractCN => 1, add_class2html => 1, get_more_bl
 my ($url, $topic, $pre_topic, $docno, $docno_num);
 my ($input_type, $ne_type, $Trans_flag, $DetectSender_flag);
 my ($format);
+my ($feature_flag);
 &get_param;
 
 # inputurlに引数が入る場合用
@@ -113,7 +117,8 @@ my $ans_ref;
 my ($FH, $log_file);
 unless ($format) {
     $FH = $senderopt{debug2file};
-    $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
+    # $log_file = './log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
+    $log_file = $CGI_DIR.'/log/debug_'.$mmddhhmmJ.'_'.$pid.'.dat';
     open $FH, "> $log_file" or die;
 }
 
@@ -130,7 +135,7 @@ my ($tree_orig, $title_text);
 if ($analysis_flag) {
     $DetectBlocks = new DetectBlocks(\%blockopt);
     $BlogCheck = new BlogCheck($DetectBlocks, {dic_path => $DetectBlocks_ROOT.'/dic/blog_url_strings.dic'});
-    $DetectSender = new DetectSender(\%senderopt, $config) if $DetectSender_flag;
+    $DetectSender = new DetectSender(\%senderopt, $config, {DetectBlocks => $DetectBlocks}) if $DetectSender_flag;
 
     # HTMLソースを取得
     if ($url) {
@@ -147,9 +152,11 @@ if ($analysis_flag) {
     # キャッシュ
     elsif ($topic && $docno) {
 	# 解析対象ページをpush
-	$input_string = &read_string_from_file("$DetectBlocks_ROOT/sample/htmls/$topic/$docno");
+	$input_string = &read_string_from_file("$DetectBlocks_ROOT/sample_pos_css/htmls/$topic/$docno");
 	$url_orig = &read_orig_url($topic, $docno);
 	push @urls, {type => 'orig', url => $url_orig, filepath => $ARGV[0], input_string => $input_string};
+	# $DetectSender->{topic} = $topic;
+	# $DetectSender->{docid} = $docno_num;
 
 	# 解析対象ページ以外をpush
 	if ($senderopt{robot_name}) {
@@ -171,6 +178,7 @@ if ($analysis_flag) {
     }
 
     # 各URLごとに候補文を抽出
+    my $analyze_page_flag = 1;
     foreach my $url_ref (@urls) {
 	print $FH '>> ', $url_ref->{url},"\n" unless $format;
 
@@ -196,8 +204,15 @@ if ($analysis_flag) {
 
 	next if !$DetectSender_flag;
 
+	if (ref($DetectBlocks->{url_layers_ref}) eq 'ARRAY') {
+	    $url_ref->{url_info}{depth} = scalar @{$DetectBlocks->{url_layers_ref}};
+	}
+	if ($analyze_page_flag) {
+	    $url_ref->{url_info}{analyze_page_flag} = 1;
+	    $analyze_page_flag = 0;
+	}
 	# 発信者解析を行う
-	$DetectSender->DetectSender($tree, $url_ref->{url}, $DetectBlocks->{alltextlen});
+	$DetectSender->DetectSender($tree, $url_ref, $DetectBlocks->{alltextlen});
 
 	# Dumpvalue->new->dumpValue($DetectSender);
     }
@@ -218,6 +233,17 @@ if ($analysis_flag) {
 	print $FH "--\n* Filtering and Select Candidates\n" unless $format;
 	$DetectSender->SelectCandidates;
 	
+	if ($feature_flag) {
+	    $senderopt{feature_K} = 1;
+
+	    use ModelsK;
+	    my $ModelsK = new ModelsK($DetectSender, \%senderopt, $config);
+	    $ModelsK->{DetectSender} = $DetectSender;
+
+	    $ModelsK->Get_Feature_K;
+	    exit;
+	}
+
 	unless ($format) {
 	    # 発信者を表示
 	    print qq(<span style="font-size:10pt;">発信者候補 : </span><select>\n);
@@ -347,7 +373,8 @@ sub output_log {
     my $today = `date +%y%m%d`;
     chomp($today);
 
-    open  F, ">> ./url_log/url_".$today.'.log' or die;
+    # open  F, ">> ./url_log/url_".$today.'.log' or die;
+    open  F, ">> $CGI_DIR/url_log/url_".$today.'.log' or die;
     print F '-' x 100,"\n";
     print F "DATE: $date";
     print F "PID: $pid\n";
@@ -450,7 +477,7 @@ END_OF_HTML
 }
 
 sub print_url_log {
-    opendir(DIR, "./url_log");
+    opendir(DIR, "$CGI_DIR/url_log");
     my @url_logs = readdir(DIR);
     closedir(DIR);
     
@@ -472,7 +499,9 @@ sub print_url_log {
 	    }
 	    print qq(</li>\n);
 	}
+	print qq(</ul>\n);
     }
+    print qq(</ul>\n);
 
 }
 
@@ -710,22 +739,24 @@ sub print_correct_sender {
 sub get_param {
     # POST
     if ($api_method eq 'POST') {
-	$format = 'xml';
-	$ne_type = 'two_stage_NE';
+	$format		   = 'xml';
+	$ne_type	   = 'two_stage_NE';
 	$DetectSender_flag = 1;
+	$feature_flag	   = 1 if $ENV{HTTP_FEATURE};
 
 	print "Content-type: text/xml\n\n";
     }
     # GET
     else {
-	$url = $cgi->param('inputurl');
-	$topic = $cgi->param('topic');
-	$docno = $cgi->param('docno');
-	($docno_num = $docno) =~ s/\.html$//;
-	$format = $cgi->param('format'); # for API (xml or html)
-	$input_type = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
-	$ne_type = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
-	$Trans_flag = $cgi->param('Trans_flag'); # Transliteration
+	$url	      = $cgi->param('inputurl');
+	$feature_flag = $cgi->param('feature');
+	$topic	      = $cgi->param('topic');
+	$docno	      = $cgi->param('docno');
+	($docno_num   = $docno) =~ s/\.html$//;
+	$format	      = $cgi->param('format'); # for API (xml or html)
+	$input_type   = $cgi->param('input_type'); # URLを直接入力(url) or wisdomの文書セット(topic)
+	$ne_type      = $cgi->param('ne_type') ? $cgi->param('ne_type') : 'two_stage_NE'; # どこのNEを使うか(knp_ne_crf or two_stage_NE or no_NE)
+	$Trans_flag   = $cgi->param('Trans_flag'); # Transliteration
 
 	$pre_topic = $cgi->param('pre_topic');
 	undef $docno if $topic && $topic ne $pre_topic;
