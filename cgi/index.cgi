@@ -152,7 +152,7 @@ if ($analysis_flag) {
     # キャッシュ
     elsif ($topic && $docno) {
 	# 解析対象ページをpush
-	$input_string = &read_string_from_file("$DetectBlocks_ROOT/sample_pos_css/htmls/$topic/$docno");
+	$input_string = &read_string_from_file("$DetectBlocks_ROOT/sample_pos_final/htmls/$topic/$docno");
 	$url_orig = &read_orig_url($topic, $docno);
 	push @urls, {type => 'orig', url => $url_orig, filepath => $ARGV[0], input_string => $input_string};
 	# $DetectSender->{topic} = $topic;
