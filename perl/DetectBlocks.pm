@@ -182,6 +182,10 @@ sub new {
 	    else {
 		$this->{JUMAN_COMMAND} = $this->{opt}{juman};
 	    }
+	    if (! -e $this->{JUMAN_COMMAND}) {
+		print STDERR "Can't find JUMAN_COMMAND ($this->{JUMAN_COMMAND})!\n";
+		exit;
+	    }
 	}
 	$JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
 	&ResetJUMAN($this, {first => 1});
