@@ -26,7 +26,7 @@ binmode STDOUT, ":utf8";
 
 my (%opt);
 GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset',
-	   'pos_info', 'set_pos_info', 'source_url=s', 'add_blockname2alltag', 'without_juman');
+	   'pos_info', 'set_pos_info', 'source_url=s', 'add_blockname2alltag', 'without_juman', 'en');
 
 my $execpath = '../tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed';
 my $jspath   = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';

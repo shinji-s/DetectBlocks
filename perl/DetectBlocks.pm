@@ -89,7 +89,9 @@ our $MAIL_ADDRESS = '[^0-9][a-zA-Z0-9_]+(?:[.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+(?:
 our $ADDRESS_STRING = '(?:郵便番号|〒)\d{3}(?:-|ー)\d{4}|住所|連絡先|電話番号|(?:e?-?mail|ｅ?−?(?:ｍａｉｌ|メール))|(?:tel|ｔｅｌ)|フリーダイ(?:ヤ|ア)ル|(?:fax|ｆａｘ)|(?:$MAIL_ADDRESS)';
 
 # jumanを使わない場合の助詞、句点、判定詞
-our $josi_string = '[。、がをにへとやだで]';
+our $josi_string_ja = '[。、がをにへとやだで]';
+our $josi_string_en = '[,.]'; # 便宜的にjosiにしとく
+our $josi_string; # newした時に代入
 
 # 以下のtagは解析対象にしない
 our %TAG_IGNORED = (
@@ -168,7 +170,9 @@ sub new {
     my $this = {};
     $this->{opt} = $opt;
     
-    # $this->{opt}{without_juman} = 1;
+    if ($this->{opt}{en}) {
+	$this->{opt}{without_juman} = 1;
+    }
 
     if (!$this->{opt}{without_juman}) {
 	require Juman;
@@ -190,6 +194,8 @@ sub new {
 	$JUMAN_TH = $opt->{JUMAN_TH} if $opt->{JUMAN_TH};
 	&ResetJUMAN($this, {first => 1});
     }
+
+    $josi_string = $this->{opt}{en} ? $josi_string_en : $josi_string_ja;
 
     bless $this;
 }
@@ -951,7 +957,7 @@ sub check_maintext {
     my ($total_mrph_num, $particle_num, $punc_mark_num) = (0, 0, 0);
     # $this->ResetJUMAN;
     foreach my $text (@$texts) {
-	$text = Unicode::Japanese->new($text)->h2z->getu();
+	$text = Unicode::Japanese->new($text)->h2z->getu() if !$this->{opt}{en};
 	$text =~ s/。/。%%%/g;
 	foreach my $text_splitted (split('%%%', $text)) {
 	    if ($this->{opt}{without_juman}) {
