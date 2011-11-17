@@ -4,9 +4,7 @@ package DetectBlocks;
 
 use strict;
 use utf8;
-# use HTML::TreeBuilder;
 use ModifiedTreeBuilder;
-# use Data::Dumper;
 use Encode;
 use Dumpvalue;
 use Unicode::Japanese;
@@ -210,7 +208,6 @@ sub maketree{
 	$htmltext =~ s/©/\(c\)/g ;
     }
     $this->{tree} = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
-    # my $tree = ModifiedTreeBuilder->new;
 
     $this->{tree}->p_strict(1); # タグの閉じ忘れを補完する
     $this->{tree}->parse($htmltext);
@@ -415,17 +412,6 @@ sub get_ok_flag {
 
     return 0 if $this->{alltextlen} == 0;
 
-    # return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
-
-    # return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
-
-    # if ($this->{alltextlen} > $TEXTPER_TH_LENGTH) {
-    # 	return 1 if $elem->attr('length') < $TEXTPER_TH_LENGTH;
-    # }
-    # else {
-    # 	return 1 if $elem->attr('length') / $this->{alltextlen} < $TEXTPER_TH_RATE;
-    # }
-
     my $TH  =  $this->{alltextlen} > $TEXTPER_TH_LENGTH / $TEXTPER_TH_RATE ? $TEXTPER_TH_LENGTH :
 	$TEXTPER_TH_RATE * $this->{alltextlen};
     return 1 if $elem->attr('length') < $TH;
@@ -577,8 +563,6 @@ sub detect_block {
 sub detect_more_blocks {
     my ($this, $elem) = @_;
 
-    # print $elem->{myblocktype},"\n";
-    
     # このブロック以下をチェックする意味があるか
     return if !$this->check_under_this_block($elem);
 
@@ -593,7 +577,6 @@ sub detect_more_blocks {
 	if (scalar grep($BLOCK_TAGS{$_->tag} && !$EXCEPTIONAL_BLOCK_TAGS{lc($_->tag)}, @content_list) == 1) {
 	    $this->detect_more_blocks($content_list[0]);
 	}
-
 	else {
 	    my $divide_flag = 1;
 	    foreach my $more_block_name (@MORE_BLOCK_NAMES)  {
@@ -674,8 +657,6 @@ sub detect_string {
     # 属性付与(hash)
     # 自分以下で例えばプロフィール領域に必要な文字の数, 必要な文字を含むブロックの長さとその比, を付与
     foreach my $more_block_name (@MORE_BLOCK_NAMES) {
-	# print "--\n$more_block_name > ",$elem->tag,' > ',$elem->attr('ratio_start'),' > ',join(':', $this->get_text($elem)),"\n";
-	# Dumpvalue->new->dumpValue($ref->{$more_block_name});
  	$elem->attr('_'.$more_block_name, $ref->{$more_block_name});
     }
     
@@ -1557,8 +1538,6 @@ sub detect_iteration {
 	}
     }
 
-    # Dumpvalue->new->dumpValue($iteration_buffer);
-
     # 最適な繰り返し単位を見つける
     $this->select_best_iteration($elem, $iteration_ref) if defined $iteration_ref;
 
@@ -1590,9 +1569,6 @@ sub Get_div_char {
 sub select_best_iteration {
     my ($this, $elem, $iteration_ref) = @_;
 
-    # print '--',"\n";
-    # Dumpvalue->new->dumpValue($iteration_ref);
-    
     # 最適なiterationを探す
     my $best_iteration_block_size = 0;
     my $best_iteration_size = 0;
@@ -1632,8 +1608,6 @@ sub select_best_iteration {
 	    }
 	}
     }
-    # Dumpvalue->new->dumpValue(\@best_iterations_buffer);
-    # print '---',"\n";
 
     if (scalar @best_iterations_buffer) {
 	my $tmp;
@@ -1710,7 +1684,6 @@ sub get_text {
     # 画像の場合altを返す
     elsif ($TAG_with_ALT{$tag} && !$elem->attr('usemap') && $elem->attr('alt')) {
 	push @texts, $this->{opt}{print_offset} ? decode('utf8', $elem->attr('alt')) : $elem->attr('alt');
-	# push @texts, $elem->attr('alt');
     }
 
     for my $child_elem ($elem->content_list){
