@@ -87,7 +87,6 @@ sub check_blog_string {
 	}
     }
 
-#    print $blog_string_num . "\n";
     if ($blog_string_num >= $BLOG_STRING_NUM ) {
 	$BLOG_FLAG = 1;	    
     }

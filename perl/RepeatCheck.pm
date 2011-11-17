@@ -6,22 +6,19 @@ package RepeatCheck;
 #そのうち同じタグ列が3つ以上ある場合、葉(テキストかimgタグ)の親タグにrepeatid属性を付け加える。
 #treeを返す。
 
-
 use utf8;
 use strict;
 use HTML::TreeBuilder;
 use Data::Dumper;
 
-
-
-sub new{
+sub new {
     my $this = {};
 
     bless $this;
 }
 
 
-sub checkline{
+sub checkline {
     my ($this, $tree) = @_;
 
     my %linehash = ();
@@ -43,7 +40,7 @@ sub checkline{
     $this->{repidhash} = \%idhash;
 }
 
-sub detect_rep{
+sub detect_rep {
     my ($this,  $tree) = @_;
     my $id;
     my $preid;
@@ -65,7 +62,7 @@ sub detect_rep{
 }
 
 
-sub checkline_saiki{
+sub checkline_saiki {
     my ($this, $elem, $line, $hashref) = @_;
 
     if($elem->tag ne "~text" && $elem->tag ne "img"){
@@ -94,7 +91,7 @@ sub checkline_saiki{
 }
 
 
-sub detectrepeat{
+sub detectrepeat {
     my ($this, $tree) = @_;
 
     $tree->objectify_text;
@@ -110,7 +107,7 @@ sub detectrepeat{
 }
 
 
-sub detectrepeat_saiki{
+sub detectrepeat_saiki {
     my ($this, $elemref, $line) = @_;
 
     my $elem = ${$elemref};
@@ -138,7 +135,5 @@ sub detectrepeat_saiki{
     
     return 0;
 }
-
-
 
 1;
