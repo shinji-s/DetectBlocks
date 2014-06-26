@@ -1,0 +1,120 @@
+Webページ構造解析モジュール DetectBlocks
+
+						柴田知秀, 船山弘孝, 黒橋禎夫
+						(shibata@i.kyoto-u.ac.jp)
+
+------
+ 概要
+------
+
+これはHTMLファイルを入力とし、ヘッダー、本文、画像などの領域に分割するPerlモジュールである。
+HTMLをDOMTreeに変換し、htmlタグ、位置情報などを利用して領域を決定する。
+
+----------
+ 使用方法
+----------
+
+- 準備
+ - 必要なプログラム
+  -- 形態素解析器 JUMAN (本文判定時に利用する。下記のオプションで -without_juman をつければ不要。)
+
+ - 必要なPerlモジュール
+  -- HTML::Treebuilder (CPANから取得可能)
+  -- Unicode::Japanese (CPANから取得可能)
+  -- Juman.pm (上記のJUMANに付属)
+
+- モジュール本体
+ - perl/DetectBlocks.pm 
+
+- モジュールを呼び出すサンプルプログラム
+ -- scripts/test.pl
+ -- Usage : perl -I../perl test.pl htmlfile [URL]
+    * htmlfileはutf8にencodeしたもの
+    * URLは指定しなくてもよい
+
+ -- オプション
+   * -add_class2html       : 領域情報を付与したものをhtml形式で出力
+   * -add_blockname2alltag : ROOTタグだけでなく全てのタグに領域情報を付与
+   * -get_more_block       : profile, address領域も付与
+   * -print_offset         : 領域名とそのoffsetを出力
+   * -juman jumanpath      : jumanのpathを指定(例 : -juman /home/guest/tool/bin/juman)n
+			   : 指定しない場合はデフォルトのjumanを使う
+   * -without_juman        : jumanを使わない(高速だが本文検出精度が少し落ちる)
+   * -en                   : 英語解析オプション
+
+- とりうる領域名
+ -- デフォルト (myblocktype)
+   * header:        ヘッダー
+   * footer:        フッター
+   * link:          リンク
+   * img:           画像
+   * form:          フォーム
+   * maintext:      本文 
+   * unknown_block: その他 
+
+ -- get_more_blockオプションをつけた場合 (myblocktype_more)
+   * profile:       プロフィール
+   * Address:       アドレス
+
+- 動作例
+
+ $ perl -I../perl test.pl ../sample/kyoto-u.html
+==================================================
+ body [1755] (0.00-100.00)《_a_:0.91》
+   div [1755] (0.00-100.00)《_a_:0.91》
+     div [35] (0.00-1.99)《_a_:0.23》
+       div [35] (0.00-1.99)《_a_:0.23》
+         p [27] (0.00-1.54) ★maintext★《_a_:0.00》
+           a [14] (0.00-0.80)《_a_:0.00》
+             ~text [14] (0.00-0.80)《_a_:0.00》 コンテンツページを表‥‥
+           ~text [3] (0.80-0.97)《_a_:0.00》  | 
+           a [10] (0.97-1.54)《_a_:0.00》
+             ~text [10] (0.97-1.54)《_a_:0.00》 ナビゲーションへ移動
+         div [0] (1.54-1.54)
+...
+
+ $ perl -I../perl test.pl -add_class2html ../sample/kyoto-u.html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link href="../style.css" rel="stylesheet" type="text/css" />
+...
+	</head>
+	<body dir="ltr" length="1755" ratio_end="1.0000" ratio_start="0.0000">
+		<div length="1755" ratio_end="1.0000" ratio_start="0.0000">
+			<div length="35" ratio_end="0.0199" ratio_start="0.0000">
+				<div length="35" ratio_end="0.0199" ratio_start="0.0000">
+					<p class="myblock_maintext" length="27" myblocktype="maintext" ratio_end="0.0154" ratio_start="0.0000"><a accesskey="2" href="http://www.kyoto-u.ac.jp/ja#documentContent" length="14" ratio_end="0.0080" ratio_start="0.0000"><span length="14" ratio_end="0.0080" ratio_start="0.0000">コンテンツページを表示する。</span></a><span length="3" ratio_end="0.0097" ratio_start="0.0080"> | </span><a accesskey="6" href="http://www.kyoto-u.ac.jp/ja#portlet-navigation-tree" length="10" ratio_end="0.0154" ratio_start="0.0097"><span length="10" ratio_end="0.0154" ratio_start="0.0097">ナビゲーションへ移動</span></a></p>
+					<div length="0" ratio_end="0.0154" ratio_start="0.0154">
+...
+
+
+------
+ 注意
+------
+
+- DetectBlocks.pmのメソッド detectblocks を何度も呼び出して構造解析を行う場合、treeの情報をメモリから削除する必要がある。
+
+    (例)
+     my $DetectBlocks = new DetectBlocks(\%opt);
+     $DetectBlocks->maketree($html_string, $url);
+     $DetectBlocks->detectblocks; # 構造解析を行う
+
+       :
+       (構造解析結果を用いた処理)
+       :
+
+     # ★以下を定期的(例えば1文書ごと)に行う必要がある(script/test.plも参照)★
+     $DetectBlocks->{tree}->delete;
+
+------------
+ ライセンス
+------------
+このプログラムの著作権は京都大学黒橋・河原研究室にあり、修正BSDライセンスで利用可能である。
+
+----------
+ 参考文献
+----------
+船山 弘孝, 渋田 和宏, 柴田 知秀, 黒橋 禎夫:
+Webページの構造解析とメタデータ候補の抽出
+言語処理学会 第16回年次大会,  pp.944-947,  (2010.3).
