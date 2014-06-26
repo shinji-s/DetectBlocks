@@ -1285,6 +1285,11 @@ sub print_node {
     my $length = $elem->attr('length');
     print $space, '●COL_NUM : ', $elem->attr('col_num'), "\n" if $elem->attr('col_num');
 
+    # タグ名 [文字長] (ブロックの最初の位置におけるHTML先頭からの割合-ブロックの最後の位置におけるHTML先頭からの割合) ★ブロック名★ 《_a_:(リンクの割合)》(文字列)
+    # 出力例
+    #  td [78] (17.86-27.81) ★link★《_a_:1.00》
+    #  img [8] (11.73-12.76)《_a_:0.00》 協和のアガリクス
+
     printf "%s %s [%d] (%.2f-%.2f)", $space, $elem->tag, $length, $elem->attr('ratio_start') * 100, $elem->attr('ratio_end') * 100;
 
     if ($elem->attr('myblocktype')) {
