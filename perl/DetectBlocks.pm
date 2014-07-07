@@ -184,6 +184,7 @@ sub new {
 	    else {
 		$this->{JUMAN_COMMAND} = $this->{opt}{juman};
 	    }
+	    $this->{JUMAN_RCFILE} = $this->{opt}{jumanrc} if $this->{opt}{jumanrc};
 	    if (! -e $this->{JUMAN_COMMAND}) {
 		print STDERR "Can't find JUMAN_COMMAND ($this->{JUMAN_COMMAND})!\n";
 		exit;
@@ -919,8 +920,11 @@ sub ResetJUMAN {
     $counter_JUMAN++;
     if (($counter_JUMAN > $JUMAN_TH || $option->{first}) && !$this->{opt}{without_juman}) {
 	# $this->{opt}{juman}を指定した場合
-	if ($this->{JUMAN_COMMAND}) {
-	    $this->{juman} = new Juman(-Command => $this->{JUMAN_COMMAND});
+	if ($this->{JUMAN_COMMAND} || $this->{JUMAN_RCFILE}) {
+	    my %JUMAN_ARGS;
+	    $JUMAN_ARGS{'-Command'} = $this->{JUMAN_COMMAND} if $this->{JUMAN_COMMAND};
+	    $JUMAN_ARGS{'-Rcfile'} = $this->{JUMAN_RCFILE} if $this->{JUMAN_RCFILE};
+	    $this->{juman} = new Juman(\%JUMAN_ARGS);
 	}
 	# $this->{opt}{juman}が空ならばデフォルトのjumanを使う
 	else {
