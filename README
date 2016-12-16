@@ -72,7 +72,7 @@
    - Utils
      CVS_RSH=ssh cvs -d reed:/share/service/cvs co Utils
    - DetectSender
-     CVS_RSH=ssh cvs -d reed:/share/service/cvs co NE
+     CVS_RSH=ssh cvs -d reed:/share/service/cvs co DetectSender
 
  -- index.cgi  以下を書き換える
    - $DetectSender_default : DetectSenderをcheckoutしたディレクトリ
