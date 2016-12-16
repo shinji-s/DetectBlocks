@@ -66,13 +66,7 @@
     
  -- 上と同じディレクトリにanalysis_result, logというディレクトリを作る
 
- -- 以下をcvsでcheckout
-   - NE
-     CVS_RSH=ssh cvs -d reed:/share/service/cvs co NE
-   - Utils
-     CVS_RSH=ssh cvs -d reed:/share/service/cvs co Utils
-   - DetectSender
-     CVS_RSH=ssh cvs -d reed:/share/service/cvs co DetectSender
+ -- NE, Utils, DetectSenderをgit cloneする
 
  -- index.cgi  以下を書き換える
    - $DetectSender_default : DetectSenderをcheckoutしたディレクトリ
