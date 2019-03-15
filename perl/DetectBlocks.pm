@@ -443,7 +443,7 @@ sub detect_block {
     	# - ブロックの開始がページ末尾から300文字以内
     	# - ブロックの終了がページ末尾から100文字以内
     	# - 「copyright」など特別な文字列を含む
-    	if ($this->check_footer($elem, \@texts)) {
+    	if (!$this->{opt}->{disable_footer} && $this->check_footer($elem, \@texts)) {
     	    $myblocktype = 'footer';
     	}
 
@@ -452,7 +452,7 @@ sub detect_block {
     	# - ブロックの開始がページ先頭から100文字以内
     	# - ブロックの終了がページ先頭から200文字以内
     	# - index.*へのリンクを持つ
-    	elsif ($this->check_header($elem)) {
+    	elsif (!$this->{opt}->{disable_header} && $this->check_header($elem)) {
     	    $myblocktype = 'header';
     	}
 
