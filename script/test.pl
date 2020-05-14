@@ -41,58 +41,58 @@ sub main {
 
     my ($str, $url) = @_;
 
-my $DetectBlocks = new DetectBlocks(\%opt);
-my $BlogCheck;
-if ($opt{blogcheck}) {
-    require BlogCheck;
-    $BlogCheck = new BlogCheck($DetectBlocks);
-}
+    my $DetectBlocks = new DetectBlocks(\%opt);
+    my $BlogCheck;
+    if ($opt{blogcheck}) {
+	require BlogCheck;
+	$BlogCheck = new BlogCheck($DetectBlocks);
+    }
 
-if ($opt{set_pos_info}) {
-    $str = &SetPosition::setPosition($str, $execpath, $jspath, \%opt);
-}
+    if ($opt{set_pos_info}) {
+	$str = &SetPosition::setPosition($str, $execpath, $jspath, \%opt);
+    }
 
-$DetectBlocks->maketree($str, $url);
+    $DetectBlocks->maketree($str, $url);
 
-if ($opt{debug}) {
-    Dumpvalue->new->dumpValue($DetectBlocks->{tree});
-    print '-' x 50, "\n";
-}
+    if ($opt{debug}) {
+	Dumpvalue->new->dumpValue($DetectBlocks->{tree});
+	print '-' x 50, "\n";
+    }
 
-$DetectBlocks->detectblocks;
+    $DetectBlocks->detectblocks;
 
-if ($opt{blogcheck}) {
-    $BlogCheck->blog_check;
-    $BlogCheck->print_blog;
-}
+    if ($opt{blogcheck}) {
+	$BlogCheck->blog_check;
+	$BlogCheck->print_blog;
+    }
 
-my $tree = $DetectBlocks->gettree;
+    my $tree = $DetectBlocks->gettree;
 
-if ($opt{debug}) {
-    Dumpvalue->new->dumpValue($tree);
-}
+    if ($opt{debug}) {
+	Dumpvalue->new->dumpValue($tree);
+    }
 
 
-# HTML形式で出力
-if ($opt{add_class2html}) {
-    $DetectBlocks->addCSSlink($tree, 'style.css');    
+    # HTML形式で出力
+    if ($opt{add_class2html}) {
+	$DetectBlocks->addCSSlink($tree, 'style.css');    
 
-    print $tree->as_HTML("<>&","\t", {});
-}
-# offsetを出力
-elsif ($opt{print_offset}) {
-    my $body = $tree->find('body');
-    $DetectBlocks->print_offset($body, undef, undef);
-}
-else {
-# 木の表示
-    print '=' x 50, "\n";
-    $DetectBlocks->printtree;
-    print '=' x 50, "\n";
-}
+	print $tree->as_HTML("<>&","\t", {});
+    }
+    # offsetを出力
+    elsif ($opt{print_offset}) {
+	my $body = $tree->find('body');
+	$DetectBlocks->print_offset($body, undef, undef);
+    }
+    else {
+	# 木の表示
+	print '=' x 50, "\n";
+	$DetectBlocks->printtree;
+	print '=' x 50, "\n";
+    }
 
-# treeをメモリ上から消去
-$DetectBlocks->{tree}->delete;
+    # treeをメモリ上から消去
+    $DetectBlocks->{tree}->delete;
 }
 
 
