@@ -12,6 +12,8 @@
 #  - html用
 # perl -I../perl test.pl -add_class2html ../sample/htmls/Metabolic/001.html
 
+package TestPackage;
+
 use utf8;
 use strict;
 use DetectBlocks;
@@ -26,6 +28,7 @@ binmode STDOUT, ":utf8";
 
 my (%opt);
 GetOptions(\%opt, 'get_source=s', 'proxy=s', 'debug', 'add_class2html', 'printtree', 'get_more_block', 'rel2abs', 'blogcheck', 'juman=s', 'modify', 'print_offset',
+	   'socket_server=s',
 	   'pos_info', 'set_pos_info', 'source_url=s', 'add_blockname2alltag', 'without_juman', 'en');
 
 my $execpath = '../tools/addMyAttrToHtml/staticExe/wkhtmltopdf-reed';
@@ -34,38 +37,15 @@ my $jspath   = '../tools/addMyAttrToHtml/staticExe/myExecJs.js';
 $opt{pos_info} = 1 if $opt{set_pos_info};
 $opt{modify}   = 1 if $opt{print_offset};
 
+sub main {
+
+    my ($str, $url) = @_;
+
 my $DetectBlocks = new DetectBlocks(\%opt);
 my $BlogCheck;
 if ($opt{blogcheck}) {
     require BlogCheck;
     $BlogCheck = new BlogCheck($DetectBlocks);
-}
-
-my $str = "";
-my $url;
-# HTMLソースを取得
-if ($opt{get_source}) {
-
-    ($str, $url) = $DetectBlocks->Get_Source_String($opt{get_source}, \%opt);
-    unless (defined $opt{'source_url'}) {
-	$opt{'source_url'} = $url;
-    }
-}
-# キャッシュ
-else {
-    # offsetモードは特別扱い
-    if ($opt{print_offset}) {
-	open(FILE, "<", $ARGV[0]);
-    }
-    else {
-	open(FILE, "<:utf8", $ARGV[0]);
-    }
-    while(<FILE>){
-	$str .= $_;
-    }
-    close(FILE);
-
-    $url = $ARGV[1];
 }
 
 if ($opt{set_pos_info}) {
@@ -113,3 +93,55 @@ else {
 
 # treeをメモリ上から消去
 $DetectBlocks->{tree}->delete;
+}
+
+
+# HTMLソースを取得
+if ($opt{get_source}) {
+    my $DetectBlocks = new DetectBlocks(\%opt);
+
+    my ($str, $url) =
+	$DetectBlocks->Get_Source_String($opt{get_source}, \%opt);
+    unless (defined $opt{'source_url'}) {
+	$opt{'source_url'} = $url;
+    }
+
+    main($str, $url);
+}
+# キャッシュ
+elsif ($opt{socket_server}) {
+    #use base qw(Net::Server::PreFork);
+    use base qw(Net::Server);
+    # my $server = Net::Server->new;
+    sub process_request {
+	my $str = "";
+	while (defined(my $line=<STDIN>)) {
+	    my $first_two = substr($line, 0, 2);
+	    last if $first_two eq ".\n" || $first_two eq ".\r";
+	    if($first_two eq "..") {
+		$line = substr($str, 1);
+	    }
+	    $str .= $line;
+	}
+	main($str, undef);
+    }
+    TestPackage->run(port => $opt{socket_server}, ipv => '*');
+} else {
+    my ($str, $url);
+
+    # offsetモードは特別扱い
+    if ($opt{print_offset}) {
+	open(FILE, "<", $ARGV[0]);
+    }
+    else {
+	open(FILE, "<:utf8", $ARGV[0]);
+    }
+    while(<FILE>){
+	$str .= $_;
+    }
+    close(FILE);
+
+    $url = $ARGV[1];
+
+    main($str, $url);
+}
