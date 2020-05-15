@@ -12,6 +12,7 @@ use Unicode::Japanese;
 use Encode;
 use Encode::Guess;
 
+use Devel::StackTrace;
 
 our $TEXTPER_TH = 0.5;
 # our $TEXTPER_TH = 700;
@@ -209,6 +210,11 @@ sub maketree{
 	$htmltext =~ s/©/\(c\)/g ;
     }
     $this->{tree} = $this->{opt}{modify} ? ModifiedTreeBuilder->new : HTML::TreeBuilder->new;
+
+    #$this->{tree} = HTML::TreeBuilder->new;
+
+    $this->{tree}->no_expand_entities(1);
+    # $this->{tree}->attr_encoded(1);
 
     $this->{tree}->p_strict(1); # タグの閉じ忘れを補完する
     $this->{tree}->parse($htmltext);
@@ -1240,26 +1246,47 @@ sub print_offset {
 
     return if ref($elem) ne 'HTML::Element';
 
+    my $p_elem_count;
+    $p_elem_count = $p_elem->{content_list} if defined $p_elem->{content_list};
+
     if (defined $elem->attr('myblocktype')) {
 	my $offset;
-	# offsetが存在する
 	if (defined $elem->attr('-offset')) {
+	    # offsetが存在する
 	    $offset = $elem->attr('-offset');
 	}
-	# offsetが存在せず兄が存在する
 	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
-	    my $brothrer_elem = ($p_elem->content_list)[$num-1];
-	    if ($brothrer_elem->attr('-offset')) {
-		$offset = $brothrer_elem->attr('-offset') + bytes::length($brothrer_elem->as_HTML(''));
+	    # offsetが存在せず兄が存在する
+	    my $brother_elem = ($p_elem->content_list)[$num-1];
+	    if (defined $brother_elem) {
+		$offset = $brother_elem->attr('-end-offset');
 	    }
+	}
+	elsif (ref($p_elem) eq 'HTML::Element') {
+	    # offsetが存在せず兄が存在しない
+	    $offset = $p_elem->attr('-offset');
+	}
+
+	my $end_offset;
+	if ( defined $elem->attr('-end-offset') ) {
+	    # end-offsetが存在する
+	    $end_offset = $elem->attr('-end-offset');
+	}
+	elsif (defined $num && $num+1 < $p_elem_count &&
+	       # end-offsetが存在せず弟が存在する
+	       ref($p_elem) eq 'HTML::Element') {
+	    my $brothrer_elem = ($p_elem->content_list)[$num+1];
+	    $end_offset = $brothrer_elem->attr('-offset');
 	}
 	# offsetが存在せず兄が存在しない
 	elsif (ref($p_elem) eq 'HTML::Element') {
-	    $offset = defined $p_elem->attr('-offset') ? $p_elem->attr('-offset') : undef
+	    $end_offset = $p_elem->attr('-end-offset');
 	}
 
-	if (defined $offset) {
-	    print $offset,' ',$elem->attr('myblocktype'),"\n";
+	if (defined $offset && defined $end_offset) {
+	    print $offset,' ',
+		$end_offset,' ',
+		$elem->attr('myblocktype'),"\n";
 	}
     }
 
