@@ -1,6 +1,7 @@
-package HTML::TreeBuilder;
+package ModifiedTreeBuilder;
 
 # ABSTRACT: Parser that builds a HTML syntax tree
+# $Id$
 
 use warnings;
 use strict;
@@ -8,6 +9,7 @@ use integer;    # vroom vroom!
 use Carp ();
 
 our $VERSION = '5.07'; # VERSION from OurPkgVersion
+require HTML::TreeBuilder;
 
 #---------------------------------------------------------------------------
 # Make a 'DEBUG' constant...
@@ -168,7 +170,13 @@ sub new {                               # constructor!
     {
 
         # A hack for certain strange versions of Parser:
-        my $other_self = HTML::Parser->new();
+        my $other_self = HTML::Parser->new(
+            start_h =>
+              [ \&start, "self, tagname, offset, attr, attrseq, text" ],
+            end_h  => [ \&end,  "self, tagname, offset, text" ],
+            text_h => [ \&text, "self, text, offset, is_cdata" ]
+        );
+
         %$self = ( %$self, %$other_self );    # copy fields
            # Yes, multiple inheritance is messy.  Kids, don't try this at home.
         bless $other_self, "HTML::TreeBuilder::_hideyhole";
@@ -180,7 +188,7 @@ sub new {                               # constructor!
     # and gets reblessed into this class.
 
     # Initialize parser settings
-    $self->{'_implicit_tags'}       = 1;
+#   $self->{'_implicit_tags'}       = 1;
     $self->{'_implicit_body_p_tag'} = 0;
 
     # If true, trying to insert text, or any of %isPhraseMarkup right
@@ -276,11 +284,14 @@ sub warning {
         return if $_[0]{'_stunted'};
 
         # Accept a signal from HTML::Parser for start-tags.
-        my ( $self, $tag, $attr ) = @_;
+        my ( $self, $tag, $offset, $attr ) = @_;
 
         # Parser passes more, actually:
         #   $self->start($tag, $attr, $attrseq, $origtext)
         # But we can merrily ignore $attrseq and $origtext.
+
+#       $self->{'-offset'} = $offset;
+        $attr->{'-offset'} = $offset;
 
         if ( $tag eq 'x-html' ) {
             print "Ignoring open-x-html tag.\n" if DEBUG;
@@ -915,7 +926,7 @@ sub warning {
        # Either: Accept an end-tag signal from HTML::Parser
        # Or: Method for closing currently open elements in some fairly complex
        #  way, as used by other methods in this class.
-        my ( $self, $tag, @stop ) = @_;
+        my ( $self, $tag, $offset, @stop ) = @_;
         if ( $tag eq 'x-html' ) {
             print "Ignoring close-x-html tag.\n" if DEBUG;
 
@@ -941,6 +952,8 @@ sub warning {
         # tag found.
 
         my $ptag = ( my $p = $self->{'_pos'} || $self )->{'_tag'};
+
+	$p->{'-end-offset'} = $offset + 3 + length($ptag);
 
         # $p and $ptag are sort-of stratch
 
@@ -1162,7 +1175,7 @@ sub warning {
         return if $_[0]{'_stunted'};
 
         # Accept a "here's a text token" signal from HTML::Parser.
-        my ( $self, $text, $is_cdata ) = @_;
+        my ( $self, $text, $offset, $is_cdata ) = @_;
 
         # the >3.0 versions of Parser may pass a cdata node.
         # Thanks to Gisle Aas for pointing this out.
