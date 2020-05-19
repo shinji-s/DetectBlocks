@@ -953,8 +953,6 @@ sub warning {
 
         my $ptag = ( my $p = $self->{'_pos'} || $self )->{'_tag'};
 
-	$p->{'-end-offset'} = $offset + 3 + length($ptag);
-
         # $p and $ptag are sort-of stratch
 
         if ( ref($tag) ) {
