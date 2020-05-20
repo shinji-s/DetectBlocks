@@ -171,10 +171,11 @@ sub new {                               # constructor!
 
         # A hack for certain strange versions of Parser:
         my $other_self = HTML::Parser->new(
-            start_h =>
-              [ \&start, "self, tagname, offset, attr, attrseq, text" ],
-            end_h  => [ \&end,  "self, tagname, offset, text" ],
-            text_h => [ \&text, "self, text, offset, is_cdata" ]
+            start_h => [ \&start,
+			 "self, tagname, offset, offset_end,
+			 attr, attrseq, text" ],
+            end_h  => [ \&end,  "self, tagname, offset, offset_end, text" ],
+            text_h => [ \&text, "self, text, offset, offset_end, is_cdata" ]
         );
 
         %$self = ( %$self, %$other_self );    # copy fields
@@ -284,14 +285,14 @@ sub warning {
         return if $_[0]{'_stunted'};
 
         # Accept a signal from HTML::Parser for start-tags.
-        my ( $self, $tag, $offset, $attr ) = @_;
+        my ( $self, $tag, $offset, $offset_end, $attr ) = @_;
 
         # Parser passes more, actually:
         #   $self->start($tag, $attr, $attrseq, $origtext)
         # But we can merrily ignore $attrseq and $origtext.
 
-#       $self->{'-offset'} = $offset;
         $attr->{'-offset'} = $offset;
+        $attr->{'-offset_end'} = $offset_end;
 
         if ( $tag eq 'x-html' ) {
             print "Ignoring open-x-html tag.\n" if DEBUG;
@@ -926,7 +927,7 @@ sub warning {
        # Either: Accept an end-tag signal from HTML::Parser
        # Or: Method for closing currently open elements in some fairly complex
        #  way, as used by other methods in this class.
-        my ( $self, $tag, $offset, @stop ) = @_;
+        my ( $self, $tag, $offset, $offset_end, @stop ) = @_;
         if ( $tag eq 'x-html' ) {
             print "Ignoring close-x-html tag.\n" if DEBUG;
 
@@ -1150,6 +1151,7 @@ sub warning {
     #}
 
         foreach my $e (@to_close) {
+	    $e->{'-closing_offset'} = $offset_end;
 
             # Call the applicable callback, if any
             $ptag = $e->{'_tag'};
@@ -1173,7 +1175,7 @@ sub warning {
         return if $_[0]{'_stunted'};
 
         # Accept a "here's a text token" signal from HTML::Parser.
-        my ( $self, $text, $offset, $is_cdata ) = @_;
+        my ( $self, $text, $offset, $offset_end, $is_cdata ) = @_;
 
         # the >3.0 versions of Parser may pass a cdata node.
         # Thanks to Gisle Aas for pointing this out.

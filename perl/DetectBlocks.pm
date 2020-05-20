@@ -1246,30 +1246,17 @@ sub print_offset {
 
     return if ref($elem) ne 'HTML::Element';
 
-    my $p_elem_count;
-    $p_elem_count = $p_elem->{content_list} if defined $p_elem->{content_list};
-
     if (defined $elem->attr('myblocktype')) {
 	my $offset;
-	if (defined $elem->attr('-offset')) {
-	    # offsetが存在する
-	    $offset = $elem->attr('-offset');
+	my $closing_offset;
+	$offset = $elem->attr('-offset');
+	$closing_offset = $elem->attr('-closing_offset');
+	if (defined($offset) && defined($closing_offset)) {
+	    print $offset,' ', $closing_offset,' ',
+		$elem->attr('myblocktype'),' ', $elem->tag,"\n";
+	} else {
+	    print '0 0 no-offsets ', $elem->tag, "\n";
 	}
-	elsif (defined $num && $num > 0 && ref($p_elem) eq 'HTML::Element') {
-	    # offsetが存在せず兄が存在する
-	    my $brother_elem = ($p_elem->content_list)[$num-1];
-	    $offset = $brother_elem->attr('-offset') +
-		bytes::length($brother_elem->as_HTML(''));
-	}
-	elsif (ref($p_elem) eq 'HTML::Element') {
-	    # offsetが存在せず兄が存在しない
-	    $offset = $p_elem->attr('-offset');
-	}
-
-       if (defined $offset)  {
-           print $offset,' ',
-               $elem->attr('myblocktype'),"\n";
-       }
     }
 
     my @content_list = $elem->content_list;
